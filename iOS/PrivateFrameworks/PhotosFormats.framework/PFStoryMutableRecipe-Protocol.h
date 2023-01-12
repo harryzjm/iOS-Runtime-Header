@@ -13,7 +13,7 @@
 @property(retain, nonatomic) NSDictionary *autoEditDecisionLists;
 @property(copy, nonatomic) NSDictionary *seedSongIdentifiersByCatalog;
 @property(copy, nonatomic) id <PFStoryRecipeStyle> currentStyle;
-@property(nonatomic) CDStruct_5d4c7ed3 overallDurationInfo;
+@property(nonatomic) CDStruct_9ee4859c overallDurationInfo;
 @property(nonatomic) long long minorVersion;
 @property(nonatomic) long long majorVersion;
 @property(copy, nonatomic) NSString *contentIdentifier;

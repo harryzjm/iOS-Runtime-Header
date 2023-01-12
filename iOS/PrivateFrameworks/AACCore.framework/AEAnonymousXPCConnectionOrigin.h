@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEXPCConnectionOrigin-Protocol.h>
-
 @class NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
-@interface AEAnonymousXPCConnectionOrigin : NSObject <AEXPCConnectionOrigin>
+@interface AEAnonymousXPCConnectionOrigin : NSObject
 {
     NSXPCListenerEndpoint *_endpoint;
 }

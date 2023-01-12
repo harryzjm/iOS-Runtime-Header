@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(copy, nonatomic) NSArray *translated_sentences;
 @property(copy, nonatomic) NSArray *span;
 @property(copy, nonatomic) NSString *translated_text;
 @property(copy, nonatomic) NSString *paragraph_id;

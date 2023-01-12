@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapTransitStation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessTransitStation <GEOMapTransitStation>
+@interface GEOMapAccessTransitStation
 {
 }
 
@@ -18,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, nonatomic) double boundingRadius;
-@property(readonly, nonatomic) CDStruct_90e2a262 boundingRect;
+@property(readonly, nonatomic) CDStruct_02837cd9 boundingRect;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

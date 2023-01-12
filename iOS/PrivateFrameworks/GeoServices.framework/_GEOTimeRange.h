@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitTimeRange-Protocol.h>
-
 @class NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTimeRange : NSObject <GEOTransitTimeRange>
+@interface _GEOTimeRange : NSObject
 {
     struct GEOPBTransitTimeRange _pbTimeRange;
     struct GEOPDTimeRange _pdTimeRange;

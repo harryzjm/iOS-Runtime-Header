@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTPropertyListEncoding-Protocol.h>
-
 @class NSString;
 
-@interface DVTExtensionPropertyDescription : NSObject <DVTPropertyListEncoding>
+@interface DVTExtensionPropertyDescription : NSObject
 {
     NSString *_name;
     _Bool _isOptional;
@@ -20,6 +18,7 @@
 @property(getter=isOptional) _Bool optional; // @synthesize optional=_isOptional;
 @property(copy) NSString *name; // @synthesize name=_name;
 - (void)encodeIntoPropertyList:(id)arg1;
+- (void)awakeFromPropertyList;
 - (id)initWithPropertyList:(id)arg1 owner:(id)arg2;
 - (id)initWithName:(id)arg1 isOptional:(_Bool)arg2;
 

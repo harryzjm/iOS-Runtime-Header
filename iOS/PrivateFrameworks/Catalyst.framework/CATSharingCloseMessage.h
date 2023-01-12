@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATSharingContentMessage-Protocol.h>
-
 @class NSDictionary, NSError, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingCloseMessage : NSObject <CATSharingContentMessage>
+@interface CATSharingCloseMessage : NSObject
 {
     NSError *_closeError;
 }

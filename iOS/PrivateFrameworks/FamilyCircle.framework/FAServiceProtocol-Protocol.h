@@ -6,9 +6,15 @@
 
 #import <FamilyCircle/NSObject-Protocol.h>
 
-@class ACAccount, NSArray, NSData, NSDictionary, NSNumber, NSString;
+@class ACAccount, FAScreentimeSettingsObjectCache, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol FAServiceProtocol <NSObject>
+- (void)enableSettingsForMemberDSID:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSNumber *, NSError *))arg3;
+- (void)cacheObjectSettings:(FAScreentimeSettingsObjectCache *)arg1 dsid:(NSNumber *)arg2 options:(NSDictionary *)arg3 replyBlock:(void (^)(_Bool, NSError *))arg4;
+- (void)cancelInvitationWith:(NSString *)arg1 familyID:(NSString *)arg2 options:(NSDictionary *)arg3 replyBlock:(void (^)(id, NSError *))arg4;
+- (void)updateFamilyInviteStatusWith:(long long)arg1 inviteCode:(NSString *)arg2 requestUrl:(NSURL *)arg3 options:(NSDictionary *)arg4 replyBlock:(void (^)(_Bool, NSError *))arg5;
+- (void)fetchSettingsPresetsForAge:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(FASettingsPresetsResponse *, NSError *))arg3;
+- (void)fetchSettingsPresetsForMemberWithAltDSID:(NSString *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(FASettingsPresetsResponse *, NSError *))arg3;
 - (void)didDeleteAccount:(ACAccount *)arg1 replyBlock:(void (^)(_Bool))arg2;
 - (void)didAddAccount:(ACAccount *)arg1 replyBlock:(void (^)(_Bool))arg2;
 - (void)runHeartbeatWithOptions:(NSDictionary *)arg1 replyBlock:(void (^)(NSDictionary *, NSError *))arg2;
@@ -16,12 +22,15 @@
 - (void)fetchEligibilityForPropertyName:(NSString *)arg1 bundleID:(NSString *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 - (void)launchOutOfProcessFamilyWithOptions:(NSDictionary *)arg1 completion:(void (^)(FACircleStateResponse *))arg2;
 - (void)launchICloudFamilySettingsWithOptions:(NSDictionary *)arg1;
+- (void)updateFamilyMemberFlagsWithDSID:(NSNumber *)arg1 flags:(NSDictionary *)arg2 replyBlock:(void (^)(_Bool, NSError *))arg3;
 - (void)updateFamilyMemberFlagWithDSID:(NSNumber *)arg1 flag:(NSString *)arg2 enabled:(_Bool)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)didReceiveFamilyEventPushNotificationWithPayload:(NSDictionary *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)clearPhotoCacheWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)clearFamilyCircleCacheWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)registerPushToken:(NSData *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)fetchFamilyMemberPhotoWithDSID:(NSNumber *)arg1 hashedDSID:(NSString *)arg2 size:(long long)arg3 localFallback:(_Bool)arg4 options:(NSDictionary *)arg5 replyBlock:(void (^)(NSData *, long long, NSError *))arg6;
 - (void)removeFamilyMemberWithDSID:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(_Bool, NSNumber *, NSError *))arg3;
-- (void)fetchFamilyCircleWithExpectedDSIDs:(NSArray *)arg1 expectedAltDSIDs:(NSArray *)arg2 signedInAccountShouldBeApprover:(_Bool)arg3 cachePolicy:(unsigned long long)arg4 options:(NSDictionary *)arg5 replyBlock:(void (^)(NSDictionary *, FAFamilyCircle *, NSError *))arg6;
+- (void)removeFamilyWithReplyBlock:(void (^)(_Bool, NSError *))arg1;
+- (void)fetchFamilyCircleWithCachePolicy:(unsigned long long)arg1 signedInAccountShouldBeApprover:(_Bool)arg2 options:(NSDictionary *)arg3 replyBlock:(void (^)(NSDictionary *, FAFamilyCircle *, NSError *))arg4;
 @end
 

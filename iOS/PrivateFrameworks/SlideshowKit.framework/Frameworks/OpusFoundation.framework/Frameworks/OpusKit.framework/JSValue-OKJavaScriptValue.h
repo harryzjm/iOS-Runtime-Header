@@ -11,7 +11,7 @@
 + (id)valueWithVector4:(struct SCNVector4)arg1 inContext:(id)arg2;
 + (id)valueWithVector3:(struct SCNVector3)arg1 inContext:(id)arg2;
 + (id)valueWithOffset:(struct UIOffset)arg1 inContext:(id)arg2;
-+ (id)valueWithCoodinateRegion:(CDStruct_b7cb895d)arg1 inContext:(id)arg2;
++ (id)valueWithCoodinateRegion:(CDStruct_2b0c6e0b)arg1 inContext:(id)arg2;
 + (id)valueWithLocationCoordinate2D:(struct OKLocationCoordinate2D)arg1 inContext:(id)arg2;
 + (id)valueWithEdgeInsets:(struct OKEdgeInsets)arg1 inContext:(id)arg2;
 - (struct CATransform3D)toCATransform3D;
@@ -20,7 +20,7 @@
 - (_Bool)isVector4;
 - (struct SCNVector3)toVector3;
 - (struct UIOffset)toOffset;
-- (CDStruct_b7cb895d)toCoordinateRegion;
+- (CDStruct_2b0c6e0b)toCoordinateRegion;
 - (struct OKLocationCoordinate2D)toLocationCoordinate2D;
 - (struct OKEdgeInsets)toEdgeInsets;
 @end

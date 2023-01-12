@@ -16,7 +16,7 @@
 + (id)accessibilityElementsForBarSeries:(id)arg1;
 - (void).cxx_destruct;
 @property(nonatomic) unsigned long long index; // @synthesize index=_index;
-@property(retain, nonatomic) id barSeries; // @synthesize barSeries=_barSeries;
+@property(nonatomic) __weak id barSeries; // @synthesize barSeries=_barSeries;
 @property(nonatomic) struct CGPoint barPoint; // @synthesize barPoint=_barPoint;
 - (id)accessibilityLabel;
 - (struct CGRect)_accessibilityFrameStandardBar;

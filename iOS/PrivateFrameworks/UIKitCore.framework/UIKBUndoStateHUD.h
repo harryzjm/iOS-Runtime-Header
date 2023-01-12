@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, UIKBUndoStyling, UILabel, UIView, UIVisualEffectView;
+#import "UIView.h"
+
+@class NSLayoutConstraint, UIKBUndoStyling, UILabel, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface UIKBUndoStateHUD
+@interface UIKBUndoStateHUD : UIView
 {
     long long _controlType;
     NSLayoutConstraint *_undoStateHUDWidthConstraint;

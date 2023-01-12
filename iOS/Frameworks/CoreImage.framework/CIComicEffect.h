@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIImage;
 
 __attribute__((visibility("hidden")))
-@interface CIComicEffect
+@interface CIComicEffect : CIFilter
 {
     CIImage *inputImage;
 }

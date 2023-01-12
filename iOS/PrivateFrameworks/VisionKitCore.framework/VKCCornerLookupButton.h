@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisionKitCore/UIGestureRecognizerDelegate-Protocol.h>
-#import <VisionKitCore/UIPointerInteractionDelegate-Protocol.h>
-
-@class MADVIVisualSearchResultItem, NSString, UIButton, UITapGestureRecognizer, VKCVisualSearchResultItem;
+@class NSString, UIButton, UITapGestureRecognizer, VKCVisualSearchResultItem;
 @protocol VKCCornerLookupButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VKCCornerLookupButton <UIPointerInteractionDelegate, UIGestureRecognizerDelegate>
+@interface VKCCornerLookupButton
 {
     _Bool _isShowingVisualResultsPane;
     _Bool _observingInteractionDidFinish;
@@ -21,7 +18,6 @@ __attribute__((visibility("hidden")))
     VKCVisualSearchResultItem *_resultItem;
     UIButton *_button;
     id <VKCCornerLookupButtonDelegate> _delegate;
-    MADVIVisualSearchResultItem *_searchItem;
     NSString *_currentRVItemID;
     double _buttonWidth;
     double _buttonHeight;
@@ -34,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool didProcessResult; // @synthesize didProcessResult=_didProcessResult;
 @property(nonatomic) _Bool observingInteractionDidFinish; // @synthesize observingInteractionDidFinish=_observingInteractionDidFinish;
 @property(retain, nonatomic) NSString *currentRVItemID; // @synthesize currentRVItemID=_currentRVItemID;
-@property(retain, nonatomic) MADVIVisualSearchResultItem *searchItem; // @synthesize searchItem=_searchItem;
 @property(nonatomic) _Bool isShowingVisualResultsPane; // @synthesize isShowingVisualResultsPane=_isShowingVisualResultsPane;
 @property(nonatomic) __weak id <VKCCornerLookupButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIButton *button; // @synthesize button=_button;

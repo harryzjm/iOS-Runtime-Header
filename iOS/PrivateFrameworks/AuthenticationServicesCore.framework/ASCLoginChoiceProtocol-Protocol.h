@@ -8,5 +8,6 @@
 #import <AuthenticationServicesCore/NSSecureCoding-Protocol.h>
 
 @protocol ASCLoginChoiceProtocol <NSObject, NSSecureCoding>
+@property(readonly, nonatomic) unsigned long long loginChoiceKind;
 @end
 

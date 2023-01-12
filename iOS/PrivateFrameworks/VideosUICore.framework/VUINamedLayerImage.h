@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/UINamedLayerImage-Protocol.h>
-
 @class NSString, UIImage;
 @protocol UINamedLayerContentProvider, UINamedLayerImage;
 
 __attribute__((visibility("hidden")))
-@interface VUINamedLayerImage : NSObject <UINamedLayerImage>
+@interface VUINamedLayerImage : NSObject
 {
     int _blendMode;
     UIImage *_decodedImage;

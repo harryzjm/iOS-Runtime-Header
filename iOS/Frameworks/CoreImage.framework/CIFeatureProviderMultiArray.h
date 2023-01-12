@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CIFeatureProviderMultiArray : NSObject <MLFeatureProvider>
+@interface CIFeatureProviderMultiArray : NSObject
 {
     MLMultiArray *multiArray;
     NSString *name;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUOutputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUOutputStream;
 
 __attribute__((visibility("hidden")))
-@interface OISFUZipDeflateOutputStream : NSObject <SFUOutputStream>
+@interface OISFUZipDeflateOutputStream : NSObject
 {
     id <SFUOutputStream> mOutputStream;
     struct z_stream_s mDeflateStream;

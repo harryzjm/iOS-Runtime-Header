@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSString;
 
-@interface SFUGZipFileOutputStream : NSObject <SFUOutputStream>
+@interface SFUGZipFileOutputStream : NSObject
 {
     struct gzFile_s *_file;
     long long _offset;

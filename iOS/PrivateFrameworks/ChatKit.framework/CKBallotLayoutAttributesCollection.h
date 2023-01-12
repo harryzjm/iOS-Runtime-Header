@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/NSCopying-Protocol.h>
-
 @class NSArray, UICollectionViewLayoutAttributes;
 
 __attribute__((visibility("hidden")))
-@interface CKBallotLayoutAttributesCollection : NSObject <NSCopying>
+@interface CKBallotLayoutAttributesCollection : NSObject
 {
     UICollectionViewLayoutAttributes *_containerAttributes;
     UICollectionViewLayoutAttributes *_voteCountAttributes;

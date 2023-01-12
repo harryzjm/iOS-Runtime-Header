@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLSessionDataTaskSubclass-Protocol.h>
-#import <CFNetwork/NSURLSessionTaskSubclass-Protocol.h>
-#import <CFNetwork/NSURLSessionUploadTaskSubclass-Protocol.h>
-#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
+#import "NSURLSessionTask.h"
 
 @class NSInputStream, NSObject, NSOperationQueue, NSOutputStream, NSString, NSURL, __NSCFURLSessionConnection;
 @protocol OS_dispatch_data, OS_dispatch_source;
 
-@interface __NSCFLocalSessionTask <NSURLSessionTaskSubclass, NSURLSessionDataTaskSubclass, NSURLSessionUploadTaskSubclass, __NSCFURLSessionConnectionDelegate>
+@interface __NSCFLocalSessionTask : NSURLSessionTask
 {
     __NSCFURLSessionConnection *_cfConn;
     NSURL *_uploadFile;
@@ -47,9 +44,9 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(retain) __NSCFURLSessionConnection *cfConn; // @synthesize cfConn=_cfConn;
-- (void)connection:(id)arg1 needConnectedSocketToHost:(id)arg2 port:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)connection:(id)arg1 didReceiveTCPConnection:(shared_ptr_8da4e70b)arg2 extraBytes:(id)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;
+- (void)connection:(id)arg1 alternatePathAvailable:(int)arg2;
 - (void)connection:(id)arg1 _conditionalRequirementsChanged:(_Bool)arg2;
 - (void)connection:(id)arg1 waitingWithReason:(long long)arg2;
 - (void)connection:(id)arg1 _willSendRequestForEstablishedConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -72,7 +69,6 @@
 - (id)resourceTimeoutError;
 - (id)error:(id)arg1 code:(long long)arg2;
 - (void)_onqueue_completeInitialization;
-- (void)_askForConnectedSocketLater;
 - (void)cancel_with_error:(id)arg1;
 - (void)_onSessionQueue_disavow;
 - (void)didReceiveInformationalResponse:(id)arg1;
@@ -86,7 +82,7 @@
 - (void)_onqueue_cancel;
 - (void)_onqueue_cancel_with_error:(id)arg1;
 - (void)_onqueue_didSendBodyBytes:(long long)arg1 totalBytesSent:(long long)arg2 totalBytesExpectedToSend:(long long)arg3;
-- (void)_onqueue_needConnectedSocketToHost:(id)arg1 port:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_onqueue_alternatePathAvailable:(int)arg1;
 - (void)_onqueue_conditionalRequirementsChanged:(_Bool)arg1;
 - (void)_onqueue_connectionWaitingWithReason:(long long)arg1;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

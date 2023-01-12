@@ -66,6 +66,7 @@
 - (NSDictionary *)etagsForItemURLs:(NSArray *)arg1;
 
 @optional
+@property(retain, nonatomic) NSString *lastSyncTitle;
 @property(readonly, nonatomic) _Bool needsIsAffectingAvailabilityUpdate;
 @property(nonatomic) long long maxAttendees;
 @property(readonly, nonatomic) NSArray *recurrenceSplitActions;

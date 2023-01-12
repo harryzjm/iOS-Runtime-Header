@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_LTSpeechTranslationDelegate-Protocol.h>
-
 @class NSError, NSMutableDictionary, NSString, _LTTranslationResult;
 @protocol _LTSpeechTranslationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LTSpeechTranslationResultsBuffer : NSObject <_LTSpeechTranslationDelegate>
+@interface _LTSpeechTranslationResultsBuffer : NSObject
 {
     _Bool _isBuffering;
     NSMutableDictionary *_lastASRResults;

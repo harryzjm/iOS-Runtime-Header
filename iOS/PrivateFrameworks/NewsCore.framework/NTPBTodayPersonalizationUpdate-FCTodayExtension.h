@@ -6,11 +6,9 @@
 
 #import <NewsTransport/NTPBTodayPersonalizationUpdate.h>
 
-#import <NewsCore/FCMutableTodayPersonalizationUpdate-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NTPBTodayPersonalizationUpdate (FCTodayExtension) <FCMutableTodayPersonalizationUpdate>
+@interface NTPBTodayPersonalizationUpdate (FCTodayExtension)
 - (void)addEvent:(id)arg1;
 
 // Remaining properties

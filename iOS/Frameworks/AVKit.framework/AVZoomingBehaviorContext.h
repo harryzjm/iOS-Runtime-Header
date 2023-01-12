@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVBehaviorContext-Protocol.h>
-#import <AVKit/AVBehaviorContextInternal-Protocol.h>
-#import <AVKit/AVPlayerViewControllerBehaviorContext-Protocol.h>
-#import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class AVObservationController, AVPlaybackContentContainerView, AVPlaybackContentZoomingView, AVPlayerViewController, AVZoomingBehavior, NSString, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface AVZoomingBehaviorContext : NSObject <AVPlayerViewControllerBehaviorContext, AVBehaviorContextInternal, UIGestureRecognizerDelegate, AVBehaviorContext>
+@interface AVZoomingBehaviorContext : NSObject
 {
     _Bool _zoomingEnabled;
     AVPlayerViewController *_playerViewController;
@@ -35,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 - (void)_updateZoomingView;
 - (void)_handleDoubleTapGestureRecognizer:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)willRemoveBehavior:(id)arg1;

@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IDSFoundation/NSCopying-Protocol.h>
-#import <IDSFoundation/NSSecureCoding-Protocol.h>
-
-@interface IDSCKServerChangeToken : NSObject <NSCopying, NSSecureCoding>
+@interface IDSCKServerChangeToken : NSObject
 {
 }
 

@@ -7,7 +7,6 @@
 @class UIViewController;
 
 @protocol MCUISpecifierProviderDelegate
-- (void)mcuiReloadSpecifiers;
 - (UIViewController *)mcuiViewController;
 @end
 

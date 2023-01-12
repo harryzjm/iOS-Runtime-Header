@@ -7,6 +7,8 @@
 #import <BiomeStreams/BMUserFocusComputedModeStream.h>
 
 @interface BMUserFocusComputedModeStream (ATXExtras)
+- (id)lastTwoUserFocusComputedStoreEvents;
+- (id)currentBMUserFocusComputedStoreEvent;
 - (id)currentBMUserFocusComputedModeEvent;
 - (id)currentModeUUID;
 @end

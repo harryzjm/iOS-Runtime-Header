@@ -9,7 +9,6 @@
 @class BrowserRootViewController, BrowserToolbar, ContinuousReadingViewController, NavigationBar, SFBannerTheme, UITraitCollection, UIViewController, UnifiedBar;
 
 @protocol BrowserRootViewControllerDelegate <NSObject>
-- (_Bool)browserViewControllerShouldModifyWebViewGeometry:(BrowserRootViewController *)arg1;
 - (_Bool)browserViewControllerShouldFreezeWebViewUpdatesForSizeTransition:(BrowserRootViewController *)arg1;
 - (double)browserViewController:(BrowserRootViewController *)arg1 adjustedBottomContentInset:(double)arg2;
 - (double)browserViewController:(BrowserRootViewController *)arg1 adjustedBottomObscuredInset:(double)arg2;

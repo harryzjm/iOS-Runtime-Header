@@ -6,7 +6,7 @@
 
 #import <PersonalIntelligenceCore/NSObject-Protocol.h>
 
-@class NSData;
+@class NSData, NSDictionary;
 
 @protocol BMStoreData <NSObject>
 + (id)eventWithData:(NSData *)arg1 dataVersion:(unsigned int)arg2;
@@ -14,6 +14,7 @@
 @property(nonatomic, readonly) unsigned int dataVersion;
 
 @optional
+- (NSDictionary *)jsonDict;
 - (NSData *)json;
 @end
 

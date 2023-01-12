@@ -6,20 +6,19 @@
 
 #import <AVFAudio/AVAudioFile.h>
 
-@class NSData, _REAudioFileAssetReader;
+@class _REAudioFileAssetReader;
 
 __attribute__((visibility("hidden")))
 @interface _REAudioFile : AVAudioFile
 {
-    NSData *_backingData;
     _REAudioFileAssetReader *_reader;
 }
 
-+ (id)audioFileWithData:(id)arg1 bytes:(const void *)arg2 length:(unsigned long long)arg3;
++ (id)audioFileWithStream:(struct SeekableInputStream *)arg1 ownsStream:(_Bool)arg2;
 - (void).cxx_destruct;
 @property(retain, nonatomic) _REAudioFileAssetReader *reader; // @synthesize reader=_reader;
-@property(retain, nonatomic) NSData *backingData; // @synthesize backingData=_backingData;
 - (id)processingFormat;
+- (id)getBackingData;
 
 @end
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISearchTextFieldPasteItem-Protocol.h>
-
 @class NSDictionary, NSItemProvider, NSString, UISearchToken;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchTextFieldPasteItem <UISearchTextFieldPasteItem>
+@interface _UISearchTextFieldPasteItem
 {
     UISearchToken *_searchTokenResult;
 }

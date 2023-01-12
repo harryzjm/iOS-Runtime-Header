@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/GEOServerFormatToken-Protocol.h>
-
-@class NSArray, NSString;
+@class GEOGenericCombinations, NSArray, NSString;
 @protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenManeuverValue, GEOServerFormatTokenNumberData, GEOServerFormatTokenPriceValue, GEOServerFormatTokenUrlValue, GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _TempToken : NSObject <GEOServerFormatToken>
+@interface _TempToken : NSObject
 {
     _Bool _shouldScaleUnits;
     unsigned int _value1;
@@ -22,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_token;
     NSArray *_value3s;
     NSString *_stringValue;
+    NSString *_accessibilityLabel;
     id <GEOServerFormatTokenPriceValue> _priceValue;
     id <GEOTransitArtworkDataSource> _artworkValue;
     NSArray *_timeStampValues;
@@ -29,9 +28,11 @@ __attribute__((visibility("hidden")))
     id <GEOServerFormatTokenUrlValue> _urlValue;
     id <GEOServerFormatTokenManeuverValue> _maneuverValue;
     id <GEOServerFormatTokenNumberData> _numberData;
+    GEOGenericCombinations *_genericCombinations;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) GEOGenericCombinations *genericCombinations; // @synthesize genericCombinations=_genericCombinations;
 @property(retain, nonatomic) id <GEOServerFormatTokenNumberData> numberData; // @synthesize numberData=_numberData;
 @property(retain, nonatomic) id <GEOServerFormatTokenManeuverValue> maneuverValue; // @synthesize maneuverValue=_maneuverValue;
 @property(retain, nonatomic) id <GEOServerFormatTokenUrlValue> urlValue; // @synthesize urlValue=_urlValue;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *timeStampValues; // @synthesize timeStampValues=_timeStampValues;
 @property(retain, nonatomic) id <GEOTransitArtworkDataSource> artworkValue; // @synthesize artworkValue=_artworkValue;
 @property(retain, nonatomic) id <GEOServerFormatTokenPriceValue> priceValue; // @synthesize priceValue=_priceValue;
+@property(readonly, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(readonly, nonatomic) _Bool shouldScaleUnits; // @synthesize shouldScaleUnits=_shouldScaleUnits;
 @property(nonatomic) float percentageValue; // @synthesize percentageValue=_percentageValue;
 @property(retain, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;

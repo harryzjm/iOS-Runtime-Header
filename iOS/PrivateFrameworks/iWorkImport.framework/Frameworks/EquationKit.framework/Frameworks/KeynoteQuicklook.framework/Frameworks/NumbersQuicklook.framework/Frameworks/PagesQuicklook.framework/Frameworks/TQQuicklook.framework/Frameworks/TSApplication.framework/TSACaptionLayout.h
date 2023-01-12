@@ -6,12 +6,9 @@
 
 #import <TSText/TSWPShapeLayout.h>
 
-#import <TSApplication/TSDWrappable-Protocol.h>
-#import <TSApplication/TSTTablePartitionerParticipating-Protocol.h>
-
 @class NSString, TSDLayoutGeometry, TSDPathSource;
 
-@interface TSACaptionLayout : TSWPShapeLayout <TSDWrappable, TSTTablePartitionerParticipating>
+@interface TSACaptionLayout : TSWPShapeLayout
 {
     TSDPathSource *_layoutPathSource;
 }

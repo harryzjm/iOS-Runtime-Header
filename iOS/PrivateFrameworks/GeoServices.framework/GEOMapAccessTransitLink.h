@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapTransitLink-Protocol.h>
-
 @class NSString;
 @protocol GEOMapTransitStop;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessTransitLink <GEOMapTransitLink>
+@interface GEOMapAccessTransitLink
 {
     shared_ptr_24ebf3c0 _transitEdge;
     struct vector<GEOLocationCoordinate2D, std::allocator<GEOLocationCoordinate2D>> _coords;

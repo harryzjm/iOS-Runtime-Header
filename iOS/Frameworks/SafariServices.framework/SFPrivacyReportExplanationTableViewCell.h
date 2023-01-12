@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <SafariServices/UITextViewDelegate-Protocol.h>
-
 @class NSString, UITextView;
 @protocol SFPrivacyReportExplanationTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPrivacyReportExplanationTableViewCell : UITableViewCell <UITextViewDelegate>
+@interface SFPrivacyReportExplanationTableViewCell : UITableViewCell
 {
     UITextView *_textLabel;
     _Bool _wideLayout;

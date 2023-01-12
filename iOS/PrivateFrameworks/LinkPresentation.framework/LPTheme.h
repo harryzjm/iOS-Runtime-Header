@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarStyle, LPContactsBadgeStyle, LPImageViewStyle, LPPointUnit, LPQuotedTextViewStyle, LPTapToLoadViewStyle, LPVideoViewStyle, NSString, UIColor, UIFont;
+@class LPCaptionBarStyle, LPCollaborationHandleStyle, LPContactsBadgeStyle, LPImageViewStyle, LPLinkRendererSizeClassParameters, LPPointUnit, LPQuotedTextViewStyle, LPTapToLoadViewStyle, LPVideoViewStyle, NSString, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPTheme : NSObject
 {
     long long _style;
     unsigned long long _sizeClass;
+    LPLinkRendererSizeClassParameters *_sizeClassParameters;
     long long _platform;
     _Bool _isFallbackIcon;
+    _Bool _hasButton;
     double _dynamicTypeLeadingScalingFactor;
     NSString *_preferredContentSizeCategory;
     LPPointUnit *_cornerRadius;
@@ -33,15 +35,15 @@ __attribute__((visibility("hidden")))
     UIFont *_domainNameIndicatorIconFont;
     LPImageViewStyle *_backgroundImage;
     LPContactsBadgeStyle *_contactsBadgeStyle;
+    LPCollaborationHandleStyle *_collaborationHandleStyle;
     LPPointUnit *_maximumWidth;
-    LPPointUnit *_maximumIntrinsicHeight;
     double _widthFractionForTallMedia;
 }
 
 + (id)iconPlatterCornerRadius;
 + (id)iconPlatterPaddingForReason:(long long)arg1;
 + (void)addClient:(id)arg1;
-+ (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 preferredContentSizeCategory:(id)arg5;
++ (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 sizeClassParameters:(id)arg5 hasButton:(_Bool)arg6 preferredContentSizeCategory:(id)arg7;
 + (id)secondaryLabelColor;
 + (id)primaryLabelColor;
 + (double)largestIconSizeInPoints;
@@ -49,8 +51,8 @@ __attribute__((visibility("hidden")))
 + (void)invalidateThemeCache;
 - (void).cxx_destruct;
 @property(nonatomic) double widthFractionForTallMedia; // @synthesize widthFractionForTallMedia=_widthFractionForTallMedia;
-@property(retain, nonatomic) LPPointUnit *maximumIntrinsicHeight; // @synthesize maximumIntrinsicHeight=_maximumIntrinsicHeight;
 @property(retain, nonatomic) LPPointUnit *maximumWidth; // @synthesize maximumWidth=_maximumWidth;
+@property(readonly, nonatomic) LPCollaborationHandleStyle *collaborationHandleStyle; // @synthesize collaborationHandleStyle=_collaborationHandleStyle;
 @property(readonly, nonatomic) LPContactsBadgeStyle *contactsBadgeStyle; // @synthesize contactsBadgeStyle=_contactsBadgeStyle;
 @property(readonly, nonatomic) LPImageViewStyle *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(readonly, nonatomic) UIFont *domainNameIndicatorIconFont; // @synthesize domainNameIndicatorIconFont=_domainNameIndicatorIconFont;
@@ -72,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)valueForThemeProperty:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)adjustForStyle;
-- (id)initWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 preferredContentSizeCategory:(id)arg5;
+- (id)initWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3 sizeClass:(unsigned long long)arg4 sizeClassParameters:(id)arg5 hasButton:(_Bool)arg6 preferredContentSizeCategory:(id)arg7;
 
 @end
 

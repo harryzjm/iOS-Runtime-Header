@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIObjectIdentifierPathProxy : NSObject <NSSecureCoding>
+@interface _UIObjectIdentifierPathProxy : NSObject
 {
     NSString *_identifierPath;
 }

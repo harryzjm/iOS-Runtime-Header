@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileManagerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPFileManagerFixPermDelegate : NSObject <NSFileManagerDelegate>
+@interface FPFileManagerFixPermDelegate : NSObject
 {
 }
 

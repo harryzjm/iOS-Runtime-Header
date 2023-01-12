@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITextInput-Protocol.h>
+#import "UIResponder.h"
 
-@class NSDictionary, NSString, UIResponder, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSString, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
 @protocol UITextInput, UITextInputDelegate, UITextInputTokenizer;
 
 __attribute__((visibility("hidden")))
-@interface UITextInteractionSelectableInputDelegate <UITextInput>
+@interface UITextInteractionSelectableInputDelegate : UIResponder
 {
     UIResponder<UITextInput> *_textInput;
 }

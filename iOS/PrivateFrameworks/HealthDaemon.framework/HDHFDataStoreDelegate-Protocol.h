@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDDatabaseTransaction, HDHFDataStore, NSDictionary, NSError, NSMutableDictionary, NSString;
+@class HDHFDataStore, NSArray, NSDictionary, NSError, NSMutableDictionary, NSString;
+@protocol HDHFDataStoreMigrationTransaction;
 
 @protocol HDHFDataStoreDelegate
 - (long long)HFDataStore:(HDHFDataStore *)arg1 integerForKey:(NSString *)arg2;
@@ -12,11 +13,12 @@
 - (_Bool)migrateDataForHFDataStore:(HDHFDataStore *)arg1 toSQLiteFrom:(const void *)arg2 error:(id *)arg3;
 - (_Bool)migrateDataForHFDataStore:(HDHFDataStore *)arg1 from:(const void *)arg2 to:(void *)arg3 recoveryAnalytics:(NSMutableDictionary *)arg4 error:(id *)arg5;
 - (void)requestRebuildTransactionForHFDataStore:(HDHFDataStore *)arg1;
-- (HDDatabaseTransaction *)activeTransactionForCurrentThreadForHFDataStore:(HDHFDataStore *)arg1 forWriting:(_Bool)arg2;
-- (_Bool)allowMigrationToSQLiteForHFDataStore:(HDHFDataStore *)arg1;
+- (id <HDHFDataStoreMigrationTransaction>)activeTransactionForCurrentThreadForHFDataStore:(HDHFDataStore *)arg1 forWriting:(_Bool)arg2;
+- (_Bool)allowHFDMigration:(HDHFDataStore *)arg1;
 - (void)HFDataStoreDidPerformRebuild:(HDHFDataStore *)arg1 didDecompressArchivedHFD:(_Bool)arg2 didOpenArchivedHFD:(_Bool)arg3 didOpenMovedAsideHFD:(_Bool)arg4 recoveryAnalytics:(NSDictionary *)arg5 duration:(double)arg6;
 - (void)didMigrateHFDataStore:(HDHFDataStore *)arg1 fromState:(long long)arg2 toState:(long long)arg3 success:(_Bool)arg4 error:(NSError *)arg5;
 - (void)HFDataStoreDetectedOutOfSpace:(HDHFDataStore *)arg1;
 - (void)HFDataStore:(HDHFDataStore *)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(NSError *)arg4 shouldPromptUser:(_Bool)arg5 initialRebuildState:(long long)arg6 updatedRebuildState:(long long)arg7;
+- (NSArray *)allSeriesEntityClassesForDataStore:(HDHFDataStore *)arg1;
 @end
 

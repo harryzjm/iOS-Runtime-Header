@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INIntent, NSData, NSString;
+@class INIntent, NSData, NSDate, NSString;
 
 @protocol AppPredictionIntentsHelperServiceProtocol
+- (void)createEventIntentWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 withReply:(void (^)(INIntent *, NSError *))arg3;
 - (void)createIntentWithIntentType:(NSString *)arg1 intentData:(NSData *)arg2 withReply:(void (^)(INIntent *, NSError *))arg3;
 - (void)supportsBackgroundExecutionForIntent:(INIntent *)arg1 withReply:(void (^)(_Bool, NSError *))arg2;
 - (void)eligibleForWidgetsForIntent:(INIntent *)arg1 withReply:(void (^)(_Bool, NSError *))arg2;

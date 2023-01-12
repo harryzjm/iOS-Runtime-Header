@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DRenderBufferAllocator-Protocol.h>
-
 @class NSString, TSCH3DRenderBufferStorage;
 
-@interface TSCH3DGLRenderBufferAllocator : NSObject <TSCH3DRenderBufferAllocator>
+@interface TSCH3DGLRenderBufferAllocator : NSObject
 {
     TSCH3DRenderBufferStorage *_storage;
 }

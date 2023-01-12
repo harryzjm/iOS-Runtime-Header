@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/VSAppDocumentControllerDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSApplicationDelegate-Protocol.h>
-#import <VideoSubscriberAccountUI/VSStateMachineDelegate-Protocol.h>
-
-@class JSValue, NSError, NSOperationQueue, NSString, NSURL, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSAuditToken, VSIdentityProvider, VSPreferences, VSStateMachine;
+@class JSValue, NSArray, NSError, NSOperationQueue, NSString, NSURL, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSAuditToken, VSIdentityProvider, VSPreferences, VSStateMachine;
 @protocol VSApplicationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate, VSStateMachineDelegate>
+@interface VSApplicationController : NSObject
 {
     _Bool _applicationMustSelfValidate;
     _Bool _allowUI;
     id <VSApplicationControllerDelegate> _delegate;
     VSIdentityProvider *_identityProvider;
+    NSArray *_userAccounts;
     NSString *_accountProviderAuthenticationToken;
     VSAuditToken *_auditToken;
     VSStateMachine *_stateMachine;
@@ -49,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) VSStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property(retain, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
+@property(retain, nonatomic) NSArray *userAccounts; // @synthesize userAccounts=_userAccounts;
 @property(retain, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property(nonatomic) __weak id <VSApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (id)_makeJavaScriptRequest;
@@ -83,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)applicationStartSelfValidationWithAuthenticationToken:(id)arg1;
 - (void)submitRequest:(id)arg1;
 - (void)showAuthenticationUserInterfaceWithAuthenticationToken:(id)arg1;
+- (void)sendErrorMessage:(id)arg1;
 - (void)stop;
 - (void)start;
 - (void)transitionToInvalidState;

@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMutableOrderedSet.h>
 
-#import <AssetCatalogFoundation/IBMutableOrderedCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSMutableOrderedSet (IBMutableOrderedSetAdditions) <IBMutableOrderedCollection>
+@interface NSMutableOrderedSet (IBMutableOrderedSetAdditions)
 - (void)ib_reverseObjects;
 - (void)ib_removeObjectsInCollection:(id)arg1;
 - (void)ib_mergeAdditionsAndOrderingHintsFromOrderedSet:(id)arg1;

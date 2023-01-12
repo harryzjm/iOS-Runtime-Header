@@ -7,5 +7,7 @@
 #import <Foundation/NSXPCInterface.h>
 
 @interface NSXPCInterface (Extension)
++ (id)MEExtensionRemoteHostInterface;
++ (id)MERemoteExtensiontInterface;
 @end
 

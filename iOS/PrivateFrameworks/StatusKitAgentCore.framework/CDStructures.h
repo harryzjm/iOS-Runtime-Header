@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
 };
 
 #pragma mark Typedef'd Structures
 
+// Ambiguous groups
 typedef struct {
     unsigned int retryIntervalSeconds:1;
     unsigned int status:1;
 } CDStruct_00fd22b7;
 
-// Ambiguous groups
 typedef struct {
     unsigned int channelOwnershipType:1;
 } CDStruct_cada917b;

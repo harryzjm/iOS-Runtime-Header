@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MetalPerformanceShadersGraph/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableArray;
 
-@interface MPSGraphVariable : NSObject <NSCopying>
+@interface MPSGraphVariable : NSObject
 {
     NSData *_data;
     NSMutableArray *_mpsndarrays;

@@ -9,6 +9,7 @@
 @class NSProgress, PHCompositeMediaResult, PHMediaRequest;
 
 @protocol PHMediaRequestDelegate <NSObject>
+- (_Bool)mediaRequestCanRequestRepair:(PHMediaRequest *)arg1;
 - (void)mediaRequest:(PHMediaRequest *)arg1 didFinishWithResult:(PHCompositeMediaResult *)arg2;
 - (void)mediaRequest:(PHMediaRequest *)arg1 didReportProgress:(NSProgress *)arg2;
 - (void)mediaRequest:(PHMediaRequest *)arg1 didFindLocallyAvailableResult:(_Bool)arg2 isDegraded:(_Bool)arg3;

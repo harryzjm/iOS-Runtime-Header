@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXStoryConfiguration, PXStoryRecipeAssetEdits;
+@class NSSet, PXStoryConfiguration, PXStoryRecipeAssetEdits;
 @protocol PXAudioAsset, PXDisplayAsset, PXDisplayAssetFetchResult;
 
 @protocol PXStoryMutableRecipeManager
@@ -12,8 +12,8 @@
 - (void)ensureAutoEditDecisionListForSong:(id <PXAudioAsset>)arg1;
 - (void)didPersistRecipeAssetEdits:(PXStoryRecipeAssetEdits *)arg1;
 - (void)applyKeyAsset:(id <PXDisplayAsset>)arg1;
-- (void)applyManuallyRemovedAsset:(id <PXDisplayAsset>)arg1;
+- (void)applyManuallyRemovedAssets:(NSSet *)arg1;
 - (void)applyManuallyCuratedAssets:(id <PXDisplayAssetFetchResult>)arg1;
-- (void)applyTargetOverallDurationInfo:(CDStruct_5d4c7ed3)arg1;
+- (void)applyTargetOverallDurationInfo:(CDStruct_9ee4859c)arg1;
 @end
 

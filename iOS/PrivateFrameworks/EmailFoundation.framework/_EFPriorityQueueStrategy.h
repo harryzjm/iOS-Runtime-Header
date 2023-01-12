@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailFoundation/EFQueueingStrategy-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _EFPriorityQueueStrategy : NSObject <EFQueueingStrategy>
+@interface _EFPriorityQueueStrategy : NSObject
 {
     CDUnknownBlockType _comparator;
 }

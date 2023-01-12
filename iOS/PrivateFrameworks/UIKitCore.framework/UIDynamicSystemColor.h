@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)_resolvedMaterialWithTraitCollection:(id)arg1;
 - (id)_resolvedColorWithTraitCollection:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

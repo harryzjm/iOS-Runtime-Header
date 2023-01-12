@@ -9,6 +9,8 @@
 @class SBCoverSheetSpotlightViewController;
 
 @protocol SBCoverSheetSpotlightViewControllerDelegate <NSObject>
+- (void)coverSheetSpotlightViewControllerRemoveContentView:(SBCoverSheetSpotlightViewController *)arg1;
+- (void)coverSheetSpotlightViewControllerAddContentView:(SBCoverSheetSpotlightViewController *)arg1;
 - (void)coverSheetSpotlightViewControllerShouldDismiss:(SBCoverSheetSpotlightViewController *)arg1 animated:(_Bool)arg2;
 @end
 

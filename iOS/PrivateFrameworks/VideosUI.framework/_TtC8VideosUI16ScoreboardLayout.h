@@ -11,6 +11,7 @@
     MISSING_TYPE *$__lazy_storage_$_textLayout;
     MISSING_TYPE *$__lazy_storage_$_topRowLayout;
     MISSING_TYPE *$__lazy_storage_$_bottomRowLayout;
+    MISSING_TYPE *$__lazy_storage_$_minimumInteritemSpacing;
 }
 
 @end

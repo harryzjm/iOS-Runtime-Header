@@ -10,7 +10,7 @@
 
 @protocol RCPChildEventStream <RCPBaseEventStreamComposer>
 @property(nonatomic) double currentTimeOffset;
-@property(readonly, retain, nonatomic) NSArray *processingEventBuffer;
 @property(retain, nonatomic) RCPEventEnvironment *environment;
+- (NSArray *)finalizeEventStream;
 @end
 

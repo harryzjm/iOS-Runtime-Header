@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/BSServiceConnectionListenerDelegate-Protocol.h>
-#import <Pegasus/_PGBackgroundPIPServiceConnectionTargetDelegate-Protocol.h>
-
 @class BSServiceConnectionListener, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue, PGBackgroundPIPServiceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PGBackgroundPIPService : NSObject <BSServiceConnectionListenerDelegate, _PGBackgroundPIPServiceConnectionTargetDelegate>
+@interface PGBackgroundPIPService : NSObject
 {
     BSServiceConnectionListener *_connectionListener;
     NSObject<OS_dispatch_queue> *_queue;

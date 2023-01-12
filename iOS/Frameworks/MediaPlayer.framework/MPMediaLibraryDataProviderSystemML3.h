@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPMediaLibraryDataProviderML3.h"
+
 @class NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MPMediaLibraryDataProviderSystemML3
+@interface MPMediaLibraryDataProviderSystemML3 : MPMediaLibraryDataProviderML3
 {
     long long _currentRevision;
     NSObject<OS_dispatch_queue> *_queue;

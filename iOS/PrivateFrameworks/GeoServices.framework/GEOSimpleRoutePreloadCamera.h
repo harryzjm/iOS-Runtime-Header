@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEORoutePreloadCamera-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOSimpleRoutePreloadCamera : NSObject <GEORoutePreloadCamera>
+@interface GEOSimpleRoutePreloadCamera : NSObject
 {
 }
 

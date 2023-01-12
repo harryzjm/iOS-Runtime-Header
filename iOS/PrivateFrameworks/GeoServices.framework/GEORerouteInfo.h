@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface GEORerouteInfo : NSObject <NSSecureCoding>
+@interface GEORerouteInfo : NSObject
 {
     double _distancePenalty;
     double _throttledReroutesPenalty;

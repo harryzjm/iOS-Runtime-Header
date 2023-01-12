@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool shouldRespectContextMenuOrdering; // @synthesize shouldRespectContextMenuOrdering=_shouldRespectContextMenuOrdering;
 @property(nonatomic) struct CGRect barButtonHitRect; // @synthesize barButtonHitRect=_barButtonHitRect;
-- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)_barButtonHitRect;

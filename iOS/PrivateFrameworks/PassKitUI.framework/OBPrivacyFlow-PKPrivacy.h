@@ -8,6 +8,5 @@
 
 @interface OBPrivacyFlow (PKPrivacy)
 + (id)pk_privacyFlowForContext:(unsigned long long)arg1;
-+ (id)pk_privacyFlowForContext:(unsigned long long)arg1;
 @end
 

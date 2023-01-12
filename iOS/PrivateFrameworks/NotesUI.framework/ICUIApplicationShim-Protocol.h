@@ -10,6 +10,8 @@
 
 @protocol ICUIApplicationShim <NSObject>
 @property(readonly, nonatomic) UIWindow *keyWindow;
+- (_Bool)isQuickNoteSessionActive;
+- (_Bool)isSecureScreenShowing;
 - (void)endReceivingRemoteControlEvents;
 - (void)beginReceivingRemoteControlEvents;
 @end

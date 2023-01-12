@@ -9,8 +9,8 @@
 @class NSArray, NSString;
 
 @protocol SHSheetViewModelInterface <NSObject>
-@property(copy, nonatomic) NSArray *restrictedActivityTypes;
-@property(retain, nonatomic) NSString *customOptionsTitle;
+@property(readonly, copy, nonatomic) NSArray *restrictedActivityTypes;
+@property(readonly, copy, nonatomic) NSString *customOptionsTitle;
 @property(readonly, nonatomic) _Bool showOptions;
 @property(readonly, copy, nonatomic) NSArray *metadataValues;
 @property(readonly, copy, nonatomic) NSArray *activities;

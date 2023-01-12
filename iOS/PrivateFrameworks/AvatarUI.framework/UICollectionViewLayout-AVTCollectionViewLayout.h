@@ -6,9 +6,7 @@
 
 #import <UIKit/UICollectionViewLayout.h>
 
-#import <AvatarUI/AVTCollectionViewLayout-Protocol.h>
-
-@interface UICollectionViewLayout (AVTCollectionViewLayout) <AVTCollectionViewLayout>
+@interface UICollectionViewLayout (AVTCollectionViewLayout)
 - (struct CGRect)finalFrameForDisappearingElementAtOriginForVisibleBounds:(struct CGRect)arg1;
 - (struct CGRect)initialFrameForAppearingElementAtOriginForVisibleBounds:(struct CGRect)arg1;
 - (struct CGSize)contentSizeForVisibleBounds:(struct CGRect)arg1 numberOfItems:(long long)arg2;

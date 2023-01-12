@@ -14,6 +14,6 @@
 - (struct CGSize)thumbnailImageViewPixelSize;
 
 @optional
-- (void)shouldDisplayUnsavedSyndicatedAssetBadge:(_Bool)arg1;
+- (void)setAssetThumbnailBadgeTypes:(unsigned long long)arg1;
 @end
 

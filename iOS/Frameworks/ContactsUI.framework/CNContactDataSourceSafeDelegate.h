@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactDataSourceDelegate-Protocol.h>
-
 @class NSString;
 @protocol CNContactDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNContactDataSourceSafeDelegate : NSObject <CNContactDataSourceDelegate>
+@interface CNContactDataSourceSafeDelegate : NSObject
 {
     id <CNContactDataSourceDelegate> _delegate;
 }

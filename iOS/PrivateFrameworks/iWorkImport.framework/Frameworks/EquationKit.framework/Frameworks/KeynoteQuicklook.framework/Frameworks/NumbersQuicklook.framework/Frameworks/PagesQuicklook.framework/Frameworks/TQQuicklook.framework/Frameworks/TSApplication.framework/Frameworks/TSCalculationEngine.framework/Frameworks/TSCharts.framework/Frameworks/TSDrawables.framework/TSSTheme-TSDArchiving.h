@@ -6,9 +6,7 @@
 
 #import <TSStyles/TSSTheme.h>
 
-#import <TSDrawables/TSSPresetSource-Protocol.h>
-
-@interface TSSTheme (TSDArchiving) <TSSPresetSource>
+@interface TSSTheme (TSDArchiving)
 + (id)p_hiddenShadowAtIndex:(unsigned long long)arg1;
 + (id)p_filteredShadowPresetListFromOriginalList:(id)arg1 currentList:(id)arg2 attemptingToRemovePresetAtOriginalIndex:(unsigned long long)arg3 duringUpgrade:(_Bool)arg4;
 + (id)p_prepareUnarchivedShadowPresetsByRemovingHiddenPresets:(id)arg1 duringUpgrade:(_Bool)arg2;

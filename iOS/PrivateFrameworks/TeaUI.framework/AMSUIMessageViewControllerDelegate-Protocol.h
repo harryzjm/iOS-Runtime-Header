@@ -6,7 +6,7 @@
 
 #import <TeaUI/NSObject-Protocol.h>
 
-@class AMSDialogRequest, AMSDialogResult, NSError, UIViewController;
+@class AMSDialogRequest, AMSDialogResult, NSDictionary, NSError, NSString, UIViewController;
 @protocol AMSUIMessageViewController;
 
 @protocol AMSUIMessageViewControllerDelegate <NSObject>
@@ -17,6 +17,7 @@
 @optional
 - (_Bool)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 shouldEnqueueMetricsForDialogResult:(AMSDialogResult *)arg2;
 - (void)messageViewControllerDidDismiss:(UIViewController<AMSUIMessageViewController> *)arg1;
+- (void)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 enqueueEventWithFields:(NSDictionary *)arg2 inTopic:(NSString *)arg3;
 - (void)messageViewController:(UIViewController<AMSUIMessageViewController> *)arg1 didLoadDialogRequest:(AMSDialogRequest *)arg2;
 @end
 

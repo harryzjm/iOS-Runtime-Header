@@ -11,6 +11,7 @@
 @protocol SFUnifiedTabBarItemTitleThemeProviding <NSObject>
 
 @optional
+@property(readonly, nonatomic) SFUnifiedTabBarItemTitleContainerViewTheme *activeTabTitleTheme;
 @property(readonly, nonatomic) SFUnifiedTabBarItemTitleContainerViewTheme *tabTitleTheme;
 @property(readonly, nonatomic) SFUnifiedTabBarItemTitleContainerViewTheme *titleTheme;
 @end

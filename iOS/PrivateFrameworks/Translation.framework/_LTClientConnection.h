@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/_LTTranslationService-Protocol.h>
-
 @class NSString, NSUUID, NSXPCConnection, _LTTranslationServer;
 @protocol _LTClientConnectionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LTClientConnection : NSObject <_LTTranslationService>
+@interface _LTClientConnection : NSObject
 {
     NSXPCConnection *_connection;
     _LTTranslationServer *_server;
-    NSString *_clientIdentifier;
+    _Bool _trusted;
+    NSString *_trustedClientIdentifier;
     NSUUID *_speechSessionID;
     id <_LTClientConnectionDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_LTClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)onDeviceModeEnabled:(CDUnknownBlockType)arg1;
 - (void)_deleteHotfix:(CDUnknownBlockType)arg1;
 - (void)_updateHotfix:(CDUnknownBlockType)arg1;
 - (void)logWithRequestData:(id)arg1;
@@ -41,9 +41,11 @@ __attribute__((visibility("hidden")))
 - (void)_offlineLanguageStatus:(CDUnknownBlockType)arg1;
 - (void)logRequestOfType:(id)arg1 context:(id)arg2;
 - (void)cleanup;
+- (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 strategy:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)languagesForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)languageForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldPresentSystemFirstUseConsent:(CDUnknownBlockType)arg1;
 - (void)preheatWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endAudio;
 - (void)addSpeechAudioData:(id)arg1;
@@ -56,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)clearCaches;
 - (void)cleanupOnDisconnect;
 - (id)_clientDelegate;
-- (id)initWithConnection:(id)arg1 server:(id)arg2;
+- (id)initWithConnection:(id)arg1 server:(id)arg2 trusted:(_Bool)arg3;
 
 @end
 

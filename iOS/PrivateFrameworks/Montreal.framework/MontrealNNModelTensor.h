@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Montreal/MontrealNNDescriptionProtocol-Protocol.h>
-#import <Montreal/NSCopying-Protocol.h>
-
 @class NSArray, NSHashTable, NSString;
 
-@interface MontrealNNModelTensor <NSCopying, MontrealNNDescriptionProtocol>
+@interface MontrealNNModelTensor
 {
     NSString *_name;
     NSArray *_dimension;

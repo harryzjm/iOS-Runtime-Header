@@ -11,17 +11,19 @@
     struct TSTCellRegionGathererMap _gathererMap;
     struct unordered_map<TSUCellCoord, TSUCellRect, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSUCellRect>>> _originToRangeMap;
     _Bool _mightOverlap;
-    unsigned long long _debugCellRangeMerges;
+    struct TSUCellRect _lastCellRangeAdded;
 }
 
 + (id)gatherer;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) unsigned long long debugCellRangeMerges; // @synthesize debugCellRangeMerges=_debugCellRangeMerges;
+@property(nonatomic) struct TSUCellRect lastCellRangeAdded; // @synthesize lastCellRangeAdded=_lastCellRangeAdded;
 @property(nonatomic) _Bool mightOverlap; // @synthesize mightOverlap=_mightOverlap;
 - (id)p_gatherCellRegionViaReducedOverlap;
 - (id)p_gatherCellRegionViaCellRegionAddition;
 - (id)gatheredCellRegion;
+- (void)p_addRange:(struct TSUCellRect)arg1;
+- (void)p_cleanupStashedRangeIffExists;
 - (void)moveRowsFromRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
 - (void)moveColumnsFromRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
 - (void)removeRows:(id)arg1;

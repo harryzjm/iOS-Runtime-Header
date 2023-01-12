@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATIDSMessage-Protocol.h>
-
 @class NSDictionary, NSUUID;
 @protocol CATInitializingIDSServiceConnectionMessageContent;
 
 __attribute__((visibility("hidden")))
-@interface CATInitializingServiceConnectionIDSMessage : NSObject <CATIDSMessage>
+@interface CATInitializingServiceConnectionIDSMessage : NSObject
 {
     NSUUID *_invitationIdentifier;
     id <CATInitializingIDSServiceConnectionMessageContent> _content;

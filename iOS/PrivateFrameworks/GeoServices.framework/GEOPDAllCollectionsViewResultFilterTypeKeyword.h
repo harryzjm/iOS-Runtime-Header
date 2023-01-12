@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDRelatedSearchSuggestion, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDAllCollectionsViewResultFilterTypeKeyword : PBCodable <NSCopying>
+@interface GEOPDAllCollectionsViewResultFilterTypeKeyword : PBCodable
 {
     PBUnknownFields *_unknownFields;
     GEOPDRelatedSearchSuggestion *_relatedSearchSuggestion;

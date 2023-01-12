@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _GCHapticEvent;
-@protocol GCAdaptiveTriggersServiceClientInterface, GCBatteryServiceClientInterface, GCGameIntentServiceClientInterface, GCLightServiceClientInterface, GCMotionServiceClientInterface;
+#import <GameController/_GCDriverClientHapticInterface-Protocol.h>
 
-@protocol _GCDriverClientInterface
-- (void)enableHaptics;
-- (void)enqueueTransient:(_GCHapticEvent *)arg1 hapticMotor:(unsigned long long)arg2;
-- (void)setHapticMotor:(unsigned long long)arg1 frequency:(float)arg2 amplitude:(float)arg3;
+@protocol GCAdaptiveTriggersServiceClientInterface, GCBatteryServiceClientInterface, GCGameIntentServiceClientInterface, GCGenericDeviceDriverConfigurationServiceClientInterface, GCLightServiceClientInterface, GCMotionServiceClientInterface, GCNintendoJoyConFusionGestureServiceClientInterface;
+
+@protocol _GCDriverClientInterface <_GCDriverClientHapticInterface>
+- (void)connectToGenericDeviceDriverConfigurationServiceWithClient:(id <GCGenericDeviceDriverConfigurationServiceClientInterface>)arg1 reply:(void (^)(id <GCGenericDeviceDriverConfigurationServiceServerInterface>, NSError *))arg2;
 - (void)connectToGameIntentServiceWithClient:(id <GCGameIntentServiceClientInterface>)arg1 reply:(void (^)(id <GCGameIntentServiceServerInterface>, NSError *))arg2;
+- (void)connectToNintendoJoyConFusionGestureServiceWithClient:(id <GCNintendoJoyConFusionGestureServiceClientInterface>)arg1 reply:(void (^)(id <GCNintendoJoyConFusionGestureServiceServerInterface>, NSError *))arg2;
 - (void)connectToBatteryServiceWithClient:(id <GCBatteryServiceClientInterface>)arg1 reply:(void (^)(id <GCBatteryServiceServerInterface>, NSError *))arg2;
 - (void)connectToMotionServiceWithClient:(id <GCMotionServiceClientInterface>)arg1 reply:(void (^)(id <GCMotionServiceServerInterface>, NSError *))arg2;
 - (void)connectToAdaptiveTriggersServiceWithClient:(id <GCAdaptiveTriggersServiceClientInterface>)arg1 reply:(void (^)(id <GCAdaptiveTriggersServiceServerInterface>, NSError *))arg2;

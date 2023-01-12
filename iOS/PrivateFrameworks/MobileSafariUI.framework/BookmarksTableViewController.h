@@ -4,25 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/_SFPopoverSizingTableViewController.h>
+#import <MobileSafari/SFPopoverSizingTableViewController.h>
 
-#import <MobileSafariUI/BookmarksFolderViewController-Protocol.h>
-#import <MobileSafariUI/BookmarksPanelStateRestoring-Protocol.h>
-#import <MobileSafariUI/UISearchBarDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDragDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDropDelegate-Protocol.h>
-#import <MobileSafariUI/_SFBookmarkInfoViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/_SFWebBookmarkActionHandler-Protocol.h>
-
-@class NSString, UISearchBar, WebBookmark, WebBookmarkCollection, WebBookmarkList;
+@class NSArray, NSString, SFSyntheticBookmarkFolder, UISearchBar, WebBookmark, WebBookmarkCollection, WebBookmarkList;
 @protocol BookmarksTableViewControllerDelegate, LinkPreviewProvider, _SFNavigationIntentHandling;
 
 __attribute__((visibility("hidden")))
-@interface BookmarksTableViewController : _SFPopoverSizingTableViewController <UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, _SFBookmarkInfoViewControllerDelegate, _SFWebBookmarkActionHandler, BookmarksFolderViewController, BookmarksPanelStateRestoring>
+@interface BookmarksTableViewController : SFPopoverSizingTableViewController
 {
     WebBookmarkCollection *_collection;
     WebBookmarkList *_bookmarkList;
     WebBookmark *_favoritesFolder;
+    SFSyntheticBookmarkFolder *_activeSyntheticFolder;
+    NSArray *_allSyntheticFolders;
     UISearchBar *_searchBar;
     NSString *_userTypedFilter;
     unsigned long long _skipOffset;
@@ -59,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)bookmark:(id)arg1 didProduceNavigationIntent:(id)arg2 userInfo:(id)arg3;
 - (void)editBookmark:(id)arg1 userInfo:(id)arg2;
 - (void)deleteBookmark:(id)arg1 userInfo:(id)arg2;
+- (id)tabGroupProviderForBookmarkInfoViewController:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (_Bool)hasTranslucentAppearance;
 - (id)safari_tableViewScrollPositionSaveIdentifier;
@@ -68,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)setScrollViewScrollsToTop:(_Bool)arg1;
 - (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
+- (void)_handleBookmarkItemDeleted:(_Bool)arg1 atIndexPath:(id)arg2 bookmarkCountBeforeDeletion:(unsigned long long)arg3 lockedDatabase:(_Bool)arg4;
 - (void)_deleteBookmark:(id)arg1 atIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (_Bool)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
@@ -81,13 +77,15 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 contextMenuConfigurationForRowAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (_Bool)tableView:(id)arg1 shouldSpringLoadRowAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)_newViewControllerForFolder:(id)arg1;
+- (id)_newViewControllerForFolder:(id)arg1 syntheticFolder:(id)arg2 showAllSyntheticFolders:(_Bool)arg3;
 - (void)_pushInfoViewControllerForBookmark:(id)arg1;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (id)_tableViewCellForBookmark:(id)arg1;
+- (id)_tableViewCellForBookmark:(id)arg1 syntheticFolder:(id)arg2;
 - (id)_fontForCurrentTraitCollection;
 - (id)bookmarksTableViewCellWithReuseIdentifier:(id)arg1;
+- (id)_syntheticFolderAtIndexPath:(id)arg1;
+- (_Bool)_bookmarkAtIndexPathIsFolder:(id)arg1;
 - (id)_bookmarkAtIndexPath:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -99,16 +97,20 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+@property(readonly, nonatomic) _Bool canCreateNewFolder;
 - (void)updateSeparatorInset;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)loadView;
 - (id)bookmarksNavigationController;
 - (long long)minimumNumberOfRows;
 @property(readonly, nonatomic) int folderID;
+- (void)reloadAllSyntheticFolders;
 - (void)reloadBookmarks;
 - (void)_recreateBookmarkLists;
 - (_Bool)_inRootFolder;
 - (void)_updateTitle;
+- (_Bool)_isShowingAllSyntheticFolders;
+- (id)initWithFolder:(id)arg1 inCollection:(id)arg2 activeSyntheticFolder:(id)arg3 showAllSyntheticFolders:(_Bool)arg4 skipOffset:(unsigned int)arg5;
 - (id)initWithFolder:(id)arg1 inCollection:(id)arg2 skipOffset:(unsigned int)arg3;
 - (id)initWithFolder:(id)arg1 inCollection:(id)arg2;
 

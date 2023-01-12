@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class NSDictionary, TSPComponentObjectUUIDMap;
 
-@interface TSPDeepCopyMetadata
+@interface TSPDeepCopyMetadata : TSPObject
 {
     long long _rootObjectIdentifier;
     unsigned long long _version;

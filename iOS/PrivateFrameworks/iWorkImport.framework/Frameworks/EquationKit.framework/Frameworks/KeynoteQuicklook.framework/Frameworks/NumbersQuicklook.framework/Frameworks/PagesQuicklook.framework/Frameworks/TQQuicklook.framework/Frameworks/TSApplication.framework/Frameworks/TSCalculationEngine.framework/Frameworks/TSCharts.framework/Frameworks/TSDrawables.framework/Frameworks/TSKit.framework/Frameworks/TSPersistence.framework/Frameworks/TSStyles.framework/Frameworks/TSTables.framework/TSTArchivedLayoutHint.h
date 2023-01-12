@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSDArchivedHint-Protocol.h>
-
 @class NSString, TSTLayoutHint;
 
-@interface TSTArchivedLayoutHint : TSPObject <TSDArchivedHint>
+@interface TSTArchivedLayoutHint : TSPObject
 {
     TSTLayoutHint *mHint;
 }

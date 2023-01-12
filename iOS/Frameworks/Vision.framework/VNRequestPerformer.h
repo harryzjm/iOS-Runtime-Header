@@ -6,24 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNRequestCancelling-Protocol.h>
-#import <Vision/VNTrackerProviding-Protocol.h>
-
-@class NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface VNRequestPerformer : NSObject <VNRequestCancelling, VNTrackerProviding>
+@interface VNRequestPerformer : NSObject
 {
     struct os_unfair_lock_s _requestLock;
     NSMutableArray *_requestsInFlight;
     NSMutableArray *_requestsPending;
     NSMutableDictionary *_sequencedRequestObservations;
-    NSMutableSet *_trackerKeys;
 }
 
++ (id)_requestPerformingQueuePriorityGroup2;
++ (id)_requestPerformingQueuePriorityGroup1;
 - (void).cxx_destruct;
-- (void)releaseTracker:(id)arg1;
-- (id)trackerWithOptions:(id)arg1 error:(id *)arg2;
 - (void)cancelAllRequests;
 - (id)previousSequencedObservationsForRequest:(id)arg1;
 - (void)recordSequencedObservationsForRequest:(id)arg1;
@@ -32,9 +28,10 @@ __attribute__((visibility("hidden")))
 - (id)orderedRequestsForRequests:(id)arg1;
 - (id)dependencyAnalyzedRequestsForRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 - (_Bool)_performOrderedRequests:(id)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (void)_groupsRequestsWithTheSameOrdinality:(id)arg1 priorityGroup1:(id)arg2 priorityGroup2:(id)arg3;
+- (void)_groupOrderedRequests:(id)arg1 ordinality:(id)arg2 ordinalityAndPriorityGroups:(id)arg3;
 - (_Bool)_performRequests:(id)arg1 onBehalfOfRequest:(id)arg2 inContext:(id)arg3 error:(id *)arg4;
 - (_Bool)_validateAndPrepareRequests:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

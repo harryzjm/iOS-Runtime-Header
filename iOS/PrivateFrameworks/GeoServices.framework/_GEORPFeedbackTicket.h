@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceFeedbackReportTicket-Protocol.h>
+#import "GEOAbstractTicket.h"
 
 @class GEOMapServiceTraits, GEORPFeedbackRequest, GEORPFeedbackRequestParameters, GEORPUserCredentials, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
-@interface _GEORPFeedbackTicket <GEOMapServiceFeedbackReportTicket>
+@interface _GEORPFeedbackTicket : GEOAbstractTicket
 {
     NSData *_resubmissionData;
     GEORPFeedbackRequestParameters *_feedbackRequestParameters;

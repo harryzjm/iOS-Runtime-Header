@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)prepareContentForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)contentPreparedForDisplay;
 - (id)contentWithCGImage:(struct CGImage *)arg1;
-- (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)renditionApplyingEffect:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (struct CGSize)sizeInPixels;
+- (_Bool)canEmitDrawingCommands;
 - (struct CGImage *)CGImage;
 - (_Bool)hasCGImage;
 - (_Bool)isCGImage;

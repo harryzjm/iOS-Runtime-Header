@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVOutputDeviceDiscoverySessionAvailableOutputDevicesImpl-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVEmptyOutputDeviceDiscoverySessionAvailableOutputDevices : NSObject <AVOutputDeviceDiscoverySessionAvailableOutputDevicesImpl>
+@interface AVEmptyOutputDeviceDiscoverySessionAvailableOutputDevices : NSObject
 {
 }
 

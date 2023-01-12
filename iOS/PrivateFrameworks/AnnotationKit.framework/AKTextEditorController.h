@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AnnotationKit/NSTextStorageDelegate-Protocol.h>
-#import <AnnotationKit/UITextViewDelegate-Protocol.h>
-
 @class AKAnnotation, AKController, AKPageController, CALayer, NSString, NSTextStorage, NSUndoManager, UITextView, UIView;
 @protocol AKTextAnnotationProtocol;
 
-@interface AKTextEditorController : NSObject <NSTextStorageDelegate, UITextViewDelegate>
+@interface AKTextEditorController : NSObject
 {
+    _Bool _wantsTextViewBecomeFirstResponder;
     _Bool _isInEndEditing;
     _Bool _isInAdjustAnnotationFrameToFitText;
     UITextView *_textView;
@@ -46,12 +44,17 @@
 - (void)_firstResponderDidChange:(id)arg1;
 - (void)_unregisterForFirstResponderNotifications;
 - (void)_registerForFirstResponderNotifications;
+- (void)_keyboardWillHide:(id)arg1;
+- (_Bool)_doHandleBackTab;
+- (_Bool)_doHandleTab;
 - (void)_updateTextView:(id)arg1 withFrame:(struct CGRect)arg2 andOrientation:(long long)arg3 additionalRotation:(double)arg4;
 - (struct CGRect)_editorFrameForTextBoundsInModel:(struct CGRect)arg1;
 - (void)_adjustEditorToFitAnnotation:(id)arg1 withText:(id)arg2;
 - (void)_adjustAnnotationFrameToFitText;
 - (id)_newScaledPaths:(id)arg1 withScaleFactor:(double)arg2 aboutCenter:(struct CGPoint)arg3;
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
+- (void)handleBackTabCommand;
+- (void)handleTabCommand;
 - (void)textViewDidEndEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 @property(readonly, nonatomic) _Bool isEditing;

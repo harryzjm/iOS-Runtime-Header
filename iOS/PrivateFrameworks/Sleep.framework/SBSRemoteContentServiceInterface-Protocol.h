@@ -11,5 +11,9 @@
 - (void)didDismissForDismissType:(long long)arg1;
 - (void)getContentPreferencesWithReplyBlock:(void (^)(SBSRemoteContentPreferences *))arg1;
 - (void)configureWithUserInfo:(NSDictionary *)arg1 contentBounds:(NSObject<OS_xpc_object> *)arg2 endpoint:(NSObject<OS_xpc_object> *)arg3;
+
+@optional
+- (void)getInlinePresentationContentFrameWithReplyBlock:(void (^)(NSObject<OS_xpc_object> *))arg1;
+- (void)didChangeContentBounds;
 @end
 

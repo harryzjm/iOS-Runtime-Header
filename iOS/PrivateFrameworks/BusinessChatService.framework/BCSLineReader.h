@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSLineReading-Protocol.h>
-
 @class NSInputStream, NSMutableData, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BCSLineReader : NSObject <BCSLineReading>
+@interface BCSLineReader : NSObject
 {
     unsigned long long _bufferSize;
     unsigned long long _maxLineSize;

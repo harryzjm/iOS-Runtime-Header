@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)removeAttribute:(id)arg1 range:(struct _NSRange)arg2;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;

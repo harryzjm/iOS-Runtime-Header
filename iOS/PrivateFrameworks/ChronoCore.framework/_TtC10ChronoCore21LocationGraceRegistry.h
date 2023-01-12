@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <ChronoCore/BSSharedMemoryStoreData-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC10ChronoCore21LocationGraceRegistry : _TtCs12_SwiftObject <BSSharedMemoryStoreData>
+@interface _TtC10ChronoCore21LocationGraceRegistry : _TtCs12_SwiftObject
 {
     MISSING_TYPE *timeoutByIdentifier;
 }

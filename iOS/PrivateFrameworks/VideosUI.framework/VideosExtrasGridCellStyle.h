@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSDictionary, NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasGridCellStyle : NSObject <NSCopying>
+@interface VideosExtrasGridCellStyle : NSObject
 {
     double _titleFirstBaselineHeight;
     double _subtitleFirstBaselineHeight;

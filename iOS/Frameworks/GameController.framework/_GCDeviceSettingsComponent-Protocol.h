@@ -6,10 +6,10 @@
 
 #import <GameController/_GCDeviceComponent-Protocol.h>
 
-@class GCControllerSettings, NSString;
+@class NSString;
 
 @protocol _GCDeviceSettingsComponent <_GCDeviceComponent>
-- (GCControllerSettings *)settingsForBundleIdentifier:(NSString *)arg1;
-- (GCControllerSettings *)defaultSettings;
+- (NSString *)persistentIdentifierForSettings;
+- (void)settingsDidChange;
 @end
 

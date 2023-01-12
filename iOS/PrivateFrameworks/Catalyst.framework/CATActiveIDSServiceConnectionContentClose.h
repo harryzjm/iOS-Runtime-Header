@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATActiveIDSServiceConnectionMessageContent-Protocol.h>
-
 @class NSDictionary, NSError;
 
 __attribute__((visibility("hidden")))
-@interface CATActiveIDSServiceConnectionContentClose : NSObject <CATActiveIDSServiceConnectionMessageContent>
+@interface CATActiveIDSServiceConnectionContentClose : NSObject
 {
     NSError *_error;
 }

@@ -6,11 +6,9 @@
 
 #import <Intents/INGetReservationDetailsIntentResponse.h>
 
-#import <CoreSuggestionsInternals/SGSchemaConversionProtocol-Protocol.h>
-
 @class NSString;
 
-@interface INGetReservationDetailsIntentResponse (schema) <SGSchemaConversionProtocol>
+@interface INGetReservationDetailsIntentResponse (schema)
 + (Class)reservationClassForSchema:(id)arg1;
 + (id)fromSchemas:(id)arg1;
 - (_Bool)reservationsContainUniqueItemReferences;

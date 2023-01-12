@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKFitnessFriendAchievement.h>
 
-#import <ActivitySharing/ASCloudKitCodable-Protocol.h>
-
 @class ASCodableCloudKitAchievement, NSString;
 
-@interface _HKFitnessFriendAchievement (CloudKitCodingSupport) <ASCloudKitCodable>
+@interface _HKFitnessFriendAchievement (CloudKitCodingSupport)
 + (id)_fitnessFriendAchievementWithCodableAchievement:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendAchievementWithCodableAchievement:(id)arg1 friendUUID:(id)arg2;
 + (id)fitnessFriendAchievementWithCodableAchievement:(id)arg1;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CXCallSource.h"
+
 @class NSSet, NSString, NSURL, NSXPCConnection;
 
-@interface CXXPCCallSource
+__attribute__((visibility("hidden")))
+@interface CXXPCCallSource : CXCallSource
 {
     _Bool _hasVoIPBackgroundMode;
     struct os_unfair_lock_s _accessorLock;

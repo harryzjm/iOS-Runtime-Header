@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDragInteractionDelegate_Internal-Protocol.h>
-
 @class NSIndexPath, NSMapTable, NSMutableOrderedSet, NSString, UIDragInteraction, UITableView, UITableViewCell;
 @protocol UIDragSession, _UITableViewDragControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewDragController : NSObject <UIDragInteractionDelegate_Internal>
+@interface _UITableViewDragController : NSObject
 {
     _Bool _forceEnabledForReordering;
     long long _clientEnabledState;

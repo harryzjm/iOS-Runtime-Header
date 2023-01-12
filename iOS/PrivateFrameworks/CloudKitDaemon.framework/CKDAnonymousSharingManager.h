@@ -27,7 +27,7 @@
 - (void)decryptShareTuple:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_locked_encryptShareTuples:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)encryptShareTuples:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
-- (void)removeAnonymousSharesfromSharedDB:(id)arg1 operation:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)removeAnonymousSharesFromSharedDB:(id)arg1 operation:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)addAnonymousSharesToSharedDB:(id)arg1 operation:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (id)_generateHashIdentifierForAnonymousShareTuple:(id)arg1;
 - (id)initWithContainer:(id)arg1;

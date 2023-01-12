@@ -16,6 +16,7 @@
 
 @optional
 @property(nonatomic) unsigned long long powerUsage;
+- (void)waitForOutstandingCallbacks;
 - (void)forceUpdatePowerUsage:(unsigned long long)arg1;
 @end
 

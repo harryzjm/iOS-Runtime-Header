@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactContentViewControllerDelegate-Protocol.h>
-#import <ContactsUI/CNContactPickerDelegate-Protocol.h>
+#import "CNContactAction.h"
 
 @class CNContact, CNContactPickerViewController, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactAddLinkedCardAction <CNContactPickerDelegate, CNContactContentViewControllerDelegate>
+@interface CNContactAddLinkedCardAction : CNContactAction
 {
     CNContact *_chosenContact;
     NSArray *_editingLinkedContacts;

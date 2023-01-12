@@ -6,12 +6,10 @@
 
 #import <VectorKit/VKLabelMarker.h>
 
-#import <MapKit/GEOTransitArtworkDataSource-Protocol.h>
-
 @class MKMapItemIdentifier, NSString, UIView;
 @protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
-@interface VKLabelMarker (MapKitExtras) <GEOTransitArtworkDataSource>
+@interface VKLabelMarker (MapKitExtras)
 @property(nonatomic) _Bool suppressCallout;
 - (id)_annotationTitle;
 @property(readonly, nonatomic) MKMapItemIdentifier *flyoverTourIdentifier;

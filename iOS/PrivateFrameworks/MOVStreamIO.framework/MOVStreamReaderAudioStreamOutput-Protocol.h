@@ -7,6 +7,6 @@
 #import <MOVStreamIO/MOVStreamReaderSampleStreamOutput-Protocol.h>
 
 @protocol MOVStreamReaderAudioStreamOutput <MOVStreamReaderSampleStreamOutput>
-- (struct opaqueCMSampleBuffer *)grabNextAudioSampleForStreamTimestamp:(out CDStruct_1b6d18a9 *)arg1 error:(out id *)arg2;
+- (struct opaqueCMSampleBuffer *)grabNextAudioSampleForStreamTimestamp:(out CDStruct_198678f7 *)arg1 error:(out id *)arg2;
 @end
 

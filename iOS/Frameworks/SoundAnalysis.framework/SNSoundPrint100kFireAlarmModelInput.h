@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundPrint100kFireAlarmModelInput : NSObject <MLFeatureProvider>
+@interface SNSoundPrint100kFireAlarmModelInput : NSObject
 {
     MLMultiArray *_soundprint_Placeholder;
 }

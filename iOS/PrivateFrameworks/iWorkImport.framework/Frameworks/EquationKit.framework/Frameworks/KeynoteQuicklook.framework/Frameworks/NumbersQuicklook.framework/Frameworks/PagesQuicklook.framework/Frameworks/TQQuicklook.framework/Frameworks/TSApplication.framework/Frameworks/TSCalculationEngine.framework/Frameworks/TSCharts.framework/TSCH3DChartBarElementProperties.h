@@ -19,7 +19,7 @@
     float _setWidth;
     int _barShape;
     TSCH3DLabelResources *_seriesLabels;
-    struct array<TSCH3D::BarExtrusionDetails, 2> _extrusionDetails;
+    struct array<TSCH3D::BarExtrusionDetails, 2UL> _extrusionDetails;
     TSCH3DBarChartDefaultAppearance *_appearance;
     NSMutableArray *_rangeCache;
 }

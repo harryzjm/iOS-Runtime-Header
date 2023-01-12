@@ -7,8 +7,8 @@
 #import <UIKit/UIImageView.h>
 
 @interface UIImageView (PKUIUtilities)
-- (struct CGSize)alignmentSize;
-- (void)setAlignmentRect:(struct CGRect)arg1;
-- (struct CGRect)alignmentRect;
+- (struct CGSize)pkui_alignmentSize;
+- (void)pkui_setAlignmentRect:(struct CGRect)arg1;
+- (struct CGRect)pkui_alignmentRect;
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     UITextGestureTuning *_gestureTuning;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) UITextGestureTuning *gestureTuning; // @synthesize gestureTuning=_gestureTuning;
 - (void)oneFingerForcePress:(id)arg1;
 - (void)oneFingerForcePan:(id)arg1;

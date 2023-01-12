@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsSupport/MSPSharedTripCapabilityLevelFetcherObserver-Protocol.h>
-
 @class MSPSharedTripContact, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _MSPSharedTripSingleCapabilityLevelFetcher : NSObject <MSPSharedTripCapabilityLevelFetcherObserver>
+@interface _MSPSharedTripSingleCapabilityLevelFetcher : NSObject
 {
     MSPSharedTripContact *_contact;
     CDUnknownBlockType _completion;

@@ -6,14 +6,16 @@
 
 #import <BannerKit/NSObject-Protocol.h>
 
-@class UIScreen;
+@class UIScreen, UIWindow;
 
 @protocol BNLayoutManaging <NSObject>
 @property(nonatomic) struct BNBannerLayoutInfoV2 layoutInfoV2;
 - (struct CGRect)presentedFrameForContentWithFrame:(struct CGRect)arg1 afterContentWithFrame:(struct CGRect)arg2;
 - (struct CGRect)presentedFrameForContentWithPreferredSize:(struct CGSize)arg1 inUseableContainerFrame:(struct CGRect)arg2 containerBounds:(struct CGRect)arg3 scale:(double)arg4;
 - (struct CGRect)dismissedFrameForContentWithPreferredSize:(struct CGSize)arg1 inUseableContainerFrame:(struct CGRect)arg2 containerBounds:(struct CGRect)arg3 overshoot:(_Bool)arg4 scale:(double)arg5;
+- (struct CGRect)useableContainerFrameInContainerBounds:(struct CGRect)arg1 inWindow:(UIWindow *)arg2;
 - (struct CGRect)useableContainerFrameInContainerBounds:(struct CGRect)arg1 onScreen:(UIScreen *)arg2;
+- (struct CGRect)useableContainerFrameInContainerBounds:(struct CGRect)arg1 onScreen:(UIScreen *)arg2 interfaceOrientation:(long long)arg3;
 
 @optional
 @property(nonatomic) struct BNBannerLayoutInfo layoutInfo;

@@ -4,24 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyInput-Protocol.h>
-#import <UIKitCore/_UIKeyShortcutHUDMenuViewControllerDelegate-Protocol.h>
-#import <UIKitCore/_UIKeyShortcutHUDToolbarViewControllerDelegate-Protocol.h>
+#import "UIViewController.h"
 
-@class NSLayoutConstraint, NSMutableDictionary, NSString, UIKeyCommand, UITapGestureRecognizer, UITextInputPasswordRules, UIView, UIViewPropertyAnimator, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDConfiguration, _UIKeyShortcutHUDContext, _UIKeyShortcutHUDMenuViewController, _UIKeyShortcutHUDMetrics, _UIKeyShortcutHUDModel, _UIKeyShortcutHUDToolbarViewController, _UIKeyShortcutHUDWindow;
-@protocol _UIKeyShortcutHUDViewControllerDelegate;
+@class NSLayoutConstraint, NSMutableDictionary, NSString, UIKeyCommand, UIKeyShortcutHUDMetrics, UITapGestureRecognizer, UITextInputPasswordRules, UIView, UIViewPropertyAnimator, _UIKeyShortcutHUDCollectionViewManager, _UIKeyShortcutHUDConfiguration, _UIKeyShortcutHUDMenuViewController, _UIKeyShortcutHUDToolbarViewController, _UIKeyShortcutHUDWindow;
+@protocol UIKeyShortcutHUDMetricsProvider, _UIKeyShortcutHUDViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDViewController <_UIKeyShortcutHUDMenuViewControllerDelegate, _UIKeyShortcutHUDToolbarViewControllerDelegate, UIKeyInput>
+@interface _UIKeyShortcutHUDViewController : UIViewController
 {
-    _Bool _hidden;
     _Bool _searching;
+    _Bool _hidden;
+    _Bool _completelyPresented;
     _Bool _hudPresentedIntoSearchMode;
+    _Bool _shouldIgnoreNextSearchFieldTextChangedCallback;
     id <_UIKeyShortcutHUDViewControllerDelegate> _delegate;
     _UIKeyShortcutHUDWindow *_hudWindow;
-    _UIKeyShortcutHUDContext *_context;
     _UIKeyShortcutHUDConfiguration *_configuration;
-    _UIKeyShortcutHUDModel *_model;
+    id <UIKeyShortcutHUDMetricsProvider> _metricsProvider;
     long long _heldModifierFlags;
     UIView *_hudContainerView;
     _UIKeyShortcutHUDMenuViewController *_menuVC;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_menuToolbarSpacingConstraint;
     NSLayoutConstraint *_toolbarPreferredWidthConstraint;
     _UIKeyShortcutHUDCollectionViewManager *_collectionViewManager;
-    _UIKeyShortcutHUDMetrics *_metrics;
+    UIKeyShortcutHUDMetrics *_metrics;
     UITapGestureRecognizer *_tapGestureRecognizer;
     NSMutableDictionary *_hudToAppKeyCommandsMap;
     UIKeyCommand *_showShortcutsKeyCommand;
@@ -46,15 +45,15 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool shouldIgnoreNextSearchFieldTextChangedCallback; // @synthesize shouldIgnoreNextSearchFieldTextChangedCallback=_shouldIgnoreNextSearchFieldTextChangedCallback;
 @property(nonatomic, getter=isHUDPresentedIntoSearchMode) _Bool hudPresentedIntoSearchMode; // @synthesize hudPresentedIntoSearchMode=_hudPresentedIntoSearchMode;
-@property(readonly, nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
 @property(retain, nonatomic) UIViewPropertyAnimator *searchTransitionAnimator; // @synthesize searchTransitionAnimator=_searchTransitionAnimator;
 @property(retain, nonatomic) UIViewPropertyAnimator *menuPanelAnimator; // @synthesize menuPanelAnimator=_menuPanelAnimator;
 @property(retain, nonatomic) UIViewPropertyAnimator *hudAppearanceAnimator; // @synthesize hudAppearanceAnimator=_hudAppearanceAnimator;
 @property(nonatomic) __weak UIKeyCommand *showShortcutsKeyCommand; // @synthesize showShortcutsKeyCommand=_showShortcutsKeyCommand;
 @property(retain, nonatomic) NSMutableDictionary *hudToAppKeyCommandsMap; // @synthesize hudToAppKeyCommandsMap=_hudToAppKeyCommandsMap;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
-@property(retain, nonatomic) _UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
+@property(retain, nonatomic) UIKeyShortcutHUDMetrics *metrics; // @synthesize metrics=_metrics;
 @property(retain, nonatomic) _UIKeyShortcutHUDCollectionViewManager *collectionViewManager; // @synthesize collectionViewManager=_collectionViewManager;
 @property(retain, nonatomic) NSLayoutConstraint *toolbarPreferredWidthConstraint; // @synthesize toolbarPreferredWidthConstraint=_toolbarPreferredWidthConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *menuToolbarSpacingConstraint; // @synthesize menuToolbarSpacingConstraint=_menuToolbarSpacingConstraint;
@@ -65,14 +64,15 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *hudContainerTopEdgeConstraint; // @synthesize hudContainerTopEdgeConstraint=_hudContainerTopEdgeConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *hudContainerTrailingEdgeConstraint; // @synthesize hudContainerTrailingEdgeConstraint=_hudContainerTrailingEdgeConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *hudContainerLeadingEdgeConstraint; // @synthesize hudContainerLeadingEdgeConstraint=_hudContainerLeadingEdgeConstraint;
+@property(readonly, nonatomic, getter=isCompletelyPresented) _Bool completelyPresented; // @synthesize completelyPresented=_completelyPresented;
 @property(readonly, nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(retain, nonatomic) _UIKeyShortcutHUDToolbarViewController *toolbarVC; // @synthesize toolbarVC=_toolbarVC;
 @property(retain, nonatomic) _UIKeyShortcutHUDMenuViewController *menuVC; // @synthesize menuVC=_menuVC;
 @property(retain, nonatomic) UIView *hudContainerView; // @synthesize hudContainerView=_hudContainerView;
 @property(nonatomic) long long heldModifierFlags; // @synthesize heldModifierFlags=_heldModifierFlags;
-@property(retain, nonatomic) _UIKeyShortcutHUDModel *model; // @synthesize model=_model;
+@property(readonly, nonatomic, getter=isSearching) _Bool searching; // @synthesize searching=_searching;
+@property(retain, nonatomic) id <UIKeyShortcutHUDMetricsProvider> metricsProvider; // @synthesize metricsProvider=_metricsProvider;
 @property(retain, nonatomic) _UIKeyShortcutHUDConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(retain, nonatomic) _UIKeyShortcutHUDContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak _UIKeyShortcutHUDWindow *hudWindow; // @synthesize hudWindow=_hudWindow;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (_Bool)_canShowWhileLocked;
@@ -98,18 +98,19 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBecomeFirstResponder;
 - (void)_setSearching:(_Bool)arg1 animated:(_Bool)arg2 initialSearchText:(id)arg3;
 - (void)_setSearching:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)beginSearching;
 - (void)_updateDisplayedMenuForCurrentHeldModifierFlagsAnimated:(_Bool)arg1;
 - (void)_focusTopSearchResultWithDelay:(_Bool)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (void)_setDisplayedMenu:(id)arg1 animated:(_Bool)arg2;
 - (void)setDisplayedMenu:(id)arg1;
-- (void)handleShowShortcutsKeyCommand:(id)arg1;
 - (void)handleAppKeyCommand:(id)arg1;
+- (void)handleShowShortcutsKeyCommand:(id)arg1;
+- (void)showHelp:(id)arg1;
 - (void)handleEscapeKeyCommand:(id)arg1;
 - (void)handleHUDTap:(id)arg1;
 - (_Bool)shouldDismissHUDForModifierKeyTap;
+- (void)_hudWillBecomeHidden:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setupHUDKeyCommands;
 - (void)_setupGestureRecognizers;

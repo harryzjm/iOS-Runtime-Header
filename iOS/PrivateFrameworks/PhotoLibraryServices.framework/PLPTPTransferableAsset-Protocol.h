@@ -10,6 +10,8 @@
 @protocol PLPTPTransferableAdditionalAssetAttributes, PLPTPTransferableSidecarFile;
 
 @protocol PLPTPTransferableAsset <NSObject>
+@property(readonly, copy, nonatomic) NSString *originalUniformTypeIdentifier;
+@property(readonly, copy, nonatomic) NSString *uniformTypeIdentifier;
 @property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderImageFile;
 @property(readonly, nonatomic) long long cameraProcessingAdjustmentTrashedState;

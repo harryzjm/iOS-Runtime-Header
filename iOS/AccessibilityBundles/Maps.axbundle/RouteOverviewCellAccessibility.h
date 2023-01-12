@@ -11,11 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityUserTestingChildren;
 - (id)artworkList;
 - (id)tertiaryLabel;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateLabels;
-- (id)_axTextForFakeElement;
+- (id)_axTextForElement;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)accessibilityElementDidBecomeFocused;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityHint;
+- (id)_accessibilitySupplementaryHeaderViews;
+- (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

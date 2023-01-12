@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIMediaLibraryIdentifier-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIAggregateLibraryIdentifier : NSObject <VUIMediaLibraryIdentifier>
+@interface VUIAggregateLibraryIdentifier : NSObject
 {
 }
 

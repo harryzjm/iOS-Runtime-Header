@@ -4,23 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
 
 struct CGSize {
     double width;
@@ -59,13 +47,6 @@ typedef struct {
     unsigned long long _field2;
     unsigned long long _field3;
 } CDStruct_14f26992;
-
-typedef struct {
-    double red;
-    double green;
-    double blue;
-    double alpha;
-} CDStruct_3ead2808;
 
 typedef struct {
     CDStruct_14f26992 _field1;

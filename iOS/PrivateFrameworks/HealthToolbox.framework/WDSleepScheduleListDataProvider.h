@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WDSampleListDataProvider.h"
+
 @class NSCalendar, NSDateFormatter;
 
 __attribute__((visibility("hidden")))
-@interface WDSleepScheduleListDataProvider
+@interface WDSleepScheduleListDataProvider : WDSampleListDataProvider
 {
     NSDateFormatter *_standaloneFormatter;
     NSDateFormatter *_listItemFormatter;
@@ -19,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)textForObject:(id)arg1;
 - (id)sampleTypes;
 - (id)titleForSection:(unsigned long long)arg1;
+- (void)removeObjectAtIndex:(unsigned long long)arg1 forSection:(unsigned long long)arg2 sectionRemoved:(_Bool *)arg3;
+- (unsigned long long)numberOfSections;
 - (long long)cellStyle;
 - (id)initWithDisplayType:(id)arg1 profile:(id)arg2;
 

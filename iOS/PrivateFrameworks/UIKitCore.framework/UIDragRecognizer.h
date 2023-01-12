@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class UIDelayedAction, UITouch;
 
 __attribute__((visibility("hidden")))
-@interface UIDragRecognizer
+@interface UIDragRecognizer : UIGestureRecognizer
 {
     double _maximumDeviation;
     double _minimumDistance;
@@ -19,14 +21,12 @@ __attribute__((visibility("hidden")))
     double _startAngle;
     double _quietPeriod;
     _Bool _canBeginDrag;
-    SEL _checkCanBeginDrag;
     UIDelayedAction *ignoreTouch;
 }
 
 + (_Bool)_shouldDefaultToTouches;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIDelayedAction *ignoreTouch; // @synthesize ignoreTouch;
-@property(nonatomic) SEL checkCanBeginDrag; // @synthesize checkCanBeginDrag=_checkCanBeginDrag;
 @property(nonatomic) _Bool canBeginDrag; // @synthesize canBeginDrag=_canBeginDrag;
 @property(nonatomic) double quietPeriod; // @synthesize quietPeriod=_quietPeriod;
 @property(nonatomic) double startAngle; // @synthesize startAngle=_startAngle;

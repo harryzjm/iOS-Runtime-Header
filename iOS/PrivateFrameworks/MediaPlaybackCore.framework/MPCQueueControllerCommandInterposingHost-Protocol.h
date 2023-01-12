@@ -12,6 +12,7 @@
 - (void)sharedCurrentItemChangedToItem:(NSString *)arg1 inSection:(NSString *)arg2 byParticipant:(ICLiveLinkIdentity *)arg3;
 - (void)sessionDidEnd;
 - (MPPropertySet *)requestedPropertySetForEvents;
+- (void)autoPlayEnabledDidChange:(_Bool)arg1;
 - (void)explicitContentStateDidChange:(long long)arg1;
 - (void)emitSharedListeningEvent:(MPCSharedListeningEvent *)arg1;
 - (void)emitEventsForAddedSharedListeningContainerInfo:(MPCSharedListeningContainerInfo *)arg1;

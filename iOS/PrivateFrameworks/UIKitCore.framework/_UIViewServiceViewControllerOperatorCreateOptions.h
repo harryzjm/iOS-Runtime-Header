@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class BSMachPortSendRight, NSArray, NSString, NSUUID, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceViewControllerOperatorCreateOptions : NSObject <NSSecureCoding>
+@interface _UIViewServiceViewControllerOperatorCreateOptions : NSObject
 {
     _Bool _hostCanDynamicallySpecifySupportedInterfaceOrientations;
     NSString *_viewControllerClassName;

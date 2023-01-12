@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class NSObject, QLItemPresenterViewController;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, QLPrintingProtocol;
 
 __attribute__((visibility("hidden")))
@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_semaphore> *_waitForPrinterSemaphore;
     _Bool _didReceivePrinter;
     id <QLPrintingProtocol> _itemPrinter;
+    QLItemPresenterViewController *_presenter;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) QLItemPresenterViewController *presenter; // @synthesize presenter=_presenter;
 @property(retain, nonatomic) id <QLPrintingProtocol> itemPrinter; // @synthesize itemPrinter=_itemPrinter;
 - (void)_waitForPrinterSynchronously;
 - (void)_didReceivePrinter:(id)arg1;

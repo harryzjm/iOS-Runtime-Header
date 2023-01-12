@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <FocusSettingsUI/DNDModeConfigurationServiceListener-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCC15FocusSettingsUI28ActivityConfigurationManagerP33_2D32E0A4A8017E0B91C01818CA0AAB7813StateListener : NSObject <DNDModeConfigurationServiceListener>
+@interface _TtCC15FocusSettingsUI28ActivityConfigurationManagerP33_2D32E0A4A8017E0B91C01818CA0AAB7813StateListener : NSObject
 {
     MISSING_TYPE *stateDidChange;
 }

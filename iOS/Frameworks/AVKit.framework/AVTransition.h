@@ -12,6 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AVTransition : NSObject
 {
+    struct CGAffineTransform _destinationViewTransform;
     AVPresentationContext *_presentationContext;
     id <AVTransitionDelegate> _delegate;
     id <UIViewControllerContextTransitioningEx> _transitionContext;

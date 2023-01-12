@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToSubviews;
 - (void)addSubview:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

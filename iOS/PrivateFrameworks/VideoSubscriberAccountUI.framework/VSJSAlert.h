@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <VideoSubscriberAccountUI/VSJSAlert-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSJSAlert : IKJSObject <VSJSAlert>
+@interface VSJSAlert : IKJSObject
 {
     NSString *_title;
     NSString *_message;

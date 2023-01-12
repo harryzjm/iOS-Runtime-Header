@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNAudioOffsetEstimator : NSObject <SNAnalyzing>
+@interface SNAudioOffsetEstimator : NSObject
 {
     shared_ptr_f6ac7592 _graph;
     double _offset;
@@ -21,15 +19,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) double maximumObservableOffset; // @synthesize maximumObservableOffset=_maximumObservableOffset;
-@property(nonatomic) double minimumObservableOffset; // @synthesize minimumObservableOffset=_minimumObservableOffset;
-@property(readonly, nonatomic) double offset; // @synthesize offset=_offset;
 @property(readonly, nonatomic) void *resultsBox;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 - (id)sharedProcessorConfiguration;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (void)updateMinMaxDelayWithSampleRate:(float)arg1 micDelay:(float)arg2 refDelay:(float)arg3 eclen:(float)arg4;
 - (id)init;
 
 // Remaining properties

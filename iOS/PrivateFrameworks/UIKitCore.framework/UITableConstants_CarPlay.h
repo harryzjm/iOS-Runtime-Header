@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITableConstants-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UITableConstants_CarPlay : NSObject <UITableConstants>
+@interface UITableConstants_CarPlay : NSObject
 {
 }
 
 + (id)sharedConstants;
+- (_Bool)shouldAnimatePropertyInContentViewWithKey:(id)arg1;
 - (unsigned long long)contentClipCornersForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultAccessoryBackgroundColorForAccessorySystemType:(long long)arg1 header:(_Bool)arg2 sidebarStyle:(_Bool)arg3 cellConfigurationState:(id)arg4 traitCollection:(id)arg5;
 - (id)defaultAccessoryTintColorForAccessorySystemType:(long long)arg1 header:(_Bool)arg2 sidebarStyle:(_Bool)arg3 cellConfigurationState:(id)arg4 traitCollection:(id)arg5 inheritedTintColor:(id)arg6;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultFocusedAccessoryColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultAccessoryColorForCell:(id)arg1 inTableView:(id)arg2;
 - (struct _UITableConstantsBackgroundProperties)defaultHeaderFooterBackgroundPropertiesForTableViewStyle:(long long)arg1 tableBackgroundColor:(id)arg2 floating:(_Bool)arg3;
+- (long long)defaultHeaderFooterPinningBehaviorForTableStyle:(long long)arg1;
 - (_Bool)useChromelessSectionHeadersAndFootersForTableStyle:(long long)arg1;
 - (id)defaultFooterTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
 - (id)defaultHeaderTextColorForTableViewStyle:(long long)arg1 focused:(_Bool)arg2;
@@ -77,10 +77,12 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)_defaultLayoutMargins;
 - (_Bool)shouldUseDefaultTableLayoutMarginsAsContentInsets;
 - (struct UIEdgeInsets)defaultSectionContentInsetsForTableStyle:(long long)arg1;
+- (struct UIEdgeInsets)defaultLayoutMarginsInsideSectionForSize:(struct CGSize)arg1 tableStyle:(long long)arg2;
 - (struct UIEdgeInsets)defaultTableLayoutMarginsForScreen:(id)arg1 size:(struct CGSize)arg2 tableStyle:(long long)arg3;
 - (struct UIEdgeInsets)defaultLayoutMarginsForTableView:(id)arg1;
 - (double)defaultPaddingBetweenHeaderAndRows;
 - (double)defaultPaddingBetweenRows;
+- (double)defaultSidebarPaddingAboveSectionHeadersWithFallbackTableStyle:(long long)arg1;
 - (double)defaultPaddingAboveSectionHeadersForTableStyle:(long long)arg1;
 - (double)defaultIndentationWidthForSidebarStyle:(_Bool)arg1;
 - (double)interspaceBetweenInnerAccessoryIdentifier:(id)arg1 outerAccessoryIdentifier:(id)arg2 forCell:(id)arg3 trailingAccessoryGroup:(_Bool)arg4;
@@ -96,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultContentEditPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (_Bool)imageViewOffsetByLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (struct UIEdgeInsets)headerFooterOffsetFromContentInsetForTableView:(id)arg1;
-- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1;
+- (struct UIEdgeInsets)defaultHeaderFooterLayoutMarginsForTableViewStyle:(long long)arg1 isHeader:(_Bool)arg2 isFirstSection:(_Bool)arg3;
 - (struct UIEdgeInsets)defaultCellLayoutMarginsForStyle:(long long)arg1 textLabelFont:(id)arg2 rawLayoutMargins:(struct UIEdgeInsets)arg3;
 - (struct UIEdgeInsets)defaultLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (double)minimumContentViewHeightForFont:(id)arg1 traitCollection:(id)arg2;
@@ -111,7 +113,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
 - (id)defaultMultiSelectBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
-- (struct _UITableConstantsBackgroundProperties)defaultSidebarHeaderBackgroundPropertiesWithState:(id)arg1 traitCollection:(id)arg2 isAccompanied:(_Bool)arg3;
+- (struct _UITableConstantsBackgroundProperties)defaultSidebarHeaderBackgroundPropertiesWithState:(id)arg1 traitCollection:(id)arg2;
 - (struct _UITableConstantsBackgroundProperties)defaultSidebarCellBackgroundPropertiesWithState:(id)arg1 traitCollection:(id)arg2 isAccompanied:(_Bool)arg3;
 - (struct _UITableConstantsBackgroundProperties)defaultCellBackgroundPropertiesForTableViewStyle:(long long)arg1 state:(id)arg2;
 - (id)defaultSidebarPlainMultiSelectSeparatorColor;

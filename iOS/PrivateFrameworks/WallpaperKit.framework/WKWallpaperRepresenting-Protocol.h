@@ -5,23 +5,35 @@
 //
 
 #import <WallpaperKit/WKHashable-Protocol.h>
+#import <WallpaperKit/WKThumbnailRepresentable-Protocol.h>
 
 @class NSString, NSURL;
-@protocol WKFileBasedWallpaper, WKValueBasedWallpaper;
+@protocol WKFileBasedWallpaper, WKThumbnailRepresentable, WKValueBasedWallpaper;
 
-@protocol WKWallpaperRepresenting <WKHashable>
-@property(readonly, nonatomic) _Bool disableParallax;
-@property(readonly, nonatomic) unsigned long long contentSource;
-@property(readonly, copy, nonatomic) NSString *name;
-@property(readonly, copy, nonatomic) NSString *identifierString;
-@property(readonly, nonatomic, getter=isDynamicWallpaperBundle) _Bool dynamicWallpaperBundle;
-@property(readonly, nonatomic, getter=hasDistinctWallpapersForLocations) _Bool distinctWallpapersForLocations;
-@property(readonly, nonatomic, getter=isAppearanceAware) _Bool appearanceAware;
-@property(readonly, copy, nonatomic) NSURL *thumbnailImageURL;
+@protocol WKWallpaperRepresenting <WKThumbnailRepresentable, WKHashable>
+- (NSURL *)copyWallpaperRepresentingToDestinationDirectoryURL:(NSURL *)arg1 error:(id *)arg2;
 - (id <WKValueBasedWallpaper>)valueBasedWallpaperForLocation:(NSString *)arg1 andAppearance:(NSString *)arg2;
 - (id <WKValueBasedWallpaper>)valueBasedWallpaperForLocation:(NSString *)arg1;
 - (id <WKFileBasedWallpaper>)fileBasedWallpaperForLocation:(NSString *)arg1 andAppearance:(NSString *)arg2;
 - (id <WKFileBasedWallpaper>)fileBasedWallpaperForLocation:(NSString *)arg1;
+- (id <WKThumbnailRepresentable>)thumbnailRepresentableForLocation:(NSString *)arg1 andAppearance:(NSString *)arg2;
+- (id <WKThumbnailRepresentable>)thumbnailRepresentableForLocation:(NSString *)arg1;
 - (unsigned long long)wallpaperBackingTypeForLocation:(NSString *)arg1;
+@property(nonatomic, readonly) _Bool supportsCopying;
+- (_Bool)isOffloaded;
+@property(nonatomic, readonly) _Bool disableParallax;
+@property(nonatomic, readonly) unsigned long long contentSource;
+@property(nonatomic, readonly) NSString *logicalScreenClass;
+@property(nonatomic, readonly) NSString *name;
+@property(nonatomic, readonly) NSString *identifierString;
+- (_Bool)isDynamicWallpaperBundle;
+- (_Bool)hasDistinctWallpapersForLocations;
+- (_Bool)isAppearanceAware;
+
+// Remaining properties
+@property(nonatomic, readonly) _Bool appearanceAware;
+@property(nonatomic, readonly) _Bool distinctWallpapersForLocations;
+@property(nonatomic, readonly) _Bool dynamicWallpaperBundle;
+@property(nonatomic, readonly) _Bool offloaded;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <MPSCore/MPSNDArrayAllocator-Protocol.h>
-
 @class NSString;
 
-@interface MPSNDArrayDefaultAllocator : NSObject <MPSNDArrayAllocator>
+@interface MPSNDArrayDefaultAllocator : NSObject
 {
     int _dealloc_ok;
 }

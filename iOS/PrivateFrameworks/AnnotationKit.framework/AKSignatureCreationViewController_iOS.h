@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/UINavigationBarDelegate-Protocol.h>
-
-@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, UIButton, UILabel, UINavigationBar, UIResponder;
+@class AKController, AKInkSignatureView, AKSignatureBaselineView, AKSmoothPathView, NSString, NSUndoManager, UIButton, UILabel, UINavigationBar, UIResponder;
 @protocol AKSignatureCreationControllerDelegate;
 
-@interface AKSignatureCreationViewController_iOS : UIViewController <UINavigationBarDelegate>
+@interface AKSignatureCreationViewController_iOS : UIViewController
 {
     id <AKSignatureCreationControllerDelegate> _delegate;
     UINavigationBar *_navBar;
@@ -26,9 +24,11 @@
     UIResponder *_responderToRestore;
     long long _descriptionTag;
     NSString *_customDescription;
+    NSUndoManager *__undoManager;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUndoManager *_undoManager; // @synthesize _undoManager=__undoManager;
 @property(retain, nonatomic) NSString *customDescription; // @synthesize customDescription=_customDescription;
 @property long long descriptionTag; // @synthesize descriptionTag=_descriptionTag;
 @property(nonatomic) __weak UIResponder *responderToRestore; // @synthesize responderToRestore=_responderToRestore;
@@ -42,11 +42,14 @@
 @property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) UINavigationBar *navBar; // @synthesize navBar=_navBar;
 @property __weak id <AKSignatureCreationControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
+- (id)undoManager;
 - (void)_updateSignatureDescriptionWithStringValue:(id)arg1;
 - (void)_removeSignatureDescription;
 - (void)showEditCustomDescriptionAlert;
 - (void)_showSignatureDescriptionSelectionAlert;
 - (long long)positionForBar:(id)arg1;
+- (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_notifyDidDismiss;
 - (void)_done:(id)arg1;
 - (void)_clear:(id)arg1;
@@ -64,6 +67,7 @@
 - (_Bool)canBecomeFirstResponder;
 - (void)viewDidLoad;
 - (void)loadView;
+- (void)dealloc;
 - (id)initWithController:(id)arg1;
 
 // Remaining properties

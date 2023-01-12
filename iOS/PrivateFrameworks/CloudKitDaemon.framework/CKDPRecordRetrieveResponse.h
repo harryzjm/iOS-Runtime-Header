@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecord;
 
-@interface CKDPRecordRetrieveResponse : PBCodable <NSCopying>
+@interface CKDPRecordRetrieveResponse : PBCodable
 {
     CKDPRecord *_record;
     _Bool _clientVersionETagMatch;

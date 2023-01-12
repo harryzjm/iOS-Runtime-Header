@@ -8,9 +8,12 @@
 
 @interface NSString (PKAdditions)
 + (id)pk_stringWithInteger:(unsigned long long)arg1;
+- (id)pk_merchantTokensSanitizedBillingAgreement;
+- (id)pk_stringIfNotEmpty;
 - (id)pk_decodeURLBase64;
 - (id)pk_decodeHexadecimal;
 - (double)pk_normalizedLevenshteinDistanceFromString:(id)arg1 decimalPlaces:(unsigned long long)arg2;
+- (id)pk_attributedString;
 - (id)pk_uppercaseAttributedString;
 - (id)pk_uppercaseFirstStringForLocale:(id)arg1;
 - (id)pk_uppercaseFirstStringForPreferredLocale;
@@ -18,5 +21,11 @@
 - (id)pk_lowercaseStringForPreferredLocale;
 - (id)pk_uppercaseStringForPreferredLocale;
 - (id)pk_zString;
+- (id)truncatedStringWithEllipsis;
+- (id)jsonStringSetValue;
+- (id)jsonArrayValue;
+- (id)jsonNonZeroUnsignedLongLongNSNumberSetValue;
+- (id)jsonNonZeroUnsignedLongLongNSNumberArrayValue;
+- (id)nonZeroUnsignedLongLongNSNumberValue;
 @end
 

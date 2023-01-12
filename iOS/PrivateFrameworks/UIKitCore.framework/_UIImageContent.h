@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CIImage, CUINamedVectorGlyph, UIBezierPath;
+@class CIImage, CUINamedVectorGlyph, UIBezierPath, UIImageSymbolConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContent : NSObject
@@ -22,22 +22,27 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 - (id)debugQuickLookObject;
 - (id)debugDescription;
-- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 paletteColors:(id)arg3;
-- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 hierarchicalColorResolver:(CDUnknownBlockType)arg3;
-- (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 namedColorResolver:(CDUnknownBlockType)arg3;
+- (void)_drawVectorGlyphWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 paletteColors:(id)arg4;
+- (struct CGImage *)_provideVectorGlyphCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 paletteColors:(id)arg3;
+- (void)_drawVectorGlyphWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 hierarchicalColorResolver:(CDUnknownBlockType)arg4;
+- (struct CGImage *)_provideVectorGlyphCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 hierarchicalColorResolver:(CDUnknownBlockType)arg3;
+- (void)_drawVectorGlyphWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 namedColorResolver:(CDUnknownBlockType)arg4;
+- (struct CGImage *)_provideVectorGlyphCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2 namedColorResolver:(CDUnknownBlockType)arg3;
 - (struct CGImage *)_provideCGImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
-- (void)_drawWithoutEffectInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (_Bool)_drawInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 effect:(id)arg3;
-- (void)_prepareforDrawingInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
+- (void)_drawWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3 effect:(id)arg4;
+- (void)_prepareForDrawingWithSize:(struct CGSize)arg1 scale:(double)arg2 inContext:(struct CGContext *)arg3;
 - (id)renditionWithSize:(struct CGSize)arg1 scale:(double)arg2 applyingEffect:(id)arg3;
 - (id)renditionApplyingEffect:(id)arg1;
+- (id)contentWithVariableValue:(double)arg1;
 - (id)contentWithCGImage:(struct CGImage *)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) UIBezierPath *outlinePath;
 @property(readonly, nonatomic) double vectorScale;
+@property(readonly, nonatomic) UIImageSymbolConfiguration *_automaticSymbolConfiguration;
 @property(readonly, nonatomic) CUINamedVectorGlyph *vectorGlyph;
+@property(readonly, nonatomic) double variableValue;
 - (unsigned long long)numberOfHierarchyLayers;
 - (_Bool)containsNamedColorStyle:(id)arg1;
 - (_Bool)containsNamedColorStyles;
@@ -58,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (id)contentPreparedForDisplay;
 @property(readonly, nonatomic) struct CGImage *CGImage;
 - (_Bool)_canProvideCGImageDirectly;
+- (_Bool)canEmitDrawingCommands;
 - (_Bool)canScaleImageToTargetResolution;
 - (_Bool)canDrawImage;
 - (_Bool)hasCGImage;

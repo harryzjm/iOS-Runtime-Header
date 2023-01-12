@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _TtCC11AssetViewer15CheckoutPlatterP33_F468E41BE5B62EA82788C6057D60C24D22CheckoutBackgroundView
+#import "ASVBlurredBackgroundView.h"
+
+@interface _TtCC11AssetViewer15CheckoutPlatterP33_F468E41BE5B62EA82788C6057D60C24D22CheckoutBackgroundView : ASVBlurredBackgroundView
 {
 }
 

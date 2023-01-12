@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/AudioComponentRegistrarProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AudioComponentMainRegConnection : NSObject <AudioComponentRegistrarProtocol>
+@interface AudioComponentMainRegConnection : NSObject
 {
     void *mImpl;
     struct ConnectionInfo mConnInfo;

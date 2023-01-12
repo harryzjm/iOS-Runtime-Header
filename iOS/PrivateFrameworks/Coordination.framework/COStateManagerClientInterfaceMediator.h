@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <Coordination/COStateManagerClientInterface-Protocol.h>
-
 @class COStateManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COStateManagerClientInterfaceMediator : NSObject <COStateManagerClientInterface>
+@interface COStateManagerClientInterfaceMediator : NSObject
 {
     COStateManager *_manager;
 }
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) __weak COStateManager *manager; // @synthesize manager=_manager;
-- (void)roleOfMember:(id)arg1 inCluster:(id)arg2 didChangeTo:(id)arg3;
 - (void)mediaSystemLeaderDidChangeTo:(_Bool)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)changesObserved:(id)arg1 forPredicate:(id)arg2;
 - (id)initWithStateManager:(id)arg1;

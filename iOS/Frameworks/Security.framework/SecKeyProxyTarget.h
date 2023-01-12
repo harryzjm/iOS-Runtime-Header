@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Security/SecKeyProxyProtocol-Protocol.h>
-
 @class NSData, SecKeyProxy;
 
 __attribute__((visibility("hidden")))
-@interface SecKeyProxyTarget : NSObject <SecKeyProxyProtocol>
+@interface SecKeyProxyTarget : NSObject
 {
     id _key;
     NSData *_certificate;

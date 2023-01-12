@@ -6,6 +6,9 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol AMSSystemEngagementTaskRemoteInterface <NSObject>
+- (void)presentEngagementContext:(NSDictionary *)arg1;
 @end
 

@@ -6,12 +6,11 @@
 
 #import <PassKitCore/PDPassLibraryInAppExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSMapTable, NSNumber, NSSet, NSString, PKAddShareablePassConfiguration, PKAppleAccountChange, PKContact, PKDisplayProfile, PKDisplayTraitCollection, PKFieldProperties, PKFileDescriptorXPCContainer, PKGroupsControllerSnapshotFetchOptions, PKPassesXPCContainer, PKPaymentSetupConfiguration, PKPaymentSetupRequest;
+@class CLLocation, NSArray, NSData, NSMapTable, NSNumber, NSSet, NSString, PKAddShareablePassConfiguration, PKAppleAccountChange, PKContact, PKDisplayProfile, PKDisplayTraitCollection, PKFieldProperties, PKFileDescriptorXPCContainer, PKGroupsControllerSnapshotFetchOptions, PKPassesXPCContainer, PKPaymentSetupRequest;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
 - (void)paymentPassWithAssociatedAccountIdentifier:(NSString *)arg1 completion:(void (^)(PKPaymentPass *))arg2;
 - (void)presentPaymentSetupRequest:(PKPaymentSetupRequest *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(_Bool))arg3;
-- (void)paymentSetupFeaturesForConfiguration:(PKPaymentSetupConfiguration *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
 - (void)spotlightStatusWithCompletion:(void (^)(NSString *))arg1;
 - (void)spotlightReindexContentWithIdentifiers:(NSArray *)arg1 acknowledgement:(void (^)(void))arg2;
@@ -50,7 +49,9 @@
 - (void)usingSynchronousProxy:(_Bool)arg1 getContentForUniqueID:(NSString *)arg2 withHandler:(void (^)(PKContent *))arg3;
 - (void)usingSynchronousProxy:(_Bool)arg1 getPassesAndCatalogOfPassTypes:(unsigned long long)arg2 limitResults:(_Bool)arg3 withHandler:(void (^)(NSSet *, PKCatalog *))arg4;
 - (void)usingSynchronousProxy:(_Bool)arg1 getPaymentPassesPendingActivationWithHandler:(void (^)(NSSet *))arg2;
+- (void)usingSynchronousProxy:(_Bool)arg1 getManifestHashForPassWithUniqueID:(NSString *)arg2 handler:(void (^)(NSData *))arg3;
 - (void)getMetadataForFieldWithProperties:(PKFieldProperties *)arg1 handler:(void (^)(PKFieldMetadata *))arg2;
+- (void)getPassUniqueIDsForAssociatedApplicationIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *))arg2;
 - (void)getPassesWithUniqueIdentifiers:(NSArray *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(NSString *)arg1 fromSource:(long long)arg2 handler:(void (^)(_Bool))arg3;
 - (void)presentContactlessInterfaceForDefaultPassFromSource:(long long)arg1 handler:(void (^)(_Bool))arg2;
@@ -58,6 +59,7 @@
 - (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(_Bool))arg1;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletionHandler:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 longTermPrivacyKeyForCredentialGroupIdentifier:(NSString *)arg2 reuseExisting:(_Bool)arg3 completion:(void (^)(NSData *, NSError *))arg4;
 - (void)usingSynchronousProxy:(_Bool)arg1 addISO18013Blobs:(NSMapTable *)arg2 cardType:(long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)deleteKeyMaterialForSubCredentialId:(NSString *)arg1;
 - (void)usingSynchronousProxy:(_Bool)arg1 generateISOEncryptionCertificateForSubCredentialId:(NSString *)arg2 completion:(void (^)(NSArray *, NSData *, NSError *))arg3;
@@ -67,7 +69,6 @@
 - (void)usingSynchronousProxy:(_Bool)arg1 createFidoKeyForRelyingParty:(NSString *)arg2 relyingPartyAccountHash:(NSString *)arg3 challenge:(NSData *)arg4 externalizedAuth:(NSData *)arg5 completion:(void (^)(NSData *, NSData *, NSError *))arg6;
 - (void)usingSynchronousProxy:(_Bool)arg1 availableHomeKeyPassesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)usingSynchronousProxy:(_Bool)arg1 provisionHomeKeyPassForSerialNumbers:(NSArray *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
-- (void)shouldHomePresentAddPassFlow:(void (^)(_Bool, NSError *))arg1;
 - (void)usingSynchronousProxy:(_Bool)arg1 enableExpressForPassWithPassTypeIdentifier:(NSString *)arg2 serialNumber:(NSString *)arg3 completionHandler:(void (^)(_Bool))arg4;
 - (void)usingSynchronousProxy:(_Bool)arg1 containsPassWithPassTypeIdentifier:(NSString *)arg2 serialNumber:(NSString *)arg3 completionHandler:(void (^)(_Bool))arg4;
 - (void)usingSynchronousProxy:(_Bool)arg1 fetchAppletSubCredentialForPassTypeIdentifier:(NSString *)arg2 serialNumber:(NSString *)arg3 completionHandler:(void (^)(PKAppletSubcredential *, NSError *))arg4;

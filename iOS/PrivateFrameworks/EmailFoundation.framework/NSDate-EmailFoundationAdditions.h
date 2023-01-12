@@ -6,22 +6,31 @@
 
 #import <Foundation/NSDate.h>
 
-#import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
-
 @class EFSQLBinding, NSString;
 
-@interface NSDate (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
+@interface NSDate (EmailFoundationAdditions)
 + (id)_ef_gregorianCalendarForTimeZone:(id)arg1;
 + (id)_ef_morningDateComponents;
 + (id)_ef_nightDateComponents;
++ (id)ef_localCombinedDate:(id)arg1 time:(id)arg2 timeZone:(id)arg3;
++ (id)ef_thisWeekday:(long long)arg1 hour:(long long)arg2 minute:(long long)arg3 second:(long long)arg4;
++ (id)ef_dateHoursAgo:(long long)arg1;
++ (id)ef_midnightInNdays:(long long)arg1;
++ (id)ef_midnightNdaysAgo:(long long)arg1;
 + (id)ef_nextWeekMorning;
 + (id)ef_tomorrowMorning;
-+ (id)_ef_tonight:(id)arg1;
++ (id)ef_tomorrowNight;
++ (id)ef_inOneHour;
 + (id)ef_tonight;
-+ (_Bool)ef_isPastTonight;
++ (id)ef_morning;
++ (id)ef_lastWeekMidnight;
+- (id)ef_dateWithTruncatedSeconds;
 - (double)ef_timeIntervalSinceDate:(id)arg1;
+- (_Bool)ef_isDateNextDayOrLater:(id)arg1;
+- (_Bool)ef_isEarlierThanNow;
+- (_Bool)ef_isLaterThanOrEqualDate:(id)arg1;
 - (_Bool)ef_isLaterThanDate:(id)arg1;
+- (_Bool)ef_isEarlierThanOrEqualDate:(id)arg1;
 - (_Bool)ef_isEarlierThanDate:(id)arg1;
 - (_Bool)ef_isMoreThanTimeIntervalAgo:(double)arg1;
 @property(readonly, nonatomic) EFSQLBinding *ef_SQLBinding;

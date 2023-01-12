@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     FPDServer *_server;
 }
 
-+ (_Bool)shouldHideDomainDisplayNameWithRelevantDomains:(id)arg1;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) FPDPushConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property(nonatomic) __weak FPDServer *server; // @synthesize server=_server;
@@ -39,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)providersWithGroupContainers:(id)arg1 bundleIdentifier:(id)arg2;
 - (id)defaultProviderWithTopLevelBundleIdentifier:(id)arg1;
 - (id)providersWithTopLevelBundleIdentifier:(id)arg1;
+- (id)domainsForAppBundleIdentifier:(id)arg1;
 - (id)domainForActionOperationLocator:(id)arg1;
 - (id)_domainForURL:(id)arg1;
 - (id)domainForURL:(id)arg1;
@@ -53,7 +53,8 @@ __attribute__((visibility("hidden")))
 - (id)extensionsByID:(id)arg1;
 - (void)migrateEnabledStateIfNecessary:(id)arg1;
 - (void)forceSynchronousProviderUpdate;
-- (void)accountsChanged;
+- (void)accountsChanged:(id)arg1;
+- (void)purge:(id)arg1;
 - (void)loadProvidersAndMonitor;
 - (id)_matchingAttributes;
 - (void)_updateWithMatchingExtensions:(id)arg1;

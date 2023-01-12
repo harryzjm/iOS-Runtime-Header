@@ -7,7 +7,7 @@
 @class NSArray, NSDate, NSNumber, NSString;
 
 @protocol PREResponsesProtocol
-- (void)registerResponse:(NSString *)arg1 position:(NSNumber *)arg2 isCanned:(_Bool)arg3 isUsingQuickResponses:(_Bool)arg4 locale:(NSString *)arg5 modelConfigPath:(NSString *)arg6;
-- (void)preResponseItemsForMessage:(NSString *)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(NSArray *)arg3 forContext:(NSString *)arg4 time:(NSDate *)arg5 language:(NSString *)arg6 recipientHandles:(NSArray *)arg7 modelFilePath:(NSString *)arg8 modelConfigPath:(NSString *)arg9 espressoBinFilePath:(NSString *)arg10 registerDisplayed:(_Bool)arg11 completion:(void (^)(NSArray *, NSError *))arg12;
+- (void)registerResponse:(NSString *)arg1 position:(NSNumber *)arg2 isCanned:(_Bool)arg3 isUsingQuickResponses:(_Bool)arg4 locale:(NSString *)arg5 modelConfigPath:(NSString *)arg6 vocabPath:(NSString *)arg7;
+- (void)preResponseItemsForMessage:(NSString *)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(NSArray *)arg3 forContext:(NSString *)arg4 time:(NSDate *)arg5 language:(NSString *)arg6 recipientHandles:(NSArray *)arg7 modelFilePath:(NSString *)arg8 modelConfigPath:(NSString *)arg9 espressoBinFilePath:(NSString *)arg10 vocabFilePath:(NSString *)arg11 registerDisplayed:(_Bool)arg12 includeCustomResponses:(_Bool)arg13 includeResponsesToRobots:(_Bool)arg14 completion:(void (^)(NSArray *, NSError *))arg15;
 @end
 

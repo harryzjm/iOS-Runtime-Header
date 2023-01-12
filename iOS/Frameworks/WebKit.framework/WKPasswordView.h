@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <WebKit/UIDocumentPasswordViewDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKPasswordView : UIView <UIDocumentPasswordViewDelegate>
+@interface WKPasswordView : UIView
 {
     struct RetainPtr<NSString> _documentName;
     struct RetainPtr<UIScrollView> _scrollView;

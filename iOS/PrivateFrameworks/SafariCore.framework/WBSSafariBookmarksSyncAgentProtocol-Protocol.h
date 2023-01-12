@@ -9,15 +9,26 @@
 @class NSArray, NSDictionary, NSString, NSURL;
 
 @protocol WBSSafariBookmarksSyncAgentProtocol <WBSCyclerCloudBookmarksAssistant>
+- (void)fetchTabGroupEntitiesWithCompletion:(void (^)(NSArray *))arg1;
+- (void)deleteCloudExtensionStatesDatabaseWithCompletionHandler:(void (^)(void))arg1;
+- (void)deleteCloudExtensionDevicesWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)getCloudExtensionStatesWithCompletionHandler:(void (^)(NSDictionary *, NSArray *, NSError *))arg1;
+- (void)saveExtensionDeviceWithDictionaryRepresentation:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)saveExtensionStatesWithDictionaryRepresentation:(NSDictionary *)arg1 forDevice:(NSDictionary *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)deletePerSiteSettingsSyncData;
+- (void)saveCloudPerSiteSettingWithDictionaryRepresentation:(NSDictionary *)arg1 successCompletionHandler:(void (^)(void))arg2;
+- (void)syncUpSafariPerSiteSettingsSyncWithCompletion:(void (^)(void))arg1;
+- (void)syncDownSafariPerSiteSettingsSyncWithCompletion:(void (^)(void))arg1;
+- (void)deleteBackgroundImageDirectory;
 - (void)syncUpSafariSettingsSyncWithCompletion:(void (^)(void))arg1;
 - (void)syncDownSafariSettingsSyncWithCompletion:(void (^)(void))arg1;
 - (void)triggerImmediateBackgroundImageSaveIfApplicable;
 - (void)scheduleCloudBackgroundImageSaveWithURL:(NSURL *)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(void (^)(void))arg3;
 - (void)deleteBackgroundImageFromCloudKitWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)saveCloudBackgroundImageWithURL:(NSURL *)arg1 isLightAppearance:(_Bool)arg2 successCompletionHandler:(void (^)(void))arg3;
 - (void)saveCloudSettingWithDictionaryRepresentation:(NSDictionary *)arg1 successCompletionHandler:(void (^)(void))arg2;
 - (void)fetchCloudSettingsChangesImmediately;
 - (void)fetchCloudTabDevicesAndCloseRequests;
+- (void)getCloudSettingsContainerManateeStateWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)getCloudTabContainerManateeStateWithCompletionHandler:(void (^)(_Bool))arg1;
 - (void)triggerSafariTabGroupSync;
 - (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;

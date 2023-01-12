@@ -4,20 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioIOSink-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioPowerSpectrumSource <VCAudioIOSink>
+@interface VCAudioPowerSpectrumSource
 {
     long long _streamToken;
     struct _VCAudioPowerSpectrumSourceRealtimeContext _realtimeContext;
 }
 
 @property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
-- (void)unregisterAudioPowerSpectrumSink:(id)arg1;
-- (void)registerAudioPowerSpectrumSink:(id)arg1 callback:(CDUnknownFunctionPointerType)arg2;
 @property(readonly, nonatomic) struct _VCAudioPowerSpectrumSourceRealtimeContext *realtimeContext;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)cleanupAudioPowerSpectrumSinks;

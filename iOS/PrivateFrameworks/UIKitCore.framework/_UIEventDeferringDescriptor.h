@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
 @class BKSHIDEventDeferringEnvironment, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIEventDeferringDescriptor : NSObject <NSCopying, BSDebugDescriptionProviding>
+@interface _UIEventDeferringDescriptor : NSObject <NSCopying>
 {
     _Bool _compatibility;
     unsigned int _predicateContextID;

@@ -15,6 +15,8 @@
     MISSING_TYPE *_version;
     MISSING_TYPE *_constants;
     MISSING_TYPE *_assets;
+    MISSING_TYPE *_versionUuid;
+    MISSING_TYPE *_deltaReferences;
 }
 
 @end

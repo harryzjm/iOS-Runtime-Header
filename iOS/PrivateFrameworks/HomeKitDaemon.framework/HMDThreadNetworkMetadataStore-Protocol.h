@@ -6,9 +6,8 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSString;
-
 @protocol HMDThreadNetworkMetadataStore <NSObject>
-- (void)retrieveMetadataForNetworkID:(NSString *)arg1 completion:(void (^)(HMThreadNetworkMetadata *, NSError *))arg2;
+- (void)removePreferredNetworkWithCompletion:(void (^)(NSError *))arg1;
+- (void)retrieveMetadataWithCompletion:(void (^)(HMThreadNetworkMetadata *, NSError *))arg1;
 @end
 

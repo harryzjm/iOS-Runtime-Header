@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MapKit/MKInfoCardThemeListener-Protocol.h>
-
 @class NSString;
 @protocol MKInfoCardTheme;
 
-@interface UIViewController (_MKUIViewControllerContent) <MKInfoCardThemeListener>
+@interface UIViewController (_MKUIViewControllerContent)
 @property(nonatomic) long long contentVisibility;
 @property(nonatomic) double contentAlpha;
 @property(copy, nonatomic) NSString *accessibilityIdentifier;

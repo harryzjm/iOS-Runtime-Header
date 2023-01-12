@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
 {
     VCPPhotosFace *_face1;
     VCPPhotosFace *_face2;
-    double _score;
+    double _distance;
 }
 
-+ (id)pairWithFace:(id)arg1 andFace:(id)arg2 andScore:(double)arg3;
++ (id)pairWithFace:(id)arg1 andFace:(id)arg2 distance:(double)arg3;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) double score; // @synthesize score=_score;
+@property(readonly, nonatomic) double distance; // @synthesize distance=_distance;
 @property(readonly, nonatomic) VCPPhotosFace *face2; // @synthesize face2=_face2;
 @property(readonly, nonatomic) VCPPhotosFace *face1; // @synthesize face1=_face1;
-- (id)initWithFace:(id)arg1 andFace:(id)arg2 andScore:(double)arg3;
+- (id)initWithFace:(id)arg1 andFace:(id)arg2 distance:(double)arg3;
 
 @end
 

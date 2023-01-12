@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <TranslationUIServices/LTUIViewServiceExtensionHostProtocol-Protocol.h>
-
 @class NSString;
 @protocol LTUIViewServiceExtensionHostProtocol;
 
 __attribute__((visibility("hidden")))
-@interface LTUIRemoteViewController : _UIRemoteViewController <LTUIViewServiceExtensionHostProtocol>
+@interface LTUIRemoteViewController : _UIRemoteViewController
 {
     id <LTUIViewServiceExtensionHostProtocol> _delegate;
 }
@@ -22,8 +20,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <LTUIViewServiceExtensionHostProtocol> delegate; // @synthesize delegate=_delegate;
 - (void)finishWithTranslation:(id)arg1;
+- (void)remoteIsReady;
 - (void)expandSheet;
+- (void)confirmUserConsent;
 - (void)dismiss;
+- (_Bool)_canShowWhileLocked;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 // Remaining properties

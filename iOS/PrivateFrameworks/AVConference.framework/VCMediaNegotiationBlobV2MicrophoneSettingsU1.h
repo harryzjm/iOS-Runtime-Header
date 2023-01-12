@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSSet;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2MicrophoneSettingsU1 : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2MicrophoneSettingsU1 : PBCodable
 {
     unsigned int _payloads;
     unsigned int _rtpSSRC;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIViewController.h"
+
 @protocol UIWebFormControl;
 
 __attribute__((visibility("hidden")))
-@interface UIWebDateTimePopoverViewController
+@interface UIWebDateTimePopoverViewController : UIViewController
 {
     id <UIWebFormControl> _innerWebDateTimeControl;
 }

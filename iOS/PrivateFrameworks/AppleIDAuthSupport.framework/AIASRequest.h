@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleIDAuthSupport/NSURLSessionDataDelegate-Protocol.h>
-
 @class NSError, NSMutableData, NSMutableURLRequest, NSString, NSURLSession, NSURLSessionDataTask;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface AIASRequest : NSObject <NSURLSessionDataDelegate>
+@interface AIASRequest : NSObject
 {
     _Bool _done;
     _Bool _success;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNMeCardSharingSectionDataSource-Protocol.h>
-
 @class CNContact, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMeCardSharingSettingsNameDataSource : NSObject <CNMeCardSharingSectionDataSource>
+@interface CNMeCardSharingSettingsNameDataSource : NSObject
 {
     CNContact *_contact;
     NSArray *_items;

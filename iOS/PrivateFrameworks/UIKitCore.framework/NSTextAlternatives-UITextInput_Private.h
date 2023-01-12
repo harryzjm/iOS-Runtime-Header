@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIFoundation/NSTextAlternatives.h>
+#import "NSTextAlternatives.h"
 
 @interface NSTextAlternatives (UITextInput_Private)
 + (id)attributedText:(id)arg1 withAlternativeTexts:(id)arg2 style:(long long)arg3;

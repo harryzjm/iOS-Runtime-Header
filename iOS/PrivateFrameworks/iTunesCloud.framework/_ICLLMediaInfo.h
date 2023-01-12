@@ -6,14 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLMediaInfo : PBCodable <NSCopying>
+@interface _ICLLMediaInfo : PBCodable
 {
     NSString *_mediaType;
+    NSString *_playParams;
 }
 
 - (void).cxx_destruct;

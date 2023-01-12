@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFSystemInfoProductInfoDataSource-Protocol.h>
-#import <HMFoundation/HMFSystemInfoSerialNumberDataSource-Protocol.h>
+#import "HMFObject.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface __HMFIOKitDataSource <HMFSystemInfoSerialNumberDataSource, HMFSystemInfoProductInfoDataSource>
+@interface __HMFIOKitDataSource : HMFObject
 {
 }
 

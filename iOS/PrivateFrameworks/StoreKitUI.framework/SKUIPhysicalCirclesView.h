@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/PKPhysicsContactDelegate-Protocol.h>
-
 @class CADisplayLink, NSMutableArray, NSObject, NSString, PKPhysicsBody, PKPhysicsWorld, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol OS_dispatch_source, SKUIPhysicalCirclesDataSource, SKUIPhysicalCirclesDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPhysicalCirclesView : UIView <PKPhysicsContactDelegate>
+@interface SKUIPhysicalCirclesView : UIView
 {
     NSObject<OS_dispatch_source> *_circleLoadStepTimer;
     NSMutableArray *_circleBodies;

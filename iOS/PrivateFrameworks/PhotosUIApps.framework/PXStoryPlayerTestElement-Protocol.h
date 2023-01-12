@@ -6,11 +6,10 @@
 
 #import <PhotosUIApps/NSObject-Protocol.h>
 
-@class PXStoryConfiguration, PXStoryView;
+@class PXStoryView;
 
 @protocol PXStoryPlayerTestElement <NSObject>
 - (void)installViewDidLoadHandler:(void (^)(void))arg1;
-@property(nonatomic, readonly) PXStoryConfiguration *configuration;
 @property(nonatomic, readonly) PXStoryView *storyView;
 @end
 

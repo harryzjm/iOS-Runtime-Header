@@ -12,6 +12,7 @@
 
 - (id)init;
 - (id)_extendLaunchTest;
+- (_Bool)_supportsPrintCommand;
 
 @end
 

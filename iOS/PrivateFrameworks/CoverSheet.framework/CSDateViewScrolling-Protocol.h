@@ -9,6 +9,6 @@
 @protocol CSDateViewScrolling <NSObject>
 @property(readonly, nonatomic) double topContentInset;
 @property(readonly, nonatomic) double clippingOffset;
-- (void)updateAppearanceForHidden:(_Bool)arg1 offset:(struct CGPoint)arg2;
+- (void)updateAppearanceForHidden:(_Bool)arg1 offset:(double)arg2;
 @end
 

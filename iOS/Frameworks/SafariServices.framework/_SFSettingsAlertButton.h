@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariServices/_SFSettingsAlertOptionsGroupItemConfiguration-Protocol.h>
-
 @class NSArray, NSAttributedString, NSString, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertButton <_SFSettingsAlertOptionsGroupItemConfiguration>
+@interface _SFSettingsAlertButton
 {
     NSString *_text;
     NSAttributedString *_attributedText;
@@ -17,7 +15,10 @@ __attribute__((visibility("hidden")))
     NSArray *_componentsArrangement;
     UILabel *_detailTextLabel;
     UILayoutGuide *_textGuide;
+    UIView *_dotView;
+    _Bool _enabled;
     _Bool _limitToSingleLine;
+    _Bool _showsIndicatorDot;
     NSString *_detailText;
     NSString *_textStyle;
     UIImage *_image;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
+@property(nonatomic) _Bool showsIndicatorDot; // @synthesize showsIndicatorDot=_showsIndicatorDot;
 @property(nonatomic) _Bool limitToSingleLine; // @synthesize limitToSingleLine=_limitToSingleLine;
 @property(retain, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
@@ -36,13 +38,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 @property(copy, nonatomic) NSString *textStyle; // @synthesize textStyle=_textStyle;
 @property(copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updateTintColor;
-@property(nonatomic, getter=isEnabled) _Bool enabled;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)_hover:(id)arg1;
 - (id)_arrangedSubviews;

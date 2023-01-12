@@ -19,10 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSMutableArray *history; // @synthesize history=_history;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)processNewTimestep:(double)arg1 timeRange:(CDStruct_e83c9415)arg2;
-- (id)initWithCommand:(id)arg1;
 
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ChannelIdentity : PBCodable <NSCopying>
+@interface ChannelIdentity : PBCodable
 {
     NSData *_channelId;
     int _channelOwnershipType;

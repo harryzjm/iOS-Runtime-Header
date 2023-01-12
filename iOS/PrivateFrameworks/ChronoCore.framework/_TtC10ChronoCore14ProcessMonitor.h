@@ -11,21 +11,22 @@
 __attribute__((visibility("hidden")))
 @interface _TtC10ChronoCore14ProcessMonitor : NSObject
 {
-    MISSING_TYPE *gracePeriodForFormerlyVisibleApplications;
-    MISSING_TYPE *queue;
-    MISSING_TYPE *configurationService;
-    MISSING_TYPE *extensionManager;
-    MISSING_TYPE *subscriptions;
+    MISSING_TYPE *_queue;
+    MISSING_TYPE *_calloutQueue;
+    MISSING_TYPE *_configurationService;
+    MISSING_TYPE *_extensionManager;
+    MISSING_TYPE *_subscriptions;
     MISSING_TYPE *_lock;
-    MISSING_TYPE *_locked_processMonitor;
-    MISSING_TYPE *_locked_knownExtensionBundleIdentifiers;
-    MISSING_TYPE *_locked_knownApplicationBundleIdentifiers;
-    MISSING_TYPE *_locked_runningBundleIdentifiersToPIDs;
-    MISSING_TYPE *_locked_runningBundleIdentifiersWithVisibleScenes;
-    MISSING_TYPE *_locked_runningBundleIdentifiersWithExemptions;
-    MISSING_TYPE *_locked_formerlyVisibleBundleIdentifiers;
-    MISSING_TYPE *_locked_bundleIdentifiersToSuspensionObservers;
-    MISSING_TYPE *_locked_graceExpirationTimer;
+    MISSING_TYPE *_lock_processMonitor;
+    MISSING_TYPE *_lock_knownExtensionBundleIdentifiers;
+    MISSING_TYPE *_lock_knownApplicationBundleIdentifiers;
+    MISSING_TYPE *_lock_runningBundleIdentifiersToPIDs;
+    MISSING_TYPE *_lock_runningBundleIdentifiersWithVisibleScenes;
+    MISSING_TYPE *_lock_runningBundleIdentifiersWithExemptions;
+    MISSING_TYPE *_lock_formerlyVisibleBundleIdentifiers;
+    MISSING_TYPE *_lock_bundleIdentifiersToSuspensionObservers;
+    MISSING_TYPE *_lock_graceExpirationTimer;
+    MISSING_TYPE *_lock_observers;
 }
 
 - (void).cxx_destruct;

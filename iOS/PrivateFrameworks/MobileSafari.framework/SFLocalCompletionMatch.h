@@ -6,19 +6,22 @@
 
 #import <SafariSharedUI/WBSURLCompletionMatch.h>
 
-@protocol _SSURLCompletionMatch;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SFLocalCompletionMatch : WBSURLCompletionMatch
 {
-    id <_SSURLCompletionMatch> _completionMatch;
+    long long _matchLocation;
+    NSString *_originalURLString;
+    NSString *_title;
+    NSString *_userVisibleURLString;
 }
 
 - (void).cxx_destruct;
-- (long long)matchLocation;
-- (id)userVisibleURLString;
-- (id)title;
-- (id)originalURLString;
+@property(readonly, copy, nonatomic) NSString *userVisibleURLString; // @synthesize userVisibleURLString=_userVisibleURLString;
+@property(readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, copy, nonatomic) NSString *originalURLString; // @synthesize originalURLString=_originalURLString;
+@property(readonly, nonatomic) long long matchLocation; // @synthesize matchLocation=_matchLocation;
 - (id)initWithCompletionMatch:(id)arg1;
 
 @end

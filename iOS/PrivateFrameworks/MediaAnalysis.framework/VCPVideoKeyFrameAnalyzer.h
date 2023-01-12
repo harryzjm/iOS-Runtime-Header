@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSArray *_inputKeyFrameResults;
 }
 
++ (_Bool)isLivePhotoKeyFrameEnabled;
 - (void).cxx_destruct;
 - (float)computeMinDistanceBetween:(id)arg1 withSet:(id)arg2;
 - (void)prepareFrameStats:(CDStruct_1b6d18a9)arg1;

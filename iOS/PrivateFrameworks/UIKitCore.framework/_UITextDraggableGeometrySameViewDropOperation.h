@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextDraggableGeometrySameViewDropOperation-Protocol.h>
-
 @class NSArray, NSAttributedString, NSString, UITextRange;
 
 __attribute__((visibility("hidden")))
-@interface _UITextDraggableGeometrySameViewDropOperation : NSObject <UITextDraggableGeometrySameViewDropOperation>
+@interface _UITextDraggableGeometrySameViewDropOperation : NSObject
 {
     NSArray *_sourceRanges;
     UITextRange *_targetRange;

@@ -13,11 +13,8 @@
 
 @optional
 - (void)documentBrowser:(UIDocumentBrowserViewController *)arg1 commitPreviewOfDocumentAtURL:(NSURL *)arg2;
-- (void)documentBrowser:(UIDocumentBrowserViewController *)arg1 commitDocumentURLPreview:(NSURL *)arg2;
 - (void)documentBrowser:(UIDocumentBrowserViewController *)arg1 didPickImportedURLs:(NSArray *)arg2;
 - (void)documentManagerWasCancelled:(UIDocumentBrowserViewController *)arg1;
-- (void)didDismissDocumentManager:(UIDocumentBrowserViewController *)arg1;
-- (void)willDismissDocumentManager:(UIDocumentBrowserViewController *)arg1;
 - (_Bool)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldHandleLocation:(DOCConcreteLocation *)arg2;
 - (void)documentBrowserDidUpdateAdditionalNavigationBarButtonItems:(UIDocumentBrowserViewController *)arg1;
 - (_Bool)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldShowActivityViewControllerForDocumentURLs:(NSArray *)arg2 popoverTracker:(id <DOCServicePopoverTrackerProtocol>)arg3 isContentManaged:(_Bool)arg4 additionalActivities:(NSArray *)arg5 activityProxy:(id <DOCItemActivityPerformer>)arg6;

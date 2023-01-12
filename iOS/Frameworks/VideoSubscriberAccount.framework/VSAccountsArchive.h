@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSSecureCoding-Protocol.h>
-
 @class NSArray, VSAccountChannels;
 
 __attribute__((visibility("hidden")))
-@interface VSAccountsArchive : NSObject <NSSecureCoding>
+@interface VSAccountsArchive : NSObject
 {
     NSArray *_accounts;
     VSAccountChannels *_channels;

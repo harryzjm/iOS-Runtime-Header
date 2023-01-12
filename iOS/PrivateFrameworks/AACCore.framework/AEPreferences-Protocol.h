@@ -7,6 +7,8 @@
 #import <AACCore/NSObject-Protocol.h>
 
 @protocol AEPreferences <NSObject>
+@property(nonatomic, getter=shouldDisableQuickNote) _Bool disableQuickNote;
+@property(nonatomic, getter=shouldDisableDictation) _Bool disableDictation;
 @property(nonatomic, getter=shouldElevateWindows) _Bool elevateWindows;
 @property(nonatomic, getter=shouldCaptureDisplays) _Bool captureDisplays;
 @property(nonatomic, getter=shouldDisableTrackpadLookup) _Bool disableTrackpadLookup;
@@ -18,7 +20,6 @@
 @property(nonatomic, getter=shouldScrubPasteboard) _Bool scrubPasteboard;
 @property(nonatomic, getter=shouldDisableContinuity) _Bool disableContinuity;
 @property(nonatomic, getter=shouldDisableSiri) _Bool disableSiri;
-@property(nonatomic, getter=shouldCreateAssessmentFile) _Bool createAssessmentFile;
 @property(nonatomic, getter=shouldPresentShields) _Bool presentShields;
 @property(nonatomic, getter=shouldEnterSandbox) _Bool enterSandbox;
 @end

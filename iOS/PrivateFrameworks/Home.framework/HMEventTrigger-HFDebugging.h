@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMEventTrigger.h>
 
-#import <Home/HFTriggerProtocol-Protocol.h>
-
 @class HMDurationEvent, NSString;
 
-@interface HMEventTrigger (HFDebugging) <HFTriggerProtocol>
+@interface HMEventTrigger (HFDebugging)
 + (id)_hf_naturalLanguageDetailsSentenceElementsWithRecurrences:(id)arg1 conditions:(id)arg2 endEvents:(id)arg3 withOptions:(id)arg4;
 + (id)hf_naturalLanguageDetailsWithRecurrences:(id)arg1 conditions:(id)arg2 endEvents:(id)arg3 withOptions:(id)arg4;
 + (id)_hf_localizedStringOrNilIfNotFoundForKey:(id)arg1;

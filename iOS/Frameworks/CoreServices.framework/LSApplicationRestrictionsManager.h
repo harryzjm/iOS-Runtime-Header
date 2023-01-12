@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface LSApplicationRestrictionsManager : NSObject
 {
+    NSString *_systemMode;
     NSSet *_removedSystemApplicationIdentifiers;
 }
 

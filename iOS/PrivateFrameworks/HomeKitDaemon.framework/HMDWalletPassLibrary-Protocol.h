@@ -10,6 +10,7 @@
 @protocol HMDWalletPassLibraryDelegate;
 
 @protocol HMDWalletPassLibrary <NSObject>
+@property(readonly, getter=isWalletVisible) _Bool walletVisible;
 @property(readonly, copy) NSSet *walletKeys;
 @property(readonly, copy) NSString *secureElementIdentifier;
 @property __weak id <HMDWalletPassLibraryDelegate> delegate;
@@ -24,6 +25,7 @@
 - (void)fetchHomeKeySupportedWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (NSURL *)urlForWalletKeyWithTypeIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
 - (HMDHomeWalletKey *)walletKeyWithTypeIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
+- (NSString *)passUniqueIDOfWalletKeyWithTypeIdentifier:(NSString *)arg1 serialNumber:(NSString *)arg2;
 - (void)enableExpressWithAuthData:(NSData *)arg1 passTypeIdentifier:(NSString *)arg2 serialNumber:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)updatePassAtURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)addPassAtURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;

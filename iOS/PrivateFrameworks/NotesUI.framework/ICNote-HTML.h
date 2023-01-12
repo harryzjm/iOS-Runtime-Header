@@ -6,11 +6,9 @@
 
 #import <NotesShared/ICNote.h>
 
-#import <NotesUI/TTTextStorageDelegate-Protocol.h>
-
 @class ICCollaborationColorManager, NSArray, NSString, PKInk, TTTextStorage;
 
-@interface ICNote (HTML) <TTTextStorageDelegate>
+@interface ICNote (HTML)
 + (id)hexStringForColor:(id)arg1;
 + (_Bool)isDefaultColor:(id)arg1;
 + (id)tagDictionariesForAttributes:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
@@ -27,17 +25,27 @@
 + (id)attributedStringFromHTMLString:(id)arg1 baseURL:(id)arg2 readerDelegate:(id)arg3;
 + (id)attributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (id)attributedStringFromHTMLString:(id)arg1;
-+ (id)thumbnailImageForAttachment:(id)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
++ (id)lockedNavigationBarIcon;
++ (id)defaultNavigationBarIcon;
++ (void)removeUsageOfHashtag:(id)arg1;
++ (id)thumbnailImageForAttachment:(id)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(_Bool)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(_Bool *)arg7 isMovie:(_Bool *)arg8 movieDuration:(CDStruct_198678f7 *)arg9;
 + (void)redactNote:(id)arg1;
 + (id)createNoteFromNote:(id)arg1 inFolder:(id)arg2 isPasswordProtected:(_Bool)arg3 removingOriginalNote:(_Bool)arg4;
 + (id)createNoteFromNote:(id)arg1 isPasswordProtected:(_Bool)arg2 removingOriginalNote:(_Bool)arg3;
++ (id)newNoteWithString:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
++ (id)newNoteWithAttributedString:(id)arg1 inFolder:(id)arg2 error:(id *)arg3;
 + (void)createNoteForAirDropDocument:(id)arg1 legacyContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)htmlStringWithHTMLAttachments;
 - (id)htmlStringWithAttachmentConversionHandler:(CDUnknownBlockType)arg1;
 - (id)htmlStringWithAttachments:(_Bool)arg1;
 - (id)htmlString;
+- (unsigned long long)ic_characterCountIncludingSpaces:(_Bool)arg1;
+- (unsigned long long)ic_wordCount;
+- (unsigned long long)ic_lineCount;
+- (id)navigationBarIconWithSize:(struct CGSize)arg1;
+@property(readonly, copy, nonatomic) NSString *folderSystemImageName;
 - (_Bool)isHashtagRowAtRange:(struct _NSRange)arg1 outRangeForAppending:(struct _NSRange *)arg2 outIndex:(long long *)arg3 forHashtagAttachment:(id)arg4 outHashtagCount:(long long *)arg5;
-- (void)removeHashtag:(id)arg1;
+- (_Bool)removeHashtag:(id)arg1;
 - (id)addHashtagToNoteBody:(id)arg1 onlyIfMissing:(_Bool)arg2;
 - (id)addHashtagToNoteBodyIfMissing:(id)arg1;
 - (id)firstAttachmentInTextStorage;
@@ -64,10 +72,10 @@
 - (void)updateModificationDateAndChangeCount;
 - (void)saveAfterDelay;
 - (void)save;
-- (id)thumbnailImageCacheKeyWithItemSize:(struct CGSize)arg1 appearanceType:(unsigned long long)arg2;
+- (_Bool)copyValuesToNote:(id)arg1;
 - (void)fetchThumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 cache:(id)arg3 appearanceInfo:(id)arg4 cacheKey:(id)arg5 processingBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(_Bool)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(_Bool *)arg6 isMovie:(_Bool *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8 attachment:(id *)arg9;
-- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(_Bool)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(_Bool *)arg6 isMovie:(_Bool *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8;
+- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(_Bool)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(_Bool *)arg6 isMovie:(_Bool *)arg7 movieDuration:(CDStruct_198678f7 *)arg8 attachment:(id *)arg9;
+- (id)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(_Bool)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(_Bool *)arg6 isMovie:(_Bool *)arg7 movieDuration:(CDStruct_198678f7 *)arg8;
 - (_Bool)updateThumbnailAttachmentIdentifier;
 - (id)attachmentFromRemoteFileWrapper:(id)arg1;
 - (id)attachmentFromLegacyAttachmentFileWrapper:(id)arg1;
@@ -77,7 +85,9 @@
 - (id)attachmentFromTableData:(id)arg1;
 - (id)attachmentFromObject:(id)arg1 createIfNecessary:(_Bool)arg2;
 - (void)_updateTextViewToPaperIfNecessary;
-- (void)redactAuthorAttributions;
+- (void)redactAuthorAttributionsToCurrentUser;
+- (_Bool)appendAttributedString:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (_Bool)appendAttributedString:(id)arg1 error:(id *)arg2;
 - (id)attachmentActivityItemsForSharingForRange:(struct _NSRange)arg1;
 @property(readonly, nonatomic) NSArray *attachmentActivityItemsForSharing;
 - (id)airDropActivityItemSource;
@@ -86,6 +96,7 @@
 - (id)uiAttributedString;
 @property(readonly, nonatomic) TTTextStorage *textStorageWithoutCreating;
 @property(readonly, nonatomic) TTTextStorage *textStorage;
+- (_Bool)hasMentionForParticipant:(id)arg1;
 @property(readonly, nonatomic) _Bool ic_hasLightBackground;
 @property(readonly, retain, nonatomic) ICCollaborationColorManager *collaborationColorManager;
 - (void)didMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;

@@ -11,6 +11,8 @@
 @interface _TtC7NewsUI229AudioCPListTemplateController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *template;
+    MISSING_TYPE *sectionProvider;
+    MISSING_TYPE *audioDataManager;
 }
 
 @end

@@ -8,7 +8,7 @@
 #import <EmailCore/NSObject-Protocol.h>
 
 @class ECAngleBracketIDHash, ECMessageFlags, ECSubject, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
-@protocol ECMailAccount, ECMailbox, ECMessageHeaders, ECMimePart;
+@protocol ECMailAccount, ECMailbox, ECMessageHeaders, ECMimeBody;
 
 @protocol ECMessage <NSCopying, NSObject>
 @property(readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
 @property(readonly, copy, nonatomic) NSString *messageIDHeader;
 @property(readonly, copy, nonatomic) NSDictionary *headersDictionary;
-@property(readonly, nonatomic) id <ECMimePart> bodyPart;
+@property(readonly, nonatomic) id <ECMimeBody> mimeBody;
 @property(readonly, nonatomic, getter=isPartOfExistingThread) _Bool partOfExistingThread;
 @property(readonly, nonatomic) ECMessageFlags *flags;
 @property(readonly, nonatomic) _Bool isServerSearchResult;

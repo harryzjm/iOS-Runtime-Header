@@ -31,5 +31,8 @@
 - (void)removeInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (_Bool)addInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (_Bool)allowInteractivityFocusForComponent:(SXComponentView *)arg1;
+
+@optional
+- (_Bool)accessibilityShouldHandleInteractionForView:(SXComponentView *)arg1;
 @end
 

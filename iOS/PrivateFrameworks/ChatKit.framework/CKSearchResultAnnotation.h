@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/MKAnnotation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKSearchResultAnnotation : NSObject <MKAnnotation>
+@interface CKSearchResultAnnotation : NSObject
 {
     struct CLLocationCoordinate2D _coordinate;
 }

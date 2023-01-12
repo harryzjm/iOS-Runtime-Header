@@ -13,6 +13,7 @@
     MISSING_TYPE *_tokenizerResponse;
     MISSING_TYPE *_spanMatchResponse;
     MISSING_TYPE *_embeddingResponse;
+    MISSING_TYPE *_mentionResolverResponse;
 }
 
 @end

@@ -9,7 +9,7 @@
 @class NSError, PKAppletSubcredential, PKAppletSubcredentialEncryptedRequest, PKAppletSubcredentialPairingSession;
 
 @protocol PKAppletSubcredentialPairingSessionDelegate <PKSessionDelegate>
-- (void)appletSubcredentialPairingSession:(PKAppletSubcredentialPairingSession *)arg1 didFinishProbingTerminalWithResult:(_Bool)arg2;
+- (void)appletSubcredentialPairingSession:(PKAppletSubcredentialPairingSession *)arg1 didFinishProbingTerminalWithError:(NSError *)arg2 brandCode:(unsigned long long)arg3;
 - (void)appletSubcredentialPairingSession:(PKAppletSubcredentialPairingSession *)arg1 didFinishPreWarmWithResult:(NSError *)arg2;
 - (void)appletSubcredentialPairingSessionDidFirstTransaction:(PKAppletSubcredentialPairingSession *)arg1 withError:(NSError *)arg2;
 - (void)appletSubcredentialPairingSession:(PKAppletSubcredentialPairingSession *)arg1 didEndPairingWithError:(NSError *)arg2;

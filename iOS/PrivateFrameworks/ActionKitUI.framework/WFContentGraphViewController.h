@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)done;
 - (void)tapNode:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;

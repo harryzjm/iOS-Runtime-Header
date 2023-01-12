@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIJSMediaSocialAuthor-Protocol.h>
-
 @class NSArray, NSDictionary, NSString, SKUIMediaSocialAuthor;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSMediaSocialAuthor : NSObject <SKUIJSMediaSocialAuthor>
+@interface SKUIJSMediaSocialAuthor : NSObject
 {
     SKUIMediaSocialAuthor *_mediaSocialAuthor;
 }

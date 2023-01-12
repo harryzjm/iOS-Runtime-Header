@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <DocumentCamera/CAAnimationDelegate-Protocol.h>
-
 @class CAAnimation, CAGradientLayer, CAShapeLayer, ICDocCamImageQuad, NSArray, NSDate, NSObject, NSString, UIColor, UILabel;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface ICDocCamOverlayView : UIView <CAAnimationDelegate>
+@interface ICDocCamOverlayView : UIView
 {
     NSObject<OS_dispatch_semaphore> *sem;
     _Bool _showGridAnimation;

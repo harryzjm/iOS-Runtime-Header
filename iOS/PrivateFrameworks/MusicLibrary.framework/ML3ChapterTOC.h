@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MLITChapterTOC.h"
+
 @class ML3Track;
 
 __attribute__((visibility("hidden")))
-@interface ML3ChapterTOC
+@interface ML3ChapterTOC : MLITChapterTOC
 {
     ML3Track *_track;
 }

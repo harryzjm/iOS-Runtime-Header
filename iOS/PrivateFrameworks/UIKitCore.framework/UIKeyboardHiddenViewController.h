@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIInputViewControllerNeedSceneSize-Protocol.h>
-#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSString, _SFPasswordViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardHiddenViewController <UIViewControllerTransitioningDelegate, UIInputViewControllerNeedSceneSize>
+@interface UIKeyboardHiddenViewController : UIViewController
 {
     _SFPasswordViewController *_autofillVC;
     _Bool _presentedAutofill;
     _Bool _processingSceneDidChange;
 }
 
+- (void).cxx_destruct;
 @property(nonatomic) _Bool presentedAutofill; // @synthesize presentedAutofill=_presentedAutofill;
 @property(retain, nonatomic) _SFPasswordViewController *autofillVC; // @synthesize autofillVC=_autofillVC;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;

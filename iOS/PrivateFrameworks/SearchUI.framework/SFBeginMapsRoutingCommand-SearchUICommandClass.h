@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFBeginMapsRoutingCommand.h>
 
 @interface SFBeginMapsRoutingCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI223ReadStoryCommandHandler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *navigator;
+    MISSING_TYPE *tracker;
 }
 
 @end

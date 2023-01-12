@@ -11,7 +11,7 @@
 - (void)br_setCloudDocsMigrationComplete:(_Bool)arg1;
 - (void)br_setCloudDocsMigrated:(_Bool)arg1;
 - (_Bool)br_isCloudDocsMigrated;
-- (_Bool)br_isiCloudAccount;
+- (_Bool)br_isEligibleiCloudAccount;
 - (id)br_primaryEmail;
 - (_Bool)br_hasPersonaIdentifier;
 - (id)br_personaIdentifier;

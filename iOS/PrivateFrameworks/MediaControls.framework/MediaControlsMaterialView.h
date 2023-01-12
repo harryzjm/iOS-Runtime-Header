@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MTVisualStylingProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsMaterialView : UIView <MTVisualStylingProviding>
+@interface MediaControlsMaterialView : UIView
 {
     UIView *_backgroundView;
     UIView *_highlightView;

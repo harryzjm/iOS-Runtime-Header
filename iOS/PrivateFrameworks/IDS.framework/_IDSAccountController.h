@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
-@interface _IDSAccountController : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSAccountController : NSObject
 {
     id _delegateContext;
     NSMapTable *_delegateToInfo;

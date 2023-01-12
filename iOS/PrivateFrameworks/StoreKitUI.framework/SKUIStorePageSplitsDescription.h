@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class SKUIStorePageSplit;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStorePageSplitsDescription : NSObject <NSCopying>
+@interface SKUIStorePageSplitsDescription : NSObject
 {
     SKUIStorePageSplit *_bottomSplit;
     SKUIStorePageSplit *_leftSplit;

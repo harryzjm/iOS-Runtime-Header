@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MNObserverHashTable, MNUserOptions, NSBundle, NSString;
+@class MNObserverHashTable, MNUserOptions, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MNUserOptionsEngine : NSObject
 {
-    NSBundle *_spokenBundle;
     MNObserverHashTable *_observers;
     NSString *_navSessionLanguage;
     MNUserOptions *_options;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(readonly, nonatomic) NSString *currentVoiceLanguage;
-- (void)_updateSpokenBundle;
 - (id)init;
 
 @end

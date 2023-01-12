@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AMSSQLitePredicate : NSObject <NSCopying>
+@interface AMSSQLitePredicate : NSObject
 {
 }
 

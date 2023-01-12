@@ -10,11 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
 struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
     struct __compressed_pair<std::basic_string<char>::__rep, std::allocator<char>> {
         struct __rep {
@@ -49,6 +44,10 @@ struct exception {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct system_error {
     CDUnknownFunctionPointerType *_field1;
     struct __libcpp_refstring {
@@ -58,14 +57,6 @@ struct system_error {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    char *dst_ptr;
-    unsigned long long dst_size;
-    char *src_ptr;
-    unsigned long long src_size;
-    void *state;
-} CDStruct_4686af4b;
 
 // Template types
 typedef struct basic_string<char, std::char_traits<char>, std::allocator<char>> {

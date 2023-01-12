@@ -6,14 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-#import <CoreData/NSMutableCopying-Protocol.h>
-#import <CoreData/PFObjectIDCollection-Protocol.h>
-
 @class NSString, _PFWeakReference;
 
 __attribute__((visibility("hidden")))
-@interface _PFArray : NSArray <NSCopying, NSMutableCopying, PFObjectIDCollection>
+@interface _PFArray : NSArray
 {
     int _cd_rc;
     unsigned int _count;

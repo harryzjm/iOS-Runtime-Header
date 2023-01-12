@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCH3DMaterialPackage : NSObject <NSCopying>
+@interface TSCH3DMaterialPackage : NSObject
 {
 }
 

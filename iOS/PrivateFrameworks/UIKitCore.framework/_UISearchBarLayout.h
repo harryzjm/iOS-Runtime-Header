@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISearchBarContainerSublayoutDelegate-Protocol.h>
-
-@class NSString, UIFont, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
+@class NSString, UIBarButtonItem, UIFont, UIImageView, UISearchBarTextField, UIView, _UISearchBarPromptContainerView, _UISearchBarScopeContainerLayout, _UISearchBarScopeContainerView, _UISearchBarSearchContainerLayout, _UISearchBarSearchContainerView;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchBarLayout <_UISearchBarContainerSublayoutDelegate>
+@interface _UISearchBarLayout
 {
     struct {
         unsigned int hasCancelButton:1;
@@ -20,6 +18,8 @@ __attribute__((visibility("hidden")))
         unsigned int hasSearchBarBackground:1;
         unsigned int hasSearchBarBackdrop:1;
         unsigned int hasSeparator:1;
+        unsigned int isHostedInlineByNavigationBar:1;
+        unsigned int isTextFieldManagedInNSToolbar:1;
         unsigned int allowSearchFieldShrinkage:1;
         unsigned int searchFieldUsesCustomBackgroundImage:1;
         unsigned int searchFieldEffectivelySupportsDynamicType:1;
@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
     double _searchBarReadableWidth;
     unsigned long long _numberOfScopeTitles;
     UIFont *_searchFieldFont;
+    double _leftContentInsetForInlineSearch;
+    double _rightContentInsetForInlineSearch;
     long long _representedLayoutState;
     _UISearchBarScopeContainerLayout *_scopeContainerLayout;
     _UISearchBarSearchContainerLayout *_searchContainerLayout;
@@ -55,6 +57,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UISearchBarScopeContainerLayout *scopeContainerLayout; // @synthesize scopeContainerLayout=_scopeContainerLayout;
 @property(readonly, nonatomic) CDStruct_c3b9c2ee heightRange; // @synthesize heightRange=_heightRange;
 @property(nonatomic) long long representedLayoutState; // @synthesize representedLayoutState=_representedLayoutState;
+@property(nonatomic) double rightContentInsetForInlineSearch; // @synthesize rightContentInsetForInlineSearch=_rightContentInsetForInlineSearch;
+@property(nonatomic) double leftContentInsetForInlineSearch; // @synthesize leftContentInsetForInlineSearch=_leftContentInsetForInlineSearch;
 @property(retain, nonatomic) UIFont *searchFieldFont; // @synthesize searchFieldFont=_searchFieldFont;
 @property(nonatomic) unsigned long long numberOfScopeTitles; // @synthesize numberOfScopeTitles=_numberOfScopeTitles;
 @property(nonatomic) double searchBarReadableWidth; // @synthesize searchBarReadableWidth=_searchBarReadableWidth;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double additionalPaddingForCancelButtonAtLeadingEdge;
 - (void)setLayoutCustomizationDelegateSearchFieldContainerWillLayoutSubviewsCallback:(CDUnknownBlockType)arg1;
 - (void)setDelegateSearchFieldFrameManipulationBlock:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSString *description;
 - (void)cleanUpLayout;
 - (void)applyScopeContainerSublayout;
 - (void)applyLayout;
@@ -87,9 +92,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double naturalTotalHeight;
 @property(readonly, nonatomic) double naturalPromptContainerHeight;
 @property(readonly, nonatomic) struct UIEdgeInsets scopeContainerSpecificInsets;
-@property(readonly, nonatomic) double naturalScopeBarHeight;
+@property(readonly, nonatomic) double prescribedSearchContainerWidth;
+@property(readonly, nonatomic) double naturalScopeContainerHeight;
 @property(readonly, nonatomic) double naturalSearchFieldHeight;
-@property(readonly, nonatomic) double naturalSearchBarHeight;
+@property(readonly, nonatomic) double naturalSearchFieldContainerHeight;
 @property(readonly, nonatomic) struct CGRect separatorLayoutFrame; // @synthesize separatorLayoutFrame=_separatorLayoutFrame;
 @property(readonly, nonatomic) struct CGRect searchBarBackgroundLayoutFrame; // @synthesize searchBarBackgroundLayoutFrame=_searchBarBackgroundLayoutFrame;
 @property(readonly, nonatomic) struct CGRect scopeBarContainerLayoutFrame; // @synthesize scopeBarContainerLayoutFrame=_scopeBarContainerLayoutFrame;
@@ -99,8 +105,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isProspective) _Bool prospective;
 @property(nonatomic) _Bool searchFieldEffectivelySupportsDynamicType;
 @property(nonatomic) _Bool searchFieldUsesCustomBackgroundImage;
+@property(nonatomic, getter=isTextFieldManagedInNSToolbar) _Bool textFieldManagedInNSToolbar;
+@property(nonatomic, getter=isHostedInlineByNavigationBar) _Bool hostedInlineByNavigationBar;
 @property(nonatomic) _Bool allowSearchFieldShrinkage;
 @property(retain, nonatomic) UIView *scopeBar;
+@property(retain, nonatomic) UIBarButtonItem *searchIconBarButtonItem;
+@property(retain, nonatomic) UIImageView *floatingSearchIconView;
 @property(retain, nonatomic) UIView *leftButton;
 @property(retain, nonatomic) UIView *deleteButton;
 @property(retain, nonatomic) UIView *cancelButton;
@@ -117,7 +127,6 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

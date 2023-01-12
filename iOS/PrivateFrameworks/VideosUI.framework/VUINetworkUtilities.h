@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/ICEnvironmentMonitorObserver-Protocol.h>
-#import <VideosUI/RadiosPreferencesDelegate-Protocol.h>
-
 @class NSString, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VUINetworkUtilities : NSObject <RadiosPreferencesDelegate, ICEnvironmentMonitorObserver>
+@interface VUINetworkUtilities : NSObject
 {
     RadiosPreferences *_radioPrefs;
     NSObject<OS_dispatch_queue> *_networkUtilityQueue;

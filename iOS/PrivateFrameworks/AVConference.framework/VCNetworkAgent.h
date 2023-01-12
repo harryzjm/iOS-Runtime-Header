@@ -17,6 +17,11 @@ __attribute__((visibility("hidden")))
 + (id)agentDomain;
 + (id)sharedInstance;
 - (id)copyAgentData;
+- (int)getNetworkAgentRefCount;
+- (_Bool)addMediaInformationAssertion:(id)arg1;
+- (_Bool)clearMediaInformationAssertion;
+- (unsigned long long)textStringLength:(id)arg1;
+- (const char *)textString:(id)arg1;
 - (void)removeAssertion;
 - (void)addAssertion;
 - (void)dealloc;

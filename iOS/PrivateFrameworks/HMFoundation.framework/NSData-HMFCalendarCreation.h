@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <HMFoundation/HMFObject-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface NSData (HMFCalendarCreation) <HMFObject>
+@interface NSData (HMFCalendarCreation)
 + (id)shortDescription;
 - (id)decodeCalendar;
 - (id)decodeArrayOfDateComponents;

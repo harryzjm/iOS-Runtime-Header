@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSMutableCopying-Protocol.h>
-
 @class NSMutableArray, NSString, OITSUCustomFormatData;
 
 __attribute__((visibility("hidden")))
-@interface OITSUCustomFormat : NSObject <NSCopying, NSMutableCopying>
+@interface OITSUCustomFormat : NSObject
 {
     NSString *_formatNameStem;
     NSString *_formatNameTag;

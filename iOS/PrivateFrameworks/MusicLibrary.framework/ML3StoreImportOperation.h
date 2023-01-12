@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3ImportOperation.h"
+
 @class ML3StoreItemPlaylistData, ML3StoreItemTrackData;
 
 __attribute__((visibility("hidden")))
-@interface ML3StoreImportOperation
+@interface ML3StoreImportOperation : ML3ImportOperation
 {
     ML3StoreItemTrackData *_trackData;
     ML3StoreItemPlaylistData *_playlistData;

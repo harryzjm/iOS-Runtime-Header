@@ -6,11 +6,6 @@
 
 #pragma mark Named Structures
 
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-
 struct IndirectArgumentBufferCapabilities {
     unsigned int :1;
     unsigned int :1;
@@ -18,15 +13,9 @@ struct IndirectArgumentBufferCapabilities {
     unsigned int :29;
 };
 
-struct MTLRangeAllocator {
-    struct MTLRangeAllocatorElement *elements;
-    unsigned int numElements;
-    unsigned long long capacity;
-    unsigned long long capacityIncrement;
-    unsigned long long defaultAlignmentMask;
+struct MTLResourceID {
+    unsigned long long _field1;
 };
-
-struct MTLRangeAllocatorElement;
 
 struct MTLTargetDeviceArch {
     unsigned long long _field1;
@@ -115,8 +104,9 @@ typedef struct {
     unsigned int _field60;
     unsigned int _field61;
     unsigned int _field62;
-    unsigned long long _field63;
-} CDStruct_1825b841;
+    unsigned int _field63;
+    unsigned long long _field64;
+} CDStruct_e1c34685;
 
 typedef struct {
     unsigned int _field1;

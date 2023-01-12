@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ProactiveExperiments/NSObject-Protocol.h>
+
 @class NSString;
 @protocol PREResponsesTrialProtocol;
 
-@protocol PREExperimentResolverProtocol
+@protocol PREExperimentResolverProtocol <NSObject>
 - (id <PREResponsesTrialProtocol>)getResponseSuggestionsExperimentConfig:(NSString *)arg1 shouldDownloadAssets:(_Bool)arg2;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Portrait/AVVideoCompositing-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PTAssetReaderCustomCompositor : NSObject <AVVideoCompositing>
+@interface PTAssetReaderCustomCompositor : NSObject
 {
 }
 

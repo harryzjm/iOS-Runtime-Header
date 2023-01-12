@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIItemStateCenterObserver-Protocol.h>
-#import <StoreKitUI/UIPopoverControllerDelegate-Protocol.h>
-
 @class NSOperationQueue, NSString, SKUIClientContext, SKUIContentRatingArtworkResourceLoader, SKUIItem, SKUIItemArtworkContext, SKUIItemOffer, SKUIProductPage, SKUIProductPageHeaderFloatingView, SKUIProductPageHeaderView, SSVLoadURLOperation, UIImage, UIPopoverController;
 @protocol SKUIProductPageHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProductPageHeaderViewController : UIViewController <SKUIItemStateCenterObserver, UIPopoverControllerDelegate>
+@interface SKUIProductPageHeaderViewController : UIViewController
 {
     UIPopoverController *_activityPopoverController;
     _Bool _askPermission;

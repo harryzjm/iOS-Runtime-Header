@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIIntervalAnimating-Protocol.h>
-
 @class NSString;
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface UIViewSpringAnimation : NSObject <UIIntervalAnimating>
+@interface UIViewSpringAnimation : NSObject
 {
     id <UIVectorOperatable> _current;
     id <UIVectorOperatable> _velocity;

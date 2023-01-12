@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSCloudKitQueryProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSCloudKitQueryProvider : NSObject <BCSCloudKitQueryProviding>
+@interface BCSCloudKitQueryProvider : NSObject
 {
 }
 

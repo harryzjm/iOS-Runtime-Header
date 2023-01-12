@@ -12,6 +12,7 @@
 }
 
 + (id)localComputer;
++ (id)loggingAspect;
 - (void).cxx_destruct;
 - (_Bool)matchDevice:(id)arg1 againstOptions:(id)arg2 genericOnly:(_Bool)arg3 allowAliases:(_Bool)arg4;
 - (id)deviceType;

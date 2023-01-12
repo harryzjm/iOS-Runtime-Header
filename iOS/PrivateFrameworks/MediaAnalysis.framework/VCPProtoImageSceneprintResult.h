@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-#import <MediaAnalysis/VCPProtoResultLegacyConversionProtocol-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoImageSceneprintResult : PBCodable <VCPProtoResultLegacyConversionProtocol, NSCopying>
+@interface VCPProtoImageSceneprintResult : PBCodable
 {
     NSData *_sceneprintBlob;
 }

@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDate *date; // @dynamic date;
 @property(retain, nonatomic) SHGroupMO *group; // @dynamic group;
 @property(retain, nonatomic) NSArray *labels; // @dynamic labels;
+@property(nonatomic) double latitude; // @dynamic latitude;
+@property(nonatomic) double longitude; // @dynamic longitude;
 @property(retain, nonatomic) SHMetadataMO *metadata; // @dynamic metadata;
 @property(copy, nonatomic) NSString *providerID; // @dynamic providerID;
 @property(copy, nonatomic) NSString *providerName; // @dynamic providerName;

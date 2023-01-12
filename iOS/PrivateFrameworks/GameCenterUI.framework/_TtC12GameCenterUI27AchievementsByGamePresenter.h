@@ -15,7 +15,6 @@
     MISSING_TYPE *requiredData;
     MISSING_TYPE *selectedSort;
     MISSING_TYPE *sortOptions;
-    MISSING_TYPE *pageTitle;
     MISSING_TYPE *snapshot;
     MISSING_TYPE *dataUpdatePresenter;
     MISSING_TYPE *onApplySnapshot;

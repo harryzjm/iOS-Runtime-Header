@@ -6,11 +6,9 @@
 
 #import <UIKit/UIGestureRecognizer.h>
 
-#import <AnnotationKit/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSMutableSet, NSString, UIView;
 
-@interface AKTouchOutsideViewGestureRecognizer : UIGestureRecognizer <UIGestureRecognizerDelegate>
+@interface AKTouchOutsideViewGestureRecognizer : UIGestureRecognizer
 {
     NSMutableSet *mTargets;
     UIView *mWatchView;

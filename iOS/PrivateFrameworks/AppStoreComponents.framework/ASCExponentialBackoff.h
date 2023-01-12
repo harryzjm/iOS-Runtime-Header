@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCBackoff-Protocol.h>
-
 @class JEUnfairLock, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ASCExponentialBackoff : NSObject <ASCBackoff>
+@interface ASCExponentialBackoff : NSObject
 {
     double _baseSleepTimeInterval;
     double _maxSleepTimeInterval;

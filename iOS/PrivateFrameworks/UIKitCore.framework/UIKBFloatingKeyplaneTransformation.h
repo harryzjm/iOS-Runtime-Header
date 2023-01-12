@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyboardKeyplaneTransformation-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBFloatingKeyplaneTransformation : NSObject <UIKeyboardKeyplaneTransformation>
+@interface UIKBFloatingKeyplaneTransformation : NSObject
 {
 }
 

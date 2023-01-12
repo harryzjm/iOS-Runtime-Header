@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_activeGenerations;
     NSMutableDictionary *_transactionStringName;
     NSMutableDictionary *_usedIndexes;
+    long long _cachedPageSize;
 }
 
 + (void)initialize;

@@ -9,6 +9,7 @@
 @class SBHProxiedApplicationPlaceholder;
 
 @protocol SBHProxiedApplicationPlaceholderDelegate <NSObject>
+- (_Bool)placeholderRepresentsNewAppInstallFromStore:(SBHProxiedApplicationPlaceholder *)arg1;
 - (void)placeholderWantsUninstall:(SBHProxiedApplicationPlaceholder *)arg1;
 - (_Bool)placeholderShouldAllowPausing:(SBHProxiedApplicationPlaceholder *)arg1;
 @end

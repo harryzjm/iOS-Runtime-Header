@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATSharingConnection-Protocol.h>
-
 @class CATOperationQueue, CATSharingDevice, NSError, NSString;
 @protocol CATSharingConnectionDelegate, CATSharingDeviceSession, CATTimer, CATTimerSource;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingDeviceSessionConnection : NSObject <CATSharingConnection>
+@interface CATSharingDeviceSessionConnection : NSObject
 {
     id <CATSharingDeviceSession> mDeviceSession;
     id <CATTimerSource> mTimerSource;

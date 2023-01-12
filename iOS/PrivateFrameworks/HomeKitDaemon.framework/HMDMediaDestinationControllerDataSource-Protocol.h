@@ -6,10 +6,11 @@
 
 #import <HomeKitDaemon/HMDMediaDestinationControllerMetricsEventDispatcherDataSource-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDMediaDestinationController, HMMediaDestination, NSArray, NSUUID;
+@class HMDAppleMediaAccessory, HMDMediaDestinationController, HMDMediaGroupParticipantLocalDataStorage, HMMediaDestination, NSArray, NSUUID;
 @protocol HMDMediaDestinationManager;
 
 @protocol HMDMediaDestinationControllerDataSource <HMDMediaDestinationControllerMetricsEventDispatcherDataSource>
+- (HMDMediaGroupParticipantLocalDataStorage *)mediaGroupLocalDataStorageForMediaDestinationController:(HMDMediaDestinationController *)arg1;
 - (NSArray *)availableDestinationIdentifiersForMediaDestinationController:(HMDMediaDestinationController *)arg1;
 - (HMMediaDestination *)mediaDestinationController:(HMDMediaDestinationController *)arg1 rootDestinationWithDecendantIdentifier:(NSUUID *)arg2;
 - (HMMediaDestination *)mediaDestinationController:(HMDMediaDestinationController *)arg1 destinationWithParentIdentifier:(NSUUID *)arg2;

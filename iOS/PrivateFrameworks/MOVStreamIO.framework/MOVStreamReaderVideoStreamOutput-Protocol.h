@@ -9,8 +9,8 @@
 @protocol MOVStreamReaderVideoStreamOutput <MOVStreamReaderSampleStreamOutput>
 @property(readonly) unsigned long long trackTypeInfo;
 @property(readonly) struct CGAffineTransform transform;
-- (struct __CVBuffer *)nextPixelBufferForStreamAttachementsData:(out id *)arg1 timestamp:(out CDStruct_1b6d18a9 *)arg2 error:(out id *)arg3;
-- (struct __CVBuffer *)copyNextFrameForStreamTimestamp:(out CDStruct_1b6d18a9 *)arg1 error:(out id *)arg2;
+- (struct __CVBuffer *)nextPixelBufferForStreamAttachementsData:(out id *)arg1 timestamp:(out CDStruct_198678f7 *)arg2 error:(out id *)arg3;
+- (struct __CVBuffer *)copyNextFrameForStreamTimestamp:(out CDStruct_198678f7 *)arg1 error:(out id *)arg2;
 - (void)removePixelBufferPadding:(_Bool)arg1;
 - (unsigned int)getOutputPixelFormatForStream;
 - (unsigned int)pixelFormatForStream;

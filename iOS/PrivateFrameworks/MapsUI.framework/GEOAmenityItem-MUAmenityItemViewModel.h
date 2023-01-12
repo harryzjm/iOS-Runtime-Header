@@ -6,11 +6,9 @@
 
 #import <GeoServices/GEOAmenityItem.h>
 
-#import <MapsUI/MUAmenityItemViewModel-Protocol.h>
-
 @class NSString;
 
-@interface GEOAmenityItem (MUAmenityItemViewModel) <MUAmenityItemViewModel>
+@interface GEOAmenityItem (MUAmenityItemViewModel)
 @property(readonly, nonatomic) NSString *displayTitle;
 - (id)symbolImageForFont:(id)arg1;
 @property(readonly, nonatomic) NSString *resolvedRibbonSymbolName;

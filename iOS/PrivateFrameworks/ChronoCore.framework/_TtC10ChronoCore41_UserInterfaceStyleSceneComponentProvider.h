@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ChronoCore/_UIWindowSceneComponentProviding-Protocol.h>
-
 @class MISSING_TYPE, UIScene, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface _TtC10ChronoCore41_UserInterfaceStyleSceneComponentProvider : NSObject <_UIWindowSceneComponentProviding>
+@interface _TtC10ChronoCore41_UserInterfaceStyleSceneComponentProvider : NSObject
 {
     MISSING_TYPE *_scene;
     MISSING_TYPE *_traitOverrides;

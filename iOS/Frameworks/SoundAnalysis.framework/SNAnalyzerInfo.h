@@ -22,13 +22,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSError *configurationError; // @synthesize configurationError=_configurationError;
-@property(nonatomic) _Bool configured; // @synthesize configured=_configured;
-@property(retain, nonatomic) id <SNProcessing> sharedProcessor; // @synthesize sharedProcessor=_sharedProcessor;
-@property(retain, nonatomic) SNAnalyzerHost *analyzerHost; // @synthesize analyzerHost=_analyzerHost;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(copy, nonatomic) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
-@property(retain, nonatomic) id <SNAnalyzerCreating> request; // @synthesize request=_request;
 
 @end
 

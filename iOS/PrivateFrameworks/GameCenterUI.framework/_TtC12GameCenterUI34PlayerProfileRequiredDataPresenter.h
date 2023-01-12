@@ -21,6 +21,10 @@
     MISSING_TYPE *recommendedGroups;
     MISSING_TYPE *friendRequests;
     MISSING_TYPE *recentlyPlayedGames;
+    MISSING_TYPE *activityFeedData;
+    MISSING_TYPE *activityFeedFirstLoad;
+    MISSING_TYPE *activityFeedError;
+    MISSING_TYPE *profilePrivacy;
     MISSING_TYPE *gameCount;
     MISSING_TYPE *achievementCount;
     MISSING_TYPE *appStoreLockupBatchPresenter;

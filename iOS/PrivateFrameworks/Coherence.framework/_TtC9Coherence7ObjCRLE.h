@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _TtC9Coherence7ObjCRLE : NSObject
 {
     MISSING_TYPE *rle;
@@ -15,8 +16,8 @@
 
 - (void).cxx_destruct;
 @property(nonatomic, readonly) NSString *description;
-- (void)addMappingFrom:(long long)arg1 to:(long long)arg2;
 - (void)enumerateRangesIn:(struct _NSRange)arg1:(CDUnknownBlockType)arg2;
+- (long long)rangeCountIn:(struct _NSRange)arg1;
 @property(nonatomic, readonly) long long rangeCount;
 - (id)init;
 

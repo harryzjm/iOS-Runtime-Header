@@ -6,9 +6,10 @@
 
 #import <DiagnosticExtensionsDaemon/NSObject-Protocol.h>
 
-@class DEDAttachmentGroup, NSArray, NSDictionary, NSError, NSString;
+@class DEDAttachmentGroup, NSArray, NSDictionary, NSError, NSSet, NSString;
 
 @protocol DEDClientProtocol <NSObject>
+- (void)didLoadTextDataForExtensions:(NSSet *)arg1 localization:(NSString *)arg2 session:(NSString *)arg3;
 - (void)uploadProgress:(unsigned long long)arg1 total:(unsigned long long)arg2 session:(NSString *)arg3;
 - (void)didAdoptFilesWithError:(NSError *)arg1 forSession:(NSString *)arg2;
 - (void)didGetState:(long long)arg1 info:(NSDictionary *)arg2 sessionID:(NSString *)arg3;
@@ -21,6 +22,7 @@
 
 @optional
 - (void)didCancelSession:(NSString *)arg1;
+- (NSString *)clientAddress;
 - (long long)transportType;
 @end
 

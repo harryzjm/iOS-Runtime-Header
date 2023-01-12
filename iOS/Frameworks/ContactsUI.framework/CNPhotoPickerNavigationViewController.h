@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *trapOverlayConstraints; // @synthesize trapOverlayConstraints=_trapOverlayConstraints;
 @property(retain, nonatomic) CNPhotoPickerTrapView *trapOverlayView; // @synthesize trapOverlayView=_trapOverlayView;
 @property(nonatomic) _Bool allowRotation; // @synthesize allowRotation=_allowRotation;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)updateTrapOverlayViewIfNecessaryWithCoordinator:(id)arg1;
 - (void)setupTrapOverlayView;
 - (_Bool)isDisplayingTrapView;

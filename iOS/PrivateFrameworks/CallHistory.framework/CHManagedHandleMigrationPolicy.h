@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)valueForManagedHandle:(id)arg1;
 - (id)normalizedValueForManagedHandle:(id)arg1;
 
 @end

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSSecureCoding-Protocol.h>
-
 @class NSString, TSUBezierPath;
 
-@interface KNAnimParameterSavedParameter : NSObject <NSSecureCoding>
+@interface KNAnimParameterSavedParameter : NSObject
 {
     _Bool _hasMaxValue;
     _Bool _hasMinValue;

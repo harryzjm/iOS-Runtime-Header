@@ -6,12 +6,10 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <CoreServices/NSSecureCoding-Protocol.h>
-
 @class LSBundleRecord;
 
 __attribute__((visibility("hidden")))
-@interface _LSCoreTypesRecordProxy : NSProxy <NSSecureCoding>
+@interface _LSCoreTypesRecordProxy : NSProxy
 {
     LSBundleRecord *_realRecord;
 }

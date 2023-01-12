@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityMathBaseObject;
 - (id)accessibilityMathDenominatorObject;
 - (id)accessibilityMathNumeratorObject;
-- (id)accessibilityMathRadicandObject;
+- (id)accessibilityMathRadicand;
 - (id)accessibilityMathRootIndexObject;
 - (id)accessibilitySortDirection;
 - (id)accessibilityCurrentState;
@@ -56,10 +56,10 @@ __attribute__((visibility("hidden")))
 - (id)textMarkerForPoint:(struct CGPoint)arg1;
 - (id)textRectsFromMarkers:(id)arg1 withText:(id)arg2;
 - (id)lineRectsForTextMarkerRange:(id)arg1;
-- (id)lineRectsAndText;
 - (id)textMarkerRangeFromMarkers:(id)arg1 withText:(id)arg2;
 - (optional_8a7f6590)rangeFromMarkers:(id)arg1 withText:(id)arg2;
 - (struct CGRect)frameForTextMarkers:(id)arg1;
+- (struct CGRect)frameForRange:(struct _NSRange)arg1;
 - (id)previousMarkerForMarker:(id)arg1;
 - (id)nextMarkerForMarker:(id)arg1;
 - (id)misspellingTextMarkerRange:(id)arg1 forward:(_Bool)arg2;
@@ -84,13 +84,9 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)elementTextRange;
 - (id)textMarkerRange;
 - (long long)positionForTextMarker:(id)arg1;
-- (optional_8a7f6590)_convertToDOMRange:(struct _NSRange)arg1;
-- (struct _NSRange)_convertToNSRange:(const void *)arg1;
 - (id)arrayOfTextForTextMarkers:(id)arg1 attributed:(_Bool)arg2;
-- (id)contentForSimpleRange:(const void *)arg1 attributed:(_Bool)arg2;
 - (id)stringForTextMarkers:(id)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
-- (_Bool)_addAccessibilityObject:(void *)arg1 toTextMarkerArray:(id)arg2;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
@@ -138,8 +134,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
 - (id)accessibilityURL;
 - (id)accessibilityHint;
-- (_Bool)accessibilityIsInDescriptionListDefinition;
-- (_Bool)accessibilityIsInDescriptionListTerm;
 - (_Bool)accessibilityIsComboBox;
 - (_Bool)accessibilityIsAttachmentElement;
 - (_Bool)accessibilityIsIndeterminate;
@@ -185,7 +179,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_accessibilityTraitsFromAncestors;
 - (id)_accessibilityFrameAncestor;
 - (id)_accessibilityFieldsetAncestor;
-- (_Bool)_accessibilityIsInTableCell;
 - (id)_accessibilityTableAncestor;
 - (id)_accessibilityLandmarkAncestor;
 - (id)_accessibilityArticleAncestor;
@@ -195,6 +188,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_accessibilityIsLandmarkRole:(int)arg1;
 - (_Bool)accessibilityIsDialog;
 - (id)accessibilityLanguage;
+- (_Bool)accessibilityIsRequired;
+- (_Bool)accessibilityIsAttributeSettable:(id)arg1;
+- (_Bool)_accessibilityIsInTableCell;
+- (_Bool)accessibilityIsInDescriptionListTerm;
+- (_Bool)accessibilityIsInDescriptionListDefinition;
+- (_Bool)accessibilityHasWebApplicationAncestor;
+- (_Bool)accessibilityHasDocumentRoleAncestor;
 - (id)accessibilityPopupValue;
 - (_Bool)accessibilityHasPopup;
 - (id)_accessibilityWebRoleAsString;
@@ -235,7 +235,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_axHeaderTrait;
 - (unsigned long long)_axVisitedTrait;
 - (unsigned long long)_axLinkTrait;
-- (_Bool)_prepareAccessibilityCall;
 - (void)dealloc;
 - (void)detach;
 - (id)initWithAccessibilityObject:(void *)arg1;

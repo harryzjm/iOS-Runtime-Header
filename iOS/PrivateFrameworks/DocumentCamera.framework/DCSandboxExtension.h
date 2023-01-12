@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/NSSecureCoding-Protocol.h>
-
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface DCSandboxExtension : NSObject <NSSecureCoding>
+@interface DCSandboxExtension : NSObject
 {
     _Bool _canAccessFileURL;
     _Bool _shouldIssueSandboxExtensionWhenEncoding;

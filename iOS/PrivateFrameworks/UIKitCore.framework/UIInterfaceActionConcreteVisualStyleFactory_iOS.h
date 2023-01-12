@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIInterfaceActionConcreteVisualStyleFactory-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface UIInterfaceActionConcreteVisualStyleFactory_iOS : NSObject <UIInterfaceActionConcreteVisualStyleFactory>
+@interface UIInterfaceActionConcreteVisualStyleFactory_iOS : NSObject
 {
 }
 

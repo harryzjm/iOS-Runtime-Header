@@ -6,28 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <RequestDispatcherBridges/LBLocalSpeechRecognizerClientDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC24RequestDispatcherBridges31SpeechRecognizerResponseHandler : NSObject <LBLocalSpeechRecognizerClientDelegate>
+@interface _TtC24RequestDispatcherBridges31SpeechRecognizerResponseHandler : NSObject
 {
     MISSING_TYPE *requestId;
     MISSING_TYPE *messagePublisher;
     MISSING_TYPE *serviceHelper;
     MISSING_TYPE *instrumentationUtil;
-    MISSING_TYPE *myriadMonitor;
     MISSING_TYPE *assistantId;
     MISSING_TYPE *sessionId;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)localSpeechRecognizerClient:(id)arg1 didCompletionRecognitionWithStatistics:(id)arg2 requestId:(id)arg3 endpointMode:(long long)arg4 error:(id)arg5;
-- (void)localSpeechRecognizerClient:(id)arg1 didCompletionRecognitionWithStatistics:(id)arg2 requestId:(id)arg3 error:(id)arg4;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedFinalResultCandidateWithRequestId:(id)arg2 speechPackage:(id)arg3;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedFinalResultWithRequestId:(id)arg2 speechPackage:(id)arg3 metadata:(id)arg4;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedPartialResultWithRequestId:(id)arg2 language:(id)arg3 tokens:(id)arg4 metadata:(id)arg5;
+- (void)localSpeechRecognizerClient:(id)arg1 receivedVoiceIdScoreCard:(id)arg2;
 - (void)localSpeechRecognizerClient:(id)arg1 didAcceptedEagerResultWithRequestId:(id)arg2 rcId:(unsigned long long)arg3 mitigationSignal:(_Bool)arg4 featuresToLog:(id)arg5;
-- (void)localSpeechRecognizerClient:(id)arg1 receivedEagerRecognitionCandidateWithRequestId:(id)arg2 rcId:(unsigned long long)arg3 speechPackage:(id)arg4 duration:(double)arg5;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedFinalResultWithRequestId:(id)arg2 speechPackage:(id)arg3;
 - (void)localSpeechRecognizerClient:(id)arg1 receivedPartialResultWithRequestId:(id)arg2 language:(id)arg3 tokens:(id)arg4;
 

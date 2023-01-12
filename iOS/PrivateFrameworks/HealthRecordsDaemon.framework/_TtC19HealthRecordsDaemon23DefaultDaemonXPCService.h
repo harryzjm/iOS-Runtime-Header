@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *identifier;
     MISSING_TYPE *listener;
     MISSING_TYPE *serverGenerator;
+    MISSING_TYPE *requiredEntitlementOverride;
 }
 
 - (void).cxx_destruct;

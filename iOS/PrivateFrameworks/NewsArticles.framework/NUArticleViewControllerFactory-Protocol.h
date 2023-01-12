@@ -9,7 +9,7 @@
 @class FCArticle, FCIssue, NUArticleContext, NUArticleHostViewController, NUArticleViewController;
 
 @protocol NUArticleViewControllerFactory <NSObject>
-- (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2 context:(NUArticleContext *)arg3 articleHostViewController:(NUArticleHostViewController *)arg4;
+- (NUArticleViewController *)createArticleViewControllerWithArticle:(FCArticle *)arg1 issue:(FCIssue *)arg2 context:(NUArticleContext *)arg3 relativePriority:(long long)arg4 articleHostViewController:(NUArticleHostViewController *)arg5;
 @property(nonatomic, readonly) id loadingListeners;
 @end
 

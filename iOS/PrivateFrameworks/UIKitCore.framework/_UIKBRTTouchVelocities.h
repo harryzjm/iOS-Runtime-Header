@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIKBRTRecognizerAveragingRuleProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _UIKBRTTouchVelocities : NSObject <_UIKBRTRecognizerAveragingRuleProtocol>
+@interface _UIKBRTTouchVelocities : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSCarrierMSISDNProviding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSCarrierMSISDNProvider : NSObject <AMSCarrierMSISDNProviding>
+@interface AMSCarrierMSISDNProvider : NSObject
 {
 }
 

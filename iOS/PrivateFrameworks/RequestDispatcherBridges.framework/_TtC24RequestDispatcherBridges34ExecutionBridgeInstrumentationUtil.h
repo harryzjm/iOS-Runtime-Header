@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *stream;
     MISSING_TYPE *commonInstrumentationUtil;
+    MISSING_TYPE *componentIdGenerator;
 }
 
 @end

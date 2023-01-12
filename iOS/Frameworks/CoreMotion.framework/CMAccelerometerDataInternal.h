@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
-@interface CMAccelerometerDataInternal : NSObject <NSCopying>
+@interface CMAccelerometerDataInternal : NSObject
 {
     CDStruct_03942939 fAcceleration;
 }

@@ -6,14 +6,10 @@
 
 #import <VectorKit/VKTransitLineMarker.h>
 
-#import <MapKit/GEOTransitArtworkDataSource-Protocol.h>
-#import <MapKit/GEOTransitShieldDataSource-Protocol.h>
-#import <MapKit/MKTransitLineMarker-Protocol.h>
-
 @class NSString;
 @protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
-@interface VKTransitLineMarker (MKTransitLineExtras) <MKTransitLineMarker, GEOTransitShieldDataSource, GEOTransitArtworkDataSource>
+@interface VKTransitLineMarker (MKTransitLineExtras)
 @property(readonly, nonatomic) NSString *accessibilityText;
 @property(readonly, nonatomic) NSString *shieldColorString;
 @property(readonly, nonatomic) _Bool hasRoutingIncidentBadge;

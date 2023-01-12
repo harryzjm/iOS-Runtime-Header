@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     long long size;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 
 @end

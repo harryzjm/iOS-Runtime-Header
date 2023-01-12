@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSMutableArray, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2CameraSettingsU1 : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2CameraSettingsU1 : PBCodable
 {
     unsigned int _landscapeAspectRatioX;
     unsigned int _landscapeAspectRatioY;
@@ -68,7 +66,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections;
 - (_Bool)addVideoRules:(id)arg1 encodingType:(unsigned char)arg2 payload:(int)arg3 videoRuleCollections:(id)arg4;
 @property(readonly, nonatomic) struct CGSize orientationMismatchDisplayRatio;
-- (void)aspectRatioPortrait:(struct CGSize *)arg1 aspectRatioLandscape:(struct CGSize *)arg2 orientationMismatchAspectRatioLandscape:(struct CGSize *)arg3 screenSize:(struct CGSize)arg4;
+- (void)aspectRatioPortrait:(struct CGSize *)arg1 aspectRatioLandscape:(struct CGSize *)arg2 orientationMismatchAspectRatioLandscape:(struct CGSize *)arg3 orientationMismatchAspectRatioPortrait:(struct CGSize *)arg4 screenSize:(struct CGSize)arg5;
 - (id)initWithSSRC:(unsigned int)arg1 videoRuleCollections:(id)arg2 screenSize:(struct CGSize)arg3 aspectRatioPortrait:(struct CGSize)arg4 aspectRatioLandscape:(struct CGSize)arg5 orientationMismatchAspectRatioLandscape:(struct CGSize)arg6;
 
 @end

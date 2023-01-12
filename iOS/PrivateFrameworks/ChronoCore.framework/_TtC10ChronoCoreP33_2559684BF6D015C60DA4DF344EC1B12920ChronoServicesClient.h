@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <ChronoCore/CHSChronoWidgetServiceServerInterface-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC10ChronoCoreP33_2559684BF6D015C60DA4DF344EC1B12920ChronoServicesClient : NSObject <CHSChronoWidgetServiceServerInterface>
+@interface _TtC10ChronoCoreP33_2559684BF6D015C60DA4DF344EC1B12920ChronoServicesClient : NSObject
 {
     MISSING_TYPE *connection;
     MISSING_TYPE *timelineService;
@@ -40,8 +38,7 @@
 - (void)removeWidgetHostWithIdentifier:(id)arg1;
 - (id)widgetEnvironmentDataForBundleIdentifier:(id)arg1;
 - (void)reloadTimeline:(id)arg1 error:(id *)arg2;
-- (void)reloadTimelineForAvocadoWithIdentifier:(id)arg1 inBundleWithIdentifier:(id)arg2 error:(id *)arg3;
-- (void)applicationWithBundleIdentifierEnteredForeground:(id)arg1;
+- (void)cacheDescriptorsForContainerBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)flushPowerlog;
 
 @end

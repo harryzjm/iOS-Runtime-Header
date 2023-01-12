@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSCH3DShadowsRenderer-Protocol.h>
-
 @class NSArray, TSCH3DFBOResource;
 
-@interface TSCH3DSimpleBlurShadowsRenderer : NSObject <TSCH3DShadowsRenderer>
+@interface TSCH3DSimpleBlurShadowsRenderer : NSObject
 {
     TSCH3DFBOResource *_shadowsFBOResource;
     TSCH3DFBOResource *_blurFBOResource;

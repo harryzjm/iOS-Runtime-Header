@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSExpression, NSPredicate, NSPredicateOperator;
+@class NSExpression, NSPredicate, NSPredicateOperator, NSString;
 
 @protocol NSPredicateVisitor
 - (void)visitPredicateOperator:(NSPredicateOperator *)arg1;
 - (void)visitPredicateExpression:(NSExpression *)arg1;
 - (void)visitPredicate:(NSPredicate *)arg1;
+
+@optional
+- (void)visitPredicateExpression:(NSExpression *)arg1 keyPathScope:(NSString *)arg2 key:(NSString *)arg3;
 @end
 

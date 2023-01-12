@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(copy) CDUnknownBlockType configureAudioQueue; // @synthesize configureAudioQueue=_configureAudioQueue;
-@property unsigned int creationFlags; // @synthesize creationFlags=_creationFlags;
 
 @end
 

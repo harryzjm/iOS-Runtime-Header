@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPerformancePrimitives-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AEEmptyPerformancePrimitives : NSObject <AEPerformancePrimitives>
+@interface AEEmptyPerformancePrimitives : NSObject
 {
 }
 

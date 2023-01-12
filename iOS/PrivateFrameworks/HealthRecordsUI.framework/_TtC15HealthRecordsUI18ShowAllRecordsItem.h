@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s15HealthRecordsUI8TextItemCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI18ShowAllRecordsItem
+@interface _TtC15HealthRecordsUI18ShowAllRecordsItem : _$s15HealthRecordsUI8TextItemCN
 {
     MISSING_TYPE *userConcept;
     MISSING_TYPE *profile;

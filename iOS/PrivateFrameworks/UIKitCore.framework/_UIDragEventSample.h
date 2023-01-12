@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     _Bool _hasBeenDelivered;
     unsigned int _windowServerHitTestContextID;
     UIWindow *_window;
-    struct CGPoint _sceneLocation;
-    struct CGPoint _locationInWindow;
+    struct CAPoint3D _sceneLocation;
+    struct CAPoint3D _locationInWindow;
 }
 
 + (id)sampleFromHIDEvent:(struct __IOHIDEvent *)arg1;
@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isApplicationExit; // @synthesize isApplicationExit=_isApplicationExit;
 @property(readonly, nonatomic) _Bool isApplicationWithin; // @synthesize isApplicationWithin=_isApplicationWithin;
 @property(readonly, nonatomic) _Bool isApplicationEnter; // @synthesize isApplicationEnter=_isApplicationEnter;
-@property(readonly, nonatomic) struct CGPoint locationInWindow; // @synthesize locationInWindow=_locationInWindow;
-@property(readonly, nonatomic) struct CGPoint sceneLocation; // @synthesize sceneLocation=_sceneLocation;
+@property(readonly, nonatomic) struct CAPoint3D locationInWindow; // @synthesize locationInWindow=_locationInWindow;
+@property(readonly, nonatomic) struct CAPoint3D sceneLocation; // @synthesize sceneLocation=_sceneLocation;
 @property(readonly, nonatomic) UIWindow *window; // @synthesize window=_window;
 - (id)description;
 - (id)hitTestWithEvent:(id)arg1;

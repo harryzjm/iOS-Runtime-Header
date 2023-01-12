@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIMovieScrubberEditingView
+@interface UIMovieScrubberEditingView : UIView
 {
     UIImageView *_leftImageView;
     UIImageView *_middleImageView;

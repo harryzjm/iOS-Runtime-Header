@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIPassthroughScrollInteractionDelegate-Protocol.h>
+#import "UIViewController.h"
 
 @class NSString, _UIDatePickerOverlayPresentation;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerContainerViewController <_UIPassthroughScrollInteractionDelegate>
+@interface _UIDatePickerContainerViewController : UIViewController
 {
     CDUnknownBlockType _pendingKeyboardAdjustment;
 }
@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didChangeKeyboardAvoidanceAdjustmentDeferral;
 - (void)keyboardFrameWillChange:(id)arg1;
 - (void)_didReceiveEscapeKey:(id)arg1;
 - (_Bool)_canShowWhileLocked;
+- (_Bool)_defersToPresentingViewControllerForSupportedInterfaceOrientations;
 - (void)dealloc;
 - (id)initWithPresentation:(id)arg1;
 @property(readonly, nonatomic) _UIDatePickerOverlayPresentation *presentation;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
-#import <MediaPlaybackCore/MPMiddleware-Protocol.h>
-
 @class MPCPlaybackEngine, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackEngineMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
+@interface MPCPlaybackEngineMiddleware : NSObject
 {
     NSArray *_invalidationObservers;
     MPCPlaybackEngine *_playbackEngine;

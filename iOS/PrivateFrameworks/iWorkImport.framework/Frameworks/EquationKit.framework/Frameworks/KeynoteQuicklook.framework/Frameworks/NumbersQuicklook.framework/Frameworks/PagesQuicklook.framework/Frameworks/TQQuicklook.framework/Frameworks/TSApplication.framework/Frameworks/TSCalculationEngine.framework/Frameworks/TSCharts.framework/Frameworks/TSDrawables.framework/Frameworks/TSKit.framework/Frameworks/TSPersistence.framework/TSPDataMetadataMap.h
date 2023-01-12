@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class NSMutableDictionary;
 
-@interface TSPDataMetadataMap
+@interface TSPDataMetadataMap : TSPObject
 {
     NSMutableDictionary *_identifierToDataMetadata;
 }

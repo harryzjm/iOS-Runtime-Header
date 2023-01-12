@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIMessageBannerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIMetricsViewController-Protocol.h>
-#import <StoreKitUI/SKUINetworkErrorDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageChildViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/SKUIProductPageHeaderViewDelegate-Protocol.h>
-
 @class NSOperationQueue, NSString, NSURL, NSURLRequest, SKUIClientContext, SKUIIncompatibleAppViewController, SKUIItem, SKUILoadProductPageOperation, SKUIMessageBanner, SKUIMetricsController, SKUINetworkErrorViewController, SKUIProductPage, SKUIProductPageDetailsViewController, SKUIProductPageHeaderViewController, SKUIProductPagePlaceholderViewController, SKUIProductPageReviewsViewController, SKUISwooshArrayViewController, SSMetricsPageEvent, UIView;
 @protocol SKUIIPadProductPageDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIPadProductPageViewController : UIViewController <SKUIMetricsViewController, SKUINetworkErrorDelegate, SKUIProductPageHeaderViewDelegate, SKUIProductPageChildViewControllerDelegate, SKUIMessageBannerDelegate>
+@interface SKUIIPadProductPageViewController : UIViewController
 {
     _Bool _askPermission;
     SKUIMessageBanner *_banner;

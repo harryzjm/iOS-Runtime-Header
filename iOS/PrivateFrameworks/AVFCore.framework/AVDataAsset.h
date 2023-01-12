@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AVAsset.h"
+
 @class AVAssetInspectorLoader, AVDispatchOnce, NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface AVDataAsset
+@interface AVDataAsset : AVAsset
 {
     NSDictionary *_initializationOptions;
     AVAssetInspectorLoader *_loader;

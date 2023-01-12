@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)headerBackgroundColor;
 - (_Bool)cellIsVibrant;
 - (_Bool)cellIsOpaque;
-- (struct UIEdgeInsets)cellSeparatorInset;
 - (id)cellNameTextEmphasisedFont;
 - (id)cellNameTextFont;
 - (id)cellBlueSelectionSecondaryTextColor;

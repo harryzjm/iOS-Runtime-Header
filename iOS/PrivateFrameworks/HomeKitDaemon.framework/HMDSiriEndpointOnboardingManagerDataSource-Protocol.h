@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
 @class HMDAccessory, HMSiriEndpointOnboardingSelections, NSNumber, NSUUID;
 
-@protocol HMDSiriEndpointOnboardingManagerDataSource
+@protocol HMDSiriEndpointOnboardingManagerDataSource <NSObject>
 - (HMDAccessory *)accessoryWithHomeUUID:(NSUUID *)arg1 accessoryUUID:(NSUUID *)arg2;
 - (void)applyOnboardingSelections:(HMSiriEndpointOnboardingSelections *)arg1 accessoryUUID:(NSUUID *)arg2 homeUUID:(NSUUID *)arg3 completion:(void (^)(NSError *, long long))arg4;
 - (void)setNeedsOnboardingCompleteWitHomeUUID:(NSUUID *)arg1 accessoryUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;

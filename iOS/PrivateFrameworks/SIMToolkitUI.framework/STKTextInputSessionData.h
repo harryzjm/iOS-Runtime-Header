@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "STKTextSessionData.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface STKTextInputSessionData
+@interface STKTextInputSessionData : STKTextSessionData
 {
     NSString *_defaultText;
     _Bool _isSecure;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIFilter.h"
+
 @class CIColor, CIImage;
 
 __attribute__((visibility("hidden")))
-@interface CIWhitePointAdjust
+@interface CIWhitePointAdjust : CIFilter
 {
     CIImage *inputImage;
     CIColor *inputColor;

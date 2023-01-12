@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSMutableDictionary, NSMutableString;
 
 __attribute__((visibility("hidden")))
-@interface CMStyle : NSObject <NSCopying>
+@interface CMStyle : NSObject
 {
     NSMutableDictionary *properties;
     NSMutableString *mStyleString;

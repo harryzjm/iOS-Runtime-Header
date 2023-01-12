@@ -8,6 +8,7 @@
 
 @interface UIView (ConversationKit)
 + (double)screenScale;
+@property(nonatomic, readonly) double displayScale;
 @property(nonatomic, readonly) struct CGRect safeAreaInsetFrame;
 @end
 

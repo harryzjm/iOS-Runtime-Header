@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOCoarseLocationRing : PBCodable <NSCopying>
+@interface GEOCoarseLocationRing : PBCodable
 {
     struct GEOCoarseLocationPoint *_points;
     unsigned long long _pointsCount;

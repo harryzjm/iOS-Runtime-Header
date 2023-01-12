@@ -6,9 +6,10 @@
 
 #import <HomeKit/HMERouterClientDelegate-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @protocol HMEPersistentConnectionClientDelegate <HMERouterClientDelegate>
+- (NSSet *)forwardingTopicsForTopics:(NSSet *)arg1;
 - (void)sendChangeRegistrationsMessageWithAddedFilters:(NSArray *)arg1 removedFilters:(NSArray *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

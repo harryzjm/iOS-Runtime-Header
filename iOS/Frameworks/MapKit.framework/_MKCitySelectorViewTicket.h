@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/MKMapServiceCitySelectorViewTicket-Protocol.h>
-
 @class GEOMapServiceTraits, NSString;
 @protocol GEOMapServiceCitySelectorViewTicket;
 
 __attribute__((visibility("hidden")))
-@interface _MKCitySelectorViewTicket : NSObject <MKMapServiceCitySelectorViewTicket>
+@interface _MKCitySelectorViewTicket : NSObject
 {
     id <GEOMapServiceCitySelectorViewTicket> _ticket;
 }

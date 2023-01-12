@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SMUOBWelcomeController.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI21WelcomeViewController
+@interface _TtC9SeymourUI21WelcomeViewController : SMUOBWelcomeController
 {
+    MISSING_TYPE *dismissHandler;
     MISSING_TYPE *privacyPreferenceClient;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *version;
-    MISSING_TYPE *dismissHandler;
 }
 
 - (void).cxx_destruct;

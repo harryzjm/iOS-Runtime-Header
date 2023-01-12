@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/TUICandidateViewState-Protocol.h>
 
 @class NSString, UIKeyboardCandidateViewStyle;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateViewState : NSObject <NSCopying, TUICandidateViewState>
+@interface UIKeyboardCandidateViewState : NSObject <NSCopying>
 {
     _Bool _hasBackdrop;
     _Bool _candidateNumberEnabled;

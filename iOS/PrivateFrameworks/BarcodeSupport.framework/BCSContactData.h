@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSParsedDataPrivate-Protocol.h>
-
 @class CNContact, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSContactData : NSObject <BCSParsedDataPrivate>
+@interface BCSContactData : NSObject
 {
     CNContact *_contact;
 }

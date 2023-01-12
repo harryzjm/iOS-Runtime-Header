@@ -11,7 +11,6 @@
 @interface _TtC9Coherence14CRTimestampRef : _TtCs12_SwiftObject
 {
     MISSING_TYPE *timestamp;
-    MISSING_TYPE *context;
 }
 
 @end

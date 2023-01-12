@@ -10,6 +10,8 @@
 
 @protocol HFMediaAccessoryProtocol <NSObject>
 @property(readonly, nonatomic) HFMediaAccessoryCommonSettingsManager *commonSettingsManager;
+- (NAFuture *)enableDoorbellChime:(_Bool)arg1;
+- (_Bool)isDoorbellChimeEnabled;
 - (NAFuture *)setEnableAnnounce:(_Bool)arg1;
 - (_Bool)isAnnounceEnabled;
 - (_Bool)isSiriEndpointAccessory;

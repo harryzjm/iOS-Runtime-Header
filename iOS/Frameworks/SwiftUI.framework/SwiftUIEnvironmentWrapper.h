@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/NSSecureCoding-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface SwiftUIEnvironmentWrapper : NSObject <NSSecureCoding>
+@interface SwiftUIEnvironmentWrapper : NSObject
 {
     MISSING_TYPE *environment;
     MISSING_TYPE *phase;

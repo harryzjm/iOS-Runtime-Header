@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @protocol _TtP14FamilyControls30ActivityPickerServiceInterface_
-- (void)configureWithIsPresented:(_Bool)arg1 selectedApplications:(NSArray *)arg2 selectedCategories:(NSArray *)arg3 selectedWebDomains:(NSArray *)arg4;
+- (void)configureWithIsEmbedded:(_Bool)arg1 headerText:(NSString *)arg2 footerText:(NSString *)arg3 includeEntireCategory:(_Bool)arg4 selectedApplications:(NSArray *)arg5 selectedCategories:(NSArray *)arg6 selectedWebDomains:(NSArray *)arg7 selectedUntokenizedApplications:(NSArray *)arg8 selectedUntokenizedCategories:(NSArray *)arg9 selectedUntokenizedWebDomains:(NSArray *)arg10;
 @end
 

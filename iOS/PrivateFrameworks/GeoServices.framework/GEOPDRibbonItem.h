@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPDAmenityRibbonItem, GEOPDFactoidRibbonItem, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDRibbonItem : PBCodable <NSCopying>
+@interface GEOPDRibbonItem : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;

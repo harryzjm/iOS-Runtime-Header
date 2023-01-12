@@ -9,6 +9,8 @@
 @class CUCaptureController;
 
 @protocol CAMSuggestionDelegate <NSObject>
+- (void)captureController:(CUCaptureController *)arg1 didChangeAutoMacroSuggested:(_Bool)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didChangeAutoMacroActive:(_Bool)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputLowLightModeDurationMapping:(CDStruct_c3b9c2ee)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputLowLightStatus:(long long)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputHDRSuggestion:(_Bool)arg2;

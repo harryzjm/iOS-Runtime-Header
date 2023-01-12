@@ -6,29 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafari/SFStartPageDataSourceObserving-Protocol.h>
-#import <MobileSafari/UICollectionViewDelegate-Protocol.h>
-#import <MobileSafari/UICollectionViewDragDelegate_Private-Protocol.h>
-#import <MobileSafari/UICollectionViewDropDelegate_Private-Protocol.h>
-#import <MobileSafari/UIGestureRecognizerDelegate-Protocol.h>
-
 @class NSMapTable, NSString, SFSectionModel, UICollectionView, UICollectionViewDiffableDataSource, UIScrollView, UITapGestureRecognizer, UIView, UIVisualEffectView;
 @protocol SFStartPageCollectionDataSource, SFStartPageCollectionDelegate><SFStartPagePreviewProviding, SFStartPageVisualStyleProviding;
 
 __attribute__((visibility("hidden")))
-@interface SFStartPageCollectionViewController : UIViewController <UICollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDragDelegate_Private, UICollectionViewDropDelegate_Private, SFStartPageDataSourceObserving>
+@interface SFStartPageCollectionViewController : UIViewController
 {
     SFSectionModel *_cachedCustomizationSection;
     UICollectionViewDiffableDataSource *_collectionDataSource;
     UICollectionView *_collectionView;
+    _Bool _hasActiveDrag;
     _Bool _hasAppliedInitialSnapshot;
     _Bool _hasDeferredUpdates;
+    _Bool _hasMadeFirstCommit;
     double _keyboardBottomInset;
+    long long _lastLayoutOrientation;
     double _lastLayoutWidth;
     UIVisualEffectView *_navigationBarBackdrop;
     UIView *_navigationBarSeparator;
     UIVisualEffectView *_statusBarBackdrop;
-    UIView *_statusBarSeparator;
     UITapGestureRecognizer *_tapToDismissGestureRecognizer;
     id <SFStartPageVisualStyleProviding> _visualStyleProvider;
     NSMapTable *_contextMenuToItemIdentifierMap;
@@ -109,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)keyboardDidChangeFrame:(id)arg1;
 - (void)_receivedTapToDismissGesture;
 - (void)updateBackgroundStyle;
+@property(readonly, nonatomic, getter=isTrackingDropSession) _Bool trackingDropSession;
 - (void)_updateNavigationItemAnimated:(_Bool)arg1;
 - (void)navigationBarPositionDidChange;
 - (void)scrollToTop;
@@ -120,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillLayoutSubviews;
 - (void)viewLayoutMarginsDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewIsAppearing:(_Bool)arg1;
 - (void)viewDidLoad;

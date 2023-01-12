@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/GQWrapPointGenerator-Protocol.h>
-
 @class GQDSStyle, GQDWPContainerHint, GQHStyle, GQWrapPointSet, NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQHPagesState <GQWrapPointGenerator>
+@interface GQHPagesState
 {
     struct __CFDictionary *mFloatingDrawables;
     int mMode;

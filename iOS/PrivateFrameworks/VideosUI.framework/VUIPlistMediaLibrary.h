@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "VUIDeviceMediaLibrary.h"
+
 @class NSObject, NSOperationQueue, VUIPlistMediaDatabase;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VUIPlistMediaLibrary
+@interface VUIPlistMediaLibrary : VUIDeviceMediaLibrary
 {
     VUIPlistMediaDatabase *_database;
     NSObject<OS_dispatch_queue> *_serialProcessingDispatchQueue;

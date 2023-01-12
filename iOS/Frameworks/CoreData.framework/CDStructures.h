@@ -12,24 +12,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct _ExtraEntityIVars {
-    id _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-    id _field5;
-    id _field6;
-    struct os_unfair_lock_s _field7;
-    int _field8;
-    void *_field9;
-};
-
-struct _NSExtraPropertyIVars {
-    id _field1;
-    long long _field2;
-    long long _field3;
-};
-
 struct _NSFaultingMutableArrayFlags {
     unsigned int _isFault:1;
     unsigned int _reserved:31;
@@ -95,21 +77,11 @@ struct sqlite3_snapshot {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    id _field1;
-    SEL _field2;
-    void *_field3;
-} CDStruct_f8f0024c;
-
-typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
-
-typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
 
 typedef struct {
     unsigned int _field1;
@@ -135,47 +107,4 @@ typedef struct {
     void *_field12;
     void *_field13;
 } CDStruct_2b54fbaf;
-
-typedef struct {
-    int _field1;
-    void *_field2;
-    id _field3;
-    unsigned long long _field4;
-    unsigned char _field5;
-    unsigned long long _field6;
-    void *_field7;
-    id _field8;
-    char *_field9;
-    struct _moFactoryClassFlags {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :26;
-    } _field10;
-} CDStruct_977f6bcf;
-
-typedef struct {
-    int _field1;
-    void *_field2;
-    id _field3;
-    unsigned long long _field4;
-    unsigned char _field5;
-    unsigned long long _field6;
-    void *_field7;
-    unsigned char _field8[32];
-    char *_field9;
-    struct _moFactoryClassFlags {
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :1;
-        unsigned int :25;
-    } _field10;
-} CDStruct_c6379f01;
 

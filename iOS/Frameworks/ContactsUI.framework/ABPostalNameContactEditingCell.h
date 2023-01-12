@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/UITextFieldDelegate-Protocol.h>
+#import "CNContactCell.h"
 
 @class NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface ABPostalNameContactEditingCell <UITextFieldDelegate>
+@interface ABPostalNameContactEditingCell : CNContactCell
 {
     UITextField *_editingTextField;
 }

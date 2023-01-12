@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapsUI/MKTransitLineIncidentsViewControllerDelegate-Protocol.h>
-#import <MapsUI/MUPlaceSectionControlling-Protocol.h>
-
-@class MKUGCCallToActionViewAppearance, MUFixedHeightAwareViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSString, UIView, UIViewController;
+@class MKUGCCallToActionViewAppearance, MUFixedHeightAwareViewController, MUPlaceSectionFooterViewModel, MUPlaceSectionHeaderViewModel, MUPlaceSectionView, NSArray, NSString, UIView, UIViewController;
 @protocol MUInfoCardAnalyticsDelegate, MUTransitLineIncidentsSectionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUTransitLineIncidentsSectionController <MKTransitLineIncidentsViewControllerDelegate, MUPlaceSectionControlling>
+@interface MUTransitLineIncidentsSectionController
 {
     MUFixedHeightAwareViewController *_fixedHeightAwareVC;
     MUPlaceSectionView *_sectionView;
@@ -35,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) MUPlaceSectionFooterViewModel *sectionFooterViewModel;
 @property(readonly, nonatomic) MUPlaceSectionHeaderViewModel *sectionHeaderViewModel;
+@property(readonly, nonatomic) NSArray *sectionViews;
 @property(retain, nonatomic) MKUGCCallToActionViewAppearance *submissionStatus;
 @property(readonly) Class superclass;
 

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesCloud/ICDelegationServiceConnectionDelegate-Protocol.h>
-
 @class ICDelegationProviderNetService, ICDelegationProviderServiceProtocolHandler, ICDelegationServiceConnection, ICRequestContext, ICUserIdentityStore, NSArray, NSMutableDictionary, NSString;
 @protocol ICDelegationProviderServiceSessionDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICDelegationProviderServiceSession : NSObject <ICDelegationServiceConnectionDelegate>
+@interface ICDelegationProviderServiceSession : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;

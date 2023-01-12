@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <QuickLook/PHVideoScrubberFilmstripView-Protocol.h>
-
 @class AVAsset, NSString, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface QLWaveformView : UIView <PHVideoScrubberFilmstripView>
+@interface QLWaveformView : UIView
 {
     struct CGSize _waveSize;
     UIView *_lineView;

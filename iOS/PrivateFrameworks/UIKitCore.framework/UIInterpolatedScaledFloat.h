@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIInterpolatedFloat.h"
+
 __attribute__((visibility("hidden")))
-@interface UIInterpolatedScaledFloat
+@interface UIInterpolatedScaledFloat : UIInterpolatedFloat
 {
 }
 
-+ (id)epsilon;
-+ (id)valueWithFloat:(double)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
 
 @end
 

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-#import <TSCharts/TSDMixing-Protocol.h>
-
 @class NSArray, NSMutableArray, NSMutableDictionary;
 @protocol TSCHNotifyOnModify;
 
-@interface TSCHChartGrid : NSObject <NSCopying, TSDMixing>
+@interface TSCHChartGrid : NSObject
 {
     int _direction;
     _Bool _dirty;

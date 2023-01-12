@@ -6,14 +6,10 @@
 
 #import <WorkflowUICore/WFEmbeddableActionUserInterface.h>
 
-#import <ActionKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFReferenceLibraryViewControllerDelegate-Protocol.h>
-#import <ActionKitUI/WFShowDefinitionActionUserInterface-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFShowDefinitionActionUIKitUserInterface : WFEmbeddableActionUserInterface <WFReferenceLibraryViewControllerDelegate, WFShowDefinitionActionUserInterface, UIAdaptivePresentationControllerDelegate>
+@interface WFShowDefinitionActionUIKitUserInterface : WFEmbeddableActionUserInterface
 {
     CDUnknownBlockType _completionHandler;
 }

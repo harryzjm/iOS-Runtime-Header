@@ -41,11 +41,6 @@ struct CGSize {
     double height;
 };
 
-struct CGVector {
-    double _field1;
-    double _field2;
-};
-
 struct PATHSEGMENT {
     unsigned int :4;
     unsigned int :60;

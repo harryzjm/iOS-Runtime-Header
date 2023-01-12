@@ -13,15 +13,9 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
-    MISSING_TYPE *backgroundView;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *barCompressionManager;
-    MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *mastheadViewProviderDelegate;
-    MISSING_TYPE *audioTabVisibilitySignal;
-    MISSING_TYPE *readingHistory;
-    MISSING_TYPE *commandCenter;
-    MISSING_TYPE *newsActivityManager;
 }
 
 - (void).cxx_destruct;

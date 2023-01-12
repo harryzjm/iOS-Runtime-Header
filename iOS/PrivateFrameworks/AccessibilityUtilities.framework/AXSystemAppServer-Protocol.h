@@ -6,20 +6,21 @@
 
 #import <AccessibilityUtilities/NSObject-Protocol.h>
 
+@class NSString;
 @protocol AXSystemAppServer;
 
 @protocol AXSystemAppServer <NSObject>
 + (id <AXSystemAppServer>)server;
 - (_Bool)showControlCenter:(_Bool)arg1;
+- (_Bool)isShelfSwitcherVisible;
 - (_Bool)isLockScreenVisible;
 - (_Bool)isScreenshotWindowVisible;
 - (_Bool)isPasscodeLockVisible;
 - (void)wakeUpDeviceIfNecessary;
 - (_Bool)isSystemSleeping;
 - (_Bool)isNonExclusiveSystemUIFocusableIncludingPIPWindow:(_Bool)arg1;
-- (void)dismissShelfSwitcher;
 - (void)rebootDevice;
-- (_Bool)isMediaPlaying;
+- (void)isMediaPlayingForApp:(NSString *)arg1 completionHandler:(void (^)(_Bool))arg2;
 - (_Bool)isReceivingAirPlay;
 - (_Bool)isSiriTalkingOrListening;
 - (_Bool)isSoftwareUpdateUIVisible;
@@ -29,7 +30,6 @@
 - (_Bool)isControlCenterVisible;
 - (_Bool)isNotificationCenterVisible;
 - (_Bool)isDockVisible;
-- (_Bool)isShelfSwitcherVisible;
 - (_Bool)isAppSwitcherVisible;
 - (_Bool)isSiriVisible;
 - (_Bool)dismissSiri;

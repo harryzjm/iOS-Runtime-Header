@@ -9,6 +9,7 @@
 @class NSArray, NSDictionary, NSString;
 
 @interface FBSSceneSpecification (UIKitSceneSpecification)
+@property(readonly, nonatomic) _Bool allowsConfigurationByAppDelegate;
 @property(readonly, nonatomic) _Bool affectsScreenOrientation;
 @property(readonly, nonatomic) _Bool affectsAppLifecycleIfInternal;
 @property(readonly, nonatomic) _Bool isInternal;
@@ -25,5 +26,6 @@
 @property(readonly, nonatomic) NSArray *initialActionHandlers;
 @property(readonly, nonatomic) NSArray *finalSettingsDiffActions;
 @property(readonly, nonatomic) NSArray *initialSettingsDiffActions;
+@property(readonly, nonatomic) NSString *overlayAppSceneConfigurationName;
 @end
 

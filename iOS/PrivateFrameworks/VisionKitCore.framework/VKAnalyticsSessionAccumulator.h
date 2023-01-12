@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableArray, NSString, VKImageAnalysis;
+@class NSDate, NSDictionary, NSMutableArray, NSString, VKCImageAnalysis;
 
 __attribute__((visibility("hidden")))
 @interface VKAnalyticsSessionAccumulator : NSObject
@@ -15,18 +15,22 @@ __attribute__((visibility("hidden")))
     _Bool _didActivateHighlightAll;
     _Bool _didActivateRegex;
     _Bool _isPerformingAutomatedTest;
-    VKImageAnalysis *_analysis;
+    VKCImageAnalysis *_analysis;
     NSMutableArray *_interactionEvents;
     NSMutableArray *_textEvents;
+    NSMutableArray *_quickActionEvents;
     NSMutableArray *_mrcEvents;
     NSMutableArray *_ddEvents;
     NSMutableArray *_vsEvents;
+    NSMutableArray *_subjectEvents;
     NSDate *_sessionOpenDate;
     unsigned long long _numberOfEvents;
     unsigned long long _numberOfTextEvents;
     unsigned long long _numberOfMRCEvents;
     unsigned long long _numberOfDDEvents;
     unsigned long long _numberOfVSEvents;
+    unsigned long long _numberOfQuickActionEvents;
+    unsigned long long _numberOfSubjectEvents;
     unsigned long long _numberOfMRCElements;
     unsigned long long _numberOfDDElements;
     unsigned long long _numberOfVSElements;
@@ -49,6 +53,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long numberOfVSElements; // @synthesize numberOfVSElements=_numberOfVSElements;
 @property(nonatomic) unsigned long long numberOfDDElements; // @synthesize numberOfDDElements=_numberOfDDElements;
 @property(nonatomic) unsigned long long numberOfMRCElements; // @synthesize numberOfMRCElements=_numberOfMRCElements;
+@property(nonatomic) unsigned long long numberOfSubjectEvents; // @synthesize numberOfSubjectEvents=_numberOfSubjectEvents;
+@property(nonatomic) unsigned long long numberOfQuickActionEvents; // @synthesize numberOfQuickActionEvents=_numberOfQuickActionEvents;
 @property(nonatomic) unsigned long long numberOfVSEvents; // @synthesize numberOfVSEvents=_numberOfVSEvents;
 @property(nonatomic) unsigned long long numberOfDDEvents; // @synthesize numberOfDDEvents=_numberOfDDEvents;
 @property(nonatomic) unsigned long long numberOfMRCEvents; // @synthesize numberOfMRCEvents=_numberOfMRCEvents;
@@ -56,12 +62,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long numberOfEvents; // @synthesize numberOfEvents=_numberOfEvents;
 @property(nonatomic) _Bool didSelectText; // @synthesize didSelectText=_didSelectText;
 @property(retain, nonatomic) NSDate *sessionOpenDate; // @synthesize sessionOpenDate=_sessionOpenDate;
+@property(retain, nonatomic) NSMutableArray *subjectEvents; // @synthesize subjectEvents=_subjectEvents;
 @property(retain, nonatomic) NSMutableArray *vsEvents; // @synthesize vsEvents=_vsEvents;
 @property(retain, nonatomic) NSMutableArray *ddEvents; // @synthesize ddEvents=_ddEvents;
 @property(retain, nonatomic) NSMutableArray *mrcEvents; // @synthesize mrcEvents=_mrcEvents;
+@property(retain, nonatomic) NSMutableArray *quickActionEvents; // @synthesize quickActionEvents=_quickActionEvents;
 @property(retain, nonatomic) NSMutableArray *textEvents; // @synthesize textEvents=_textEvents;
 @property(retain, nonatomic) NSMutableArray *interactionEvents; // @synthesize interactionEvents=_interactionEvents;
-@property(retain, nonatomic) VKImageAnalysis *analysis; // @synthesize analysis=_analysis;
+@property(retain, nonatomic) VKCImageAnalysis *analysis; // @synthesize analysis=_analysis;
 - (id)description;
 - (void)send;
 @property(readonly, nonatomic) NSDictionary *coreAnalyticsDictionary;

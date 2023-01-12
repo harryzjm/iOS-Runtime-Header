@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIRemoteViewFocusProxy-Protocol.h>
-#import <UIKitCore/_UIScrollToTopView-Protocol.h>
-#import <UIKitCore/_UIViewBoundingPathChangeObserver-Protocol.h>
+#import "UIView.h"
 
 @class NSString, _UIRemoteViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UISizeTrackingView <_UIScrollToTopView, _UIRemoteViewFocusProxy, _UIViewBoundingPathChangeObserver>
+@interface _UISizeTrackingView : UIView
 {
     _UIRemoteViewController *_remoteViewController;
     id _viewControllerOperatorProxy;
@@ -28,13 +26,16 @@ __attribute__((visibility("hidden")))
     } _sizeTrackingViewFlags;
 }
 
++ (_Bool)_supportsInvalidatingFocusCache;
 + (id)viewWithRemoteViewController:(id)arg1 viewControllerOperatorProxy:(id)arg2 textEffectsOperatorProxy:(id)arg3;
 - (void).cxx_destruct;
+- (id)focusItemsInRect:(struct CGRect)arg1;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (_Bool)canBecomeFocused;
 @property(readonly, nonatomic) _UIRemoteViewController *remoteViewController;
 - (void)_prepareForWindowDealloc;
 - (void)_prepareForWindowHostingSceneRemoval;
+- (void)_viewDidMoveFromScreen:(id)arg1 toScreen:(id)arg2;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_updateSceneGeometries:(id)arg1;
 - (void)_willMoveToWindow:(id)arg1;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (id)_boundingPathForRemoteViewService;
 - (_Bool)_canSendViewServiceActualBoundingPath;
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
 - (_Bool)_fencingEffectsAreVisible;
 - (long long)_interfaceOrientationForScene:(id)arg1;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;

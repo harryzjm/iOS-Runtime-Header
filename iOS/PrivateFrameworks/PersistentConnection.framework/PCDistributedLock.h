@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PersistentConnection/NSLocking-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PCDistributedLock : NSObject <NSLocking>
+@interface PCDistributedLock : NSObject
 {
     NSString *_path;
     int _fd;

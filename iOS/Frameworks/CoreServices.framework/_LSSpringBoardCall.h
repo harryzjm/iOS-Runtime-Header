@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSCopying-Protocol.h>
-
 @class BSServiceConnectionEndpoint, NSDictionary, NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
-@interface _LSSpringBoardCall : NSObject <NSCopying>
+@interface _LSSpringBoardCall : NSObject
 {
     NSString *_schemeIfNotFileURL;
     _Bool _callCompletionHandlerWhenFullyComplete;

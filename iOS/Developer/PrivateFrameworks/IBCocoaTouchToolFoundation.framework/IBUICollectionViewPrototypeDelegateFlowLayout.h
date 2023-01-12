@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UICollectionViewDelegateFlowLayout-Protocol.h>
-
 @class NSString;
 
-@interface IBUICollectionViewPrototypeDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout>
+@interface IBUICollectionViewPrototypeDelegateFlowLayout : NSObject
 {
 }
 

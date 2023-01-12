@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, SKUIComposeTextFieldConfiguration, UILabel, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface SKUIComposeTextField : UIView <UITextFieldDelegate>
+@interface SKUIComposeTextField : UIView
 {
     SKUIComposeTextFieldConfiguration *_configuration;
     long long _currentTextLength;

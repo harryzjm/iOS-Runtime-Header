@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerTransitionCoordinator-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewControllerImmediateAnimationTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
+@interface _UIViewControllerImmediateAnimationTransitionCoordinator : NSObject
 {
     UIView *_containerView;
 }

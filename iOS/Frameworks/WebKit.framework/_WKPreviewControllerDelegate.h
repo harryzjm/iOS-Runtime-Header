@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/QLPreviewControllerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _WKPreviewControllerDelegate : NSObject <QLPreviewControllerDelegate>
+@interface _WKPreviewControllerDelegate : NSObject
 {
     void *_previewController;
     struct IntRect _linkRect;

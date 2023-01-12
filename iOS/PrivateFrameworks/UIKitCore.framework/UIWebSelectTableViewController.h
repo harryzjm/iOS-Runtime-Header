@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyInput-Protocol.h>
+#import "UITableViewController.h"
 
 @class DOMHTMLSelectElement, NSArray, NSString, UITextInputPasswordRules, UIWebSelectPopover;
 
 __attribute__((visibility("hidden")))
-@interface UIWebSelectTableViewController <UIKeyInput>
+@interface UIWebSelectTableViewController : UITableViewController
 {
     DOMHTMLSelectElement *_selectionNode;
     NSArray *_cachedItems;

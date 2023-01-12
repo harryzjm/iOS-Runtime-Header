@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/CAAnimationDelegate-Protocol.h>
-
 @class NSString, UIActivityIndicatorView, UIImageView, _MKUserTrackingButton;
 @protocol MKUserTrackingButtonTarget, MKUserTrackingView;
 
 __attribute__((visibility("hidden")))
-@interface _MKUserTrackingButtonController : NSObject <CAAnimationDelegate>
+@interface _MKUserTrackingButtonController : NSObject
 {
     id <MKUserTrackingButtonTarget> _target;
     id <MKUserTrackingView> _userTrackingView;

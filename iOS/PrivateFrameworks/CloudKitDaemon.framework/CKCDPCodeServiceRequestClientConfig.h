@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCDPCodeServiceRequestServiceClientConfig;
 
-@interface CKCDPCodeServiceRequestClientConfig : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestClientConfig : PBCodable
 {
     CKCDPCodeServiceRequestServiceClientConfig *_config;
     int _serviceType;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
-
 @class NSString, VKMapView;
 
 __attribute__((visibility("hidden")))
-@interface MKBasicMapView : UIView <GEOResourceManifestTileGroupObserver>
+@interface MKBasicMapView : UIView
 {
     UIView *_hostView;
     VKMapView *_mapView;

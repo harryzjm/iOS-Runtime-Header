@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LKTMetalContext;
+@class VNMetalContext;
 @protocol MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface LKTOpticalFlowGPU
 {
-    LKTMetalContext *_mtlContext;
+    VNMetalContext *_mtlContext;
     id <MTLCommandQueue> _commandQueue;
     id <MTLComputePipelineState> _computePipelines[9];
     unsigned long long _maxThreadExecutionWidth;
@@ -46,14 +46,14 @@ __attribute__((visibility("hidden")))
 - (_Bool)_createImagePyramidWithCommandBuffer:(id)arg1 in_pixelbuf:(struct __CVBuffer *)arg2 I_idx:(int)arg3 error:(id *)arg4;
 - (void)_computeOpticalFlow;
 - (_Bool)_setupBufferAndReturnError:(id *)arg1;
-- (void)_setupPipelines;
+- (_Bool)_setupPipelinesReturnError:(id *)arg1;
 - (void)_initMemory:(int)arg1 height:(int)arg2 numScales:(int)arg3;
 - (_Bool)estimateFlowStream:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (_Bool)estimateFlowFromReference:(struct __CVBuffer *)arg1 target:(struct __CVBuffer *)arg2 error:(id *)arg3;
 - (_Bool)setOutputUV:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (void)waitUntilCompleted;
 - (void)dealloc;
-- (id)initWithMetalContext:(id)arg1 width:(int)arg2 height:(int)arg3 numScales:(int)arg4;
+- (id)initWithMetalContext:(id)arg1 width:(int)arg2 height:(int)arg3 numScales:(int)arg4 error:(id *)arg5;
 
 @end
 

@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSOrderedSetSetProxy
+@interface __NSOrderedSetSetProxy : NSSet
 {
     id _orderedSet;
 }

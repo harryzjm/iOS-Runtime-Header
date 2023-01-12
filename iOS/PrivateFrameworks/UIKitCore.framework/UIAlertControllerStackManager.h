@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneComponentProviding-Protocol.h>
-
 @class NSMutableArray, NSString, UIScene;
 
 __attribute__((visibility("hidden")))
-@interface UIAlertControllerStackManager : NSObject <_UISceneComponentProviding>
+@interface UIAlertControllerStackManager : NSObject
 {
     NSMutableArray *_alertControllerStack;
     NSMutableArray *_hiddenAlertControllers;

@@ -9,13 +9,13 @@
 @class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestCouponCodeUpdate, PKPaymentRequestMerchantSessionUpdate, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
+- (void)handleDismissWithCompletion:(void (^)(void))arg1;
 - (void)authorizationDidChangeCouponCodeCompleteWithUpdate:(PKPaymentRequestCouponCodeUpdate *)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(PKPaymentRequestShippingContactUpdate *)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(PKPaymentRequestShippingMethodUpdate *)arg1;
 - (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1 signatureRequest:(PKApplePayTrustSignatureRequest *)arg2;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
-- (void)authorizationDidAuthorizeDisbursementWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
@@ -30,8 +30,8 @@
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(NSArray *)arg2;
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidRequestMerchantSessionCompleteWithSession:(PKPaymentMerchantSession *)arg1 error:(NSError *)arg2;
+- (void)authorizationDidAuthorizeDisbursementWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)prepareWithPaymentRequest:(PKPaymentRequest *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)handleDismissWithCompletion:(void (^)(void))arg1;
 - (void)handleHostApplicationDidCancel;
 @end
 

@@ -17,6 +17,8 @@
 - (_Bool)_axInfoAction;
 - (id)accessibilityCustomActions;
 - (double)_accessibilityAllowedGeometryOverlap;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityElements;
 

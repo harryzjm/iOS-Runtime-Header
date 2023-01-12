@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKRouteLineObserverProtocol-Protocol.h>
-
 @class VKRouteLine;
 
 __attribute__((visibility("hidden")))
-@interface VKRouteLineObserver : NSObject <VKRouteLineObserverProtocol>
+@interface VKRouteLineObserver : NSObject
 {
     void *_transitSupport;
     VKRouteLine *_routeLine;
 }
 
+- (void).cxx_destruct;
 - (void)routeLineDidUpdateSections:(id)arg1;
 - (void)dealloc;
 - (id)initWithTransitSupport:(void *)arg1 andRouteLine:(id)arg2;

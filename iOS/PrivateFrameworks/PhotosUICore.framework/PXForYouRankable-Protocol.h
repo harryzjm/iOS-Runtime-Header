@@ -7,10 +7,7 @@
 @class NSDate;
 
 @protocol PXForYouRankable
-@property(readonly, nonatomic) unsigned long long gadgetType;
-@property(readonly, nonatomic) long long priorityType;
-@property(readonly, nonatomic) long long defaultPriority;
-@property(readonly, nonatomic) NSDate *priorityDate;
-- (void)resetPriorityDate;
+@property(readonly, nonatomic) long long forYouContentIdentifier;
+@property(readonly, nonatomic) NSDate *mostRecentContentDate;
 @end
 

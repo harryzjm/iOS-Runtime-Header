@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSString *type; // @synthesize type=_type;
 - (id)_fallbackKey;
 - (id)description;
+- (id)symbol;
 - (id)makeResourceProvider;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

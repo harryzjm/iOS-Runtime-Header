@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct RunLoopController *_runLoopController;
     struct AnimationRunner *_animationRunner;
     shared_ptr_e963992e _taskContext;
-    _retain_ptr_c0a21da9 _vkCamera;
+    _retain_ptr_a171892e _vkCamera;
     shared_ptr_46708168 _camera;
     id <MDRenderTarget> _displayTarget;
     _Bool _userIsGesturing;
@@ -34,10 +34,10 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) void *mapEngine; // @synthesize mapEngine=_mapEngine;
-@property(nonatomic) id <MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
+@property(nonatomic) __weak id <MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
 @property(nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
 @property(nonatomic) shared_ptr_46708168 camera; // @synthesize camera=_camera;
-@property(nonatomic) _retain_ptr_c0a21da9 vkCamera; // @synthesize vkCamera=_vkCamera;
+@property(nonatomic) _retain_ptr_a171892e vkCamera; // @synthesize vkCamera=_vkCamera;
 - (long long)tileSize;
 - (void)didBecomeInActive;
 - (void)didBecomeActive;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKLParsedObject-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (CKLResponseLogging) <CKLParsedObject>
+@interface NSObject (CKLResponseLogging)
 - (void)CKLogToFileHandle:(id)arg1;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedGuidanceEvent, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationDetails, MNRouteDistanceInfo, MNTracePlaybackDetails, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError, NSSet, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationDetails, MNRouteDistanceInfo, MNTracePlaybackDetails, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError, NSSet, NSString, NSUUID;
 @protocol MNNavigationServiceProxy;
 
 @protocol MNNavigationServiceClientInterface <NSObject>
@@ -35,7 +35,7 @@
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateETAResponseForRoute:(MNActiveRouteInfo *)arg2;
-- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3;
+- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3 batteryChargeInfo:(MNBatteryChargeInfo *)arg4;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
@@ -58,7 +58,7 @@
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateProceedToRouteDistance:(double)arg2 displayString:(NSString *)arg3 closestStepIndex:(unsigned long long)arg4;
 - (void)navigationServiceProxyDidArrive:(id <MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyDidEnterPreArrivalState:(id <MNNavigationServiceProxy>)arg1;
-- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didEnterPreArrivalStateForWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateDistanceUntilManeuver:(double)arg2 timeUntilManeuver:(double)arg3 forStepIndex:(unsigned long long)arg4;
@@ -71,7 +71,8 @@
 - (void)navigationServiceProxyWillPauseNavigation:(id <MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didUpdateNavigationDetails:(MNNavigationDetails *)arg2;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didEndWithReason:(unsigned long long)arg2;
-- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(int)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
+- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 willEndWithReason:(unsigned long long)arg2;
+- (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(long long)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5 simulationType:(long long)arg6 isResumingMultipointRoute:(_Bool)arg7;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id <MNNavigationServiceProxy>)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 @end

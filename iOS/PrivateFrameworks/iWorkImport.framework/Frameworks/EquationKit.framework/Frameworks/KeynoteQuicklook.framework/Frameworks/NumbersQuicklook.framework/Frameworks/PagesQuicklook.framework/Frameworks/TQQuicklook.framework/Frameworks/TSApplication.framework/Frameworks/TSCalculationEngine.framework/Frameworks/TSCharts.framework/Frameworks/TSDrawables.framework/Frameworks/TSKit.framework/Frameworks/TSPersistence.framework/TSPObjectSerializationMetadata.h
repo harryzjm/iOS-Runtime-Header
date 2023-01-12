@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class NSArray, TSPDataMetadataMap;
 
-@interface TSPObjectSerializationMetadata
+@interface TSPObjectSerializationMetadata : TSPObject
 {
     struct ObjectSerializationMetadata _message;
     TSPDataMetadataMap *_identifierToDataMetadataMap;

@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class PHASEExternalInputStreamDefinition;
+@class NSUUID, PHASEExternalInputStreamDefinition;
 
 __attribute__((visibility("hidden")))
 @interface ManagedInputStream : NSObject
 {
     _Bool _streamPaused;
     PHASEExternalInputStreamDefinition *_definition;
+    NSUUID *_attributedClientID;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSUUID *attributedClientID; // @synthesize attributedClientID=_attributedClientID;
 @property(retain, nonatomic) PHASEExternalInputStreamDefinition *definition; // @synthesize definition=_definition;
 @property(nonatomic, getter=isStreamPaused) _Bool streamPaused; // @synthesize streamPaused=_streamPaused;
-- (id)initWithPaused:(_Bool)arg1 definition:(id)arg2;
+- (id)initWithPaused:(_Bool)arg1 attributedTo:(id)arg2 definition:(id)arg3;
 
 @end
 

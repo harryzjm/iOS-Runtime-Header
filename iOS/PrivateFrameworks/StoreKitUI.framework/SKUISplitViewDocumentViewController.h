@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUINavigationDocumentDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUINavigationDocumentController, SKUISplitViewTemplateElement, UISplitViewController, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUISplitViewDocumentViewController <SKUINavigationDocumentDelegate, SKUIDocumentViewController>
+@interface SKUISplitViewDocumentViewController : SKUIViewController
 {
     UIViewController *_delayingPresentationViewController;
     UISplitViewController *_splitViewController;

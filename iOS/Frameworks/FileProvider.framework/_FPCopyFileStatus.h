@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _FPCopyFileStatus : NSObject
 {
+    int _copyError;
     NSProgress *_progress;
     NSMutableDictionary *_lastBytesCopiedByFile;
 }
 
 - (void).cxx_destruct;
+@property int copyError; // @synthesize copyError=_copyError;
 @property(retain) NSMutableDictionary *lastBytesCopiedByFile; // @synthesize lastBytesCopiedByFile=_lastBytesCopiedByFile;
 @property(retain) NSProgress *progress; // @synthesize progress=_progress;
 - (void)finishCopyingFile:(id)arg1 state:(struct _copyfile_state *)arg2;

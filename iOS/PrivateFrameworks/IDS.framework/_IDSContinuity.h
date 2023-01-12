@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
-
 @class CUTWeakReference, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _IDSContinuity : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSContinuity : NSObject
 {
     id _delegateContext;
     CUTWeakReference *_delegate;

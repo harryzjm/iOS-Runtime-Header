@@ -10,6 +10,7 @@
 - (_Bool)isThirdParty;
 - (_Bool)isEqualForSmartPromptPurposes:(id)arg1;
 - (unsigned long long)hashForSmartPromptPurposes;
+- (id)_descriptorWithExtensionBundleIdentifier:(id)arg1;
 - (id)initWithSerializedRepresentation:(id)arg1;
 - (id)serializedRepresentation;
 @end

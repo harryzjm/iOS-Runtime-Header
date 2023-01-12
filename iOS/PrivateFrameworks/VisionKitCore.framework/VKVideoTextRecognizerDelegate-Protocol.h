@@ -9,12 +9,12 @@
 @class NSArray, VKVideoTextRecognizer;
 
 @protocol VKVideoTextRecognizerDelegate <NSObject>
-- (struct CGRect)frame;
+- (struct CGPoint)visionPointFromLayerPoint:(struct CGPoint)arg1;
 - (struct CGPoint)layerPointFromVisionPoint:(struct CGPoint)arg1;
 - (void)videoTextRecognizer:(VKVideoTextRecognizer *)arg1 added:(NSArray *)arg2 updated:(NSArray *)arg3 removed:(NSArray *)arg4;
 
 @optional
-- (void)videoTextRecognizer:(VKVideoTextRecognizer *)arg1 added:(NSArray *)arg2 updated:(NSArray *)arg3 removed:(NSArray *)arg4 bufferTimestamp:(CDStruct_1b6d18a9)arg5;
+- (void)videoTextRecognizer:(VKVideoTextRecognizer *)arg1 added:(NSArray *)arg2 updated:(NSArray *)arg3 removed:(NSArray *)arg4 bufferTimestamp:(CDStruct_198678f7)arg5;
 - (void)videoTextRecognizer:(VKVideoTextRecognizer *)arg1 didChangeStability:(unsigned long long)arg2;
 @end
 

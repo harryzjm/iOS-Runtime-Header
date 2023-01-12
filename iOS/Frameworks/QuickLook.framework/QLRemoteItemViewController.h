@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/QLCustomItemViewControllerHost-Protocol.h>
-#import <QuickLook/QLPrintingProtocol-Protocol.h>
-#import <QuickLook/QLRemotePopoverTracker-Protocol.h>
+#import <QuickLookUICore/QLItemViewController.h>
 
 @class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLPreviewExtensionHostContext, QLRemotePreviewHostViewController;
 @protocol QLPrintingProtocol, QLRemotePopoverTracker;
 
 __attribute__((visibility("hidden")))
-@interface QLRemoteItemViewController <QLPrintingProtocol, QLCustomItemViewControllerHost, QLRemotePopoverTracker>
+@interface QLRemoteItemViewController : QLItemViewController
 {
     NSExtension *_extension;
     QLPreviewExtensionHostContext *_hostContext;

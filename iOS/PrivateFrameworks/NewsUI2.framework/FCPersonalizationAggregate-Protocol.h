@@ -17,6 +17,7 @@
 - (double)personalizationValueWithBaseline:(id <FCPersonalizationAggregate>)arg1 decayRate:(double)arg2;
 @property(nonatomic, readonly) NSDictionary *dictionaryRepresentation;
 @property(nonatomic, readonly) double confidence;
+@property(nonatomic, readonly) double ctr;
 @property(nonatomic, readonly) NSDate *lastModified;
 @property(nonatomic, readonly) unsigned long long eventCount;
 @property(nonatomic, readonly) double impressions;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <IMAVCore/AVConferenceDelegate-Protocol.h>
+#import "IMAVInterface.h"
 
 @class AVConference, NSLock, NSMutableArray, NSMutableDictionary, NSNumber;
 
-@interface IMAVConferenceInterface <AVConferenceDelegate>
+@interface IMAVConferenceInterface : IMAVInterface
 {
     NSMutableArray *_avConferencesToCleanup;
     NSMutableDictionary *_avConferences;

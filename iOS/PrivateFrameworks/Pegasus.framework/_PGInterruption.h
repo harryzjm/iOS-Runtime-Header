@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Pegasus/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _PGInterruption : NSObject <NSCopying>
+@interface _PGInterruption : NSObject
 {
     unsigned long long _bs_hash;
     long long _reason;

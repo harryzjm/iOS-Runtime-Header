@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIVectorTextLayoutRun-Protocol.h>
-
 @class NSAttributedString, NSString, _UIVectorTextLayoutInfo;
 
 __attribute__((visibility("hidden")))
-@interface _UIVectorTextLayoutRun : NSObject <_UIVectorTextLayoutRun>
+@interface _UIVectorTextLayoutRun : NSObject
 {
     unsigned long long _glyphCount;
     NSAttributedString *_sourceString;

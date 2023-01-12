@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/ARQuickLookWebKitItemDelegate-Protocol.h>
-#import <WebKit/QLPreviewControllerDataSource-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _WKPreviewControllerDataSource : NSObject <QLPreviewControllerDataSource, ARQuickLookWebKitItemDelegate>
+@interface _WKPreviewControllerDataSource : NSObject
 {
     struct RetainPtr<NSItemProvider> _itemProvider;
     struct RetainPtr<ARQuickLookWebKitItem> _item;

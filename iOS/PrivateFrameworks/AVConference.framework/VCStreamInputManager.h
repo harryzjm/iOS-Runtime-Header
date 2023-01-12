@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCStreamInputDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCStreamInputManager <VCStreamInputDelegate>
+@interface VCStreamInputManager
 {
     NSObject<OS_dispatch_queue> *_xpcQueue;
     NSObject<OS_dispatch_queue> *_streamInputQueue;
@@ -18,15 +16,20 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void)didResumeStreamInput:(id)arg1;
+- (void)didSuspendStreamInput:(id)arg1;
 - (void)didStopStreamInput:(id)arg1;
 - (void)didStartStreamInput:(id)arg1;
+- (id)streamInputWithID:(long long)arg1;
 - (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
 - (void)registerDidClientDieBlock:(id)arg1;
 - (void)registerService:(char *)arg1 weakSelf:(id)arg2 eventLogLevel:(int)arg3 block:(CDUnknownBlockType)arg4;
 - (void)registerService:(char *)arg1 weakSelf:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (_Bool)pushSampleBufferWithXPCArguments:(id)arg1 result:(id *)arg2 error:(id *)arg3;
+- (_Bool)clientProcessDiedWithXPCArguments:(id)arg1 result:(id *)arg2 error:(id *)arg3;
 - (_Bool)terminateStreamInputWithXPCArguments:(id)arg1 result:(id *)arg2 error:(id *)arg3;
+- (_Bool)getServerPidWithXPCArguments:(id)arg1 result:(id *)arg2 error:(id *)arg3;
 - (_Bool)initializeStreamInputWithXPCArguments:(id)arg1 result:(id *)arg2 error:(id *)arg3;
 - (id)newStreamInputID;
 - (void)dealloc;

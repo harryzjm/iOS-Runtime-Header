@@ -4,19 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/BookmarksPanelStateRestoring-Protocol.h>
-#import <MobileSafariUI/BookmarksToolbarItemProvider-Protocol.h>
-#import <MobileSafariUI/HistoryTableViewDataSourceDelegate-Protocol.h>
-#import <MobileSafariUI/PreviewTableViewControllerDelegate-Protocol.h>
-#import <MobileSafariUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <MobileSafariUI/UISearchBarDelegate-Protocol.h>
-#import <MobileSafariUI/UITableViewDragDelegate-Protocol.h>
-
 @class HistoryTableViewDataSource, NSArray, NSString, NSTimer, UIBarButtonItem, UISearchBar;
 @protocol HistoryTableViewControllerDelegate, TabGroupProvider, _SFNavigationIntentHandling;
 
 __attribute__((visibility("hidden")))
-@interface HistoryTableViewController <BookmarksToolbarItemProvider, HistoryTableViewDataSourceDelegate, UIPopoverPresentationControllerDelegate, UISearchBarDelegate, UITableViewDragDelegate, BookmarksPanelStateRestoring, PreviewTableViewControllerDelegate>
+@interface HistoryTableViewController
 {
     UIBarButtonItem *_clearHistoryButton;
     UIBarButtonItem *_doneBarButtonItem;
@@ -41,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (id)previewTableViewController:(id)arg1 menuForRowAtIndexPath:(id)arg2;
 - (id)previewTableViewController:(id)arg1 URLForRowAtIndexPath:(id)arg2;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)_urlForRowAtIndexPath:(id)arg1;
 - (void)historyTableViewDataSource:(id)arg1 didChangeRowAtIndexPath:(id)arg2 forChangeType:(long long)arg3;
 - (void)historyTableViewDataSource:(id)arg1 didChangeSectionAtIndex:(long long)arg2 forChangeType:(long long)arg3;
@@ -58,8 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
-- (id)_vibrantHeaderBackgroundView;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

@@ -6,10 +6,9 @@
 
 #import <HealthDaemon/HDRegionAvailabilityProviding-Protocol.h>
 
-@class NSObject;
-@protocol HDRegionAvailabilityProvidingDelegate, OS_dispatch_queue;
+@protocol HDRegionAvailabilityProvidingDelegate;
 
 @protocol HDObservableRegionAvailabilityProviding <HDRegionAvailabilityProviding>
-- (void)setDelegate:(id <HDRegionAvailabilityProvidingDelegate>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
+@property(nonatomic) __weak id <HDRegionAvailabilityProvidingDelegate> delegate;
 @end
 

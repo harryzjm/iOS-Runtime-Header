@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRequestedFields;
 
-@interface CKDPAssetsToDownload : PBCodable <NSCopying>
+@interface CKDPAssetsToDownload : PBCodable
 {
     CKDPRequestedFields *_assetFields;
     _Bool _allAssets;

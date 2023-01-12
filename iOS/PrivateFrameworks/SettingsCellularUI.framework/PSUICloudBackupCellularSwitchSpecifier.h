@@ -6,23 +6,23 @@
 
 #import <SettingsCellular/PSAppDataUsagePolicySwitchSpecifier.h>
 
-@class Logger;
+@class ACAccountStore;
 
 __attribute__((visibility("hidden")))
 @interface PSUICloudBackupCellularSwitchSpecifier : PSAppDataUsagePolicySwitchSpecifier
 {
-    Logger *_logger;
+    ACAccountStore *_accountStore;
 }
 
-+ (id)_appleAccount;
-+ (id)_accountStore;
-+ (id)cloudBackupGroupSpecifier;
-+ (_Bool)_backupOnCellularCarrierBundleKeyEnabledCarrierBundleCache:(id)arg1 context:(id)arg2;
-+ (_Bool)shouldShowCloudBackupCarrierBundleCache:(id)arg1 context:(id)arg2 capabilitiesCache:(id)arg3;
++ (id)accountStore;
 - (void).cxx_destruct;
 - (id)getLogger;
 - (void)setCellularUsagePolicy:(id)arg1;
 - (id)cellularUsagePolicy;
+- (id)appleAccount;
+- (id)cloudBackupGroupSpecifier;
+- (_Bool)shouldShowCloudBackupCarrier;
+- (id)initWithAppleAccountStore:(id)arg1;
 - (id)init;
 
 @end

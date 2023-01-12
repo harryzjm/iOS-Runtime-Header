@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreMotion/NSCopying-Protocol.h>
-
-@interface CMAltitudeDataInternal : NSObject <NSCopying>
+@interface CMAltitudeDataInternal : NSObject
 {
     float fAltitude;
     float fPressure;

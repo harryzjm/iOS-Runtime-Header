@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OAVReadClient-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface WXVmlReadClient : NSObject <OAVReadClient>
+@interface WXVmlReadClient : NSObject
 {
 }
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTSystemActivityToken : NSObject <DVTInvalidation>
+@interface DVTSystemActivityToken : NSObject
 {
     unsigned int _displaySleepAssertionID;
     unsigned int _systemSleepAssertionID;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSOrderedSet, NSString, NSUUID, WFCoercionOptions, WFContentAttributionSet, WFContentItem, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
+#import <WorkflowKit/NSObject-Protocol.h>
 
-@protocol WFContentItemClass
+@class NSArray, NSDictionary, NSOrderedSet, NSString, NSUUID, WFCoercionOptions, WFContentAttributionSet, WFContentItem, WFContentPropertyBuilder, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
+
+@protocol WFContentItemClass <NSObject>
 + (NSString *)countDescription;
 + (NSString *)localizedPluralFilterDescription;
 + (NSString *)pluralFilterDescription;
@@ -22,11 +24,14 @@
 - (WFContentAttributionSet *)defaultSourceForRepresentation:(WFRepresentation *)arg1;
 
 @optional
++ (NSString *)localizedCountDescriptionWithValue:(long long)arg1;
 + (NSArray *)filterRepresentationsForAllowedContent:(NSArray *)arg1;
++ (WFContentPropertyBuilder *)namePropertyBuilder;
 + (NSArray *)propertyBuilders;
 + (_Bool)supportedTypeMustBeDeterminedByInstance:(WFType *)arg1;
 + (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 attributionSet:(WFContentAttributionSet *)arg4 cachingIdentifier:(NSUUID *)arg5;
 + (NSOrderedSet *)ownedPasteboardTypes;
+- (Class)classForCopying;
 - (void)copyStateToItem:(WFContentItem *)arg1;
 - (_Bool)cachesSupportedTypes;
 - (_Bool)canGenerateRepresentationForType:(WFType *)arg1;

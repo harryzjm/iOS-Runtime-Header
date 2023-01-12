@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <CoreMaterial/MTMaterialSettingsPropertyIdentityValueProviding-Protocol.h>
-
-@interface NSString (CoreMaterialAdditions) <MTMaterialSettingsPropertyIdentityValueProviding>
+@interface NSString (CoreMaterialAdditions)
 + (id)mt_identityValueForMaterialSettingsProperty:(id)arg1;
 - (_Bool)mt_isIdentityValueForMaterialSettingsProperty:(id)arg1;
 

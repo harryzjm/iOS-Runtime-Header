@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GQDRoot : NSObject
 {
     struct __CFDictionary *mUidToObjectMap;

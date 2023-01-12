@@ -4,25 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct CAFrameRateRange {
-    float _field1;
-    float _field2;
-    float _field3;
-};
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
-

@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-#import <TSPersistence/NSMutableCopying-Protocol.h>
-
 @class NSMutableArray, NSMutableIndexSet;
 
-@interface TSPReferenceOrderedSet : NSObject <NSCopying, NSMutableCopying>
+@interface TSPReferenceOrderedSet : NSObject
 {
     unsigned long long _capacity;
     NSMutableArray *_items;

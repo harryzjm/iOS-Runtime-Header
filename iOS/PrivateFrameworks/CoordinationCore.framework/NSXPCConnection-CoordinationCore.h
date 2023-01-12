@@ -6,8 +6,11 @@
 
 #import <Foundation/NSXPCConnection.h>
 
+@class NSString;
+
 @interface NSXPCConnection (CoordinationCore)
 - (void)co_SetPeerInstance:(id)arg1;
 - (id)co_PeerInstance;
+@property(copy, nonatomic, setter=co_SetClientBundleIdentifier:) NSString *co_ClientBundleIdentifier;
 @end
 

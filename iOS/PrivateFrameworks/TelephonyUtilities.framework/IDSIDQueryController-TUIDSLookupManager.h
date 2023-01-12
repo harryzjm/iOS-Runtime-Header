@@ -6,11 +6,9 @@
 
 #import <IDS/IDSIDQueryController.h>
 
-#import <TelephonyUtilities/TUIDSIDQueryController-Protocol.h>
-
 @class NSString;
 
-@interface IDSIDQueryController (TUIDSLookupManager) <TUIDSIDQueryController>
+@interface IDSIDQueryController (TUIDSLookupManager)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

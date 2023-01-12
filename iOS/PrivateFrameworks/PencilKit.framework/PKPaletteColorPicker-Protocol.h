@@ -10,6 +10,7 @@
 
 @protocol PKPaletteColorPicker <NSObject>
 @property(nonatomic) long long colorUserInterfaceStyle;
+@property(nonatomic) _Bool supportsAlpha;
 @property(copy, nonatomic) UIColor *selectedColor;
 - (void)setSelectedColorForPoint:(struct CGPoint)arg1;
 @end

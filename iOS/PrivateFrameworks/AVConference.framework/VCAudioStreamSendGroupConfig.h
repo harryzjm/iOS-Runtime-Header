@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioStreamGroupConfig-Protocol.h>
-
 @class NSString, VCAudioStreamGroupCommonConfig, VCSystemAudioCaptureSession;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioStreamSendGroupConfig <VCAudioStreamGroupConfig>
+@interface VCAudioStreamSendGroupConfig
 {
     VCAudioStreamGroupCommonConfig *_audioStreamGroupConfig;
+    _Bool _shouldScheduleMediaQueue;
     VCSystemAudioCaptureSession *_systemAudioCaptureSession;
 }
 
+@property(nonatomic) _Bool shouldScheduleMediaQueue; // @synthesize shouldScheduleMediaQueue=_shouldScheduleMediaQueue;
 @property(retain, nonatomic) VCSystemAudioCaptureSession *systemAudioCaptureSession; // @synthesize systemAudioCaptureSession=_systemAudioCaptureSession;
 @property(retain) VCAudioStreamGroupCommonConfig *audioStreamGroupConfig; // @synthesize audioStreamGroupConfig=_audioStreamGroupConfig;
 - (void)dealloc;

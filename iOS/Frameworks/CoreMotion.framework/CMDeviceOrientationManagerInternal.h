@@ -19,8 +19,14 @@
     _Bool fDidSignalSemaphore;
     int fOrientationCallbackMode;
     _Bool fEnableOrientationNotification;
-    Sample_edc72402 fLatestDeviceOrientationSample;
-    Sample_edc72402 fLastSignificantOrientationSample;
+    struct Sample {
+        double timestamp;
+        int orientation;
+    } fLatestDeviceOrientationSample;
+    struct Sample {
+        double timestamp;
+        int orientation;
+    } fLastSignificantOrientationSample;
 }
 
 - (void)dealloc;

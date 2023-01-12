@@ -6,12 +6,10 @@
 
 #import <swiftCore/SwiftNativeNSObject.h>
 
-#import <StoreKit/ASDStoreKitStatusReceiverProtocol-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCVVV8StoreKit7Product16SubscriptionInfo6Status14StatusReceiver : SwiftNativeNSObject <ASDStoreKitStatusReceiverProtocol>
+@interface _TtCVVV8StoreKit7Product16SubscriptionInfo6Status14StatusReceiver : SwiftNativeNSObject
 {
     MISSING_TYPE *$defaultActor;
     MISSING_TYPE *continuation;

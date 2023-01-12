@@ -19,6 +19,7 @@
     MISSING_TYPE *preview;
     MISSING_TYPE *contentIdentifier;
     MISSING_TYPE *title;
+    MISSING_TYPE *item;
 }
 
 @end

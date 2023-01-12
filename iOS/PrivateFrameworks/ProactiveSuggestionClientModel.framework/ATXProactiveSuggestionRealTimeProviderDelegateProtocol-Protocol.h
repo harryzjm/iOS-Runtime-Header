@@ -6,10 +6,14 @@
 
 #import <ProactiveSuggestionClientModel/NSObject-Protocol.h>
 
-@class ATXInteractionSuggestionRequest;
+@class ATXContextualActionSuggestionRequest, ATXIntentSuggestionRequest, ATXInteractionSuggestionRequest, NSString;
 
 @protocol ATXProactiveSuggestionRealTimeProviderDelegateProtocol <NSObject>
 - (void)pingWithCompletion:(void (^)(_Bool))arg1;
-- (void)suggestionsForInteractionSuggestionRequest:(ATXInteractionSuggestionRequest *)arg1 reply:(void (^)(ATXSuggestionRequestResponse *))arg2;
+
+@optional
+- (void)suggestionsForIntentSuggestionRequest:(ATXIntentSuggestionRequest *)arg1 clientModelId:(NSString *)arg2 reply:(void (^)(ATXSuggestionRequestResponse *))arg3;
+- (void)suggestionsForContextualActionSuggestionRequest:(ATXContextualActionSuggestionRequest *)arg1 clientModelId:(NSString *)arg2 reply:(void (^)(ATXSuggestionRequestResponse *))arg3;
+- (void)suggestionsForInteractionSuggestionRequest:(ATXInteractionSuggestionRequest *)arg1 clientModelId:(NSString *)arg2 reply:(void (^)(ATXSuggestionRequestResponse *))arg3;
 @end
 

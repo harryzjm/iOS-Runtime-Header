@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/NSXPCListenerDelegate-Protocol.h>
-
 @class ABRequestHandler, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AuthBrokerAgentXPCListenerDelegate : NSObject <NSXPCListenerDelegate>
+@interface AuthBrokerAgentXPCListenerDelegate : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     ABRequestHandler *_requestHandler;

@@ -4,32 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
     double width;
     double height;
-};
-
-struct NSDirectionalEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
 };
 
 struct UIEdgeInsets {
@@ -40,37 +29,18 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
-struct _NUIBoxArrangement {
-    id container;
-    long long horzDist;
-    long long vertDist;
-    _Bool hasValidMeasurement;
-    struct vector<_NUIBoxArrangementCell, std::allocator<_NUIBoxArrangementCell>> cells;
-    struct CGSize measureSize;
-    struct vector<CGRect, std::allocator<CGRect>> viewFrames;
-    CDStruct_6c92d79e maxBaseLinePair;
+struct _NUIFlowArrangementCell {
+    id _field1;
+    struct CGSize _field2;
+    struct CGSize _field3;
+    CDStruct_6c92d79e _field4;
+    unsigned int :8;
+    unsigned int :8;
 };
-
-struct _NUIBoxArrangementCell;
-
-struct _NUIFlowArrangement {
-    id container;
-    unsigned long long columns;
-    double rowSpacing;
-    double columnSpacing;
-    _Bool hasValidMeasurement;
-    struct vector<_NUIFlowArrangementCell, std::allocator<_NUIFlowArrangementCell>> cells;
-    struct CGSize measureSize;
-    struct CGSize maxSize;
-    struct vector<CGRect, std::allocator<CGRect>> viewFrames;
-    CDStruct_6c92d79e maxBaseLinePair;
-};
-
-struct _NUIFlowArrangementCell;
 
 struct _NUIGridArrangement {
     id container;
@@ -88,46 +58,6 @@ struct _NUIGridArrangementCell;
 
 struct _NUIGridArrangementDimension;
 
-struct __tree_end_node<std::__tree_node_base<void *>*> {
-    void *__left_;
-};
-
-struct map<UIView *, _NUIContainerViewArrangedSubview, std::less<UIView *>, std::allocator<std::pair<UIView *const, _NUIContainerViewArrangedSubview>>> {
-    struct __tree<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::__map_value_compare<UIView *, std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, _NUIContainerViewArrangedSubview>, std::less<UIView *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<UIView *, const std::pair<_NSRange, _NSRange>, std::less<UIView *>, std::allocator<std::pair<UIView *const, const std::pair<_NSRange, _NSRange>>>> {
-    struct __tree<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::__map_value_compare<UIView *, std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, const std::pair<_NSRange, _NSRange>>, std::less<UIView *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
-struct map<UIView *, double, std::less<UIView *>, std::allocator<std::pair<UIView *const, double>>> {
-    struct __tree<std::__value_type<UIView *, double>, std::__map_value_compare<UIView *, std::__value_type<UIView *, double>, std::less<UIView *>, true>, std::allocator<std::__value_type<UIView *, double>>> {
-        void *__begin_node_;
-        struct __compressed_pair<std::__tree_end_node<std::__tree_node_base<void *>*>, std::allocator<std::__tree_node<std::__value_type<UIView *, double>, void *>>> {
-            struct __tree_end_node<std::__tree_node_base<void *>*> __value_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__map_value_compare<UIView *, std::__value_type<UIView *, double>, std::less<UIView *>, true>> {
-            unsigned long long __value_;
-        } __pair3_;
-    } __tree_;
-};
-
 struct nui_size_cache {
     void *__begin_;
     void *__end_;
@@ -136,35 +66,11 @@ struct nui_size_cache {
     } __end_cap_;
 };
 
-struct vector<CALayer *, std::allocator<CALayer *>> {
-    id *__begin_;
-    id *__end_;
-    struct __compressed_pair<CALayer **, std::allocator<CALayer *>> {
-        id *__value_;
-    } __end_cap_;
-};
-
 struct vector<CGRect, std::allocator<CGRect>> {
     struct CGRect *__begin_;
     struct CGRect *__end_;
     struct __compressed_pair<CGRect *, std::allocator<CGRect>> {
         struct CGRect *__value_;
-    } __end_cap_;
-};
-
-struct vector<_NUIBoxArrangementCell, std::allocator<_NUIBoxArrangementCell>> {
-    struct _NUIBoxArrangementCell *__begin_;
-    struct _NUIBoxArrangementCell *__end_;
-    struct __compressed_pair<_NUIBoxArrangementCell *, std::allocator<_NUIBoxArrangementCell>> {
-        struct _NUIBoxArrangementCell *__value_;
-    } __end_cap_;
-};
-
-struct vector<_NUIFlowArrangementCell, std::allocator<_NUIFlowArrangementCell>> {
-    struct _NUIFlowArrangementCell *__begin_;
-    struct _NUIFlowArrangementCell *__end_;
-    struct __compressed_pair<_NUIFlowArrangementCell *, std::allocator<_NUIFlowArrangementCell>> {
-        struct _NUIFlowArrangementCell *__value_;
     } __end_cap_;
 };
 
@@ -185,16 +91,6 @@ struct vector<_NUIGridArrangementDimension, std::allocator<_NUIGridArrangementDi
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned short width;
-    unsigned short height;
-} CDStruct_0d6b4eb6;
-
-typedef struct {
-    unsigned int horzAlign:8;
-    unsigned int vertAlign:8;
-} CDStruct_e0b918f9;
 
 typedef struct {
     double baseLineFromTop;

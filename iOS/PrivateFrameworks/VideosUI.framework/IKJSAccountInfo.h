@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSAccountInfoInterface-Protocol.h>
+#import "VUIJSObject.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface IKJSAccountInfo <VUIJSAccountInfoInterface>
+@interface IKJSAccountInfo : VUIJSObject
 {
 }
 

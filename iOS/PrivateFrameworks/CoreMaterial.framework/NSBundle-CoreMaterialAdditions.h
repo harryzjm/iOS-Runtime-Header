@@ -7,7 +7,10 @@
 #import <Foundation/NSBundle.h>
 
 @interface NSBundle (CoreMaterialAdditions)
-+ (id)coreMaterialBundle;
++ (id)coreMaterialOverrideRecipeBundle;
++ (void)_setCoreMaterialOverrideRecipeBundleURL:(id)arg1;
++ (id)coreMaterialOverrideRecipeBundleURL;
++ (id)coreMaterialRecipeBundle;
 - (id)URLForVisualStyleSetDescendant:(id)arg1;
 - (id)URLsForVisualStyleSets;
 - (id)URLForVisualStyleSet:(id)arg1;

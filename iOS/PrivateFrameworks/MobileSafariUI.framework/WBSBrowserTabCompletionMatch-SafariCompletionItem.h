@@ -6,12 +6,10 @@
 
 #import <SafariSharedUI/WBSBrowserTabCompletionMatch.h>
 
-#import <MobileSafariUI/CompletionItem-Protocol.h>
-
 @class NSString, SFSearchResult, WBSQuerySuggestion;
 @protocol CompletionItemActionHandler;
 
-@interface WBSBrowserTabCompletionMatch (SafariCompletionItem) <CompletionItem>
+@interface WBSBrowserTabCompletionMatch (SafariCompletionItem)
 - (_Bool)isEquivalentTo:(id)arg1;
 - (id)reflectedStringForUserTypedString:(id)arg1;
 - (void)configureCompletionTableViewCell:(id)arg1 forCompletionList:(id)arg2;

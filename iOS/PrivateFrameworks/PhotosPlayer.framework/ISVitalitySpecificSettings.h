@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosPlayer/ISVitalitySettings-Protocol.h>
+#import "ISSettings.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISVitalitySpecificSettings <ISVitalitySettings>
+@interface ISVitalitySpecificSettings : ISSettings
 {
     long long _behavior;
     double _preDuration;

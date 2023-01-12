@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/TTMergeableStringUndoCommand-Protocol.h>
-
 @class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface TTMergeableStringUndoGroup : NSObject <TTMergeableStringUndoCommand>
+@interface TTMergeableStringUndoGroup : NSObject
 {
     NSMutableDictionary *_seen;
     NSMutableArray *_commands;

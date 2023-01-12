@@ -6,7 +6,7 @@
 
 #import <WebBookmarks/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSSet, NSString;
+@class NSArray, NSData, NSDictionary, NSSet, NSString, NSURL;
 
 @protocol WBSBookmarkDBAccess <NSObject>
 - (void)clearlAllLocalBookmarksForAutomatedTestingWithDatabase:(const void *)arg1;
@@ -71,5 +71,9 @@
 - (void)saveDatabase:(const void *)arg1;
 - (void)openDatabase:(const void *)arg1;
 - (const void *)createDatabase;
+
+@optional
+- (void)notifyForSaveOfAssetWithKey:(NSString *)arg1 item:(const void *)arg2;
+- (NSURL *)copySaveURLForAssetWithKey:(NSString *)arg1 item:(const void *)arg2;
 @end
 

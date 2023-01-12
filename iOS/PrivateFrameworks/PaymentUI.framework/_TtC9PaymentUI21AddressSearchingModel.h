@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *_contactResults;
     MISSING_TYPE *_mapsResults;
     MISSING_TYPE *contactMatchHandler;
+    MISSING_TYPE *emptyResultsForEmptySearchTerm;
+    MISSING_TYPE *ignoreNextSearchedText;
     MISSING_TYPE *_searchText;
 }
 

@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessoryCategory, HMDUnassociatedAppleMediaAccessory, HMFMessageDispatcher, HMFSystemInfo, NSString;
+@class HMDDevice, HMFProductInfo, HMFSystemInfo, NSOperation, NSString;
+@protocol HMFCancellable;
 
 @protocol HMDMediaBrowserDataSource
+@property(readonly) unsigned long long appleMediaAccessoryVariant;
+@property(readonly) HMDDevice *currentDevice;
+@property(readonly) HMFProductInfo *productInfo;
 @property(readonly) HMFSystemInfo *systemInfo;
-@property(readonly) _Bool requiresHomePodPairing;
+@property(readonly) unsigned long long supportedStereoPairVersions;
+@property(readonly) _Bool requiresHomePodMiniPairing;
 @property(readonly) _Bool isAppleMediaAccessory;
 @property(readonly) NSString *currentAccessoryMediaRouteIdentifier;
-- (HMDUnassociatedAppleMediaAccessory *)createUnassociatedHomePodAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
-- (HMDUnassociatedAppleMediaAccessory *)createUnassociatedAppleMediaAccessory:(NSString *)arg1 name:(NSString *)arg2 category:(HMAccessoryCategory *)arg3 messageDispatcher:(HMFMessageDispatcher *)arg4;
+- (id <HMFCancellable>)performOperation:(NSOperation *)arg1;
 @end
 

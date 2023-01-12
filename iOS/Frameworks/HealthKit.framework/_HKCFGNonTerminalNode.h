@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_HKCFGNode.h"
+
 @class NSArray, _HKCFGReplacementRule;
 
 __attribute__((visibility("hidden")))
-@interface _HKCFGNonTerminalNode
+@interface _HKCFGNonTerminalNode : _HKCFGNode
 {
     NSArray *_nodes;
     id _value;

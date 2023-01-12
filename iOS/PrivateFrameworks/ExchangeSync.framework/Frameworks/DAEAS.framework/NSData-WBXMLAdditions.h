@@ -6,9 +6,7 @@
 
 #import <Foundation/NSData.h>
 
-#import <DAEAS/ASParsingLeafNode-Protocol.h>
-
-@interface NSData (WBXMLAdditions) <ASParsingLeafNode>
+@interface NSData (WBXMLAdditions)
 + (_Bool)expectsContent;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
-
 @class NSString, UINavigationBar, UISwipeGestureRecognizer;
 @protocol _UINavigationBarGestureHandlerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarGestureHandler : NSObject <UIGestureRecognizerDelegatePrivate>
+@interface _UINavigationBarGestureHandler : NSObject
 {
     UISwipeGestureRecognizer *_popSwipeGestureRecognizer;
     UINavigationBar *_navigationBar;

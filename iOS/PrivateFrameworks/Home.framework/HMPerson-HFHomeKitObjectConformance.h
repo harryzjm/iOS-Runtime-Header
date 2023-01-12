@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMPerson.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMPerson (HFHomeKitObjectConformance) <HFHomeKitObject>
+@interface HMPerson (HFHomeKitObjectConformance)
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 // Remaining properties

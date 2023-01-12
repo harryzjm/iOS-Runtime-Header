@@ -9,6 +9,7 @@
 @protocol MTLFunctionHandle;
 
 @protocol MTLVisibleFunctionTable <MTLResource>
+@property(readonly) struct MTLResourceID gpuResourceID;
 - (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setFunction:(id <MTLFunctionHandle>)arg1 atIndex:(unsigned long long)arg2;
 @end

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/NSURLConnectionDataDelegate-Protocol.h>
-
 @class NSError, NSMutableData, NSString, NSURLCredential, NSURLRequest, NSURLResponse;
 
-@interface DVTDeveloperPortalServiceConnection : NSObject <NSURLConnectionDataDelegate>
+@interface DVTDeveloperPortalServiceConnection : NSObject
 {
     _Bool _forceSharedSession;
     NSURLRequest *_request;

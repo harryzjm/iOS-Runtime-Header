@@ -6,11 +6,9 @@
 
 #import <TSDrawables/TSDContainerRep.h>
 
-#import <NumbersQuicklook/TSKChangeSourceObserver-Protocol.h>
-
 @class NSString;
 
-@interface TNPageContentRep : TSDContainerRep <TSKChangeSourceObserver>
+@interface TNPageContentRep : TSDContainerRep
 {
 }
 

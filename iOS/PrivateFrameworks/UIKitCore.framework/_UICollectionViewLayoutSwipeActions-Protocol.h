@@ -11,6 +11,7 @@
 @protocol _UICollectionViewLayoutSwipeActions <NSObject>
 - (void)_didEndSwiping;
 - (void)_willBeginSwiping;
+- (void)_updateStyleForSwipeActionsConfiguration:(UISwipeActionsConfiguration *)arg1 indexPath:(NSIndexPath *)arg2;
 - (UISwipeActionsConfiguration *)_trailingSwipeActionsConfigurationForIndexPath:(NSIndexPath *)arg1;
 - (UISwipeActionsConfiguration *)_leadingSwipeActionsConfigurationForIndexPath:(NSIndexPath *)arg1;
 - (_Bool)_supportsSwipeActionsForIndexPath:(NSIndexPath *)arg1;

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Contacts/CNMAIDPredicate-Protocol.h>
-#import <Contacts/CNSuggestedContactPredicate-Protocol.h>
+#import "CNPredicate.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactWithNamePredicate <CNMAIDPredicate, CNSuggestedContactPredicate>
+@interface CNContactWithNamePredicate : CNPredicate
 {
     NSString *_name;
     unsigned long long _options;

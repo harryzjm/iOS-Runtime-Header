@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageProtection/SignatureFormatter-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NGMPrekeySignatureFormatter : NSObject <SignatureFormatter>
+@interface NGMPrekeySignatureFormatter : NSObject
 {
     double _timestamp;
     NSData *_prekeyPublic;

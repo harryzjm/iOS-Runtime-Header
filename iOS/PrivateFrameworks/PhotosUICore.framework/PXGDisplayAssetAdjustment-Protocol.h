@@ -13,6 +13,7 @@
 @protocol PXGDisplayAssetAdjustment <NSObject, NSCopying>
 @property(readonly, nonatomic) _Bool wantsSingleHighQualityDelivery;
 @property(readonly, nonatomic) _Bool allowsUnadjustedOpportunisticDelivery;
+- (long long)contentModeForProposedContentMode:(long long)arg1;
 - (struct CGSize)requestSizeForProposedTargetSize:(struct CGSize)arg1;
 - (_Bool)isEqualToDisplayAssetAdjustment:(id <PXGDisplayAssetAdjustment>)arg1;
 - (CIImage *)applyToImage:(CIImage *)arg1 targetSize:(struct CGSize)arg2;

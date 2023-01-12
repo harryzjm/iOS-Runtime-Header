@@ -6,13 +6,10 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <PreferencesUI/PSHeaderFooterView-Protocol.h>
-#import <PreferencesUI/UITextViewDelegate-Protocol.h>
-
 @class NSString, NSURL, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface PSUIFooterHyperlinkView : UITableViewHeaderFooterView <UITextViewDelegate, PSHeaderFooterView>
+@interface PSUIFooterHyperlinkView : UITableViewHeaderFooterView
 {
     NSString *_text;
     id _target;

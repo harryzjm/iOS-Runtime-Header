@@ -6,8 +6,8 @@
 
 #import <UIKit/UIView.h>
 
-@class MURatingsCallToActionViewModel, MUScrollableStackView, NSArray, NSMutableArray;
-@protocol MUPlaceRibbonViewDelegate;
+@class MUHairlineView, MURatingsCallToActionViewModel, MUScrollableStackView, NSArray, NSMutableArray, NSString;
+@protocol MUPlaceRibbonViewDelegate, MUScrollAnalyticActionObserving;
 
 __attribute__((visibility("hidden")))
 @interface MUPlaceRibbonView : UIView
@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
     MUScrollableStackView *_contentStackView;
     MURatingsCallToActionViewModel *_callToActionViewModel;
     NSMutableArray *_focusItems;
+    struct CGPoint _beginAnalyticsScrollingPoint;
+    MUHairlineView *_topHairline;
+    MUHairlineView *_bottomHairline;
+    id <MUScrollAnalyticActionObserving> _analyticsDelegate;
     id <MUPlaceRibbonViewDelegate> _delegate;
     NSArray *_viewModels;
 }
@@ -22,13 +26,24 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSArray *viewModels; // @synthesize viewModels=_viewModels;
 @property(nonatomic) __weak id <MUPlaceRibbonViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <MUScrollAnalyticActionObserving> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)reloadVisibility;
 - (id)_visibleRibbonItemViews;
 @property(readonly, nonatomic) NSArray *focusItems;
 @property(readonly, nonatomic) _Bool hasContent;
 - (void)_updateAppearance;
+@property(readonly, nonatomic) _Bool showTopAndBottomSeparators;
+- (void)layoutSubviews;
 - (void)_setupStackView;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

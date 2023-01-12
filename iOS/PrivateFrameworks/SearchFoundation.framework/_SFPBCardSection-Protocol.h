@@ -12,7 +12,6 @@
 @property(readonly, nonatomic) NSData *jsonData;
 @property(copy, nonatomic) NSString *previewButtonItemsTitle;
 @property(copy, nonatomic) NSString *cardSectionDetail;
-@property(copy, nonatomic) NSString *commandDetail;
 @property(copy, nonatomic) NSArray *previewButtonItems;
 @property(retain, nonatomic) _SFPBCommand *previewCommand;
 @property(retain, nonatomic) _SFPBCommand *command;

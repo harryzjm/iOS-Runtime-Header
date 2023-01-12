@@ -6,9 +6,9 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class MUPlaceHoursSectionView;
+@class MUBusinessHoursConfiguration, MUPlaceHoursSectionView;
 
 @protocol MUPlaceHoursSectionViewDelegate <NSObject>
-- (void)hoursSectionView:(MUPlaceHoursSectionView *)arg1 didExpand:(_Bool)arg2 atIndex:(unsigned long long)arg3;
+- (void)hoursSectionView:(MUPlaceHoursSectionView *)arg1 didExpand:(_Bool)arg2 forConfiguration:(MUBusinessHoursConfiguration *)arg3;
 @end
 

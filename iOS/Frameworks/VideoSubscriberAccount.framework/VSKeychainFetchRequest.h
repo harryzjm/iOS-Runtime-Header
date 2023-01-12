@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/NSCopying-Protocol.h>
-
 @class NSArray, NSPredicate, VSOptional;
 
 __attribute__((visibility("hidden")))
-@interface VSKeychainFetchRequest : NSObject <NSCopying>
+@interface VSKeychainFetchRequest : NSObject
 {
     _Bool _includesDataValues;
     VSOptional *_itemKind;

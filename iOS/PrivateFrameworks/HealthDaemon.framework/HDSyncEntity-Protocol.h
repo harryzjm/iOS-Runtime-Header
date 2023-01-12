@@ -17,13 +17,15 @@
 
 @optional
 + (NSNumber *)pruneSyncedObjectsThroughAnchor:(NSNumber *)arg1 limit:(unsigned long long)arg2 nowDate:(NSDate *)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
-+ (CDStruct_c12fb951)syncVersionRangeForSession:(HDSyncSession *)arg1;
-+ (CDStruct_c12fb951)supportedSyncVersionRange;
++ (CDStruct_1ef3fb1f)syncVersionRangeForSession:(HDSyncSession *)arg1;
++ (CDStruct_1ef3fb1f)supportedSyncVersionRange;
++ (int)currentSyncVersion;
++ (NSSet *)excludedSyncIdentitiesForSession:(HDSyncSession *)arg1;
 + (NSSet *)excludedSyncStoresForSession:(HDSyncSession *)arg1;
 + (_Bool)supportsDateBasedSharding;
 + (_Bool)supportsSyncStore:(id <HDSyncStore>)arg1;
 + (long long)receiveSyncObjects:(NSArray *)arg1 syncStore:(id <HDSyncStore>)arg2 profile:(HDProfile *)arg3 error:(id *)arg4;
-+ (long long)receiveSyncObjects:(NSArray *)arg1 version:(CDStruct_c12fb951)arg2 syncStore:(id <HDSyncStore>)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
++ (long long)receiveSyncObjects:(NSArray *)arg1 version:(CDStruct_1ef3fb1f)arg2 syncStore:(id <HDSyncStore>)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
 + (long long)nextSyncAnchorWithSession:(HDSyncSession *)arg1 predicate:(HDSQLitePredicate *)arg2 startSyncAnchor:(long long)arg3 profile:(HDProfile *)arg4 error:(id *)arg5;
 + (long long)nextSyncAnchorWithSession:(HDSyncSession *)arg1 startSyncAnchor:(long long)arg2 profile:(HDProfile *)arg3 error:(id *)arg4;
 @end

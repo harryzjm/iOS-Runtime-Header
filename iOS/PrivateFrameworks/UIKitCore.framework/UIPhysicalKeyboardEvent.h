@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIPressesEvent.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIPhysicalKeyboardEvent
+@interface UIPhysicalKeyboardEvent : UIPressesEvent
 {
     _Bool _canPrivatize;
+    _Bool _keyCommandHandlingBeforePublic;
+    _Bool _keyEventForwardedFromInputUIHost;
+    _Bool _shiftDown;
     _Bool __externalEvent;
     int _inputFlags;
+    unsigned int _keyCommandCode;
     NSString *_modifiedInput;
     NSString *_unmodifiedInput;
     NSString *_shiftModifiedInput;
@@ -21,17 +27,24 @@ __attribute__((visibility("hidden")))
     NSString *_privateInput;
     long long _privateModifierFlags;
     NSString *_privateShiftModifiedInput;
+    NSString *_privateCommandModifiedInput;
     NSString *_hint;
     long long __keyCode;
     long long _source;
 }
 
 + (id)_eventWithInput:(id)arg1 inputFlags:(int)arg2;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic, getter=_isExternalEvent) _Bool _externalEvent; // @synthesize _externalEvent=__externalEvent;
+@property(nonatomic) _Bool shiftDown; // @synthesize shiftDown=_shiftDown;
+@property(nonatomic) _Bool keyEventForwardedFromInputUIHost; // @synthesize keyEventForwardedFromInputUIHost=_keyEventForwardedFromInputUIHost;
+@property(nonatomic) _Bool keyCommandHandlingBeforePublic; // @synthesize keyCommandHandlingBeforePublic=_keyCommandHandlingBeforePublic;
+@property(nonatomic) unsigned int keyCommandCode; // @synthesize keyCommandCode=_keyCommandCode;
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) long long _keyCode; // @synthesize _keyCode=__keyCode;
 @property(retain, nonatomic) NSString *_hint; // @synthesize _hint;
+@property(retain, nonatomic) NSString *_privateCommandModifiedInput; // @synthesize _privateCommandModifiedInput;
 @property(retain, nonatomic) NSString *_privateShiftModifiedInput; // @synthesize _privateShiftModifiedInput;
 @property(nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property(retain, nonatomic) NSString *_privateInput; // @synthesize _privateInput;
@@ -57,6 +70,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool _isEjectKey;
 @property(readonly, nonatomic) _Bool _isKeyDown;
 - (long long)type;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 
 @end
 

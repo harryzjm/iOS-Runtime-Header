@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServicesUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
-
 @class AMSUIDynamicViewController, NSString;
 @protocol AMSUIDynamicViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIDynamicViewControllerDelegateProxy : NSObject <AMSUIDynamicViewControllerDelegate>
+@interface AMSUIDynamicViewControllerDelegateProxy : NSObject
 {
     id <AMSUIDynamicViewControllerDelegate> _delegate;
     AMSUIDynamicViewController *_dynamicViewController;
@@ -21,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak AMSUIDynamicViewController *dynamicViewController; // @synthesize dynamicViewController=_dynamicViewController;
 @property(nonatomic) __weak id <AMSUIDynamicViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)dynamicViewControllerShouldDismiss:(id)arg1;
+- (void)dynamicViewController:(id)arg1 didResolveWithResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishPurchaseWithResult:(id)arg2 error:(id)arg3;
 - (void)dynamicViewController:(id)arg1 didFinishCarrierLinkingWithResult:(id)arg2 error:(id)arg3;

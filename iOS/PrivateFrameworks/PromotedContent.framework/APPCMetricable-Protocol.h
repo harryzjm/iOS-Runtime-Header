@@ -10,7 +10,7 @@
 @property(nonatomic, readonly) NSDictionary *properties;
 @property(nonatomic, readonly) NSString *userIdentifier;
 @property(nonatomic, readonly) NSString *deviceIdentifier;
-@property(nonatomic, readonly) NSString *clientBundleIdentifier;
+@property(nonatomic, readonly) NSString *clientIdentifier;
 @property(nonatomic, readonly) NSString *contentId;
 @property(nonatomic, readonly) NSDate *timestamp;
 @property(nonatomic, readonly) long long metric;

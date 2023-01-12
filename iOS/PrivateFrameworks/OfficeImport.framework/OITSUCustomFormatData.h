@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-#import <OfficeImport/NSMutableCopying-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OITSUCustomFormatData : NSObject <NSCopying, NSMutableCopying>
+@interface OITSUCustomFormatData : NSObject
 {
     unsigned char _minimumIntegerWidth;
     unsigned char _decimalWidth;

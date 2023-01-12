@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
-
 @class NSString, UIDimmingView, UIPresentationController, UIView;
 @protocol UIViewControllerTransitionCoordinator, _UISearchControllerPresenting;
 
 __attribute__((visibility("hidden")))
-@interface _UISearchPresentationAssistant : NSObject <UIDimmingViewDelegate>
+@interface _UISearchPresentationAssistant : NSObject
 {
     UIPresentationController *_searchPresentationController;
     UIView *_searchBarContainerView;

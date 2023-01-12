@@ -9,6 +9,7 @@
 @protocol MTLIndirectComputeCommand, MTLIndirectRenderCommand;
 
 @protocol MTLIndirectCommandBuffer <MTLResource>
+@property(readonly) struct MTLResourceID gpuResourceID;
 @property(readonly) unsigned long long size;
 - (id <MTLIndirectComputeCommand>)indirectComputeCommandAtIndex:(unsigned long long)arg1;
 - (id <MTLIndirectRenderCommand>)indirectRenderCommandAtIndex:(unsigned long long)arg1;

@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface _MPCProtoRadioContentReferenceStoreContentReference : PBCodable <NSCopying>
+@interface _MPCProtoRadioContentReferenceStoreContentReference : PBCodable
 {
     long long _storeAdamID;
     struct {

@@ -19,7 +19,7 @@
 - (_Bool)shouldApplyDarkModeToComponentStyle:(id <SXComponentStyle>)arg1 component:(id <SXComponent>)arg2 DOM:(SXDOM *)arg3;
 - (_Bool)shouldApplyDarkModeToComponentStylesForComponent:(id <SXComponent>)arg1 DOM:(SXDOM *)arg2;
 - (_Bool)shouldApplyDarkModeToComponent:(id <SXComponent>)arg1 DOM:(SXDOM *)arg2;
-- (_Bool)shouldApplyDarkModeToDocumentStyle:(id <SXDocumentStyle>)arg1 DOM:(SXDOM *)arg2;
+- (_Bool)shouldApplyDarkModeToDocumentStyle:(id <SXDocumentStyle>)arg1 DOM:(SXDOM *)arg2 layoutOptions:(SXLayoutOptions *)arg3;
 - (_Bool)shouldApplyDarkModeToDOM:(SXDOM *)arg1 layoutOptions:(SXLayoutOptions *)arg2;
 @end
 

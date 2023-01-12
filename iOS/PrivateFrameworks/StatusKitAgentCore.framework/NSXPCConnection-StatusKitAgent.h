@@ -7,6 +7,7 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (StatusKitAgent)
+- (id)sk_stringValueForEntitlement:(id)arg1;
 - (_Bool)sk_booleanValueForEntitlement:(id)arg1;
 - (id)sk_stringArrayValueForEntitlement:(id)arg1;
 @end

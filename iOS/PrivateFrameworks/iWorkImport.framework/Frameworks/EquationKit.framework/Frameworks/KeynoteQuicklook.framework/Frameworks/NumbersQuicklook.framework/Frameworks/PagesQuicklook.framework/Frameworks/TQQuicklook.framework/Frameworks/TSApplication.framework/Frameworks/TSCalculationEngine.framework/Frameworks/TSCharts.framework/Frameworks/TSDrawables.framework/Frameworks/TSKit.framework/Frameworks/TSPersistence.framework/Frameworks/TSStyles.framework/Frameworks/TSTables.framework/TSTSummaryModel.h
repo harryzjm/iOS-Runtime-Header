@@ -6,12 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTGroupByChangeProtocol-Protocol.h>
-#import <TSTables/TSTTableTileCreating-Protocol.h>
-
 @class TSTCategoryAggregateFormulaOwner, TSTColumnRowUIDMap, TSTSummaryCellVendor, TSTTableDataStore, TSTTableGroupSortOrderUID, TSTTableInfo;
 
-@interface TSTSummaryModel : TSPObject <TSTTableTileCreating, TSTGroupByChangeProtocol>
+@interface TSTSummaryModel : TSPObject
 {
     _Bool _needsFormulaReset;
     TSTTableDataStore *_dataStore;
@@ -30,7 +27,6 @@
 + (unsigned char)categoryLevelForTableStyleArea:(unsigned long long)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool needsFormulaReset; // @synthesize needsFormulaReset=_needsFormulaReset;
 @property(readonly, nonatomic) void *labelRowVisibilityList; // @synthesize labelRowVisibilityList=_labelRowVisibilityList;
 @property(readonly, nonatomic) void *labelRowHeightList; // @synthesize labelRowHeightList=_labelRowHeightList;
 @property(readonly, nonatomic) void *summaryRowHeightList; // @synthesize summaryRowHeightList=_summaryRowHeightList;
@@ -42,12 +38,13 @@
 @property(readonly, nonatomic) TSTSummaryCellVendor *summaryCellVendor; // @synthesize summaryCellVendor=_summaryCellVendor;
 @property(retain, nonatomic) TSTColumnRowUIDMap *columnRowUIDMap; // @synthesize columnRowUIDMap=_columnRowUIDMap;
 @property(readonly, nonatomic) TSTTableDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property(nonatomic) _Bool needsFormulaReset; // @synthesize needsFormulaReset=_needsFormulaReset;
 - (id)description;
 @property(nonatomic) _Bool shouldUseWideRows;
 - (void)copyPasteboardCustomFormatsFromTableModel:(id)arg1;
-- (void)makePasteboardCustomFormatList;
 - (id)mapReassigningPasteboardCustomFormatKeys:(id)arg1;
 - (void)addPasteboardCustomFormatsToDocumentAndUpdateCells;
+- (void)updateCustomFormatsAtKey:(id)arg1;
 - (void)didChangeGroupByStructure;
 - (void)didRemoveRowUID:(struct TSKUIDStruct)arg1 fromGroup:(id)arg2;
 - (void)didAddRowUID:(struct TSKUIDStruct)arg1 toGroup:(id)arg2;
@@ -102,7 +99,7 @@
 - (void)setStorageParentToInfo:(id)arg1;
 - (void)registerAllFormulasWithCalculationEngine:(id)arg1 wasCrossDocumentPaste:(_Bool)arg2;
 - (void)upgradeFormulasForGroupByUIDChange;
-- (void)upgradeDuringDocumentUpgradeIfNeeded:(unsigned long long)arg1 tableInfo:(id)arg2;
+- (void)upgradeDuringDocumentUpgradeIfNeeded:(unsigned long long)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)resetForCategoriesWithForce:(_Bool)arg1;

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface TSKAddedToDocumentContext_Unhiding
+#import "TSKAddedToDocumentContext.h"
+
+@interface TSKAddedToDocumentContext_Unhiding : TSKAddedToDocumentContext
 {
 }
 

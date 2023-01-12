@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMAudioControl.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMAudioControl (HFDebugging) <HFStateDumpBuildable>
+@interface HMAudioControl (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

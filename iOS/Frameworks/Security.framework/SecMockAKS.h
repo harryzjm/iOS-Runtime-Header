@@ -14,12 +14,15 @@ __attribute__((visibility("hidden")))
 + (void)updateOperationsUntilUnlock;
 + (void)setOperationsUntilUnlock:(int)arg1;
 + (id)popDecryptRefKeyFailure;
++ (void)resetDecryptRefKeyFailures;
 + (void)failNextDecryptRefKey:(id)arg1;
 + (void)unlockAllClasses;
 + (void)lockClassA_C;
 + (void)lockClassA;
 + (_Bool)useGenerationCount;
 + (_Bool)isSEPDown;
++ (_Bool)forceUnwrapKeyDecodeFailure;
++ (_Bool)forceInvalidPersona;
 + (_Bool)isLocked:(int)arg1;
 + (void)reset;
 + (void)setKeybag_state:(unsigned int)arg1;

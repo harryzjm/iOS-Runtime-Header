@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Network/NWPrettyDescription-Protocol.h>
-
 @class NSUUID, NWEndpoint, NWInterface;
 @protocol OS_nw_path_flow;
 
 __attribute__((visibility("hidden")))
-@interface NWPathFlow : NSObject <NWPrettyDescription>
+@interface NWPathFlow : NSObject
 {
     NSObject<OS_nw_path_flow> *_internalPathFlow;
 }

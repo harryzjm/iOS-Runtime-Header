@@ -6,11 +6,7 @@
 
 #import <SpringBoardFoundation/NSObject-Protocol.h>
 
-@class SBFLockScreenDateView, UIView;
-
 @protocol SBFScreenWakeAnimationTarget <NSObject>
-@property(readonly, nonatomic) SBFLockScreenDateView *dateView;
-@property(readonly, nonatomic) UIView *superviewForDateViewAnimation;
 - (void)updateWakeEffectsForWake:(_Bool)arg1 animated:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 - (void)updateWakeEffectsForWake:(_Bool)arg1;
 @end

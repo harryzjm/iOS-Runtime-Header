@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKUnknownRecord.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKUnknownRecord (HDExtensions) <HDCoding>
+@interface HKUnknownRecord (HDExtensions)
 + (Class)hd_dataEntityClass;
 + (id)createWithCodable:(id)arg1;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

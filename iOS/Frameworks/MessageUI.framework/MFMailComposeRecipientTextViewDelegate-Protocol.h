@@ -6,9 +6,12 @@
 
 #import <MessageUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 
-@class MFMailComposeRecipientTextView, UIResponder;
+@class CNComposeRecipient, CNComposeRecipientTextView, MFMailComposeRecipientTextView, UIResponder;
 
 @protocol MFMailComposeRecipientTextViewDelegate <CNComposeRecipientTextViewDelegate>
 - (UIResponder *)nextResponderForRecipientView:(MFMailComposeRecipientTextView *)arg1;
+
+@optional
+- (void)composeRecipientView:(CNComposeRecipientTextView *)arg1 didFinishAddingRecipient:(CNComposeRecipient *)arg2;
 @end
 

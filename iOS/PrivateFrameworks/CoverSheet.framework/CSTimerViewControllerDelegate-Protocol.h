@@ -7,6 +7,7 @@
 @class CSTimerViewController;
 
 @protocol CSTimerViewControllerDelegate
+- (void)timerControllerDidUpdateTimer:(CSTimerViewController *)arg1;
 - (void)timerControllerDidStopTimer:(CSTimerViewController *)arg1;
 - (void)timerControllerDidStartTimer:(CSTimerViewController *)arg1;
 @end

@@ -6,11 +6,9 @@
 
 #import <AWDSupportFramework/AWDCoreRoutineFMCDailyAssessment.h>
 
-#import <coreroutine/RTMetricManagerMetricIdProtocol-Protocol.h>
-
 @class NSString;
 
-@interface AWDCoreRoutineFMCDailyAssessment (MetricManager) <RTMetricManagerMetricIdProtocol>
+@interface AWDCoreRoutineFMCDailyAssessment (MetricManager)
 @property(readonly, copy) NSString *description;
 - (_Bool)valid:(id *)arg1;
 - (id)_init;

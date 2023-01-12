@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSText/TSWPCitationRecordHosting-Protocol.h>
+#import "TSWPSmartField.h"
 
 @class NSArray, NSString;
 
-@interface TSWPBibliographySmartField <TSWPCitationRecordHosting>
+@interface TSWPBibliographySmartField : TSWPSmartField
 {
     NSArray *_citationRecords;
     _Bool _isLocalizable;

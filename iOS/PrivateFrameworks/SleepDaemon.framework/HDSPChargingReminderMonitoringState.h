@@ -10,10 +10,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)batteryLevelChanged:(float)arg1;
+- (_Bool)schedulesExpiration;
 - (id)stateName;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
-- (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
+- (id)expirationDate;
 
 @end
 

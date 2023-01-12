@@ -7,6 +7,6 @@
 #import <SearchFoundation/SFOpenWebClipCommand.h>
 
 @interface SFOpenWebClipCommand (SearchUICommandClass)
-- (Class)_searchUICommandClass;
+- (Class)_searchUICommandHandlerClass;
 @end
 

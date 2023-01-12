@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCEmulatedNetworkAlgorithm-Protocol.h>
-
 @class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCEmulatedNetworkAlgorithmQueueDelay : NSObject <VCEmulatedNetworkAlgorithm>
+@interface VCEmulatedNetworkAlgorithmQueueDelay : NSObject
 {
     NSDictionary *_policies;
     double _expectedProcessEndTime;

@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <DVTFoundation/DVTMacroExpansion-Protocol.h>
-
-@interface DVTMacroExpansionString : NSString <DVTMacroExpansion>
+@interface DVTMacroExpansionString : NSString
 {
     NSString *_origString;
 }

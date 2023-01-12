@@ -7,12 +7,12 @@
 #import <TSStyles/TSSPropertyMap.h>
 
 @interface TSSPropertyMap (TSWPListStyle)
-- (void)pSetRepeatedArrayOfBools:(const void *)arg1 forProperty:(int)arg2 defaultValues:(_Bool [9])arg3 validator:(id)arg4;
-- (void)pSetRepeatedArrayOfInts:(const void *)arg1 forProperty:(int)arg2 defaultValues:(int [9])arg3 min:(int)arg4 max:(int)arg5 validator:(id)arg6 usePreviousValueOnDefault:(_Bool)arg7;
-- (void)pSetRepeatedArrayOfInts:(const void *)arg1 forProperty:(int)arg2 defaultValues:(int [9])arg3 min:(int)arg4 max:(int)arg5 validator:(id)arg6;
+- (void)pSetRepeatedArrayOfBools:(const void *)arg1 forProperty:(int)arg2 defaultValues:(_Bool [9])arg3;
+- (void)pSetRepeatedArrayOfInts:(const void *)arg1 forProperty:(int)arg2 defaultValues:(int [9])arg3 min:(int)arg4 max:(int)arg5 usePreviousValueOnDefault:(_Bool)arg6;
+- (void)pSetRepeatedArrayOfInts:(const void *)arg1 forProperty:(int)arg2 defaultValues:(int [9])arg3 min:(int)arg4 max:(int)arg5;
 - (void)pSetArrayOfBools:(_Bool [9])arg1 forProperty:(int)arg2;
 - (void)pSetArrayOfInts:(int [9])arg1 forProperty:(int)arg2;
-- (void)pSetRepeatedArrayOfFloats:(const void *)arg1 forProperty:(int)arg2 defaultValues:(float [9])arg3 validator:(id)arg4;
+- (void)pSetRepeatedArrayOfFloats:(const void *)arg1 forProperty:(int)arg2 defaultValues:(float [9])arg3;
 - (void)pSetArrayOfFloats:(float [9])arg1 forProperty:(int)arg2;
 @end
 

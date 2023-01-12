@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <EquationKit/EQKitLayoutElementaryStackRow-Protocol.h>
-
 @class NSArray, NSString;
 
-@interface EQKitLayoutElementaryStackDigitRow : NSObject <EQKitLayoutElementaryStackRow>
+@interface EQKitLayoutElementaryStackDigitRow : NSObject
 {
     NSArray *mColumnBoxes;
     long long mAlignmentShift;

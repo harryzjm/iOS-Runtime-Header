@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSIndexSet;
 
-@interface TSCHMultiDataChartRepElementIndex : NSObject <NSCopying>
+@interface TSCHMultiDataChartRepElementIndex : NSObject
 {
     unsigned long long _seriesIndex;
     unsigned long long _valueIndex;

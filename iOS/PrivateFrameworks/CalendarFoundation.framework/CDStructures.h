@@ -11,31 +11,7 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    int _field1;
-    char _field2;
-    char _field3;
-    char _field4;
-    char _field5;
-    double _field6;
-} CDStruct_79f9e052;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    double _field6;
-} CDStruct_deff9ab7;
 

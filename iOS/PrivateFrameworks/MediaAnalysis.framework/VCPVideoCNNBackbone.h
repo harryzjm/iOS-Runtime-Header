@@ -13,16 +13,18 @@ __attribute__((visibility("hidden")))
 {
     VCPCNNModelEspresso *_modelEspresso;
     NSArray *_outputNames;
-    float *_outputLastLayer400;
     float *_outputBeforeFc;
-    float *_outputBeforePooling;
+    float *_outputBeforeSpatiialPooling;
+    float *_outputRes4;
+    float *_outputBeforeTemporalPooling;
 }
 
 + (id)sharedModel:(id)arg1 outputNames:(id)arg2 properties:(id)arg3;
 - (void).cxx_destruct;
-@property(readonly) float *outputBeforePooling; // @synthesize outputBeforePooling=_outputBeforePooling;
+@property(readonly) float *outputBeforeTemporalPooling; // @synthesize outputBeforeTemporalPooling=_outputBeforeTemporalPooling;
+@property(readonly) float *outputRes4; // @synthesize outputRes4=_outputRes4;
+@property(readonly) float *outputBeforeSpatiialPooling; // @synthesize outputBeforeSpatiialPooling=_outputBeforeSpatiialPooling;
 @property(readonly) float *outputBeforeFc; // @synthesize outputBeforeFc=_outputBeforeFc;
-@property(readonly) float *outputLastLayer400; // @synthesize outputLastLayer400=_outputLastLayer400;
 - (int)inference:(float *)arg1;
 - (id)initWithConfig:(id)arg1;
 

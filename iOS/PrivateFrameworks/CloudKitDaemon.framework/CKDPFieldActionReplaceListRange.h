@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPListRange, NSMutableArray;
 
-@interface CKDPFieldActionReplaceListRange : PBCodable <NSCopying>
+@interface CKDPFieldActionReplaceListRange : PBCodable
 {
     CKDPListRange *_range;
     NSMutableArray *_values;

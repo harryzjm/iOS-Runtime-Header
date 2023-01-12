@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface TSPDocumentResourceLegacyInfo : NSObject <NSCopying>
+@interface TSPDocumentResourceLegacyInfo : NSObject
 {
     NSString *_digestString;
     NSString *_locator;

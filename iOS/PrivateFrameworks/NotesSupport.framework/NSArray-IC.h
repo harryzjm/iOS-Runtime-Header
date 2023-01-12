@@ -8,7 +8,9 @@
 
 @interface NSArray (IC)
 + (id)ic_arrayFromNonNilObject:(id)arg1;
+- (_Bool)ic_allSatisfy:(CDUnknownBlockType)arg1;
 - (id)ic_dictionaryByHashingContentWithFunction:(CDUnknownBlockType)arg1;
+- (id)ic_subarrayFromIndex:(unsigned long long)arg1;
 - (id)ic_flatMap:(CDUnknownBlockType)arg1;
 - (id)ic_map:(CDUnknownBlockType)arg1;
 - (id)ic_compactMap:(CDUnknownBlockType)arg1;
@@ -29,5 +31,6 @@
 - (_Bool)ic_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ic_objectPassingTest:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id ic_randomObject;
+- (_Bool)ic_containsObjectOfClass:(Class)arg1;
 @end
 

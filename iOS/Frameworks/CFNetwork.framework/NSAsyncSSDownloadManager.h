@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CFNetwork/SSDownloadManagerObserver-Protocol.h>
-
 @class NSMutableDictionary, NSOperationQueue, NSString, SSDownloadManager;
 
-@interface NSAsyncSSDownloadManager : NSObject <SSDownloadManagerObserver>
+@interface NSAsyncSSDownloadManager : NSObject
 {
     SSDownloadManager *_manager;
     NSOperationQueue *_queue;

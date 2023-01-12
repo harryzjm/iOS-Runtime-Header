@@ -32,5 +32,11 @@
 @property(readonly, copy, nonatomic) NSString *carPlaySubTitle;
 @property(readonly, copy, nonatomic) NSString *carPlayTitle;
 @property(readonly, copy, nonatomic) NSString *carPlayRequestIdentifier;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

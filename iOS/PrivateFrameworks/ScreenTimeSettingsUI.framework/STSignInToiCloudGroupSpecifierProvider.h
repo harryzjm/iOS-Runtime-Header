@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ScreenTimeSettingsUI/AAUISignInControllerDelegate-Protocol.h>
-#import <ScreenTimeSettingsUI/MCProfileConnectionObserver-Protocol.h>
-
 @class NSString, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface STSignInToiCloudGroupSpecifierProvider <AAUISignInControllerDelegate, MCProfileConnectionObserver>
+@interface STSignInToiCloudGroupSpecifierProvider
 {
     PSSpecifier *_signInSpecifier;
 }

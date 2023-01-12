@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
-@interface TSCHStyleOwnerReference : NSObject <NSCopying>
+@interface TSCHStyleOwnerReference : NSObject
 {
     int _type;
     unsigned long long _index;

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileSafariUI/HistoryTableViewControllerDelegate-Protocol.h>
-
 @class HistoryTableViewController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HistoryLibraryItemController <HistoryTableViewControllerDelegate>
+@interface HistoryLibraryItemController
 {
     HistoryTableViewController *_viewController;
 }

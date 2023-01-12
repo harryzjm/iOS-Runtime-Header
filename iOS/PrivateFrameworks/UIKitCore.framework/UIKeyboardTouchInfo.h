@@ -25,8 +25,11 @@ __attribute__((visibility("hidden")))
     int _initialKeyState;
     long long _continuousPathState;
     _Bool _delayed;
+    _Bool _didPlayKeyFeedback;
 }
 
+- (void).cxx_destruct;
+@property(nonatomic) _Bool didPlayKeyFeedback; // @synthesize didPlayKeyFeedback=_didPlayKeyFeedback;
 @property(nonatomic) unsigned long long processedTouchCount; // @synthesize processedTouchCount=_processedTouchCount;
 @property(nonatomic) long long continuousPathState; // @synthesize continuousPathState=_continuousPathState;
 @property(nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
@@ -43,7 +46,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSMutableArray *touchHistory; // @synthesize touchHistory=_touchHistory;
 - (void)addTouch:(id)arg1;
 @property(readonly, nonatomic) UIKBTouchState *touch;
-- (void)dealloc;
 - (id)init;
 
 @end

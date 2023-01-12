@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionViewAnimationContext-Protocol.h>
-
 @class NSArray, NSDictionary, NSMutableDictionary, NSString, UICollectionViewLayout;
 @protocol _UICollectionViewUpdateTranslating;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewAnimationContext : NSObject <_UICollectionViewAnimationContext>
+@interface _UICollectionViewAnimationContext : NSObject
 {
     NSArray *_updates;
     NSMutableDictionary *_appearingAttributesDict;

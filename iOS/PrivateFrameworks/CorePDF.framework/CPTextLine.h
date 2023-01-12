@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CorePDF/CPDisposable-Protocol.h>
-
 @class CPCharSequence, NSArray;
 
 __attribute__((visibility("hidden")))
-@interface CPTextLine <CPDisposable>
+@interface CPTextLine
 {
     CPCharSequence *charSequence;
     CDStruct_2e2afed4 *wordArray;
@@ -18,7 +16,10 @@ __attribute__((visibility("hidden")))
     int lineNumber;
     int columnNumber;
     double baseline;
+    double rotatedBaseline;
     _Bool baseLineIsNull;
+    _Bool rotatedBaseLineIsNull;
+    struct CGRect rotatedBounds;
     _Bool hasBeenSplit;
     _Bool hasBeenProcessed;
     _Bool maySplit;
@@ -47,6 +48,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool isListItem; // @synthesize isListItem;
 @property(nonatomic) unsigned int rightSpacerIndex; // @synthesize rightSpacerIndex;
 @property(nonatomic) unsigned int leftSpacerIndex; // @synthesize leftSpacerIndex;
+- (struct CGRect)rotatedBounds;
+- (double)rotationAngle;
 - (double)medianFontSize;
 - (_Bool)hasDropCap;
 - (long long)topIsAbove:(id)arg1;
@@ -70,11 +73,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)isIndivisible;
 - (void)setBaselineToNull;
 - (void)setBaseline:(double)arg1;
+- (double)rotatedBaseline;
 - (double)baseline;
 - (_Bool)hyphenated;
 - (struct CGPoint)anchor;
 - (_Bool)overlapsHorizontally:(struct CGRect)arg1;
 - (_Bool)overlapsWith:(id)arg1;
+- (long long)rotatedBaseLineDescending:(id)arg1;
 - (long long)baseLineDescending:(id)arg1;
 - (long long)baseLineAscending:(id)arg1;
 - (struct CGRect)bounds;

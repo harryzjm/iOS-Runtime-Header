@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVCallbackCancellation-Protocol.h>
-#import <AVFCore/AVKVOIntrospection-Protocol.h>
-
 @class NSString;
 @protocol AVKVOIntrospection><AVCallbackCancellation;
 
 __attribute__((visibility("hidden")))
-@interface AVKeyPathFlattenerKVOIntrospectionShim : NSObject <AVKVOIntrospection, AVCallbackCancellation>
+@interface AVKeyPathFlattenerKVOIntrospectionShim : NSObject
 {
     NSObject *_observedObject;
     id <AVKVOIntrospection><AVCallbackCancellation> _realNotifier;

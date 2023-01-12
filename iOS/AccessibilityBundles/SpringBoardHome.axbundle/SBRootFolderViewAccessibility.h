@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setSpecialLayoutManager:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setSidebarVisibilityProgress:(double)arg1;
 - (void)setIdleText:(id)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;

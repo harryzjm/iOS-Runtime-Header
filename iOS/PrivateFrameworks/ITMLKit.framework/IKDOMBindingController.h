@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKJSDataObserving-Protocol.h>
-
 @class IKAppContext, IKDOMElement, IKDataBinding, IKJSDataItem, NSDictionary, NSMutableArray, NSString, _IKDOMMutationRuleSet;
 @protocol IKDOMBindingStrategy;
 
 __attribute__((visibility("hidden")))
-@interface IKDOMBindingController : NSObject <IKJSDataObserving>
+@interface IKDOMBindingController : NSObject
 {
     NSDictionary *_bindingKeysByPathString;
     struct {

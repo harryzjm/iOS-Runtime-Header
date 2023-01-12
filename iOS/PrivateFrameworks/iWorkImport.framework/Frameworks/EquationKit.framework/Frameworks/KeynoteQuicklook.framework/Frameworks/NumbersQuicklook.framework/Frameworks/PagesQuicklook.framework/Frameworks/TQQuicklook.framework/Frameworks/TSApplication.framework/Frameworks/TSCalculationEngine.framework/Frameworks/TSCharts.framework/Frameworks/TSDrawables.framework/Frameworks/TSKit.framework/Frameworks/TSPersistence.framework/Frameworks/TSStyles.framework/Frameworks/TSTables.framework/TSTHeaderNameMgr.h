@@ -6,20 +6,16 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-#import <TSTables/TSCEHeaderNameProtocol-Protocol.h>
-#import <TSTables/TSTCellWillChangeProtocol-Protocol.h>
+@class NSCharacterSet, NSMutableSet, NSString, TSCECalculationEngine, TSCENameTrie;
 
-@class NSCharacterSet, NSMutableSet, NSObject, NSString, TSCECalculationEngine, TSCENameTrie;
-@protocol OS_dispatch_queue;
-
-@interface TSTHeaderNameMgr : TSPObject <TSCEHeaderNameProtocol, TSTCellWillChangeProtocol, TSCEFormulaOwning>
+@interface TSTHeaderNameMgr : TSPObject
 {
     TSCECalculationEngine *_calcEngine;
     TSCECalculationEngine *_weakCalcEngine;
-    NSObject<OS_dispatch_queue> *_headerNameMgrQueue;
+    struct _opaque_pthread_rwlock_t _headerNameMgrReadWriteLock;
     struct TSKUIDStruct _ownerUID;
     struct TSUCellCoord _nextPrecedentCoord;
+    struct os_unfair_lock_s _nextPrecedentCoordLock;
     struct TSUCellCoord _allHeaderPerTablesPrecedent;
     struct TSUCellCoord _needsTileSplittingPrecedent;
     struct vector<TSTHeaderNameMgrTile *, std::allocator<TSTHeaderNameMgrTile *>> _nameFragmentTiles;
@@ -28,6 +24,8 @@
     struct unordered_map<TSKUIDStruct, TSTHeaderPerTable *, std::hash<TSKUIDStruct>, std::equal_to<TSKUIDStruct>, std::allocator<std::pair<const TSKUIDStruct, TSTHeaderPerTable *>>> _perTableInfo;
     struct unordered_map<TSUCellCoord, TSKUIDStruct, std::hash<TSUCellCoord>, std::equal_to<TSUCellCoord>, std::allocator<std::pair<const TSUCellCoord, TSKUIDStruct>>> _headerPerTablePrecedentToTableUID;
     TSCENameTrie *_namePrefixIndex;
+    struct os_unfair_lock_s _reservedFragmentPrecedentsLock;
+    struct unordered_map<NSString *, TSUCellCoord, std::hash<NSString *>, std::equal_to<NSString *>, std::allocator<std::pair<NSString *const, TSUCellCoord>>> _reservedFragmentPrecedents;
     NSMutableSet *_tilesToConsiderSplitting;
     _Bool _isClosing;
     struct TSKUIDStruct _nrm_ownerUID;
@@ -66,7 +64,8 @@
 - (void)p_updateText:(id)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 - (void)updateText:(id)arg1 atCellCoord:(const struct TSKUIDStructCoord *)arg2 tableUID:(const struct TSKUIDStruct *)arg3;
 - (void)updateWithIndexingChunks:(id)arg1;
-- (void *)fragmentEntryForString:(id)arg1 createIfMissing:(_Bool)arg2;
+- (void)createFragmentEntryForString:(id)arg1 createIfMissingUsingPrecedentCoord:(const struct TSUCellCoord *)arg2;
+- (void *)fragmentEntryForString:(id)arg1;
 - (void)handleFullTile:(id)arg1;
 - (id)findTileForString:(id)arg1 findClosest:(_Bool)arg2 foundAtOffset:(unsigned long long *)arg3;
 - (id)findTileForString:(id)arg1 findClosest:(_Bool)arg2;
@@ -82,7 +81,10 @@
 - (void)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1;
 - (void)updateTrackedHeaders:(const struct TSKUIDStruct *)arg1 checkForEmptyHeaders:(_Bool)arg2;
 - (struct TSTHeaderPerTable *)perTableEntryForTable:(const struct TSKUIDStruct *)arg1 createIfMissing:(_Bool)arg2;
-- (vector_dba3087d)wordFragmentsFromString:(id)arg1 savePreserveFlags:(_Bool)arg2;
+- (vector_5a9bb81a)wordFragmentsFromString:(id)arg1 savePreserveFlags:(_Bool)arg2;
+- (void)integrateReservedPrecedents;
+- (struct TSUCellCoord)reservePrecedent:(const struct TSUCellCoord *)arg1 forNameFragment:(id)arg2;
+- (struct TSUCellCoord)reservedPrecedentForNameFragment:(id)arg1;
 - (void)usedPrecedentCoord:(const struct TSUCellCoord *)arg1;
 - (struct TSUCellCoord)getNextPrecedentCoord:(_Bool)arg1;
 - (void)setNRM_formulaOwnerUID:(const struct TSKUIDStruct *)arg1;
@@ -92,7 +94,6 @@
 - (void)setCalcEngine:(id)arg1;
 @property(readonly, nonatomic) TSCECalculationEngine *calcEngine;
 - (void)setEntry:(void *)arg1 forPrecedentCoord:(const struct TSUCellCoord *)arg2;
-- (id)headerNameMgrQueue;
 - (unsigned long long)numberOfTiles;
 @property(readonly, nonatomic) _Bool isClosing;
 - (void)willClose;

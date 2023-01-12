@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITapRecognizerDelegate-Protocol.h>
+#import "UIGestureRecognizer.h"
 
 @class NSArray, NSString, UITapRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UITextMultiTapRecognizer <UITapRecognizerDelegate>
+@interface UITextMultiTapRecognizer : UIGestureRecognizer
 {
     id _target;
     SEL _tapAction;
@@ -18,14 +18,17 @@ __attribute__((visibility("hidden")))
     unsigned long long _touchDownCount;
     _Bool _sendTapAction;
     _Bool _recognizesOnSubsequentTouchDowns;
+    long long _requiredButtonMask;
 }
 
 - (void).cxx_destruct;
+@property long long requiredButtonMask; // @synthesize requiredButtonMask=_requiredButtonMask;
 @property _Bool recognizesOnSubsequentTouchDowns; // @synthesize recognizesOnSubsequentTouchDowns=_recognizesOnSubsequentTouchDowns;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (_Bool)_allowsEventWithRequiredButtonMask:(id)arg1;
 - (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
 - (void)reset;

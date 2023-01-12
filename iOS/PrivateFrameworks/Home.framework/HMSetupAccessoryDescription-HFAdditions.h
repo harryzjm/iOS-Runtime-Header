@@ -6,16 +6,17 @@
 
 #import <HomeKit/HMSetupAccessoryDescription.h>
 
-@class HMAccessoryOwnershipToken, NSString, NSURL;
+@class NSString, NSURL;
 
 @interface HMSetupAccessoryDescription (HFAdditions)
 - (void)hf_updateWithDiscoveredAccessory:(id)arg1;
-@property(readonly, nonatomic) HMAccessoryOwnershipToken *hf_ownershipToken;
+@property(readonly, nonatomic) NSString *hf_localizedLaunchingAppName;
+@property(readonly, nonatomic) _Bool hf_isLaunchedByHomeDaemon;
+@property(readonly, nonatomic) _Bool hf_isLaunchedByHomeApp;
 @property(readonly, nonatomic) _Bool hf_isKeyedToASpecificAccessory;
 @property(readonly, nonatomic) NSURL *hf_installationGuideURL;
 @property(readonly, nonatomic) NSString *hf_marketingName;
 - (_Bool)hf_isLogitechCircleViewDoorbell;
-- (id)hf_populateSetupMetadata;
 - (id)hf_home;
 @end
 

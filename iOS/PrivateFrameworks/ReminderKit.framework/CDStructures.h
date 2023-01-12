@@ -10,8 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct Document_DocObject;
-
 struct TopoID {
     id _field1;
     unsigned int _field2;
@@ -50,18 +48,6 @@ struct basic_string<char, std::char_traits<char>, std::allocator<char>> {
             } _field1;
         } _field1;
     } _field1;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct vector<CRDT::Document_DocObject *, std::allocator<CRDT::Document_DocObject *>> {
-    struct Document_DocObject **__begin_;
-    struct Document_DocObject **__end_;
-    struct __compressed_pair<CRDT::Document_DocObject **, std::allocator<CRDT::Document_DocObject *>> {
-        struct Document_DocObject **__value_;
-    } __end_cap_;
 };
 
 struct vector<TopoSubstring *, std::allocator<TopoSubstring *>> {

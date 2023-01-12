@@ -8,6 +8,7 @@
 
 @interface NSBundle (SCRCBundleExtras)
 + (id)localeForString:(id)arg1;
++ (id)preferredLocalizationsForLocale:(id)arg1;
 + (id)localizedScreenReaderStringForKey:(id)arg1 table:(id)arg2;
 + (id)screenReaderFrameworkBundle;
 + (id)localizedCoreStringForKey:(id)arg1;

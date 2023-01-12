@@ -6,11 +6,9 @@
 
 #import <WebKit/WKBackForwardListItem.h>
 
-#import <SafariSharedUI/WBSTranslationContextSnapshotStoring-Protocol.h>
-
 @class NSString, WBSTranslationContextSnapshot;
 
-@interface WKBackForwardListItem (SafariSharedUIExtras) <WBSTranslationContextSnapshotStoring>
+@interface WKBackForwardListItem (SafariSharedUIExtras)
 @property(retain, nonatomic, setter=_safari_setTranslationContextSnapshot:) WBSTranslationContextSnapshot *_safari_translationContextSnapshot;
 
 // Remaining properties

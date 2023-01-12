@@ -6,12 +6,9 @@
 
 #import <UIKit/UIColor.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchivableColor-Protocol.h>
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface UIColor (IBBinaryArchivingAdditions) <IBBinaryArchiving, IBBinaryArchivableColor>
+@interface UIColor (IBBinaryArchivingAdditions)
 + (id)ibSimpleColorPairWithAnyOrLightColor:(id)arg1 darkColor:(id)arg2;
 + (id)ibColorWithName:(id)arg1 bundleID:(id)arg2 fallbackColor:(id)arg3 unarchiveAsColorWrapper:(_Bool)arg4;
 + (id)ibColorWithPatternBitmap:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
@@ -22,6 +19,7 @@
 + (id)ibArchivedDataForColor:(id)arg1;
 + (id)ibDefaultTintColor;
 + (id)ibComputeSystemColors;
++ (void)registerColorIfMissing:(id)arg1 forKey:(id)arg2 inDictionary:(id)arg3;
 + (id)ibSystemColors;
 + (id)ibDeprecatedSystemColorNames;
 - (const char *)cStringClassNameForBinaryArchiver:(id)arg1;

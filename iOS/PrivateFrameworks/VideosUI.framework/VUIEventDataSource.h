@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class VUIAction, VUIDocumentDataSource;
+@class VUIAction, VUIDocumentDataSource, VUIMediaEntity;
 
 __attribute__((visibility("hidden")))
 @interface VUIEventDataSource : NSObject
@@ -17,19 +17,23 @@ __attribute__((visibility("hidden")))
     VUIAction *_action;
     VUIDocumentDataSource *_postActionDocumentDataSource;
     VUIAction *_postAction;
+    VUIMediaEntity *_mediaEntity;
 }
 
 + (id)_actionForKey:(id)arg1 eventDict:(id)arg2 appContext:(id)arg3;
 + (id)_documentDataSourceWithDict:(id)arg1;
 + (id)attachPrefetchedDict:(id)arg1 eventDict:(id)arg2;
 + (id)eventDataSourceWithEventDict:(id)arg1 appContext:(id)arg2;
++ (id)selectEventDataSourceWithLibraryMediaEntity:(id)arg1;
 - (void).cxx_destruct;
+@property(retain, nonatomic) VUIMediaEntity *mediaEntity; // @synthesize mediaEntity=_mediaEntity;
 @property(retain, nonatomic) VUIAction *postAction; // @synthesize postAction=_postAction;
 @property(retain, nonatomic) VUIDocumentDataSource *postActionDocumentDataSource; // @synthesize postActionDocumentDataSource=_postActionDocumentDataSource;
 @property(retain, nonatomic) VUIAction *action; // @synthesize action=_action;
 @property(retain, nonatomic) VUIDocumentDataSource *documentDataSource; // @synthesize documentDataSource=_documentDataSource;
 @property(retain, nonatomic) VUIAction *preAction; // @synthesize preAction=_preAction;
 @property(retain, nonatomic) VUIDocumentDataSource *preActionDocumentDataSource; // @synthesize preActionDocumentDataSource=_preActionDocumentDataSource;
+- (id)_initWithLibraryMediaEntity:(id)arg1;
 
 @end
 

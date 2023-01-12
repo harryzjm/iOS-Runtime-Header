@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTBasicDevice-Protocol.h>
-
-@class DVTDeviceType, DVTDispatchLock, DVTExtension, DVTPlatform, NSArray, NSData, NSError, NSMutableArray, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, UTType;
+@class DVTCPUCount, DVTDeviceType, DVTDispatchLock, DVTExtension, DVTPlatform, NSArray, NSData, NSError, NSMutableArray, NSMutableSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, UTType;
 @protocol DVTBasicDevice, OS_dispatch_queue;
 
-@interface DVTDevice : NSObject <DVTBasicDevice>
+@interface DVTDevice : NSObject
 {
     NSObject<OS_dispatch_queue> *_instrumentsServerMessageQueue;
     unsigned long long _state;
     NSMutableArray *_deviceOperations;
+    unsigned long long _nonBlockingOperationCount;
     DVTDispatchLock *_deviceOperationLock;
     NSMutableSet *_capabilities;
     NSObject<OS_dispatch_queue> *_appListingChannelQueue;
@@ -53,6 +52,7 @@
     NSString *_operatingSystemVersion;
     NSString *_iOSSupportVersion;
     NSString *_operatingSystemBuild;
+    DVTCPUCount *_cpuCountDescription;
     NSString *_identifier;
 }
 
@@ -65,6 +65,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool shouldDownloadSymbolsFromServer; // @synthesize shouldDownloadSymbolsFromServer=_shouldDownloadSymbolsFromServer;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(retain) DVTCPUCount *cpuCountDescription; // @synthesize cpuCountDescription=_cpuCountDescription;
 @property(copy) NSString *operatingSystemBuild; // @synthesize operatingSystemBuild=_operatingSystemBuild;
 @property(copy) NSString *iOSSupportVersion; // @synthesize iOSSupportVersion=_iOSSupportVersion;
 @property(copy) NSString *operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
@@ -96,7 +97,9 @@
 @property(readonly, copy) NSURL *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
 @property(readonly) DVTExtension *extension; // @synthesize extension=_extension;
 - (void)disconnectCoreDevice;
-- (void)connectCoreDevice;
+- (void)connectAndPrepareCoreDevice;
+@property(readonly) _Bool supportsDeveloperMode;
+@property(readonly) long long developerMode;
 - (id)createFileHandleForDebugserver;
 - (id)prepareForDevelopment;
 - (id)_processSharedCacheFiles;
@@ -134,8 +137,7 @@
 - (void)connectToDeviceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)discoverAvailableConnectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_transitionToState:(unsigned long long)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)setState:(unsigned long long)arg1;
-@property(readonly) unsigned long long state;
+@property(nonatomic) unsigned long long state;
 @property(readonly) _Bool allowsManagedStateControl;
 - (id)shutDownDevice;
 - (id)startUpDevice;
@@ -143,13 +145,16 @@
 - (_Bool)wantsDeviceOperationActivityReporting;
 - (void)endDeviceOperation:(id)arg1;
 - (void)endDeviceOperation:(id)arg1 error:(id)arg2;
-- (void)endDeviceOperation:(id)arg1 error:(id)arg2 proxiedDeviceUsed:(id)arg3;
-- (id)_startDeviceOperationUserInitiated:(_Bool)arg1 description:(id)arg2 shouldReportAnalyticsWithName:(id)arg3;
+- (id)_startDeviceOperationUserInitiated:(_Bool)arg1 description:(id)arg2 shouldReportAnalyticsWithName:(id)arg3 proxiedDeviceUsed:(id)arg4;
 - (id)startUserInitiatedDeviceOperation;
+- (id)startDeviceOperationWithDescription:(id)arg1 analyticsName:(id)arg2 proxiedDeviceUsed:(id)arg3;
 - (id)startDeviceOperationWithDescription:(id)arg1 analyticsName:(id)arg2;
 - (id)startDeviceOperation;
 - (void)takeScreenshotWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (id)screenshotController;
 @property(readonly) _Bool canTakeScreenshot;
+- (void)stopLocationSimulationWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)simulateLocationWithLatitude:(id)arg1 longitude:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)attemptRecoveryFromUnavailabilityError;
 - (void)forget;
 @property(readonly) NSString *hostPairingToken;
@@ -170,13 +175,15 @@
 @property(readonly) _Bool hasWiredConnection;
 @property(readonly) _Bool hasWirelessConnection;
 @property(readonly) _Bool isWireless;
+@property(readonly) _Bool supportsSimulateVehicularCrash;
+@property(readonly) _Bool supportsSimulateMetricPayloads;
 - (void)showMessagesExtensionOnProxy:(_Bool)arg1 completed:(CDUnknownBlockType)arg2;
-- (_Bool)supportsFeature:(unsigned long long)arg1;
 - (void)simulateNotificationWithBundleID:(id)arg1 payload:(id)arg2 onProxy:(_Bool)arg3 completed:(CDUnknownBlockType)arg4;
 - (void)pressHomeButtonOnProxy:(_Bool)arg1 completed:(CDUnknownBlockType)arg2;
 - (void)showSiriForExtensions:(id)arg1 queryText:(id)arg2 pid:(int)arg3 onProxy:(_Bool)arg4 completed:(CDUnknownBlockType)arg5;
 - (void)showQuicklookPreviewForExtension:(id)arg1;
-- (void)showWidgetKit:(id)arg1 pid:(int)arg2 completed:(CDUnknownBlockType)arg3;
+- (void)showWidgetKit:(id)arg1 onProxy:(_Bool)arg2 pid:(int)arg3 completed:(CDUnknownBlockType)arg4;
+- (id)_appendEnvSettings:(id)arg1 fromEnv:(id)arg2 toProcessControl:(id)arg3;
 - (void)showAppClipWithBundleIdentifer:(id)arg1 pid:(int)arg2 context:(id)arg3 completed:(CDUnknownBlockType)arg4;
 - (void)showTodayViewForExtensions:(id)arg1 pid:(int)arg2;
 - (id)serviceHubProcessControlChannelOnProxy:(_Bool)arg1;
@@ -184,6 +191,8 @@
 - (id)makeServiceHubProcessControlChannelForLauncher:(unsigned long long)arg1 onProxy:(_Bool)arg2;
 - (id)makeServiceHubProcessControlChannelForLauncher:(unsigned long long)arg1;
 - (_Bool)_shouldAttemptToRetryWatchAppLaunchAttemptForLaunchError:(id)arg1;
+- (void)applicationUninstalled:(id)arg1;
+- (void)applicationInstalled:(id)arg1;
 @property(readonly) unsigned long long supportedLaunchOptionsForProxiedDevice;
 @property(readonly) unsigned long long supportedLaunchOptions;
 - (_Bool)isAvailableWithError:(id *)arg1;
@@ -240,6 +249,7 @@
 - (id)deviceIdentifierForGPUTracing;
 @property(readonly) _Bool supportsApplicationDataUploading;
 @property(readonly) _Bool supportsAttachByPIDOrName;
+@property(readonly, copy, nonatomic) NSString *thinningProductType;
 @property(readonly, copy, nonatomic) NSString *modelCodename;
 @property(readonly, copy, nonatomic) UTType *modelUTType;
 - (id)processorDescription;
@@ -250,8 +260,10 @@
 - (id)viewDebuggerDylibPathWithOptions:(id)arg1;
 @property(readonly, copy) NSString *extraDebuggingRuntimeDylibPath;
 @property(readonly, copy) NSString *recordedFramesLibdispatchIntrospectionDylibPath;
+@property(readonly) NSSet *eligibleForAdditionalPlatforms;
 @property(readonly) _Bool supportsDaemonDebugging;
 @property(readonly) _Bool supportsDebugOverrides;
+@property(readonly) _Bool supportsPerformanceAntipatternChecker;
 @property(readonly) _Bool supportsMainThreadChecker;
 @property(readonly) _Bool supportsRecordedFrames;
 @property(readonly) _Bool alwaysAttachesForDebugging;
@@ -279,6 +291,8 @@
 - (void)dealloc;
 - (id)initWithDeviceLocation:(id)arg1 extension:(id)arg2;
 @property(readonly, copy) NSString *description;
+@property(nonatomic, readonly) NSString *nativeArchitectureNonnull;
+@property(nonatomic, readonly) DVTPlatform *platformNonnull;
 
 // Remaining properties
 @property(readonly, copy) NSSet *capabilities; // @dynamic capabilities;

@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSMapTable, NSMutableArray, NSString, SKUIShapeView, SKUIViewElement, UIColor;
 @protocol SKUISignInViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUISignInView : UIView <UITextFieldDelegate, SKUIViewElementView>
+@interface SKUISignInView : UIView
 {
     UIColor *_borderColor;
     SKUIShapeView *_borderView;

@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/CAAnimationDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class NSString, NSTimer, UIImage, VideosExtrasConstrainedArtworkContainerView;
 @protocol VideosExtrasSlideshowViewControllerDataSource;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasSlideshowViewController : UIViewController <CAAnimationDelegate, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasSlideshowViewController : UIViewController
 {
     _Bool _animatingTransition;
     _Bool _viewVisible;

@@ -6,12 +6,15 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (EMNSURLAdditions)
 @property(readonly, nonatomic) _Bool em_isMailboxURL;
 @property(readonly, nonatomic) _Bool em_isAccountURL;
 - (id)em_internalMessageID;
 @property(readonly, nonatomic) _Bool em_isInternalMessageURL;
 - (id)em_messageIDHeader;
+@property(readonly, nonatomic) NSString *mailToFromQueryItem;
 @property(readonly, nonatomic) _Bool em_isMessageURL;
 @end
 

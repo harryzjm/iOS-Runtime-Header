@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <OnBoardingKit/OBPasscodeFieldDelegate-Protocol.h>
-
 @class NSString, OBPasscodeField;
 
 __attribute__((visibility("hidden")))
-@interface OBSimplePasscodeInputView <OBPasscodeFieldDelegate>
+@interface OBSimplePasscodeInputView
 {
     _Bool _limitCharactersToNumbers;
     OBPasscodeField *_passcodeField;

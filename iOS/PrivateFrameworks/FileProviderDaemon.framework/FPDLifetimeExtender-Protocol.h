@@ -11,5 +11,9 @@
 @protocol FPDLifetimeExtender <NSObject>
 @property(readonly) NSString *prettyDescription;
 @property(readonly) int requestEffectivePID;
+
+@optional
+@property unsigned long long timeoutState;
+@property(readonly) double timeout;
 @end
 

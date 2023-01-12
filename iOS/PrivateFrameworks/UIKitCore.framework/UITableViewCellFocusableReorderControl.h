@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIFloatingContentViewDelegate-Protocol.h>
-
 @class NSString, UIPanGestureRecognizer, UITapGestureRecognizer, _UIFloatingContentView;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellFocusableReorderControl <_UIFloatingContentViewDelegate>
+@interface UITableViewCellFocusableReorderControl
 {
     _UIFloatingContentView *_floatingContentView;
     UIPanGestureRecognizer *_panRecognizer;

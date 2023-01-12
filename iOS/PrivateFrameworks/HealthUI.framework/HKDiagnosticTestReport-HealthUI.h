@@ -7,6 +7,7 @@
 #import <HealthKit/HKDiagnosticTestReport.h>
 
 @interface HKDiagnosticTestReport (HealthUI)
+- (id)displayItems;
 - (id)localizedStatusDisplayString;
 - (id)sortDateTitle;
 @end

@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
-@class FTBatchTranslationFeedbackRequest, FTBatchTranslationRequest, NSData, NSMutableDictionary;
+@class FTBatchTranslationFeedbackRequest, FTBatchTranslationLoggingRequest, FTBatchTranslationRequest, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTBatchTranslationStreamingRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTBatchTranslationStreamingRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct BatchTranslationStreamingRequest *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_452b9faa)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
+@property(readonly, nonatomic) FTBatchTranslationLoggingRequest *contentAsFTBatchTranslationLoggingRequest;
 @property(readonly, nonatomic) FTBatchTranslationFeedbackRequest *contentAsFTBatchTranslationFeedbackRequest;
 @property(readonly, nonatomic) FTBatchTranslationRequest *contentAsFTBatchTranslationRequest;
 @property(readonly, nonatomic) long long content_type;

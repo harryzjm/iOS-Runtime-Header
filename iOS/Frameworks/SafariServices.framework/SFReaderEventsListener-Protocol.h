@@ -15,7 +15,7 @@
 - (void)didCollectReaderContentForMail:(NSString *)arg1;
 - (void)didCollectReadingListItemInfo:(NSDictionary *)arg1 bookmarkID:(NSNumber *)arg2;
 - (void)didSetReaderConfiguration:(NSDictionary *)arg1;
-- (void)contentDidBecomeReadyWithDetectedLanguage:(NSString *)arg1;
+- (void)contentDidBecomeReadyWithArticleText:(NSString *)arg1;
 - (void)didDetermineAdditionalTextSamples:(WBSReaderAvailabilityCheckResult *)arg1;
 - (void)didDetermineReaderAvailabilityForDynamicCheck:(WBSReaderAvailabilityCheckResult *)arg1;
 - (void)didDetermineReaderAvailability:(WBSReaderAvailabilityCheckResult *)arg1;

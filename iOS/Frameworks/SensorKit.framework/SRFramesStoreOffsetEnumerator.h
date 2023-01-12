@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SensorKit/NSFastEnumeration-Protocol.h>
-
 @class SRFrameStore;
 
 __attribute__((visibility("hidden")))
-@interface SRFramesStoreOffsetEnumerator : NSObject <NSFastEnumeration>
+@interface SRFramesStoreOffsetEnumerator : NSObject
 {
     SRFrameStore *_framesStore;
     unsigned long long _offset;

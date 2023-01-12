@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (struct CGPoint)emojiInternationalKeyOffset;
 - (double)emojiInternationalKeySize;
+- (double)symbolImageControlKeyFontSize;
 - (struct CGPoint)emojiPopupTextOffset;
 - (double)keyCornerRadius;
 - (id)thinKeycapsFontName;

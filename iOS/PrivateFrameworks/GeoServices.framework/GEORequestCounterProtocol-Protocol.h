@@ -7,10 +7,14 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSDate, NSDateInterval, NSObject, NSString;
-@protocol GEORequestCounterTicket, OS_dispatch_queue;
+@protocol GEOExternalRequestCounterTicket, GEORequestCounterTicket, OS_dispatch_queue;
 
 @protocol GEORequestCounterProtocol <NSObject>
 @property(nonatomic) _Bool countersEnabled;
+- (void)placeCacheGetCounts:(unsigned long long)arg1 forApp:(NSString *)arg2 inTimeRange:(NSDateInterval *)arg3 ofType:(int)arg4 handler:(void (^)(NSArray *, NSError *))arg5;
+- (void)placeCacheRegisterCacheResult:(unsigned char)arg1 forApp:(NSString *)arg2 requestType:(int)arg3 timestamp:(NSDate *)arg4;
+- (void)externalRequestsCount:(void (^)(NSArray *))arg1;
+- (id <GEOExternalRequestCounterTicket>)externalRequestCounterTicketForType:(NSString *)arg1 subtype:(NSString *)arg2 source:(NSString *)arg3 appId:(NSString *)arg4;
 - (void)fetchRoutePreloadSessionsFrom:(NSDate *)arg1 completion:(void (^)(NSArray *))arg2 completionQueue:(NSObject<OS_dispatch_queue> *)arg3;
 - (void)recordRoutePreloadSessionAt:(NSDateInterval *)arg1 transportType:(long long)arg2 tilesPreloaded:(unsigned long long)arg3 tilesUsed:(unsigned long long)arg4 tilesMissed:(unsigned long long)arg5;
 - (void)fetchAnalyticsHandlingDataFrom:(NSDate *)arg1 completion:(void (^)(NSArray *))arg2 completionQueue:(NSObject<OS_dispatch_queue> *)arg3;

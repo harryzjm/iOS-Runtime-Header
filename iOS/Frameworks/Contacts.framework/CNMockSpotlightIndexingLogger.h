@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNSpotlightIndexingLogger-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNMockSpotlightIndexingLogger : NSObject <CNSpotlightIndexingLogger>
+@interface CNMockSpotlightIndexingLogger : NSObject
 {
 }
 

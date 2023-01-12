@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MUPlaceVerticalCardContainerView.h"
+
 @class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface MUTextPairVerticalCardView
+@interface MUTextPairVerticalCardView : MUPlaceVerticalCardContainerView
 {
     NSArray *_viewModels;
 }
@@ -17,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeDidChange;
 - (void)_recalculateStackingIfNeeded;
 - (void)layoutSubviews;
+- (void)_updateInsets;
 - (void)_updateAppearance;
 - (id)initWithFrame:(struct CGRect)arg1;
 

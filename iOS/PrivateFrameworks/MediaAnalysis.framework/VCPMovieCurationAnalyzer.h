@@ -17,15 +17,19 @@ __attribute__((visibility("hidden")))
     NSArray *_qualityResuls;
     NSArray *_junkResults;
     NSArray *_faceResults;
+    NSArray *_petsResults;
     NSArray *_actionResults;
     NSArray *_subtleMotionResults;
     NSArray *_voiceResults;
+    NSArray *_audioQualityResults;
     NSArray *_sceneResults;
     NSArray *_humanActionResults;
     NSArray *_humanPoseResults;
     NSArray *_cameraMotionResults;
     NSArray *_saliencyResults;
     NSArray *_orientationResults;
+    NSArray *_mlHighlightScoreResults;
+    NSArray *_mlQualityResults;
     NSDictionary *_faceRanges;
     CDStruct_e83c9415 _timeRange;
     struct CGSize _frameSize;
@@ -35,17 +39,20 @@ __attribute__((visibility("hidden")))
     _Bool _hadZoom;
 }
 
++ (_Bool)isSettlingEffectPregatingEnabled;
 - (void).cxx_destruct;
 - (void)reportMovieCurationAnalysisResults:(id)arg1 withSummaryAnalytics:(id)arg2;
 - (id)results;
+- (void)addSettling:(id)arg1 to:(id)arg2;
 - (void)addSummary:(id)arg1 to:(id)arg2;
 - (void)addHighlight:(id)arg1 to:(id)arg2;
+- (id)audioQualityScore:(CDStruct_e83c9415)arg1;
 - (int)generateMovieCurations;
 - (int)postProcessKeyFrames;
-- (void)loadVideoAnalysisResults:(id)arg1 audioAnalysisResults:(id)arg2 andFaceRanges:(id)arg3 frameSize:(struct CGSize)arg4;
+- (void)loadVideoAnalysisResults:(id)arg1 audioAnalysisResults:(id)arg2 videoCNNResults:(id)arg3 andFaceRanges:(id)arg4 frameSize:(struct CGSize)arg5;
 - (int)analyzeKeyFrame:(struct __CVBuffer *)arg1 withTimestamp:(CDStruct_1b6d18a9)arg2 andDuration:(CDStruct_1b6d18a9)arg3 flags:(unsigned long long *)arg4;
 - (void)setMaxHighlightDuration:(float)arg1;
-- (id)initWithAnalysisTypes:(unsigned long long)arg1 transform:(struct CGAffineTransform)arg2 timeRange:(CDStruct_e83c9415)arg3 isLivePhoto:(_Bool)arg4 frameStats:(id)arg5 hadFlash:(_Bool)arg6 hadZoom:(_Bool)arg7 keyFrameResults:(id)arg8 isTimelapse:(_Bool)arg9 preferredTimeRange:(CDStruct_e83c9415)arg10 asset:(id)arg11;
+- (id)initWithAnalysisTypes:(unsigned long long)arg1 transform:(struct CGAffineTransform)arg2 timeRange:(CDStruct_e83c9415)arg3 isLivePhoto:(_Bool)arg4 photoOffset:(float)arg5 frameStats:(id)arg6 hadFlash:(_Bool)arg7 hadZoom:(_Bool)arg8 keyFrameResults:(id)arg9 isTimelapse:(_Bool)arg10 preferredTimeRange:(CDStruct_e83c9415)arg11 asset:(id)arg12;
 
 @end
 

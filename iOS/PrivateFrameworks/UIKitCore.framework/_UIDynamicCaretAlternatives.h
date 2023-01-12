@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIView;
+#import "UIView.h"
+
+@class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface _UIDynamicCaretAlternatives
+@interface _UIDynamicCaretAlternatives : UIView
 {
     UIView *_verticalDivider;
     UIView *_horizontalDivider;

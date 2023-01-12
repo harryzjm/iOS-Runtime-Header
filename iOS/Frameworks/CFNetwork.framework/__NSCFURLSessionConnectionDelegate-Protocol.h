@@ -7,13 +7,13 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSObject-Protocol.h>
 
-@class NSCachedURLResponse, NSError, NSHTTPURLResponse, NSInputStream, NSNumber, NSObject, NSString, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse, __NSCFURLSessionConnection;
+@class NSCachedURLResponse, NSError, NSHTTPURLResponse, NSInputStream, NSNumber, NSObject, NSURLAuthenticationChallenge, NSURLRequest, NSURLResponse, __NSCFURLSessionConnection;
 @protocol OS_dispatch_data;
 
 @protocol __NSCFURLSessionConnectionDelegate <NSObject, NSCopying>
 - (void)connection:(__NSCFURLSessionConnection *)arg1 didReceiveTCPConnection:(shared_ptr_8da4e70b)arg2 extraBytes:(NSObject<OS_dispatch_data> *)arg3;
-- (void)connection:(__NSCFURLSessionConnection *)arg1 needConnectedSocketToHost:(NSString *)arg2 port:(unsigned long long)arg3 completion:(void (^)(int, struct))arg4;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 didReceiveSocketInputStream:(NSInputStream *)arg2 outputStream:(id)arg3;
+- (void)connection:(__NSCFURLSessionConnection *)arg1 alternatePathAvailable:(int)arg2;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 _conditionalRequirementsChanged:(_Bool)arg2;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 waitingWithReason:(long long)arg2;
 - (void)connection:(__NSCFURLSessionConnection *)arg1 _willSendRequestForEstablishedConnection:(NSURLRequest *)arg2 completion:(void (^)(NSURLRequest *))arg3;

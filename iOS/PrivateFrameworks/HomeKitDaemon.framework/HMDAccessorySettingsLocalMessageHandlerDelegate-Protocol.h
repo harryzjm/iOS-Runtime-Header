@@ -6,10 +6,10 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDAccessorySettingsLocalMessageHandler, HMDCompositeSettingValue, HMFMessage, HMFVersion, HMLanguageValueListSetting, NSArray, NSString, NSUUID;
+@class HMDAccessorySettingsLocalMessageHandler, HMFMessage, HMFVersion, HMImmutableSettingValue, HMLanguageValueListSetting, NSArray, NSString, NSUUID;
 
 @protocol HMDAccessorySettingsLocalMessageHandlerDelegate <NSObject>
-- (void)accessorySettingsLocalMessageHandler:(HMDAccessorySettingsLocalMessageHandler *)arg1 didRecieveUpdateRequestMessage:(HMFMessage *)arg2 withHomeUUID:(NSUUID *)arg3 accessoryUUID:(NSUUID *)arg4 keyPath:(NSString *)arg5 value:(HMDCompositeSettingValue *)arg6 callerVersion:(HMFVersion *)arg7;
+- (void)accessorySettingsLocalMessageHandler:(HMDAccessorySettingsLocalMessageHandler *)arg1 didRecieveUpdateRequestMessage:(HMFMessage *)arg2 withHomeUUID:(NSUUID *)arg3 accessoryUUID:(NSUUID *)arg4 keyPath:(NSString *)arg5 value:(HMImmutableSettingValue *)arg6 callerVersion:(HMFVersion *)arg7;
 - (void)accessorySettingsLocalMessageHandler:(HMDAccessorySettingsLocalMessageHandler *)arg1 didRecieveFetchRequestMessage:(HMFMessage *)arg2 withHomeUUID:(NSUUID *)arg3 accessoryUUID:(NSUUID *)arg4 keyPaths:(NSArray *)arg5 callerVersion:(HMFVersion *)arg6 callerPrivilege:(unsigned long long)arg7 siriAvailableLanguagesSetting:(HMLanguageValueListSetting *)arg8;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudDocs/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BRServerInfoRecordInfo : PBCodable <NSCopying>
+@interface BRServerInfoRecordInfo : PBCodable
 {
     unsigned long long _bounceNo;
     NSData *_encryptedBasename;

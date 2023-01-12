@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iTunesCloud/ICSharedListeningConnectionClientProtocol-Protocol.h>
-
 @class NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICExternalSharedListeningConnectionController <ICSharedListeningConnectionClientProtocol>
+@interface ICExternalSharedListeningConnectionController
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_delegateQueue;

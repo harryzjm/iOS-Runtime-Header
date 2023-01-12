@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecord, CKDPShareMetadata, CKDPZone, NSMutableArray, NSString;
 
-@interface CKDPRecordResolveTokenResponse : PBCodable <NSCopying>
+@interface CKDPRecordResolveTokenResponse : PBCodable
 {
     NSString *_container;
     int _containerEnvironment;

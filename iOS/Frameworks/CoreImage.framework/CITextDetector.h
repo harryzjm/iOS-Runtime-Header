@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CIDetector.h"
+
 @class CIContext, FKTextDetector, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CITextDetector
+@interface CITextDetector : CIDetector
 {
     CIContext *context;
     double _width;
@@ -19,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIContext *context; // @synthesize context;
 - (id)featuresInImage:(id)arg1;
 - (id)featuresInImage:(id)arg1 options:(id)arg2;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 options:(id)arg2;
 - (id)adjustedImageFromImage:(id)arg1 orientation:(int)arg2 inverseCTM:(struct CGAffineTransform *)arg3;

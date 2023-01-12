@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <InstallCoordination/NSCopying-Protocol.h>
-
-@interface IXAppRemovabilityMetadata : NSObject <NSCopying>
+__attribute__((visibility("hidden")))
+@interface IXAppRemovabilityMetadata : NSObject
 {
     unsigned long long _removability;
     unsigned long long _client;
@@ -19,6 +18,7 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
 - (id)initWithMetadataDictionary:(id)arg1;
 - (id)initWithRemovability:(unsigned long long)arg1 client:(unsigned long long)arg2;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/IKAppDocumentDelegate-Protocol.h>
-#import <StoreKitUI/SKUIStatusOverlayProvider-Protocol.h>
-
 @class IKAppDocument, NSHashTable, NSOperationQueue, NSString, SKUIClientContext, SUAudioPlayer;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPreviewDocumentController : NSObject <IKAppDocumentDelegate, SKUIStatusOverlayProvider>
+@interface SKUIPreviewDocumentController : NSObject
 {
     SUAudioPlayer *_audioPlayer;
     SKUIClientContext *_clientContext;

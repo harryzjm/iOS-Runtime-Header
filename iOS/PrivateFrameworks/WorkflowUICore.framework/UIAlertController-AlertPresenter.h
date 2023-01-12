@@ -6,11 +6,9 @@
 
 #import <UIKit/UIAlertController.h>
 
-#import <WorkflowUICore/WFAlertPresenter-Protocol.h>
-
 @class NSString;
 
-@interface UIAlertController (AlertPresenter) <WFAlertPresenter>
+@interface UIAlertController (AlertPresenter)
 - (id)actionForButton:(id)arg1 inAlert:(id)arg2;
 - (void)replaceButtonAtIndex:(unsigned long long)arg1 withButton:(id)arg2 forAlert:(id)arg3;
 - (void)setButtons:(id)arg1 forAlert:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTNRStatus, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCarrierBundleCache;
+@class CTNRStatus, CTXPCServiceSubscriptionContext, NSString, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCarrierBundleCache;
 
 __attribute__((visibility("hidden")))
 @interface PSUI5GSASwitchSpecifier : PSSpecifier
@@ -14,18 +14,16 @@ __attribute__((visibility("hidden")))
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     PSListController *_listController;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
-    CoreTelephonyClient *_ctClient;
     PSConfirmationSpecifier *_enableSAAlert;
     CTNRStatus *_nrStatus;
-    Logger *_logger;
+    NSString *_instance;
 }
 
 - (void).cxx_destruct;
 - (id)getLogger;
-- (void)refreshSelfInHostController;
+- (void)refreshSpecifiersInHostController;
 - (void)checkNRStatusAndDisableIfNeeded;
 - (id)groupFooterText;
-- (_Bool)is5GSASupported;
 - (void)set5GSAEnabled:(_Bool)arg1;
 - (void)disable5GSA;
 - (void)enable5GSA;

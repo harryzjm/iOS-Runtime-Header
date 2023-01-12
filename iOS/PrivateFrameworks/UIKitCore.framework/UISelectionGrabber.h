@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CAShapeLayer, UISelectionGrabberCustomPath, UISelectionGrabberDot, UITextRangeView;
 
 __attribute__((visibility("hidden")))
-@interface UISelectionGrabber
+@interface UISelectionGrabber : UIView
 {
     double m_screenScale;
     UISelectionGrabberDot *m_dotView;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)animateGrabberInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)redrawDotForScale:(double)arg1;
 - (void)updateDot;
+- (double)_defaultDotWidth;
 - (_Bool)scroller:(id)arg1 fullyContainSelectionRect:(struct CGRect)arg2;
 - (_Bool)dotIsVisibleInDocument:(struct CGRect)arg1;
 - (_Bool)clipDot:(struct CGRect)arg1;

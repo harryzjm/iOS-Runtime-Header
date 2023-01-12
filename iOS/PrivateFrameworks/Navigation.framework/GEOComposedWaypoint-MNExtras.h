@@ -10,16 +10,21 @@
 + (id)appleParkWaypointFromLatLng;
 + (id)appleParkWaypointFromAddress;
 + (id)appleParkWaypointFromMuid;
-- (id)destinationInfo;
 - (id)humanDescriptionWithAddressAndLatLng;
 - (id)humanDescriptionWithLatLng;
 - (id)humanDescription;
+- (id)navAnnouncementAddressAndSubstituteType:(int *)arg1;
 - (id)navAnnouncementAddress;
+- (id)navAnnouncementNameAndSubstituteType:(int *)arg1;
 - (id)navAnnouncementName;
 - (id)localeIdentifier;
+- (id)navDisplayNameWithSpecialContacts:(_Bool)arg1 substituteType:(int *)arg2;
 - (id)navDisplayNameWithSpecialContacts:(_Bool)arg1;
+- (id)navDisplayNameAndSubstituteType:(int *)arg1;
+- (id)navDisplayAddressAndSubstituteType:(int *)arg1;
 - (id)navDisplayName;
 - (id)navDisplayAddress;
-@property(readonly, nonatomic) int destinationType;
+- (id)directionsListAddress;
+@property(readonly, nonatomic) int waypointCategory;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/PSDateTimePickerCellDelegate-Protocol.h>
-
 @class NSDateComponents, PSSpecifier, STBlueprintScheduleCustomDayItem;
 
 __attribute__((visibility("hidden")))
-@interface STCustomizeDailyScheduleListController : PSListController <PSDateTimePickerCellDelegate>
+@interface STCustomizeDailyScheduleListController : PSListController
 {
     _Bool _weekdayEnabled;
     STBlueprintScheduleCustomDayItem *_dailySchedule;

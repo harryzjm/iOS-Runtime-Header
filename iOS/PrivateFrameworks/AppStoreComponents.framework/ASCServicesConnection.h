@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/ASCServices-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ASCServicesConnection : NSObject <ASCServices>
+@interface ASCServicesConnection : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSXPCConnection *_connectionIfValid;

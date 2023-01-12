@@ -6,10 +6,10 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@protocol GCDeviceRegistry, NSObject><NSCopying><NSSecureCoding;
+@protocol NSObject><NSCopying><NSSecureCoding, _GCDeviceRegistry;
 
 @protocol _GCDeviceManager <NSObject>
-@property __weak id <GCDeviceRegistry> deviceRegistry;
+@property __weak id <_GCDeviceRegistry> deviceRegistry;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier;
 @end
 

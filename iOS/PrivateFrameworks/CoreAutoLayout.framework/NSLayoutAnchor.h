@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSCoding-Protocol.h>
-#import <CoreAutoLayout/NSCopying-Protocol.h>
-
 @class NSISVariable, NSString;
 
-@interface NSLayoutAnchor : NSObject <NSCopying, NSCoding>
+@interface NSLayoutAnchor : NSObject
 {
     id _referenceItem;
     long long _attr;

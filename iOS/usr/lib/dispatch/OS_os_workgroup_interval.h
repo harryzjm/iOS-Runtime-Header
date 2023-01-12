@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_os_workgroup_interval-Protocol.h>
-
-@interface OS_os_workgroup_interval <OS_os_workgroup_interval>
+@interface OS_os_workgroup_interval
 {
 }
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MPAsyncOperation.h"
+
 @class MPModelLibraryRequest, NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface MPModelLibraryRequestOperation
+@interface MPModelLibraryRequestOperation : MPAsyncOperation
 {
     MPModelLibraryRequest *_request;
     CDUnknownBlockType _responseHandler;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)_sanityCheckRequest;
 - (id)_libraryView;
 - (id)_itemProperties;
+- (void)_insertPropertyCacheForEntityPID:(long long)arg1 entityClass:(void *)arg2 entityTranslator:(id)arg3 translationContext:(id)arg4 propertyCachesVector:(const void *)arg5;
 - (void)_executeRequest;
 - (void)_executeLegacyRequest;
 - (void)execute;

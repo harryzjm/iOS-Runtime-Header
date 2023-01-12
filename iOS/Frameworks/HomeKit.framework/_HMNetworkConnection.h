@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/_HMNetworkConnection-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, OS_nw_connection;
 
 __attribute__((visibility("hidden")))
-@interface _HMNetworkConnection : NSObject <_HMNetworkConnection>
+@interface _HMNetworkConnection : NSObject
 {
     NSObject<OS_nw_connection> *_nwConnection;
     NSObject<OS_dispatch_queue> *_queue;

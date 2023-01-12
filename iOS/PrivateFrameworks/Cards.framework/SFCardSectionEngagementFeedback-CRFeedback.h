@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFCardSectionEngagementFeedback.h>
 
-#import <Cards/CRCardSectionEngagementFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFCardSectionEngagementFeedback (CRFeedback) <CRCardSectionEngagementFeedback>
+@interface SFCardSectionEngagementFeedback (CRFeedback)
 @property(readonly, nonatomic) SFCardSectionEngagementFeedback *backingFeedback;
 
 // Remaining properties

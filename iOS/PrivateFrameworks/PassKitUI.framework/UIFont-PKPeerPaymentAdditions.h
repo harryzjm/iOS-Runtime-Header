@@ -9,6 +9,8 @@
 @interface UIFont (PKPeerPaymentAdditions)
 + (id)pk_textCondensedSemiboldCashFontOfSize:(double)arg1;
 + (_Bool)pk_loadTextCondensedSemiboldCashFont;
++ (id)pk_textCondensedRegularCashFontOfSize:(double)arg1;
++ (_Bool)pk_loadTextCondensedRegularCashFont;
 + (id)pk_peerPaymentChiseledCashFontOfSize:(double)arg1;
 + (id)pk_peerPaymentCashFontOfSize:(double)arg1;
 + (_Bool)pk_loadPeerPaymentCashFont;

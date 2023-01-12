@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (struct opaqueCMSampleBuffer *)getNextCaptureSampleBuffer;
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (long long)status;
+- (_Bool)validateDecodedFrame:(struct __CVBuffer *)arg1 withSettings:(id)arg2;
 - (id)settings;
 - (id)initWithTrack:(id)arg1;
 - (id)init;

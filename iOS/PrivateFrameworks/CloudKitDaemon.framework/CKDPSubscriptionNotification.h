@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPSubscriptionNotificationAlert, NSMutableArray, NSString;
 
-@interface CKDPSubscriptionNotification : PBCodable <NSCopying>
+@interface CKDPSubscriptionNotification : PBCodable
 {
     NSMutableArray *_additionalFields;
     CKDPSubscriptionNotificationAlert *_alert;

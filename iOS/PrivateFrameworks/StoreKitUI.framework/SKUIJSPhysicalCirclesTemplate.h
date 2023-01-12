@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSPhysicalCirclesTemplate-Protocol.h>
-
 @class SKUIPhysicalCirclesTemplateDOMFeature;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSPhysicalCirclesTemplate : IKJSObject <SKUIJSPhysicalCirclesTemplate>
+@interface SKUIJSPhysicalCirclesTemplate : IKJSObject
 {
     SKUIPhysicalCirclesTemplateDOMFeature *_feature;
 }

@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)defaultColor;
++ (void)initialize;
 - (struct CGSize)intrinsicContentSize;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 
 @end
 

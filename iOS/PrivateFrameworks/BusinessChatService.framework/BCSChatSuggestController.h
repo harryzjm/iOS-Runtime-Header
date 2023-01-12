@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSChatSuggestControllerProtocol-Protocol.h>
-
 @class NSString;
 @protocol BCSIdentityServiceProtocol, BCSLocaleHelperProtocol, BCSUserDefaultsProviding;
 
 __attribute__((visibility("hidden")))
-@interface BCSChatSuggestController : NSObject <BCSChatSuggestControllerProtocol>
+@interface BCSChatSuggestController : NSObject
 {
     id <BCSUserDefaultsProviding> _userDefaults;
     id <BCSIdentityServiceProtocol> _identityService;

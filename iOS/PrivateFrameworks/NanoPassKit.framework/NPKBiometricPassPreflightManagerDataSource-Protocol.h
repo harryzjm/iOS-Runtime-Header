@@ -6,9 +6,10 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NPKBiometricPassPreflightManager;
+@class NPKBiometricPassPreflightManager, NSString;
 
 @protocol NPKBiometricPassPreflightManagerDataSource <NSObject>
 - (void)biometricPassPreflightManager:(NPKBiometricPassPreflightManager *)arg1 provisionedCredentialCountsForType:(unsigned long long)arg2 completion:(void (^)(unsigned long long))arg3;
+- (NSString *)biometricPassPreflightManagerPairedDeviceOSVersion:(NPKBiometricPassPreflightManager *)arg1;
 @end
 

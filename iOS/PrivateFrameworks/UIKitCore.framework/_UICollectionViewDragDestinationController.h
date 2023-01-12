@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKitCore/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
-
 @class CADisplayLink, NSIndexPath, NSString, UICollectionView, UICollectionViewDropProposal, UIDropInteraction, _UIDragDestinationControllerDropProposalState, _UIDragDestinationControllerReorderingState, _UIDragDestinationControllerSessionState;
 @protocol UIDropSession, _UICollectionViewDragDestinationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewDragDestinationController : NSObject <UIDropInteractionDelegate_Private, _UICollectionViewShadowUpdatesRebaseApplicable>
+@interface _UICollectionViewDragDestinationController : NSObject
 {
     UICollectionView *_collectionView;
     UIDropInteraction *_dropInteraction;

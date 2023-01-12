@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUISidebandMediaEntityImageLoadParamsCreating-Protocol.h>
+#import "VUIMediaItem.h"
 
 @class VUISidebandMediaItemAssetController, VUIVideoManagedObject;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandMediaItem <VUISidebandMediaEntityImageLoadParamsCreating>
+@interface VUISidebandMediaItem : VUIMediaItem
 {
     VUIVideoManagedObject *_videoManagedObject;
     VUISidebandMediaItemAssetController *_assetController;

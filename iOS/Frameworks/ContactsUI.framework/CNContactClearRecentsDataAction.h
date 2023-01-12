@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CNContactAction.h"
+
 @class CNContactRecentsReference, CNUICoreRecentsManager;
 
 __attribute__((visibility("hidden")))
-@interface CNContactClearRecentsDataAction
+@interface CNContactClearRecentsDataAction : CNContactAction
 {
     CNContactRecentsReference *_recentsData;
     CNUICoreRecentsManager *_coreRecentsManager;

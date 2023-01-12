@@ -4,11 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
+
+struct BRBouncesTypesMatrix {
+    union {
+        unsigned long long matrix;
+        struct {
+            unsigned int dirToLnk:1;
+            unsigned int dirToAls:1;
+            unsigned int dirToPkg:1;
+            unsigned int dirToDoc:1;
+            unsigned int lnkToDir:1;
+            unsigned int lnkToAls:1;
+            unsigned int lnkToPkg:1;
+            unsigned int lnkToDoc:1;
+            unsigned int alsToDir:1;
+            unsigned int alsToLnk:1;
+            unsigned int alsToPkg:1;
+            unsigned int alsToDoc:1;
+            unsigned int pkgToDir:1;
+            unsigned int pkgToLnk:1;
+            unsigned int pkgToAls:1;
+            unsigned int pkgToDoc:1;
+            unsigned int docToDir:1;
+            unsigned int docToLnk:1;
+            unsigned int docToAls:1;
+            unsigned int docToPkg:1;
+            unsigned int sameType:1;
+        } ;
+    } ;
+};
+
+struct BRTypesField {
+    union {
+        int types;
+        struct {
+            unsigned int doc:1;
+            unsigned int alias:1;
+            unsigned int symlink:1;
+            unsigned int folder:1;
+            unsigned int fault:1;
+            unsigned int root:1;
+            unsigned int bookmark:1;
+            unsigned int bookmarkfault:1;
+            unsigned int shareacceptfault:1;
+        } ;
+    } ;
+};
 
 struct CC_SHA1state_st {
     unsigned int h0;
@@ -64,24 +112,9 @@ struct __sbuf {
     int _field2;
 };
 
-struct _opaque_pthread_mutex_t {
-    long long __sig;
-    char __opaque[56];
-};
-
-struct backup_detector {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-};
-
 struct brc_job_update {
     int _field1;
     long long _field2;
-};
-
-struct brc_mutex {
-    struct _opaque_pthread_mutex_t pthread;
 };
 
 struct fsid {
@@ -116,20 +149,7 @@ struct throttle_stamps {
     long long _field5;
 };
 
-struct timespec {
-    long long tv_sec;
-    long long tv_nsec;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-    unsigned long long _field5;
-} CDStruct_177058d5;
 
 typedef struct {
     unsigned long long _field1;

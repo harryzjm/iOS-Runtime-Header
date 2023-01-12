@@ -5,5 +5,6 @@
 //
 
 @protocol PKPeerPaymentServiceExportedInterface
+- (void)peerPaymentPendingRequestsChanged;
 @end
 

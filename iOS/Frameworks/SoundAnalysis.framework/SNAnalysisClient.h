@@ -18,16 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pendingInvalidationHandlers;
 }
 
-+ (id)newConnectionToMachServiceWithName:(id)arg1 lostConnectionHandler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-+ (id)defaultClient;
 - (void).cxx_destruct;
-- (id)createRemoteSystemAudioAnalyzerWithInvalidationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
-- (id)_createRemoteSystemAudioAnalyzerWithInvalidationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
-- (id)_remoteResourceCoordinatorWithInvalidationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
-- (void)_handleLostConnection;
-- (id)_connectionToServerWithInvalidationHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
-- (id)initToConnectToMachServiceWithName:(id)arg1 queue:(id)arg2;
-- (id)initWithConnectionGenerator:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)init;
 
 @end

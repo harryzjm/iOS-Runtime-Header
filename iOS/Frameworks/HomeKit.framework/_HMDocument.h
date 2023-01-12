@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/NSCopying-Protocol.h>
-
 @class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _HMDocument : NSObject <NSCopying>
+@interface _HMDocument : NSObject
 {
     NSString *_stringValue;
     NSAttributedString *_attributedString;

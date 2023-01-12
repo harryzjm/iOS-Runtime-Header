@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)sortedGeometries:(id)arg1 leftToRight:(_Bool)arg2;
 + (id)geometryWithFrame:(struct CGRect)arg1 paddedFrame:(struct CGRect)arg2;
 + (id)geometryWithShape:(id)arg1;
+- (void).cxx_destruct;
 @property(nonatomic) double layeredForegroundRoundRectRadius; // @synthesize layeredForegroundRoundRectRadius=_layeredForegroundRoundRectRadius;
 @property(nonatomic) struct CGRect layeredForegroundPaddedFrame; // @synthesize layeredForegroundPaddedFrame=_layeredForegroundPaddedFrame;
 @property(nonatomic) double layeredBackgroundRoundRectRadius; // @synthesize layeredBackgroundRoundRectRadius=_layeredBackgroundRoundRectRadius;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets displayInsets;
 - (id)similarShape;
 - (id)iPadVariantGeometries:(unsigned long long)arg1 rowLimit:(long long)arg2;
+- (id)watchVariantGeometries:(unsigned long long)arg1 annotationIndex:(unsigned long long)arg2;
 - (id)iPhoneVariantGeometries:(unsigned long long)arg1 annotationIndex:(unsigned long long)arg2;
 - (void)applyShadowInsets:(struct UIEdgeInsets)arg1;
 - (void)applyInsets:(struct UIEdgeInsets)arg1;
@@ -71,7 +73,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
 - (id)initWithShape:(id)arg1;
 - (void)adjustForConsistentGapsWithSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
 - (unsigned long long)adjustForTranslucentGapsInFrameWithSize_10Key:(struct CGSize)arg1 centerX:(double)arg2 bottomEdge:(_Bool)arg3 topEdge:(_Bool)arg4;

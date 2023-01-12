@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <KeynoteQuicklook/CAAnimationDelegate-Protocol.h>
-
 @class CALayer, KNAnimatedBuild, KNAnimationInfo, KNBuildChunk, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSString, TSDDrawableInfo, TSDFPSCounter, TSDRep, TSDTextureDescription, TSDTextureSet;
 
-@interface KNBuildRenderer <CAAnimationDelegate>
+@interface KNBuildRenderer
 {
     long long _numberOfAnimationsStarted;
     NSMapTable *_animatedLayers;

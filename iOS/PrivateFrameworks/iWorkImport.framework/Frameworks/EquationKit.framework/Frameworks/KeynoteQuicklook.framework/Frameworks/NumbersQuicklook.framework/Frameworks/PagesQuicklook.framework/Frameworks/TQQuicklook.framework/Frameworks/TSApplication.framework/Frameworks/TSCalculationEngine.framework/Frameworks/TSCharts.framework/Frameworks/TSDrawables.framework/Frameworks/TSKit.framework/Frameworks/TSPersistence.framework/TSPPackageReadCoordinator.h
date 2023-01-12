@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
-#import <TSPersistence/TSPReadCoordinator-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableSet, NSObject, NSSet, NSString, NSURL, NSUUID, TSPDocumentLoadValidationPolicy, TSPDocumentRevision, TSPFinalizeHandlerQueue, TSPObject, TSPObjectContainer, TSPObjectContext, TSPPackage, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface TSPPackageReadCoordinator <TSPPersistedObjectUUIDMapDelegate, TSPReadCoordinator>
+@interface TSPPackageReadCoordinator
 {
     TSPObjectContext *_context;
     NSUUID *_documentUUID;

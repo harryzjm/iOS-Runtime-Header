@@ -13,12 +13,12 @@
 @property(readonly, nonatomic) double maximumTime;
 @property(readonly, nonatomic) double minimumTime;
 @property(nonatomic) _Bool resetsTransform;
-@property(nonatomic) CDStruct_14d5dc5e matrix;
+@property(nonatomic) CDStruct_f1db2b5e matrix;
 
 @optional
-+ (CDStruct_14d5dc5e)globalTransformWithObject:(MDLObject *)arg1 atTime:(double)arg2;
-- (CDStruct_14d5dc5e)localTransformAtTime:(double)arg1;
-- (void)setLocalTransform:(CDStruct_14d5dc5e)arg1;
-- (void)setLocalTransform:(CDStruct_14d5dc5e)arg1 forTime:(double)arg2;
++ (CDStruct_f1db2b5e)globalTransformWithObject:(MDLObject *)arg1 atTime:(double)arg2;
+- (CDStruct_f1db2b5e)localTransformAtTime:(double)arg1;
+- (void)setLocalTransform:(CDStruct_f1db2b5e)arg1;
+- (void)setLocalTransform:(CDStruct_f1db2b5e)arg1 forTime:(double)arg2;
 @end
 

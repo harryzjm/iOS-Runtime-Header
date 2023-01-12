@@ -6,11 +6,9 @@
 
 #import <WorkflowKit/WFSingleStepHomeScreenShortcutCompletionDialogRequest.h>
 
-#import <WorkflowUI/WFDialogRequestViewControllerSupport-Protocol.h>
-
 @class NSString;
 
-@interface WFSingleStepHomeScreenShortcutCompletionDialogRequest (WFDialogRequestViewControllerSupport) <WFDialogRequestViewControllerSupport>
+@interface WFSingleStepHomeScreenShortcutCompletionDialogRequest (WFDialogRequestViewControllerSupport)
 - (Class)wf_dialogViewControllerClass;
 
 // Remaining properties

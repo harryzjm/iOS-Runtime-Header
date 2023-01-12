@@ -6,16 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/CoreTelephonyClientRegistrationDelegate-Protocol.h>
-#import <SettingsCellularUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
-@class CoreTelephonyClient, Logger, NSMutableArray, NSString, PSListController, PSSpecifier;
+@class CoreTelephonyClient, NSMutableArray, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
-@interface PSUINetworkSelectionSubgroup : NSObject <CoreTelephonyClientSubscriberDelegate, CoreTelephonyClientRegistrationDelegate, PSSpecifierGroup>
+@interface PSUINetworkSelectionSubgroup : NSObject
 {
-    Logger *_logger;
     PSListController *_listController;
     PSSpecifier *_parentSpecifier;
     CoreTelephonyClient *_ctClient;
@@ -28,15 +23,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak PSSpecifier *parentSpecifier; // @synthesize parentSpecifier=_parentSpecifier;
 @property(nonatomic) __weak PSListController *listController; // @synthesize listController=_listController;
 - (id)getLogger;
-- (void)customerServiceProfileChanged:(id)arg1 visible:(_Bool)arg2;
-- (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (void)operatorNameChanged:(id)arg1 name:(id)arg2;
 - (void)networkSelected:(id)arg1 success:(_Bool)arg2 mode:(id)arg3;
 - (void)reloadCellularNetworkSpecifier;
 - (id)localizedCellularNetworkName:(id)arg1;
-- (void)updateShowsCarrierSettingsMenuVisibility;
-- (void)setShowsCarrierSettingsMenu:(_Bool)arg1;
-- (_Bool)_showCarrier;
 - (id)specifiers;
 - (void)willEnterForeground;
 - (id)initWithListController:(id)arg1 groupSpecifier:(id)arg2;

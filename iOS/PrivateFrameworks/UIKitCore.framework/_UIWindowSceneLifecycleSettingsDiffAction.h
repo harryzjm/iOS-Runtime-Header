@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneSettingsDiffAction-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneLifecycleSettingsDiffAction : NSObject <_UISceneSettingsDiffAction>
+@interface _UIWindowSceneLifecycleSettingsDiffAction : NSObject
 {
 }
 

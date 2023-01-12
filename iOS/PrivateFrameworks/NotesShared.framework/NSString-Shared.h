@@ -6,11 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <NotesShared/CRCoding-Protocol.h>
-#import <NotesShared/CRDataType-Protocol.h>
-#import <NotesShared/CREquatable-Protocol.h>
-
-@interface NSString (Shared) <CRDataType, CREquatable, CRCoding>
+@interface NSString (Shared)
 @property(readonly, nonatomic) NSString *ic_quotedString;
 - (id)tombstone;
 - (void)realizeLocalChangesIn:(id)arg1;

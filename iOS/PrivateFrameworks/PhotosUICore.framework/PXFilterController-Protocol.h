@@ -6,15 +6,16 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSObject, PXContentFilterState;
+@class NSObject, PXContentFilterState, PXLibraryFilterState;
 @protocol PXAnonymousView, PXFilterControllerDelegate;
 
 @protocol PXFilterController <NSObject>
 @property(copy, nonatomic) PXContentFilterState *contentFilterState;
-- (id)initWithDelegate:(id <PXFilterControllerDelegate>)arg1 initialContentFilterState:(PXContentFilterState *)arg2;
+@property(copy, nonatomic) PXLibraryFilterState *libraryFilterState;
+- (id)initWithDelegate:(id <PXFilterControllerDelegate>)arg1 initialContentFilterState:(PXContentFilterState *)arg2 isSyndicationLibraryAlbum:(_Bool)arg3 isSharedLibraryAlbum:(_Bool)arg4;
 - (id)initWithDelegate:(id <PXFilterControllerDelegate>)arg1;
 
 @optional
-- (void)showFilterUIFromRect:(struct CGRect)arg1 inView:(NSObject<PXAnonymousView> *)arg2;
+- (void)showFilterUIRelativeToRect:(struct CGRect)arg1 ofView:(NSObject<PXAnonymousView> *)arg2;
 @end
 

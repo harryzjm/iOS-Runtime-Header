@@ -6,13 +6,13 @@
 
 #import <MapsSuggestions/MapsSuggestionsInternalResourceDepot-Protocol.h>
 
-@class MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsInsights, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage;
-@protocol MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFlightRequester, MapsSuggestionsMapsSyncConnector, MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsSourceDelegate, MapsSuggestionsVirtualGarageConnector;
+@class MapsSuggestionsContacts, MapsSuggestionsEventKit, MapsSuggestionsFlightUpdater, MapsSuggestionsMapsSync, MapsSuggestionsPortrait, MapsSuggestionsRoutine, MapsSuggestionsShortcutManager, MapsSuggestionsUser, MapsSuggestionsVirtualGarage;
+@protocol MapsSuggestionsContactsConnector, MapsSuggestionsEventKitConnector, MapsSuggestionsFlightRequester, MapsSuggestionsInsights, MapsSuggestionsMapsSyncConnector, MapsSuggestionsNetworkRequester, MapsSuggestionsPortraitConnector, MapsSuggestionsRoutineConnector, MapsSuggestionsSourceDelegate, MapsSuggestionsVirtualGarageConnector;
 
 @protocol MapsSuggestionsFullResourceDepot <MapsSuggestionsInternalResourceDepot>
 - (void)setOneFlightUpdater:(MapsSuggestionsFlightUpdater *)arg1;
 - (void)setOneFlightRequester:(id <MapsSuggestionsFlightRequester>)arg1;
-- (void)setOneInsights:(MapsSuggestionsInsights *)arg1;
+- (void)setOneInsights:(id <MapsSuggestionsInsights>)arg1;
 - (void)setOneUser:(MapsSuggestionsUser *)arg1;
 - (void)setOneFavorites:(MapsSuggestionsShortcutManager *)arg1;
 - (void)setOneVirtualGarage:(MapsSuggestionsVirtualGarage *)arg1;

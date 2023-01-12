@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUIApps/PXWidget-Protocol.h>
-
 @class MISSING_TYPE, PXPhotosDetailsContext, PXWidgetSpec;
 @protocol PXAnonymousView, PXWidgetDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps19PhotosDetailsWidget : NSObject <PXWidget>
+@interface _TtC12PhotosUIApps19PhotosDetailsWidget : NSObject
 {
     MISSING_TYPE *widgetDelegate;
     MISSING_TYPE *_context;
     MISSING_TYPE *_viewModel;
     MISSING_TYPE *_spec;
+    MISSING_TYPE *$__lazy_storage_$_contentViewController;
 }
 
 - (void).cxx_destruct;

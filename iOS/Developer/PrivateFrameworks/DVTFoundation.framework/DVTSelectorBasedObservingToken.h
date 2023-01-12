@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class DVTWeakInterposer, NSString;
+@class NSString;
 
 @interface DVTSelectorBasedObservingToken
 {
-    DVTWeakInterposer *_target_dvtWeakInterposer;
     id _observedObject;
     NSString *_keyPath;
+    id _target;
 }
 
 - (void).cxx_destruct;
+@property __weak id target; // @synthesize target=_target;
 @property(retain) id observedObject; // @synthesize observedObject=_observedObject;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)_primitiveCancelObservation;
@@ -21,8 +22,6 @@
 - (id)initWithTarget:(id)arg1 observedObject:(id)arg2 keyPath:(id)arg3 creationBacktrace:(id)arg4;
 - (id)observedKeyPath;
 - (Class)observedObjectClass;
-- (void)setTarget:(id)arg1;
-- (id)target;
 
 @end
 

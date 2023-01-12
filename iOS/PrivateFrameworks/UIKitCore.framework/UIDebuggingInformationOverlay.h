@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UISplitViewControllerDelegate-Protocol.h>
+#import "UIWindow.h"
 
-@class NSMutableArray, UIDebuggingInformationOverlayViewController, UIDebuggingInformationRootTableViewController, UIEvent, UIWindow;
+@class NSMutableArray, UIDebuggingInformationOverlayViewController, UIDebuggingInformationRootTableViewController, UIEvent;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationOverlay <UISplitViewControllerDelegate>
+@interface UIDebuggingInformationOverlay : UIWindow
 {
     _Bool _isFullscreen;
     _Bool _checkingTouches;

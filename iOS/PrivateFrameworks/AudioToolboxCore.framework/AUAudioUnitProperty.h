@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AUAudioUnitProperty : NSObject <NSSecureCoding>
+@interface AUAudioUnitProperty : NSObject
 {
     NSString *_key;
     unsigned int _v2propID;

@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, SKUICommentPostBarTextField, UIButton, UILabel;
 @protocol SKUICommentDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUICommentPostBarView : UIView <UITextFieldDelegate>
+@interface SKUICommentPostBarView : UIView
 {
     UIButton *_postButton;
     SKUICommentPostBarTextField *_postTextField;

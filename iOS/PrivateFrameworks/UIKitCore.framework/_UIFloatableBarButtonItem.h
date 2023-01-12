@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIBarButtonItem.h"
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIFloatableBarButtonItem
+@interface _UIFloatableBarButtonItem : UIBarButtonItem
 {
     _Bool _floatable;
     _Bool _floating;

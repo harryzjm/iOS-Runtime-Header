@@ -6,12 +6,9 @@
 
 #import <NewsTransport/NTPBPersonalizationAggregate.h>
 
-#import <NewsCore/FCMutablePersonalizationAggregate-Protocol.h>
-#import <NewsCore/FCPersonalizationAggregate-Protocol.h>
-
 @class NSDate, NSDictionary, NSString;
 
-@interface NTPBPersonalizationAggregate (FCPersonalizationAggregate) <FCPersonalizationAggregate, FCMutablePersonalizationAggregate>
+@interface NTPBPersonalizationAggregate (FCPersonalizationAggregate)
 - (double)_personalizationValueWithBaselineClicks:(double)arg1 baselineImpressions:(double)arg2 decayRate:(double)arg3 baselineClicksMultiplier:(double)arg4;
 - (double)relativePersonalizationValueWithCorrelatedAggregate:(id)arg1 baseline:(id)arg2 decayFactor:(double)arg3 baselineClicksMultiplier:(double)arg4;
 - (double)powerWithDecayFactor:(double)arg1;
@@ -19,6 +16,7 @@
 - (double)personalizationValueWithCorrelatedAggregate:(id)arg1 baseline:(id)arg2 decayRate:(double)arg3 baselineClicksMultiplier:(double)arg4;
 - (double)personalizationValueWithBaseline:(id)arg1 decayRate:(double)arg2 baselineClicksMultiplier:(double)arg3;
 - (double)personalizationValueWithBaseline:(id)arg1 decayRate:(double)arg2;
+@property(readonly, nonatomic) double ctr;
 @property(readonly, nonatomic) NSDate *lastModified;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 

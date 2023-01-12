@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UIView, UIVisualEffectView, _UIBarBackgroundLayout, _UIBarBackgroundShadowView;
+#import "UIView.h"
+
+@class NSString, UIImageView, UIVisualEffectView, _UIBarBackgroundLayout, _UIBarBackgroundShadowView;
 
 __attribute__((visibility("hidden")))
-@interface _UIBarBackground
+@interface _UIBarBackground : UIView
 {
     UIVisualEffectView *_effectView1;
     UIImageView *_colorAndImageView1;

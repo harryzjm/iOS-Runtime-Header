@@ -13,6 +13,7 @@
     MISSING_TYPE *parent;
     MISSING_TYPE *childIndex;
     MISSING_TYPE *viewModel;
+    MISSING_TYPE *containerIsInEditMode;
     MISSING_TYPE *additionalSubjectFilter;
     MISSING_TYPE *$__lazy_storage_$_creationTarget;
 }

@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKDPAnonymousShareAddResponse : PBCodable <NSCopying>
+@interface CKDPAnonymousShareAddResponse : PBCodable
 {
     NSString *_anonymousShareTupleHash;
 }

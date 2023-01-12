@@ -9,8 +9,6 @@
 @class NSArray, NSIndexSet, WFAction, WFWorkflow;
 
 @protocol WFWorkflowEditingDelegate <NSObject>
-- (void)workflow:(WFWorkflow *)arg1 actionForSuggestionsDrawerDidUpdateOutputContentClasses:(WFAction *)arg2;
-- (void)workflow:(WFWorkflow *)arg1 reloadActions:(NSArray *)arg2;
 - (void)workflow:(WFWorkflow *)arg1 moveActionsAtIndexes:(NSIndexSet *)arg2 toIndexes:(NSIndexSet *)arg3;
 - (void)workflow:(WFWorkflow *)arg1 removeAction:(WFAction *)arg2 completionHandler:(void (^)(_Bool))arg3;
 - (void)workflow:(WFWorkflow *)arg1 insertActions:(NSArray *)arg2 atIndexes:(NSIndexSet *)arg3;

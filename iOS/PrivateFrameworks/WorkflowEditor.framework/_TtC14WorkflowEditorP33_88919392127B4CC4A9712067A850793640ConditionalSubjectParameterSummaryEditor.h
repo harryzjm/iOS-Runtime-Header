@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "WFModuleSummaryEditor.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC14WorkflowEditorP33_88919392127B4CC4A9712067A850793640ConditionalSubjectParameterSummaryEditor
+@interface _TtC14WorkflowEditorP33_88919392127B4CC4A9712067A850793640ConditionalSubjectParameterSummaryEditor : WFModuleSummaryEditor
 {
-    MISSING_TYPE *chooser;
     MISSING_TYPE *homeServiceModal;
+    MISSING_TYPE *pendingHome;
 }
 
 - (void).cxx_destruct;
 - (id)initWithParameter:(id)arg1 initialState:(id)arg2 initialArrayState:(id)arg3 arrayIndex:(long long)arg4 processing:(_Bool)arg5;
 - (id)stateByReplacingVariableFromCurrentState:(id)arg1 withVariable:(id)arg2;
-- (void)beginVariableMenuForSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
+- (id)customMenuElementsForSlotWithIdentifier:(id)arg1 style:(unsigned long long)arg2;
+- (id)clearButtonMenuItemForSlotWithIdentifier:(id)arg1;
+- (_Bool)variableMenuSupportsVariableSelectionForSlotWithIdentifier:(id)arg1;
 - (void)cancelEditingWithCompletionHandler:(void (^)(void))arg1;
 - (void)beginEditingSlotWithIdentifier:(id)arg1 presentationAnchor:(id)arg2;
 

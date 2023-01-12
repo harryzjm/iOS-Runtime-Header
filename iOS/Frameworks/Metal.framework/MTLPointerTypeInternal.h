@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLPointerType.h"
+
 @class MTLType;
 
 __attribute__((visibility("hidden")))
-@interface MTLPointerTypeInternal
+@interface MTLPointerTypeInternal : MTLPointerType
 {
     unsigned long long _dataType;
     unsigned long long _elementType;

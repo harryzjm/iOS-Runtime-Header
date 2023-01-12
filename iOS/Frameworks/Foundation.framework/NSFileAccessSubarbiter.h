@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSFileAccessClientLocalArbiterInterface-Protocol.h>
-#import <Foundation/NSXPCListenerDelegate-Protocol.h>
-
 @class NSFileAccessArbiter, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSFileAccessSubarbiter : NSObject <NSFileAccessClientLocalArbiterInterface, NSXPCListenerDelegate>
+@interface NSFileAccessSubarbiter : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSFileAccessArbiter *_realSubarbiter;

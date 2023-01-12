@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface REResourceRequestOptions : NSObject <NSSecureCoding>
+@interface REResourceRequestOptions : NSObject
 {
 }
 

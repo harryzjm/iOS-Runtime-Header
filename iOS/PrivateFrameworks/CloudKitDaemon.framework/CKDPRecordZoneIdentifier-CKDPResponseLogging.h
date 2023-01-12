@@ -8,5 +8,7 @@
 
 @interface CKDPRecordZoneIdentifier (CKDPResponseLogging)
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 @end
 

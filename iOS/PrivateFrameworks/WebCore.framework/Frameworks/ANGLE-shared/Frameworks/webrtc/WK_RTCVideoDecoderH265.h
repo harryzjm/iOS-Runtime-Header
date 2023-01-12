@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <webrtc/RTCVideoDecoder-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCVideoDecoderH265 : NSObject <RTCVideoDecoder>
+@interface WK_RTCVideoDecoderH265 : NSObject
 {
     struct opaqueCMFormatDescription *_videoFormat;
     struct OpaqueVTDecompressionSession *_decompressionSession;

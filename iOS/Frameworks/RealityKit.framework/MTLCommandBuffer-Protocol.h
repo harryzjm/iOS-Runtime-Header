@@ -6,12 +6,13 @@
 
 #import <RealityKit/NSObject-Protocol.h>
 
-@class MTLBlitPassDescriptor, MTLComputePassDescriptor, MTLRenderPassDescriptor, MTLResourceStatePassDescriptor, NSError, NSString;
+@class MTLAccelerationStructurePassDescriptor, MTLBlitPassDescriptor, MTLComputePassDescriptor, MTLRenderPassDescriptor, MTLResourceStatePassDescriptor, NSError, NSString;
 @protocol MTLAccelerationStructureCommandEncoder, MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLLogContainer, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder, MTLResourceStateCommandEncoder;
 
 @protocol MTLCommandBuffer <NSObject>
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(NSString *)arg1;
+- (id <MTLAccelerationStructureCommandEncoder>)accelerationStructureCommandEncoderWithDescriptor:(MTLAccelerationStructurePassDescriptor *)arg1;
 - (id <MTLAccelerationStructureCommandEncoder>)accelerationStructureCommandEncoder;
 - (id <MTLResourceStateCommandEncoder>)resourceStateCommandEncoderWithDescriptor:(MTLResourceStatePassDescriptor *)arg1;
 - (id <MTLResourceStateCommandEncoder>)resourceStateCommandEncoder;

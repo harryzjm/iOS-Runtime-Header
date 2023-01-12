@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetExplorer/PXReusableObject-Protocol.h>
-#import <AssetExplorer/PXUIViewBasicTile-Protocol.h>
-
 @class NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface AEGenericViewTile : NSObject <PXUIViewBasicTile, PXReusableObject>
+@interface AEGenericViewTile : NSObject
 {
     UIView *_view;
 }

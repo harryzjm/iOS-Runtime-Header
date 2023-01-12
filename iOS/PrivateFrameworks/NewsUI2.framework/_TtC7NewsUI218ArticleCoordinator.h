@@ -18,6 +18,7 @@
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *externalEventSubmitter;
     MISSING_TYPE *newsActivityManager;
+    MISSING_TYPE *articleModel;
     MISSING_TYPE *issue;
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *activeIssueViewingSession;

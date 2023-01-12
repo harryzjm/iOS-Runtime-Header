@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIHomeShareMediaLibraryManager-Protocol.h>
-
 @class NSArray, NSMutableArray, NSString, VUIMediaLibraryManager;
 @protocol OS_dispatch_queue, VUIHomeShareMediaLibraryManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIMPHomeShareMediaLibraryManager : NSObject <VUIHomeShareMediaLibraryManager>
+@interface VUIMPHomeShareMediaLibraryManager : NSObject
 {
     id <VUIHomeShareMediaLibraryManagerDelegate> _delegate;
     VUIMediaLibraryManager *_manager;

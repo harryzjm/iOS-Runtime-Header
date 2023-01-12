@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentCamera/UIActivityItemSource-Protocol.h>
-#import <DocumentCamera/UIActivityItemSourceAttachment-Protocol.h>
-
 @class ICDocCamDocumentInfoCollection, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DCActivityItemSource : NSObject <UIActivityItemSourceAttachment, UIActivityItemSource>
+@interface DCActivityItemSource : NSObject
 {
     ICDocCamDocumentInfoCollection *_docInfoCollection;
 }

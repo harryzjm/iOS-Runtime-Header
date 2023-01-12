@@ -6,11 +6,9 @@
 
 #import <IBAutolayoutFoundation/IBAbstractInterfaceBuilderTool.h>
 
-#import <IBCocoaTouchToolFoundation/IBCocoaTouchTool-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
-@interface IBCocoaTouchTool : IBAbstractInterfaceBuilderTool <IBCocoaTouchTool>
+@interface IBCocoaTouchTool : IBAbstractInterfaceBuilderTool
 {
     NSMutableDictionary *_objectPackagesBySessionID;
     NSMutableDictionary *_contextsBySessionID;

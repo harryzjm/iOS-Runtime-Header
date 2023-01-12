@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOPhotoInfoProvider-Protocol.h>
-
 @class AMSMediaArtwork, GEOPDPhotoContent, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOAMPPhotoInfoProvider : NSObject <GEOPhotoInfoProvider>
+@interface GEOAMPPhotoInfoProvider : NSObject
 {
     AMSMediaArtwork *_artwork;
     GEOPDPhotoContent *_templatePhotoContent;

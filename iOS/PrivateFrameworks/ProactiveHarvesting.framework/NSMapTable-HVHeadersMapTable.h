@@ -6,11 +6,9 @@
 
 #import <Foundation/NSMapTable.h>
 
-#import <ProactiveHarvesting/HVHeaderCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSMapTable (HVHeadersMapTable) <HVHeaderCollection>
+@interface NSMapTable (HVHeadersMapTable)
 + (id)hv_headerValueFunctions;
 + (id)hv_headerKeyFunctions;
 - (id)hv_firstHeaderForKey:(id)arg1;

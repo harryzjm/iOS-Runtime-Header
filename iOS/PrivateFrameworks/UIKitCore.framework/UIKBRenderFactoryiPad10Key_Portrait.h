@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (id)muttitapReverseKeyImageName;
 - (id)multitapCompleteKeyImageName;
-- (id)shiftLockImageName;
-- (id)shiftOnKeyImageName;
-- (id)shiftKeyImageName;
 - (double)keyCornerRadius;
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;

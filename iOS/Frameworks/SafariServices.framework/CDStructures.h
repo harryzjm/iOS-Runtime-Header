@@ -18,23 +18,14 @@ struct CGPoint {
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
     double width;
     double height;
 };
-
-struct NSDirectionalEdgeInsets {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-};
-
-struct ReaderAvailabilityController;
 
 struct SFScrollIndicatorInsets {
     struct UIEdgeInsets _field1;
@@ -48,28 +39,9 @@ struct UIEdgeInsets {
     double right;
 };
 
-struct WebProcessPlugInReaderJSController;
-
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
-};
-
-struct __sbuf {
-    char *_field1;
-    int _field2;
-};
-
-struct unique_ptr<SafariServices::ReaderAvailabilityController, std::default_delete<SafariServices::ReaderAvailabilityController>> {
-    struct __compressed_pair<SafariServices::ReaderAvailabilityController *, std::default_delete<SafariServices::ReaderAvailabilityController>> {
-        struct ReaderAvailabilityController *__value_;
-    } __ptr_;
-};
-
-struct unique_ptr<SafariServices::WebProcessPlugInReaderJSController, std::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
-    struct __compressed_pair<SafariServices::WebProcessPlugInReaderJSController *, std::default_delete<SafariServices::WebProcessPlugInReaderJSController>> {
-        struct WebProcessPlugInReaderJSController *__value_;
-    } __ptr_;
 };
 
 #pragma mark Typedef'd Structures
@@ -82,7 +54,6 @@ typedef struct {
 } CDStruct_4e0a34f2;
 
 typedef struct {
-    int _field1;
-    unsigned long long _field2;
-} CDStruct_fca5f1f5;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 

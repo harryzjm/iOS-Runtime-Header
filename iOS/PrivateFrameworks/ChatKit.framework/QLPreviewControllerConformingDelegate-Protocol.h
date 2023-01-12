@@ -15,6 +15,7 @@
 - (void)previewController:(id <QLPreviewControllerConforming>)arg1 didSaveEditedCopyOfPreviewItem:(id <QLPreviewItem>)arg2 atURL:(NSURL *)arg3;
 - (void)previewController:(id <QLPreviewControllerConforming>)arg1 didUpdateContentsOfPreviewItem:(id <QLPreviewItem>)arg2;
 - (long long)previewController:(id <QLPreviewControllerConforming>)arg1 editingModeForPreviewItem:(id <QLPreviewItem>)arg2;
+- (_Bool)previewController:(id <QLPreviewControllerConforming>)arg1 canShareItem:(id <QLPreviewItem>)arg2;
 - (UIView *)previewController:(id <QLPreviewControllerConforming>)arg1 transitionViewForPreviewItem:(id <QLPreviewItem>)arg2;
 - (UIImage *)previewController:(id <QLPreviewControllerConforming>)arg1 transitionImageForPreviewItem:(id <QLPreviewItem>)arg2 contentRect:(struct CGRect *)arg3;
 - (struct CGRect)previewController:(id <QLPreviewControllerConforming>)arg1 frameForPreviewItem:(id <QLPreviewItem>)arg2 inSourceView:(id *)arg3;

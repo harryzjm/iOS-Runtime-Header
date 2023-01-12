@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNSiriIntelligenceSettingsProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CNSiriIntelligenceSettings : NSObject <CNSiriIntelligenceSettingsProtocol>
+@interface CNSiriIntelligenceSettings : NSObject
 {
     _Atomic _Bool _shouldShowSiriSuggestions;
     int _notificationToken;

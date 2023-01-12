@@ -10,7 +10,7 @@
 
 @protocol CKVDatabase <NSObject>
 - (CKVDatabaseExecutionResult *)executeCommand:(CKVDatabaseCommand *)arg1 options:(unsigned long long)arg2;
-- (_Bool)cleanupWithError:(id *)arg1;
+- (_Bool)cleanup:(id *)arg1;
 - (_Bool)rollbackTransactionWithError:(id *)arg1;
 - (_Bool)commitTransactionWithError:(id *)arg1;
 - (_Bool)beginTransactionWithError:(id *)arg1;

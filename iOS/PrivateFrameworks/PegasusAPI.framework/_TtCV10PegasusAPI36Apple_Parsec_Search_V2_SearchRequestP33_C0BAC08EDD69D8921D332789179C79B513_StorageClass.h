@@ -16,6 +16,7 @@
     MISSING_TYPE *_sendTopHit;
     MISSING_TYPE *_countryCode;
     MISSING_TYPE *_locale;
+    MISSING_TYPE *_cardLocale;
     MISSING_TYPE *_effectiveSystemLanguage;
     MISSING_TYPE *_preferredLanguages;
     MISSING_TYPE *_inputMode;
@@ -53,6 +54,7 @@
     MISSING_TYPE *_isClientOnlyExperiment;
     MISSING_TYPE *_isInReservedAllocationForExperiment;
     MISSING_TYPE *_exp;
+    MISSING_TYPE *_debugLevels;
 }
 
 @end

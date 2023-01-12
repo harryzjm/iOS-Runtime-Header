@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
-@protocol HDSPGoodMorningAlertStateMachineEventHandler <HKSPStateMachineEventHandler>
+@protocol HDSPGoodMorningAlertStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)sleepScheduleStateChangedToWakeUp;
 - (void)sleepScheduleStateChangedToBedtime;
 @end

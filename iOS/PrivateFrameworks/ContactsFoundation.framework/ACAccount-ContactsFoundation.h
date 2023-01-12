@@ -14,6 +14,8 @@
 @property(readonly, copy, nonatomic) NSString *_cn_appleAccountAppleID;
 @property(readonly, nonatomic) _Bool _cn_isManaged;
 @property(readonly, nonatomic) _Bool _cn_isChildDelegateAccount;
+@property(readonly, nonatomic) _Bool _cn_isPrimaryiCloudAccount;
+@property(readonly, nonatomic) _Bool _cn_isAppleDisplayAccount;
 @property(readonly, nonatomic) _Bool _cn_isCardDAV;
 @property(readonly, nonatomic) _Bool _cn_isLDAP;
 @property(readonly, nonatomic) _Bool _cn_isPrimaryAccount;

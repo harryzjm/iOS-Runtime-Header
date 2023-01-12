@@ -6,11 +6,9 @@
 
 #import <CoreTelephony/CTPNRContextInfo.h>
 
-#import <IDSFoundation/IDSCTSIMContext-Protocol.h>
-
 @class NSString;
 
-@interface CTPNRContextInfo (IDSCTSIMContext) <IDSCTSIMContext>
+@interface CTPNRContextInfo (IDSCTSIMContext)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

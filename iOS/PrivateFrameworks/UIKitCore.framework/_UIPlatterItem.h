@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIDynamicItem-Protocol.h>
-
 @class NSString, UIBezierPath, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPlatterItem : NSObject <UIDynamicItem>
+@interface _UIPlatterItem : NSObject
 {
     UIView *_heldView;
 }

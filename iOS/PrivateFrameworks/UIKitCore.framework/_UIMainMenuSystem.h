@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, UIMenu, _UIMenuBuilder;
+#import "UIMenuSystem.h"
+
+@class NSArray, UIMenu, UIResponder, _UIMenuBuilder;
 
 __attribute__((visibility("hidden")))
-@interface _UIMainMenuSystem
+@interface _UIMainMenuSystem : UIMenuSystem
 {
     _UIMenuBuilder *_automaticallyRebuildingBuilder;
+    UIResponder *_initialBuildingResponderOverride;
 }
 
 + (id)_sharedSystem;
 - (void).cxx_destruct;
 - (_Bool)_buildMenuWithBuilder:(id)arg1 fromResponderChain:(id)arg2 atLocation:(struct CGPoint)arg3 inCoordinateSpace:(id)arg4;
+- (void)_setInitialBuildingResponder:(id)arg1;
 @property(readonly, nonatomic) UIMenu *_rootMenu;
 @property(readonly, nonatomic) NSArray *_keyCommands;
 - (void)_automaticallyRebuildIfNeeded;

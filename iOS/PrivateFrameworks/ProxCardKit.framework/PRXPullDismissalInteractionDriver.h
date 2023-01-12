@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ProxCardKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, PRXPullDismissalScrollView, PRXPurelyInteractiveTransition, UIViewController;
 @protocol UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface PRXPullDismissalInteractionDriver : NSObject <UIScrollViewDelegate>
+@interface PRXPullDismissalInteractionDriver : NSObject
 {
     PRXPurelyInteractiveTransition *_interactiveTransition;
     PRXPullDismissalScrollView *_scrollView;

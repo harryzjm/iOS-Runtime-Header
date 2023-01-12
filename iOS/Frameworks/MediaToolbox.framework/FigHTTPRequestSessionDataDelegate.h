@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaToolbox/NSURLSessionDataDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FigHTTPRequestSessionDataDelegate : NSObject <NSURLSessionDataDelegate>
+@interface FigHTTPRequestSessionDataDelegate : NSObject
 {
     NSMutableDictionary *_taskToFigHTTPRequest;
     struct OpaqueFigReentrantMutex *_taskToFigHTTPRequestMutex;
@@ -26,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (struct FigRetainProxy *)_copyAndLockRequestForTask:(id)arg1;
+- (void)restoreVoucher:(id)arg1;
+- (id)adoptVoucherFromRetainProxy:(struct FigRetainProxy *)arg1;
 - (void)_deregisterFigHTTPRequestForDataTask:(id)arg1;
 - (void)_registerFigHTTPRequest:(struct OpaqueFigHTTPRequest *)arg1 forDataTask:(id)arg2;
 - (void)dealloc;

@@ -6,11 +6,14 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HKSource, NSString, UIFont;
+@class HKSource, NSString, UIFont, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface WDDataTableViewCell : UITableViewCell
 {
+    UIImageView *_imageView;
+    UILabel *_textLabel;
+    UILabel *_detailTextLabel;
     _Bool _displayValueAdjustsFontSizeToFitWidth;
     HKSource *_source;
     NSString *_displayValue;
@@ -25,9 +28,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *displayValue; // @synthesize displayValue=_displayValue;
 @property(retain, nonatomic) HKSource *source; // @synthesize source=_source;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_setupUI;
+- (struct CGRect)detailTextLabelFrame;
+- (id)detailTextLabel;
+- (struct CGRect)textLabelFrame;
+- (id)textLabel;
+- (struct CGRect)imageViewFrame;
+- (id)imageView;
 - (void)layoutSubviews;
-- (struct CGRect)imageViewBounds;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

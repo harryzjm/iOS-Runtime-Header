@@ -10,6 +10,8 @@
 @protocol NSFastEnumeration;
 
 @protocol CPLBatchExtractionStrategyStorage <NSObject>
+- (void)cleanupAfterExtractingBatch;
+- (void)beginExtractingBatch;
 - (unsigned long long)effectiveResourceSizeToUploadForUploadIdentifier:(NSString *)arg1;
 - (_Bool)hasChangesInScopeWithIdentifier:(NSString *)arg1;
 - (_Bool)removeChange:(CPLRecordChange *)arg1 error:(id *)arg2;

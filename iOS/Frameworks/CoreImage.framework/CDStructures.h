@@ -40,32 +40,9 @@ struct CGSize {
     double height;
 };
 
-struct CIBitmapContextPrivate {
-    void *_field1;
-    long long _field2;
-    struct CGRect _field3;
-    int _field4;
-};
-
 struct CIBurstSupportVector {
     double _field1;
     double _field2[7];
-};
-
-struct CIKernelReflection {
-    int _field1;
-    int _field2;
-    char *_field3;
-    char *_field4;
-    struct vector<CI::KernelArgumentType, std::allocator<CI::KernelArgumentType>> _field5;
-    struct vector<std::string, std::allocator<std::string>> _field6;
-    id _field7;
-    unsigned int _field8;
-    int _field9;
-    unsigned long long _field10;
-    unsigned long long _field11;
-    _Bool _field12;
-    _Bool _field13;
 };
 
 struct CIPredictionModelImageFeatures {
@@ -73,29 +50,6 @@ struct CIPredictionModelImageFeatures {
     long long width;
     long long height;
     unsigned int format;
-};
-
-struct CIRenderDestinationInternal {
-    struct RenderDestination *_field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    int _field4;
-    int _field5;
-    struct {
-        double _field1[3];
-        double _field2[3];
-        double _field3[3];
-        double _field4;
-        double _field5;
-    } _field6;
-    unsigned long long _field7;
-    _Bool _field8;
-    _Bool _field9;
-    int _field10;
-    _Bool _field11;
-    _Bool _field12;
-    _Bool _field13;
-    id _field14;
 };
 
 struct FastRegistration_Signatures {
@@ -131,6 +85,10 @@ struct ISize {
 
 struct LineCostProxy;
 
+struct MTLResourceID {
+    unsigned long long _field1;
+};
+
 struct Projections_meanStdTable {
     float *sumTable;
     float *sumSqTable;
@@ -146,15 +104,6 @@ struct Rectangle {
     double _field2;
     double _field3;
     double _field4;
-};
-
-struct RenderDestination;
-
-struct SerialObjectPtrArray {
-    int _field1;
-    int _field2;
-    int _field3;
-    void **_field4;
 };
 
 struct SharpnessGridElement_t {
@@ -182,10 +131,6 @@ struct Texture {
             void *_field2;
         } _field3;
     } _field1;
-};
-
-struct Trilean {
-    char _field1;
 };
 
 struct __SVMParameters {
@@ -229,10 +174,6 @@ struct __sbuf {
     int _field2;
 };
 
-struct filterShape {
-    struct CGRect _field1;
-};
-
 struct float3x3 {
     MISSING_TYPE *columns[3];
 };
@@ -269,14 +210,6 @@ struct vec4 {
     } _field1;
 };
 
-struct vector<CI::KernelArgumentType, std::allocator<CI::KernelArgumentType>> {
-    int *_field1;
-    int *_field2;
-    struct __compressed_pair<CI::KernelArgumentType *, std::allocator<CI::KernelArgumentType>> {
-        int *_field1;
-    } _field3;
-};
-
 struct vector<CI::Perspective::Line, std::allocator<CI::Perspective::Line>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
@@ -291,14 +224,6 @@ struct vector<LineCostProxy, std::allocator<LineCostProxy>> {
     struct __compressed_pair<LineCostProxy *, std::allocator<LineCostProxy>> {
         struct LineCostProxy *__value_;
     } __end_cap_;
-};
-
-struct vector<std::string, std::allocator<std::string>> {
-    void *_field1;
-    void *_field2;
-    struct __compressed_pair<std::string *, std::allocator<std::string>> {
-        void *_field1;
-    } _field3;
 };
 
 #pragma mark Typedef'd Structures
@@ -693,15 +618,6 @@ typedef struct {
         float ystd;
     } BI;
 } CDStruct_8d997f87;
-
-typedef struct {
-    struct CGRect _field1;
-    struct CGPoint _field2;
-    struct CGPoint _field3;
-    struct CGPoint _field4;
-    struct CGPoint _field5;
-    id _field6;
-} CDStruct_1b0b1413;
 
 typedef struct {
     struct vec2 _field1;

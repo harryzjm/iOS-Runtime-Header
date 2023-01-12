@@ -17,6 +17,7 @@
     MISSING_TYPE *analyticsService;
     MISSING_TYPE *aceService;
     MISSING_TYPE *localizationProvider;
+    MISSING_TYPE *aceServiceHelper;
 }
 
 @end

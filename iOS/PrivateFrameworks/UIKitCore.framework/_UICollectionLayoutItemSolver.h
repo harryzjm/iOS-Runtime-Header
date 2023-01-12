@@ -7,28 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UICollectionLayoutAuxillaryHosting-Protocol.h>
 
-@class NSCollectionLayoutItem, NSString, UITraitCollection, _UICollectionLayoutItemSolverState;
-@protocol NSCollectionLayoutContainer, _UICollectionLayoutSupplementaryEnrolling, _UICollectionPreferredSizes;
+@class NSCollectionLayoutItem, NSString, UITraitCollection, _UICollectionLayoutItemSolverState, _UICollectionLayoutSupplementaryEnroller;
+@protocol NSCollectionLayoutContainer, _UICollectionPreferredSizes;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutItemSolver : NSObject <NSCopying, _UICollectionLayoutAuxillaryHosting>
+@interface _UICollectionLayoutItemSolver : NSObject <NSCopying>
 {
     _Bool _layoutRTL;
     NSCollectionLayoutItem *_item;
     id <NSCollectionLayoutContainer> _container;
     UITraitCollection *_traitCollection;
     NSString *_errorDescription;
+    unsigned long long _containerSizeDependentLayoutAxes;
     _UICollectionLayoutItemSolverState *_solveResult;
     id <_UICollectionPreferredSizes> _preferredSizes;
-    id <_UICollectionLayoutSupplementaryEnrolling> _supplementaryEnroller;
+    _UICollectionLayoutSupplementaryEnroller *_supplementaryEnroller;
     long long _solutionRecursionDepth;
     long long _maxFrameCount;
     unsigned long long _layoutAxis;
 }
 
 - (void).cxx_destruct;
+- (id)auxillaryHostTraitCollection;
 - (id)auxillaryHostPreferredSizes;
 - (id)auxillaryHostSupplementaryEnroller;
 - (long long)auxillaryHostAuxillaryKind;

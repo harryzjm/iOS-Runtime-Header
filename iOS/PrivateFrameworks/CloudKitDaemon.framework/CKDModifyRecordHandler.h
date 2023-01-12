@@ -63,12 +63,13 @@
 - (void)clearProtectionDataForRecord;
 - (void)savePCSDataToCache;
 - (_Bool)_wrapEncryptedDataOnRecord:(id)arg1;
+- (_Bool)_encryptMergeableDeltasInRecordValueStore:(id)arg1 shareProtection:(struct _OpaquePCSShareProtection *)arg2;
 - (_Bool)_wrapEncryptedDataForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (void)_pretendToWrapEncryptedDataForRecordValueStore:(id)arg1;
 - (_Bool)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3 recordID:(id)arg4;
 - (void)prepareForSave;
 - (void)prepareStreamingAsset:(id)arg1 forUploadWithRecord:(id)arg2;
-- (_Bool)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
+- (_Bool)_prepareAsset:(id)arg1 recordKey:(id)arg2 mergeableDeltaID:(id)arg3 record:(id)arg4 error:(id *)arg5;
 - (id)prepareAssetsForUploadWithError:(id *)arg1;
 - (id)assetsWhichNeedRecordFetch;
 - (void)fetchSharePCSData;

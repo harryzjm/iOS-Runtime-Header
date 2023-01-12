@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDate, NSError, NSString, SKPayment, SKPaymentTransaction;
+@class NSArray, NSData, NSDate, NSError, NSString, SKPayment, SKPaymentTransaction, SKPaymentTransactionAuthorizationResponse;
 
 __attribute__((visibility("hidden")))
 @interface SKPaymentTransactionInternal : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSString *_transactionIdentifier;
     NSData *_transactionReceipt;
     long long _transactionState;
+    SKPaymentTransactionAuthorizationResponse *_authorizationResponse;
 }
 
 - (void).cxx_destruct;

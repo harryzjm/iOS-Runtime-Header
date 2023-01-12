@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface UIInputViewSetPlacementInvisibleAssistantBar <NSSecureCoding>
+@interface UIInputViewSetPlacementInvisibleAssistantBar
 {
 }
 
 + (id)placementWithPlacement:(id)arg1;
+- (_Bool)isCompactAssistantView;
+- (_Bool)isFloatingAssistantView;
 - (id)applicatorInfoForOwner:(id)arg1;
 
 @end

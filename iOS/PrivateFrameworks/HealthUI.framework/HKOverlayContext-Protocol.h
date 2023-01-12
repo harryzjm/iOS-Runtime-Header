@@ -15,6 +15,7 @@
 - (HKSampleType *)sampleTypeForDateRangeUpdates;
 
 @optional
+- (void)prepareContextForDateInterval:(NSDateInterval *)arg1 overlayController:(HKInteractiveChartOverlayViewController *)arg2 timeScope:(long long)arg3;
 - (_Bool)unselectedContextShouldUseContextBaseType;
 - (HKDisplayType *)baseDisplayTypeForOverlay:(long long)arg1;
 - (void)invalidateContextItem;

@@ -11,12 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface _TtC15SeymourServices33EngagementNotificationCoordinator : NSObject
 {
+    MISSING_TYPE *accountDeviceObserver;
+    MISSING_TYPE *accountProvider;
     MISSING_TYPE *appLauncher;
     MISSING_TYPE *contentAvailabilityObserver;
     MISSING_TYPE *engagementNotificationCenter;
     MISSING_TYPE *eventHub;
+    MISSING_TYPE *notificationSettingsProvider;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *platform;
+    MISSING_TYPE *_migrationEnabled;
     MISSING_TYPE *state;
 }
 

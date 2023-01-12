@@ -7,6 +7,7 @@
 @class CPLDropDerivativesRecipe, CPLResource, CPLResourceTransferTaskOptions, CPLScopeChange, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol CPLDaemonLibraryManagerMinimalProtocol
+- (void)getTargetsForRecordsWithScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)testKey:(NSString *)arg1 value:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)boostPriorityForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deactivateScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -36,6 +37,7 @@
 - (void)noteClientIsBeginningSignificantWork;
 - (void)enableMingling;
 - (void)disableMingling;
+- (void)getScopeStatusCountsForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLScopeStatusCounts *, NSError *))arg2;
 - (void)setShouldOverride:(_Bool)arg1 forSystemBudgets:(unsigned long long)arg2;
 - (void)getSystemBudgetsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)enableSynchronizationWithReason:(NSString *)arg1;
@@ -45,22 +47,28 @@
 - (void)getStatusForRecordsWithScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 - (void)noteClientIsInBackground;
-- (void)noteClientIsInForeground;
+- (void)noteClientIsInForegroundQuietly:(_Bool)arg1;
 - (void)resetStatus;
 - (void)startSyncSession;
 - (void)cancelSyncTaskWithIdentifier:(NSString *)arg1;
 - (void)cancelTaskWithIdentifier:(NSString *)arg1;
 - (void)forceSyncForScopeIdentifiers:(NSArray *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)queryUserDetailsForShareParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)sharedLibraryRampCheckWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
+- (void)getStatusForPendingRecordsSharedToScopeWithIdentifier:(NSString *)arg1 maximumCount:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
+- (void)removeParticipants:(NSArray *)arg1 fromSharedScopeWithIdentifier:(NSString *)arg2 retentionPolicy:(long long)arg3 exitSource:(long long)arg4 completionHandler:(void (^)(CPLLibraryShareScopeChange *, NSError *))arg5;
+- (void)startExitFromSharedScopeWithIdentifier:(NSString *)arg1 retentionPolicy:(long long)arg2 exitSource:(long long)arg3 completionHandler:(void (^)(CPLLibraryShareScopeChange *, NSError *))arg4;
+- (void)fetchExistingSharedLibraryScopeWithCompletionHandler:(void (^)(CPLScopeChange *, NSError *))arg1;
 - (void)acceptSharedScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchSharedScopeFromShareURL:(NSURL *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
+- (void)deleteScopeWithIdentifier:(NSString *)arg1 forced:(_Bool)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)updateShareForScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)createScope:(CPLScopeChange *)arg1 completionHandler:(void (^)(CPLScopeChange *, NSError *))arg2;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)resolveLocalScopedIdentifiersForCloudScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, unsigned long long, NSError *))arg3;
-- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 timeRange:(CDStruct_e83c9415)arg4 clientBundleID:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg6;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 timeRange:(CDStruct_3c1748cc)arg4 clientBundleID:(NSString *)arg5 completionHandler:(void (^)(NSURL *, NSData *, NSDate *, NSError *))arg6;
 - (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 options:(CPLResourceTransferTaskOptions *)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;

@@ -6,13 +6,11 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <StoreKit/SKStoreExtensionClientInterface-Protocol.h>
-
 @class NSString;
 @protocol SKStoreRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKStoreRemoteViewController : _UIRemoteViewController <SKStoreExtensionClientInterface>
+@interface SKStoreRemoteViewController : _UIRemoteViewController
 {
     id <SKStoreRemoteViewControllerDelegate> _delegate;
 }

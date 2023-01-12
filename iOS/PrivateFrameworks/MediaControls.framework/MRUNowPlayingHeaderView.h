@@ -4,70 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
-
-@class MPAVRoute, MRUArtworkView, MRUNowPlayingLabelView, MRUNowPlayingRoutingButton, MRUTransportButton, MRUVisualStylingProvider, NSString;
+@class MRUNowPlayingLabelView, MRUTransportButton, MRUVisualStylingProvider, MRUWaveformView;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingHeaderView : UIControl <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
+@interface MRUNowPlayingHeaderView : UIView
 {
-    _Bool _showArtworkView;
     _Bool _showTransportButton;
     _Bool _showRoutingButton;
-    _Bool _useArtworkOverrideFrame;
-    MRUArtworkView *_artworkView;
-    MRUNowPlayingRoutingButton *_routingButton;
-    MRUTransportButton *_transportButton;
-    long long _layout;
-    long long _context;
-    MRUVisualStylingProvider *_stylingProvider;
-    double _textCenterOffsetY;
+    _Bool _showWaveform;
+    MRUWaveformView *_waveformView;
     MRUNowPlayingLabelView *_labelView;
-    struct CGRect _artworkOverrideFrame;
+    MRUTransportButton *_routingButton;
+    MRUTransportButton *_transportButton;
+    MRUVisualStylingProvider *_stylingProvider;
+    long long _layout;
+    long long _textAlignment;
+    double _textCenterOffsetY;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) MRUNowPlayingLabelView *labelView; // @synthesize labelView=_labelView;
-@property(nonatomic) struct CGRect artworkOverrideFrame; // @synthesize artworkOverrideFrame=_artworkOverrideFrame;
-@property(nonatomic) _Bool useArtworkOverrideFrame; // @synthesize useArtworkOverrideFrame=_useArtworkOverrideFrame;
 @property(nonatomic) double textCenterOffsetY; // @synthesize textCenterOffsetY=_textCenterOffsetY;
-@property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property(nonatomic) long long context; // @synthesize context=_context;
-@property(nonatomic) long long layout; // @synthesize layout=_layout;
+@property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
+@property(nonatomic) _Bool showWaveform; // @synthesize showWaveform=_showWaveform;
 @property(nonatomic) _Bool showRoutingButton; // @synthesize showRoutingButton=_showRoutingButton;
 @property(nonatomic) _Bool showTransportButton; // @synthesize showTransportButton=_showTransportButton;
-@property(nonatomic) _Bool showArtworkView; // @synthesize showArtworkView=_showArtworkView;
+@property(nonatomic) long long layout; // @synthesize layout=_layout;
+@property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(readonly, nonatomic) MRUTransportButton *transportButton; // @synthesize transportButton=_transportButton;
-@property(readonly, nonatomic) MRUNowPlayingRoutingButton *routingButton; // @synthesize routingButton=_routingButton;
-@property(readonly, nonatomic) MRUArtworkView *artworkView; // @synthesize artworkView=_artworkView;
+@property(readonly, nonatomic) MRUTransportButton *routingButton; // @synthesize routingButton=_routingButton;
+@property(readonly, nonatomic) MRUNowPlayingLabelView *labelView; // @synthesize labelView=_labelView;
+@property(retain, nonatomic) MRUWaveformView *waveformView; // @synthesize waveformView=_waveformView;
 - (void)updateVisibility;
-- (void)updateArtworkStyle;
-- (void)updateVisualStyling;
-- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
-- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
-- (double)textInsetForSize:(struct CGSize)arg1;
-- (void)prepareForReuse;
-- (void)visualStylingProviderDidChange:(id)arg1;
-@property(nonatomic, getter=isMarqueeEnabled) _Bool marqueeEnabled;
-@property(nonatomic) _Bool showPlaceholderText;
-@property(copy, nonatomic) NSString *placeholderText;
-@property(copy, nonatomic) NSString *subtitle;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) MPAVRoute *route;
-- (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)initWithWaveformView:(id)arg1;
+- (id)init;
 
 @end
 

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PagesQuicklook/TSKImageExporter-Protocol.h>
-
 @class NSString, TSUProgress;
 
-@interface TPPreviewExporter <TSKImageExporter>
+@interface TPPreviewExporter
 {
 }
 

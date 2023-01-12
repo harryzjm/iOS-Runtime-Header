@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAutoLayout/NSCoding-Protocol.h>
-
 @class NSArray, NSISEngine, NSMapTable;
 @protocol NSISVariableDelegate;
 
-@interface NSISVariable : NSObject <NSCoding>
+@interface NSISVariable : NSObject
 {
     id <NSISVariableDelegate> _delegate;
     NSMapTable *_overflowEngines;

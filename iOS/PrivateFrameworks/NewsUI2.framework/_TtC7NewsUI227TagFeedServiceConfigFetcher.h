@@ -14,6 +14,7 @@
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *configManager;
     MISSING_TYPE *paidBundleConfigManager;
+    MISSING_TYPE *userInfo;
 }
 
 @end

@@ -6,14 +6,11 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
-
 @class CNGeminiChannel, NSIndexPath, NSMutableArray, NSString, UITableViewController;
 @protocol CNPickerControllerDelegate><UINavigationControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNGeminiPickerController : UINavigationController <UITableViewDataSource, UITableViewDelegate>
+@interface CNGeminiPickerController : UINavigationController
 {
     UITableViewController *_tableViewController;
     NSMutableArray *_geminiChannels;

@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosGraph/NSObject-Protocol.h>
+#import <PhotosGraph/PGHighlightItemModelReader-Protocol.h>
 
-@class PGHighlightItemList;
+@class PGHighlightItemList, PHAsset;
 @protocol PGHighlightItem;
 
-@protocol PGHighlightItemListModelWriter <NSObject>
-- (void)setVisibilityState:(unsigned short)arg1 forHighlightItem:(id <PGHighlightItem>)arg2;
-- (id)consumeHighlightItemList:(PGHighlightItemList *)arg1;
+@protocol PGHighlightItemListModelWriter <PGHighlightItemModelReader>
+- (void)setContextualKeyAsset:(PHAsset *)arg1 forHighlightItem:(id <PGHighlightItem>)arg2 sharingFilter:(unsigned short)arg3;
+- (void)addVisibleHighlight:(id <PGHighlightItem>)arg1 inMonth:(id <PGHighlightItem>)arg2 withHighlightFilter:(unsigned short)arg3;
+- (void)setVisibilityState:(unsigned short)arg1 forHighlightItemList:(PGHighlightItemList *)arg2 sharingFilter:(unsigned short)arg3;
+- (void)setVisibilityState:(unsigned short)arg1 forHighlightItem:(id <PGHighlightItem>)arg2 sharingFilter:(unsigned short)arg3;
+- (void)consumeHighlightItemList:(PGHighlightItemList *)arg1;
 @end
 

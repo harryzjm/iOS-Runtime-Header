@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSSerializerStream-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface NSAKSerializerStream : NSObject <NSSerializerStream>
+@interface NSAKSerializerStream : NSObject
 {
     void *memory;
     unsigned long long current;

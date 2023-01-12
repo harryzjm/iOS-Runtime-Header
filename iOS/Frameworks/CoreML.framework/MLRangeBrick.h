@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreML/EspressoBrick-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MLRangeBrick : NSObject <EspressoBrick>
+@interface MLRangeBrick : NSObject
 {
     int _size;
     float _start;

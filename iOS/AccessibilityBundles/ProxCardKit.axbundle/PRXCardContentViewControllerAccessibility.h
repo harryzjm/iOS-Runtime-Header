@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setInfoButtonAction:(id)arg1;
+- (void)viewDidAppear;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
 

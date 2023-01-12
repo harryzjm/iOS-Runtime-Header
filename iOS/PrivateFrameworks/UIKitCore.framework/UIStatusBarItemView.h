@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSString, UIStatusBarForegroundStyleAttributes, UIStatusBarItem, UIStatusBarLayoutManager, _UILegibilityImageSet, _UILegibilityView;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarItemView
+@interface UIStatusBarItemView : UIView
 {
     double _currentOverlap;
     struct CGContext *_imageContext;

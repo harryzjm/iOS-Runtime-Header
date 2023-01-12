@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class ICMusicSubscriptionStatus, ICURLBag, ICUserIdentity, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MPCPlaybackAccount : NSObject <NSCopying>
+@interface MPCPlaybackAccount : NSObject
 {
     _Bool _hasCloudLibraryEnabled;
     _Bool _delegated;
@@ -34,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *hashedDSID; // @synthesize hashedDSID=_hashedDSID;
 @property(readonly, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 @property(readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property(readonly, nonatomic) _Bool requiresAuthorizationTokenForPlayback;
 @property(readonly, nonatomic) _Bool usesLease;
 @property(readonly, nonatomic) _Bool hasCatalogPlaybackCapability;
 @property(readonly, nonatomic) _Bool canAutoPlay;

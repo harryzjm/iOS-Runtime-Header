@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)_contentsTintColor;
 - (void)_updateContentAppearance;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)trailingView;
+- (id)iconView;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

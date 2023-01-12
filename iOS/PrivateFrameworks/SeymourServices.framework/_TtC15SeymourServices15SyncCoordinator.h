@@ -14,10 +14,9 @@
     MISSING_TYPE *pairedSyncCoordinator;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *persistenceStore;
-    MISSING_TYPE *lock;
-    MISSING_TYPE *outstandingSyncRequestCounts;
-    MISSING_TYPE *queue;
     MISSING_TYPE *platform;
+    MISSING_TYPE *$__lazy_storage_$_pairedSyncDelay;
+    MISSING_TYPE *$__lazy_storage_$_serverSyncDelay;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *_pairedSyncEnabled;
     MISSING_TYPE *_serverSyncEnabled;

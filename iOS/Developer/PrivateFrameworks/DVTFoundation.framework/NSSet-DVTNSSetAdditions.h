@@ -10,9 +10,12 @@
 - (id)dvt_objectByFoldingWithBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_dictionaryWithEntriesAsValuesAndKeysFromBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_dictionaryWithEntriesAsKeysAndValuesFromBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_maximumObjectUsingComparator:(CDUnknownBlockType)arg1;
+- (id)dvt_minimumObjectUsingComparator:(CDUnknownBlockType)arg1;
 - (id)dvt_sortedArrayUsingComparator:(CDUnknownBlockType)arg1;
 - (id)dvt_sortedArrayUsingSelector:(SEL)arg1;
 - (id)dvt_sortedArray;
+- (id)dvt_onlyObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)dvt_onlyObject;
 - (_Bool)dvt_isNonEmpty;
 - (id)dvt_objectsPassingTest:(CDUnknownBlockType)arg1;

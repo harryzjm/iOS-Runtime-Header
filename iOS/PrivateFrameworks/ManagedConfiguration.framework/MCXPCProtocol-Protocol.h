@@ -35,13 +35,13 @@
 - (void)profileDataStoredForPurpose:(int)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)storeProfileData:(NSData *)arg1 configurationSource:(int)arg2 purpose:(int)arg3 completion:(void (^)(NSError *))arg4;
 - (void)removeExpiredProfilesWithCompletion:(void (^)(NSError *))arg1;
-- (void)managedAppIDsWithFlags:(int)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)setUserInfo:(NSDictionary *)arg1 forClientUUID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)resetAllSettingsToDefaultsIsUserInitiated:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)recomputePerClientUserComplianceWithCompletion:(void (^)(NSError *))arg1;
 - (void)recomputeUserComplianceWarningWithCompletion:(void (^)(NSError *))arg1;
 - (void)notifyHaveSeenComplianceMessageWithLastLockDate:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)notifyStartComplianceTimer:(NSDate *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)isBundleBlocked:(NSString *)arg1 completion:(void (^)(_Bool, NSData *, NSNumber *, NSError *))arg2;
 - (void)removeProvisioningProfileWithUUID:(NSString *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)installProvisioningProfileData:(NSData *)arg1 managingProfileIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)storeCertificateData:(NSData *)arg1 forIPCUIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
@@ -66,8 +66,10 @@
 - (void)peekProfileDataFromPurgatoryForDeviceType:(unsigned long long)arg1 withCompletion:(void (^)(NSData *, NSError *))arg2;
 - (void)popProfileDataFromHeadOfInstallationQueueWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)queueProfileDataForInstallation:(NSData *)arg1 originalFileName:(NSString *)arg2 originatingBundleID:(NSString *)arg3 transitionToUI:(_Bool)arg4 completion:(void (^)(NSString *, unsigned long long, NSError *))arg5;
+- (void)appleConnect_installMDMAssociatedProfileData:(NSData *)arg1 interactive:(_Bool)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)installProfileData:(NSData *)arg1 interactive:(_Bool)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSString *, NSError *))arg4;
 - (void)isProfileInstalledWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *, _Bool))arg2;
+- (void)verifiedMDMProfileIdentifierWithCompletion:(void (^)(NSError *, NSString *))arg1;
 - (void)monitorEnrollmentStateWithPersonaID:(NSString *)arg1;
 - (void)defaultAppBundleIDForCommunicationServiceType:(NSString *)arg1 forAccountWithIdentifier:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)notifyDeviceUnlockedWithCompletion:(void (^)(NSError *))arg1;

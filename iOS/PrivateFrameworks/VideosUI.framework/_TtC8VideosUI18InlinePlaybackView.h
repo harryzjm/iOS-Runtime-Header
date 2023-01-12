@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *playbackView;
     MISSING_TYPE *cornerRadius;
     MISSING_TYPE *focusSizeIncrease;
+    MISSING_TYPE *transitionAnimationDuration;
 }
 
 - (void).cxx_destruct;

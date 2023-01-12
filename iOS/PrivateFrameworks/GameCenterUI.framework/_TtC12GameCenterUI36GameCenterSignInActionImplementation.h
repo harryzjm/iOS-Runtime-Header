@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameCenterUI/AAUISignInControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12GameCenterUI36GameCenterSignInActionImplementation : NSObject <AAUISignInControllerDelegate>
+@interface _TtC12GameCenterUI36GameCenterSignInActionImplementation : NSObject
 {
     MISSING_TYPE *viewController;
     MISSING_TYPE *signInViewController;

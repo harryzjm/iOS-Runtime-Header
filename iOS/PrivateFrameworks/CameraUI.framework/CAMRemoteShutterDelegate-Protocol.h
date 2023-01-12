@@ -12,6 +12,7 @@
 - (_Bool)remoteShutterShouldSuspendApp:(CAMRemoteShutterController *)arg1;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setCaptureDevice:(long long)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setZoomAmount:(double)arg2;
+- (void)remoteShutter:(CAMRemoteShutterController *)arg1 setSharedLibraryMode:(long long)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setIrisMode:(long long)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setHDRMode:(long long)arg2;
 - (void)remoteShutter:(CAMRemoteShutterController *)arg1 setFlashMode:(long long)arg2;

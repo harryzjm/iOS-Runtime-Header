@@ -11,7 +11,6 @@
 @protocol SyncProtocol <NSObject>
 - (void)moveCallsFromTempDatabase;
 - (void)bootUp:(void (^)(unsigned char))arg1;
-- (void)migrateCallDB:(NSArray *)arg1 withReply:(void (^)(_Bool))arg2;
 - (void)clearSyncToken:(void (^)(NSString *))arg1;
 - (void)sync:(void (^)(NSString *))arg1;
 - (void)appendTransactions:(NSArray *)arg1;

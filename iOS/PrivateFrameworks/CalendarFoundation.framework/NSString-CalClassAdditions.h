@@ -33,7 +33,6 @@
 - (id)trimFirstChar:(unsigned short)arg1;
 - (id)trimFinalChar:(unsigned short)arg1;
 - (_Bool)CalContainsSubstring:(id)arg1;
-- (_Bool)isPathToICalTruthFile;
 - (_Bool)isPathToICalBookmark;
 - (_Bool)isPathToBackupFile;
 - (_Bool)isPathToICalData;

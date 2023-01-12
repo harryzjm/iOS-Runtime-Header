@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/VNPersonsModelFaceModelDataProvider-Protocol.h>
-
 @class NSString, VNPersonsModel;
 @protocol VNPersonsModelDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _VNPersonsModelDataSourceBasedDataProvider : NSObject <VNPersonsModelFaceModelDataProvider>
+@interface _VNPersonsModelDataSourceBasedDataProvider : NSObject
 {
     VNPersonsModel *_personsModel;
     id <VNPersonsModelDataSource> _dataSource;

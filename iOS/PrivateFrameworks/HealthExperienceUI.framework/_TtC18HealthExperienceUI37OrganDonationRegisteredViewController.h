@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI32CompoundDataSourceViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI37OrganDonationRegisteredViewController
+@interface _TtC18HealthExperienceUI37OrganDonationRegisteredViewController : _$s18HealthExperienceUI32CompoundDataSourceViewControllerCN
 {
     MISSING_TYPE *organDonationRegisteredViewControllerDelegate;
 }

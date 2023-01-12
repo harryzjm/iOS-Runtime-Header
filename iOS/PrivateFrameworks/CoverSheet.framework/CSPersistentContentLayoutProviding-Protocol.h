@@ -8,6 +8,7 @@
 - (double)windowedAccessoryInset;
 - (double)bottomContentInset;
 - (double)listMinY;
+- (double)dateBaselineToComplicationY;
 - (double)dateBaselineToListY;
 - (double)timeLabelOffsetForScrollPercent:(double)arg1;
 - (double)timeToSubtitleLabelBaselineDifferenceY;

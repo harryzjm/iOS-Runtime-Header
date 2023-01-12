@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VideosUI/VUIJSApplication-Protocol.h>
+#import "VUIJSObject.h"
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface VUIJSApplication <VUIJSApplication>
+@interface VUIJSApplication : VUIJSObject
 {
 }
 

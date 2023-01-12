@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccount/VSSubscriptionServiceProtocol-Protocol.h>
-
 @class NSString, VSRemoteNotifier, VSSubscriptionPersistentContainer, VSSubscriptionPredicateFactory;
 
 __attribute__((visibility("hidden")))
-@interface VSSubscriptionRegistry : NSObject <VSSubscriptionServiceProtocol>
+@interface VSSubscriptionRegistry : NSObject
 {
     VSRemoteNotifier *_remoteNotifier;
     VSSubscriptionPersistentContainer *_persistentContainer;

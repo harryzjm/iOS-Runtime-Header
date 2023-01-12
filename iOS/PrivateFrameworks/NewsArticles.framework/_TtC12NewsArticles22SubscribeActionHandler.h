@@ -18,12 +18,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *$__lazy_storage_$_purchasingSpinnerViewController;
     MISSING_TYPE *$__lazy_storage_$_verifyingSpinnerViewController;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *bundlePurchasePrewarmer;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *router;
     MISSING_TYPE *familySharingLandingPageLauncher;
     MISSING_TYPE *offerManager;
     MISSING_TYPE *presenter;
     MISSING_TYPE *urlHandler;
+    MISSING_TYPE *postPurchaseOnboardingManager;
+    MISSING_TYPE *onboardingPrewarmer;
+    MISSING_TYPE *bundleSubscriptionDetectionManager;
+    MISSING_TYPE *postPurchaseRoutingInProgress;
 }
 
 - (void).cxx_destruct;

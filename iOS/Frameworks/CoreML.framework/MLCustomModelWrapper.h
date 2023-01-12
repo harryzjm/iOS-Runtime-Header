@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MLModel.h"
+
 @class NSObject;
 @protocol MLCustomModel;
 
 __attribute__((visibility("hidden")))
-@interface MLCustomModelWrapper
+@interface MLCustomModelWrapper : MLModel
 {
     NSObject<MLCustomModel> *_customModel;
 }

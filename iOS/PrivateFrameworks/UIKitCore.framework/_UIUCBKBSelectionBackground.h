@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIView;
+#import "UIView.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIUCBKBSelectionBackground
+@interface _UIUCBKBSelectionBackground : UIView
 {
     UIView *_backgroundProvidingView;
     _Bool _showButtonShape;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class BSMachPortSendRight, NSArray, _UIHostedWindowHostingHandle;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceControllerOperatorCreateResult : NSObject <NSSecureCoding>
+@interface _UIViewServiceControllerOperatorCreateResult : NSObject
 {
     int _preferredStatusBarVisibility;
     _UIHostedWindowHostingHandle *_serviceWindowHostingHandle;

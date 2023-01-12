@@ -11,25 +11,33 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23RootSplitViewController : UISplitViewController
 {
+    MISSING_TYPE *defaultSectionManager;
     MISSING_TYPE *libraryManager;
     MISSING_TYPE *sideBarController;
     MISSING_TYPE *secondaryColumnHostingController;
-    MISSING_TYPE *mainBarItems;
-    MISSING_TYPE *libraryBarItems;
+    MISSING_TYPE *sideBarSections;
+    MISSING_TYPE *sideBarOnlyItemIdentifiers;
     MISSING_TYPE *stagedLibraryBarItems;
-    MISSING_TYPE *libraryNeedsUpdate;
-    MISSING_TYPE *lastSelectedLibraryIdentifier;
+    MISSING_TYPE *lastSelectedIdentifierInSectionMap;
     MISSING_TYPE *splitTabBarController;
     MISSING_TYPE *tabBarItems;
     MISSING_TYPE *mode;
+    MISSING_TYPE *needsModeEvaluationOnDidAppear;
     MISSING_TYPE *controllerMap;
     MISSING_TYPE *lastSelectedIdentifier;
+    MISSING_TYPE *hasPostedViewControllerDidChangeNotificationOnLaunch;
     MISSING_TYPE *selectedIndexPath;
     MISSING_TYPE *previousIndexPath;
     MISSING_TYPE *appContext;
     MISSING_TYPE *libraryOnly;
     MISSING_TYPE *stagedMode;
     MISSING_TYPE *viewIsVisible;
+    MISSING_TYPE *tvTitle;
+    MISSING_TYPE *libraryTitle;
+    MISSING_TYPE *tipPlacementId;
+    MISSING_TYPE *tipPlacementTabBarItemIndex;
+    MISSING_TYPE *tipPlacementSideBarItemIdentifier;
+    MISSING_TYPE *presentedTipViewController;
 }
 
 - (void).cxx_destruct;

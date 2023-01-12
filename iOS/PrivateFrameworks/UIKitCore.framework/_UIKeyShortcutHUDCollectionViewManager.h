@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
-#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
-
-@class NSArray, NSString, _UIKeyShortcutHUDIndexPath;
+@class NSArray, NSString, _UIKeyShortcutHUDIndexPath, _UIKeyShortcutHUDViewController;
 @protocol _UIKeyShortcutHUDCollectionViewManagerClient;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDCollectionViewManager : NSObject <UICollectionViewDelegate, UIScrollViewDelegate>
+@interface _UIKeyShortcutHUDCollectionViewManager : NSObject
 {
     _Bool _nextFocusUpdatePrefersTopSearchResult;
+    _UIKeyShortcutHUDViewController *_hudVC;
     id <_UIKeyShortcutHUDCollectionViewManagerClient> _menu;
     id <_UIKeyShortcutHUDCollectionViewManagerClient> _toolbar;
     id <_UIKeyShortcutHUDCollectionViewManagerClient> _searchButton;
@@ -32,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_UIKeyShortcutHUDCollectionViewManagerClient> searchButton; // @synthesize searchButton=_searchButton;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDCollectionViewManagerClient> toolbar; // @synthesize toolbar=_toolbar;
 @property(nonatomic) __weak id <_UIKeyShortcutHUDCollectionViewManagerClient> menu; // @synthesize menu=_menu;
+@property(nonatomic) __weak _UIKeyShortcutHUDViewController *hudVC; // @synthesize hudVC=_hudVC;
 - (void)_collectionView:(id)arg1 updateSeparatorVisibilityForCellAtIndexPath:(id)arg2;
 - (void)_collectionView:(id)arg1 performActionForSelectingCellAtIndexPath:(id)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

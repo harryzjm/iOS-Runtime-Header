@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface FTFinishAudio : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTFinishAudio : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,7 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_4c45a82e)addObjectToBuffer:(void *)arg1;
+- (void)server_feature_latency_distribution_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)server_feature_latency_distribution_count;
+- (id)server_feature_latency_distribution_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *server_feature_latency_distribution;
+- (void)features_at_endpoint_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)features_at_endpoint_count;
+- (id)features_at_endpoint_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *features_at_endpoint;
 @property(readonly, nonatomic) float total_audio_recorded_seconds;
 @property(readonly, nonatomic) int packet_count;

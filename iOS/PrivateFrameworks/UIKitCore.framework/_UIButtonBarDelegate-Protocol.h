@@ -9,6 +9,6 @@
 @class _UIButtonBar;
 
 @protocol _UIButtonBarDelegate <NSObject>
-- (void)buttonBarWillUpdateLayout:(_UIButtonBar *)arg1;
+- (void)buttonBarDidLayout:(_UIButtonBar *)arg1;
 @end
 

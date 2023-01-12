@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKCDPTrustedTargetCryptoMetadata, CKDPCodeFunctionInvokeRequestAttestationRequest, CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata, NSData, NSString;
 
-@interface CKDPCodeFunctionInvokeRequest : PBRequest <NSCopying>
+@interface CKDPCodeFunctionInvokeRequest : PBRequest
 {
     CKDPCodeFunctionInvokeRequestAttestationRequest *_attestationRequest;
     NSString *_functionName;

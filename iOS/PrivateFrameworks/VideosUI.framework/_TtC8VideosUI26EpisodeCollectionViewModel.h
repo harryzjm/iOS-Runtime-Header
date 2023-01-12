@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI9ViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI26EpisodeCollectionViewModel
+@interface _TtC8VideosUI26EpisodeCollectionViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *headerViewModel;
+    MISSING_TYPE *seasonViewModels;
     MISSING_TYPE *prototypeItemViewModel;
-    MISSING_TYPE *headerTitles;
-    MISSING_TYPE *headerTitleIndexes;
-    MISSING_TYPE *highlightIndex;
+    MISSING_TYPE *seasonTitles;
+    MISSING_TYPE *seasonTitleToEpStartIndex;
+    MISSING_TYPE *focusedEpisodeIndex;
     MISSING_TYPE *episodes;
     MISSING_TYPE *needsUpdateKey;
+    MISSING_TYPE *prototypeBodyKey;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fragmentServiceRequests;
     MISSING_TYPE *eventMonitorDescriptors;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIDiffableDataSourceUpdate-Protocol.h>
-
 @class NSOrderedSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIDiffableDataSourceUpdate : NSObject <_UIDiffableDataSourceUpdate>
+@interface _UIDiffableDataSourceUpdate : NSObject
 {
     _Bool _isSectionOperation;
     _Bool _destinationIdentifierIsSectionIdentifier;

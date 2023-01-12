@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebInspector/_RWITCPConnectionDelegate-Protocol.h>
-
 @class NSString, _RWITCPConnection;
 
 __attribute__((visibility("hidden")))
-@interface _RWIRelayClientTCPConnection <_RWITCPConnectionDelegate>
+@interface _RWIRelayClientTCPConnection
 {
     _RWITCPConnection *_connection;
 }

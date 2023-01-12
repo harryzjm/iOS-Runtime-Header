@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVTransitionDelegate-Protocol.h>
-#import <AVKit/AVTransitionDriverDelegate-Protocol.h>
-#import <AVKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <AVKit/UIViewControllerInteractiveTransitioning-Protocol.h>
-#import <AVKit/UIViewControllerTransitioningDelegate-Protocol.h>
-
-@class AVDisplayLink, AVInteractiveTransitionGestureTracker, AVPresentationContext, AVPresentationController, AVTransition, CAMediaTimingFunction, NSString, UIView;
+@class AVDisplayLink, AVInteractiveTransitionGestureTracker, AVPresentationContext, AVPresentationController, AVTransition, CAMediaTimingFunction, NSString, UIView, UIViewController;
 @protocol AVTransitionControllerDelegate, AVTransitionDriver;
 
 __attribute__((visibility("hidden")))
-@interface AVTransitionController : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, AVTransitionDelegate, AVTransitionDriverDelegate, UIViewControllerTransitioningDelegate>
+@interface AVTransitionController : NSObject
 {
+    UIViewController *_presented;
+    UIViewController *_presenting;
+    AVPresentationController *_presentationController;
     id <AVTransitionControllerDelegate> _delegate;
     id <AVTransitionDriver> _interactiveGestureTracker;
     UIView *_interactionView;
@@ -25,8 +22,7 @@ __attribute__((visibility("hidden")))
     AVDisplayLink *_displayLink;
     AVTransition *_activeTransition;
     AVInteractiveTransitionGestureTracker *_gestureTracker;
-    UIView *_sourceView;
-    AVPresentationController *_presentationController;
+    UIView *_sourceViewForNextPresentation;
     CDUnknownBlockType _transitionDidBeginHandler;
     CAMediaTimingFunction *_easeInFunction;
     CAMediaTimingFunction *_easeOutFunction;
@@ -38,8 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CAMediaTimingFunction *easeOutFunction; // @synthesize easeOutFunction=_easeOutFunction;
 @property(retain, nonatomic) CAMediaTimingFunction *easeInFunction; // @synthesize easeInFunction=_easeInFunction;
 @property(copy, nonatomic) CDUnknownBlockType transitionDidBeginHandler; // @synthesize transitionDidBeginHandler=_transitionDidBeginHandler;
-@property(nonatomic) __weak AVPresentationController *presentationController; // @synthesize presentationController=_presentationController;
-@property(nonatomic) __weak UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property(nonatomic) __weak UIView *sourceViewForNextPresentation; // @synthesize sourceViewForNextPresentation=_sourceViewForNextPresentation;
 @property(readonly, nonatomic) AVInteractiveTransitionGestureTracker *gestureTracker; // @synthesize gestureTracker=_gestureTracker;
 @property(retain, nonatomic) AVTransition *activeTransition; // @synthesize activeTransition=_activeTransition;
 @property(retain, nonatomic) AVDisplayLink *displayLink; // @synthesize displayLink=_displayLink;
@@ -48,7 +43,9 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <AVTransitionDriver> interactiveGestureTracker; // @synthesize interactiveGestureTracker=_interactiveGestureTracker;
 @property(nonatomic) __weak id <AVTransitionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)_startObservingAnimatorProgress;
+- (void)_present:(id)arg1 fromViewController:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_fireDidBeginHandlerIfNeeded;
+- (void)_dismiss:(id)arg1 fromViewController:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitionWillComplete:(id)arg1 success:(_Bool)arg2 continueBlock:(CDUnknownBlockType)arg3;
 - (id)transitionPresentedViewBackgroundColor:(id)arg1;
 - (id)transitionBackgroundViewBackgroundColor:(id)arg1;
@@ -56,10 +53,10 @@ __attribute__((visibility("hidden")))
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)interactionControllerForPresentation:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)animationEnded:(_Bool)arg1;
 - (void)animateTransition:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (void)_ensurePresentationControllerWithPresentingViewController:(id)arg1 presentedViewController:(id)arg2;
 - (void)startInteractiveTransition:(id)arg1;
 @property(readonly, nonatomic) _Bool wantsInteractiveStart;
 - (void)_finishTransition;

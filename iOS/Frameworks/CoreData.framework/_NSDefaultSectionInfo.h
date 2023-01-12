@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSFetchedResultsSectionInfo-Protocol.h>
-
 @class NSArray, NSFetchedResultsController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSDefaultSectionInfo : NSObject <NSFetchedResultsSectionInfo>
+@interface _NSDefaultSectionInfo : NSObject
 {
     NSFetchedResultsController *_controller;
     NSString *_name;

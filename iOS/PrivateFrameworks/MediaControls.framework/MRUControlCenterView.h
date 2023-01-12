@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class MRUControlCenterButton, MRUVisualStylingProvider, UICollectionView, UICollectionViewFlowLayout;
+@class MRUControlCenterButton, MRUTransportButton, MRUVisualStylingProvider, UICollectionView, UICollectionViewFlowLayout;
 
 __attribute__((visibility("hidden")))
 @interface MRUControlCenterView : UIView
 {
     _Bool _transitioning;
+    _Bool _showRoutingButton;
     _Bool _showMoreButton;
     _Bool _showAlertView;
     UIView *_contentView;
@@ -21,22 +22,23 @@ __attribute__((visibility("hidden")))
     UICollectionViewFlowLayout *_collectionViewLayout;
     MRUControlCenterButton *_moreButton;
     MRUVisualStylingProvider *_stylingProvider;
+    MRUTransportButton *_routingButton;
     long long _state;
     double _cornerRadius;
     UIView *_materialView;
-    struct CGSize _forcedContentSize;
     struct CGRect _transitionFrame;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIView *materialView; // @synthesize materialView=_materialView;
-@property(nonatomic) struct CGSize forcedContentSize; // @synthesize forcedContentSize=_forcedContentSize;
 @property(nonatomic) _Bool showAlertView; // @synthesize showAlertView=_showAlertView;
 @property(nonatomic) _Bool showMoreButton; // @synthesize showMoreButton=_showMoreButton;
+@property(nonatomic) _Bool showRoutingButton; // @synthesize showRoutingButton=_showRoutingButton;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) struct CGRect transitionFrame; // @synthesize transitionFrame=_transitionFrame;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 @property(nonatomic) long long state; // @synthesize state=_state;
+@property(readonly, nonatomic) MRUTransportButton *routingButton; // @synthesize routingButton=_routingButton;
 @property(readonly, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property(readonly, nonatomic) MRUControlCenterButton *moreButton; // @synthesize moreButton=_moreButton;
 @property(readonly, nonatomic) UICollectionViewFlowLayout *collectionViewLayout; // @synthesize collectionViewLayout=_collectionViewLayout;

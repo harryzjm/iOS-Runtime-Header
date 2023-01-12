@@ -8,6 +8,7 @@
 
 @interface WKNavigationAction (SafariSharedUIExtras)
 @property(readonly, nonatomic) _Bool safari_isNewWindowNavigationActionSpecifiedByAnchorTargetAttribute;
+@property(readonly, nonatomic) _Bool safari_isEligibleToSpawnNewTabFromPinnedTab;
 - (_Bool)safari_isEligibleForContinuedTranslationWithPolicy:(long long)arg1;
 @end
 

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSInflectionRule.h"
+
 __attribute__((visibility("hidden")))
-@interface _NSInflectionRuleAutomatic
+@interface _NSInflectionRuleAutomatic : NSInflectionRule
 {
 }
 
 + (_Bool)supportsSecureCoding;
+- (id)description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

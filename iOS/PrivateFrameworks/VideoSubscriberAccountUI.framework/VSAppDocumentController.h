@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideoSubscriberAccountUI/IKAppDocumentDelegate-Protocol.h>
-
 @class IKAppDocument, IKViewElement, NSError, NSString, VSViewModel;
 @protocol VSAppDocumentControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSAppDocumentController : NSObject <IKAppDocumentDelegate>
+@interface VSAppDocumentController : NSObject
 {
     IKAppDocument *_appDocument;
     id <VSAppDocumentControllerDelegate> _delegate;

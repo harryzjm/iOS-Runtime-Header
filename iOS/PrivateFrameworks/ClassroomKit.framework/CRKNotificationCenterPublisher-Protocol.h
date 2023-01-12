@@ -8,6 +8,6 @@
 @protocol CRKCancelable;
 
 @protocol CRKNotificationCenterPublisher
-- (id <CRKCancelable>)subscribeToNotificationWithName:(NSString *)arg1 handler:(void (^)(NSNotification *))arg2;
+- (id <CRKCancelable>)subscribeToNotificationWithName:(NSString *)arg1 object:(id)arg2 handler:(void (^)(NSNotification *))arg3;
 @end
 

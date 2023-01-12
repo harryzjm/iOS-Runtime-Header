@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OITSUCustomFormatData;
 
 __attribute__((visibility("hidden")))
-@interface OITSUCustomFormatCondition : NSObject <NSCopying>
+@interface OITSUCustomFormatCondition : NSObject
 {
     int _conditionType;
     double _conditionValue;

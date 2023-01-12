@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface MUPlaceHeaderButtonsSectionControllerConfiguration : NSObject
 {
     _Bool _showMoreButton;
+    _Bool _canShowDetourTime;
     MKETAProvider *_etaProvider;
     GEOHeaderButtonModuleConfiguration *_buttonModuleConfiguration;
     id <MUHeaderButtonMenuActionProvider> _menuProvider;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <MUHeaderButtonMenuActionProvider> menuProvider; // @synthesize menuProvider=_menuProvider;
 @property(retain, nonatomic) GEOHeaderButtonModuleConfiguration *buttonModuleConfiguration; // @synthesize buttonModuleConfiguration=_buttonModuleConfiguration;
+@property(nonatomic) _Bool canShowDetourTime; // @synthesize canShowDetourTime=_canShowDetourTime;
 @property(nonatomic) _Bool showMoreButton; // @synthesize showMoreButton=_showMoreButton;
 @property(nonatomic) __weak MKETAProvider *etaProvider; // @synthesize etaProvider=_etaProvider;
 

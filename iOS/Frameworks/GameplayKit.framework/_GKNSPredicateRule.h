@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "GKNSPredicateRule.h"
+
 @protocol NSObject;
 
 __attribute__((visibility("hidden")))
-@interface _GKNSPredicateRule
+@interface _GKNSPredicateRule : GKNSPredicateRule
 {
     id <NSObject> _fact;
     float _grade;

@@ -10,9 +10,7 @@ __attribute__((visibility("hidden")))
     unsigned long long mValue;
 }
 
-@property(readonly) unsigned long long value; // @synthesize value=mValue;
 - (id)description;
-- (id)_initWithID:(unsigned long long)arg1 class:(unsigned char)arg2 length:(unsigned long long)arg3 content:(const char *)arg4 opaque:(_Bool)arg5;
 
 @end
 

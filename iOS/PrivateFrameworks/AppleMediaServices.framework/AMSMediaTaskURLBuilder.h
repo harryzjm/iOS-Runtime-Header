@@ -44,8 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_addItemIdentifiers:(id)arg1;
 - (void)_addCharts:(id)arg1;
 - (void)_addBundleIdentifiers:(id)arg1;
-- (id)_queryItemsWithLangauge:(id)arg1;
-- (id)_basePath;
+- (id)_queryItemsWithLanguage:(id)arg1;
 - (id)_pathPromise;
 - (id)_languagePromise;
 - (id)_hostPromise;

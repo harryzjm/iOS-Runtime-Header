@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/SFUInputStream-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_data, TSUReadChannel;
 
 __attribute__((visibility("hidden")))
-@interface TSUReadChannelInputStreamAdapter : NSObject <SFUInputStream>
+@interface TSUReadChannelInputStreamAdapter : NSObject
 {
     id <TSUReadChannel> _readChannel;
     NSObject<OS_dispatch_data> *_leftoverData;

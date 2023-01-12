@@ -11,6 +11,7 @@
 @protocol HDProfileExtension <NSObject>
 
 @optional
+- (void)prepareForObliteration;
 - (NSXPCListenerEndpoint *)listenerEndpointForClient:(HDXPCClient *)arg1 error:(id *)arg2;
 @end
 

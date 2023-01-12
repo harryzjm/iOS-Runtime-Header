@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionViewLayoutInteractionStateProviding-Protocol.h>
-
-@class NSMutableDictionary, NSMutableSet, NSString, UICollectionViewLayout;
+@class NSMutableDictionary, NSString, UICollectionViewLayout;
 @protocol _UICollectionViewLayoutInteractionStateModuleHost;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewLayoutInteractionStateModule : NSObject <_UICollectionViewLayoutInteractionStateProviding>
+@interface _UICollectionViewLayoutInteractionStateModule : NSObject
 {
-    NSMutableSet *_indexPathsWithBackgroundFillForInteraction;
     NSMutableDictionary *_processingCellsMap;
     Class _invalidationContextClass;
     UICollectionViewLayout<_UICollectionViewLayoutInteractionStateModuleHost> *_host;
@@ -34,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)selectionGroupingForItemAtIndexPath:(id)arg1;
 - (_Bool)_itemIsSelectedOrHighlightedAndHasBackgroundFillForGroupingAtIndexPath:(id)arg1 cellGroupingPreference:(out long long *)arg2 backgroundIsInset:(out _Bool *)arg3;
 - (void)performPreferredAttributesProcessingBlock:(CDUnknownBlockType)arg1 withLayoutAttributes:(id)arg2 forView:(id)arg3;
-- (void)processLayoutInvalidationWithContext:(id)arg1;
 - (id)initWithHost:(id)arg1;
 
 // Remaining properties

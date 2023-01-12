@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) unsigned long long family;
 @property(readonly, nonatomic) NSString *model;
 @property(readonly, nonatomic) NSString *name;
+- (id <NURenderer>)lowPriorityLowMemoryRendererWithoutIntermediateCaching:(out id *)arg1;
 - (id <NURenderer>)lowPriorityRendererWithoutIntermediateCaching:(out id *)arg1;
 - (id <NURenderer>)rendererWithoutIntermediateCaching:(out id *)arg1;
 - (id <NURenderer>)lowPriorityRenderer:(out id *)arg1;

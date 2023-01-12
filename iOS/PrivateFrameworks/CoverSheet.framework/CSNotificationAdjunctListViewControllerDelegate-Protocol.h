@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CSNotificationAdjunctListViewController, NSString;
+@class CSNotificationAdjunctListViewController, NSArray, NSString;
 
 @protocol CSNotificationAdjunctListViewControllerDelegate
+- (void)adjunctListViewController:(CSNotificationAdjunctListViewController *)arg1 updatedNowPlayingVisbility:(_Bool)arg2;
+- (void)adjunctListViewController:(CSNotificationAdjunctListViewController *)arg1 updatedViewsPreferringProminentPresentationOrDismissal:(NSArray *)arg2;
 - (void)focusActivityViewChangedToVisible:(_Bool)arg1;
 - (void)adjunctListViewController:(CSNotificationAdjunctListViewController *)arg1 didUpdateWithSize:(struct CGSize)arg2;
 - (double)interItemSpacingToMimicForAdjunctListViewController:(CSNotificationAdjunctListViewController *)arg1;

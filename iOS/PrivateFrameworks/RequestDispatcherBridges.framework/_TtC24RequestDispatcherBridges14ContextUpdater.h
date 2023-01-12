@@ -10,15 +10,15 @@
 
 @interface _TtC24RequestDispatcherBridges14ContextUpdater : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *sessionStoreClient;
+    MISSING_TYPE *sessionState;
     MISSING_TYPE *rraasClient;
+    MISSING_TYPE *correctionsPlatformClient;
     MISSING_TYPE *serviceHelper;
     MISSING_TYPE *assistantId;
     MISSING_TYPE *requestId;
-    MISSING_TYPE *nativeFlowContextHolder;
-    MISSING_TYPE *executionContextHolder;
     MISSING_TYPE *contextDonator;
     MISSING_TYPE *keysManager;
+    MISSING_TYPE *requestQueue;
     MISSING_TYPE *responseText;
     MISSING_TYPE *instrumentationUtil;
     MISSING_TYPE *finalNativeFlowContextCommand;

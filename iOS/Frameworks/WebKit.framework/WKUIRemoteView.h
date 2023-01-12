@@ -6,12 +6,10 @@
 
 #import <UIKit/_UIRemoteView.h>
 
-#import <WebKit/WKContentControlled-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKUIRemoteView : _UIRemoteView <WKContentControlled>
+@interface WKUIRemoteView : _UIRemoteView
 {
 }
 

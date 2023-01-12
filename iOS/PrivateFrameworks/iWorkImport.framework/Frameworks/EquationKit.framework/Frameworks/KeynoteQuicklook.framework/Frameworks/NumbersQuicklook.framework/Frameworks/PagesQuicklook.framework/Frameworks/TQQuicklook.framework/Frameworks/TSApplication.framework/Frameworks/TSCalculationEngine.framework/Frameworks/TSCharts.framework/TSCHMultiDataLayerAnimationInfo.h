@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class CAMediaTimingFunction, NSArray, NSMutableArray;
 
-@interface TSCHMultiDataLayerAnimationInfo : NSObject <NSCopying>
+@interface TSCHMultiDataLayerAnimationInfo : NSObject
 {
     _Bool _shouldAnimate;
     _Bool _aboveIntercept;

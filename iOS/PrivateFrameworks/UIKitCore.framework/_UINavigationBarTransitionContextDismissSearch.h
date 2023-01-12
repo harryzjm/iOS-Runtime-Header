@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UISearchBar;
+@class UISearchBar, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionContextDismissSearch
 {
     UISearchBar *_transitioningSearchBar;
+    UIView *_transitioningScopeBarContainer;
 }
 
 - (void).cxx_destruct;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)mixedTracksFromAsset:(id)arg1 format:(id)arg2 accumulator:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)pcmBufferFromAudioFile:(id)arg1 outputFormat:(id)arg2 error:(id *)arg3;
 + (id)pcmBufferFromAudioFile:(id)arg1 outputFormat:(id)arg2 durationToRead:(double)arg3 error:(id *)arg4;
 + (_Bool)buffersFromAudioFile:(id)arg1 format:(id)arg2 accumulator:(CDUnknownBlockType)arg3 error:(id *)arg4;

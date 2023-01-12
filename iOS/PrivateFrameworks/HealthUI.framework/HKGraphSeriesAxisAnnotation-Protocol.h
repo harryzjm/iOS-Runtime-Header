@@ -6,9 +6,11 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class HKGraphSeries, NSAttributedString;
+@class HKGraphSeries, NSArray, NSAttributedString;
 
 @protocol HKGraphSeriesAxisAnnotation <NSObject>
+- (long long)applyAnnotationForSeries:(NSArray *)arg1;
+- (void)startAnnotationSequence;
 - (void)clearAxisAnnotations;
 - (void)addAxisAnnotation:(NSAttributedString *)arg1 forSeries:(HKGraphSeries *)arg2 modelCoordinate:(id)arg3;
 @end

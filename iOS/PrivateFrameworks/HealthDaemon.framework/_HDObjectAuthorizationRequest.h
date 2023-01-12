@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _HDObjectAuthorizationRequest : NSObject
 {
+    _Bool _promptWithAllSamples;
     CDUnknownBlockType _completion;
     NSUUID *_identifier;
     NSArray *_samples;

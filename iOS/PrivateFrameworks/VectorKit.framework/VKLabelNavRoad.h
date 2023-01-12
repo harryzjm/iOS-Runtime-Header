@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKLabelNavFeature-Protocol.h>
-
 @class NSString, VKLabelNavJunction, VKLabelNavRoadLabel;
 
 __attribute__((visibility("hidden")))
-@interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
+@interface VKLabelNavRoad : NSObject
 {
     struct shared_ptr<md::LabelTile> _tile;
     void *_data;
     struct optional<gss::LineType> _lineType;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
+    unsigned long long _labelVertexIndexA;
+    unsigned long long _labelVertexIndexB;
     struct GeoCodecsConnectivityJunction *_junctionA;
     struct GeoCodecsConnectivityJunction *_junctionB;
     VKLabelNavJunction *_navJunctionA;
@@ -33,7 +33,8 @@ __attribute__((visibility("hidden")))
     _Bool _areLabelsDisabled;
     struct PolylineCoordinate _routeOffset;
     float _routeCrossProduct;
-    long long _intraRoadPriority;
+    long long _intraRoadPriorityForRoadLabel;
+    long long _intraRoadPriorityForShieldLabel;
     double _length;
     NSString *_name;
     NSString *_shieldDisplayGroup;
@@ -52,14 +53,17 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(nonatomic) unsigned long long labelVertexIndexB; // @synthesize labelVertexIndexB=_labelVertexIndexB;
+@property(nonatomic) unsigned long long labelVertexIndexA; // @synthesize labelVertexIndexA=_labelVertexIndexA;
 @property(readonly, nonatomic) const void *tile; // @synthesize tile=_tile;
 @property(nonatomic) _Bool isPicked; // @synthesize isPicked=_isPicked;
 @property(nonatomic) _Bool suppressRoadSignIfDeduped; // @synthesize suppressRoadSignIfDeduped=_suppressRoadSignIfDeduped;
 @property(readonly, nonatomic) _Bool suppressRoadSignIfShieldPresent; // @synthesize suppressRoadSignIfShieldPresent=_suppressRoadSignIfShieldPresent;
-@property(readonly, nonatomic) VKLabelNavJunction *navJunctionA; // @synthesize navJunctionA=_navJunctionA;
+@property(readonly, nonatomic) __weak VKLabelNavJunction *navJunctionA; // @synthesize navJunctionA=_navJunctionA;
 @property(nonatomic) _Bool isRoadLabelUnique; // @synthesize isRoadLabelUnique=_isRoadLabelUnique;
 @property(nonatomic) _Bool areLabelsDisabled; // @synthesize areLabelsDisabled=_areLabelsDisabled;
-@property(nonatomic) long long intraRoadPriority; // @synthesize intraRoadPriority=_intraRoadPriority;
+@property(nonatomic) long long intraRoadPriorityForShieldLabel; // @synthesize intraRoadPriorityForShieldLabel=_intraRoadPriorityForShieldLabel;
+@property(nonatomic) long long intraRoadPriorityForRoadLabel; // @synthesize intraRoadPriorityForRoadLabel=_intraRoadPriorityForRoadLabel;
 @property(readonly, nonatomic) struct GeoCodecsConnectivityJunction *junctionB; // @synthesize junctionB=_junctionB;
 @property(nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property(nonatomic) float routeCrossProduct; // @synthesize routeCrossProduct=_routeCrossProduct;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) Matrix_8746f91e direction2D; // @synthesize direction2D=_direction2D;
 @property(readonly, nonatomic) Matrix_811b2232 direction3D; // @synthesize direction3D=_direction3D;
+@property(readonly, nonatomic) _Bool isValid;
 - (_Bool)roadHasName;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;

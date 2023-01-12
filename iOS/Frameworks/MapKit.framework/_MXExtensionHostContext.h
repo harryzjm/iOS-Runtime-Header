@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/_MXExtensionHostContextType-Protocol.h>
-
 @class NSString;
 @protocol _MXExtensionURLHandling;
 
 __attribute__((visibility("hidden")))
-@interface _MXExtensionHostContext <_MXExtensionHostContextType>
+@interface _MXExtensionHostContext
 {
     id <_MXExtensionURLHandling> _URLHandlingDelegate;
 }

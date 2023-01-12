@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionCompositionalLayoutSolverRestorableState-Protocol.h>
-
 @class NSArray, NSIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionCompositionalLayoutSolverRestorableState : NSObject <_UICollectionCompositionalLayoutSolverRestorableState>
+@interface _UICollectionCompositionalLayoutSolverRestorableState : NSObject
 {
     NSArray *_bookmarkSnapshotters;
     NSIndexSet *_orthogonalSectionIndexes;

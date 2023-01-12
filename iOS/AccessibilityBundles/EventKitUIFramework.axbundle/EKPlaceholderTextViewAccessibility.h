@@ -8,9 +8,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)layoutSubviews;
 - (id)accessibilityPlaceholderValue;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityPlaceholder;
 
 @end
 

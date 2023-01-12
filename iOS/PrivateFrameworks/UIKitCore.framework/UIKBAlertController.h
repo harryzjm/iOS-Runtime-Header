@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIAlertController.h"
+
 @protocol UIKBAlertControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBAlertController
+@interface UIKBAlertController : UIAlertController
 {
     id <UIKBAlertControllerDelegate> _kbDelegate;
 }

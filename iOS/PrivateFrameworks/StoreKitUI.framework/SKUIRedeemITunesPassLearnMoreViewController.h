@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPassbookLoaderDelegate-Protocol.h>
+#import "SKUIRedeemStepViewController.h"
 
 @class NSString, NSURL, SKUIPassbookLoader, SKUIRedeemITunesPassLearnMoreView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIRedeemITunesPassLearnMoreViewController <SKUIPassbookLoaderDelegate>
+@interface SKUIRedeemITunesPassLearnMoreViewController : SKUIRedeemStepViewController
 {
     _Bool _didTapAddPassbookButton;
     SKUIRedeemITunesPassLearnMoreView *_learnMoreView;

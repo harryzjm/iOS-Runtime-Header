@@ -13,6 +13,7 @@
 - (void)preferredContentSizeDidChangeForPictureInPictureViewController;
 
 @optional
+- (void)pictureInPictureClientDidRequestStashing;
 - (void)notePictureInPictureViewControllerPrefersHiddenFromClonedDisplayDidChange;
 - (void)notePictureInPictureViewControllerTetheringDidUpdate;
 - (void)updateMenuItems;

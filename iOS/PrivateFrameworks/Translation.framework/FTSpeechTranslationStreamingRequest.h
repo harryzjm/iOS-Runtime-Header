@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAudioPacket, FTFinishAudio, FTLanguageDetected, FTResetServerEndpointer, FTSetEndpointerState, FTSpeechTranslationAudioPacket, FTStartSpeechTranslationLoggingRequest, FTStartSpeechTranslationRequest, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTSpeechTranslationStreamingRequest : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTSpeechTranslationStreamingRequest : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct SpeechTranslationStreamingRequest *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_c5a53c72)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTStartSpeechTranslationLoggingRequest *contentAsFTStartSpeechTranslationLoggingRequest;
 @property(readonly, nonatomic) FTResetServerEndpointer *contentAsFTResetServerEndpointer;
 @property(readonly, nonatomic) FTSetEndpointerState *contentAsFTSetEndpointerState;

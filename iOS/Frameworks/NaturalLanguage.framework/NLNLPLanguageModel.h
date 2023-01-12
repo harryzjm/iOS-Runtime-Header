@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NLLanguageModel.h"
+
 __attribute__((visibility("hidden")))
-@interface NLNLPLanguageModel
+@interface NLNLPLanguageModel : NLLanguageModel
 {
     long long _granularity;
 }

@@ -6,11 +6,14 @@
 
 #import <VisionKitCore/NSObject-Protocol.h>
 
-@class NSArray, UIView, VKAnalyticsEvent, VKCBaseDataDetectorElement, VKCImageTextSelectionView, VKTextRange;
+@class NSArray, UIView, VKAnalyticsEvent, VKCBaseDataDetectorElement, VKCImageTextSelectionView, VKCVisualSearchResultItem, VKTextRange;
+@protocol RVTextQueryProtocol;
 
 @protocol VKCImageTextSelectionViewDelegate <NSObject>
 - (void)textSelectionView:(VKCImageTextSelectionView *)arg1 prepareForCalloutAction:(SEL)arg2 competion:(void (^)(void))arg3;
 - (void)textSelectionView:(VKCImageTextSelectionView *)arg1 analyticsEventOccured:(VKAnalyticsEvent *)arg2;
+- (void)generateTextualVisualSearchResultForQueryInfo:(id <RVTextQueryProtocol>)arg1 completionHandler:(void (^)(_Bool, MADVITextLookupResult *, NSError *))arg2;
+- (VKCVisualSearchResultItem *)textSelectionView:(VKCImageTextSelectionView *)arg1 closestVisualSearchItemForRange:(VKTextRange *)arg2;
 - (void)triggerTapToRadar;
 - (void)textSelectionView:(VKCImageTextSelectionView *)arg1 boundsDidChangeFromRect:(struct CGRect)arg2 toRect:(struct CGRect)arg3;
 - (void)textSelectionView:(VKCImageTextSelectionView *)arg1 selectionDidChange:(VKTextRange *)arg2;

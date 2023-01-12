@@ -6,12 +6,9 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <AnnotationKit/AKFontChooserUserInterfaceItem-Protocol.h>
-#import <AnnotationKit/AKTextAttributesUserInterfaceItem-Protocol.h>
-
 @class AKController, AKFontChooserUIItemDelegate, AKFontListController, AKTextAttributesUIItemDelegate, NSNumber, NSString, UIColor, UITableViewCell;
 
-@interface AKTextAttributesViewController : UITableViewController <AKFontChooserUserInterfaceItem, AKTextAttributesUserInterfaceItem>
+@interface AKTextAttributesViewController : UITableViewController
 {
     UITableViewCell *_sizeTableCell;
     UITableViewCell *_alignmentTableCell;

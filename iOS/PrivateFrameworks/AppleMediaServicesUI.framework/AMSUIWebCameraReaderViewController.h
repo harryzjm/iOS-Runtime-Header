@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebPagePresenter-Protocol.h>
+#import "AMSUICommonViewController.h"
 
-@class AMSUIWebAppearance, AMSUIWebCameraReaderInfoView, AMSUIWebCameraReaderPageModel, AMSUIWebClientContext, AMSUIWebNavigationBarModel, CRCameraReader, NSDictionary, NSString;
+@class AMSUIWebAppearance, AMSUIWebCameraReaderInfoView, AMSUIWebCameraReaderPageModel, AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSDictionary, NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebCameraReaderViewController <AMSUIWebPagePresenter>
+@interface AMSUIWebCameraReaderViewController : AMSUICommonViewController
 {
     AMSUIWebAppearance *_appearance;
-    CRCameraReader *_cameraController;
+    UIViewController *_childController;
     AMSUIWebClientContext *_context;
     AMSUIWebCameraReaderInfoView *_infoView;
     AMSUIWebCameraReaderPageModel *_model;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AMSUIWebCameraReaderPageModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) AMSUIWebCameraReaderInfoView *infoView; // @synthesize infoView=_infoView;
 @property(retain, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
-@property(retain, nonatomic) CRCameraReader *cameraController; // @synthesize cameraController=_cameraController;
+@property(retain, nonatomic) UIViewController *childController; // @synthesize childController=_childController;
 @property(retain, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 - (void)cameraReaderDidEnd:(id)arg1;
 - (void)cameraReader:(id)arg1 didRecognizeObjects:(id)arg2;
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)cameraReaderDidCancel:(id)arg1;
 - (void)willPresentPageModel:(id)arg1 appearance:(id)arg2;
 - (void)_handleCameraOutput:(id)arg1 error:(id)arg2;
+- (id)_cameraReader;
 - (void)_applyAppearance;
 - (id)_outputForIDCardReaderObjects:(id)arg1;
 - (void)_setupPageForIDCard;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupTextEntry;
 - (void)_setupInfoView;
 - (void)_setupPage;
+- (void)_setChild:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;

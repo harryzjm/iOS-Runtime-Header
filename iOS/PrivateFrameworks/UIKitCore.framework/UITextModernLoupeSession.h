@@ -14,12 +14,10 @@ __attribute__((visibility("hidden")))
     UITextGestureTuning *_gestureTuning;
     UIView *_interactionView;
     UITextModernLoupeView *_loupeView;
-    double _caretInitialOffsetX;
 }
 
 + (id)beginLoupeSessionAtPoint:(struct CGPoint)arg1 withCaretRect:(struct CGRect)arg2 fromView:(id)arg3;
 - (void).cxx_destruct;
-@property(nonatomic) double caretInitialOffsetX; // @synthesize caretInitialOffsetX=_caretInitialOffsetX;
 @property(retain, nonatomic) UITextModernLoupeView *loupeView; // @synthesize loupeView=_loupeView;
 @property(nonatomic) __weak UIView *interactionView; // @synthesize interactionView=_interactionView;
 @property(retain, nonatomic) UITextGestureTuning *gestureTuning; // @synthesize gestureTuning=_gestureTuning;

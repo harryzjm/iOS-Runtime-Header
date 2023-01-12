@@ -6,11 +6,9 @@
 
 #import <RunningBoardServices/RBSProcessIdentity.h>
 
-#import <FrontBoardServices/FBSSceneClientIdentifying-Protocol.h>
-
 @class NSString;
 
-@interface RBSProcessIdentity (FBSSceneClientIdentity) <FBSSceneClientIdentifying>
+@interface RBSProcessIdentity (FBSSceneClientIdentity)
 - (id)fbs_sceneClientIdentity;
 
 // Remaining properties

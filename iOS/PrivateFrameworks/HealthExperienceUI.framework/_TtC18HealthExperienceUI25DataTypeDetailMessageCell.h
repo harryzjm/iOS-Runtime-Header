@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s18HealthExperienceUI24ButtonCollectionViewCellCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC18HealthExperienceUI25DataTypeDetailMessageCell
+@interface _TtC18HealthExperienceUI25DataTypeDetailMessageCell : _$s18HealthExperienceUI24ButtonCollectionViewCellCN
 {
-    MISSING_TYPE *parentViewController;
     MISSING_TYPE *$__lazy_storage_$_symbol;
 }
 

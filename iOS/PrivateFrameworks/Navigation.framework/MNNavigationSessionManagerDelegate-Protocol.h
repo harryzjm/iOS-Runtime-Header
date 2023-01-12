@@ -6,7 +6,7 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedGuidanceEvent, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationSessionManager, MNRouteDistanceInfo, MNTracePlaybackDetails, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError, NSSet, NSString, NSUUID;
+@class GEOComposedGuidanceEvent, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNBatteryChargeInfo, MNDisplayETAInfo, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocation, MNNavigationSessionManager, MNRouteDistanceInfo, MNTracePlaybackDetails, MNTrafficIncidentAlert, MNTransitAlert, NSArray, NSError, NSSet, NSString, NSUUID;
 
 @protocol MNNavigationSessionManagerDelegate <NSObject>
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didReceiveTransitAlert:(MNTransitAlert *)arg2;
@@ -52,13 +52,13 @@
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateETAResponseForRoute:(MNActiveRouteInfo *)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didUpdateDisplayETA:(MNDisplayETAInfo *)arg2 remainingDistance:(MNRouteDistanceInfo *)arg3 batteryChargeInfo:(MNBatteryChargeInfo *)arg4;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didReceiveRouteSignalStrength:(unsigned long long)arg2;
 - (void)navigationSessionManagerWillResumeFromPause:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerWillPause:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerDidArrive:(MNNavigationSessionManager *)arg1;
 - (void)navigationSessionManagerDidEnterPreArrivalState:(MNNavigationSessionManager *)arg1;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didResumeNavigatingFromWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3 reason:(unsigned long long)arg4;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didArriveAtWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didEnterPreArrivalStateForWaypoint:(GEOComposedWaypoint *)arg2 endOfLegIndex:(unsigned long long)arg3;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 currentStepIndex:(unsigned long long)arg2 didUpdateDistanceUntilManeuver:(double)arg3 timeUntilManeuver:(double)arg4;
@@ -69,6 +69,7 @@
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didFailWithError:(NSError *)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 shouldEndWithReason:(unsigned long long)arg2;
 - (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 didStopWithReason:(unsigned long long)arg2;
-- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(int)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willStopWithReason:(unsigned long long)arg2;
+- (void)navigationSessionManager:(MNNavigationSessionManager *)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(long long)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5 simulationType:(long long)arg6 isResumingMultipointRoute:(_Bool)arg7;
 @end
 

@@ -11,19 +11,20 @@
 
 @interface CKDPCSKeySyncManager : NSObject
 {
-    NSMutableDictionary *_keySyncTrackerByServiceName;
+    NSMutableDictionary *_keySyncTrackerByServiceNameByAccount;
     NSObject<OS_dispatch_queue> *_keySyncQueue;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *keySyncQueue; // @synthesize keySyncQueue=_keySyncQueue;
-@property(retain, nonatomic) NSMutableDictionary *keySyncTrackerByServiceName; // @synthesize keySyncTrackerByServiceName=_keySyncTrackerByServiceName;
+@property(retain, nonatomic) NSMutableDictionary *keySyncTrackerByServiceNameByAccount; // @synthesize keySyncTrackerByServiceNameByAccount=_keySyncTrackerByServiceNameByAccount;
 - (void)syncUserKeysForService:(id)arg1 context:(id)arg2 bundleID:(id)arg3 serviceIsManatee:(_Bool)arg4 account:(id)arg5 shouldThrottle:(_Bool)arg6 testOverrideProvider:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
-- (void)getKeySyncEligibilityForService:(id)arg1 isManatee:(_Bool)arg2 zonePCSModificationDate:(id)arg3 testOverrideProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)getKeySyncEligibilityForService:(id)arg1 isManatee:(_Bool)arg2 account:(id)arg3 zonePCSModificationDate:(id)arg4 testOverrideProvider:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)performKeySyncWithSyncTracker:(id)arg1 testableSyncConfig:(unsigned long long)arg2 shouldThrottle:(_Bool)arg3 testOverrideProvider:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)syncTrackerForService:(id)arg1 manatee:(_Bool)arg2 shortThrottlePeriod:(_Bool)arg3;
-- (id)createSyncTrackerForService:(id)arg1 manatee:(_Bool)arg2;
+- (id)syncTrackerForAccount:(id)arg1 service:(id)arg2 manatee:(_Bool)arg3 shortThrottlePeriod:(_Bool)arg4;
+- (id)createSyncTrackerForAccount:(id)arg1 service:(id)arg2 manatee:(_Bool)arg3;
+- (id)_getKeySyncTrackerByServicenameForAccount:(id)arg1;
 - (id)init;
 
 @end

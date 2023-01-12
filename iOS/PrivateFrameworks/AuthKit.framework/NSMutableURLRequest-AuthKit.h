@@ -17,7 +17,13 @@
 + (id)ak_timeZoneHeader;
 + (id)ak_localeHeader;
 + (id)ak_clientTimeHeader;
-- (void)ak_addPrivateEmailKeyHeader:(id)arg1;
+- (void)ak_addPrivateEmailAppNameHeader:(id)arg1;
+- (void)ak_addPrivateEmailAppBundleIdHeader:(id)arg1;
+- (void)ak_addPrivateEmailOriginHeader:(id)arg1;
+- (void)ak_addPrivateEmailDomainHeader:(id)arg1;
+- (void)ak_addFidoRecoveryTokenHeader:(id)arg1;
+- (void)ak_addProxiedBundleIDHeader:(id)arg1;
+- (void)ak_addClientBundleIDHeader:(id)arg1;
 - (void)ak_addExecutionModeHeader:(_Bool)arg1;
 - (void)ak_addRequestUUIDHeader:(id)arg1;
 - (void)ak_addDeviceConfigurationModeHeaderForAuthContext:(id)arg1;
@@ -60,6 +66,10 @@
 - (id)ak_valueForEncodedHeaderWithKey:(id)arg1;
 - (void)ak_addDataCenterHeaderWithIdentifier:(id)arg1;
 - (void)ak_addURLSwitchingHeaderWithURLKey:(id)arg1 altDSID:(id)arg2;
+- (void)ak_addGuardianAuthorizationHeaderWithIdentityToken:(id)arg1 heartbeatToken:(id)arg2 serviceToken:(id)arg3 forAltDSID:(id)arg4;
+- (void)ak_addGuardianAuthorizationHeaderWithServiceToken:(id)arg1 forAltDSID:(id)arg2;
+- (void)ak_addGuardianAuthorizationHeaderWithHeartbeatToken:(id)arg1 forAltDSID:(id)arg2;
+- (void)ak_addGuardianAuthorizationHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addICSCRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
@@ -78,6 +88,7 @@
 - (void)ak_addClientTimeHeader;
 - (void)ak_addClientInfoHeader;
 - (void)ak_addProxiedDeviceUDIDHeader:(id)arg1;
+- (void)ak_addProvisioningUDIDHeader;
 - (void)ak_addDeviceUDIDHeader;
 - (void)ak_addAppleIDUserModeHeaderWithValue:(unsigned long long)arg1;
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;

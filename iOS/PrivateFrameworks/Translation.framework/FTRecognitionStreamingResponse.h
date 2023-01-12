@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class FTAudioLimitExceeded, FTCheckForSpeechResponse, FTClientSetupInfo, FTEndPointCandidate, FTEndPointLikelihood, FTFinalSpeechRecognitionResponse, FTPartialSpeechRecognitionResponse, FTRecognitionCandidate, FTRecognitionProgress, FTRequestStatsResponse, FTServerEndpointFeatures, FTUpdatedAcousticProfile, NSData, NSMutableDictionary;
+@protocol FLTBFBufferAccessor><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface FTRecognitionStreamingResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTRecognitionStreamingResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
     const struct RecognitionStreamingResponse *_root;
 }
 
++ (long long)content_typeForImmutableObject:(id)arg1;
++ (Class)content_immutableClassForType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_48f69b49)addObjectToBuffer:(void *)arg1;
+@property(readonly, nonatomic) NSObject<FLTBFBufferAccessor><NSCopying> *content;
 @property(readonly, nonatomic) FTAudioLimitExceeded *contentAsFTAudioLimitExceeded;
 @property(readonly, nonatomic) FTClientSetupInfo *contentAsFTClientSetupInfo;
 @property(readonly, nonatomic) FTServerEndpointFeatures *contentAsFTServerEndpointFeatures;

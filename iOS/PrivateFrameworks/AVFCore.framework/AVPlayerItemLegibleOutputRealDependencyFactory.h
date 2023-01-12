@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVPlayerItemLegibleOutputDependencyFactory-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVPlayerItemLegibleOutputRealDependencyFactory : NSObject <AVPlayerItemLegibleOutputDependencyFactory>
+@interface AVPlayerItemLegibleOutputRealDependencyFactory : NSObject
 {
 }
 

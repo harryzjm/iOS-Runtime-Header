@@ -13,6 +13,7 @@
 @property(nonatomic) __weak id <SiriPresentationControllerDelegate> siriPresentationControllerDelegate;
 @property(readonly, nonatomic) long long identifier;
 - (void)invalidate;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(void (^)(_Bool))arg2;
 - (void)dismissWithOptions:(SiriDismissalOptions *)arg1;
 - (void)dismiss;
 - (_Bool)isEnabled;

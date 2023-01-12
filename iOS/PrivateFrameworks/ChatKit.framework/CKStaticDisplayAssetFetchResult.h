@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/PXDisplayAssetFetchResult-Protocol.h>
-
 @class NSArray, NSString;
 @protocol PXDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface CKStaticDisplayAssetFetchResult : NSObject <PXDisplayAssetFetchResult>
+@interface CKStaticDisplayAssetFetchResult : NSObject
 {
     NSArray *_assets;
 }

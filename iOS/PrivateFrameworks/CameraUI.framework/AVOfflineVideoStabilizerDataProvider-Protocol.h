@@ -9,7 +9,7 @@
 @class AVOfflineVideoStabilizer, NSDictionary;
 
 @protocol AVOfflineVideoStabilizerDataProvider <NSObject>
-- (NSDictionary *)copySourceStabilizationMetadataForFrameNumber:(long long)arg1 outputSampleTime:(CDStruct_1b6d18a9 *)arg2 stabilizer:(AVOfflineVideoStabilizer *)arg3;
-- (struct __CVBuffer *)copySourcePixelBufferForFrameNumber:(long long)arg1 outputSampleTime:(CDStruct_1b6d18a9 *)arg2 stabilizer:(AVOfflineVideoStabilizer *)arg3;
+- (NSDictionary *)copySourceStabilizationMetadataForFrameNumber:(long long)arg1 outputSampleTime:(CDStruct_198678f7 *)arg2 stabilizer:(AVOfflineVideoStabilizer *)arg3;
+- (struct __CVBuffer *)copySourcePixelBufferForFrameNumber:(long long)arg1 outputSampleTime:(CDStruct_198678f7 *)arg2 stabilizer:(AVOfflineVideoStabilizer *)arg3;
 @end
 

@@ -6,18 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MediaControls/MRUViewServiceRoutingViewControllerDelegate-Protocol.h>
-#import <MediaControls/MRUViewServiceViewController-Protocol.h>
-#import <MediaControls/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <MediaControls/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class MPMediaControlsConfiguration, MRUViewServiceRoutingViewController, MTMaterialView, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceContainerViewController : UIViewController <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, MRUViewServiceRoutingViewControllerDelegate, MRUViewServiceViewController>
+@interface MRUViewServiceContainerViewController : UIViewController
 {
     MPMediaControlsConfiguration *_configuration;
     CDUnknownBlockType _dismissalBlock;
+    CDUnknownBlockType _customRowTappedBlock;
     MRUViewServiceRoutingViewController *_routingViewController;
     UIView *_sourceView;
     MTMaterialView *_materialView;
@@ -27,10 +23,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MTMaterialView *materialView; // @synthesize materialView=_materialView;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(retain, nonatomic) MRUViewServiceRoutingViewController *routingViewController; // @synthesize routingViewController=_routingViewController;
+@property(copy, nonatomic) CDUnknownBlockType customRowTappedBlock; // @synthesize customRowTappedBlock=_customRowTappedBlock;
 @property(copy, nonatomic) CDUnknownBlockType dismissalBlock; // @synthesize dismissalBlock=_dismissalBlock;
 @property(retain, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void)updateMaterialForPresenting:(_Bool)arg1;
 - (_Bool)shouldPresentUsingPopover;
+- (void)viewServiceRoutingViewControllerDidDismiss:(id)arg1 withCustomRowTapped:(id)arg2;
 - (void)viewServiceRoutingViewControllerDidDismiss:(id)arg1;
 - (void)viewServiceRoutingViewControllerDidChangeSize:(id)arg1;
 - (void)transitionToVisible:(_Bool)arg1 animated:(_Bool)arg2;

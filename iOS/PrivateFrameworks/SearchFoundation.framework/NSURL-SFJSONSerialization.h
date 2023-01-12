@@ -6,11 +6,9 @@
 
 #import <Foundation/NSURL.h>
 
-#import <SearchFoundation/SFJSONSerializable-Protocol.h>
-
 @class NSData, NSDictionary, NSString;
 
-@interface NSURL (SFJSONSerialization) <SFJSONSerializable>
+@interface NSURL (SFJSONSerialization)
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, nonatomic) NSData *jsonData;
 

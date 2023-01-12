@@ -15,6 +15,5 @@
 - (void)tabDocumentWillEndNavigationGesture:(TabDocument *)arg1 withNavigationToBackForwardListItem:(WKBackForwardListItem *)arg2;
 - (void)tabDocumentDidBeginNavigationGesture:(TabDocument *)arg1;
 - (void)tabDocumentDidCommitNavigation:(TabDocument *)arg1;
-- (void)tapDocumentDidStartProvisionalNavigation:(TabDocument *)arg1;
 @end
 

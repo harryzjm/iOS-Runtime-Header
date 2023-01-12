@@ -100,7 +100,8 @@ struct quic_packet {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    unsigned int :19;
+    unsigned int :1;
+    unsigned int :18;
     unsigned char _field30[4];
 };
 

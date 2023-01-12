@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CompanionSync/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SYLogEngineState : PBCodable <NSCopying>
+@interface SYLogEngineState : PBCodable
 {
     int _type;
     _Bool _buffersSessions;

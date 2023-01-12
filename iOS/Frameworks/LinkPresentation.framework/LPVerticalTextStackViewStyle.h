@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LinkPresentation/LPEmailCompatibleCaptionBarItemChild-Protocol.h>
-
 @class LPPadding, LPPointUnit, LPTextRowStyle;
 
 __attribute__((visibility("hidden")))
-@interface LPVerticalTextStackViewStyle : NSObject <LPEmailCompatibleCaptionBarItemChild>
+@interface LPVerticalTextStackViewStyle : NSObject
 {
     _Bool _shouldAlignToBaselines;
     unsigned int _maximumNumberOfLines;
@@ -37,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) LPPointUnit *lastLineDescent; // @synthesize lastLineDescent=_lastLineDescent;
 @property(retain, nonatomic) LPPointUnit *firstLineLeading; // @synthesize firstLineLeading=_firstLineLeading;
 - (void)applyToAllTextViewStyles:(CDUnknownBlockType)arg1;
-- (id)initWithPlatform:(long long)arg1 fontScalingFactor:(double)arg2;
+- (id)initWithPlatform:(long long)arg1 sizeClass:(unsigned long long)arg2 fontScalingFactor:(double)arg3;
 
 @end
 

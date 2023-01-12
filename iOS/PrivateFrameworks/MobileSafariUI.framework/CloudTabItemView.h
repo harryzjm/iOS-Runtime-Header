@@ -6,20 +6,18 @@
 
 #import <UIKit/UIButton.h>
 
-#import <MobileSafariUI/UIGestureRecognizerDelegate-Protocol.h>
-
-@class CloudTabItemDeleteConfirmationView, NSString, ScrollingPanGestureRecognizer, UIView, WBSCloudTab;
+@class CloudTabItemDeleteConfirmationView, NSString, SFScrollingPanGestureRecognizer, UIView, WBSCloudTab;
 @protocol CloudTabItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CloudTabItemView : UIButton <UIGestureRecognizerDelegate>
+@interface CloudTabItemView : UIButton
 {
     UIView *_separatorView;
     UIView *_highlightView;
     _Bool _editing;
     double _startingSwipeOffset;
     double _swipeOffset;
-    ScrollingPanGestureRecognizer *_panGestureRecognizer;
+    SFScrollingPanGestureRecognizer *_panGestureRecognizer;
     CloudTabItemDeleteConfirmationView *_deleteConfirmationView;
     double _leftEdgeInset;
     _Bool _editable;

@@ -8,6 +8,6 @@
 
 @interface RBSConstraintsAttribute (RBProcessState)
 - (_Bool)hasMandatoryAttributes:(id)arg1 error:(id *)arg2;
-- (_Bool)conflictsWithAttribute:(id)arg1;
+- (_Bool)allowedWithAttribute:(id)arg1 error:(id *)arg2;
 @end
 

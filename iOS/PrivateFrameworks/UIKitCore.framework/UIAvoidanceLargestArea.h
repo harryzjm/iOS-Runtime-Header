@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIAvoidanceClientDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIAvoidanceLargestArea : NSObject <UIAvoidanceClientDelegate>
+@interface UIAvoidanceLargestArea : NSObject
 {
 }
 

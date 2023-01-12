@@ -6,14 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/GEOTransitDeparture-Protocol.h>
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOFormattedString, NSDate, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOServerFormattedString;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDDeparture : PBCodable <GEOTransitDeparture, NSCopying>
+@interface GEOPDDeparture : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;

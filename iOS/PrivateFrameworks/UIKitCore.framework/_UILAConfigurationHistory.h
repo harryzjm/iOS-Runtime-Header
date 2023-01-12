@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UILAPropertySource-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UILAConfigurationHistory : NSObject <_UILAPropertySource, NSCopying>
+@interface _UILAConfigurationHistory : NSObject <NSCopying>
 {
     NSMutableSet *_newlyHiddenItems;
     NSMutableSet *_newlyUnhiddenItems;

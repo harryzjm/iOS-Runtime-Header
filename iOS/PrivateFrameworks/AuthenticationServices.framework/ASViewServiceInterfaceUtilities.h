@@ -11,11 +11,39 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (double)headerIconCornerRadius;
++ (double)_iconCornerRadiusForSize:(struct CGSize)arg1;
++ (double)continueButtonHeight;
++ (double)continueButtonCornerRadius;
++ (double)continueButtonTitleMargin;
++ (id)continueButtonTitleColor;
++ (id)continueButtonTitleFont;
++ (id)continueButtonHighlightedBackgroundColor;
++ (id)continueButtonDisabledBackgroundColor;
++ (id)continueButtonBackgroundColor;
++ (id)cellIconSymbolConfiguration;
++ (id)cellIconBackgroundColor;
++ (double)cellIconMarginTrailing;
++ (double)cellIconMarginLeading;
 + (double)cellIconCornerRadius;
++ (id)cellBackgroundConfiguration;
++ (id)cellIconTintColor;
++ (struct CGSize)cellIconSize;
++ (id)cellSubtitleColor;
++ (id)cellSubtitleFont;
++ (id)cellTitleColor;
++ (id)cellTitleFont;
++ (double)headerIconCornerRadius;
++ (struct CGSize)headerIconSize;
++ (id)headerMessageColor;
++ (id)headerMessageFont;
++ (id)headerTitleColor;
++ (id)headerTitleFont;
++ (double)navigationBarHeight;
++ (id)paneBackgroundBlurEffect;
++ (double)tableViewRowHeight;
++ (long long)tableViewStyle;
 + (double)iconBorderWidth;
 + (struct CGColor *)iconBorderColor;
-+ (id)messageLabelColor;
 
 @end
 

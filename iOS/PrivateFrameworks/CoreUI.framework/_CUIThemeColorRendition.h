@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeColorRendition
+@interface _CUIThemeColorRendition : CUIThemeRendition
 {
     struct CGColor *_cgColor;
     const struct _csicolor *_csiColor;

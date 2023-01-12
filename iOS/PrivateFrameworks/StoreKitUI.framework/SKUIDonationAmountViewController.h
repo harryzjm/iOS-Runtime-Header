@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIDonationConfigurationObserver-Protocol.h>
-
 @class NSString, SKUIDonationAmountView, SKUIGiftPurchaseRequest, SKUIGiftValidationResponse, SKUIGiftValidator;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDonationAmountViewController <SKUIDonationConfigurationObserver>
+@interface SKUIDonationAmountViewController
 {
     SKUIDonationAmountView *_amountView;
     SKUIGiftValidationResponse *_lastValidationResponse;

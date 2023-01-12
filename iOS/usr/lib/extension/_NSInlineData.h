@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     unsigned short _length;
 }
 
++ (id)_allocWithExtraBytes:(unsigned long long)arg1;
 - (_Bool)_providesConcreteBacking;
 - (id)_createDispatchData;
 - (id)initWithCoder:(id)arg1;

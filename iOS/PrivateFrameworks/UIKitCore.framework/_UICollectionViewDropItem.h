@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionViewDropItem-Protocol.h>
-
 @class NSIndexPath, NSString, UIDragItem;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionViewDropItem : NSObject <_UICollectionViewDropItem>
+@interface _UICollectionViewDropItem : NSObject
 {
     UIDragItem *_dragItem;
     NSIndexPath *_sourceIndexPath;

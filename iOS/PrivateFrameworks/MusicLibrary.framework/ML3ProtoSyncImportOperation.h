@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ML3ImportOperation.h"
+
 @class ML3DatabaseConnection, NSMutableSet, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface ML3ProtoSyncImportOperation
+@interface ML3ProtoSyncImportOperation : ML3ImportOperation
 {
     unsigned int _totalSyncPackageCount;
     unsigned int _syncPackageNum;

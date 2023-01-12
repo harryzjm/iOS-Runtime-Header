@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUINowPlayingUserTriggeredFeature-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUINowPlayingUserTriggeredFeature : NSObject <VUINowPlayingUserTriggeredFeature>
+@interface VUINowPlayingUserTriggeredFeature : NSObject
 {
     _Bool _active;
     _Bool _autoRemove;

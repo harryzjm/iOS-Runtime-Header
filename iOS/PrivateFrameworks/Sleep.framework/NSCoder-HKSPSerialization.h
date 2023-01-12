@@ -6,11 +6,9 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <Sleep/HKSPSerializer-Protocol.h>
-
 @class NSString;
 
-@interface NSCoder (HKSPSerialization) <HKSPSerializer>
+@interface NSCoder (HKSPSerialization)
 @property(readonly, nonatomic) unsigned long long hksp_serializationOptions;
 
 // Remaining properties

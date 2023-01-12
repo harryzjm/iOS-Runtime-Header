@@ -6,16 +6,16 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKCDPCodeServiceRequestDatabaseOwner : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestDatabaseOwner : PBCodable
 {
     unsigned long long _numericValue;
+    int _identifier;
     NSString *_stringValue;
     struct {
         unsigned int numericValue:1;
+        unsigned int identifier:1;
     } _has;
 }
 
@@ -31,6 +31,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (void)clearOneofValuesForIdentifier;
+- (int)StringAsIdentifier:(id)arg1;
+- (id)identifierAsString:(int)arg1;
+@property(nonatomic) _Bool hasIdentifier;
+@property(nonatomic) int identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) _Bool hasStringValue;
 @property(nonatomic) _Bool hasNumericValue;
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CUIThemeRendition.h"
+
 @class CUIRenditionMetrics, CUIRenditionSliceInformation;
 
 __attribute__((visibility("hidden")))
-@interface CUIMutableThemeRendition
+@interface CUIMutableThemeRendition : CUIThemeRendition
 {
     struct _renditionkeytoken *_renditionKey;
     struct CGImage *_image;

@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
-#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
-#import <UIKitCore/UIDebuggingInformationHierarchyCellDelegate-Protocol.h>
-#import <UIKitCore/UIDebuggingInformationHierarchyLayoutDelegate-Protocol.h>
-#import <UIKitCore/UIDebuggingInformationTouchObserver-Protocol.h>
-#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
+#import "UIViewController.h"
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, UICollectionView, UIDebuggingInformationInspectorDetailViewController, UIRefreshControl, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIDebuggingInformationHierarchyViewController <UIDebuggingInformationTouchObserver, UICollectionViewDataSource, UIDebuggingInformationHierarchyLayoutDelegate, UICollectionViewDelegate, UIDebuggingInformationHierarchyCellDelegate, UIDebuggingInformationViewController>
+@interface UIDebuggingInformationHierarchyViewController : UIViewController
 {
     NSArray *_showingOverlayItems;
     NSArray *_normalItems;

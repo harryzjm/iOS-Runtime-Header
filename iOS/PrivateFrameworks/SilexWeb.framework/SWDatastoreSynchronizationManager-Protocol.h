@@ -6,6 +6,12 @@
 
 #import <SilexWeb/NSObject-Protocol.h>
 
+@class SWDatastore;
+@protocol SWDatastoreManager, SWSession;
+
 @protocol SWDatastoreSynchronizationManager <NSObject>
+@property(nonatomic) __weak id <SWDatastoreManager> localDatastoreManager;
+@property(nonatomic) __weak id <SWDatastoreManager> datastoreManager;
+- (void)synchronizeDatastore:(SWDatastore *)arg1 from:(id <SWDatastoreManager>)arg2 previousDatastore:(SWDatastore *)arg3 originatingSession:(id <SWSession>)arg4 completion:(void (^)(void))arg5;
 @end
 

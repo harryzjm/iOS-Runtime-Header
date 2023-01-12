@@ -6,11 +6,8 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <Social/SLInternalComposeServiceHostProtocol-Protocol.h>
-#import <Social/SLInternalComposeServiceVendorProtocol-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SLInternalComposeServiceHostContext : NSExtensionContext <SLInternalComposeServiceHostProtocol, SLInternalComposeServiceVendorProtocol>
+@interface SLInternalComposeServiceHostContext : NSExtensionContext
 {
 }
 

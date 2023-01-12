@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableOrderedSet.h>
 
 @interface NSMutableOrderedSet (IC)
+- (void)ic_sortUsingSelector:(SEL)arg1;
 - (void)ic_addNonNilObject:(id)arg1;
 @end
 

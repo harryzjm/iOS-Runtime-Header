@@ -6,11 +6,9 @@
 
 #import <TSStyles/TSSStyle.h>
 
-#import <TSCharts/TSCHStyleActAlike-Protocol.h>
-
 @class NSString;
 
-@interface TSCHBaseStyle : TSSStyle <TSCHStyleActAlike>
+@interface TSCHBaseStyle : TSSStyle
 {
 }
 

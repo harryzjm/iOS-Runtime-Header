@@ -6,11 +6,9 @@
 
 #import <SearchFoundation/SFFeedback.h>
 
-#import <Cards/CRFeedback-Protocol.h>
-
 @class NSString;
 
-@interface SFFeedback (CRFeedback) <CRFeedback>
+@interface SFFeedback (CRFeedback)
 @property(readonly, nonatomic) SFFeedback *backingFeedback;
 
 // Remaining properties

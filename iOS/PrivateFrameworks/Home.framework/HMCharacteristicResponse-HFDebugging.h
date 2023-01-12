@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMCharacteristicResponse.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString;
 
-@interface HMCharacteristicResponse (HFDebugging) <HFStateDumpBuildable>
+@interface HMCharacteristicResponse (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

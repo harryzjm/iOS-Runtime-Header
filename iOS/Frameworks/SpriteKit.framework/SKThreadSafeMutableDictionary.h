@@ -6,15 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCopying-Protocol.h>
-#import <SpriteKit/NSFastEnumeration-Protocol.h>
-#import <SpriteKit/NSMutableCopying-Protocol.h>
-#import <SpriteKit/NSSecureCoding-Protocol.h>
-
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
-@interface SKThreadSafeMutableDictionary : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, NSFastEnumeration>
+@interface SKThreadSafeMutableDictionary : NSObject
 {
     struct _opaque_pthread_mutex_t _storageLock;
     NSMutableDictionary *_storage;

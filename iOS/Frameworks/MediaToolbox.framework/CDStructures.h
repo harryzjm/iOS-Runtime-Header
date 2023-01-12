@@ -69,6 +69,7 @@ struct OpaqueFigCaptionRendererCALayerInternal {
     CDUnknownFunctionPointerType _field5;
     CDUnknownFunctionPointerType _field6;
     id _field7;
+    unsigned char _field8;
 };
 
 struct OpaqueFigCaptionRendererCALayerOutputNodeContentLayerInternal {
@@ -82,46 +83,8 @@ struct OpaqueFigCaptionRendererCALayerOutputNodeLayerInternal {
     double _field3;
 };
 
-struct OpaqueFigCaptionRendererSession;
-
-struct OpaqueFigPlayer;
-
 struct OpaqueFigSubtitleBackdropCALayerContentLayerInternal {
     id _field1;
-};
-
-struct OpaqueFigSubtitleBackdropCALayerInternal {
-    id _field1;
-    id _field2;
-    _Bool _field3;
-    _Bool _field4;
-    double _field5;
-};
-
-struct OpaqueFigSubtitleCALayerInternal {
-    struct OpaqueFigPlayer *_field1;
-    id _field2;
-    struct CGRect _field3;
-    struct CGSize _field4;
-    unsigned char _field5;
-    struct CGRect _field6;
-    struct FigGeometryMargins _field7;
-    unsigned char _field8;
-    _Bool _field9;
-    unsigned char _field10;
-    unsigned char _field11;
-    id _field12;
-    unsigned int _field13;
-    struct __CFString *_field14;
-    struct OpaqueFigCaptionRendererSession *_field15;
-    struct OpaqueFigSubtitleRenderer *_field16;
-    struct __CFDictionary *_field17;
-    unsigned char _field18;
-    struct __CFDictionary *_field19;
-    struct __CFArray *_field20;
-    struct __CFArray *_field21;
-    struct CGRect _field22;
-    struct CGRect _field23;
 };
 
 struct OpaqueFigSubtitleRenderer;
@@ -144,8 +107,4 @@ struct OpaqueFigSubtitleWebVTTRegionCALayerInternal {
     struct __CFArray *_field6;
     unsigned int _field7;
 };
-
-struct __CFArray;
-
-struct __CFDictionary;
 

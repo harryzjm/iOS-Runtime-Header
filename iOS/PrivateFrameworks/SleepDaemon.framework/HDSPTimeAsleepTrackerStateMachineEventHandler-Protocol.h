@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
 @class NSDate;
 
-@protocol HDSPTimeAsleepTrackerStateMachineEventHandler <HKSPStateMachineEventHandler>
+@protocol HDSPTimeAsleepTrackerStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)sleepSessionFinished;
 - (void)sleepSessionEndRequestedInternally;
 - (void)appLaunchedOnDate:(NSDate *)arg1;
@@ -18,6 +18,5 @@
 - (void)userEngagedSleepMode;
 - (void)wakeUpOccurredWithReason:(unsigned long long)arg1;
 - (void)bedtimeOccurred;
-- (void)sleepTrackingEventDue;
 @end
 

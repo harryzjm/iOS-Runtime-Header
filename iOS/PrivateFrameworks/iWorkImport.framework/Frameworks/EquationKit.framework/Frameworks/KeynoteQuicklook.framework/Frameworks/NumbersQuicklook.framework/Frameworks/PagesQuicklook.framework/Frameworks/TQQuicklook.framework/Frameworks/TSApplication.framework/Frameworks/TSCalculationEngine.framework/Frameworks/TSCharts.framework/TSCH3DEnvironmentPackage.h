@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSCH3DEnvironmentPackage : NSObject <NSCopying>
+@interface TSCH3DEnvironmentPackage : NSObject
 {
     NSArray *_materials;
 }

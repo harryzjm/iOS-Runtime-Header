@@ -7,9 +7,15 @@
 __attribute__((visibility("hidden")))
 @interface COMeshElectionRequest
 {
+    unsigned short _listeningPort;
 }
 
 + (id)acceptableResponses;
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) unsigned short listeningPort; // @synthesize listeningPort=_listeningPort;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithBallot:(id)arg1 generation:(unsigned long long)arg2 listeningPort:(unsigned short)arg3;
 
 @end
 

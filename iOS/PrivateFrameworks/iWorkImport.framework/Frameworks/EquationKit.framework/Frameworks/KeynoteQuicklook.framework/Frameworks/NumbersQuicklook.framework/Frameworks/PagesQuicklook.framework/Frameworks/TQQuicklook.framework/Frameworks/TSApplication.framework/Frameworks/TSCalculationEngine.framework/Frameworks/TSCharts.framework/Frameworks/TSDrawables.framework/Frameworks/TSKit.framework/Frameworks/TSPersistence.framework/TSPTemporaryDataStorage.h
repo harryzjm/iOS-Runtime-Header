@@ -28,6 +28,7 @@
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (unsigned long long)fileFormatVersion;
 - (id)decryptionInfo;
+- (unsigned long long)materializedLength;
 - (_Bool)isLengthPrecise;
 - (unsigned long long)length;
 - (void)leakTemporaryFile;

@@ -6,10 +6,10 @@
 
 #import <HomeRecommendationEngine/NSObject-Protocol.h>
 
-@class HMHome, NAFuture, NSArray;
+@class HFAccessoryTypeGroup, HMHome, NAFuture, NSArray;
 
 @protocol HRERecommendationSource <NSObject>
 @property(readonly, nonatomic) unsigned long long disablingOptions;
-- (NAFuture *)recommendationsForHome:(HMHome *)arg1 withServiceLikeItems:(NSArray *)arg2 options:(unsigned long long)arg3;
+- (NAFuture *)recommendationsForHome:(HMHome *)arg1 withServiceLikeItems:(NSArray *)arg2 accessoryTypeGroup:(HFAccessoryTypeGroup *)arg3 options:(unsigned long long)arg4;
 @end
 

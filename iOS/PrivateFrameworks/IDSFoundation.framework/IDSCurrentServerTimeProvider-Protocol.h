@@ -5,6 +5,7 @@
 //
 
 @protocol IDSCurrentServerTimeProvider
-- (double)serverTime;
+- (_Bool)isAccurate;
+- (unsigned long long)serverTimeInNanoSeconds;
 @end
 

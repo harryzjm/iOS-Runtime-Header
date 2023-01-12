@@ -10,6 +10,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CAFrameRateRange {
+    float _field1;
+    float _field2;
+    float _field3;
+};
+
 struct CCUIModuleLayoutSize {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -44,11 +50,6 @@ struct UIEdgeInsets {
     double left;
     double bottom;
     double right;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
 };
 
 #pragma mark Typedef'd Structures

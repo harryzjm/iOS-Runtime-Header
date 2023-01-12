@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPShareVettingInitiateResponse : PBCodable <NSCopying>
+@interface CKDPShareVettingInitiateResponse : PBCodable
 {
     int _vettingError;
     struct {

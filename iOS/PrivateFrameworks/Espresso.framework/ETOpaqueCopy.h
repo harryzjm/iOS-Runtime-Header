@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface ETOpaqueCopy : NSObject
 {
-    shared_ptr_f15d0389 blob;
+    struct shared_ptr<Espresso::abstract_blob_container> blob;
 }
 
 - (id).cxx_construct;

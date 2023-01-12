@@ -6,22 +6,26 @@
 
 #import <Notes/NoteAccountObject.h>
 
-#import <NotesShared/ICLegacyAccount-Protocol.h>
-
-@class NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
+@class NSManagedObject, NSManagedObjectContext, NSManagedObjectID, NSSet, NSString;
 @protocol ICLegacyFolder;
 
-@interface NoteAccountObject (ICLegacyAccount) <ICLegacyAccount>
+@interface NoteAccountObject (ICLegacyAccount)
+- (long long)compare:(id)arg1;
+@property(readonly, nonatomic) _Bool *hasAnyCustomFolders;
 @property(readonly, copy, nonatomic) NSString *localizedAttachmentsNotSupportedReason;
 @property(readonly, nonatomic) _Bool isManaged;
+@property(readonly, nonatomic) _Bool isLocalAccount;
+@property(readonly, nonatomic) _Bool isExchangeAccount;
+@property(readonly, nonatomic) _Bool isIMAPAccount;
 @property(readonly, nonatomic) _Bool supportsAttachments;
-@property(readonly, nonatomic) id <ICLegacyFolder> defaultFolder;
+@property(readonly, nonatomic) NSManagedObject<ICLegacyFolder> *defaultFolder;
 @property(readonly, nonatomic) NSSet *folders;
 @property(readonly, copy, nonatomic) NSString *emailAddress;
 @property(readonly, nonatomic) long long legacyAccountType;
 @property(readonly, copy, nonatomic) NSString *objectIdentifier;
 @property(readonly, copy, nonatomic) NSString *allItemsFolderLocalizedTitle;
 @property(readonly, nonatomic) _Bool enabled;
+@property(readonly, nonatomic) NSString *localizedName;
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSString *accountIdentifier;

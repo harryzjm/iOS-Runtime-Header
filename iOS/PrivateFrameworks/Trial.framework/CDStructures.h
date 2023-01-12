@@ -4,29 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
-#pragma mark Named Structures
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned char _field1;
-} CDStruct_6b48f683;
-
-typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
-
-typedef struct {
-    long long _field1;
-    long long _field2;
-    long long _field3;
-} CDStruct_2ec95fd7;
-

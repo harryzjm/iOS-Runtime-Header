@@ -9,6 +9,7 @@
 @class UIEvent, UIIndexBarDisplayEntry, UIIndexBarEntry, UIIndexBarView, UITouch, UITraitCollection;
 
 @protocol UIIndexBarVisualStyle <NSObject>
+@property(readonly, nonatomic) double indexWidth;
 @property(readonly, nonatomic) double minLineHeight;
 @property(readonly, nonatomic) _Bool overlay;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
@@ -19,6 +20,10 @@
 
 @optional
 @property(nonatomic) _Bool expanded;
+- (void)handleTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2 touchedEntryIndex:(long long)arg3;
+- (void)trackingDidEnd;
+- (void)selectedSectionDidChange:(long long)arg1;
+- (void)trackingDidBegin;
 - (long long)_accessibility_indexForEntryAtPoint:(struct CGPoint)arg1;
 - (void)traitCollectionDidChange:(UITraitCollection *)arg1;
 - (_Bool)updateSectionForTouch:(UITouch *)arg1 withEvent:(UIEvent *)arg2;

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FTSpeechTranslationResponseDelegate-Protocol.h>
-#import <Translation/_LTSpeechCompressorDelegate-Protocol.h>
-
 @class FTSpeechTranslationStreamingContext, NSError, NSMutableArray, NSMutableDictionary, NSString, _LTLanguageDetectionResult, _LTSpeechCompressor, _LTTextToSpeechCache, _LTTranslationContext;
 @protocol OS_dispatch_queue, OS_dispatch_source, _LTSpeechTranslationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _LTOspreySpeechTranslationSession : NSObject <FTSpeechTranslationResponseDelegate, _LTSpeechCompressorDelegate>
+@interface _LTOspreySpeechTranslationSession : NSObject
 {
     FTSpeechTranslationStreamingContext *_streamContext;
     _LTTranslationContext *_context;

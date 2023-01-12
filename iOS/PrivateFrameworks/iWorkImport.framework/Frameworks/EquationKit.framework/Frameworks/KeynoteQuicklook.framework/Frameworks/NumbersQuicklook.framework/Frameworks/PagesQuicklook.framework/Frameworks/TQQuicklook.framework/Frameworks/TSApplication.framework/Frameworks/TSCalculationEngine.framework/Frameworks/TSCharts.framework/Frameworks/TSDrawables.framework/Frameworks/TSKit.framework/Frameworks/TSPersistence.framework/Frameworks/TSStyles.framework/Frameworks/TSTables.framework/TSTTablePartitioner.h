@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSDPartitioner-Protocol.h>
-
 @class NSMutableDictionary, TSDInfoGeometry, TSTLayout, TSTTableInfo, TSUPointerKeyDictionary;
 
-@interface TSTTablePartitioner : NSObject <TSDPartitioner>
+@interface TSTTablePartitioner : NSObject
 {
-    TSTTableInfo *mTableInfo;
-    TSDInfoGeometry *mInfoGeometry;
-    _Bool mTableIsLTR;
-    _Bool mLayoutIsLTR;
-    double mFirstPartitionWidth;
-    struct CGSize mScaleToFit;
-    TSTLayout *mScaledLayout;
-    TSUPointerKeyDictionary *mHintMatricesByCanvas;
-    NSMutableDictionary *mPartitioningPassCache;
+    _Bool _tableIsLTR;
+    _Bool _layoutIsLTR;
+    TSTTableInfo *_tableInfo;
+    TSDInfoGeometry *_infoGeometry;
+    TSTLayout *_scaledLayout;
+    double _firstPartitionWidth;
+    TSUPointerKeyDictionary *_hintMatricesByCanvas;
+    NSMutableDictionary *_partitioningPassCache;
+    struct CGSize _scaleToFit;
 }
 
-@property(copy, nonatomic) TSDInfoGeometry *infoGeometry; // @synthesize infoGeometry=mInfoGeometry;
-@property(nonatomic) struct CGSize scaleToFit; // @synthesize scaleToFit=mScaleToFit;
-@property(readonly, nonatomic) double inlineTableWidth; // @synthesize inlineTableWidth=mFirstPartitionWidth;
-@property(readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
+- (void).cxx_destruct;
+@property(retain, nonatomic) NSMutableDictionary *partitioningPassCache; // @synthesize partitioningPassCache=_partitioningPassCache;
+@property(retain, nonatomic) TSUPointerKeyDictionary *hintMatricesByCanvas; // @synthesize hintMatricesByCanvas=_hintMatricesByCanvas;
+@property(nonatomic) double firstPartitionWidth; // @synthesize firstPartitionWidth=_firstPartitionWidth;
+@property(nonatomic) _Bool layoutIsLTR; // @synthesize layoutIsLTR=_layoutIsLTR;
+@property(nonatomic) _Bool tableIsLTR; // @synthesize tableIsLTR=_tableIsLTR;
+@property(retain, nonatomic) TSTLayout *scaledLayout; // @synthesize scaledLayout=_scaledLayout;
+@property(copy, nonatomic) TSDInfoGeometry *infoGeometry; // @synthesize infoGeometry=_infoGeometry;
+@property(nonatomic) struct CGSize scaleToFit; // @synthesize scaleToFit=_scaleToFit;
+@property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void)p_flushCacheAfterPartitioningFinished:(id)arg1 lastHint:(id)arg2 horizontally:(_Bool)arg3;
 - (id)hintCacheKeyForHint:(id)arg1;
 - (id)hintCacheKeyForPartitioningPass:(id)arg1 andHintID:(struct TSUCellCoord)arg2;
@@ -34,7 +38,7 @@
 - (id)partitioningPassForFirstPartitionSize:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CGRect totalPartitionFrame;
 - (void)setLayoutPartititionsRightToLeft:(_Bool)arg1 contentPartitionsRightToLeft:(_Bool)arg2;
-@property(readonly, nonatomic) TSTLayout *scaledLayout;
+- (void)resetScaleToFit;
 @property(readonly, nonatomic) _Bool scaleIsValid;
 - (_Bool)shouldReuseLayout:(id)arg1 forSize:(struct CGSize)arg2 parentLayout:(id)arg3 hint:(id)arg4;
 - (id)hintForLayout:(id)arg1;
@@ -46,7 +50,7 @@
 - (struct TSUCellRect)calculateCellRangeForNextPartition:(unsigned short)arg1 nextPartitionRange:(struct TSUCellRect)arg2 additionalHeightForCaption:(double)arg3 availableSizeRemaining:(struct CGSize)arg4 previousHint:(id)arg5;
 - (struct TSUCellRect)measureCellRangeForNextPartitionOfSize:(struct CGSize)arg1 previousHint:(id)arg2 horizontally:(_Bool)arg3;
 - (void)validateScaledLayout;
-- (void)dealloc;
+@property(readonly, nonatomic) double inlineTableWidth;
 - (id)initWithInfo:(id)arg1;
 
 @end

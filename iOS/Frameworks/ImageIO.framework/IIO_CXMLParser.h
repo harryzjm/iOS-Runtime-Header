@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ImageIO/NSXMLParserDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface IIO_CXMLParser : NSObject <NSXMLParserDelegate>
+@interface IIO_CXMLParser : NSObject
 {
     NSMutableArray *_dictionaryStack;
     NSMutableString *_textInProgress;

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardTransitionSlice *_rightSlice;
 }
 
+- (void).cxx_destruct;
 - (id)generateRivenKeyplaneFromKeyplane:(id)arg1 forKeyboard:(id)arg2;
 - (id)finalizeSplitKeyplane;
 - (void)initializeGeneratorForKeyplane:(id)arg1 name:(id)arg2;
@@ -37,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)splitSpaceKey:(id)arg1 leftSpace:(id)arg2 left:(struct CGRect)arg3 right:(struct CGRect)arg4;
 - (void)addSliceStart:(struct CGRect)arg1 end:(struct CGRect)arg2 startToken:(id)arg3 endToken:(id)arg4 left:(_Bool)arg5 normalization:(int)arg6 isDefaultWidth:(_Bool)arg7 row:(int)arg8;
 - (id)keysOrderedByPosition;
-- (void)dealloc;
 - (id)init;
 
 @end

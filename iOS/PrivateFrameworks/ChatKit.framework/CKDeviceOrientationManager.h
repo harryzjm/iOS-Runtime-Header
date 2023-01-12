@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/BKSAccelerometerDelegate-Protocol.h>
-
 @class BKSAccelerometer, NSMutableSet, NSString;
 @protocol CKDeviceOrientationManagerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKDeviceOrientationManager : NSObject <BKSAccelerometerDelegate>
+@interface CKDeviceOrientationManager : NSObject
 {
     id <CKDeviceOrientationManagerDelegate> _delegate;
     BKSAccelerometer *_accelerometer;

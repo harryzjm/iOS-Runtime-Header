@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UITableViewDataSource-Protocol.h>
-#import <UIKitCore/UITableViewDelegate-Protocol.h>
-
 @class NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiSplit <UITableViewDelegate, UITableViewDataSource>
+@interface UIKeyboardEmojiSplit
 {
     UITableView *_picker;
 }
 
+- (void).cxx_destruct;
 @property(readonly) UITableView *picker; // @synthesize picker=_picker;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -22,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (_Bool)shouldCache;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)defaultIndexPath;
 

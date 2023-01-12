@@ -6,12 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <DVTFoundation/DVTMacroExpansion-Protocol.h>
-
 @class NSString;
 @protocol DVTMacroExpansion;
 
-@interface DVTMacroExpansionStringList : NSArray <DVTMacroExpansion>
+@interface DVTMacroExpansionStringList : NSArray
 {
     NSString<DVTMacroExpansion> *_stringForm;
 }

@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
-#import <StoreKitUI/SKUILayoutCacheDelegate-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSString, SKUILayoutCache, SKUIMetricsImpressionSession, SKUIPanelTemplateViewElement, SKUIPanelView, SKUIViewElementLayoutContext, UIImageView, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPanelDocumentViewController <SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, SKUIDocumentViewController>
+@interface SKUIPanelDocumentViewController : SKUIViewController
 {
     UIImageView *_backgroundImageView;
     _Bool _didAttemptBecomeFirstResponder;

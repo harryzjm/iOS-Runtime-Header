@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canCreateContextOfSize:(struct CGSize)arg1 forRequest:(id)arg2;
 - (void)_executeCompletionHandlerWithThumbnailData:(id)arg1 thumbnailURL:(id)arg2 ioSurface:(id)arg3 drawingContextSize:(struct CGSize)arg4 bitmapFormat:(id)arg5 didGenerateThumbnail:(_Bool)arg6 error:(id)arg7;
 - (struct CGSize)_IOSurfaceSizeFromThumbnailReply:(id)arg1;
+- (void)_afterGeneratingIOSurfaceThumbnail:(_Bool)arg1 surface:(id)arg2;
 - (void)_drawInIOSurface;
 - (void)_didReceiveThumbnailURL:(id)arg1;
 - (void)_didGenerateThumbnailWithData:(id)arg1 bitmapFormat:(id)arg2 drawingContextSize:(struct CGSize)arg3;

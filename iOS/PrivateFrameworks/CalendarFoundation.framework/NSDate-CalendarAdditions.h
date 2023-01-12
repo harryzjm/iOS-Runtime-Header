@@ -7,8 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (CalendarAdditions)
-+ (id)formatForTimeZoneClarifiedDateString;
-+ (id)formatForTimeRange;
++ (id)CalTimeRangeStringWithStart:(id)arg1 end:(id)arg2;
 + (id)nextRoundedHour;
 + (id)dateWithDatePartFromDate:(id)arg1 timePartFromDate:(id)arg2 inCalendar:(id)arg3;
 + (id)dateFromISO8601String:(id)arg1 inTimeZone:(id)arg2;
@@ -143,7 +142,7 @@
 - (_Bool)CalIsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)ek_ios_dateForEndOfDayInTimeZone:(id)arg1;
 - (id)dateForDayInTimeZone:(id)arg1;
-- (id)componentsForDayInTimeZone:(id)arg1;
+- (id)components:(unsigned long long)arg1 forDayInTimeZone:(id)arg2;
 - (id)dateInTimeZone:(id)arg1 fromTimeZone:(id)arg2;
 - (id)localizedStringWithFormat:(id)arg1 timeZone:(id)arg2;
 - (id)localizedStringWithFormat:(id)arg1;

@@ -15,6 +15,6 @@
 @property(readonly, nonatomic) long long mainDividerAxis;
 @property(readonly, nonatomic) _Bool clipFramesExtendToBounds;
 @property(readonly, nonatomic) long long numberOfClips;
-- (void)getClipFrames:(out struct CGRect *)arg1 forContext:(const CDStruct_0b735c3a *)arg2;
+- (void)getClipFrames:(out struct CGRect *)arg1 forContext:(const CDStruct_8f389bc1 *)arg2;
 @end
 

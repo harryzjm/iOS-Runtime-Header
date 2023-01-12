@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (_Bool)_handleFormFillingEventAtLocation:(struct CGPoint)arg1;
 - (id)_getPagePoint:(struct CGPoint *)arg1 forGestureLocation:(struct CGPoint)arg2;
 - (id)_annotationsForSelection:(id)arg1;
 - (id)_annotationAtGestureLocation:(struct CGPoint)arg1;
@@ -55,11 +56,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)_shouldUpdateMarkupWithStyle:(unsigned long long)arg1 onPage:(id)arg2 forIndexSet:(id)arg3;
 - (id)_annotationFollowing:(id)arg1 wrapAround:(_Bool)arg2;
 - (id)_annotationPreceding:(id)arg1 wrapAround:(_Bool)arg2;
+- (id)addAnnotationForDetectedFormField:(id)arg1 onPage:(id)arg2 activate:(_Bool)arg3;
+- (id)_populateDetectedFormFieldsOnPage:(id)arg1;
 - (void)removeControlForAnnotation:(id)arg1;
 - (void)_addControlForAnnotation:(id)arg1;
+- (_Bool)_annotationIsValidTextFieldToActivate:(id)arg1;
+- (void)_activateAnotation:(id)arg1;
+- (void)activateNextAnnotation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)activateNextAnnotation:(_Bool)arg1;
 - (void)interactWithAnnotation:(id)arg1;
 - (void)setActiveAnnotation:(id)arg1;
+- (void)_activateNearestAnnotationFromPage:(id)arg1 startPage:(id)arg2 previous:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)activateNearestAnnotation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)activeAnnotation;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;

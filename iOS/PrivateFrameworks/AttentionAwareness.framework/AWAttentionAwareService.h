@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AttentionAwareness/AWAttentionAwareService-Protocol.h>
-#import <AttentionAwareness/AWSchedulerObserver-Protocol.h>
-#import <AttentionAwareness/NSXPCListenerDelegate-Protocol.h>
-
 @class AWScheduler, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AWAttentionAwareService : NSObject <AWAttentionAwareService, AWSchedulerObserver, NSXPCListenerDelegate>
+@interface AWAttentionAwareService : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     AWScheduler *_unitTestScheduler;
@@ -36,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)getSupportedEventsWithReply:(CDUnknownBlockType)arg1;
 - (void)setSmartCoverClosed:(_Bool)arg1;
 - (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
-- (void)addClient:(id)arg1 clientConfig:(id)arg2 clientIndex:(int)arg3 unitTestMode:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)addClient:(id)arg1 clientConfig:(id)arg2 clientIndex:(int)arg3 unitTestMode:(_Bool)arg4 reply:(CDUnknownBlockType)arg5 subscribeForStreamingEvents:(_Bool)arg6;
 - (void)clientCountChangedFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 forScheduler:(id)arg3;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)dealloc;

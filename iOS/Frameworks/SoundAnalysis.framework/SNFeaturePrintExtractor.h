@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 @protocol SNFeaturePrintExtractorProtocol;
 
 __attribute__((visibility("hidden")))
-@interface SNFeaturePrintExtractor : NSObject <SNAnalyzing>
+@interface SNFeaturePrintExtractor : NSObject
 {
     shared_ptr_f6ac7592 _graph;
     id <SNFeaturePrintExtractorProtocol> _featureExtractor;
@@ -23,19 +21,14 @@ __attribute__((visibility("hidden")))
     long long _featurePrintType;
 }
 
-+ (id)extractOutputWithOptionalName:(id)arg1 fromFeatureProvider:(id)arg2;
-+ (id)extractDefaultOutputFeatureFromFeatureProvider:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
-@property(nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 @property(readonly, nonatomic) void *resultsBox;
 - (void)primeGraph;
 - (id)resultsFromBox:(void *)arg1 renderedWithFrameCount:(int)arg2;
 - (id)sharedProcessorConfiguration;
 - (_Bool)adaptToSystemConfiguration:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) shared_ptr_f6ac7592 graph;
-- (id)initWithFeaturePrintType:(long long)arg1 overlapFactor:(float)arg2 windowDuration:(CDStruct_1b6d18a9)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

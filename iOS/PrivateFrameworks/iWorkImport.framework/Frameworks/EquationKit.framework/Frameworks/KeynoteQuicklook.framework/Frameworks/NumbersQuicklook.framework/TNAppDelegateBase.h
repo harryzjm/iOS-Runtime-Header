@@ -14,9 +14,6 @@
 - (_Bool)isValidURLForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(_Bool)arg3;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (_Bool)supportsRTL;
-- (id)stringForEquationChoiceUseEQKitButtonTitle;
-- (id)stringForEquationChoiceBody;
-- (id)stringForEquationChoiceTitle;
 - (id)equationEditorAPDID;
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoordinationCore/COServiceAddOnProvider-Protocol.h>
-
 @class COHomeHubAdapter, COHomeKitAdapter, MTAlarmManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface COAlarmAddOnProvider : NSObject <COServiceAddOnProvider>
+@interface COAlarmAddOnProvider : NSObject
 {
     MTAlarmManager *_alarmManager;
     COHomeKitAdapter *_homekit;

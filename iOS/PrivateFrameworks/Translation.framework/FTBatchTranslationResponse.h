@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Translation/FLTBFBufferAccessor-Protocol.h>
-#import <Translation/NSCopying-Protocol.h>
-
 @class NSArray, NSData, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FTBatchTranslationResponse : NSObject <FLTBFBufferAccessor, NSCopying>
+@interface FTBatchTranslationResponse : NSObject
 {
     NSMutableDictionary *_storage;
     NSData *_data;
@@ -22,6 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)flatbuffData;
 - (Offset_b7e0ff9f)addObjectToBuffer:(void *)arg1;
+- (void)translated_sentences_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)translated_sentences_count;
+- (id)translated_sentences_objectAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSArray *translated_sentences;
+- (void)span_enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)span_count;
+- (id)span_objectAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *span;
 @property(readonly, nonatomic) NSString *translated_text;
 @property(readonly, nonatomic) NSString *paragraph_id;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOSnapScorePoint, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOSnapScoreMetadata : PBCodable <NSCopying>
+@interface GEOSnapScoreMetadata : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;

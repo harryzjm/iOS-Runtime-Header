@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKObject.h>
 
-#import <HealthToolbox/WDDataListDataObjectSource-Protocol.h>
-
 @class NSString;
 
-@interface HKObject (WDExtensions) <WDDataListDataObjectSource>
+@interface HKObject (WDExtensions)
 - (void)deleteObjectWithHealthStore:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 // Remaining properties

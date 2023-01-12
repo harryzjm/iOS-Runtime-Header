@@ -11,6 +11,7 @@
 
 @protocol AKAppleIDAuthenticationDaemonProtocol <NSObject>
 - (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)clearSessionCacheWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)forceURLBagUpdateForAltDSID:(NSString *)arg1 urlSwitchData:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)fetchURLBagFromCache:(_Bool)arg1 altDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchURLBagForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -27,7 +28,7 @@
 - (void)validateVettingToken:(NSString *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)reportSignOutForAllAppleIDsWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)reportSignOutForAppleID:(NSString *)arg1 service:(long long)arg2 completion:(void (^)(_Bool, NSError *))arg3;
-- (void)checkInWithAuthenticationServerForAppleID:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)performCheckInForAccountWithAltDSID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)configurationInfoWithIdentifiers:(NSArray *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)setConfigurationInfo:(id <NSSecureCoding>)arg1 forIdentifier:(NSString *)arg2 forAltDSID:(NSString *)arg3 completion:(void (^)(_Bool, NSError *))arg4;
 - (void)warmUpVerificationSessionWithCompletion:(void (^)(_Bool, NSError *))arg1;

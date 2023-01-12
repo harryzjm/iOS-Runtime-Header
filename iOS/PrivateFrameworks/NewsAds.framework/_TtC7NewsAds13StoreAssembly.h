@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@interface _TtC7NewsAds13StoreAssembly : NSObject
+@interface _TtC7NewsAds13StoreAssembly : _TtCs12_SwiftObject
 {
 }
-
-- (id)init;
 
 @end
 

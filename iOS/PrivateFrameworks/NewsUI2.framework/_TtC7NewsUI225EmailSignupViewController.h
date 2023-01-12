@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *model;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *obController;
-    MISSING_TYPE *signMeUpButton;
+    MISSING_TYPE *micaView;
+    MISSING_TYPE *imageView;
+    MISSING_TYPE *contentViewHeightConstraint;
+    MISSING_TYPE *signupButton;
     MISSING_TYPE *notNowButton;
 }
 
@@ -23,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)notNow;
-- (void)signMeUp;
+- (void)signup;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

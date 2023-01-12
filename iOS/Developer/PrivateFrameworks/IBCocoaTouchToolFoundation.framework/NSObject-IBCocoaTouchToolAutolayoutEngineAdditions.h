@@ -10,6 +10,8 @@
 
 @interface NSObject (IBCocoaTouchToolAutolayoutEngineAdditions)
 + (id)instantiateWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
++ (Class)ibMKMapConfigurationRuntimeClass;
++ (_Bool)ibIsInDesignMode;
 - (_Bool)ibRequiresSuperviewDuringLayoutForRepresentedView:(id)arg1;
 - (id)ibRootHostingViewWithCopiedViewHierarchySnapshotForLayoutEngine:(id)arg1 returningWindowForRepresentedViews:(id *)arg2 returningSimulatedMetricsContext:(id *)arg3 returningAddedRepresentedConstraintsForRepresentedViews:(id *)arg4;
 - (_Bool)ibCapturePlaceholderTable:(id)arg1 forRelationship:(id)arg2 withContext:(id)arg3;
@@ -40,6 +42,7 @@
 - (void)ibSwizzledSetValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)ibAdditionalTraitStoragesWithObjectID:(id)arg1 keyPath:(id)arg2 targetOSVersion:(id)arg3 platform:(id)arg4;
 - (id)transformAfterMarshalling;
+- (id)ibMKMapConfigurationRuntimeObject;
 - (void)ibIgnoreKeyIfNeeded:(id)arg1 ignoredKeys:(id)arg2 radarToRemove:(long long)arg3;
 @end
 

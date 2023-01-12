@@ -6,7 +6,8 @@
 
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 
-@protocol NSCopying;
+@class CALayer, NSObject;
+@protocol NSCopying, PXAnonymousView;
 
 @protocol PXGReusableView <PXReusableObject>
 @property(nonatomic) struct CGRect clippingRect;
@@ -14,6 +15,9 @@
 
 @optional
 @property(readonly, nonatomic) _Bool shouldReuseWhenInvisible;
+- (struct CGPoint)convertHostedChildCenter:(struct CGPoint)arg1 fromGlobalLayer:(CALayer *)arg2;
+- (void)addHostedLayer:(CALayer *)arg1;
+- (void)addHostedView:(NSObject<PXAnonymousView> *)arg1;
 - (_Bool)shouldReloadForUserData:(id <NSCopying>)arg1;
 @end
 

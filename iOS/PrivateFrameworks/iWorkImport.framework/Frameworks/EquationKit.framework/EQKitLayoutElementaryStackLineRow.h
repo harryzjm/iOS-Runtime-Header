@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <EquationKit/EQKitLayoutElementaryStackRow-Protocol.h>
-
 @class NSString;
 
-@interface EQKitLayoutElementaryStackLineRow : NSObject <EQKitLayoutElementaryStackRow>
+@interface EQKitLayoutElementaryStackLineRow : NSObject
 {
     unsigned long long mLength;
     double mThickness;

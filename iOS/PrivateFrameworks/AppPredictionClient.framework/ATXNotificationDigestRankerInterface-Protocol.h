@@ -9,7 +9,9 @@
 @class NSArray;
 
 @protocol ATXNotificationDigestRankerInterface <NSObject>
+- (void)numberOfActiveNotificationsWithCompletionHandler:(void (^)(unsigned long long, unsigned long long, NSError *))arg1;
 - (void)appsSortedByNotificationsReceivedInPreviousNumDays:(unsigned long long)arg1 reply:(void (^)(NSArray *, _Bool, unsigned long long, NSError *))arg2;
 - (void)generateDigestForNotificationStacks:(NSArray *)arg1 reply:(void (^)(ATXUserNotificationDigest *, NSError *))arg2;
+- (void)generateDigestForAppGroupedNotificationStacks:(NSArray *)arg1 maxGlobalMarqueeGroups:(unsigned long long)arg2 maxAppMarqueeGroups:(unsigned long long)arg3 reply:(void (^)(ATXUserNotificationDigest *, NSError *))arg4;
 @end
 

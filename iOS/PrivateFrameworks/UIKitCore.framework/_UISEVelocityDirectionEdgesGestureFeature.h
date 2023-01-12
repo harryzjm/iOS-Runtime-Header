@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UISETouchedEdgesProvider-Protocol.h>
-
 @protocol _UISEGestureFeatureSettings, _UISETouchedEdgesProvider;
 
 __attribute__((visibility("hidden")))
-@interface _UISEVelocityDirectionEdgesGestureFeature <_UISETouchedEdgesProvider>
+@interface _UISEVelocityDirectionEdgesGestureFeature
 {
     id <_UISEGestureFeatureSettings> _settings;
     id <_UISETouchedEdgesProvider> _provider;

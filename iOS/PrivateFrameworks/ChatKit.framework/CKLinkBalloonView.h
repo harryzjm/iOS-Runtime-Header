@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/LPLinkViewDelegate-Protocol.h>
+#import "CKImageBalloonView.h"
 
 @class LPLinkView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKLinkBalloonView <LPLinkViewDelegate>
+@interface CKLinkBalloonView : CKImageBalloonView
 {
     _Bool _isIrisAsset;
     LPLinkView *_linkView;

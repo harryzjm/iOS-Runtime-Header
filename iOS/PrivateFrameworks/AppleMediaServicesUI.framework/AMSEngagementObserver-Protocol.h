@@ -12,5 +12,8 @@
 - (void)engagement:(AMSEngagement *)arg1 handleEngagementRequest:(AMSEngagementRequest *)arg2 completion:(void (^)(AMSEngagementResult *, NSError *))arg3;
 - (void)engagement:(AMSEngagement *)arg1 handleDialogRequest:(AMSDialogRequest *)arg2 completion:(void (^)(AMSDialogResult *, NSError *))arg3;
 - (void)engagement:(AMSEngagement *)arg1 didUpdateRequest:(AMSDialogRequest *)arg2 placement:(NSString *)arg3 serviceType:(NSString *)arg4;
+
+@optional
+- (void)engagement:(AMSEngagement *)arg1 didUpdateEngagementRequest:(AMSEngagementRequest *)arg2 placement:(NSString *)arg3 serviceType:(NSString *)arg4 completion:(void (^)(AMSEngagementResult *, NSError *))arg5;
 @end
 

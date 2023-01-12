@@ -16,6 +16,11 @@ __attribute__((visibility("hidden")))
     UITableViewCellEditControl *_editControl;
     UITableViewCellReorderControl *_reorderControl;
     UIView *_reorderSeparatorView;
+    struct {
+        unsigned int addedEditControlAsSubview:1;
+        unsigned int addedReorderControlAsSubview:1;
+        unsigned int addedReorderSeparatorViewAsSubview:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;
@@ -23,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)reorderControl:(_Bool)arg1;
 - (id)editControl:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool wantsMaskingWhileAnimatingDisabled;
-@property(readonly, nonatomic, getter=isDataRequired) _Bool dataRequired;
 - (void)dealloc;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 

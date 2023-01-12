@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct AudioUnitEvent {
@@ -62,14 +58,6 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
-};
-
-struct HostCallbackInfo {
-    void *_field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
 };
 
 struct OpaqueAudioComponentInstance;

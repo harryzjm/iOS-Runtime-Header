@@ -10,21 +10,6 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -32,66 +17,13 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    _Bool enabled;
-    long long selectionBehavior;
-    unsigned long long restrictedSelectionConditions;
-} CDStruct_53454c09;
-
-typedef struct {
-    void *base;
-    void *offsetTable;
-    unsigned long long nObjects;
-    unsigned long long topObjectOffset;
-    unsigned long long offsetTableStart;
-    unsigned char sortVersion;
-    unsigned char offsetSize;
-    unsigned char referenceSize;
-} CDStruct_e993e376;
-
-typedef struct {
-    double w;
-    double x;
-    double y;
-    double z;
-} CDStruct_bf7dff04;
-
-typedef struct {
-    double timestamp;
-    float x;
-    float y;
-    float z;
-} CDStruct_f31118bd;
-
-typedef struct {
-    float x;
-    float y;
-    float z;
-} CDStruct_03942939;
-
-typedef struct {
-    int width;
-    int height;
-} CDStruct_79c71658;
-
-typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
-
-typedef struct {
-    CDStruct_bf7dff04 _field1;
-    CDStruct_03942939 _field2;
-    CDStruct_03942939 _field3;
-    CDStruct_03942939 _field4;
-    int _field5;
-    _Bool _field6;
-    _Bool _field7;
-    _Bool _field8;
-    float _field9;
-    _Bool _field10;
-    _Bool _field11;
-    int _field12;
-} CDStruct_227c825c;
+    void *_field1;
+    void *_field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned char _field6;
+    unsigned char _field7;
+    unsigned char _field8;
+} CDStruct_80d302cf;
 

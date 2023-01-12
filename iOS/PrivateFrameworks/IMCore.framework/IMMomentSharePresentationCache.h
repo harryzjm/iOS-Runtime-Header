@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IMCore/PXChangeObserver-Protocol.h>
-
 @class IMMomentShareCache, NSMutableDictionary, NSString;
 @protocol IMMomentSharePresentationCacheDelegate;
 
-@interface IMMomentSharePresentationCache : NSObject <PXChangeObserver>
+@interface IMMomentSharePresentationCache : NSObject
 {
     NSMutableDictionary *_cache;
     IMMomentShareCache *_momentShareCache;

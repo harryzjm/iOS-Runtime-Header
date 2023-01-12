@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)attachMetadata:(id)arg1 toCVPixelBuffer:(struct __CVBuffer *)arg2;
 + (struct CGSize)computeVisibleAspectRatioWithRemoteScreenAspectRatio:(struct CGSize)arg1 remoteExpectedAspectRatio:(struct CGSize)arg2 encodeWidth:(int)arg3 encodeHeight:(int)arg4;
 + (unsigned int)videoCodecForPayload:(int)arg1;
 + (struct __CFString *)typeIdentifierForImageType:(int)arg1;
@@ -21,7 +22,7 @@ __attribute__((visibility("hidden")))
 + (long long)videoResolutionForWidth:(int)arg1 height:(int)arg2;
 + (struct CGSize)getBestCaptureSizeForEncodingSize:(struct CGSize)arg1;
 + (struct CGSize)sizeForVideoResolution:(long long)arg1;
-+ (id)convertPixelBuffer:(struct __CVBuffer *)arg1 toImageType:(int)arg2 withAssetIdentifier:(id)arg3 cameraStatusBits:(unsigned char)arg4;
++ (id)convertPixelBuffer:(struct __CVBuffer *)arg1 toImageType:(int)arg2 withAssetIdentifier:(id)arg3 cameraStatusBits:(unsigned char)arg4 allowTimeMetaData:(_Bool)arg5;
 
 @end
 

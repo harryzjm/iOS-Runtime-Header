@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCDeviceMatchingFilter-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCDevicePrimaryUsageMatchingFilter : NSObject <_GCDeviceMatchingFilter>
+@interface _GCDevicePrimaryUsageMatchingFilter : NSObject
 {
     NSNumber *_primaryUsagePage;
     NSNumber *_primaryUsage;

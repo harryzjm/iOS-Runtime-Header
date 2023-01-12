@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class TSTCellDiffArray, TSTCellUIDList;
 
-@interface TSTCellDiffMap : TSPObject <NSCopying>
+@interface TSTCellDiffMap : TSPObject
 {
     vector_7f5598a1 _cellIDs;
     _Bool _uidBased;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CalendarDaemon/CADManagedConfigurationHandler-Protocol.h>
-
 @class MCProfileConnection;
 
 __attribute__((visibility("hidden")))
-@interface CADMCProfileConnectionManagedConfigurationHandler : NSObject <CADManagedConfigurationHandler>
+@interface CADMCProfileConnectionManagedConfigurationHandler : NSObject
 {
     MCProfileConnection *_connection;
 }

@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ActivityRingsUI/ARUICountdownAnimation-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface ARUICountdownCountdown <ARUICountdownAnimation>
+@interface ARUICountdownCountdown
 {
     unsigned long long _step;
     _Bool _cancelable;

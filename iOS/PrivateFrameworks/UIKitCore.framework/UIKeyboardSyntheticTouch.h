@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)syntheticTouchWithPoint:(struct CGPoint)arg1 timestamp:(double)arg2 window:(id)arg3;
+- (void).cxx_destruct;
 @property(nonatomic) float _pathMajorRadius; // @synthesize _pathMajorRadius;
 @property(readonly, nonatomic) unsigned char _pathIdentity; // @synthesize _pathIdentity;
 @property(readonly, nonatomic) unsigned char _pathIndex; // @synthesize _pathIndex;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)getLocationInWindow;
 - (struct CGPoint)previousLocationInView:(id)arg1;
 - (struct CGPoint)locationInView:(id)arg1;
-- (void)dealloc;
 - (id)initWithPoint:(struct CGPoint)arg1 timestamp:(double)arg2 window:(id)arg3;
 
 @end

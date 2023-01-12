@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNTracePlayerTimelineStreamObjectType-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MNTracePlayerTimelineStreamSearchObject : NSObject <MNTracePlayerTimelineStreamObjectType>
+@interface _MNTracePlayerTimelineStreamSearchObject : NSObject
 {
     double _position;
 }

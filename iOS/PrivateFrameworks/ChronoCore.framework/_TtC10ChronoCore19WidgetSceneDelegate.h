@@ -6,12 +6,10 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <ChronoCore/CHUISAvocadoWindowSceneDelegate-Protocol.h>
-
 @class MISSING_TYPE, NSString, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface _TtC10ChronoCore19WidgetSceneDelegate : UIResponder <CHUISAvocadoWindowSceneDelegate>
+@interface _TtC10ChronoCore19WidgetSceneDelegate : UIResponder
 {
     MISSING_TYPE *timelineService;
     MISSING_TYPE *window;
@@ -22,12 +20,18 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *timelineReloadedNotificationCancellable;
     MISSING_TYPE *evaluateStaleTimelineContentTimer;
     MISSING_TYPE *layerSnapshotter;
-    MISSING_TYPE *extensionSubscriptions;
+    MISSING_TYPE *snapshotGeneration;
+    MISSING_TYPE *invalidateAfterSnapshot;
+    MISSING_TYPE *sceneSettingsDiffInspector;
+    MISSING_TYPE *sceneDiffActionKey;
+    MISSING_TYPE *confirmationActionSubscribers;
     MISSING_TYPE *foregroundSceneContentLimiter;
+    MISSING_TYPE *environmentModifiersAssertion;
 }
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)_respondToActions:(id)arg1 forFBSScene:(id)arg2 inUIScene:(id)arg3 fromTransitionContext:(id)arg4;
+- (void)_performActionsForUIScene:(id)arg1 withUpdatedFBSScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5 lifecycleActionType:(unsigned int)arg6;
 @property(nonatomic, readonly) NSString *description;
 - (void)applicationDidReceiveMemoryWarning;
 - (void)sceneDidDisconnect:(id)arg1;
@@ -37,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)sceneDidBecomeActive:(id)arg1;
 - (void)scene:(id)arg1 willConnectToSession:(id)arg2 options:(id)arg3;
 - (void)dealloc;
+- (id)init;
 @property(nonatomic, retain) UIWindow *window; // @synthesize window;
 
 @end

@@ -11,6 +11,7 @@
 @interface _TtC17RealityFoundation11LoadManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *queue;
+    MISSING_TYPE *loadTracer;
     MISSING_TYPE *sceneResourceCache;
 }
 

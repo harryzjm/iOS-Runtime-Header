@@ -16,6 +16,7 @@
 - (CSAudioRecordDeviceInfo *)recordDeviceInfo;
 - (NSString *)recordRoute;
 - (_Bool)isRecording;
+- (_Bool)supportsDuckingOnCurrentRouteWithError:(id *)arg1;
 - (void)setAnnounceCallsEnabled:(_Bool)arg1 withStreamHandleID:(unsigned long long)arg2;
 - (void)cancelAudioStreamHold:(CSAudioStreamHolding *)arg1;
 - (CSAudioStreamHolding *)holdAudioStreamWithDescription:(NSString *)arg1 timeout:(double)arg2;
@@ -29,9 +30,11 @@
 - (void)startAudioStream:(CSAudioStream *)arg1 option:(CSAudioStartStreamOption *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)prepareAudioStream:(CSAudioStream *)arg1 request:(CSAudioStreamRequest *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (_Bool)prepareAudioStreamSync:(CSAudioStream *)arg1 request:(CSAudioStreamRequest *)arg2 error:(id *)arg3;
+- (void)attachTandemStream:(CSAudioStream *)arg1 toPrimaryStream:(CSAudioStream *)arg2 completion:(void (^)(_Bool, NSError *))arg3;
 - (void)audioStreamWithRequest:(CSAudioStreamRequest *)arg1 streamName:(NSString *)arg2 completion:(void (^)(CSAudioStream *, NSError *))arg3;
 - (CSAudioStream *)audioStreamWithRequest:(CSAudioStreamRequest *)arg1 streamName:(NSString *)arg2 error:(id *)arg3;
 - (_Bool)setCurrentContext:(CSAudioRecordContext *)arg1 error:(id *)arg2;
+- (unsigned long long)audioStreamId;
 - (NSString *)UUID;
 @end
 

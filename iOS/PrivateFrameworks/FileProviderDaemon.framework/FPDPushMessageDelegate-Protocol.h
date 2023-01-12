@@ -10,6 +10,6 @@
 
 @protocol FPDPushMessageDelegate <NSObject>
 - (NSArray *)customPushTopics;
-- (void)didReceiveMessage:(APSIncomingMessage *)arg1;
+- (void)didReceiveMessage:(APSIncomingMessage *)arg1 completionHandler:(void (^)(void))arg2;
 @end
 

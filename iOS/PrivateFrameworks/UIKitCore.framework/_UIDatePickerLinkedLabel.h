@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSDictionary, NSLayoutConstraint, NSMapTable, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UIDatePickerLinkedLabelStorage;
 
 __attribute__((visibility("hidden")))
-@interface _UIDatePickerLinkedLabel <UIContentSizeCategoryAdjusting>
+@interface _UIDatePickerLinkedLabel : UIView
 {
     struct {
         unsigned int needsStorageSync:1;
@@ -43,8 +43,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIFont *font;
 - (id)_longestPossibleTitleForPriority:(unsigned long long)arg1 width:(double *)arg2;
 - (void)_invalidatePossibleTitleCaches;
-- (void)_storageSync;
-- (void)_storageSyncIfNecessary;
+- (long long)_renderPriorityForContainerWidth:(double)arg1 initialPriority:(long long)arg2;
+- (void)_storageSyncWithContainerSize:(struct CGSize)arg1;
+- (void)didMoveToWindow;
+- (void)_storageSyncIfNecessaryWithContainerSize:(struct CGSize)arg1;
 - (void)_setNeedsStorageSync;
 - (void)_updateAlignmentConstraint;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -52,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

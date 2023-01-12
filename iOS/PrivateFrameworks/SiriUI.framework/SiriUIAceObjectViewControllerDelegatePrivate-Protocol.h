@@ -7,15 +7,15 @@
 #import <SiriUI/NSObject-Protocol.h>
 
 @class AFUserUtteranceSelectionResults, NSString;
-@protocol SiriUIViewController;
+@protocol SiriSharedUIViewControlling;
 
 @protocol SiriUIAceObjectViewControllerDelegatePrivate <NSObject>
-- (void)siriViewControllerRequestTearDownEditingViewController:(id <SiriUIViewController>)arg1;
-- (void)siriViewControllerRequestToPin:(id <SiriUIViewController>)arg1;
-- (void)siriViewController:(id <SiriUIViewController>)arg1 startCorrectedSpeechRequestWithText:(NSString *)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(AFUserUtteranceSelectionResults *)arg4;
-- (void)siriViewControllerDidEndEditing:(id <SiriUIViewController>)arg1;
-- (void)siriViewControllerWillBeginEditing:(id <SiriUIViewController>)arg1;
+- (void)siriViewControllerRequestTearDownEditingViewController:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewControllerRequestToPin:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewController:(id <SiriSharedUIViewControlling>)arg1 startCorrectedSpeechRequestWithText:(NSString *)arg2 correctionIdentifier:(id)arg3 userSelectionResults:(AFUserUtteranceSelectionResults *)arg4;
+- (void)siriViewControllerDidEndEditing:(id <SiriSharedUIViewControlling>)arg1;
+- (void)siriViewControllerWillBeginEditing:(id <SiriSharedUIViewControlling>)arg1;
 - (void)siriViewControllerRequestKeyboardForTapToEditWithCompletion:(void (^)(_Bool))arg1;
-- (_Bool)siriViewControllerShouldPreventUserInteraction:(id <SiriUIViewController>)arg1;
+- (_Bool)siriViewControllerShouldPreventUserInteraction:(id <SiriSharedUIViewControlling>)arg1;
 @end
 

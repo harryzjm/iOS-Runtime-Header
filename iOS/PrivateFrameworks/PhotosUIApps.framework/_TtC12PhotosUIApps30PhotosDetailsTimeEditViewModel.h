@@ -12,10 +12,9 @@
 {
     MISSING_TYPE *asset;
     MISSING_TYPE *editingStyle;
-    MISSING_TYPE *originalCreationDate;
-    MISSING_TYPE *originalTimeZone;
-    MISSING_TYPE *currentCreationDate;
-    MISSING_TYPE *currentTimeZone;
+    MISSING_TYPE *originalDate;
+    MISSING_TYPE *currentDate;
+    MISSING_TYPE *_selectedDate;
 }
 
 @end

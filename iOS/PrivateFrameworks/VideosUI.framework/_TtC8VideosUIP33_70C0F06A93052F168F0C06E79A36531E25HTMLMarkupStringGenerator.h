@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIHTMLMarkupParser-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUIP33_70C0F06A93052F168F0C06E79A36531E25HTMLMarkupStringGenerator : NSObject <VUIHTMLMarkupParser>
+@interface _TtC8VideosUIP33_70C0F06A93052F168F0C06E79A36531E25HTMLMarkupStringGenerator : NSObject
 {
     MISSING_TYPE *parser;
     MISSING_TYPE *logger;

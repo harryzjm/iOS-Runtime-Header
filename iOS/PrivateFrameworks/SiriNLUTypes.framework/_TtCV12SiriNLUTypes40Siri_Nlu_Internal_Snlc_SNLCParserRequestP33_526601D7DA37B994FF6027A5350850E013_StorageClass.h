@@ -16,6 +16,7 @@
     MISSING_TYPE *_matchingSpans;
     MISSING_TYPE *_turnInput;
     MISSING_TYPE *_legacyContext;
+    MISSING_TYPE *_nluRequestID;
 }
 
 @end

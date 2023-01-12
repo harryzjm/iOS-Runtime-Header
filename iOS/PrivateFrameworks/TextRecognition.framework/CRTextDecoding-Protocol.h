@@ -7,11 +7,16 @@
 #import <TextRecognition/NSObject-Protocol.h>
 
 @class CRNeuralRecognizerConfiguration, NSObject;
-@protocol CRTextRecognizerModel, CRTextRecognizerModelOutput;
+@protocol CRTextDecodingLanguageRecognitionSession, CRTextRecognizerModel, CRTextRecognizerModelOutput;
 
 @protocol CRTextDecoding <NSObject>
 - (_Bool)shouldDecodeWithLM;
-- (void)decodeOutput:(NSObject<CRTextRecognizerModelOutput> *)arg1 imageSize:(struct CGSize)arg2 error:(id *)arg3;
+- (_Bool)decodeOutput:(NSObject<CRTextRecognizerModelOutput> *)arg1 imageSize:(struct CGSize)arg2 error:(id *)arg3;
 - (id)initWithConfiguration:(CRNeuralRecognizerConfiguration *)arg1 model:(NSObject<CRTextRecognizerModel> *)arg2 error:(id *)arg3;
+
+@optional
+- (void)releaseUnusedResources;
+- (void)computeLanguageRecognitionForSession:(NSObject<CRTextDecodingLanguageRecognitionSession> *)arg1 output:(NSObject<CRTextRecognizerModelOutput> *)arg2 imageSize:(struct CGSize)arg3;
+- (NSObject<CRTextDecodingLanguageRecognitionSession> *)newLanguageRecognizerSession;
 @end
 

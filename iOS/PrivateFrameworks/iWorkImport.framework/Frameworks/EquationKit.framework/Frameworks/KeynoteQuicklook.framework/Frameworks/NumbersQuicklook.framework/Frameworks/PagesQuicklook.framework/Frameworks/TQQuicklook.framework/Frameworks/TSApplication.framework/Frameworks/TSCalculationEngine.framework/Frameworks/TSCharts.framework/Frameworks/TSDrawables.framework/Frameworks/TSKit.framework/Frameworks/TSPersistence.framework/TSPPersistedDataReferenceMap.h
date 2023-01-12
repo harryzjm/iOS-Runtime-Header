@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPObjectInDocumentContaining-Protocol.h>
-
 @class NSIndexSet, NSString, _TtC13TSPersistence15TSPReferenceMap;
 
-@interface TSPPersistedDataReferenceMap : NSObject <TSPObjectInDocumentContaining>
+@interface TSPPersistedDataReferenceMap : NSObject
 {
     _TtC13TSPersistence15TSPReferenceMap *_dataToObjectReferenceMap;
     void *_objectToDataReferenceMap;

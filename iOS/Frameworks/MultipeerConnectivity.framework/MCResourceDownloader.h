@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MultipeerConnectivity/NSURLSessionDataDelegate-Protocol.h>
-#import <MultipeerConnectivity/NSURLSessionDelegate-Protocol.h>
-
 @class MCPeerID, MCSession, NSString, NSURLSession, NSURLSessionDataTask;
 
 __attribute__((visibility("hidden")))
-@interface MCResourceDownloader : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
+@interface MCResourceDownloader : NSObject
 {
     NSURLSession *_urlSession;
     NSURLSessionDataTask *_urlTask;

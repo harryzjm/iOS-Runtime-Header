@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSMetricsDataSource-Protocol.h>
-
 @class AMSMetricsDatabase, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AMSMetricsDatabaseDataSource : NSObject <AMSMetricsDataSource>
+@interface AMSMetricsDatabaseDataSource : NSObject
 {
     AMSMetricsDatabase *_database;
     NSString *_containerIdentifier;

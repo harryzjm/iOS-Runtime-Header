@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MapKit/MKInfoCardThemeListener-Protocol.h>
-#import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
-#import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
-#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
+#import "MKPlaceSectionViewController.h"
 
 @class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSString, NSTimeZone;
 @protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHoursViewController <MKStackingViewControllerFixedHeightAware, MKInfoCardThemeListener, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceHoursViewController : MKPlaceSectionViewController
 {
     _Bool _isExpanded;
     MKPlaceSectionHeaderView *_headerView;

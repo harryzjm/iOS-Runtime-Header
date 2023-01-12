@@ -11,8 +11,10 @@
 @protocol LAUIAuthenticationDelegate <NSObject>
 
 @optional
+- (NSString *)localizedAuthWatchPrompt;
 - (NSString *)localizedCallerName;
 - (NSString *)callerIconBundlePath;
+- (void)processAuthenticationSuccessWithCompletionHandler:(void (^)(void))arg1;
 - (void)processBiometricMatchWithCompletionHandler:(void (^)(void))arg1;
 - (NSString *)localizedSubTitleForMechanisms:(unsigned long long)arg1;
 - (void)biometricNoMatch;

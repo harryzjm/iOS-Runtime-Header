@@ -12,7 +12,6 @@
 @protocol CompletionItemActionHandler <NSObject>
 - (void)searchTextCompletionAccessoryButtonTappedForCompletionItem:(id <CompletionItem>)arg1;
 - (void)switchToTabWithUUID:(NSUUID *)arg1 inWindowWithUUID:(NSUUID *)arg2 forTabGroupWithUUID:(NSUUID *)arg3;
-- (void)switchToTabWithUUID:(NSUUID *)arg1 inWindowWithUUID:(NSUUID *)arg2;
 - (BrowserController *)browserController;
 - (void)resumeSearchWithQuery:(WBSCompletionQuery *)arg1;
 - (void)presentDetail:(UIViewController *)arg1;

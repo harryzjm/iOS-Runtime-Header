@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/TVPDownloadDelegate-Protocol.h>
-#import <VideosUI/VUIDownloadManagerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetController-Protocol.h>
-
 @class NSString, TVPDownload, VUIMediaEntityAssetControllerState, VUIMediaEntityType, VUIVideoManagedObject;
 @protocol OS_dispatch_queue, VUIMediaEntityAssetControllerDelegate, VUIMediaEntityIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface VUISidebandMediaItemAssetController : NSObject <VUIDownloadManagerDelegate, TVPDownloadDelegate, VUIMediaEntityAssetController>
+@interface VUISidebandMediaItemAssetController : NSObject
 {
     VUIVideoManagedObject *_videoManagedObjectInternal;
     NSObject<VUIMediaEntityIdentifier> *_mediaEntityIdentifierInternal;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MobileSafari/SFSiteIconModel-Protocol.h>
-
 @class NSString, UIImage, UILabel, UIView, _SFSiteIconView;
 
 __attribute__((visibility("hidden")))
-@interface SFSiteIconCell : UICollectionViewCell <SFSiteIconModel>
+@interface SFSiteIconCell : UICollectionViewCell
 {
     UIView *_iconDimmingView;
     _SFSiteIconView *_iconView;
@@ -21,9 +19,12 @@ __attribute__((visibility("hidden")))
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)_setAction:(id)arg1;
+- (void)configureUsingAction:(id)arg1;
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 @property(retain, nonatomic) UIImage *icon;
+- (void)setIconFromAction:(id)arg1;
 - (void)setIconFromBookmark:(id)arg1;
 - (id)focusEffect;
 @property(readonly, nonatomic) UIView *contextMenuPreviewView;

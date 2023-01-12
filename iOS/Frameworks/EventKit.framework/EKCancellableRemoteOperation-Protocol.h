@@ -7,10 +7,10 @@
 #import <EventKit/NSObject-Protocol.h>
 
 @protocol EKCancellableRemoteOperation <NSObject>
-- (void)disconnect;
 - (void)cancel;
 
 @optional
 - (void)receivedBatchResultsFromServer:(id)arg1 finished:(_Bool)arg2;
+- (void)disconnected;
 @end
 

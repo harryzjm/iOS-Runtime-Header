@@ -4,12 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CPRecordStore;
@@ -25,7 +19,7 @@ struct CalDatabase {
     struct CalScheduledTaskCache *_field5;
     struct __CFDictionary *_field6;
     struct __CFDictionary *_field7;
-    struct _opaque_pthread_mutex_t _field8;
+    struct os_unfair_lock_s _field8;
     unsigned int _field9;
     unsigned int _field10;
     struct __CFArray *_field11;
@@ -37,24 +31,40 @@ struct CalDatabase {
     struct __CFURL *_field17;
     struct __CFString *_field18;
     struct __CFString *_field19;
-    int _field20;
-    CDUnknownBlockType _field21;
-    struct _opaque_pthread_mutex_t _field22;
-    _Bool _field23;
-    struct __CFArray *_field24;
-    struct __CFArray *_field25;
-    struct __CFArray *_field26;
+    unsigned long long _field20;
+    int _field21;
+    int _field22;
+    int _field23;
+    CDUnknownBlockType _field24;
+    struct _opaque_pthread_mutex_t {
+        long long _field1;
+        char _field2[56];
+    } _field25;
+    _Bool _field26;
     struct __CFArray *_field27;
-    id _field28;
-    _Bool _field29;
-    _Bool _field30;
-    _Bool _field31;
-    struct __CFSet *_field32;
-    id _field33;
-    id _field34;
-    int _field35;
-    _Bool _field36;
-    _Bool _field37;
+    struct __CFArray *_field28;
+    struct __CFArray *_field29;
+    struct __CFArray *_field30;
+    id _field31;
+    _Bool _field32;
+    _Bool _field33;
+    struct __CFSet *_field34;
+    id _field35;
+    id _field36;
+    id _field37;
+    int _field38;
+    id _field39;
+    id _field40;
+    id _field41;
+    char *_field42;
+    unsigned int _field43;
+    unsigned int _field44;
+    _Bool _field45;
+    _Bool _field46;
+    _Bool _field47;
+    _Bool _field48;
+    _Bool _field49;
+    _Bool _field50;
 };
 
 struct CalEventOccurrenceCache;
@@ -67,8 +77,7 @@ struct __CFDictionary;
 
 struct __CFString;
 
-struct _opaque_pthread_mutex_t {
-    long long _field1;
-    char _field2[56];
+struct os_unfair_lock_s {
+    unsigned int _field1;
 };
 

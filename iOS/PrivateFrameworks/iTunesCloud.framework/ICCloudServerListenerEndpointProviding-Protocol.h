@@ -9,6 +9,7 @@
 @class NSXPCListenerEndpoint;
 
 @protocol ICCloudServerListenerEndpointProviding <NSObject>
+- (void)notifyDeviceSetupFinishedWithCompletion:(void (^)(NSError *))arg1;
 - (NSXPCListenerEndpoint *)listenerEndpointForService:(long long)arg1 error:(id *)arg2;
 @end
 

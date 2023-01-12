@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUOutputStream-Protocol.h>
-
 @class NSString;
 @protocol SFUOutputStream;
 
-@interface SFUOffsetOutputStream : NSObject <SFUOutputStream>
+@interface SFUOffsetOutputStream : NSObject
 {
     id <SFUOutputStream> mOutputStream;
     long long mInitialOffset;

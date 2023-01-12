@@ -6,7 +6,7 @@
 
 #import <AVConference/VCBasebandCodecNotifications-Protocol.h>
 
-@class VCAudioIOControllerClient;
+@class NSDictionary, VCAudioIOControllerClient;
 
 @protocol VCAudioIOControllerControl <VCBasebandCodecNotifications>
 - (void)updateClient:(VCAudioIOControllerClient *)arg1 direction:(unsigned char)arg2;
@@ -14,6 +14,8 @@
 - (void)startClient:(VCAudioIOControllerClient *)arg1;
 
 @optional
+@property(readonly, nonatomic) NSDictionary *reportingStats;
+- (void)invalidate;
 - (void)setMute:(_Bool)arg1 forClient:(VCAudioIOControllerClient *)arg2;
 - (void)refreshRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)refreshOutputMetering;

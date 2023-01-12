@@ -4,20 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSoundDetector <SNAnalyzing>
+@interface SNSoundDetector
 {
 }
 
-+ (id)detectorHeadConfigurationForDetectorIdentifier:(id)arg1 soundIdentifier:(id)arg2 modelConfiguration:(id)arg3;
-+ (id)detectorHeadConfigurationForDetectorVariant:(id)arg1 soundIdentifier:(id)arg2 modelConfiguration:(id)arg3;
-+ (id)detectorConfigurationWithAudioBasedFeatureExtractor:(id)arg1 detectorHead:(id)arg2 detectorIdentifier:(id)arg3;
-+ (id)detectorConfigurationWithLogMelBasedFeatureExtractor:(id)arg1 detectorHead:(id)arg2 detectorIdentifier:(id)arg3 soundIdentifier:(id)arg4;
-- (id)initWithDetectorVariant:(id)arg1 soundIdentifier:(id)arg2 modelConfiguration:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
@@ -26,6 +19,5 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct Box *resultsBox;
 @property(readonly) Class superclass;
-
 @end
 

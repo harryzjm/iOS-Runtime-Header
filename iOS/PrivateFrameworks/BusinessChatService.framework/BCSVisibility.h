@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <BusinessChatService/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSVisibility : PBCodable <NSCopying>
+@interface BCSVisibility : PBCodable
 {
     double _ratio;
     NSString *_country;

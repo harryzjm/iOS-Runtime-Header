@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BannerKit/_UISceneBSActionHandler-Protocol.h>
+#import <BannerKit/_UISceneBSActionResponding-Protocol.h>
 #import <BannerKit/_UISceneSettingsDiffAction-Protocol.h>
 
 @class UIScene, UIScreen, UIWindow;
-@protocol BNBannerClientContainerDelegate, BNPresentable;
+@protocol BNBannerClientContainerDelegate, BNPresentable><BNHostedContentProviding, BNPresentableContext;
 
-@protocol BNBannerClientContainer <_UISceneSettingsDiffAction, _UISceneBSActionHandler>
+@protocol BNBannerClientContainer <_UISceneSettingsDiffAction, _UISceneBSActionResponding>
 @property(readonly, nonatomic, getter=isDeferringFocus) _Bool deferringFocus;
 @property(nonatomic) __weak id <BNBannerClientContainerDelegate> delegate;
-@property(readonly, nonatomic) id <BNPresentable> presentable;
+@property(readonly, nonatomic) id <BNPresentableContext> presentableContext;
+@property(readonly, nonatomic) id <BNPresentable><BNHostedContentProviding> presentable;
 @property(readonly, nonatomic) __weak UIScene *scene;
 - (UIWindow *)keyWindowForScreen:(UIScreen *)arg1;
-- (id)initWithScene:(UIScene *)arg1 presentable:(id <BNPresentable>)arg2;
+- (id)initWithScene:(UIScene *)arg1 presentable:(id <BNPresentable><BNHostedContentProviding>)arg2 context:(id <BNPresentableContext>)arg3;
+
+@optional
+@property(readonly, nonatomic, getter=isAccessibilityIgnoringSmartInvertColors) _Bool accessibilityIgnoringSmartInvertColors;
 @end
 

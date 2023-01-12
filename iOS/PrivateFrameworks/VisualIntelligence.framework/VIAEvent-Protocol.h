@@ -11,7 +11,6 @@
 @protocol VIAEvent <NSObject>
 - (SFFeedback *)feedback;
 @property(nonatomic, readonly) NSString *originatingApplication;
-@property(nonatomic, readonly) _Bool shouldWaitUntilEntryPointStarts;
 @property(nonatomic, readonly) unsigned long long queryID;
 @end
 

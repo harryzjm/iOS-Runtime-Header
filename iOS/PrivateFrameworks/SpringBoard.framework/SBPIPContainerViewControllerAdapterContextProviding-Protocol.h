@@ -6,14 +6,10 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class FBDisplayLayoutElement;
-
 @protocol SBPIPContainerViewControllerAdapterContextProviding <NSObject>
-@property(readonly, nonatomic) long long windowPreferredInterfaceOrientation;
+@property(readonly, nonatomic) _Bool shouldSuppressAssociatedElementsInSystemAperture;
+@property(readonly, nonatomic) long long windowInterfaceOrientation;
 @property(readonly, nonatomic) unsigned long long currentCanonicalPosition;
-@property(readonly, nonatomic) FBDisplayLayoutElement *displayLayoutElement;
-- (void)relinquishInterfaceOrientationLock;
-- (void)acquireInterfaceOrientationLock;
 - (_Bool)toggleUserPreferredScale;
 - (void)updatePreferredContentSize:(struct CGSize)arg1;
 - (void)rotationAnimationDidCompleteToRotation:(long long)arg1 contentViewFrame:(struct CGRect)arg2;

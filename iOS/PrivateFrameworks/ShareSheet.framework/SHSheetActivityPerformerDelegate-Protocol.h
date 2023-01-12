@@ -7,8 +7,10 @@
 #import <ShareSheet/NSObject-Protocol.h>
 
 @class LPLinkMetadata, SHSheetActivityPerformer;
+@protocol SFCollaborationService;
 
 @protocol SHSheetActivityPerformerDelegate <NSObject>
+- (id <SFCollaborationService>)collaborationServiceForActivityPerformer:(SHSheetActivityPerformer *)arg1;
 - (LPLinkMetadata *)linkMetadataForActivityPerformer:(SHSheetActivityPerformer *)arg1;
 @end
 

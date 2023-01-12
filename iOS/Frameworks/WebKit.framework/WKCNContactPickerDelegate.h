@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/CNContactPickerDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKCNContactPickerDelegate : NSObject <CNContactPickerDelegate>
+@interface WKCNContactPickerDelegate : NSObject
 {
     struct WeakObjCPtr<id<CNContactPickerDelegate>> _contactPickerDelegate;
 }

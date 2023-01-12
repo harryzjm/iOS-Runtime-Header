@@ -6,14 +6,13 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <StatusKitAgentCore/NSCopying-Protocol.h>
-
-@class NSString;
+@class NSString, SharedOwnershipAuth;
 
 __attribute__((visibility("hidden")))
-@interface AuthCredential : PBCodable <NSCopying>
+@interface AuthCredential : PBCodable
 {
     int _authCredentialOneof;
+    SharedOwnershipAuth *_sharedOwnershipAuth;
     NSString *_simpleJwt;
     struct {
         unsigned int authCredentialOneof:1;
@@ -21,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) SharedOwnershipAuth *sharedOwnershipAuth; // @synthesize sharedOwnershipAuth=_sharedOwnershipAuth;
 @property(retain, nonatomic) NSString *simpleJwt; // @synthesize simpleJwt=_simpleJwt;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)authCredentialOneofAsString:(int)arg1;
 @property(nonatomic) _Bool hasAuthCredentialOneof;
 @property(nonatomic) int authCredentialOneof; // @synthesize authCredentialOneof=_authCredentialOneof;
+@property(readonly, nonatomic) _Bool hasSharedOwnershipAuth;
 @property(readonly, nonatomic) _Bool hasSimpleJwt;
 
 @end

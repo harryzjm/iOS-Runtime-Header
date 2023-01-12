@@ -7,6 +7,7 @@
 #import <Network/NWAddressEndpoint.h>
 
 @interface NWAddressEndpoint (AddressType)
+@property(readonly, nonatomic) _Bool isLinkLocal;
 @property(readonly, nonatomic) _Bool isLoopback;
 @property(readonly, nonatomic) _Bool isWildcard;
 @end

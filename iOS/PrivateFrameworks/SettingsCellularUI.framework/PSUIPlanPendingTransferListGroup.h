@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PSUIPlanPendingTransferListGroup : NSObject <PSSpecifierGroup>
+@interface PSUIPlanPendingTransferListGroup : NSObject
 {
 }
 

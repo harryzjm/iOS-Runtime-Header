@@ -6,7 +6,7 @@
 
 #import <FeedbackLogger/NSObject-Protocol.h>
 
-@class NSFileManager, NSObject, NSString, NSUserDefaults;
+@class NSDictionary, NSFileManager, NSObject, NSString, NSUserDefaults;
 @protocol OS_dispatch_queue;
 
 @protocol FLLoggingContext <NSObject>
@@ -15,5 +15,6 @@
 @property(readonly, nonatomic) NSFileManager *fileManager;
 @property(readonly, copy, nonatomic) NSString *timestampReferenceIdentifier;
 @property(readonly, nonatomic) unsigned long long now;
+- (void)reportTelemetry:(NSString *)arg1 payload:(NSDictionary *)arg2;
 @end
 

@@ -6,10 +6,8 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEOGloriaTessellationOptions : PBCodable <NSCopying>
+@interface GEOGloriaTessellationOptions : PBCodable
 {
     CDStruct_9f2792e4 _zoomLevels;
     int _type;

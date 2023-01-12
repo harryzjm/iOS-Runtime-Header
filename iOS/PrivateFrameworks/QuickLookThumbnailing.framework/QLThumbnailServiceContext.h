@@ -6,13 +6,10 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <QuickLookThumbnailing/QLThumbnailService-Protocol.h>
-#import <QuickLookThumbnailing/QLThumbnailServiceSurfaceGeneratorProtocol-Protocol.h>
-
 @class NSString, QLThumbnailProvider;
 
 __attribute__((visibility("hidden")))
-@interface QLThumbnailServiceContext : NSExtensionContext <QLThumbnailServiceSurfaceGeneratorProtocol, QLThumbnailService>
+@interface QLThumbnailServiceContext : NSExtensionContext
 {
     QLThumbnailProvider *_thumbnailProvider;
 }

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTInvalidation-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTInvalidation_NSObject : NSObject <DVTInvalidation>
+@interface DVTInvalidation_NSObject : NSObject
 {
 }
 

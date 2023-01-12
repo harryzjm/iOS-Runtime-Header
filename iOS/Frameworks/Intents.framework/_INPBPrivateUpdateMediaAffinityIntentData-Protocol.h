@@ -6,10 +6,15 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBPrivateMediaIntentData;
+@class NSArray, NSString, _INPBPrivateMediaIntentData;
 
 @protocol _INPBPrivateUpdateMediaAffinityIntentData <NSObject>
 @property(readonly, nonatomic) _Bool hasPrivateMediaIntentData;
 @property(retain, nonatomic) _INPBPrivateMediaIntentData *privateMediaIntentData;
+@property(readonly, nonatomic) unsigned long long internalSignalsCount;
+@property(copy, nonatomic) NSArray *internalSignals;
+- (NSString *)internalSignalAtIndex:(unsigned long long)arg1;
+- (void)addInternalSignal:(NSString *)arg1;
+- (void)clearInternalSignals;
 @end
 

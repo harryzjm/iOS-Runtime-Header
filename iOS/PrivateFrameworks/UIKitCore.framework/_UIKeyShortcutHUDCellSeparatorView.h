@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionReusableView.h"
+
 @class _UIKeyShortcutHUDSeparatorView;
 
 __attribute__((visibility("hidden")))
-@interface _UIKeyShortcutHUDCellSeparatorView
+@interface _UIKeyShortcutHUDCellSeparatorView : UICollectionReusableView
 {
     _UIKeyShortcutHUDSeparatorView *_separatorView;
 }

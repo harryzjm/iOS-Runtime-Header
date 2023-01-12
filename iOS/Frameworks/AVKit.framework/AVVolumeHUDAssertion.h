@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/MPVolumeDisplaying-Protocol.h>
-
 @class NSString, UIWindowScene;
 @protocol AVVolumeHUDAssertionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface AVVolumeHUDAssertion : NSObject <MPVolumeDisplaying>
+@interface AVVolumeHUDAssertion : NSObject
 {
     _Bool _prefersSystemVolumeHUDHidden;
     id <AVVolumeHUDAssertionDelegate> _delegate;

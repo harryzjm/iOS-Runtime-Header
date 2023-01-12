@@ -7,22 +7,22 @@
 #import <Message/NSObject-Protocol.h>
 
 @class ECLocalMessageAction, ECMessageFlagChange, ECTransferMessageAction, ECTransferMessageActionResults, NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
-@protocol ECMessage, EDPersistedMessage, EDReceivingAccount;
+@protocol EDBaseMessage, EDPersistedMessage, EDReceivingAccount;
 
 @protocol EDMessageChangeManagerSubClassMethods <NSObject>
 - (_Bool)mailboxPartOfAllMail:(NSURL *)arg1;
 - (_Bool)mailboxIsAllMail:(NSURL *)arg1;
-- (void)messageWasAppended:(id <ECMessage>)arg1;
+- (void)messageWasAppended:(id <EDBaseMessage>)arg1;
 - (void)displayErrorForTransferAction:(ECTransferMessageAction *)arg1 withResults:(ECTransferMessageActionResults *)arg2;
 - (void)actionHasChangedAccount:(ECLocalMessageAction *)arg1;
 - (void)checkForNewActionsInMailboxID:(long long)arg1;
-- (void)setData:(NSData *)arg1 onMessage:(id <ECMessage>)arg2;
+- (void)setData:(NSData *)arg1 onMessage:(id <EDBaseMessage>)arg2;
 - (void)setRemoteID:(NSString *)arg1 onMessageWithDatabaseID:(long long)arg2;
 - (NSArray *)addLabels:(NSSet *)arg1 removeLabels:(NSSet *)arg2 toMessagesInDatabase:(NSArray *)arg3;
 - (void)resetStatusCountsForMailboxWithURL:(NSURL *)arg1;
 - (void)applyVIPStatus:(_Bool)arg1 toMessagesInDatabase:(NSArray *)arg2;
 - (NSArray *)applyFlagChange:(ECMessageFlagChange *)arg1 toMessagesInDatabase:(NSArray *)arg2;
-- (_Bool)haveCompleteMIMEForMessage:(id <ECMessage>)arg1;
+- (_Bool)haveCompleteMIMEForMessage:(id <EDBaseMessage>)arg1;
 - (void)deletePersistedMessages:(NSArray *)arg1;
 - (_Bool)persistNewMessages:(NSArray *)arg1 mailboxURL:(NSURL *)arg2 oldMessagesByNewMessage:(NSMutableDictionary *)arg3 fromSyncing:(_Bool)arg4;
 - (NSDictionary *)iterateMessagesInMailboxURLs:(NSArray *)arg1 excludingMessages:(NSArray *)arg2 batchSize:(unsigned long long)arg3 returnMessagesForFlagChange:(ECMessageFlagChange *)arg4 handler:(void (^)(NSArray *))arg5;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSError, NSString;
 @protocol IBBinaryArchiving;
 
-@interface IBResultOrError : NSObject <IBBinaryArchiving>
+@interface IBResultOrError : NSObject
 {
     id <IBBinaryArchiving> _result;
     NSError *_error;

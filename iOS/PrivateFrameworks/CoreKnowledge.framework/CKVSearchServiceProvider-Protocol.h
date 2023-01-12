@@ -6,10 +6,10 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class NSObject;
+@class NSObject, NSString;
 @protocol CKVSearchService;
 
 @protocol CKVSearchServiceProvider <NSObject>
-- (NSObject<CKVSearchService> *)searchService;
+- (NSObject<CKVSearchService> *)searchServiceWithUserId:(NSString *)arg1;
 @end
 

@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class UIColor, _UIImageContentRendition;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageContentLayout : NSObject
 {
     struct {
-        unsigned int contentsIsGenerator:1;
         unsigned int contentsIsCGImage:1;
         unsigned int rendersContentAtNaturalSize:1;
     } _flags;
-    id _contents;
-    UIColor *_contentsMultiplyColor;
+    CDUnknownBlockType _contentInfoGenerator;
+    struct {
+        _UIImageContentRendition *rendition;
+        id contents;
+        double drawScale;
+    } _contentInfo;
     double _contentsScaleFactor;
     double _baselineOffsetFromTop;
     double _baselineOffsetFromBottom;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double contentsScaleFactor; // @synthesize contentsScaleFactor=_contentsScaleFactor;
 @property(readonly, nonatomic) struct CGAffineTransform contentsTransform; // @synthesize contentsTransform=_contentsTransform;
 - (id)description;
+- (void)drawInContext:(struct CGContext *)arg1;
 - (_Bool)hasContents;
 @property(readonly, nonatomic) UIColor *contentsMultiplyColor;
 @property(readonly, nonatomic) id contents;

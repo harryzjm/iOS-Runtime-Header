@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKTranscriptMultilineLabelCell.h"
+
 @class UIView;
 
 __attribute__((visibility("hidden")))
-@interface CKUnreadCountLabelCell
+@interface CKUnreadCountLabelCell : CKTranscriptMultilineLabelCell
 {
     UIView *_leftSeparator;
     UIView *_rightSeparator;

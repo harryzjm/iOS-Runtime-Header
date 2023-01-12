@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSUtility/SFUInputStream-Protocol.h>
-
 @class NSString;
 
-@interface SFUGZipFileInputStream : NSObject <SFUInputStream>
+@interface SFUGZipFileInputStream : NSObject
 {
     int _fd;
     struct gzFile_s *_file;

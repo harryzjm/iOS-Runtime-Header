@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *shelf;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *textStackView;
 }
 
 - (void).cxx_destruct;

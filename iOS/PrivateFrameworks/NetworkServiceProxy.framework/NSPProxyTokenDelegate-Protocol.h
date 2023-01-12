@@ -9,7 +9,8 @@
 @class NSPProxyTokenInfo, NSString;
 
 @protocol NSPProxyTokenDelegate <NSObject>
-- (void)requestAccessToken:(void (^)(NSString *))arg1;
+- (void)tokenFetched;
+- (void)requestAccessTokenWithCompletionHandler:(void (^)(_Bool, NSString *))arg1;
 - (void)reportTokenFetchFailure:(NSString *)arg1 statusCode:(long long)arg2;
 - (void)setUserEventAgentTokenFetchParameters;
 - (void)updateUserEventAgentData;
@@ -19,6 +20,6 @@
 - (void)tokenRateLimited:(NSPProxyTokenInfo *)arg1 untilDate:(double)arg2;
 - (void)tokenFetchOutage:(NSPProxyTokenInfo *)arg1;
 - (void)tokenLowWaterMarkReached:(NSPProxyTokenInfo *)arg1;
-- (void)tokenAdded:(NSPProxyTokenInfo *)arg1;
+- (void)tokenAdded;
 @end
 

@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <CVNLP/NSCopying-Protocol.h>
-
-@interface CVNLPLexiconCursors : NSObject <NSCopying>
+@interface CVNLPLexiconCursors : NSObject
 {
     struct vector<const _LXCursor *, std::allocator<const _LXCursor *>> _sortedCursors;
 }

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPickerView.h>
 
-#import <WebKit/WKFormControl-Protocol.h>
-
 @class WKDataListSuggestionsControl;
 
 __attribute__((visibility("hidden")))
-@interface WKDataListSuggestionsPickerView : UIPickerView <WKFormControl>
+@interface WKDataListSuggestionsPickerView : UIPickerView
 {
     WKDataListSuggestionsControl *_control;
 }

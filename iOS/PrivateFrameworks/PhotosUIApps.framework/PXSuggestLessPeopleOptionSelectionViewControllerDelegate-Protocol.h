@@ -6,10 +6,10 @@
 
 #import <PhotosUIApps/NSObject-Protocol.h>
 
-@class NSArray, UIViewController;
+@class NSArray, NSUndoManager, UIViewController;
 
 @protocol PXSuggestLessPeopleOptionSelectionViewControllerDelegate <NSObject>
-- (void)suggestLessPeople:(NSArray *)arg1 withSuggestLessOption:(unsigned long long)arg2 dismissViewController:(UIViewController *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
+- (void)suggestLessPeople:(NSArray *)arg1 withSuggestLessOption:(long long)arg2 undoManager:(NSUndoManager *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)dismissOptionSelectionViewController:(UIViewController *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)completeOptionSelectionActionWithCompletionHandler:(void (^)(_Bool, NSError *))arg1;
 @end

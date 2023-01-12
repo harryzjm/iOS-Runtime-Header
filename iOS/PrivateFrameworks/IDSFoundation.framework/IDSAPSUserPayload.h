@@ -15,17 +15,11 @@
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableDictionary *payload; // @synthesize payload=_payload;
-- (id)propertyNamesToHeaderMapping;
-- (id)commandResponsePropertyNamesToHeaderMapping;
-- (id)commandWebTunnelResponsePropertyNamesToHeaderMapping;
 - (void)logDiffBetween:(id)arg1 andTarget:(id)arg2 withKeyPath:(id)arg3;
 - (void)logHeaderDiffAgainstSource:(id)arg1;
-- (id)extractPayloadFrom:(id)arg1 forKeys:(id)arg2 andHeaderMap:(id)arg3;
 - (id)extractMadridProtocolPayloadFrom:(id)arg1;
-- (id)extractQuickRelayPluginAllocationFrom:(id)arg1;
 - (id)extractQuickRelaySelfAllocTokenFrom:(id)arg1;
 - (id)extractQuickRelayAllocationStatusFrom:(id)arg1;
-- (id)extractQuickRelayPluginFrom:(id)arg1;
 - (id)extractMadridDeliveryContextFrom:(id)arg1;
 - (id)extractMadridHttpHeadersFrom:(id)arg1;
 - (id)extractCommandWebTunnelResponseFrom:(id)arg1;

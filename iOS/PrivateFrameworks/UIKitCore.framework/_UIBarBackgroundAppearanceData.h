@@ -16,11 +16,12 @@ __attribute__((visibility("hidden")))
         unsigned int needsToCalculateVibrantEffect:1;
     } _flags;
     UIVibrancyEffect *_shadowViewEffect;
-    UIVibrancyEffect *_defaultVibrancyEffect;
+    UIVibrancyEffect *_tabBarVibrancyEffect;
     NSArray *_backgroundEffects;
     UIColor *_backgroundColor;
     UIImage *_backgroundImage;
     long long _backgroundImageContentMode;
+    UIVibrancyEffect *_overrideTabBarVibrancyEffect;
     UIColor *_shadowColor;
     UIImage *_shadowImage;
     UIVibrancyEffect *_shadowEffect;
@@ -34,11 +35,12 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) UIVibrancyEffect *shadowEffect; // @synthesize shadowEffect=_shadowEffect;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
 @property(copy, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property(retain, nonatomic) UIVibrancyEffect *overrideTabBarVibrancyEffect; // @synthesize overrideTabBarVibrancyEffect=_overrideTabBarVibrancyEffect;
 @property(nonatomic) long long backgroundImageContentMode; // @synthesize backgroundImageContentMode=_backgroundImageContentMode;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
-@property(readonly, nonatomic) UIVibrancyEffect *defaultVibrancyEffect; // @synthesize defaultVibrancyEffect=_defaultVibrancyEffect;
+@property(readonly, nonatomic) UIVibrancyEffect *tabBarVibrancyEffect; // @synthesize tabBarVibrancyEffect=_tabBarVibrancyEffect;
 @property(readonly, nonatomic) UIColor *shadowViewTintColor;
 @property(readonly, nonatomic) UIColor *shadowViewBackgroundColor;
 @property(readonly, nonatomic) UIVibrancyEffect *shadowViewEffect; // @synthesize shadowViewEffect=_shadowViewEffect;

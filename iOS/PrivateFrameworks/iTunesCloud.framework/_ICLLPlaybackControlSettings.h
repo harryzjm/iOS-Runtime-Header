@@ -6,21 +6,22 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
-@class _ICLLAvailability;
+@class _ICLLAutoPlaySource, _ICLLAvailability, _ICLLNoGenerationSource, _ICLLRadioSource;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLPlaybackControlSettings : PBCodable <NSCopying>
+@interface _ICLLPlaybackControlSettings : PBCodable
 {
+    _ICLLAutoPlaySource *_autoPlay;
     _ICLLAvailability *_availability;
+    _ICLLNoGenerationSource *_noGeneration;
+    _ICLLRadioSource *_radio;
     int _repeatMode;
     int _shuffleMode;
-    _Bool _autoplay;
+    int _trackGenerationSource;
     struct {
         unsigned int repeatMode:1;
         unsigned int shuffleMode:1;
-        unsigned int autoplay:1;
+        unsigned int trackGenerationSource:1;
     } _has;
 }
 

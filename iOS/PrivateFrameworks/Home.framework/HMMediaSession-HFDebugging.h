@@ -6,12 +6,9 @@
 
 #import <HomeKit/HMMediaSession.h>
 
-#import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSString, NSUUID;
 
-@interface HMMediaSession (HFDebugging) <HFStateDumpBuildable, HFHomeKitObject>
+@interface HMMediaSession (HFDebugging)
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

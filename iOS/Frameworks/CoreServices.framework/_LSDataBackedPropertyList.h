@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_LSLazyPropertyList.h"
+
 @class NSData, _LSPlistHint;
 
 __attribute__((visibility("hidden")))
-@interface _LSDataBackedPropertyList
+@interface _LSDataBackedPropertyList : _LSLazyPropertyList
 {
     NSData *_plistData;
     _LSPlistHint *_plistHint;

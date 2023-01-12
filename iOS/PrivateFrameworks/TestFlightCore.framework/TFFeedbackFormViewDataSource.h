@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TestFlightCore/UITableViewDataSource-Protocol.h>
-#import <TestFlightCore/UITableViewDelegate-Protocol.h>
-
 @class NSString, TFFeedbackFormCellUpdater, TFFeedbackFormPresenter;
 
 __attribute__((visibility("hidden")))
-@interface TFFeedbackFormViewDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
+@interface TFFeedbackFormViewDataSource : NSObject
 {
     TFFeedbackFormPresenter *_presenter;
     TFFeedbackFormCellUpdater *_cellUpdater;

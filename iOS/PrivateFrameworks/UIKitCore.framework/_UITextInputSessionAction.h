@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class _UITextInputSessionBeganAction, _UITextInputSessionDeletionAction, _UITextInputSessionInsertionAction, _UITextInputSessionRedoAction, _UITextInputSessionSelectionAction, _UITextInputSessionUndoAction;
+@class _UITextInputSessionBeganAction, _UITextInputSessionDeletionAction, _UITextInputSessionDictationBeganAction, _UITextInputSessionInsertionAction, _UITextInputSessionRedoAction, _UITextInputSessionReplaceWithCandidateAction, _UITextInputSessionSelectionAction, _UITextInputSessionUndoAction;
 
 __attribute__((visibility("hidden")))
 @interface _UITextInputSessionAction : NSObject
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(readonly, nonatomic) _Bool changedContent;
 - (long long)mergeActionIfPossible:(id)arg1;
+@property(readonly, nonatomic) _UITextInputSessionReplaceWithCandidateAction *asReplaceWithCandidates;
+@property(readonly, nonatomic) _UITextInputSessionDictationBeganAction *asDictationBegan;
 @property(readonly, nonatomic) _UITextInputSessionRedoAction *asRedo;
 @property(readonly, nonatomic) _UITextInputSessionUndoAction *asUndo;
 @property(readonly, nonatomic) _UITextInputSessionSelectionAction *asSelection;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Synapse/NSXPCListenerDelegate-Protocol.h>
-#import <Synapse/SYBacklinkIndicatorUsageProtocol-Protocol.h>
-
 @class NSString, NSXPCListener;
 
 __attribute__((visibility("hidden")))
-@interface SYBacklinkIndicatorUsageService : NSObject <NSXPCListenerDelegate, SYBacklinkIndicatorUsageProtocol>
+@interface SYBacklinkIndicatorUsageService : NSObject
 {
     NSXPCListener *_listener;
 }

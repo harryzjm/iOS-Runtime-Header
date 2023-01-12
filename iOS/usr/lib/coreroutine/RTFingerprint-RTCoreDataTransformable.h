@@ -6,12 +6,9 @@
 
 #import <CoreRoutine/RTFingerprint.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-#import <coreroutine/RTCoreDataWritable-Protocol.h>
-
 @class NSString;
 
-@interface RTFingerprint (RTCoreDataTransformable) <RTCoreDataReadable, RTCoreDataWritable>
+@interface RTFingerprint (RTCoreDataTransformable)
 + (id)createWithFingerprintMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;

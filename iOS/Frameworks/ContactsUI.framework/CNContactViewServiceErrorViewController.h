@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactContentViewController-Protocol.h>
-
 @class NSString;
 @protocol CNContactViewControllerPPTDelegate, CNContactViewHostProtocol;
 
 __attribute__((visibility("hidden")))
-@interface CNContactViewServiceErrorViewController <CNContactContentViewController>
+@interface CNContactViewServiceErrorViewController
 {
     id <CNContactViewControllerPPTDelegate> pptDelegate;
     id <CNContactViewHostProtocol> delegate;

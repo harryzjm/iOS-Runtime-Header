@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class NSArray, UIColor, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCellSelectedBackground
+@interface UITableViewCellSelectedBackground : UIView
 {
     UIVisualEffectView *_selectionEffectsView;
     _Bool _multiselect;

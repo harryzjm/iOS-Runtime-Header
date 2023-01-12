@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _enableCVO;
     int _videoPayload;
     int _encodingMode;
+    int _encoderUsage;
     NSDictionary *_colorInfo;
     _Atomic unsigned char *_videoPriorityPointer;
     unsigned long long _customWidth;
@@ -45,20 +46,29 @@ __attribute__((visibility("hidden")))
     unsigned int _parameterSets;
     _Bool _temporalScalingEnabled;
     struct tagVCCryptor *_sframeCryptor;
+    unsigned int _encoderBitrateAveragingInterval;
     _Bool _reinitEncoderOnFrameSizeChangeEnabled;
     _Bool _isIPv6;
     _Bool _isFecGeneratorEnabled;
     _Bool _fecHeaderV1Enabled;
     _Bool _useInBandFec;
     unsigned int _qualityIndex;
+    unsigned int _maxSupportedTemporalLayers;
+    int _reportingClientType;
     unsigned long long _remoteIDSParticipantID;
+    unsigned long long _maxEncoderPixels;
 }
 
+@property(nonatomic) unsigned long long maxEncoderPixels; // @synthesize maxEncoderPixels=_maxEncoderPixels;
 @property(nonatomic) _Bool useInBandFec; // @synthesize useInBandFec=_useInBandFec;
 @property(nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property(nonatomic) _Bool fecHeaderV1Enabled; // @synthesize fecHeaderV1Enabled=_fecHeaderV1Enabled;
 @property(nonatomic) _Bool isFecGeneratorEnabled; // @synthesize isFecGeneratorEnabled=_isFecGeneratorEnabled;
+@property(nonatomic) unsigned int encoderBitrateAveragingInterval; // @synthesize encoderBitrateAveragingInterval=_encoderBitrateAveragingInterval;
+@property(nonatomic) int encoderUsage; // @synthesize encoderUsage=_encoderUsage;
+@property(nonatomic) int reportingClientType; // @synthesize reportingClientType=_reportingClientType;
 @property(nonatomic) struct tagVCCryptor *sframeCryptor; // @synthesize sframeCryptor=_sframeCryptor;
+@property(nonatomic) unsigned int maxSupportedTemporalLayers; // @synthesize maxSupportedTemporalLayers=_maxSupportedTemporalLayers;
 @property(nonatomic) _Bool temporalScalingEnabled; // @synthesize temporalScalingEnabled=_temporalScalingEnabled;
 @property(nonatomic) unsigned int parameterSets; // @synthesize parameterSets=_parameterSets;
 @property(retain, nonatomic) NSString *profileLevel; // @synthesize profileLevel=_profileLevel;

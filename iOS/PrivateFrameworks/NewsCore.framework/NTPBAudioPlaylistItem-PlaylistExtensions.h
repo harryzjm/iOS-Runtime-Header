@@ -6,12 +6,9 @@
 
 #import <NewsTransport/NTPBAudioPlaylistItem.h>
 
-#import <NewsCore/FCKeyValueStoreCoding-Protocol.h>
-#import <NewsCore/FCReorderableTagSubscription-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface NTPBAudioPlaylistItem (PlaylistExtensions) <FCKeyValueStoreCoding, FCReorderableTagSubscription>
+@interface NTPBAudioPlaylistItem (PlaylistExtensions)
 + (id)readValueFromKeyValuePair:(id)arg1;
 + (int)keyValuePairType;
 + (id)articleIDFromIdentifier:(id)arg1;

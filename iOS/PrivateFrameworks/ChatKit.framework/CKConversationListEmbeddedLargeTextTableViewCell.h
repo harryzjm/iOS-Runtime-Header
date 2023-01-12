@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKConversationListEmbeddedTableViewCellProtocol-Protocol.h>
+#import "CKConversationListLargeTextCell.h"
 
 @class NSObject, NSString;
 @protocol CKConversationListCellDelegate;
 
-@interface CKConversationListEmbeddedLargeTextTableViewCell <CKConversationListEmbeddedTableViewCellProtocol>
+__attribute__((visibility("hidden")))
+@interface CKConversationListEmbeddedLargeTextTableViewCell : CKConversationListLargeTextCell
 {
     struct UIEdgeInsets _marginInsets;
     struct CGRect _containerBounds;

@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2CodecFeatures : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2CodecFeatures : PBCodable
 {
     unsigned int _audioFeatures;
     NSData *_videoFeatures;

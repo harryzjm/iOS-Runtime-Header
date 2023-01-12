@@ -17,6 +17,7 @@
     XCTSourceCodeContext *_sourceCodeContext;
 }
 
++ (id)skippedTestContextWithExceptionPointer:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (void).cxx_destruct;
 @property(readonly) XCTSourceCodeContext *sourceCodeContext; // @synthesize sourceCodeContext=_sourceCodeContext;
 @property(readonly, copy) NSString *message; // @synthesize message=_message;
@@ -24,6 +25,7 @@
 @property(readonly, copy) NSString *explanation; // @synthesize explanation=_explanation;
 @property(readonly, copy) NSString *summary; // @synthesize summary=_summary;
 - (id)initWithError:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
+- (id)initWithCurrentExceptionAndEvaluatedExpression:(id)arg1 message:(id)arg2 sourceCodeContext:(id)arg3;
 - (id)initWithException:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (id)initWithExpectedValue:(_Bool)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;
 - (id)initWithExplanation:(id)arg1 evaluatedExpression:(id)arg2 message:(id)arg3 sourceCodeContext:(id)arg4;

@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)_topLevelSpecifiers;
 - (id)_enableRestrictionsSwitchSpecifier;
 - (id)specifiers;
-- (_Bool)canBeShownFromSuspendedState;
+- (_Bool)shouldDeferPushForSpecifierID:(id)arg1;
 - (id)init;
 
 @end

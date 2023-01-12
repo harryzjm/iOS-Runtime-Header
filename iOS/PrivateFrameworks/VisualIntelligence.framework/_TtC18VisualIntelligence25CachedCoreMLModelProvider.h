@@ -10,10 +10,12 @@
 
 @interface _TtC18VisualIntelligence25CachedCoreMLModelProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *mlEngineType;
     MISSING_TYPE *modelInfo;
     MISSING_TYPE *modelValidator;
+    MISSING_TYPE *lock;
     MISSING_TYPE *metalDevice;
-    MISSING_TYPE *_coremlModel;
+    MISSING_TYPE *engineModel;
 }
 
 @end

@@ -7,7 +7,7 @@
 @class CTDataUsagePoliciesWrapper, NSSet, NSString;
 
 @protocol CTXPCServiceDataUsagePolicyInterface
-- (void)performNetworkAccessFlowIfAllowed:(NSString *)arg1 ignoreForeground:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
+- (void)performNetworkAccessFlowIfAllowed:(NSString *)arg1 ignoreForeground:(_Bool)arg2 completion:(void (^)(CTDataUsagePolicies *, NSError *))arg3;
 - (void)removePoliciesFromLocalDevice:(NSSet *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setRemotePolicies:(CTDataUsagePoliciesWrapper *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setLocalPolicies:(CTDataUsagePoliciesWrapper *)arg1 completion:(void (^)(NSError *))arg2;

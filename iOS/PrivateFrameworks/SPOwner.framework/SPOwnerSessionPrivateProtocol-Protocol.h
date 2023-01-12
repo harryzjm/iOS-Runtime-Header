@@ -15,16 +15,17 @@
 - (void)requestLiveLocationForUUID:(NSUUID *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)unregisterDarwinNotificationName:(NSString *)arg1;
 - (void)registerDarwinNotificationName:(NSString *)arg1 block:(void (^)(void))arg2;
-- (oneway void)fakeClassicPairingWithMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)forceKeySyncForBeaconUUID:(NSUUID *)arg1 lastObservationDate:(NSDate *)arg2 lastObservationIndex:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
+- (void)fakeClassicPairingWithMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)forceKeySyncForBeaconUUID:(NSUUID *)arg1 lastObservationDate:(NSDate *)arg2 lastObservationIndex:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)sendUnregisterIntentWithCompletion:(void (^)(NSError *))arg1;
 - (void)sendRegisterIntentWithCompletion:(void (^)(double, NSError *))arg1;
+- (void)allObservationsForBeacon:(NSUUID *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;
 - (void)beaconStoreStatusWithCompletion:(void (^)(_Bool))arg1;
 - (void)rawSearchResultsForBeacon:(SPBeacon *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
-- (oneway void)forceUpdateKeyAlignmentRecordForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
-- (oneway void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
+- (void)forceUpdateKeyAlignmentRecordForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
+- (void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 @end
 

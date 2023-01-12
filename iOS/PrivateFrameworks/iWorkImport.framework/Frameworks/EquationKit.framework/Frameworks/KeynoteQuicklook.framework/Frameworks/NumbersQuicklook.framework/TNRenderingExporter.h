@@ -6,11 +6,9 @@
 
 #import <TSApplication/TSARenderingExporter.h>
 
-#import <NumbersQuicklook/TNAnnotationPrintingHelperDataSource-Protocol.h>
-
 @class NSArray, NSMapTable, NSMutableArray, TNAnnotationPrintingHelper, TNPageController, TNPdfHyperlinkController;
 
-@interface TNRenderingExporter : TSARenderingExporter <TNAnnotationPrintingHelperDataSource>
+@interface TNRenderingExporter : TSARenderingExporter
 {
     unsigned long long mSheetIndex;
     unsigned long long mPageIndex;

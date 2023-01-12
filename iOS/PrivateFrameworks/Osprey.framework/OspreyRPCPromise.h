@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Osprey/OspreyRPC-Protocol.h>
-
 @class NSString, OspreyDeferredObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface OspreyRPCPromise : NSObject <OspreyRPC>
+@interface OspreyRPCPromise : NSObject
 {
     NSObject<OS_dispatch_queue> *_fulfillmentQueue;
     OspreyDeferredObject *_deferredRPC;

@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSAttributedString, NSNumber, NSString, UIColor, UIImage, UIImageSymbolConfiguration, _UIGraphicsLetterpressStyle;
 
 __attribute__((visibility("hidden")))
-@interface UIButtonContent : NSObject <NSCoding, NSCopying>
+@interface UIButtonContent : NSObject <NSCopying>
 {
     NSString *title;
     NSAttributedString *attributedTitle;

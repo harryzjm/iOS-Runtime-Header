@@ -6,14 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUDiffableDataSourceDelegate-Protocol.h>
-#import <MediaControls/MRUUpNextDataSourceDelegate-Protocol.h>
-#import <MediaControls/UITableViewDelegate-Protocol.h>
-
 @class MRUDiffableDataSource, MRUUpNextDataSource, NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface MRUUpNextPicker : UIView <UITableViewDelegate, MRUUpNextDataSourceDelegate, MRUDiffableDataSourceDelegate>
+@interface MRUUpNextPicker : UIView
 {
     MRUUpNextDataSource *_dataSource;
     UITableView *_tableView;

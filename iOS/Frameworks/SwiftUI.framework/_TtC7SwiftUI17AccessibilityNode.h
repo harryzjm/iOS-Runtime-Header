@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/AXChart-Protocol.h>
-#import <SwiftUI/AXContainerDataSeries-Protocol.h>
-#import <SwiftUI/AXCustomContentProvider-Protocol.h>
-
 @class AXChartDescriptor, MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI17AccessibilityNode : NSObject <AXChart, AXCustomContentProvider, AXContainerDataSeries>
+@interface _TtC7SwiftUI17AccessibilityNode : NSObject
 {
     MISSING_TYPE *id;
     MISSING_TYPE *version;
@@ -21,11 +17,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bridgedChild;
     MISSING_TYPE *parent;
     MISSING_TYPE *viewRendererHost;
+    MISSING_TYPE *environment;
     MISSING_TYPE *attachmentsStorage;
     MISSING_TYPE *cachedCombinedAttachment;
+    MISSING_TYPE *platformElementPropertiesDirty;
     MISSING_TYPE *platformRotorStorage;
-    MISSING_TYPE *cachedIsPlaceholder;
-    MISSING_TYPE *focusableAncestor;
+    MISSING_TYPE *cachedIsPlaceholderOrIgnored;
     MISSING_TYPE *relationshipScope;
     MISSING_TYPE *isCell;
 }
@@ -35,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (_Bool)_accessibilityIsChartElement;
 @property(nonatomic, retain) AXChartDescriptor *accessibilityChartDescriptor;
+- (_Bool)_accessibilityUserTestingIsElementClassAcceptable;
+- (_Bool)_accessibilityIsRTL;
 @property(nonatomic, copy) NSArray *accessibilityCustomRotors;
 - (id)_accessibilityHeadingLevel;
 - (_Bool)_accessibilityScrollToVisible;
@@ -44,9 +43,13 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityElementDidLoseFocus;
 - (void)accessibilityElementDidBecomeFocused;
 - (_Bool)accessibilityPerformMagicTap;
+- (_Bool)_accessibilityCanPerformEscapeAction;
 - (_Bool)accessibilityPerformEscape;
+- (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)accessibilityActivate;
 @property(nonatomic, copy) NSArray *accessibilityCustomActions;
+- (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
+- (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 @property(nonatomic, retain) UIBezierPath *accessibilityPath;
@@ -57,13 +60,18 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldGroupAccessibilityChildren;
 @property(nonatomic) _Bool accessibilityElementsHidden;
 @property(nonatomic) _Bool accessibilityViewIsModal;
+@property(nonatomic, copy) NSArray *accessibilityDropPointDescriptors;
+@property(nonatomic, copy) NSArray *accessibilityDragSourceDescriptors;
 @property(nonatomic) struct CGPoint accessibilityActivationPoint;
 - (id)_accessibilityUserTestingVisibleAncestor;
 - (id)_accessibilityUserTestingParent;
 - (id)accessibilityContainer;
+- (_Bool)_accessibilityAutomationHitTestReverseOrder;
 - (id)_accessibilityUserTestingChildren;
+- (_Bool)accessibilityShouldEnumerateContainerElementsArrayDirectly;
 - (long long)accessibilityElementCount;
 @property(nonatomic, copy) NSArray *accessibilityElements;
+- (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 @property(nonatomic) struct CGRect accessibilityFrame;
 @property(nonatomic, copy) NSString *accessibilityTextualContext;
 @property(nonatomic, copy) NSString *accessibilityLanguage;
@@ -100,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (long long)_accessibilityDataSeriesType;
 - (id)_accessibilityDataSeriesName;
 - (id)_accessibilityMediaAnalysisElement;
+- (id)accessibilityCustomAttribute:(id)arg1;
 
 @end
 

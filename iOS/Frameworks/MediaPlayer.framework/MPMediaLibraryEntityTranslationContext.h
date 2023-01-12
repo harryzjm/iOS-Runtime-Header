@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     MPModelKind *_modelKind;
     NSString *_personID;
     NSString *_filterText;
+    NSArray *_propertyFilters;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSArray *propertyFilters; // @synthesize propertyFilters=_propertyFilters;
 @property(retain, nonatomic) NSString *filterText; // @synthesize filterText=_filterText;
 @property(retain, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property(retain, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;
@@ -30,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
 @property(retain, nonatomic) NSArray *allowedEntityIdentifiers; // @synthesize allowedEntityIdentifiers=_allowedEntityIdentifiers;
 @property(retain, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

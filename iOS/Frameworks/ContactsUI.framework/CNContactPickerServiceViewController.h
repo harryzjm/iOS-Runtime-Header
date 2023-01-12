@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNContactPickerContentDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactPickerServiceViewController <CNContactPickerContentDelegate>
+@interface CNContactPickerServiceViewController
 {
 }
 
-- (void)logAccessEvent;
+- (void)_logPrivacyAccountingAccessEvent;
 - (void)pickerDidCancel;
+- (void)pickerDidCompleteWithNewContact:(id)arg1;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectAddNewContact;

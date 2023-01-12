@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 
 - (void)bedtimeReached;
 - (void)windDownReached;
-- (id)determineExpirationDateForCurrentDate:(id)arg1;
-- (void)updateStateWithChangeReason:(unsigned long long)arg1;
+- (id)expirationDate;
+- (id)nextStateWithContext:(id *)arg1 forceUpdate:(_Bool)arg2;
 - (void)significantScheduleChangeOccurred:(unsigned long long)arg1;
 - (void)wakeUpConfirmed;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;

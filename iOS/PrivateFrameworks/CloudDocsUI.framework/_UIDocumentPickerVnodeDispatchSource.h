@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudDocsUI/NSCopying-Protocol.h>
-
 @class NSURL;
 @protocol OS_dispatch_source, _UIDocumentPickerVnodeDispatchSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerVnodeDispatchSource : NSObject <NSCopying>
+@interface _UIDocumentPickerVnodeDispatchSource : NSObject
 {
     NSObject<OS_dispatch_source> *_source;
     id <_UIDocumentPickerVnodeDispatchSourceDelegate> _target;

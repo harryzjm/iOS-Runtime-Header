@@ -6,6 +6,9 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
+@class HKWorkoutDataSourceConfiguration;
+
 @protocol HKLiveWorkoutDataSourceClientInterface <NSObject>
+- (void)clientRemote_didUpdateDataSourceConfiguration:(HKWorkoutDataSourceConfiguration *)arg1;
 @end
 

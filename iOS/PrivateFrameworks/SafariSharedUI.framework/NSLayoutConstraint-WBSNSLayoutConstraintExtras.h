@@ -7,6 +7,7 @@
 #import <Foundation/NSLayoutConstraint.h>
 
 @interface NSLayoutConstraint (WBSNSLayoutConstraintExtras)
++ (id)safari_constraintsMatchingFrameOfView:(id)arg1 withFrameOfView:(id)arg2 directionalInsets:(struct NSDirectionalEdgeInsets)arg3;
 + (id)safari_constraintsMatchingFrameOfView:(id)arg1 withFrameOfView:(id)arg2 edgeInsets:(struct UIEdgeInsets)arg3;
 + (id)safari_constraintsMatchingFrameOfView:(id)arg1 withFrameOfView:(id)arg2;
 @end

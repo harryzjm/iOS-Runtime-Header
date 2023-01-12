@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarDisplayItem.h"
+
 @class NSArray, UILayoutGuide;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarSpacerDisplayItem
+@interface _UIStatusBarSpacerDisplayItem : _UIStatusBarDisplayItem
 {
     UILayoutGuide *_layoutGuide;
     NSArray *_constraints;

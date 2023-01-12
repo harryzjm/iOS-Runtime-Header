@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOEncyclopedicInfo-Protocol.h>
-
 @class GEOMapItemAttribution, GEOPDPlace, NSArray, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOEncyclopedicInfo : NSObject <GEOEncyclopedicInfo>
+@interface _GEOEncyclopedicInfo : NSObject
 {
     GEOPDPlace *_placeData;
     NSMapTable *_attributionMap;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface GEODataURLSessionTaskIdentifier : NSObject <NSCopying>
+@interface GEODataURLSessionTaskIdentifier : NSObject
 {
     long long _sessionIdentity;
     unsigned long long _taskIdentifier;

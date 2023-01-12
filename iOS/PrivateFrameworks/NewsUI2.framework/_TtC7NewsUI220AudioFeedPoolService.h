@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI220AudioFeedPoolService : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *dataManager;
+    MISSING_TYPE *readingHistory;
 }
 
 @end

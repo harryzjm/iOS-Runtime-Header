@@ -9,6 +9,7 @@
 @interface LSApplicationRecord (CX)
 + (id)cx_applicationRecordForConnection:(id)arg1;
 + (id)cx_applicationRecordForBundleIdentifier:(id)arg1;
-@property(readonly, nonatomic) _Bool cx_hasVoIPBackgroundMode;
+- (_Bool)containsBackgroundModeOptions:(long long)arg1;
+@property(readonly, nonatomic) long long cx_backgroundModeOptions;
 @end
 

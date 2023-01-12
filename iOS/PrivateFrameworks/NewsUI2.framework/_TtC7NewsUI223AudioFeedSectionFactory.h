@@ -10,9 +10,7 @@
 
 @interface _TtC7NewsUI223AudioFeedSectionFactory : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *coreConfigurationManager;
-    MISSING_TYPE *feedContextFactory;
-    MISSING_TYPE *headlineModelFactory;
+    MISSING_TYPE *audioFeedModelFactory;
 }
 
 @end

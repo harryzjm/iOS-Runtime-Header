@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebPluginContainerCheckController-Protocol.h>
-#import <WebKitLegacy/WebPluginManualLoader-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSString, WAKView, WebDataSource;
 
 __attribute__((visibility("hidden")))
-@interface WebPluginController : NSObject <WebPluginManualLoader, WebPluginContainerCheckController>
+@interface WebPluginController : NSObject
 {
     WAKView *_documentView;
     WebDataSource *_dataSource;

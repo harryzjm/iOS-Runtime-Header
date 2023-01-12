@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/WKObject-Protocol.h>
-#import <WebKit/WKURLSchemeTaskPrivate-Protocol.h>
-
 @class NSString, NSURLRequest, WKFrameInfo;
 
 __attribute__((visibility("hidden")))
-@interface WKURLSchemeTaskImpl : NSObject <WKObject, WKURLSchemeTaskPrivate>
+@interface WKURLSchemeTaskImpl : NSObject
 {
     struct ObjectStorage<WebKit::WebURLSchemeTask> _urlSchemeTask;
 }

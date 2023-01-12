@@ -6,11 +6,7 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class NSString;
-
 @protocol MPRTCReportingItemSessionCreating <NSObject>
 @property(readonly, nonatomic) long long rtcReportingAssetType;
-@property(readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
-@property(readonly, nonatomic) id rtcReportingParentHierarchyToken;
 @end
 

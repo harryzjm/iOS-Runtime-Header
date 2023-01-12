@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
+@class GEOPDAutocompleteEntry, GEOPDETAFilter, GEOPDRecentRouteInfo, GEOPDResultRefinementQuery, GEOPDRetainedSearchMetadata, GEOPDSInferredSignals, GEOPDSSearchEvChargingParameters, GEOPDSSearchFilter, GEOPDSSearchLocationParameters, GEOPDSSearchStructureIntentRequestType, GEOPDSearchOriginationInfo, GEOPDViewportInfo, NSData, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDSearchParameters : PBCodable <NSCopying>
+@interface GEOPDSearchParameters : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -20,6 +18,7 @@ __attribute__((visibility("hidden")))
     CDStruct_95bda58d _supportedRelatedEntitySectionTypes;
     CDStruct_95bda58d _supportedSearchSectionTypes;
     CDStruct_95bda58d _supportedSearchTierTypes;
+    NSString *_enrichmentCampaignNamespace;
     GEOPDETAFilter *_etaFilter;
     GEOPDSSearchEvChargingParameters *_evChargingParameters;
     GEOPDSInferredSignals *_inferredSignals;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
     GEOPDRetainedSearchMetadata *_retainedSearch;
     GEOPDSSearchFilter *_searchFilter;
     GEOPDSSearchLocationParameters *_searchLocationParameters;
+    GEOPDSearchOriginationInfo *_searchOriginationInfo;
     NSString *_searchString;
     GEOPDSSearchStructureIntentRequestType *_searchStructureIntentType;
     NSData *_suggestionEntryMetadata;
@@ -46,7 +46,9 @@ __attribute__((visibility("hidden")))
     int _sortOrder;
     _Bool _supportDirectionIntentSearch;
     _Bool _supportDymSuggestion;
+    _Bool _supportSearchEnrichment;
     _Bool _supportSearchResultSection;
+    _Bool _supportStructuredRapAffordance;
     _Bool _supportUnresolvedDirectionIntent;
     struct {
         unsigned int has_auxiliaryTierNumResults:1;
@@ -57,7 +59,9 @@ __attribute__((visibility("hidden")))
         unsigned int has_sortOrder:1;
         unsigned int has_supportDirectionIntentSearch:1;
         unsigned int has_supportDymSuggestion:1;
+        unsigned int has_supportSearchEnrichment:1;
         unsigned int has_supportSearchResultSection:1;
+        unsigned int has_supportStructuredRapAffordance:1;
         unsigned int has_supportUnresolvedDirectionIntent:1;
         unsigned int read_unknownFields:1;
         unsigned int read_knownRefinementTypes:1;
@@ -65,6 +69,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_supportedRelatedEntitySectionTypes:1;
         unsigned int read_supportedSearchSectionTypes:1;
         unsigned int read_supportedSearchTierTypes:1;
+        unsigned int read_enrichmentCampaignNamespace:1;
         unsigned int read_etaFilter:1;
         unsigned int read_evChargingParameters:1;
         unsigned int read_inferredSignals:1;
@@ -74,6 +79,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_retainedSearch:1;
         unsigned int read_searchFilter:1;
         unsigned int read_searchLocationParameters:1;
+        unsigned int read_searchOriginationInfo:1;
         unsigned int read_searchString:1;
         unsigned int read_searchStructureIntentType:1;
         unsigned int read_suggestionEntryMetadata:1;
@@ -96,7 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)init;
-- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 traits:(id)arg7;
+- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 traits:(id)arg7 routeInfo:(id)arg8;
 
 @end
 

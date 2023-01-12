@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaControls/UIViewControllerTransitioningDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsTransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@interface MediaControlsTransitioningDelegate : NSObject
 {
 }
 

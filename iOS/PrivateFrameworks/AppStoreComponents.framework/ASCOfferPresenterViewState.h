@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreComponents/NSCopying-Protocol.h>
-
 @class ASCOfferMetadata, ASCOfferTheme;
 
 __attribute__((visibility("hidden")))
-@interface ASCOfferPresenterViewState : NSObject <NSCopying>
+@interface ASCOfferPresenterViewState : NSObject
 {
     ASCOfferMetadata *_metadata;
     ASCOfferTheme *_theme;

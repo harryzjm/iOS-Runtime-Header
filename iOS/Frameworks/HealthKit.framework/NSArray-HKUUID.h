@@ -6,12 +6,9 @@
 
 #import <Foundation/NSArray.h>
 
-#import <HealthKit/HKCodedObject-Protocol.h>
-#import <HealthKit/HKUUIDCollection-Protocol.h>
-
 @class NSString;
 
-@interface NSArray (HKUUID) <HKUUIDCollection, HKCodedObject>
+@interface NSArray (HKUUID)
 + (_Bool)_permutationHelperForArray:(id)arg1 number:(long long)arg2 permutationHandler:(CDUnknownBlockType)arg3;
 + (id)hk_arrayWithCount:(long long)arg1 generator:(CDUnknownBlockType)arg2;
 + (id)indexableKeyPathsWithPrefix:(id)arg1;
@@ -43,6 +40,7 @@
 - (id)hk_filter:(CDUnknownBlockType)arg1;
 - (id)hk_map:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)hk_map:(CDUnknownBlockType)arg1;
+- (id)_hk_featureAvailabilityRequirements;
 - (_Bool)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
 - (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 

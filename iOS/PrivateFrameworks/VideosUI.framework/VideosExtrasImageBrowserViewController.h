@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideosUI/UIPageViewControllerDataSource-Protocol.h>
-#import <VideosUI/UIPageViewControllerDelegate-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageInteractiveTransitionSource-Protocol.h>
-#import <VideosUI/VideosExtrasZoomingImageTransitionParticipant-Protocol.h>
-
 @class NSString, UIPageViewController;
 @protocol VideosExtrasImageBrowserViewControllerDataSource, VideosExtrasImageBrowserViewControllerDelegate, VideosExtrasZoomingImageInteractiveTransitionSource;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasImageBrowserViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate, VideosExtrasZoomingImageInteractiveTransitionSource, VideosExtrasZoomingImageTransitionParticipant>
+@interface VideosExtrasImageBrowserViewController : UIViewController
 {
     _Bool _allowsPinchingImageForInteractiveZoomingImageTransition;
     id <VideosExtrasImageBrowserViewControllerDataSource> _dataSource;

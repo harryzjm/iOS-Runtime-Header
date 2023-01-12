@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UICollectionReusableView.h"
+
 @class UIView, UIVisualEffectView, _UIContextMenuCellContentView;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuSubmenuTitleView
+@interface _UIContextMenuSubmenuTitleView : UICollectionReusableView
 {
     _Bool _highlighted;
     _Bool _allowsFocus;
@@ -26,10 +28,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(retain, nonatomic) UIVisualEffectView *obscuringMaterialView; // @synthesize obscuringMaterialView=_obscuringMaterialView;
 @property(readonly, nonatomic) _UIContextMenuCellContentView *contentView; // @synthesize contentView=_contentView;
-- (_Bool)_wantsKeyEventsWhenDeferred;
+- (_Bool)_wantsKeyCommandsWhenDeferred;
 - (long long)_focusItemDeferralMode;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)canBecomeFocused;
+- (void)setDirectionalLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (void)addObscuringMaterialViewWithGroupName:(id)arg1;
 - (void)setBackgroundMaterialGroupName:(id)arg1;
 - (void)didMoveToWindow;

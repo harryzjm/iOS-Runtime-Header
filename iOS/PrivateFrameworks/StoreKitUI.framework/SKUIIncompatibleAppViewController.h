@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIProductPageChildViewController-Protocol.h>
+#import "SKUIViewController.h"
 
 @class NSOperationQueue, NSString, SKUIIncompatibleAppView, SKUIItemArtworkContext, SKUIProductPageHeaderViewController, SKUIProductPageItem, SSVLoadURLOperation, UIImage, UIScrollView;
 @protocol SKUIProductPageChildViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIncompatibleAppViewController <SKUIProductPageChildViewController>
+@interface SKUIIncompatibleAppViewController : SKUIViewController
 {
     SKUIItemArtworkContext *_artworkContext;
     id <SKUIProductPageChildViewControllerDelegate> _delegate;

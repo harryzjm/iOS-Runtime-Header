@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AMSBagKeySet, AMSProcessInfo, NSArray, NSDate, NSDictionary, NSString;
+@class ACAccount, AMSProcessInfo, NSDate, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagFrozenDataSourceBuilder : NSObject
 {
-    AMSBagKeySet *_bagKeySet;
-    NSArray *_cookies;
+    ACAccount *_account;
     NSDictionary *_data;
+    NSDictionary *_defaultValues;
     NSDate *_expirationDate;
     NSString *_profile;
     NSString *_profileVersion;
@@ -25,10 +25,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property(retain, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property(retain, nonatomic) NSDictionary *defaultValues; // @synthesize defaultValues=_defaultValues;
 @property(retain, nonatomic) NSDictionary *data; // @synthesize data=_data;
-@property(retain, nonatomic) NSArray *cookies; // @synthesize cookies=_cookies;
-@property(retain, nonatomic) AMSBagKeySet *bagKeySet; // @synthesize bagKeySet=_bagKeySet;
+@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 - (id)createFrozenDataSource;
+- (id)createFrozenBag;
 - (id)initWithFrozenDataSource:(id)arg1;
 
 @end

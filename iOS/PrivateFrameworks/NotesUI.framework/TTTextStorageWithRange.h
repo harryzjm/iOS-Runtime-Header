@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <NotesUI/NSItemProviderWriting-Protocol.h>
-
 @class ICNote, NSArray, NSManagedObjectContext, NSString, TTTextStorage;
 
 __attribute__((visibility("hidden")))
-@interface TTTextStorageWithRange : NSObject <NSItemProviderWriting>
+@interface TTTextStorageWithRange : NSObject
 {
     ICNote *_note;
     NSManagedObjectContext *_workerContext;
@@ -31,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_preferredRepresentationForItemProviderWritableTypeIdentifier:(id)arg1;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareTextStorage;
+- (long long)itemProviderVisibilityForRepresentationWithTypeIdentifier:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 - (id)initWithTextStorage:(id)arg1 range:(struct _NSRange)arg2 note:(id)arg3;
 

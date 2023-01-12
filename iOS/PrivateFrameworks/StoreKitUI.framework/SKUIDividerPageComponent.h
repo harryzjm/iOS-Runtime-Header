@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIPageComponent.h"
+
 @class NSString, SKUIDividerViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDividerPageComponent
+@interface SKUIDividerPageComponent : SKUIPageComponent
 {
     NSString *_title;
 }

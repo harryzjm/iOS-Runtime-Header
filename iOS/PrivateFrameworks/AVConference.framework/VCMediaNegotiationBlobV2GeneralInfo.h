@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiationBlobV2GeneralInfo : PBCodable <NSCopying>
+@interface VCMediaNegotiationBlobV2GeneralInfo : PBCodable
 {
     unsigned long long _ntpTime;
     unsigned int _abSwitches;

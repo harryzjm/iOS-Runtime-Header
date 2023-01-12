@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class CKDatabase, NSCloudKitMirroringDelegateOptions, NSURL, PFCloudKitStoreMonitor;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PFCloudKitImporterOptions : NSObject <NSCopying>
+@interface PFCloudKitImporterOptions : NSObject
 {
     CKDatabase *_database;
     PFCloudKitStoreMonitor *_monitor;

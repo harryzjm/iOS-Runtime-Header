@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol TRIAssetPatching
-- (_Bool)applyPatchWithFilename:(NSString *)arg1 toSrcDir:(NSString *)arg2 writingToEmptyDestDir:(NSString *)arg3 postPatchCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
+- (CDStruct_6b48f683)applyPatchWithFilename:(NSString *)arg1 toSrcDir:(NSString *)arg2 writingToEmptyDestDir:(NSString *)arg3 postPatchCompression:(CDStruct_69d7cc99)arg4 error:(id *)arg5;
 @end
 

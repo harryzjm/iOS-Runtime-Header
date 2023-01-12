@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/ABPredicateDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNiOSABEKParticipantMatchingSearchOperationDelegate : NSObject <ABPredicateDelegate>
+@interface CNiOSABEKParticipantMatchingSearchOperationDelegate : NSObject
 {
     CDUnknownBlockType _completionHandler;
 }

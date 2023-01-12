@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/ICFlowControl-Protocol.h>
-#import <Vision/ICResultDelegate-Protocol.h>
-
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface VNHomographyTrackerState : NSObject <ICFlowControl, ICResultDelegate>
+@interface VNHomographyTrackerState : NSObject
 {
     void *_analysisSession;
     NSObject<OS_dispatch_semaphore> *_analysisSemaphore;

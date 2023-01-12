@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUISearchFieldDelegate-Protocol.h>
-#import <StoreKitUI/UISearchBarDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, SKUIFocusedTouchGestureRecognizer, SKUISearchBarViewElement, SKUISearchFieldController, UISearchBar, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface SKUISearchBarController : NSObject <SKUISearchFieldDelegate, UISearchBarDelegate>
+@interface SKUISearchBarController : NSObject
 {
     SKUIFocusedTouchGestureRecognizer *_cancelTouchGestureRecognizer;
     SKUIClientContext *_clientContext;

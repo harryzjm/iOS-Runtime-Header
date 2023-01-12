@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPRecordFieldIdentifier, NSMutableArray;
 
-@interface CKDPRequestedListField : PBCodable <NSCopying>
+@interface CKDPRequestedListField : PBCodable
 {
     CKDPRecordFieldIdentifier *_fieldId;
     NSMutableArray *_ranges;

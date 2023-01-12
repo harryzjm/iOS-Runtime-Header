@@ -6,12 +6,10 @@
 
 #import <NanoWeatherKitUICompanion/NWKUIColorIndex.h>
 
-#import <NanoWeatherComplicationsCompanion/NWKUIColorIndexable-Protocol.h>
-
 @class NSString, WFTemperature;
 
 __attribute__((visibility("hidden")))
-@interface NWMTemperatureColorIndex : NWKUIColorIndex <NWKUIColorIndexable>
+@interface NWMTemperatureColorIndex : NWKUIColorIndex
 {
     WFTemperature *_temperature;
 }

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeCore/STPasscodeProviderService-Protocol.h>
-#import <ScreenTimeCore/STPasscodeReceiverInterface-Protocol.h>
-
 @class NSXPCListenerEndpoint;
 
 __attribute__((visibility("hidden")))
-@interface STConcretePasscodeProviderService : NSObject <STPasscodeReceiverInterface, STPasscodeProviderService>
+@interface STConcretePasscodeProviderService : NSObject
 {
     NSXPCListenerEndpoint *_clientListenerEndpoint;
     CDUnknownBlockType _pendingProvidePasscodeCompletionHandler;

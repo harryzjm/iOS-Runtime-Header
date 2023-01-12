@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) SFMediaPlayerView *productMovieView; // @synthesize productMovieView=_productMovieView;
 - (void)_updateDeviceVisual:(id)arg1;
 - (void)eventCancel:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

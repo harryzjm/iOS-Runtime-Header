@@ -6,17 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNCancellable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNBooleanCancellable : NSObject <SNCancellable>
+@interface SNBooleanCancellable : NSObject
 {
     _Bool _isCancelled;
 }
 
-@property _Bool isCancelled; // @synthesize isCancelled=_isCancelled;
 - (void)cancel;
 - (id)init;
 

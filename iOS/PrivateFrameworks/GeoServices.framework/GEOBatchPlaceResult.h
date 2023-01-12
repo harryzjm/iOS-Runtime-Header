@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPlaceResult;
 
 __attribute__((visibility("hidden")))
-@interface GEOBatchPlaceResult : PBCodable <NSCopying>
+@interface GEOBatchPlaceResult : PBCodable
 {
     GEOPlaceResult *_placeResult;
     int _statusCode;

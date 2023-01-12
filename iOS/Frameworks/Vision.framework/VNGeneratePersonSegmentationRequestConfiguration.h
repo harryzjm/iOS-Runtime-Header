@@ -7,10 +7,14 @@
 __attribute__((visibility("hidden")))
 @interface VNGeneratePersonSegmentationRequestConfiguration
 {
+    _Bool _useTiling;
+    _Bool _keepRawOutputMask;
     unsigned int _outputPixelFormat;
     unsigned long long _qualityLevel;
 }
 
+@property(nonatomic) _Bool keepRawOutputMask; // @synthesize keepRawOutputMask=_keepRawOutputMask;
+@property(nonatomic) _Bool useTiling; // @synthesize useTiling=_useTiling;
 @property(nonatomic) unsigned int outputPixelFormat; // @synthesize outputPixelFormat=_outputPixelFormat;
 @property(nonatomic) unsigned long long qualityLevel; // @synthesize qualityLevel=_qualityLevel;
 - (id)copyWithZone:(struct _NSZone *)arg1;

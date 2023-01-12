@@ -6,14 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <StoreKitUI/UIPickerViewDataSource-Protocol.h>
-#import <StoreKitUI/UIPickerViewDelegate-Protocol.h>
-
 @class NSArray, NSString, UIPickerView, _UIBackdropView;
 @protocol SKUIPickerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIPickerView : UIView <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface SKUIPickerView : UIView
 {
     _UIBackdropView *_backdropView;
     id <SKUIPickerViewDelegate> _delegate;

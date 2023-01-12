@@ -5,6 +5,11 @@
 //
 
 @interface (null) (ConversationKit)
-@property(nonatomic) _Bool expanded;
+- (void)captionsServerDidDie:(id)arg1;
+- (void)captionsClient:(id)arg1 didUpdateCaptions:(id)arg2 source:(int)arg3;
+- (void)captionsClient:(id)arg1 didStopCaptioningWithReason:(unsigned char)arg2;
+- (void)captionsClient:(id)arg1 didStartCaptioningWithReason:(unsigned char)arg2;
+- (void)captionsClient:(id)arg1 didDisableCaptions:(_Bool)arg2 error:(id)arg3;
+- (void)captionsClient:(id)arg1 didEnableCaptions:(_Bool)arg2 error:(id)arg3;
 @end
 

@@ -18,6 +18,7 @@
 - (id)dd_handleFromFacetimeSchemeFilteringForEmail:(_Bool)arg1;
 - (id)dd_emailFromMailtoScheme;
 - (id)dd_phoneNumberFromTelSchemeAndExtractBody:(id *)arg1;
+- (id)dd_emailFromTelScheme;
 - (id)dd_phoneNumberFromTelScheme;
 - (_Bool)dd_isCloudLink;
 - (_Bool)dd_isAppleStore;

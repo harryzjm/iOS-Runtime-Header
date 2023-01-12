@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICCoreUISlotComponent-Protocol.h>
+@class NSSet, NSString;
 
-@class NSString;
-
-@interface IBICIdiom <IBICCoreUISlotComponent>
+@interface IBICIdiom
 {
     _Bool _isMarketingIdiom;
     NSString *_platform;
     long long _rawCoreUIIdiom;
     NSString *_infoPlistSuffix;
+    NSSet *_buildSystemTargetDeviceIdentifierAliases;
 }
 
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
++ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 buildSystemTargetDeviceIdentifierAliases:(id)arg8 displayOrder:(double)arg9 subtitle:(id)arg10;
++ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8 subtitle:(id)arg9;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8;
 + (id)displayName;
 + (id)contentsJSONKey;
@@ -24,6 +25,7 @@
 + (void)setComponentID:(long long)arg1;
 + (long long)componentID;
 - (void).cxx_destruct;
+@property(readonly) NSSet *buildSystemTargetDeviceIdentifierAliases; // @synthesize buildSystemTargetDeviceIdentifierAliases=_buildSystemTargetDeviceIdentifierAliases;
 @property(readonly) _Bool isMarketingIdiom; // @synthesize isMarketingIdiom=_isMarketingIdiom;
 @property(readonly) NSString *infoPlistSuffix; // @synthesize infoPlistSuffix=_infoPlistSuffix;
 @property(readonly) long long rawCoreUIIdiom; // @synthesize rawCoreUIIdiom=_rawCoreUIIdiom;
@@ -34,7 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long coreUIValue;
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8;
+- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 buildSystemTargetDeviceIdentifierAliases:(id)arg8 displayOrder:(double)arg9 subtitle:(id)arg10;
 - (long long)componentID;
 - (long long)coreUIIdiomForCompilerOptions:(id)arg1 isIcon:(_Bool)arg2;
 

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "ICAsyncOperation.h"
+
 @class ICStoreRequestContext, ICStoreURLRequest, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ICMusicSubscriptionPlaybackRequestOperation
+@interface ICMusicSubscriptionPlaybackRequestOperation : ICAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICStoreURLRequest *_activeURLRequest;

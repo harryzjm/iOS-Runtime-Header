@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <FileProvider/NSCopying-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPSearchableItemValue : PBCodable <NSCopying>
+@interface FPSearchableItemValue : PBCodable
 {
     double _doubleValue;
     long long _integerValue;

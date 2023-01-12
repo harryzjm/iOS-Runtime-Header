@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Navigation/MNLocationManagerObserver-Protocol.h>
-
 @class GEORoadMatcher, GEOTransitRouteMatcher, MNLocation, NSDate, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNTransitLocationTracker <MNLocationManagerObserver>
+@interface MNTransitLocationTracker
 {
     GEOTransitRouteMatcher *_transitRouteMatcher;
     GEORoadMatcher *_roadMatcher;
@@ -52,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_initRegionAlertsForRoute:(id)arg1;
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)stopTracking;
-- (void)startTracking;
+- (void)startTrackingWithInitialLocation:(id)arg1;
 - (int)transportType;
 - (id)initWithNavigationSession:(id)arg1;
 

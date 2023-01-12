@@ -4,10 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServices/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AMSSQLiteComparisonPredicate <NSCopying>
+@interface AMSSQLiteComparisonPredicate
 {
     long long _comparisonType;
     id _value;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitTicketingSegmentInfo-Protocol.h>
-
 @class GEOTransitTicketingSegment, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitTicketingSegment : NSObject <GEOTransitTicketingSegmentInfo>
+@interface _GEOTransitTicketingSegment : NSObject
 {
     GEOTransitTicketingSegment *_segment;
 }

@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDExtensionSessionProtocol-Protocol.h>
-#import <FileProviderDaemon/FPDProcessMonitorDelegate-Protocol.h>
-
-@class FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSHashTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, RBSAssertion;
+@class FPDDomain, FPDExtension, FPDProcessMonitor, FPGracePeriodTimer, NSCountedSet, NSExtension, NSMapTable, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, RBSAssertion;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface FPDExtensionSession : NSObject <FPDProcessMonitorDelegate, FPDExtensionSessionProtocol>
+@interface FPDExtensionSession : NSObject
 {
     NSExtension *_extension;
     NSObject<OS_dispatch_queue> *_sessionQueue;
@@ -22,7 +19,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_requestIdentifier;
     NSCountedSet *_observingBundleIDs;
     NSMutableDictionary *_inflightProxies;
-    NSHashTable *_lifetimeExtenders;
+    NSMapTable *_lifetimeExtenders;
     FPDExtension *_fpdExtension;
     FPDDomain *_domain;
     FPGracePeriodTimer *_gracePeriodTimer;
@@ -50,26 +47,24 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (void)invalidate;
 - (void)cancel;
+- (void)terminateWithReason:(id)arg1;
 - (void)start;
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)_unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)registerLifetimeExtensionForObject:(id)arg1;
-- (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2 createIfNeeded:(_Bool)arg3;
-- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
-- (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
-- (id)newFileProviderProxyWithoutPIDWithTimeout:(_Bool)arg1;
-- (id)newFileProviderProxyWithPID:(int)arg1;
-- (id)newFileProviderProxyWithoutPID;
+- (id)newFileProviderProxyWithTimeoutValue:(double)arg1 pid:(int)arg2 createIfNeeded:(_Bool)arg3;
+- (id)existingFileProviderProxyWithTimeout:(double)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
+- (id)newFileProviderProxyWithTimeout:(double)arg1 pid:(int)arg2;
 - (void)_invalidateExtensionIfPossible;
 @property(readonly, nonatomic) _Bool hasFileProviderAttributionMDMAccess;
-- (void)updatePresenceTCCWithAuditToken:(CDStruct_4c969caf)arg1;
+- (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
 - (id)_connectionWithError:(id *)arg1;
 - (_Bool)_setUpConnectionWithError:(id *)arg1;
 - (_Bool)terminateExtensionWithError:(id *)arg1;
 - (id)_alternateContentsDictionary;
-- (void)__invalidateWithCancellation:(_Bool)arg1;
-- (void)_invalidateWithCancellation:(_Bool)arg1;
+- (void)__invalidate;
+- (void)_invalidate;
 - (void)dealloc;
 - (id)initWithDomain:(id)arg1 extension:(id)arg2 queue:(id)arg3;
 

@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "RBSProcessIdentity.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface RBSEmbeddedAppProcessIdentity
+@interface RBSEmbeddedAppProcessIdentity : RBSProcessIdentity
 {
     NSString *_embeddedApplicationIdentifier;
 }
 
 - (void).cxx_destruct;
 - (id)embeddedApplicationIdentifier;
+- (_Bool)treatedAsAnAppByFrontBoard:(id *)arg1;
+- (_Bool)supportsLaunchingDirectly;
 - (_Bool)isAnonymous;
 - (_Bool)isApplication;
 - (_Bool)isEmbeddedApplication;

@@ -6,7 +6,7 @@
 
 #import <Security/NSObject-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
 @protocol EscrowRequestXPCProtocol <NSObject>
 - (void)escrowCompletedWithinLastSeconds:(double)arg1 reply:(void (^)(_Bool, NSError *))arg2;
@@ -16,6 +16,6 @@
 - (void)fetchRequestWaitingOnPasscode:(void (^)(NSString *, NSError *))arg1;
 - (void)fetchPrerecord:(NSString *)arg1 reply:(void (^)(NSData *, NSError *))arg2;
 - (void)cachePrerecord:(NSString *)arg1 serializedPrerecord:(NSData *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)triggerEscrowUpdate:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)triggerEscrowUpdate:(NSString *)arg1 options:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMZone.h>
 
-#import <CoordinationCore/_COHomeKitNamedEntity-Protocol.h>
-
 @class NSString;
 
-@interface HMZone (_COHomeKitNamedEntity) <_COHomeKitNamedEntity>
+@interface HMZone (_COHomeKitNamedEntity)
 - (id)co_MeshNameForEntity;
 
 // Remaining properties

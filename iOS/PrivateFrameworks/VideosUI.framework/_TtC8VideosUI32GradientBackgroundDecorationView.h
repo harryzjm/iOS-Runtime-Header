@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *gradientLayer;
 }
 
++ (Class)layerClass;
 - (void).cxx_destruct;
 - (void)vui_traitCollectionDidChange:(id)arg1;
-- (struct CGSize)vui_layoutSubviews:(struct CGSize)arg1 computationOnly:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,21 +6,21 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString, _ICLLMediaInfo, _ICLLPlaybackItemContainer;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLPlaybackItem : PBCodable <NSCopying>
+@interface _ICLLPlaybackItem : PBCodable
 {
     long long _contributingParticipantId;
     _ICLLPlaybackItemContainer *_container;
     NSString *_itemId;
     NSString *_mediaId;
     _ICLLMediaInfo *_mediaInfo;
+    int _sectionType;
     _Bool _isExplicit;
     struct {
         unsigned int contributingParticipantId:1;
+        unsigned int sectionType:1;
         unsigned int isExplicit:1;
     } _has;
 }

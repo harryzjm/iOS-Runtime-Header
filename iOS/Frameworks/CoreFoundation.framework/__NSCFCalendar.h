@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSCalendar.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSCFCalendar
+@interface __NSCFCalendar : NSCalendar
 {
 }
 
 + (id)calendarWithIdentifier:(id)arg1;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)enumerateDatesStartingAfterDate:(id)arg1 matchingComponents:(id)arg2 options:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (_Bool)nextWeekendStartDate:(out id *)arg1 interval:(out double *)arg2 options:(unsigned long long)arg3 afterDate:(id)arg4;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPModelForYouRecommendationMusicKitItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDateFormatter, NSDictionary;
+@class ICURLBag, MPModelForYouRecommendationMusicKitItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDateFormatter, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationMusicKitGroupBuilder : NSObject
@@ -18,12 +18,15 @@ __attribute__((visibility("hidden")))
         unsigned int title:1;
         unsigned int subgroups:1;
         unsigned int loadAdditionalContentURL:1;
+        unsigned int hrefURL:1;
         unsigned int refreshURL:1;
+        unsigned int traits:1;
         unsigned int displaysAsGridCellInCarPlay:1;
+        unsigned int displaysAsTitledSectionWithRowsInCarPlay:1;
     } _requestedGroupProperties;
     MPModelForYouRecommendationMusicKitItemBuilder *_itemBuilder;
     NSDateFormatter *_lastUpdatedDateFormatter;
-    NSDictionary *_storeBagDictionary;
+    ICURLBag *_storeURLBag;
     _Bool _isListenNow;
     MPPropertySet *_requestedGroupPropertySet;
     MPPropertySet *_requestedItemPropertySet;
@@ -42,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)modelObjectForItemsArray:(id)arg1 userIdentity:(id)arg2;
 - (id)modelObjectForRecentlyPlayedArray:(id)arg1 userIdentity:(id)arg2;
 - (void)initializeRequestedGroupProperties;
-- (id)initWithRequestedGroupPropertySet:(id)arg1 requestedItemPropertySet:(id)arg2 storeItemMetadataResults:(id)arg3 flatSectionedItems:(id)arg4 storeBagDictionary:(id)arg5 isListenNow:(_Bool)arg6;
+- (id)initWithRequestedGroupPropertySet:(id)arg1 requestedItemPropertySet:(id)arg2 storeItemMetadataResults:(id)arg3 flatSectionedItems:(id)arg4 storeURLBag:(id)arg5 isListenNow:(_Bool)arg6;
 
 @end
 

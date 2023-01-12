@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSObservationBuffer.h"
+
 @class NSMutableArray, NSObject, NSOperationQueue;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteObservationBuffer
+@interface NSConcreteObservationBuffer : NSObservationBuffer
 {
     NSObject<OS_dispatch_queue> *_inputQueue;
     NSOperationQueue *_outputQueue;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <ChatKit/CKWatchfacePreviewing-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface CKWatchfaceInProcessPreviewGenerator : NSObject <CKWatchfacePreviewing>
+@interface CKWatchfaceInProcessPreviewGenerator : NSObject
 {
 }
 

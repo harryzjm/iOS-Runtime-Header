@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *fileStore;
     MISSING_TYPE *cachedJetpackBundle;
+    MISSING_TYPE *_useSystemJetpack;
 }
 
 @end

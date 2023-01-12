@@ -11,6 +11,7 @@
 @protocol CPUITableCellConfigurationProtocol <NSObject>
 
 @optional
+- (long long)playbackState;
 - (_Bool)playingIndicatorLeadingSide;
 - (_Bool)showActivityIndicator;
 - (_Bool)currentlyPlaying;

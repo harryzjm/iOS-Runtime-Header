@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaRemote/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRRapportTransportConfiguration : NSObject <NSSecureCoding>
+@interface MRRapportTransportConfiguration : NSObject
 {
     NSString *_deviceUID;
     NSString *_sessionUID;

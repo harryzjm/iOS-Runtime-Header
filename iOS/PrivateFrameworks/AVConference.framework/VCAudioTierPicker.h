@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)tierForNetworkBitrate:(unsigned long long)arg1 withLegacyDuplication:(int)arg2;
 - (void)printCreatedAudioTiers:(id)arg1;
 - (void)dealloc;
-- (void)setupAlwaysOnRedTiersForSupportedRed:(id)arg1;
+- (void)setupAlwaysOnRedTiersForSupportedRed:(id)arg1 usingCellular:(_Bool)arg2;
 - (_Bool)setupTierPickerForConfig:(CDStruct_898ba246)arg1;
 - (void)logTierPickerConfig:(CDStruct_898ba246)arg1;
 - (id)configToString:(CDStruct_898ba246)arg1;

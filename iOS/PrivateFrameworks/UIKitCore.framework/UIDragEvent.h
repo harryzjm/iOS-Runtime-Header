@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIEvent.h"
+
 @class NSHashTable, NSMutableSet, NSSet, UIView, UIWindow, _UIDragEventSample, _UIDropSessionImpl, _UIInternalDraggingSessionDestination, _UIInternalDraggingSessionSource;
 
 __attribute__((visibility("hidden")))
-@interface UIDragEvent
+@interface UIDragEvent : UIEvent
 {
     _UIDragEventSample *_currentSample;
     UIView *_previousEventView;

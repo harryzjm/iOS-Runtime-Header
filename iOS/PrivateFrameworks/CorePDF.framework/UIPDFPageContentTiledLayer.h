@@ -6,12 +6,10 @@
 
 #import <QuartzCore/CATiledLayer.h>
 
-#import <CorePDF/UIPDFSelectionLayer-Protocol.h>
-
 @class CALayer;
 
 __attribute__((visibility("hidden")))
-@interface UIPDFPageContentTiledLayer : CATiledLayer <UIPDFSelectionLayer>
+@interface UIPDFPageContentTiledLayer : CATiledLayer
 {
     CALayer *_selectionLayer;
 }

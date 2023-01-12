@@ -6,36 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/_GCLogicalDeviceManager-Protocol.h>
-#import <GameController/_GCPhysicalDeviceManager-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet, NSNumber, NSString;
-@protocol GCPhysicalDeviceRegistry><GCLogicalDeviceRegistry, NSObject><NSCopying><NSSecureCoding, OS_dispatch_queue, _GCDefaultDeviceManagerDelegate, _GCDeviceMatchingFilter;
+@protocol NSObject><NSCopying><NSSecureCoding, OS_dispatch_queue, _GCDefaultDeviceManagerDelegate, _GCDeviceMatchingFilter, _GCPhysicalDeviceRegistry><_GCLogicalDeviceRegistry;
 
 __attribute__((visibility("hidden")))
-@interface _GCDefaultDeviceManager : NSObject <_GCPhysicalDeviceManager, _GCLogicalDeviceManager>
+@interface _GCDefaultDeviceManager : NSObject
 {
     NSNumber *_probeScore;
     id <_GCDeviceMatchingFilter> _matchingFilter;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_claimedServices;
     NSMutableDictionary *_physicalDevices;
+    NSMutableDictionary *_hiddenPhysicalDevices;
     id <NSObject><NSCopying><NSSecureCoding> _identifier;
-    id <GCPhysicalDeviceRegistry><GCLogicalDeviceRegistry> _deviceRegistry;
+    id <_GCPhysicalDeviceRegistry><_GCLogicalDeviceRegistry> _deviceRegistry;
     id <_GCDefaultDeviceManagerDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) __weak id <_GCDefaultDeviceManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property __weak id <GCPhysicalDeviceRegistry><GCLogicalDeviceRegistry> deviceRegistry; // @synthesize deviceRegistry=_deviceRegistry;
+@property __weak id <_GCPhysicalDeviceRegistry><_GCLogicalDeviceRegistry> deviceRegistry; // @synthesize deviceRegistry=_deviceRegistry;
 @property(readonly) id <NSObject><NSCopying><NSSecureCoding> identifier; // @synthesize identifier=_identifier;
-- (_Bool)acceptFilterConnection:(id)arg1 forHIDDevice:(id)arg2;
-- (_Bool)acceptDriverConnection:(id)arg1 forHIDDevice:(id)arg2;
-- (void)relinquishHIDDevice:(id)arg1;
+- (_Bool)acceptFilterConnection:(id)arg1 forHIDService:(id)arg2;
+- (_Bool)acceptDriverConnection:(id)arg1 forHIDService:(id)arg2;
+- (void)relinquishHIDService:(id)arg1;
 - (void)_onqueue_relinquishHIDDevice:(id)arg1;
-- (void)claimHIDDevice:(id)arg1;
-- (void)_onqueue_checkAndDisconnectDuplicateDevice:(id)arg1;
-- (id)matchHIDDevice:(id)arg1;
+- (void)_onqueue_registerPhysicalDevice:(id)arg1 serviceInfo:(id)arg2 checkForDuplicateDevice:(_Bool)arg3;
+- (void)claimHIDService:(id)arg1;
+- (void)_onqueue_checkAndHideDuplicateDevice:(id)arg1;
+- (id)matchHIDService:(id)arg1;
+- (void)refreshPhysicalDeviceConfiguration:(id)arg1;
+- (void)_onqueue_registerDefaultConfigurationForDevice:(id)arg1 replaceExisting:(_Bool)arg2;
+- (id)configurationIdentifierForDevice:(id)arg1;
 - (void)_onqueue_registerDefaultConfigurationForDevice:(id)arg1;
 - (id)makeDeviceWithConfiguration:(id)arg1 dependencies:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 matchingFilter:(id)arg2 probeScore:(id)arg3;

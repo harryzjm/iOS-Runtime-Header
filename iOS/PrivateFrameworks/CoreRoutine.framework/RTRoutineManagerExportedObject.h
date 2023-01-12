@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRoutine/RTFrameworkProtocol-Protocol.h>
-
 @class NSString, RTRoutineManager;
 
 __attribute__((visibility("hidden")))
-@interface RTRoutineManagerExportedObject : NSObject <RTFrameworkProtocol>
+@interface RTRoutineManagerExportedObject : NSObject
 {
     RTRoutineManager *_routineManager;
 }

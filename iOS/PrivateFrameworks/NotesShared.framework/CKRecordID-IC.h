@@ -6,14 +6,12 @@
 
 #import <CloudKit/CKRecordID.h>
 
-#import <NotesShared/ICHasDatabaseScope-Protocol.h>
-
 @class NSString;
 
-@interface CKRecordID (IC) <ICHasDatabaseScope>
-- (_Bool)ic_isOwnedByCurrentUser;
+@interface CKRecordID (IC)
+@property(readonly, nonatomic) _Bool ic_isOwnedByCurrentUser;
 - (long long)databaseScope;
-- (id)ic_loggingDescription;
+@property(readonly, copy, nonatomic) NSString *ic_loggingDescription;
 - (id)ic_loggingDescriptionIncludingBrackets:(_Bool)arg1;
 
 // Remaining properties

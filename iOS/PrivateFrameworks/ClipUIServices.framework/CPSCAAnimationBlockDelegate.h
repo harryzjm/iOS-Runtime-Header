@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ClipUIServices/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CPSCAAnimationBlockDelegate : NSObject <CAAnimationDelegate>
+@interface CPSCAAnimationBlockDelegate : NSObject
 {
     id _referenceToSelf;
     CDUnknownBlockType _didStartHandler;

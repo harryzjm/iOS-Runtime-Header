@@ -11,6 +11,7 @@
 @protocol NUArticleViewControllerDelegate <NSObject>
 
 @optional
+- (void)articleViewControllerDidScrollToBottomOfPrimaryContent:(NUArticleViewController *)arg1;
 - (void)articleViewController:(NUArticleViewController *)arg1 didScrollToPosition:(SXScrollPosition *)arg2;
 @end
 

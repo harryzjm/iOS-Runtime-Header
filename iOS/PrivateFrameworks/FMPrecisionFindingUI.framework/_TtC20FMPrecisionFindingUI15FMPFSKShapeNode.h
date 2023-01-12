@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC20FMPrecisionFindingUI15FMPFSKShapeNode : SKShapeNode
 {
     MISSING_TYPE *previousBrightness;

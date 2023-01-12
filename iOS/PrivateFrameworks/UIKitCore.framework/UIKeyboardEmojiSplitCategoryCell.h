@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITableViewCell.h"
+
 @class UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiSplitCategoryCell
+@interface UIKeyboardEmojiSplitCategoryCell : UITableViewCell
 {
     UIImageView *_symbol;
     UILabel *_title;
     UIView *_selectedCircle;
 }
 
+- (void).cxx_destruct;
 @property(retain, nonatomic) UIView *selectedCircle; // @synthesize selectedCircle=_selectedCircle;
 @property(retain, nonatomic) UILabel *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIImageView *symbol; // @synthesize symbol=_symbol;
 - (void)setSelectedCircleBlendMode:(_Bool)arg1;
 - (void)setPressIndicatorHidden:(_Bool)arg1;
 - (void)setTitleText:(id)arg1;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)titleFont;
 - (id)symbolFont;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CKDURLRequest.h"
+
 @class NSArray, NSData, NSMutableArray;
 
-@interface CKDFetchNotificationChangesURLRequest
+@interface CKDFetchNotificationChangesURLRequest : CKDURLRequest
 {
     NSMutableArray *_resultChangedNotifications;
     _Bool _wantsChanges;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_configuredBorderedButtonForButtonValue:(unsigned long long)arg1 withBorder:(unsigned long long)arg2 primaryAction:(id)arg3;
+- (id)_createBorderedButtonForButtonValue:(unsigned long long)arg1 withBorder:(unsigned long long)arg2 primaryAction:(id)arg3;
 
 @end
 

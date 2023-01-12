@@ -10,13 +10,10 @@ __attribute__((visibility("hidden")))
 @interface _TtCOCV7SwiftUI11DisplayList11ViewUpdater8Platform13CGDrawingView
 {
     MISSING_TYPE *options;
-    MISSING_TYPE *content;
-    MISSING_TYPE *renderer;
 }
 
-- (void).cxx_destruct;
++ (Class)layerClass;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

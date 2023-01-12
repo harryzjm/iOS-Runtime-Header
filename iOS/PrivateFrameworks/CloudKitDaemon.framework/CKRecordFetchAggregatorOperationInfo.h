@@ -11,6 +11,7 @@
 @interface CKRecordFetchAggregatorOperationInfo : CKDatabaseOperationInfo
 {
     _Bool _fetchAssetContents;
+    _Bool _fetchMergeableValues;
     _Bool _preserveOrdering;
     _Bool _forceDecryptionAttempt;
     NSSet *_desiredKeys;
@@ -22,6 +23,7 @@
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property(nonatomic) _Bool preserveOrdering; // @synthesize preserveOrdering=_preserveOrdering;
+@property(nonatomic) _Bool fetchMergeableValues; // @synthesize fetchMergeableValues=_fetchMergeableValues;
 @property(nonatomic) _Bool fetchAssetContents; // @synthesize fetchAssetContents=_fetchAssetContents;
 - (id)init;
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
-
 @class NSString;
 
-@interface NSObject (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface NSObject (ActionIdentifier)
 - (unsigned long long)re_actionIdentifierHashValue;
 
 // Remaining properties

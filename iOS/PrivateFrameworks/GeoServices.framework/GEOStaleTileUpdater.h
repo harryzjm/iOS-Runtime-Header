@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _batchSize;
 }
 
-+ (unsigned char)_reason;
 - (void).cxx_destruct;
 - (void)downloadDidFailForTile:(struct _GEOTileKey *)arg1 error:(id)arg2;
 - (void)downloadDidSucceedForTile:(struct _GEOTileKey *)arg1 downloadSize:(unsigned long long)arg2 httpStatus:(unsigned int)arg3;
@@ -26,7 +25,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfTilesConsidered;
 - (_Bool)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)_determineStaleKeysToUpdate;
-- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 manifestManager:(id)arg4 tileRequesterCreationBlock:(CDUnknownBlockType)arg5;
+- (id)initWithDiskCache:(id)arg1 manifestManager:(id)arg2 tileRequesterCreationBlock:(CDUnknownBlockType)arg3;
+- (unsigned char)reason;
 
 @end
 

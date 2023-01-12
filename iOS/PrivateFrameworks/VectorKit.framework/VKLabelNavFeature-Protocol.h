@@ -7,11 +7,13 @@
 @class NSString;
 
 @protocol VKLabelNavFeature
+@property(readonly, nonatomic) _Bool isValid;
 @property(nonatomic) _Bool isPicked;
 @property(readonly, nonatomic) _Bool isTrafficCameraFeature;
 @property(readonly, nonatomic) _Bool isEtaFeature;
 @property(readonly, nonatomic) _Bool isGuidanceStepStart;
-@property(readonly, nonatomic) long long intraRoadPriority;
+@property(readonly, nonatomic) long long intraRoadPriorityForShieldLabel;
+@property(readonly, nonatomic) long long intraRoadPriorityForRoadLabel;
 @property(readonly, nonatomic) _Bool isInGuidance;
 @property(readonly, nonatomic) _Bool isStartOfRoadName;
 @property(readonly, nonatomic) NSString *shieldDisplayGroup;

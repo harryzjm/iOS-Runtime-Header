@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/ML3DatabaseModuleContext-Protocol.h>
-
 @class ML3DatabaseConnection, ML3DatabaseModule, ML3DatabaseTable, NSString;
 @protocol ML3VirtualTableDelegate;
 
 __attribute__((visibility("hidden")))
-@interface ML3VirtualTable : NSObject <ML3DatabaseModuleContext>
+@interface ML3VirtualTable : NSObject
 {
     NSString *_virtualTableName;
     ML3DatabaseModule *_module;

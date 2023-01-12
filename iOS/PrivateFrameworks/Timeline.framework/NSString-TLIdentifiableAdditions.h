@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <Timeline/TLIdentifiable-Protocol.h>
-
-@interface NSString (TLIdentifiableAdditions) <TLIdentifiable>
+@interface NSString (TLIdentifiableAdditions)
 - (_Bool)tl_isEqualToIdentifiable:(id)arg1;
 
 // Remaining properties

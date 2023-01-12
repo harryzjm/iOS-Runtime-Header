@@ -11,6 +11,7 @@
 
 @protocol PXDisplayAsset <PXDisplayThumbnailAsset>
 - (long long)isContentEqualTo:(id <PXDisplayAsset>)arg1;
+@property(nonatomic, readonly) float audioScore;
 @property(nonatomic, readonly) struct CGRect faceAreaRect;
 @property(nonatomic, readonly) struct CGRect acceptableCropRect;
 @property(nonatomic, readonly) struct CGRect preferredCropRect;
@@ -18,6 +19,7 @@
 @property(nonatomic, readonly) long long pixelHeight;
 @property(nonatomic, readonly) long long pixelWidth;
 @property(nonatomic, readonly) _Bool isEligibleForAutoPlayback;
+@property(nonatomic, readonly) _Bool isInSharedLibrary;
 @property(nonatomic, readonly) _Bool isInCloud;
 @property(nonatomic, readonly) _Bool representsBurst;
 - (_Bool)isFavorite;
@@ -47,6 +49,7 @@
 @property(nonatomic, readonly) long long playbackStyle;
 @property(nonatomic, readonly) CDStruct_198678f7 livePhotoVideoDuration;
 @property(nonatomic, readonly) double duration;
+@property(nonatomic, readonly) long long originalFileSize;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool favorite;

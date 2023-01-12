@@ -6,11 +6,9 @@
 
 #import <Foundation/NSString.h>
 
-#import <TSText/TSWPTextSource-Protocol.h>
-
 @class TSWPDeletionRangeMap, TSWPRangeArray;
 
-@interface TSWPFilteredString : NSString <TSWPTextSource>
+@interface TSWPFilteredString : NSString
 {
     unsigned long long _length;
     NSString *_sourceString;

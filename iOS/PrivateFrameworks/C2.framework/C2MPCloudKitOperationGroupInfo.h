@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <C2/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface C2MPCloudKitOperationGroupInfo : PBCodable <NSCopying>
+@interface C2MPCloudKitOperationGroupInfo : PBCodable
 {
     NSString *_operationGroupId;
     NSString *_operationGroupName;

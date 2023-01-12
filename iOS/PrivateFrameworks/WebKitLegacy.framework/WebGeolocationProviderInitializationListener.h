@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebGeolocationProviderInitializationListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebGeolocationProviderInitializationListener : NSObject <WebGeolocationProviderInitializationListener>
+@interface WebGeolocationProviderInitializationListener : NSObject
 {
     struct RefPtr<WebCore::Geolocation, WTF::RawPtrTraits<WebCore::Geolocation>, WTF::DefaultRefDerefTraits<WebCore::Geolocation>> m_geolocation;
 }

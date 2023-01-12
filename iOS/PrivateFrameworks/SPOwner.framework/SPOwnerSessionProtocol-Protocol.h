@@ -6,7 +6,7 @@
 
 #import <SPOwner/NSObject-Protocol.h>
 
-@class FMFuture, NSArray, NSData, NSDate, NSSet, NSString, NSUUID, SPBeacon, SPCommand, SPLocationFetchContext, SPOwnerSessionState;
+@class FMFuture, NSArray, NSData, NSSet, NSString, NSUUID, SPBeacon, SPCommand, SPLocationFetchContext, SPOwnerSessionState;
 
 @protocol SPOwnerSessionProtocol <NSObject>
 @property(readonly, copy, nonatomic) NSSet *allBeacons;
@@ -17,8 +17,12 @@
 @property(readonly, copy, nonatomic) SPOwnerSessionState *ownerSessionState;
 @property(copy, nonatomic) CDUnknownBlockType ownerSessionStateUpdatedBlock;
 @property(copy, nonatomic) NSSet *locationSources;
+- (void)standaloneBeaconsForUUIDs:(NSArray *)arg1 completion:(void (^)(NSSet *))arg2;
+- (void)disconnectFromMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)connectUsingMACAddress:(NSData *)arg1 longTermKey:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)readAISMetadataFromBeaconIdentifier:(NSUUID *)arg1 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg2;
+- (void)readAISMetadataFromMACAddress:(NSData *)arg1 useOwnerControlPoint:(_Bool)arg2 completion:(void (^)(SPDiscoveredAccessoryMetadata *, NSError *))arg3;
 - (void)fetchUnauthorizedEncryptedPayload:(NSUUID *)arg1 completion:(void (^)(NSURL *))arg2;
-- (void)shareBeacon:(SPBeacon *)arg1 handles:(NSArray *)arg2 expiration:(NSDate *)arg3 completion:(void (^)(NSDictionary *))arg4;
 - (void)isUTAppAlertDisabled:(void (^)(_Bool))arg1;
 - (void)disableUTAppAlert:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateBatteryStatus:(unsigned char)arg1 beaconUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
@@ -28,6 +32,7 @@
 - (void)simulateAccessoryPairing:(NSString *)arg1 name:(NSString *)arg2 isAirPods:(_Bool)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setFindMyNetworkStatusForMACAddress:(NSData *)arg1 status:(_Bool)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchFindMyNetworkStatusForMACAddress:(NSData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
+- (void)clientConfigurationWithCompletion:(void (^)(NSData *))arg1;
 - (void)beaconingIdentifierForMACAddress:(NSData *)arg1 completion:(void (^)(NSUUID *))arg2;
 - (void)beaconGroupsForUUIDs:(NSArray *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)beaconGroupForIdentifier:(NSUUID *)arg1 completion:(void (^)(SPBeaconGroup *, NSError *))arg2;

@@ -9,6 +9,7 @@
 @interface UIView (SBFFluidBehaviorSettings)
 + (void)sb_animateWithSettings:(id)arg1 mode:(long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)sb_animateWithSettings:(id)arg1 interactive:(_Bool)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)sb_modifyAnimationsWithPreferredFrameRateRange:(struct CAFrameRateRange)arg1 updateReason:(unsigned int)arg2 animations:(CDUnknownBlockType)arg3;
 - (void)sbf_setBoundsAndPositionFromFrame:(struct CGRect)arg1;
 @end
 

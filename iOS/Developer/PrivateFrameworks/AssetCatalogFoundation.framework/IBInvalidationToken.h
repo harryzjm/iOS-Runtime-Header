@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBInvalidation-Protocol.h>
-
 @class NSString;
 
-@interface IBInvalidationToken : NSObject <IBInvalidation>
+@interface IBInvalidationToken : NSObject
 {
     CDUnknownBlockType _callback;
 }

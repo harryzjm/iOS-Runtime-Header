@@ -4,24 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ChatKit/CKMessagesNavigationProviding-Protocol.h>
 #import <ChatKit/NSObject-Protocol.h>
 
 @class CKComposition, CKConversation, NSArray, NSString, UIViewController;
 @protocol CKConversationListControllerProtocol;
 
-@protocol CKConversationListControllerDelegate <NSObject>
+@protocol CKConversationListControllerDelegate <NSObject, CKMessagesNavigationProviding>
 @property(readonly, nonatomic) _Bool isShowingChatController;
 @property(readonly, nonatomic) _Bool isAnimatingMessageSend;
 @property(readonly, nonatomic) CKConversation *currentConversation;
 @property(readonly, nonatomic) _Bool isDetailsNavigationControllerDetached;
 @property(readonly, nonatomic) _Bool hasDetailsNavigationController;
 @property(readonly, nonatomic) id composeChatController;
-@property(readonly, nonatomic) id chatController;
-@property(readonly, nonatomic) _Bool isComposingMessage;
 @property(readonly, nonatomic) _Bool isCollapsed;
+- (void)catalystFiltersNavigationBackButtonTapped:(id)arg1;
+- (CKConversation *)currentlyShownConversation;
+- (void)conversationListDidBeginMultipleSelectionWithInitialSelectedCount:(long long)arg1;
+- (void)conversationListFailedToSelectShownConversation;
+- (void)dismissConversationListAnimated:(_Bool)arg1;
+- (void)updatedFilterMode:(unsigned long long)arg1 previousFilterMode:(unsigned long long)arg2;
+- (void)conversationListUpdatedSelectedIndexPathCount:(long long)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)conversationListWillBeginEditing:(_Bool)arg1;
-- (void)dismissKeyboardIfUp;
+- (void)dismissKeyboardIfVisible;
 - (void)conversationListControllerWillDismissSearchResultsController;
 - (void)conversationListControllerWillPresentSearchResultsController;
 - (void)conversationListIsDeletingConversations:(NSArray *)arg1;
@@ -31,7 +37,5 @@
 - (void)showConversation:(CKConversation *)arg1 animate:(_Bool)arg2 userInitiated:(_Bool)arg3;
 - (void)showConversation:(CKConversation *)arg1 animate:(_Bool)arg2;
 - (void)updateCompositionInEntryViewWithComposition:(CKComposition *)arg1;
-- (void)showNewMessageCompositionPanelAppendingToExistingDraft:(CKComposition *)arg1 animated:(_Bool)arg2;
-- (void)showNewMessageCompositionPanelWithRecipients:(NSArray *)arg1 composition:(CKComposition *)arg2 animated:(_Bool)arg3;
 @end
 

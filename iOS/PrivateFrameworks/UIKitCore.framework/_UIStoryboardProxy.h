@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSSecureCoding-Protocol.h>
-
 @class UIStoryboard;
 
 __attribute__((visibility("hidden")))
-@interface _UIStoryboardProxy : NSObject <NSSecureCoding>
+@interface _UIStoryboardProxy : NSObject
 {
     UIStoryboard *_storyboard;
 }

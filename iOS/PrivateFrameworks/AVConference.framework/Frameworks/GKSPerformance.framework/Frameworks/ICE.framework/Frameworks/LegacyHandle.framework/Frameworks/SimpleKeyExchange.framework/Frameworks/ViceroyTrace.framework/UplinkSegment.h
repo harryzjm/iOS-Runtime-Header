@@ -19,10 +19,23 @@ __attribute__((visibility("hidden")))
     NSNumber *_wrmLinkTypeCellSignalStrength;
     NSNumber *_wrmLinkTypeCellSignalBar;
     NSNumber *_wrmLinkTypeCellServingCellType;
+    _Bool _isUplinkScreenEnabled;
+    _Bool _isFullScreenCapture;
+    NSMutableDictionary *_streamGroupStats;
+    _Bool _isCenterStageEnabled;
+    _Bool _isPortraitBlurEnabled;
     unsigned long long _totalCellTxDataBytes;
     unsigned long long _totalCellDupTxDataBytes;
+    unsigned long long _packetSendSuccessCounter;
+    unsigned long long _packetSendFailureCounter;
 }
 
+@property _Bool isPortraitBlurEnabled; // @synthesize isPortraitBlurEnabled=_isPortraitBlurEnabled;
+@property _Bool isCenterStageEnabled; // @synthesize isCenterStageEnabled=_isCenterStageEnabled;
+@property(nonatomic) _Bool isUplinkScreenEnabled; // @synthesize isUplinkScreenEnabled=_isUplinkScreenEnabled;
+@property unsigned long long packetSendFailureCounter; // @synthesize packetSendFailureCounter=_packetSendFailureCounter;
+@property unsigned long long packetSendSuccessCounter; // @synthesize packetSendSuccessCounter=_packetSendSuccessCounter;
+@property _Bool isFullScreenCapture; // @synthesize isFullScreenCapture=_isFullScreenCapture;
 @property NSNumber *wrmLinkTypeCellServingCellType; // @synthesize wrmLinkTypeCellServingCellType=_wrmLinkTypeCellServingCellType;
 @property NSNumber *wrmLinkTypeCellSignalBar; // @synthesize wrmLinkTypeCellSignalBar=_wrmLinkTypeCellSignalBar;
 @property NSNumber *wrmLinkTypeCellSignalStrength; // @synthesize wrmLinkTypeCellSignalStrength=_wrmLinkTypeCellSignalStrength;
@@ -35,14 +48,17 @@ __attribute__((visibility("hidden")))
 @property unsigned long long totalCellDupTxDataBytes; // @synthesize totalCellDupTxDataBytes=_totalCellDupTxDataBytes;
 @property unsigned long long totalCellTxDataBytes; // @synthesize totalCellTxDataBytes=_totalCellTxDataBytes;
 - (id)segmentReport;
+- (void)addMediaQueueStats:(id)arg1;
 - (void)addSegmentWRMReportStats:(id)arg1;
 - (void)addCellByteCountStats:(id)arg1;
+- (void)collectStreamTemporalStats:(id)arg1;
 - (void)collectStreamQualityAggregator:(id)arg1;
 - (id)calculateFramerate:(id)arg1 forKey:(id)arg2;
 - (id)calculateBitrate:(id)arg1 sumKey:(id)arg2 counterKey:(id)arg3;
 - (void)processVideoTransmitterStats:(id)arg1;
 - (void)processFramerateEvent:(id)arg1 forMetrics:(id)arg2 withStreamGroup:(id)arg3 withQuality:(id)arg4 sumKey:(id)arg5;
 - (void)processBitrateEvent:(id)arg1 forMetrics:(id)arg2 withStreamGroup:(id)arg3 withQuality:(id)arg4 sumKey:(id)arg5 counterKey:(id)arg6;
+- (void)processMediaQueueTelemetry:(id)arg1;
 - (void)dealloc;
 - (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 segmentStreamGroups:(unsigned int)arg3 previousSegmentStreamGroups:(unsigned int)arg4 nwActivity:(id)arg5 localSwitches:(unsigned int)arg6 conversationTimeBase:(id)arg7 delegate:(id)arg8;
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
+#import "_UIStatusBarImageView.h"
 
 @class CAShapeLayer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarActivityIconView <_UIStatusBarPersistentAnimation>
+@interface _UIStatusBarActivityIconView : _UIStatusBarImageView
 {
     _Bool _ringing;
     double _ringingIconScale;

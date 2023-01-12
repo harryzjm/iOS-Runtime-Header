@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTCancellable-Protocol.h>
-
 @class DVTStackBacktrace, NSString;
 
-@interface DVTBlockBasedCancellationToken : NSObject <DVTCancellable>
+@interface DVTBlockBasedCancellationToken : NSObject
 {
     CDUnknownBlockType _block;
     DVTStackBacktrace *_creationBacktrace;

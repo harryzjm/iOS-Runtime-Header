@@ -5,6 +5,6 @@
 //
 
 @protocol CLSIVSNSFWProcessedSignals
-@property(nonatomic) _Bool isIVSNSFWExplicit;
+@property(nonatomic) _Bool isVeryPreciselyIVSNSFWExplicit;
 @end
 

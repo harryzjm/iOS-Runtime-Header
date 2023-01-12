@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILabel.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewCountView
+@interface UITableViewCountView : UILabel
 {
     NSString *_countString;
     int _count;

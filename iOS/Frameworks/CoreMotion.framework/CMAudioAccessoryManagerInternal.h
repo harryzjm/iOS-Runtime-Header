@@ -32,6 +32,17 @@
         unsigned short sequenceNumber;
         float temperature;
     } fLatestAudioAccessoryGyroSample;
+    struct Dispatcher *fAudioAccessoryMagnetometerDispatcher;
+    double fAudioAccessoryMagnetometerUpdateInterval;
+    CDUnknownBlockType fAudioAccessoryMagnetometerHandler;
+    NSOperationQueue *fAudioAccessoryMagnetometerQueue;
+    struct Sample {
+        double timestamp;
+        CDStruct_03942939 magneticField;
+        unsigned long long sensorTime;
+        unsigned short sequenceNumber;
+        float temperature;
+    } fLatestAudioAccessoryMagnetometerSample;
     struct Dispatcher *fAudioAccessoryDeviceMotionDispatcher;
     struct Dispatcher *fAudioAccessoryDeviceMotionConfigDispatcher;
     double fAudioAccessoryDeviceMotionUpdateInterval;
@@ -43,6 +54,7 @@
     NSOperationQueue *fAudioAccessoryDeviceMotionStatusQueue;
     _Bool fAudioAccessoryAccelerometerAvailable;
     _Bool fAudioAccessoryGyroAvailable;
+    _Bool fAudioAccessoryMagnetometerAvailable;
     _Bool fAudioAccessoryDeviceMotionAvailable;
 }
 

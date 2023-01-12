@@ -6,8 +6,8 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SBFolder, SBFolderController, SBHAddWidgetSheetViewController, SBHCustomIconElement, SBHIconAnimationSettings, SBHIconImageCache, SBHIconManager, SBHWidget, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconListModel, SBIconListView, SBIconView, SBLeafIcon, SBNestingViewController, SBRootFolderController, SBRootFolderControllerConfiguration, SBRootFolderViewPageManagementLayoutManager, SBSApplicationShortcutItem, SBViewControllerTransitionContext, SBWidgetIcon, UIColor, UIStatusBar, UIStatusBarStyleRequest, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, _UIContextMenuStyle;
-@protocol BSInvalidatable, SBHIconRootViewProviding, SBHIconViewConfigurationInteraction, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewSnapshotProviding, SBLeafIconDataSource, SBRecycledViewsContainerProviding, SBViewControllerTransitionCoordinator, UIDragSession, UIDropSession, UIViewImplicitlyAnimating;
+@class INIntent, NSArray, NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, NSUUID, SBFloatingDockViewController, SBFolder, SBFolderController, SBHAddWidgetSheetViewController, SBHCustomIconElement, SBHIconAnimationSettings, SBHIconImageCache, SBHIconManager, SBHWidget, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconListModel, SBIconListView, SBIconView, SBLeafIcon, SBModalWidgetIntroductionHomeScreenPreview, SBNestingViewController, SBRootFolderController, SBRootFolderControllerConfiguration, SBRootFolderViewPageManagementLayoutManager, SBSApplicationShortcutItem, SBViewControllerTransitionContext, SBWidgetIcon, UIColor, UIStatusBar, UIStatusBarStyleRequest, UIView, UIViewController, UIViewPropertyAnimator, UIWindow, UIWindowScene, _UIContextMenuStyle;
+@protocol BSInvalidatable, SBHFeatureIntroductionProviding, SBHIconRootViewProviding, SBHIconViewConfigurationInteraction, SBIconDragPreview, SBIconDragPreviewContaining, SBIconViewSnapshotProviding, SBLeafIconDataSource, SBRecycledViewsContainerProviding, SBViewControllerTransitionCoordinator, UIDragSession, UIDropSession, UIViewImplicitlyAnimating;
 
 @protocol SBHIconManagerDelegate <NSObject>
 
@@ -16,6 +16,15 @@
 - (NSArray *)testSetupForIconManagerWidgetScrollTest:(SBHIconManager *)arg1;
 - (NSArray *)testSetupForIconManagerAddWidgetsToEachPage:(SBHIconManager *)arg1;
 - (NSArray *)testSetupForIconManagerWidgetScrollPerformanceTest:(SBHIconManager *)arg1;
+- (void)iconManagerDidAddOrRemoveWidgetIcon:(SBHIconManager *)arg1;
+- (NSArray *)libraryViewControllersForIconManager:(SBHIconManager *)arg1;
+- (_Bool)iconManager:(SBHIconManager *)arg1 isViewOnMainDisplayWindowScene:(UIView *)arg2;
+- (SBFloatingDockViewController *)iconManager:(SBHIconManager *)arg1 floatingDockViewControllerForViewController:(UIViewController *)arg2;
+- (SBFloatingDockViewController *)iconManager:(SBHIconManager *)arg1 floatingDockViewControllerForView:(UIView *)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 setTemporaryIntent:(INIntent *)arg2 forIconWithIdentifier:(NSString *)arg3 widgetUniqueIdentifier:(NSString *)arg4;
+- (void)iconManager:(SBHIconManager *)arg1 displayFeatureIntroductionItemIfUnlocked:(id <SBHFeatureIntroductionProviding>)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 displayFeatureIntroductionItem:(id <SBHFeatureIntroductionProviding>)arg2 atLocation:(unsigned long long)arg3;
+- (SBModalWidgetIntroductionHomeScreenPreview *)widgetIntroductionPreviewViewForIconManager:(SBHIconManager *)arg1;
 - (_Bool)iconManagerShouldShowWidgetIntroductionPopoverForDefaultWidgets:(SBHIconManager *)arg1;
 - (NSArray *)iconManager:(SBHIconManager *)arg1 willAddDefaultFirstPageWidgetsBasedOnPinnedWidgets:(NSArray *)arg2 suggestionWidgets:(NSArray *)arg3;
 - (NSArray *)fallbackDefaultFirstPageWidgetsForIconManager:(SBHIconManager *)arg1;
@@ -52,16 +61,15 @@
 - (_Bool)listsAllowRotatedLayoutForIconManager:(SBHIconManager *)arg1;
 - (NSArray *)iconManager:(SBHIconManager *)arg1 defaultAutomaticFavoriteIconIdentifiersWithMaximumCount:(unsigned long long)arg2;
 - (_Bool)iconManager:(SBHIconManager *)arg1 shouldAvoidPlacingIconOnFirstPage:(SBLeafIcon *)arg2;
-- (NSSet *)firstPageLeafIdentifiersForIconManager:(SBHIconManager *)arg1;
 - (NSDictionary *)defaultIconStateForIconManager:(SBHIconManager *)arg1;
 - (unsigned long long)maximumListCountForFoldersForIconManager:(SBHIconManager *)arg1;
 - (void)dismissOverlaysForIconManager:(SBHIconManager *)arg1;
-- (void)dismissLibraryOverlayForIconManager:(SBHIconManager *)arg1;
-- (void)presentLibraryOverlayForIconManager:(SBHIconManager *)arg1 animated:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
-- (void)presentLibraryOverlayForIconManager:(SBHIconManager *)arg1;
+- (void)dismissLibraryForIconManager:(SBHIconManager *)arg1 windowScene:(UIWindowScene *)arg2 animated:(_Bool)arg3;
+- (void)presentLibraryForIconManager:(SBHIconManager *)arg1 windowScene:(UIWindowScene *)arg2 animated:(_Bool)arg3;
 - (void)dismissTodayOverlayForIconManager:(SBHIconManager *)arg1;
 - (void)presentTodayOverlayForIconManager:(SBHIconManager *)arg1;
 - (_Bool)isFloatingDockVisibleForIconManager:(SBHIconManager *)arg1;
+- (_Bool)isFloatingDockSupportedForIconManager:(SBHIconManager *)arg1;
 - (UIColor *)iconManager:(SBHIconManager *)arg1 accessibilityTintColorForScreenRect:(struct CGRect)arg2;
 - (SBHIconAnimationSettings *)iconManager:(SBHIconManager *)arg1 animator:(SBHomeScreenIconTransitionAnimator *)arg2 animationSettingsForOperation:(unsigned long long)arg3 childViewController:(SBNestingViewController *)arg4;
 - (void)iconManagerDidSaveIconState:(SBHIconManager *)arg1;
@@ -92,7 +100,7 @@
 - (id <BSInvalidatable>)iconManager:(SBHIconManager *)arg1 wantsToHideStatusBarForFolderController:(SBFolderController *)arg2 animated:(_Bool)arg3;
 - (_Bool)iconManager:(SBHIconManager *)arg1 folderController:(SBFolderController *)arg2 canChangeCurrentPageIndexToIndex:(long long)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 didSpringLoadIconView:(SBIconView *)arg2;
-- (unsigned long long)iconManager:(SBHIconManager *)arg1 supportedMedusaShortcutActionsForIconView:(SBIconView *)arg2;
+- (unsigned long long)iconManager:(SBHIconManager *)arg1 supportedMultitaskingShortcutActionsForIconView:(SBIconView *)arg2;
 - (NSArray *)iconManager:(SBHIconManager *)arg1 applicationShortcutItemsForIconView:(SBIconView *)arg2;
 - (_Bool)iconManager:(SBHIconManager *)arg1 shouldActivateApplicationShortcutItem:(SBSApplicationShortcutItem *)arg2 atIndex:(unsigned long long)arg3 forIconView:(SBIconView *)arg4;
 - (void)iconManager:(SBHIconManager *)arg1 iconDropSessionDidEnter:(id <UIDropSession>)arg2;
@@ -100,7 +108,7 @@
 - (void)iconManager:(SBHIconManager *)arg1 didAddItemsToIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 willBeginIconDragWithUniqueIdentifier:(NSUUID *)arg2 numberOfDraggedItems:(unsigned long long)arg3;
 - (void)iconManagerIconDraggingDidChange:(SBHIconManager *)arg1;
-- (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForIconManager:(SBHIconManager *)arg1;
+- (UIWindow<SBIconDragPreviewContaining> *)windowForIconDragPreviewsForIconManager:(SBHIconManager *)arg1 forWindowScene:(UIWindowScene *)arg2;
 - (UIView<SBIconDragPreview> *)iconManager:(SBHIconManager *)arg1 dragPreviewForIconView:(SBIconView *)arg2;
 - (_Bool)iconManagerCanBeginIconDrags:(SBHIconManager *)arg1;
 - (id <SBRecycledViewsContainerProviding>)recycledViewsContainerProviderForIconManager:(SBHIconManager *)arg1;
@@ -131,6 +139,7 @@
 - (UIView *)iconManager:(SBHIconManager *)arg1 homeScreenContentViewForModalInteractionFromIconView:(SBIconView *)arg2;
 - (UIViewController *)iconManager:(SBHIconManager *)arg1 containerViewControllerForModalInteractionFromIconView:(SBIconView *)arg2;
 - (void)iconManager:(SBHIconManager *)arg1 iconView:(SBIconView *)arg2 configurationDidEndWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg3;
+- (void)iconManager:(SBHIconManager *)arg1 iconView:(SBIconView *)arg2 configurationWillEndWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 iconView:(SBIconView *)arg2 configurationWillBeginWithInteraction:(id <SBHIconViewConfigurationInteraction>)arg3;
 - (UIView *)iconManager:(SBHIconManager *)arg1 homeScreenContentViewForConfigurationOfIconView:(SBIconView *)arg2;
 - (struct CGRect)iconManager:(SBHIconManager *)arg1 contentBoundingRectForConfigurationOfIconView:(SBIconView *)arg2;
@@ -159,6 +168,7 @@
 - (_Bool)isEditingAllowedForIconManager:(SBHIconManager *)arg1;
 - (_Bool)isIconContentPossiblyVisibleOverApplicationForIconManager:(SBHIconManager *)arg1;
 - (_Bool)isRootFolderContentVisibleForIconManager:(SBHIconManager *)arg1;
+- (unsigned long long)possibleInterfaceOrientationsForIconManager:(SBHIconManager *)arg1;
 - (unsigned long long)allowedInterfaceOrientationsForIconManager:(SBHIconManager *)arg1;
 - (long long)interfaceOrientationForIconManager:(SBHIconManager *)arg1;
 - (void)iconManager:(SBHIconManager *)arg1 didCreateRootViewController:(UIViewController<SBHIconRootViewProviding> *)arg2;

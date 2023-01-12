@@ -7,9 +7,8 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (SHError)
-@property(readonly, nonatomic) _Bool sh_isInternalMatchAttemptRejected;
-@property(readonly, nonatomic) _Bool sh_isInternalDaemonExit;
-@property(readonly, nonatomic) _Bool sh_isShazamKitInternalError;
+@property(readonly, nonatomic) _Bool sh_isMediaLibraryError;
+@property(readonly, nonatomic) _Bool sh_isInternalError;
 @property(readonly, nonatomic) _Bool sh_isMediaLibrarySyncFailed;
 @property(readonly, nonatomic) _Bool sh_isCustomCatalogInvalidURL;
 @property(readonly, nonatomic) _Bool sh_isCustomCatalogInvalid;

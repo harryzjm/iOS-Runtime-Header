@@ -19,14 +19,15 @@
 + (id)defaultsOnlyStrokeLayerStack;
 + (id)strokeLayerStack;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isDefaultsOnly; // @synthesize isDefaultsOnly=_isDefaultsOnly;
 @property(retain, nonatomic) TSTMutableStrokeLayer *spillStrokeLayer; // @synthesize spillStrokeLayer=_spillStrokeLayer;
 @property(retain, nonatomic) TSTMutableStrokeLayer *dynamicStrokeLayer; // @synthesize dynamicStrokeLayer=_dynamicStrokeLayer;
 @property(retain, nonatomic) TSTMutableStrokeLayer *clearedStrokeLayer; // @synthesize clearedStrokeLayer=_clearedStrokeLayer;
 @property(retain, nonatomic) TSTStrokeLayer *customStrokeLayer; // @synthesize customStrokeLayer=_customStrokeLayer;
 @property(retain, nonatomic) TSTStrokeLayer *defaultStrokeLayer; // @synthesize defaultStrokeLayer=_defaultStrokeLayer;
+@property(readonly, nonatomic) _Bool isDefaultsOnly; // @synthesize isDefaultsOnly=_isDefaultsOnly;
 - (unsigned long long)count;
-- (id)p_strokeLayerEnumeration;
+- (vector_7cb30fb3)p_strokeLayerVector;
+- (CDStruct_d10438cc)stackReferences;
 - (void)invalidateSpillStrokes;
 - (void)invalidateDynamicStrokesInRange:(struct TSTSimpleRange)arg1;
 - (void)invalidateDynamicStrokes;

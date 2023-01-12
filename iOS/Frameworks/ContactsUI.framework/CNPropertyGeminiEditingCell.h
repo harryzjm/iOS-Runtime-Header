@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
-#import <ContactsUI/CNUIGeminiDataSourceDelegate-Protocol.h>
-
 @class CNGeminiPickerController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGeminiEditingCell <CNPickerControllerDelegate, CNUIGeminiDataSourceDelegate>
+@interface CNPropertyGeminiEditingCell
 {
     CNGeminiPickerController *_geminiPicker;
 }

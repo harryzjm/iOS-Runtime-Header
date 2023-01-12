@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_TVShelfViewLayout.h"
+
 __attribute__((visibility("hidden")))
-@interface _TVMLShelfViewLayout
+@interface _TVMLShelfViewLayout : _TVShelfViewLayout
 {
     double _showcaseFactor;
     double _cachedTallestHeaderHeight;

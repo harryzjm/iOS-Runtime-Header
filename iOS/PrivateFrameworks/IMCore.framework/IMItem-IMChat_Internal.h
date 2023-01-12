@@ -14,6 +14,7 @@
 - (void)_setInvitation:(_Bool)arg1;
 - (id)_otherHandle;
 - (id)_senderHandle;
+- (id)_imHandleWithID:(id)arg1;
 - (void)_refreshContextWithAccountHandles;
 - (id)_serviceWithInternalName:(id)arg1;
 - (id)_accountController;
@@ -24,6 +25,8 @@
 - (id)_service;
 - (id)_newChatItems;
 - (_Bool)_hasMessageChatItem;
+- (_Bool)isCancelTypingMessage;
+- (_Bool)isIncomingTypingMessage;
 - (_Bool)isIncomingTypingOrCancelTypingMessage;
 - (_Bool)isTypingOrCancelTypingMessage;
 @end

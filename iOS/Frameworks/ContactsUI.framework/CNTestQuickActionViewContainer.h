@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNContactQuickActionViewContainer-Protocol.h>
-
 @class NSDictionary, NSString, UITraitCollection;
 
 __attribute__((visibility("hidden")))
-@interface CNTestQuickActionViewContainer : NSObject <CNContactQuickActionViewContainer>
+@interface CNTestQuickActionViewContainer : NSObject
 {
     NSDictionary *_actionViewsByActionType;
 }

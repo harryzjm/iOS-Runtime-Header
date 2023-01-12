@@ -9,7 +9,7 @@
 @class AVPlayerItem, NSDictionary, NSURL, PXDisplayAssetVideoContentProviderRequest;
 
 @protocol PXDisplayAssetVideoContentProviderRequestDelegate <NSObject>
-- (void)request:(PXDisplayAssetVideoContentProviderRequest *)arg1 didFinishWithPlayerItem:(AVPlayerItem *)arg2 videoURL:(NSURL *)arg3 downloadedTimeRange:(CDStruct_e83c9415)arg4 info:(NSDictionary *)arg5;
+- (void)request:(PXDisplayAssetVideoContentProviderRequest *)arg1 didFinishWithPlayerItem:(AVPlayerItem *)arg2 videoURL:(NSURL *)arg3 downloadedTimeRange:(CDStruct_3c1748cc)arg4 info:(NSDictionary *)arg5;
 - (void)requestLoadingProgressDidChange:(PXDisplayAssetVideoContentProviderRequest *)arg1;
 @end
 

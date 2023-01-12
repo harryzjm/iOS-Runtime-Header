@@ -6,13 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AuthenticationServices/ASAccountAuthenticationModificationServiceViewControllerProtocol-Protocol.h>
-#import <AuthenticationServices/_ASAccountAuthenticationModificationHostViewControllerDelegate-Protocol.h>
-
 @class ASCredentialServiceIdentifier, ASPasswordCredential, NSString, _ASAccountAuthenticationModificationHostViewController;
 
 __attribute__((visibility("hidden")))
-@interface ASAccountAuthenticationModificationServiceViewController : UIViewController <_ASAccountAuthenticationModificationHostViewControllerDelegate, ASAccountAuthenticationModificationServiceViewControllerProtocol>
+@interface ASAccountAuthenticationModificationServiceViewController : UIViewController
 {
     _ASAccountAuthenticationModificationHostViewController *_accountModificationHostViewController;
     _Bool _isPerformingAppInitiatedUpgrade;
@@ -34,9 +31,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_ensureHostHasAccountModificationEntitlement;
 - (void)_findExtensionSupportingUpgrade:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateCredential:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;
-- (void)updateCredential:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;
+- (void)updateCredential:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extensionUUID:(id)arg4;
 - (void)_upgradeCredentialToSignInWithApple:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;
-- (void)upgradeCredentialToSignInWithApple:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extension:(id)arg4;
+- (void)upgradeCredentialToSignInWithApple:(id)arg1 forServiceIdentifier:(id)arg2 userInfo:(id)arg3 extensionUUID:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

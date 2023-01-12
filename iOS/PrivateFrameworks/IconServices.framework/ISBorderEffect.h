@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISEffect-Protocol.h>
-
 @class IFColor, NSString;
 
 __attribute__((visibility("hidden")))
-@interface ISBorderEffect : NSObject <ISEffect>
+@interface ISBorderEffect : NSObject
 {
     IFColor *_color;
     double _lineWidth;

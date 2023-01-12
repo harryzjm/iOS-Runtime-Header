@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventDetailCell.h"
+
 @class NSArray, NSObject, UIButton, UIListContentView, UIView;
 @protocol ConferenceCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailConferenceCell
+@interface EKEventDetailConferenceCell : EKEventDetailCell
 {
     UIButton *_openURLButton;
     UIButton *_shareButton;

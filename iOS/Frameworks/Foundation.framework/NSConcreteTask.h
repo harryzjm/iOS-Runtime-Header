@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSTask.h"
+
 @class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface NSConcreteTask
+@interface NSConcreteTask : NSTask
 {
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_dictionary;

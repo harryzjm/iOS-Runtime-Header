@@ -14,6 +14,7 @@
 - (void)removeRecordsWithZoneID:(CKRecordZoneID *)arg1;
 - (void)removeRecordWithID:(CKRecordID *)arg1;
 - (void)addRecord:(CKRecord *)arg1;
+- (CKRecord *)recordWithID:(CKRecordID *)arg1;
 - (NSArray *)recordsWithZoneID:(CKRecordZoneID *)arg1;
 @end
 

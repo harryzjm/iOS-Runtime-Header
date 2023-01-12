@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/_LSQueryResolving-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _LSLocalQueryResolver : NSObject <_LSQueryResolving>
+@interface _LSLocalQueryResolver : NSObject
 {
 }
 

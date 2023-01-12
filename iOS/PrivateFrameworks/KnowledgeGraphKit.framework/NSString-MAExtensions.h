@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <KnowledgeGraphKit/MAPropertyTypeProtocol-Protocol.h>
-
-@interface NSString (MAExtensions) <MAPropertyTypeProtocol>
+@interface NSString (MAExtensions)
 - (id)ma_normalizedString;
 @property(readonly) long long matissePropertyType;
 

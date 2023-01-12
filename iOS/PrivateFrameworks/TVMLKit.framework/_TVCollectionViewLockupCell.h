@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAuxiliaryViewSelecting-Protocol.h>
+#import "TVContainerCollectionViewCell.h"
 
 @class NSString, UIView;
 @protocol TVAuxiliaryViewSelecting, TVCollectionViewLockupCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _TVCollectionViewLockupCell <TVAuxiliaryViewSelecting>
+@interface _TVCollectionViewLockupCell : TVContainerCollectionViewCell
 {
     _Bool _pressIsAnimating;
     UIView<TVAuxiliaryViewSelecting> *__selectingView;

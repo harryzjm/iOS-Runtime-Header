@@ -6,9 +6,12 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAppLayout, SBAppSwitcherReusableSnapshotView;
+@class FBSDisplayIdentity, SBAppLayout, SBAppSwitcherReusableSnapshotView;
+@protocol SBApplicationSceneHandleProviding;
 
 @protocol SBAppSwitcherReusableSnapshotViewDelegate <NSObject>
+- (FBSDisplayIdentity *)displayIdentityForSnapshotView:(SBAppSwitcherReusableSnapshotView *)arg1;
+- (id <SBApplicationSceneHandleProviding>)sceneHandleProviderForSnapshotView:(SBAppSwitcherReusableSnapshotView *)arg1;
 - (_Bool)snapshotView:(SBAppSwitcherReusableSnapshotView *)arg1 isInsetForHomeAffordanceForAppLayout:(SBAppLayout *)arg2;
 - (_Bool)snapshotView:(SBAppSwitcherReusableSnapshotView *)arg1 shouldShowAppClipOverlayForLayout:(SBAppLayout *)arg2;
 - (struct CGRect)layoutFrameForItemWithRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 interfaceOrientation:(long long)arg3 forSnapshotView:(SBAppSwitcherReusableSnapshotView *)arg4;

@@ -10,7 +10,7 @@
 @protocol PLCreateFromSearchableItem;
 
 @protocol PLCreateFromSearchableItem <NSObject>
-+ (id <PLCreateFromSearchableItem>)createOrUpdateObjectFromSearchableItem:(CSSearchableItem *)arg1 library:(PLPhotoLibrary *)arg2 createIfNeeded:(_Bool)arg3 didCreate:(_Bool *)arg4 error:(id *)arg5;
++ (id <PLCreateFromSearchableItem>)createOrUpdateObjectFromSearchableItem:(CSSearchableItem *)arg1 library:(PLPhotoLibrary *)arg2 createIfNeeded:(_Bool)arg3 didCreate:(_Bool *)arg4 isSyndicatable:(_Bool *)arg5 error:(id *)arg6;
 - (NSString *)uuid;
 @end
 

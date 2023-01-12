@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface GEORouteHypothesizerAnalyticsStore : NSObject <NSSecureCoding>
+@interface GEORouteHypothesizerAnalyticsStore : NSObject
 {
     double _observedEarlyDeltaFromRequiredTimeToLeave;
     double _observedLateDeltaFromRequiredTimeToLeave;

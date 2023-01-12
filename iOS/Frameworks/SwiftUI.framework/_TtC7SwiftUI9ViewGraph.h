@@ -22,7 +22,6 @@
     MISSING_TYPE *_rootGeometry;
     MISSING_TYPE *_position;
     MISSING_TYPE *_dimensions;
-    MISSING_TYPE *_updateSeed;
     MISSING_TYPE *_gestureTime;
     MISSING_TYPE *_gestureEvents;
     MISSING_TYPE *_inheritedPhase;

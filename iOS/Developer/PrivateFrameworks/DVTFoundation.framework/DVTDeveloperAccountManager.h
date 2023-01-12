@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTDeveloperProfileAccountProvider-Protocol.h>
-
 @class DVTDispatchLock, NSMutableArray, NSOrderedSet, NSString;
 
-@interface DVTDeveloperAccountManager : NSObject <DVTDeveloperProfileAccountProvider>
+@interface DVTDeveloperAccountManager : NSObject
 {
     NSMutableArray *_accountObservers;
     DVTDispatchLock *_accountsLock;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/UITextViewDelegate-Protocol.h>
+#import "EKEventDetailCell.h"
 
 @class NSString, NSURL, SGSuggestedEventLaunchInfo, UILabel, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailURLCell <UITextViewDelegate>
+@interface EKEventDetailURLCell : EKEventDetailCell
 {
     UILabel *_URLTitleView;
     UITextView *_URLView;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)updateLinkWithURL;
 - (_Bool)updateLink;
 - (_Bool)update;
+- (void)updateWithURL:(id)arg1 launchInfo:(id)arg2;
 - (id)initWithEvent:(id)arg1 launchInfo:(id)arg2 editable:(_Bool)arg3 style:(long long)arg4;
 - (id)initWithEvent:(id)arg1 url:(id)arg2 editable:(_Bool)arg3 style:(long long)arg4;
 

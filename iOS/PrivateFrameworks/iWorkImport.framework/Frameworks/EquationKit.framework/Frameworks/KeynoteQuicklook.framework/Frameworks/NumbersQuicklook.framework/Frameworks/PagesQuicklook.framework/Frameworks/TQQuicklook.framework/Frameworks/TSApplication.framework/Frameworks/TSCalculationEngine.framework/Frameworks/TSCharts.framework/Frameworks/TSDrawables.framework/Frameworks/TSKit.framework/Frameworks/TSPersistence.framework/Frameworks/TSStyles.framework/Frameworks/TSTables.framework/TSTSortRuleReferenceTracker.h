@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSCEFormulaOwning-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSCETrackedReferenceStore, TSTTableInfo;
 
-@interface TSTSortRuleReferenceTracker : NSObject <TSCEFormulaOwning>
+@interface TSTSortRuleReferenceTracker : NSObject
 {
     struct TSKUIDStruct _ownerUID;
     struct TSKUIDStruct _baseTableUID;

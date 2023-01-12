@@ -4,12 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct AudioObjectPropertyAddress {
@@ -18,69 +12,42 @@ struct AudioObjectPropertyAddress {
     unsigned int _field3;
 };
 
-struct Client_Side_IO_Gateway;
-
-struct Device_Token {
-    unsigned int _field1;
+struct DSP_Host_IOProcessor {
+    CDUnknownFunctionPointerType *_field1;
 };
 
-struct HAL_Server_Lifetime_Events;
-
-struct Object_ID_Map;
-
-struct PropertyAddress {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
+struct function<void (const AudioObjectPropertyAddress &)> {
+    struct __value_func<void (const AudioObjectPropertyAddress &)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
 };
 
-struct Property_Identity {
-    unsigned int _field1;
-    struct PropertyAddress _field2;
-    struct Device_Token _field3;
-    struct Server_Side_Client_Identity _field4;
+struct function<void (const DSP_Host_Types::MutationRequestConfiguration &)> {
+    struct __value_func<void (const DSP_Host_Types::MutationRequestConfiguration &)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
 };
 
-struct Server_Side_Client_Identity {
-    int _field1;
-};
-
-struct Transport_Token {
-    unsigned int _field1;
-};
-
-struct __shared_weak_count;
-
-struct shared_ptr<Client_Side_IO_Gateway> {
-    struct Client_Side_IO_Gateway *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<HAL::Client::Object_ID_Map> {
-    struct Object_ID_Map *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct weak_ptr<HAL_Server_Lifetime_Events> {
-    struct HAL_Server_Lifetime_Events *__ptr_;
-    struct __shared_weak_count *__cntrl_;
+struct type {
+    unsigned char __lx[24];
 };
 
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct shared_ptr<Client_Side_IO_Gateway> {
-    struct Client_Side_IO_Gateway *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_6f98d2b6;
+typedef struct function<void (const AudioObjectPropertyAddress &)> {
+    struct __value_func<void (const AudioObjectPropertyAddress &)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+} function_ccfdac16;
 
-typedef struct shared_ptr<HAL::Client::Object_ID_Map> {
-    struct Object_ID_Map *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_a1e71f47;
-
-typedef struct weak_ptr<HAL_Server_Lifetime_Events> {
-    struct HAL_Server_Lifetime_Events *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} weak_ptr_7745b585;
+typedef struct function<void (const DSP_Host_Types::MutationRequestConfiguration &)> {
+    struct __value_func<void (const DSP_Host_Types::MutationRequestConfiguration &)> {
+        struct type __buf_;
+        void *__f_;
+    } __f_;
+} function_e54bf51c;
 

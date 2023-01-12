@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class _CDSnapshot;
 
 __attribute__((visibility("hidden")))
-@interface NSSQLRow <NSCopying>
+@interface NSSQLRow
 {
     _CDSnapshot *_snapshot;
 }

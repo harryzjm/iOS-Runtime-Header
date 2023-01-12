@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UIStatusBarItem.h"
+
 @class NSLayoutConstraint, _UIStatusBarDisplayableContainerView, _UIStatusBarImageView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarDualIndicatorItem
+@interface _UIStatusBarDualIndicatorItem : _UIStatusBarItem
 {
     double _itemSpacing;
     double _additionRemovalScale;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPEntityPropertyTranslator-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPMediaRemoteEntityPropertyTranslator : NSObject <MPEntityPropertyTranslator>
+@interface _MPMediaRemoteEntityPropertyTranslator : NSObject
 {
     NSString *_keyPath;
     CDUnknownBlockType _valueTransformBlock;

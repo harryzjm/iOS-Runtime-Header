@@ -6,12 +6,10 @@
 
 #import <UIKit/UIControl.h>
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSMutableArray, NSString, SKUIGiftConfiguration, UITextField, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftAmountControl : UIControl <UITextFieldDelegate>
+@interface SKUIGiftAmountControl : UIControl
 {
     NSMutableArray *_amountButtons;
     UIView *_customAmountBackgroundView;
@@ -31,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)textFieldShouldBeginEditing:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)setBackgroundColor:(id)arg1;
+- (void)_layoutForPhone;
+- (void)_layoutForPad;
 - (void)layoutSubviews;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

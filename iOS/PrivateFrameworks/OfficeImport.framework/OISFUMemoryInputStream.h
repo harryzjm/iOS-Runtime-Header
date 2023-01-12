@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OISFUBufferedInputStream-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OISFUMemoryInputStream : NSObject <OISFUBufferedInputStream>
+@interface OISFUMemoryInputStream : NSObject
 {
     NSData *mData;
     const char *mStart;

@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SBSRemoteContentAlert;
+
 @protocol SBSRemoteContentHostInterface
+- (void)presentAlert:(SBSRemoteContentAlert *)arg1 replyBlock:(void (^)(SBSRemoteContentAlertAction *))arg2;
 - (void)getContentBoundsWithReplyBlock:(void (^)(NSObject<OS_xpc_object> *))arg1;
 - (void)didChangeStyle;
 @end

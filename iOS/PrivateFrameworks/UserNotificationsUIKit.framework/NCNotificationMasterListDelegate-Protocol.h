@@ -6,10 +6,12 @@
 
 #import <UserNotificationsUIKit/NCNotificationListComponentDelegate-Protocol.h>
 
-@class NCNotificationMasterList, NCNotificationRequest, NSArray, UIScrollView;
+@class NCNotificationMasterList, NCNotificationRequest, NSArray, UIScrollView, UIView;
 
 @protocol NCNotificationMasterListDelegate <NCNotificationListComponentDelegate>
-- (void)notificationMasterListRequestsPresentingNotificationDigestOnboardingPlatter:(NCNotificationMasterList *)arg1;
+- (void)notificationMasterList:(NCNotificationMasterList *)arg1 requestsPresentingFocusActivityPickerFromView:(UIView *)arg2;
+- (void)notificationMasterList:(NCNotificationMasterList *)arg1 didUpdateOverlayFooterContentVisibility:(_Bool)arg2;
+- (void)notificationMasterListWillExpandNotificationListCount:(NCNotificationMasterList *)arg1;
 - (_Bool)notificationMasterList:(NCNotificationMasterList *)arg1 shouldFilterNotificationRequest:(NCNotificationRequest *)arg2;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 scrollViewWillEndDragging:(UIScrollView *)arg2 withVelocity:(struct CGPoint)arg3 targetContentOffset:(inout struct CGPoint *)arg4;
 - (void)notificationMasterList:(NCNotificationMasterList *)arg1 scrollViewDidScroll:(UIScrollView *)arg2;

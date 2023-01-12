@@ -6,20 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSPurchaseBagConsumer : NSObject <AMSBagConsumer>
+@interface AMSPurchaseBagConsumer : NSObject
 {
 }
 
-+ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
 + (id)createBagForSubProfile;
 + (id)bagSubProfileVersion;
 + (id)bagSubProfile;
-+ (id)bagKeySet;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

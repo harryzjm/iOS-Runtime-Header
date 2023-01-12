@@ -9,6 +9,7 @@
 @class NSString;
 
 @protocol SXAction <NSObject>
+@property(nonatomic, readonly) id analytics;
 @property(nonatomic, readonly) NSString *type;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudServices/SRPClientRequest-Protocol.h>
-
 @class NSDictionary, NSString, SecureBackup;
 
-@interface SRPInit : NSObject <SRPClientRequest>
+@interface SRPInit : NSObject
 {
     NSString *_recordLabel;
     NSDictionary *_escrowRecord;

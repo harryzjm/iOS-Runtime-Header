@@ -6,22 +6,22 @@
 
 #import <Foundation/NSDateInterval.h>
 
-#import <HealthKit/HKDateInterval-Protocol.h>
-#import <HealthKit/_HKDateBounded-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface NSDateInterval (HealthKit) <HKDateInterval, _HKDateBounded>
+@interface NSDateInterval (HealthKit)
 + (id)hk_dateIntervalForDayFromDate:(id)arg1 calendar:(id)arg2;
 + (id)hk_dateIntervalWithAnchor:(id)arg1 startOffset:(double)arg2 endOffset:(double)arg3;
 + (id)hk_instantaneousDateIntervalWithDate:(id)arg1;
 + (id)hk_dateIntervalWithStart:(double)arg1 end:(double)arg2;
 + (id)hk_allTime;
-+ (id)hk_sleepDayIntervalForMorningIndexRange:(CDStruct_ef5fcbe6)arg1 calendar:(id)arg2;
++ (id)hk_sleepWeekIntervalForMorningIndex:(long long)arg1 calendar:(id)arg2;
++ (id)hk_sleepDayIntervalForMorningIndexRange:(CDStruct_912cb5d2)arg1 calendar:(id)arg2;
 + (id)hk_sleepDayIntervalForMorningIndex:(long long)arg1 calendar:(id)arg2;
 - (id)hk_prettyString;
 - (_Bool)hk_containsTime:(double)arg1;
 - (_Bool)hk_intersectsDateIntervalWithStartDate:(id)arg1 endDate:(id)arg2;
+- (id)_hk_dateForYearMonthDayComponents:(id)arg1 hourMinuteSecondComponents:(id)arg2 calendar:(id)arg3;
+- (id)hk_dateIntervalByMappingToSleepDayWithMorningIndex:(long long)arg1 calendar:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

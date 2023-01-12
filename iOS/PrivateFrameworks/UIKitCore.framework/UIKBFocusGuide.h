@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIFocusGuide.h"
+
 @protocol UIKBFocusGuideDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBFocusGuide
+@interface UIKBFocusGuide : UIFocusGuide
 {
     unsigned long long focusHeading;
     id <UIKBFocusGuideDelegate> _keyboardDelegate;
 }
 
-@property(nonatomic) id <UIKBFocusGuideDelegate> keyboardDelegate; // @synthesize keyboardDelegate=_keyboardDelegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIKBFocusGuideDelegate> keyboardDelegate; // @synthesize keyboardDelegate=_keyboardDelegate;
 @property(nonatomic) unsigned long long focusHeading; // @synthesize focusHeading;
+- (id)description;
 - (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;
 - (_Bool)_ignoresSpeedBumpEdges;
-- (double)_focusPriority;
+- (float)_focusPriority;
 - (_Bool)_isUnclippable;
 - (_Bool)_isUnoccludable;
 - (void)_didUpdateFocusToPreferredFocusedView;

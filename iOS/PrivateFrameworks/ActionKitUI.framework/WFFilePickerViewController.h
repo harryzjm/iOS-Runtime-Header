@@ -6,17 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ActionKitUI/UISearchControllerDelegate-Protocol.h>
-#import <ActionKitUI/UISearchResultsUpdating-Protocol.h>
-#import <ActionKitUI/WFRemoteFileListViewDelegate-Protocol.h>
-#import <ActionKitUI/WFRemoteFileStatusViewDelegate-Protocol.h>
-#import <ActionKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
-
 @class NSArray, NSError, NSMutableOrderedSet, NSString, UISearchController, WFRemoteFileListView, WFRemoteFileStatusView;
 @protocol WFFileStorageService;
 
 __attribute__((visibility("hidden")))
-@interface WFFilePickerViewController : UIViewController <UISearchControllerDelegate, UISearchResultsUpdating, WFRemoteFileListViewDelegate, WFRemoteFileStatusViewDelegate, _UIContextMenuInteractionDelegate>
+@interface WFFilePickerViewController : UIViewController
 {
     _Bool _hideSearchBar;
     _Bool _allowsMultipleSelection;
@@ -52,10 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)didDismissSearchController:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
-- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
-- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (_Bool)fileListView:(id)arg1 shouldSelectFile:(id)arg2;
 - (_Bool)fileListView:(id)arg1 shouldDisplayCheckmarkForFile:(id)arg2;
 - (void)fileListView:(id)arg1 didSelectFile:(id)arg2;
@@ -63,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)navigateToSubdirectoryAtPath:(id)arg1;
 - (_Bool)caseInsensitiveArray:(id)arg1 isEqualToArray:(id)arg2;
 - (void)updateToolbar;
+- (void)setStatusViewToEmpty;
 - (void)updateStatusViewAnimated:(_Bool)arg1;
 - (void)loadFiles;
 - (void)finish;

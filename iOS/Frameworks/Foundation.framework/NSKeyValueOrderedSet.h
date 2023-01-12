@@ -6,12 +6,10 @@
 
 #import <Foundation/NSOrderedSet.h>
 
-#import <Foundation/NSKeyValueProxyCaching-Protocol.h>
-
 @class NSKeyValueNonmutatingOrderedSetMethodSet, NSObject, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSKeyValueOrderedSet : NSOrderedSet <NSKeyValueProxyCaching>
+@interface NSKeyValueOrderedSet : NSOrderedSet
 {
     NSObject *_container;
     NSString *_key;

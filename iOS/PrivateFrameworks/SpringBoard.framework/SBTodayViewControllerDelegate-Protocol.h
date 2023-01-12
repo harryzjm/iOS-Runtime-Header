@@ -11,7 +11,6 @@
 @protocol SBTodayViewControllerDelegate <NSObject>
 - (_Bool)isTodayViewRotating:(SBTodayViewController *)arg1;
 - (void)todayViewDidAppear:(SBTodayViewController *)arg1;
-- (void)todayViewControllerDidChangeHeaderVisibility:(SBTodayViewController *)arg1;
 - (void)todayViewControllerWillPresentSpotlight:(SBTodayViewController *)arg1;
 - (void)todayViewWantsToEndEditing:(SBTodayViewController *)arg1;
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreHaptics/CHHapticParameterAttributes-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CHHapticParameterAttributesImpl : NSObject <CHHapticParameterAttributes>
+@interface CHHapticParameterAttributesImpl : NSObject
 {
     float _minValue;
     float _maxValue;

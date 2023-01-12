@@ -7,8 +7,11 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (PKUIUtilities)
++ (id)pkui_colorWithHexString:(id)arg1;
++ (id)pkui_blendFromColor:(id)arg1 toColor:(id)arg2 withProgress:(double)arg3;
 + (id)pkui_osloErrorColor;
 + (id)colorWithPKColor:(id)arg1;
+- (id)pkui_extendedLinearColor;
 - (id)pkui_linearColor;
 @end
 

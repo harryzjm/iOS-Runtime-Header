@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSCharts/TSKStyleMapper-Protocol.h>
-
 @class NSString;
 @protocol TSKStyleMapper;
 
-@interface TSCHStyleMapper : NSObject <TSKStyleMapper>
+@interface TSCHStyleMapper : NSObject
 {
     id <TSKStyleMapper> _underlyingMapper;
     _Bool _forceMatchStyle;

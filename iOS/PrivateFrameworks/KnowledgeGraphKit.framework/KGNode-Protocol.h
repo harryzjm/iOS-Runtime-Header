@@ -6,9 +6,9 @@
 
 #import <KnowledgeGraphKit/KGElement-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class NSDictionary, NSSet;
 
 @protocol KGNode <KGElement>
-- (id)initWithIdentifier:(unsigned long long)arg1 labels:(NSArray *)arg2 weight:(float)arg3 properties:(NSDictionary *)arg4;
+- (id)initWithIdentifier:(unsigned long long)arg1 labels:(NSSet *)arg2 properties:(NSDictionary *)arg3;
 @end
 

@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MTLSimDriver/MTLBufferSPI-Protocol.h>
-#import <MTLSimDriver/MTLSerializerBuffer-Protocol.h>
-#import <MTLSimDriver/MTLSerializerResource-Protocol.h>
-
 @class NSString;
 @protocol MTLDevice, MTLHeap;
 
 __attribute__((visibility("hidden")))
-@interface MTLSimBuffer <MTLSerializerBuffer, MTLSerializerResource, MTLBufferSPI>
+@interface MTLSimBuffer
 {
     unsigned int _bufferRef;
     void *_content;
@@ -24,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly) struct __IOSurface *iosurface; // @synthesize iosurface=_iosurface;
+- (struct __IOSurface *)_aneIOSurface;
 - (id)newLinearTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4;
 - (void)removeAllDebugMarkers;
 - (void)didModifyRange:(struct _NSRange)arg1;
@@ -32,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3;
 - (id)newRemoteBufferViewForDevice:(id)arg1;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
+@property(readonly) unsigned long long gpuAddress; // @synthesize gpuAddress=_gpuAddress;
 - (id)formattedDescription:(unsigned long long)arg1;
 @property(readonly) unsigned int bufferRef;
 @property(readonly) unsigned long long length; // @dynamic length;

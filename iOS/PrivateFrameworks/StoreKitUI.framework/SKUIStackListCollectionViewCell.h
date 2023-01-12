@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
-
 @class NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIStackListCollectionViewCell <SKUIViewElementView>
+@interface SKUIStackListCollectionViewCell
 {
     unsigned long long _alignment;
     NSMapTable *_listViews;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoftwareUpdateServices/BSInvalidatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SUKeybagPreventLockAssertion : NSObject <BSInvalidatable>
+@interface SUKeybagPreventLockAssertion : NSObject
 {
     _Bool _invalidated;
 }

@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CHRecognizer;
-
 @interface CHCandidateRefinementStep
 {
     _Bool _shouldKeepOutOfPatternCandidates;
@@ -14,7 +12,6 @@
     _Bool _shouldKeepAlternativeLengths;
     _Bool _shouldKeepSubstrings;
     _Bool _shouldKeepOriginalSpelling;
-    CHRecognizer *_recognizer;
 }
 
 @property(nonatomic) _Bool shouldKeepOriginalSpelling; // @synthesize shouldKeepOriginalSpelling=_shouldKeepOriginalSpelling;
@@ -23,9 +20,8 @@
 @property(nonatomic) _Bool shouldKeepOutOfLexiconAlternatives; // @synthesize shouldKeepOutOfLexiconAlternatives=_shouldKeepOutOfLexiconAlternatives;
 @property(nonatomic) _Bool shouldKeepDuplicateTokenIDs; // @synthesize shouldKeepDuplicateTokenIDs=_shouldKeepDuplicateTokenIDs;
 @property(nonatomic) _Bool shouldKeepOutOfPatternCandidates; // @synthesize shouldKeepOutOfPatternCandidates=_shouldKeepOutOfPatternCandidates;
-@property(nonatomic) CHRecognizer *recognizer; // @synthesize recognizer=_recognizer;
-- (id)process:(id)arg1;
-- (id)initWithRecognizer:(id)arg1 shouldKeepOutOfPatternCandidates:(_Bool)arg2 shouldKeepDuplicateTokenIDs:(_Bool)arg3 shouldKeepOutOfLexiconAlternatives:(_Bool)arg4 shouldKeepAlternativeLengths:(_Bool)arg5 shouldKeepSubstrings:(_Bool)arg6 shouldKeepOriginalSpelling:(_Bool)arg7;
+- (id)process:(id)arg1 options:(id)arg2;
+- (id)initWithShouldKeepOutOfPatternCandidates:(_Bool)arg1 shouldKeepDuplicateTokenIDs:(_Bool)arg2 shouldKeepOutOfLexiconAlternatives:(_Bool)arg3 shouldKeepAlternativeLengths:(_Bool)arg4 shouldKeepSubstrings:(_Bool)arg5 shouldKeepOriginalSpelling:(_Bool)arg6;
 
 @end
 

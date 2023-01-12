@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthToolbox/HKActivitySummaryDataProviderObserver-Protocol.h>
-
 @class HKActivitySummaryDataProvider, NSString, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDActivityQueryTestController : NSObject <HKActivitySummaryDataProviderObserver>
+@interface WDActivityQueryTestController : NSObject
 {
     WDProfile *_profile;
     HKActivitySummaryDataProvider *_provider;

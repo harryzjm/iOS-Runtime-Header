@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCVideoStreamRateControlProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamNOWRDLossEventRateControl : NSObject <VCVideoStreamRateControlProtocol>
+@interface VCVideoStreamNOWRDLossEventRateControl : NSObject
 {
     double _packetLossRate;
     double _roundTripTime;

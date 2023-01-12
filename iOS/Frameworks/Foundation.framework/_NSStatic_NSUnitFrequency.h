@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSUnitFrequency.h"
+
 __attribute__((visibility("hidden")))
-@interface _NSStatic_NSUnitFrequency
+@interface _NSStatic_NSUnitFrequency : NSUnitFrequency
 {
 }
 

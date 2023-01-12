@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_cachedPredictionsDictionary;
 }
 
+@property(readonly, nonatomic) PRNLPLanguageModel *languageModel; // @synthesize languageModel=_languageModel;
 - (void)dealloc;
 - (void)enumeratePredictions:(unsigned long long)arg1 maxTokensPerPrediction:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)conditionalProbabilityDictionaryForStrings:(id)arg1;

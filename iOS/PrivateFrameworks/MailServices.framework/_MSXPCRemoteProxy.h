@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MailServices/NSXPCProxyCreating-Protocol.h>
-
 @class MSXPCConnection, NSXPCInterface;
 
 __attribute__((visibility("hidden")))
-@interface _MSXPCRemoteProxy : NSObject <NSXPCProxyCreating>
+@interface _MSXPCRemoteProxy : NSObject
 {
     struct os_unfair_lock_s _selectorLock;
     struct __CFDictionary *_knownSelectors;

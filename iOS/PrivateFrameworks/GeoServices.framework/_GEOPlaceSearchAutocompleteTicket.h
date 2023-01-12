@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServiceCompletionTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
-@class GEOAutocompleteSessionData, GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOAutocompleteSessionData, GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceSearchAutocompleteTicket <GEOMapServiceCompletionTicket>
+@interface _GEOPlaceSearchAutocompleteTicket : GEOAbstractRequestResponseTicket
 {
     NSString *_searchQuery;
     GEOAutocompleteSessionData *_sessionData;
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
+- (_Bool)enableStructuredRAPAffordance;
 - (long long)highlightType;
 - (id)placeSummaryLayoutMetadata;
 - (_Bool)shouldUseDistanceFeatureServerResults;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;
-- (_Bool)isRapEnabled;
 - (void)applyToSuggestionEntry:(id)arg1 withAutocompleteSearchResultIdentifier:(id)arg2;
 - (void)applyToSuggestionList:(id)arg1;
 - (_Bool)matchesFragment:(id)arg1;
@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 

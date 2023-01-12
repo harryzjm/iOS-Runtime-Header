@@ -19,6 +19,6 @@
 @property(readonly, copy, nonatomic) NSString *entityIdentifier;
 - (_Bool)isEquivalentToPersistedQuestion:(PHQuestion *)arg1;
 - (void)remove;
-- (void)persistWithCreationDate:(NSDate *)arg1;
+- (void)persistWithCreationDate:(NSDate *)arg1 questionVersion:(short)arg2;
 @end
 

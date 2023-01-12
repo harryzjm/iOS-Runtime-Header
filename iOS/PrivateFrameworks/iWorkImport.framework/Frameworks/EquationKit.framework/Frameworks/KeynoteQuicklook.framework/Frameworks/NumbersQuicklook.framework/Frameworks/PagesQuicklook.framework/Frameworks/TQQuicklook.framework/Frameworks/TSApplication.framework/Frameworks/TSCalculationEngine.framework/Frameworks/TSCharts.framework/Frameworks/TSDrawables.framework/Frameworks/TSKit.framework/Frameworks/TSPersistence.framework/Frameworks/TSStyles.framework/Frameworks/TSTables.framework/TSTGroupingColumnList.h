@@ -6,11 +6,9 @@
 
 #import <TSKit/TSKSosBase.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSArray;
 
-@interface TSTGroupingColumnList : TSKSosBase <NSCopying>
+@interface TSTGroupingColumnList : TSKSosBase
 {
     NSArray *_groupingColumns;
 }
@@ -31,6 +29,7 @@
 - (void)removeRuleAtIndex:(unsigned long long)arg1;
 - (void)addRule:(id)arg1 atIndex:(unsigned long long)arg2;
 - (_Bool)hasPrefix:(id)arg1;
+- (_Bool)isFunctionallyEquivalent:(id)arg1;
 - (_Bool)isGroupingColumnUidsEqual:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)p_isEqual:(id)arg1;

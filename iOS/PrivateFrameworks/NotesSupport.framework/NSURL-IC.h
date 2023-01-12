@@ -28,6 +28,6 @@
 @property(readonly, nonatomic) _Bool ic_isExcludedFromBackups;
 - (void)ic_updateFlagToExcludeFromBackup:(_Bool)arg1;
 - (id)ic_dedupedURLWithProhibitedNames:(id)arg1;
-- (id)queryComponents;
+- (void)ic_updateFlagToExcludeFromBackupNow:(_Bool)arg1;
 @end
 

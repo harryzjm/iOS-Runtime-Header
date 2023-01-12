@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/CAMLParserDelegate-Protocol.h>
-#import <AVKit/CAStateControllerDelegate-Protocol.h>
-
 @class CALayer, CAStateController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AVMicaPackage : NSObject <CAMLParserDelegate, CAStateControllerDelegate>
+@interface AVMicaPackage : NSObject
 {
     NSString *_state;
     NSString *_packageName;

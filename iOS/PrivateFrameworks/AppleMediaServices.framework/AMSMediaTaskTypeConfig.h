@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _includePlatform;
     NSString *_hostBagKey;
+    NSString *_realm;
     long long _type;
     NSString *_typeString;
 }
@@ -21,9 +22,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSString *realm; // @synthesize realm=_realm;
 @property(readonly, nonatomic) _Bool includePlatform; // @synthesize includePlatform=_includePlatform;
 @property(readonly, nonatomic) NSString *hostBagKey; // @synthesize hostBagKey=_hostBagKey;
-- (id)initWithType:(long long)arg1 typeString:(id)arg2 hostBagKey:(id)arg3 includePlatform:(_Bool)arg4;
+- (id)initWithType:(long long)arg1 typeString:(id)arg2 hostBagKey:(id)arg3 realm:(id)arg4 includePlatform:(_Bool)arg5;
 
 @end
 

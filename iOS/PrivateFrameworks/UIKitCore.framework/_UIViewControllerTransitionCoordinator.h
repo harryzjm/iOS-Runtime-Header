@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIViewControllerTransitionCoordinator-Protocol.h>
-
 @class NSMutableArray, NSString, UIView, _UIViewControllerTransitionContext;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewControllerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
+@interface _UIViewControllerTransitionCoordinator : NSObject
 {
     _UIViewControllerTransitionContext *__mainContext;
     NSMutableArray *__systemAlongsideAnimations;

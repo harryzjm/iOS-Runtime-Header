@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/SearchUIFirstTimeExperienceDelegate-Protocol.h>
-
 @class NSString, SearchUIFirstTimeExperienceViewController, UIScrollView;
 @protocol UniversalSearchFirstTimeExperienceViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UniversalSearchFirstTimeExperienceViewController : UIViewController <SearchUIFirstTimeExperienceDelegate>
+@interface UniversalSearchFirstTimeExperienceViewController : UIViewController
 {
     SearchUIFirstTimeExperienceViewController *_firstTimeExperienceViewController;
     UIScrollView *_scrollView;
@@ -28,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)loadView;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

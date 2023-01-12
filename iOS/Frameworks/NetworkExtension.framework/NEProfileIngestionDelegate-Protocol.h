@@ -13,6 +13,7 @@
 - (NSArray *)getCertificatesForConfigurationWithIdentifier:(NSString *)arg1;
 - (_Bool)updateAccountIdentifiers:(NSDictionary *)arg1;
 - (_Bool)updateManagedAppRules:(NSArray *)arg1;
+- (_Bool)updatePerAppMappingRules:(NSDictionary *)arg1;
 - (_Bool)updateAppLayerVPNMappingRules:(NSDictionary *)arg1;
 - (NSArray *)copyManagedConfigurationIDs;
 - (_Bool)updateDefaultAfterDeletingConfiguration;
@@ -26,6 +27,7 @@
 - (_Bool)removeConfigurationWithIdentifier:(NSString *)arg1;
 - (_Bool)removeIngestedConfiguration;
 - (_Bool)removeConfiguration:(NEConfiguration *)arg1;
+- (_Bool)saveIngestedConfiguration:(id *)arg1;
 - (_Bool)saveIngestedConfiguration;
 - (NEConfiguration *)ingestedConfiguration;
 - (_Bool)createConfigurationFromPayload:(id <NEProfilePayloadBaseDelegate>)arg1 payloadType:(NSString *)arg2;

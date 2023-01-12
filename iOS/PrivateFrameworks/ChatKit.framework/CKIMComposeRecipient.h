@@ -6,14 +6,13 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipient.h>
 
-#import <ChatKit/CKIMComposeRecipient-Protocol.h>
-
 @class IMHandle, NSString;
 
-@interface CKIMComposeRecipient : CNComposeRecipient <CKIMComposeRecipient>
+__attribute__((visibility("hidden")))
+@interface CKIMComposeRecipient : CNComposeRecipient
 {
-    IMHandle *_handle;
     _Bool _useAbbreviatedDisplayName;
+    IMHandle *_handle;
 }
 
 + (_Bool)supportsSecureCoding;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSData, NSString, NSURL, NSURLRequest, NSUUID;
-@protocol __NSURLSessionTaskGroupForConfiguration;
+@protocol NSURLSessionTaskDelegate, __NSURLSessionTaskGroupForConfiguration;
 
 @interface __NSCFTaskForClass : NSObject
 {
@@ -20,6 +20,7 @@
     NSString *downloadFilePath;
     NSData *resumeData;
     CDUnknownBlockType downloadCompletion;
+    id <NSURLSessionTaskDelegate> delegate;
     id <__NSURLSessionTaskGroupForConfiguration> _group;
 }
 

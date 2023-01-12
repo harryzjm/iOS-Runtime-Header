@@ -14,12 +14,13 @@
 #import <XCTAutomationSupport/XCTRemoteApplicationAutomationTarget-Protocol.h>
 
 @class DTXConnection, DTXProxyChannel, NSMutableArray, NSString, XCTAnimationsIdleNotifier, XCTCapabilities, XCTElementQueryProcessor, XCTMainRunLoopIdleNotifier;
-@protocol OS_dispatch_queue, XCTAccessibilityFramework, XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource;
+@protocol OS_dispatch_queue, XCTAccessibilityFramework, XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource, XCTInternalEntitlementChecking;
 
 @interface XCTAutomationSession : NSObject <XCTMessagingChannel_RunnerToUIProcess, XCTRemoteApplicationAutomationTarget, XCTElementSnapshotProvider, XCTElementSnapshotAttributeDataSource, XCTMacCatalystStatusProviding, XCTConnectionAccepting>
 {
     id <XCTAccessibilityFramework> _accessibilityFramework;
     id <XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource> _dataSource;
+    id <XCTInternalEntitlementChecking> _internalEntitlementChecker;
     NSMutableArray *_connections;
     XCTElementQueryProcessor *_queryProcessor;
     NSObject<OS_dispatch_queue> *_queue;
@@ -40,6 +41,7 @@
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) XCTElementQueryProcessor *queryProcessor; // @synthesize queryProcessor=_queryProcessor;
 @property(readonly) NSMutableArray *connections; // @synthesize connections=_connections;
+@property __weak id <XCTInternalEntitlementChecking> internalEntitlementChecker; // @synthesize internalEntitlementChecker=_internalEntitlementChecker;
 @property(readonly) __weak id <XCTElementSnapshotProvider><XCTElementSnapshotAttributeDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(readonly) id <XCTAccessibilityFramework> accessibilityFramework; // @synthesize accessibilityFramework=_accessibilityFramework;
 - (_Bool)isMacCatalystForPID:(int)arg1;

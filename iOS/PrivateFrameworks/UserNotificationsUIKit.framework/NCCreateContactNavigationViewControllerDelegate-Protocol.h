@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/NSObject-Protocol.h>
+#import <UserNotificationsUIKit/NCModalNavigationControllerDelegate-Protocol.h>
 
 @class NCCreateContactNavigationViewController;
 
-@protocol NCCreateContactNavigationViewControllerDelegate <NSObject>
-- (void)createContactNavigationControllerDidDismiss:(NCCreateContactNavigationViewController *)arg1;
+@protocol NCCreateContactNavigationViewControllerDelegate <NCModalNavigationControllerDelegate>
 - (void)createContactNavigationControllerDidComplete:(NCCreateContactNavigationViewController *)arg1;
 @end
 

@@ -25,7 +25,7 @@
 - (_Bool)hasDataAtRelativePath:(id)arg1;
 - (id)newRawDataReadChannelAtRelativePath:(id)arg1;
 - (id)packageEntryInfoAtRelativePath:(id)arg1 error:(id *)arg2;
-- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 packageURL:(id)arg3 lastModificationDate:(out id *)arg4;
+- (id)newDataStorageAtRelativePath:(id)arg1 decryptionInfo:(id)arg2 materializedLength:(unsigned long long)arg3 packageURL:(id)arg4 lastModificationDate:(out id *)arg5;
 - (id)componentZipArchive;
 - (_Bool)didReloadZipArchive:(id)arg1 packageURL:(id)arg2 error:(id *)arg3;
 - (long long)packageType;

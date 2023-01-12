@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <TestFlightCore/TFBetaAppLaunchPresenterView-Protocol.h>
-#import <TestFlightCore/TFHostedBetaAppLaunchScreenView-Protocol.h>
-
 @class NSString, TFBetaAppLaunchPresenter, TFBetaAppLaunchScreenView, UIBarButtonItem;
 @protocol TFBetaAppLaunchScreenHost;
 
 __attribute__((visibility("hidden")))
-@interface TFBetaAppLaunchScreenViewController : UIViewController <TFBetaAppLaunchPresenterView, TFHostedBetaAppLaunchScreenView>
+@interface TFBetaAppLaunchScreenViewController : UIViewController
 {
     id <TFBetaAppLaunchScreenHost> _launchScreenHost;
     TFBetaAppLaunchPresenter *_presenter;

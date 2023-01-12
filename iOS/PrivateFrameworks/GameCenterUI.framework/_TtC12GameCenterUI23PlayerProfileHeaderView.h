@@ -12,11 +12,10 @@ __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI23PlayerProfileHeaderView : UIView
 {
     MISSING_TYPE *profileAvatarView;
+    MISSING_TYPE *friendsLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
-    MISSING_TYPE *friendStatusLabel;
-    MISSING_TYPE *addFriendButton;
-    MISSING_TYPE *infoBar;
+    MISSING_TYPE *useHorizontalLayout;
 }
 
 - (void).cxx_destruct;

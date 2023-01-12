@@ -6,9 +6,9 @@
 
 #import <SystemStatusServer/NSObject-Protocol.h>
 
-@protocol STStatusDomainData;
+@protocol STStatusDomainData, STStatusDomainDataChangeContext;
 
 @protocol STStatusDomainClientHandle <NSObject>
-- (void)observeData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2;
+- (void)observeData:(id <STStatusDomainData>)arg1 forDomain:(unsigned long long)arg2 withChangeContext:(id <STStatusDomainDataChangeContext>)arg3;
 @end
 

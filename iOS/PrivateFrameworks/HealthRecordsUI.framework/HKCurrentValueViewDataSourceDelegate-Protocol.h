@@ -6,13 +6,14 @@
 
 #import <HealthRecordsUI/NSObject-Protocol.h>
 
-@class HKDisplayType, HKHealthStore, HKSelectedRangeData, HKValueRange, NSAttributedString, NSString, UIViewController;
+@class HKDisplayType, HKGraphViewPointSelectionContext, HKHealthStore, HKSelectedRangeData, HKValueRange, NSAttributedString, NSString, UIViewController;
 
 @protocol HKCurrentValueViewDataSourceDelegate <NSObject>
 
 @optional
 - (UIViewController *)infographicViewControllerForDisplayType:(HKDisplayType *)arg1 healthStore:(HKHealthStore *)arg2;
 - (_Bool)infographicSupportedForDisplayType:(HKDisplayType *)arg1 healthStore:(HKHealthStore *)arg2;
+- (HKValueRange *)dateRangeFromSelectionContext:(HKGraphViewPointSelectionContext *)arg1 timeScope:(long long)arg2;
 - (void)processSelectedRangeData:(HKSelectedRangeData *)arg1 displayType:(HKDisplayType *)arg2;
 - (NSAttributedString *)valueForSelectedRangeData:(HKSelectedRangeData *)arg1;
 - (NSAttributedString *)titleForSelectedRangeData:(HKSelectedRangeData *)arg1 displayType:(HKDisplayType *)arg2;

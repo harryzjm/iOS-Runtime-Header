@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/MKPlaceHoursViewDelegate-Protocol.h>
-
 @class GEOLinkedService, NSArray, NSLayoutConstraint, NSString, UIImageView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCompleteHoursView : UIView <MKPlaceHoursViewDelegate>
+@interface MKPlaceCompleteHoursView : UIView
 {
     GEOLinkedService *_linkedService;
     NSArray *_sortedBusinessHours;

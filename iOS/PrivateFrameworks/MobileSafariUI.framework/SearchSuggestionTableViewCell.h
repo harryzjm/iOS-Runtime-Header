@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
-
 @class CompletionArrowView;
 
 __attribute__((visibility("hidden")))
-@interface SearchSuggestionTableViewCell : UITableViewCell
+@interface SearchSuggestionTableViewCell
 {
     CompletionArrowView *_accessoryView;
     _Bool _hidesAccessoryView;
+    CDUnknownBlockType _accessoryActionHandler;
 }
 
-+ (void)cachedImageForDefaultSearchProvider:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+@property(copy, nonatomic) CDUnknownBlockType accessoryActionHandler; // @synthesize accessoryActionHandler=_accessoryActionHandler;
 @property(nonatomic) _Bool hidesAccessoryView; // @synthesize hidesAccessoryView=_hidesAccessoryView;
+- (void)_accessoryButtonTapped:(id)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)prepareForReuse;

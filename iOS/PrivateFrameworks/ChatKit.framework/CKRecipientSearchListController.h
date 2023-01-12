@@ -6,13 +6,11 @@
 
 #import <ContactsAutocompleteUI/CNAutocompleteResultsTableViewController.h>
 
-#import <ChatKit/CKContactsSearchManagerDelegate-Protocol.h>
-#import <ChatKit/IDSBatchIDQueryControllerDelegate-Protocol.h>
-
 @class CKContactsSearchManager, IDSBatchIDQueryController, IMAccount, NSArray, NSDate, NSString;
 @protocol CKRecipientSearchListControllerDelegate;
 
-@interface CKRecipientSearchListController : CNAutocompleteResultsTableViewController <IDSBatchIDQueryControllerDelegate, CKContactsSearchManagerDelegate>
+__attribute__((visibility("hidden")))
+@interface CKRecipientSearchListController : CNAutocompleteResultsTableViewController
 {
     _Bool shouldHideGroupsDonations;
     _Bool _smsEnabled;

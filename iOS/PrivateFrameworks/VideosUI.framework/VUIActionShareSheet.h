@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIView;
+@class NSDictionary, NSString, NSURL, UIView;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionShareSheet
@@ -13,11 +13,17 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSString *_subtitle;
     NSString *_imageURLStr;
+    NSString *_sharedWatchId;
+    NSURL *_sharedWatchUrl;
     UIView *_sourceView;
+    NSDictionary *_groupActivityMetadata;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSDictionary *groupActivityMetadata; // @synthesize groupActivityMetadata=_groupActivityMetadata;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
+@property(retain, nonatomic) NSURL *sharedWatchUrl; // @synthesize sharedWatchUrl=_sharedWatchUrl;
+@property(retain, nonatomic) NSString *sharedWatchId; // @synthesize sharedWatchId=_sharedWatchId;
 @property(retain, nonatomic) NSString *imageURLStr; // @synthesize imageURLStr=_imageURLStr;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;

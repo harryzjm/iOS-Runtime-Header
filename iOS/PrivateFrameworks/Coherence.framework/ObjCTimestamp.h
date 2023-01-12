@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE, NSString, ObjCReplica;
 
+__attribute__((visibility("hidden")))
 @interface ObjCTimestamp : NSObject
 {
     MISSING_TYPE *timestamp;

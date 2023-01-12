@@ -6,13 +6,10 @@
 
 #import <PhotosUICore/PXFooterViewModel.h>
 
-#import <ChatKit/IMPhotoLibraryPersistenceManagerListener-Protocol.h>
-#import <ChatKit/PXChangeObserver-Protocol.h>
-
 @class NSArray, NSString, PXAssetsDataSourceCountsController, PXAssetsDataSourceManager;
 
 __attribute__((visibility("hidden")))
-@interface CKPhotosGridFooterViewModel : PXFooterViewModel <PXChangeObserver, IMPhotoLibraryPersistenceManagerListener>
+@interface CKPhotosGridFooterViewModel : PXFooterViewModel
 {
     PXAssetsDataSourceManager *_assetsDataSourceManager;
     NSArray *_syndicationIdentifiers;

@@ -27,11 +27,13 @@ __attribute__((visibility("hidden")))
     unsigned int _hfsType;
     unsigned int _hfsCreator;
     unsigned long long _inode;
+    _Bool _canDefineSystemExtensionPoint;
     NSMutableDictionary *_plistRarities;
     NSMutableDictionary *_commonInfoPlistEntries;
     NSArray *_supportedGameControllers;
     struct LSVersionNumber _sdkVersionNumber;
     _Bool _containerized;
+    _Bool _webNotificationPlaceholder;
     unsigned char _profileValidationState;
     NSNumber *_compatibilityState;
     NSNumber *_installFailureReason;
@@ -93,6 +95,7 @@ __attribute__((visibility("hidden")))
     NSArray *_queriableSchemes;
     NSDictionary *_pluginPlists;
     NSDictionary *_pluginMIDicts;
+    NSArray *_driverExtensionPaths;
     NSDictionary *_groupContainers;
     NSDictionary *_entitlements;
     NSDictionary *_sandboxEnvironmentVariables;
@@ -104,6 +107,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_localizedShortNames;
     NSString *_microphoneUsageDescription;
     NSDictionary *_localizedMicrophoneUsageDescription;
+    NSString *_identityUsageDescription;
+    NSDictionary *_localizedIdentityUsageDescription;
     NSDictionary *_localizedStrings;
     NSDictionary *_unlocalizedNamesWithContext;
     NSArray *_managedPersonas;
@@ -127,6 +132,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *managedPersonas; // @synthesize managedPersonas=_managedPersonas;
 @property(readonly, nonatomic) NSDictionary *unlocalizedNamesWithContext; // @synthesize unlocalizedNamesWithContext=_unlocalizedNamesWithContext;
 @property(readonly, nonatomic) NSDictionary *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
+@property(readonly, nonatomic) NSDictionary *localizedIdentityUsageDescription; // @synthesize localizedIdentityUsageDescription=_localizedIdentityUsageDescription;
+@property(readonly, nonatomic) NSString *identityUsageDescription; // @synthesize identityUsageDescription=_identityUsageDescription;
 @property(readonly, nonatomic) NSDictionary *localizedMicrophoneUsageDescription; // @synthesize localizedMicrophoneUsageDescription=_localizedMicrophoneUsageDescription;
 @property(readonly, nonatomic) NSString *microphoneUsageDescription; // @synthesize microphoneUsageDescription=_microphoneUsageDescription;
 @property(readonly, nonatomic) NSDictionary *localizedShortNames; // @synthesize localizedShortNames=_localizedShortNames;
@@ -139,6 +146,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDictionary *sandboxEnvironmentVariables; // @synthesize sandboxEnvironmentVariables=_sandboxEnvironmentVariables;
 @property(readonly, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property(readonly, nonatomic) NSDictionary *groupContainers; // @synthesize groupContainers=_groupContainers;
+@property(readonly, nonatomic) NSArray *driverExtensionPaths; // @synthesize driverExtensionPaths=_driverExtensionPaths;
 @property(readonly, nonatomic) NSDictionary *pluginMIDicts; // @synthesize pluginMIDicts=_pluginMIDicts;
 @property(readonly, nonatomic) NSDictionary *pluginPlists; // @synthesize pluginPlists=_pluginPlists;
 @property(readonly, nonatomic) NSArray *queriableSchemes; // @synthesize queriableSchemes=_queriableSchemes;
@@ -199,6 +207,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSNumber *installFailureReason; // @synthesize installFailureReason=_installFailureReason;
 @property(readonly, nonatomic) NSNumber *compatibilityState; // @synthesize compatibilityState=_compatibilityState;
+@property(readonly, nonatomic) _Bool webNotificationPlaceholder; // @synthesize webNotificationPlaceholder=_webNotificationPlaceholder;
 @property(readonly, nonatomic) _Bool containerized; // @synthesize containerized=_containerized;
 @property(readonly, nonatomic) _Bool registerChildItemsTrusted; // @synthesize registerChildItemsTrusted=_registerChildItemsTrusted;
 @property(nonatomic) unsigned long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;

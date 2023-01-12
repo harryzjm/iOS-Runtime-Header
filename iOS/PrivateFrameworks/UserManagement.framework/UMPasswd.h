@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface UMPasswd : NSObject
 {
     unsigned int _pw_gid;

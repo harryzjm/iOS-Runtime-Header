@@ -9,6 +9,7 @@
 @class MTIDScheme, MTPromise, NSArray, NSDictionary;
 
 @protocol MTIDSecretStore <NSObject>
+- (MTPromise *)syncForSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2;
 - (void)clearLocalData;
 - (MTPromise *)resetSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2;
 - (MTPromise *)secretForScheme:(MTIDScheme *)arg1 options:(NSDictionary *)arg2;

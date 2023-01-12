@@ -7,6 +7,6 @@
 #import <Foundation/NSXPCConnection.h>
 
 @interface NSXPCConnection (AKAdaptiveServiceShouldHandle)
-@property _Bool shouldHandleInvalidation;
+@property(nonatomic) _Bool shouldHandleInvalidation;
 @end
 

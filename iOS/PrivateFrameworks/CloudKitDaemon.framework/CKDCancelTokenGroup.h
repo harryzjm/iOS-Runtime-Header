@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKitDaemon/CKDCancelling-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDCancelTokenGroup : NSObject <CKDCancelling>
+@interface CKDCancelTokenGroup : NSObject
 {
     NSMutableArray *_cancelTokens;
 }

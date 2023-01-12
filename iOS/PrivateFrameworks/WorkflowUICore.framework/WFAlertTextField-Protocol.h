@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WorkflowUICore/UITextInputTraits-Protocol.h>
+#import <WorkflowUICore/NSObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@protocol WFAlertTextField <UITextInputTraits>
+@protocol WFAlertTextField <NSObject>
 + (_Bool)usesSuggestions;
 @property(copy, nonatomic) NSArray *suggestions;
 @property(nonatomic) long long alertTextInputMode;
-@property(nonatomic) long long returnKeyType;
-@property(nonatomic) long long autocapitalizationType;
-@property(nonatomic) long long clearButtonMode;
+@property(nonatomic) NSString *alertReturnKeyType;
+@property(nonatomic) NSString *alertAutocapitalizationType;
+@property(nonatomic) NSString *alertClearButtonMode;
 @property(copy, nonatomic) NSString *placeholder;
 @property(copy, nonatomic) NSString *text;
 @end

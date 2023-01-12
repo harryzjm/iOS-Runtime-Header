@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (void)onDeviceModeEnabled:(CDUnknownBlockType)arg1;
 - (void)_deleteHotfix:(CDUnknownBlockType)arg1;
 - (void)_updateHotfix:(CDUnknownBlockType)arg1;
 - (void)task:(long long)arg1 isSupportedInCountry:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -37,9 +38,11 @@ __attribute__((visibility("hidden")))
 - (void)_purgeAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_downloadAssetForLanguagePair:(id)arg1 userInitiated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_offlineLanguageStatus:(CDUnknownBlockType)arg1;
+- (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 strategy:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)languagesForText:(id)arg1 usingModel:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)languagesForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)languageForText:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldPresentSystemFirstUseConsent:(CDUnknownBlockType)arg1;
 - (void)cleanup;
 - (void)cleanupOfflineEngine;
 - (void)notifyOfMemoryPressure;
@@ -52,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelSpeechSessionWithID:(id)arg1;
 - (void)cancelSpeechSession;
 - (id)startSpeechTranslationWithContext:(id)arg1 delegate:(id)arg2;
-- (void)speak:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)speak:(id)arg1 withContext:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)startTextToSpeechTranslationWithContext:(id)arg1 text:(id)arg2 delegate:(id)arg3;
 - (void)translateParagraphs:(id)arg1 withContext:(id)arg2 paragraphResult:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)translateSentence:(id)arg1 withContext:(id)arg2 completion:(CDUnknownBlockType)arg3;

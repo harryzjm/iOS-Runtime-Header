@@ -7,9 +7,13 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (CPLAdditions)
+- (int)cplReturnCode;
+- (id)cplReinflatedErrorForXPC;
+- (id)_cplReinflatedUserInfoForXPCDidChange:(_Bool *)arg1;
 - (id)cplSafeErrorForXPC;
 - (id)_cplSafeUserInfoForXPCDidChange:(_Bool *)arg1;
 - (id)cplShortDomainDescription;
+- (id)cplUnderlyingError;
 - (id)cplUnderlyingPOSIXError;
 - (_Bool)isCPLOperationDeferredError;
 - (_Bool)isCPLOperationCancelledError;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIActionSheetPresentationControllerVisualStyle-Protocol.h>
-
 @class NSString, UIActionSheetiOSDismissActionView, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _UIActionSheetPresentationControllerVisualStyleiOS : NSObject <UIActionSheetPresentationControllerVisualStyle>
+@interface _UIActionSheetPresentationControllerVisualStyleiOS : NSObject
 {
     UIActionSheetiOSDismissActionView *_dismissActionView;
 }

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel;
+#import "UILabel.h"
 
 __attribute__((visibility("hidden")))
-@interface UISegmentLabel
+@interface UISegmentLabel : UILabel
 {
     UILabel *_associatedLabel;
 }

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNPredicateVisitor-Protocol.h>
-
 @class CNContactFetchRequest, CNObservable, NSString;
 @protocol CNDataMapper;
 
 __attribute__((visibility("hidden")))
-@interface CNContactFetchRequestExecutorPredicateEvaluator : NSObject <CNPredicateVisitor>
+@interface CNContactFetchRequestExecutorPredicateEvaluator : NSObject
 {
     CNContactFetchRequest *_fetchRequest;
     id <CNDataMapper> _dataMapper;

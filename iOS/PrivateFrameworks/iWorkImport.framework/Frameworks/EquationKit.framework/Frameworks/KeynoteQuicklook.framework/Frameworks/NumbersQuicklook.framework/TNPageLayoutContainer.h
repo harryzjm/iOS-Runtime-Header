@@ -4,14 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NumbersQuicklook/TSKChangeSourceObserver-Protocol.h>
-#import <NumbersQuicklook/TSWPColumnMetrics-Protocol.h>
-#import <NumbersQuicklook/TSWPLayoutParent-Protocol.h>
-#import <NumbersQuicklook/TSWPStorageObserver-Protocol.h>
-
 @class NSString, TNAdditionalPageContentLayout, TNPageContentLayout, TSWPPadding;
 
-@interface TNPageLayoutContainer <TSKChangeSourceObserver, TSWPLayoutParent, TSWPColumnMetrics, TSWPStorageObserver>
+@interface TNPageLayoutContainer
 {
     TNPageContentLayout *_contentLayout;
     TNAdditionalPageContentLayout *_overlayContentLayout;

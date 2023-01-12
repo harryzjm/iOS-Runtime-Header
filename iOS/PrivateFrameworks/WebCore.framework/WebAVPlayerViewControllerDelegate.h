@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVPlayerViewControllerDelegate_WebKitOnly-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebAVPlayerViewControllerDelegate : NSObject <AVPlayerViewControllerDelegate_WebKitOnly>
+@interface WebAVPlayerViewControllerDelegate : NSObject
 {
     struct WeakPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::EmptyCounter> _fullscreenInterface;
 }

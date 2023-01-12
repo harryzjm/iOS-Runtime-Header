@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/NSCopying-Protocol.h>
-
 @class NSUUID;
 
-@interface KNRecordingSyncState : NSObject <NSCopying>
+@interface KNRecordingSyncState : NSObject
 {
     NSUUID *_outOfSyncToken;
     _Bool _canClearOutOfSyncToken;

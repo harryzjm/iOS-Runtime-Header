@@ -39,6 +39,7 @@
 - (void)updateModelAxisAnalysis:(id)arg1;
 @property(readonly, nonatomic) NSNumber *userMin;
 @property(readonly, nonatomic) NSNumber *userMax;
+- (_Bool)supportsNegativeStyle;
 - (_Bool)supportsReferenceLines;
 - (pair_952e027e)labelEnumeratorPair;
 - (id)g_genericToSpecificPropertyMap;

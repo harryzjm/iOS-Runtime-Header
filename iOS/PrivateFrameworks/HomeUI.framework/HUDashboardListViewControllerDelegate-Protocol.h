@@ -6,10 +6,10 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUDashboardContext, HUDashboardListViewController;
+@class HUDashboardContext_legacy, HUDashboardListViewController;
 
 @protocol HUDashboardListViewControllerDelegate <NSObject>
 - (void)dashboardListViewControllerDidFinish:(HUDashboardListViewController *)arg1;
-- (void)dashboardListViewController:(HUDashboardListViewController *)arg1 wantsToShowDashboardContext:(HUDashboardContext *)arg2;
+- (void)dashboardListViewController:(HUDashboardListViewController *)arg1 wantsToShowDashboardContext:(HUDashboardContext_legacy *)arg2;
 @end
 

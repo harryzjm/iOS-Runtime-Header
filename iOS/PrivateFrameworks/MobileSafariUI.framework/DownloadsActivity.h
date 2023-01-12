@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)_navigationController;
 - (_Bool)canPerformWithTabDocument:(id)arg1;
 - (_Bool)canPerformOnNewTabPage;
+- (long long)actionType;
 - (id)_activityBadgeColor;
 - (id)_activityBadgeTextColor;
 - (id)_activityBadgeText;

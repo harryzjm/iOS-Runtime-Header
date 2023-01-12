@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <Pegasus/PGButtonViewDelegate-Protocol.h>
-
 @class NSString, PGButtonView, PGControlsViewModel, PGDisplayLink, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface PGPrerollIndicatorView : UIView <PGButtonViewDelegate>
+@interface PGPrerollIndicatorView : UIView
 {
     PGControlsViewModel *_viewModel;
     UILabel *_contentTypeLabel;

@@ -6,11 +6,9 @@
 
 #import <NewsCore/FCKeyValueStore.h>
 
-#import <NewsToday/FRRingBufferContainer-Protocol.h>
-
 @class NSString;
 
-@interface FCKeyValueStore (FRRingBufferContainer) <FRRingBufferContainer>
+@interface FCKeyValueStore (FRRingBufferContainer)
 - (double)maxForKey:(id)arg1;
 - (double)minForKey:(id)arg1;
 - (_Bool)hasMaxForKey:(id)arg1;

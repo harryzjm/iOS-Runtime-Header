@@ -13,6 +13,5 @@
 - (HKFeatureAvailabilityOnboardingEligibility *)onboardingEligibilityForCountryCode:(NSString *)arg1;
 - (HKRegionAvailability *)regionAvailabilityForDevice:(NRDevice *)arg1;
 - (HKRegionAvailability *)regionAvailability;
-- (_Bool)isCountryCodeAllowed:(NSString *)arg1;
 @end
 

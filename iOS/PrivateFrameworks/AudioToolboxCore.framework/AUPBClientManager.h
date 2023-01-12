@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolboxCore/AUPBInspecting-Protocol.h>
-#import <AudioToolboxCore/AUPBRegistrarListening-Protocol.h>
-
 @class NSMutableArray, NSString, NSXPCConnection;
 @protocol AUPBRegistrarHosting, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AUPBClientManager : NSObject <AUPBRegistrarListening, AUPBInspecting>
+@interface AUPBClientManager : NSObject
 {
     NSXPCConnection *mRegistrarConnection;
     id <AUPBRegistrarHosting> mProxyInterface;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLResourceStatePassSampleBufferAttachmentDescriptorArray.h"
+
 @class MTLResourceStatePassSampleBufferAttachmentDescriptorInternal;
 
 __attribute__((visibility("hidden")))
-@interface MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal
+@interface MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal : MTLResourceStatePassSampleBufferAttachmentDescriptorArray
 {
     MTLResourceStatePassSampleBufferAttachmentDescriptorInternal *_sampleDescriptors[4];
 }

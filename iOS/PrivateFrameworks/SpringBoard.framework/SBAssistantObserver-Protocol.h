@@ -6,14 +6,14 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAssistantController;
+@class SBAssistantController, SBWindowScene;
 
 @protocol SBAssistantObserver <NSObject>
 
 @optional
-- (void)assistantDidDisappear:(SBAssistantController *)arg1;
-- (void)assistantWillDisappear:(SBAssistantController *)arg1;
-- (void)assistantDidAppear:(SBAssistantController *)arg1;
-- (void)assistantWillAppear:(SBAssistantController *)arg1;
+- (void)assistantDidDisappear:(SBAssistantController *)arg1 windowScene:(SBWindowScene *)arg2;
+- (void)assistantWillDisappear:(SBAssistantController *)arg1 windowScene:(SBWindowScene *)arg2;
+- (void)assistantDidAppear:(SBAssistantController *)arg1 windowScene:(SBWindowScene *)arg2;
+- (void)assistantWillAppear:(SBAssistantController *)arg1 windowScene:(SBWindowScene *)arg2;
 @end
 

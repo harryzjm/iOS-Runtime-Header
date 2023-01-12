@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (int)_createTableForTabs;
 - (int)_createTableForTabSession;
 - (int)_recoverFromDatabaseInconsistencyFromSchemaVersion3Migration;
+- (int)_migrateToSchemaVersion_6;
 - (int)_migrateToSchemaVersion_5;
 - (int)_migrateToSchemaVersion_3;
 - (int)_migrateToSchemaVersion_2;

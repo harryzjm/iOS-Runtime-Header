@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSPCopying-Protocol.h>
-
 @class TSWPStorage;
 
-@interface TSTRichTextPayload : TSPObject <TSPCopying>
+@interface TSTRichTextPayload : TSPObject
 {
     TSWPStorage *_storage;
 }

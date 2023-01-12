@@ -6,14 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/UIImagePickerControllerDelegate-Protocol.h>
-#import <StoreKitUI/UINavigationControllerDelegate-Protocol.h>
-
 @class NSString, SKUIClientContext, UIImagePickerController, UILabel, UIScrollView, UIView;
 @protocol SKUIProfileImagePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIProfileImagePicker : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SKUIProfileImagePicker : UIViewController
 {
     SKUIClientContext *_clientContext;
     UIView *_contentView;

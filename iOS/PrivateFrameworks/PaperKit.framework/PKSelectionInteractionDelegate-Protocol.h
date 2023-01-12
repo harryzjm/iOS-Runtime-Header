@@ -6,7 +6,7 @@
 
 #import <PaperKit/NSObject-Protocol.h>
 
-@class NSArray, NSItemProvider, PKAttachmentView, PKSelectionInteraction, PKStrokeSelectionImageConfig, UIBezierPath, UIContextMenuConfiguration, UIContextMenuInteraction, UIEvent, UIGestureRecognizer, UITargetedPreview;
+@class NSArray, NSItemProvider, NSSet, PKAttachmentView, PKSelectionInteraction, PKStrokeSelectionImageConfig, UIBezierPath, UIContextMenuConfiguration, UIContextMenuInteraction, UIEvent, UIGestureRecognizer, UITargetedPreview;
 @protocol UIContextMenuInteractionAnimating;
 
 @protocol PKSelectionInteractionDelegate <NSObject>
@@ -21,21 +21,21 @@
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 dragInteractionWillBeginForElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (_Bool)selectionInteraction:(PKSelectionInteraction *)arg1 didLongPressElement:(id)arg2 withGesture:(UIGestureRecognizer *)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didTapElement:(id)arg2 withGesture:(UIGestureRecognizer *)arg3 inAttachment:(PKAttachmentView *)arg4;
-- (void)selectionInteraction:(PKSelectionInteraction *)arg1 renderPreviewForElements:(NSArray *)arg2 inContext:(struct CGContext *)arg3 withConfig:(PKStrokeSelectionImageConfig *)arg4 inAttachment:(PKAttachmentView *)arg5;
+- (void)selectionInteraction:(PKSelectionInteraction *)arg1 renderPreviewForElements:(NSArray *)arg2 inContext:(struct CGContext *)arg3 withConfig:(PKStrokeSelectionImageConfig *)arg4 inAttachment:(PKAttachmentView *)arg5 withCompletion:(void (^)(void))arg6;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 selectedElementsInAttachment:(PKAttachmentView *)arg2;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 elementsInAttachment:(PKAttachmentView *)arg2;
 - (_Bool)selectionInteraction:(PKSelectionInteraction *)arg1 selectionContainsPoint:(struct CGPoint)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 elementsForSpaceInsertedAtPoint:(struct CGPoint)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 didDuplicateElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didDeleteElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
-- (void)selectionInteractionDidPaste:(PKSelectionInteraction *)arg1 inAttachment:(PKAttachmentView *)arg2;
-- (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 pasteboardRepresentationsForElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (void)selectionInteractionDidPaste:(PKSelectionInteraction *)arg1 atPoint:(struct CGPoint)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 pasteboardRepresentationsForElements:(NSArray *)arg2 strokes:(NSSet *)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (_Bool)selectionInteraction:(PKSelectionInteraction *)arg1 canPerformAction:(SEL)arg2 withSender:(id)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didClearSelectionForElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didEndDraggingElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didDragElements:(NSArray *)arg2 withTransform:(struct CGAffineTransform)arg3 inAttachment:(PKAttachmentView *)arg4;
 - (void)selectionInteraction:(PKSelectionInteraction *)arg1 didSelectElements:(NSArray *)arg2 inAttachment:(PKAttachmentView *)arg3;
-- (struct CGRect)selectionInteraction:(PKSelectionInteraction *)arg1 frameForElement:(id)arg2 inAttachment:(PKAttachmentView *)arg3;
+- (const struct CGPath *)selectionInteraction:(PKSelectionInteraction *)arg1 pathForElement:(id)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 requestElementsInPath:(UIBezierPath *)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (NSArray *)selectionInteraction:(PKSelectionInteraction *)arg1 requestElementsInRect:(struct CGRect)arg2 inAttachment:(PKAttachmentView *)arg3;
 - (_Bool)selectionInteractionShouldForwardToElements:(PKSelectionInteraction *)arg1 atPoint:(struct CGPoint)arg2 forEvent:(UIEvent *)arg3;

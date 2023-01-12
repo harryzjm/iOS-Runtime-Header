@@ -32,12 +32,18 @@
 @property(readonly, nonatomic) NSSet *currentPermissions;
 @property(nonatomic) _Bool requestedOptionalAccessToAllHosts;
 @property(readonly, nonatomic) _Bool requestsAccessToAllHosts;
+@property(readonly, nonatomic) _Bool usesManifestVersion3;
 @property(readonly, nonatomic) long long manifestVersion;
+@property(readonly, nonatomic) _Bool hasAction;
+@property(readonly, nonatomic) _Bool hasStorage;
 @property(readonly, nonatomic) _Bool hasCommands;
 @property(readonly, nonatomic) _Bool hasPageAction;
 @property(readonly, nonatomic) _Bool hasBrowserAction;
 @property(readonly, nonatomic) NSURL *newTabOverridePageURL;
+@property(readonly, nonatomic) NSSet *externallyConnectableMatchPatterns;
+@property(readonly, nonatomic) NSArray *externallyConnectableMatchPatternStrings;
 @property(readonly, nonatomic) NSArray *injectedContentData;
+@property(readonly, nonatomic) _Bool backgroundPageIsServiceWorker;
 @property(readonly, nonatomic) _Bool backgroundPageIsPersistent;
 @property(readonly, nonatomic) NSString *generatedBackgroundPageContent;
 @property(readonly, nonatomic) UIImage *toolbarImage;
@@ -50,6 +56,7 @@
 @property(readonly, nonatomic) NSString *displayShortName;
 @property(readonly, nonatomic) NSString *displayName;
 - (void)populateAllPropertiesIfNeededToRecordManifestErrors;
+- (_Bool)isAccessibleResourceURL:(NSURL *)arg1 fromWebPageWithURL:(NSURL *)arg2;
 - (_Bool)verifyRequestedPermissions:(NSSet *)arg1 origins:(NSSet *)arg2 errorMessage:(id *)arg3;
 - (void)removeGrantedAndRevokedPermissions:(NSSet *)arg1 origins:(NSSet *)arg2 exactPatternMatchesOnly:(_Bool)arg3;
 - (void)removeRevokedPermissions:(NSSet *)arg1 origins:(NSSet *)arg2 exactPatternMatchesOnly:(_Bool)arg3;
@@ -62,6 +69,7 @@
 - (long long)permissionStateForURL:(NSURL *)arg1;
 - (_Bool)hasPermissionToAccessURL:(NSURL *)arg1;
 - (_Bool)hasPermissions:(NSSet *)arg1 origins:(NSSet *)arg2;
+- (_Bool)hasDeclarativeNetRequestPermission;
 - (_Bool)hasPermission:(NSString *)arg1;
 - (_Bool)shouldShowToolbarItemForTab:(id <WBSWebExtensionTab>)arg1;
 - (_Bool)hasInjectedContentDataForURL:(NSURL *)arg1;

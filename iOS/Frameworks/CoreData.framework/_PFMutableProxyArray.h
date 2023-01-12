@@ -6,12 +6,10 @@
 
 #import <Foundation/NSMutableArray.h>
 
-#import <CoreData/PFObjectIDCollection-Protocol.h>
-
 @class NSString, _PFArray;
 
 __attribute__((visibility("hidden")))
-@interface _PFMutableProxyArray : NSMutableArray <PFObjectIDCollection>
+@interface _PFMutableProxyArray : NSMutableArray
 {
     int _cd_rc;
     unsigned int _editCount;

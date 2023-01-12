@@ -9,11 +9,11 @@
 @class NSDate, NSDictionary, NSString, NSURL, UIImage;
 
 @protocol CAMTransientAssetConvertible <NSObject>
-@property(readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
+@property(readonly, nonatomic) CDStruct_198678f7 irisStillDisplayTime;
 @property(readonly, nonatomic) NSURL *irisVideoPersistenceURL;
 @property(readonly, nonatomic, getter=isExpectingPairedVideo) _Bool expectingPairedVideo;
 @property(readonly, nonatomic) NSString *irisStillImageUUID;
-@property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
+@property(readonly, nonatomic) CDStruct_198678f7 duration;
 @property(readonly, nonatomic) unsigned long long numberOfRepresentedAssets;
 @property(readonly, copy, nonatomic) NSString *burstIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *stillImageMetadata;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <ContactsUI/CNContactQuickActionPresentation-Protocol.h>
-
 @class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNTestQuickActionView : UIView <CNContactQuickActionPresentation>
+@interface CNTestQuickActionView : UIView
 {
     _Bool _enabled;
     NSString *_title;

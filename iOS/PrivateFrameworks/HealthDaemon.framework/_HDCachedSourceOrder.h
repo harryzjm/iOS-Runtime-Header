@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     _Bool _userOrdered;
     _Bool _isDefaultSourceOrder;
     struct vector<_HDWrappedSource, std::allocator<_HDWrappedSource>> _orderedSources;
-    struct unordered_map<long long, HKSource *, std::hash<long long>, std::equal_to<long long>, std::allocator<std::pair<const long long, HKSource *>>> _sourcesByID;
 }
 
 - (id).cxx_construct;

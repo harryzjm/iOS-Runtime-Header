@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIViewElement.h"
+
 @class NSArray, SKUIItemViewElement, SKUILabelViewElement;
 
 __attribute__((visibility("hidden")))
-@interface SKUIMenuViewElement
+@interface SKUIMenuViewElement : SKUIViewElement
 {
     BOOL _enabled;
     SKUILabelViewElement *_menuLabel;

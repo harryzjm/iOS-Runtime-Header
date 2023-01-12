@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/NSCopying-Protocol.h>
-
 @class NSDictionary, NSUUID, TSPDocumentRevision;
 
-@interface TSPDocumentProperties : NSObject <NSCopying>
+@interface TSPDocumentProperties : NSObject
 {
     NSUUID *_shareUUID;
     NSUUID *_documentUUID;
     NSUUID *_versionUUID;
+    NSUUID *_stableDocumentUUID;
     NSUUID *_privateUUID;
     unsigned long long _fileFormatVersion;
     TSPDocumentRevision *_revision;
@@ -35,10 +34,11 @@
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)hashPrivateUUIDWithDigest:(id)arg1;
+@property(readonly, copy, nonatomic) NSUUID *stableDocumentUUID;
 @property(readonly, nonatomic) NSUUID *shareUUID;
 - (void)updateVersionUUID;
 @property(readonly, nonatomic) NSUUID *versionUUID;
-- (void)updateDocumentAndShareUUID;
+- (void)updateDocumentUUIDAndPreserveShareUUID:(_Bool)arg1 preserveStableDocumentUUID:(_Bool)arg2;
 - (void)updateDocumentUUID;
 - (_Bool)writeToPropertiesURL:(id)arg1 error:(id *)arg2;
 - (id)encodedPropertyListWithError:(id *)arg1;

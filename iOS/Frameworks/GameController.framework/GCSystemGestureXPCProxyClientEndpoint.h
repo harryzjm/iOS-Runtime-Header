@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCSystemGestureComponent-Protocol.h>
-#import <GameController/GCSystemGestureXPCProxyRemoteClientEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointClient-Protocol.h>
-
 @class GCController, GCSystemGesturesState, NSString;
 @protocol GCSystemGestureXPCProxyRemoteServerEndpointInterface, NSObject><NSCopying><NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface GCSystemGestureXPCProxyClientEndpoint : NSObject <_GCIPCEndpointClient, GCSystemGestureComponent, GCSystemGestureXPCProxyRemoteClientEndpointInterface>
+@interface GCSystemGestureXPCProxyClientEndpoint : NSObject
 {
     GCController *_controller;
     id <GCSystemGestureXPCProxyRemoteServerEndpointInterface> _serverEndpoint;

@@ -10,5 +10,8 @@
 
 @protocol BNPresentingPrivate <BNPresenting>
 @property(nonatomic) __weak id <BNPresentingDelegate> delegate;
+
+@optional
+- (void)preferredMinimumTopInsetDidInvalidate;
 @end
 

@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSStreamDelegate-Protocol.h>
-
 @class NSFileHandle, NSInputStream, NSObject, NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface __NSCFBackgroundDataTask <NSStreamDelegate>
+@interface __NSCFBackgroundDataTask
 {
     NSInputStream *_requestBodyStream;
     NSInputStream *_initialStream;

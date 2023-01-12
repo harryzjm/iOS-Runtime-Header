@@ -10,5 +10,6 @@
 - (void)searchAgentFinishedQueryWithoutAdditionalResults:(SPUISearchModel *)arg1;
 - (void)searchAgentClearedResults:(SPUISearchModel *)arg1;
 - (void)searchAgentUpdatedResults:(SPUISearchModel *)arg1;
+- (_Bool)searchAgentHasWindow:(SPUISearchModel *)arg1;
 @end
 

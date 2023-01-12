@@ -6,16 +6,20 @@
 
 #import <MediaPlayer/MPAVItem.h>
 
-#import <MediaPlaybackCore/MFQueuePlayerItem-Protocol.h>
-
 @class AVPlayerItem, NSData, NSNumber, NSString, NSURL;
-@protocol MPCItemIdentifier, MPCReportingIdentityPropertiesLoading;
+@protocol MFCrossFadeParameters, MFGaplessParameters, MPCItemIdentifier, MPCReportingIdentityPropertiesLoading;
 
-@interface MPAVItem (MFQueuePlayerItem) <MFQueuePlayerItem>
+@interface MPAVItem (MFQueuePlayerItem)
+- (_Bool)_isInContiguousAlbumWith:(id)arg1;
+- (_Bool)shouldPerformCrossFadeTransitionWith:(id)arg1;
+- (_Bool)shouldPerformGaplessTransitionWith:(id)arg1;
+@property(readonly, nonatomic) id <MFCrossFadeParameters> crossFadeParameters;
+@property(readonly, nonatomic) id <MFGaplessParameters> gaplessParameters;
 - (void)reset;
 - (void)setItemID:(id)arg1;
 @property(readonly, copy, nonatomic) id <MPCItemIdentifier> itemID;
 - (void)setCurrentItemTransition:(long long)arg1;
+@property(readonly, nonatomic) double playbackStartTime;
 @property(nonatomic) double playbackStartTimeOverride;
 @property(readonly, nonatomic) _Bool isMovieOrTVShow;
 @property(nonatomic) _Bool isVideoContent;
@@ -40,6 +44,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *contentItemID;
 @property(readonly, copy, nonatomic) NSString *description;
+@property(readonly, nonatomic) _Bool isAlwaysLive;
 @property(readonly, nonatomic) _Bool isAssetLoaded;
 @property(readonly, nonatomic) _Bool prefersSeekOverSkip;
 @property(nonatomic) long long repeatIndex;

@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-
 @class NSString, TSCECalculationEngine, TSCEFormulaObject, TSTExpressionNode, TSTTableInfo;
 
-@interface TSTFormula : NSObject <NSCopying>
+@interface TSTFormula : NSObject
 {
     TSTExpressionNode *_expressionTree;
     TSCECalculationEngine *_calculationEngine;

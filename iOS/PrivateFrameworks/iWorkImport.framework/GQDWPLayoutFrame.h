@@ -8,7 +8,6 @@
 
 @class GQDSStyle, GQDWPLayoutStorage;
 
-__attribute__((visibility("hidden")))
 @interface GQDWPLayoutFrame : NSObject
 {
     char *mStyleRef;

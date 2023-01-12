@@ -4,28 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
+#pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct CGPoint {
-    double _field1;
-    double _field2;
-};
-
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
-struct CGSize {
-    double _field1;
-    double _field2;
-};
 
 struct _NSRange {
     unsigned long long _field1;
@@ -42,10 +25,6 @@ struct flock {
 
 struct fsid {
     int _field1[2];
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
 };
 
 struct statfs {
@@ -71,13 +50,13 @@ struct statfs {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long state;
-    id *itemsPtr;
-    unsigned long long *mutationsPtr;
-    unsigned long long extra[5];
-} CDStruct_58648341;
+    unsigned long long _field1;
+    id *_field2;
+    unsigned long long *_field3;
+    unsigned long long _field4[5];
+} CDStruct_70511ce9;
 
 typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FMF/FMFXPCInternalClientProtocol-Protocol.h>
-
 @class FMFSession, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FMFSessionProxy : NSObject <FMFXPCInternalClientProtocol>
+@interface FMFSessionProxy : NSObject
 {
     FMFSession *_session;
 }

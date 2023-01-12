@@ -6,7 +6,7 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class MUPlaceViewController;
+@class MUPlaceViewController, NSArray, _MKMapItemAttribution;
 
 @protocol MUPlaceViewControllerDelegate <NSObject>
 
@@ -14,6 +14,7 @@
 - (void)placeViewControllerDidDismiss:(MUPlaceViewController *)arg1;
 - (void)placeViewControllerDidUpdateHeight:(MUPlaceViewController *)arg1;
 - (void)placeViewController:(MUPlaceViewController *)arg1 requestPasscodeUnlockWithCompletion:(void (^)(_Bool))arg2;
+- (void)placeViewController:(MUPlaceViewController *)arg1 launchAttributionURLs:(NSArray *)arg2 withAttribution:(_MKMapItemAttribution *)arg3 completionHandler:(void (^)(NSURL *, NSString *))arg4;
 - (void)placeViewControllerDidSelectDirectionsFromAddress:(MUPlaceViewController *)arg1;
 - (void)placeViewControllerDidSelectDirectionsToAddress:(MUPlaceViewController *)arg1;
 @end

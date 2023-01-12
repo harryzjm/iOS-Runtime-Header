@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPresentationControllerVisualStyleProviding-Protocol.h>
-
-@class NSString;
+@class NSString, _UISheetPresentationMetrics;
 
 __attribute__((visibility("hidden")))
-@interface _UIPresentationControllerNullVisualStyleProvider : NSObject <_UIPresentationControllerVisualStyleProviding>
+@interface _UIPresentationControllerNullVisualStyleProvider : NSObject
 {
 }
 
+@property(readonly, nonatomic) _UISheetPresentationMetrics *defaultSheetMetrics;
+- (long long)defaultConcreteTransitionStyleForViewController:(id)arg1;
+- (long long)defaultConcretePresentationStyleForViewController:(id)arg1;
+- (id)styleForSearchPresentationController:(id)arg1;
 - (id)styleForPopoverPresentationController:(id)arg1;
 - (id)styleForSheetPresentationController:(id)arg1;
 - (id)styleForAlertPresentationController:(id)arg1;

@@ -9,7 +9,8 @@
 @class VKAnimation, VKPuckAnimator;
 
 @protocol VKPuckAnimatorDelegate <NSObject>
-- (void)puckAnimator:(VKPuckAnimator *)arg1 getElevation:(double *)arg2 withCoordinate:(const void *)arg3;
+- (void)projectCoordinate:(CDStruct_c3b9c2ee)arg1 toPoint:(struct CGPoint *)arg2;
+- (struct optional<double>)puckAnimator:(VKPuckAnimator *)arg1 getElevationWithCoordinate:(const void *)arg2;
 - (void)puckAnimator:(VKPuckAnimator *)arg1 updatedTargetPosition:(const void *)arg2;
 - (void)puckAnimatorDidStop:(VKPuckAnimator *)arg1;
 - (void)puckAnimator:(VKPuckAnimator *)arg1 updatedPosition:(const void *)arg2 course:(const void *)arg3;

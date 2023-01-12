@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <dispatch/OS_dispatch_queue_pthread_root-Protocol.h>
+#import "OS_dispatch_queue.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_dispatch_queue_pthread_root <OS_dispatch_queue_pthread_root>
+@interface OS_dispatch_queue_pthread_root : OS_dispatch_queue
 {
 }
 

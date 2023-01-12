@@ -12,6 +12,8 @@
 - (void)viewControllerDidTerminateSetupFlow:(UIViewController *)arg1;
 
 @optional
+- (void)viewController:(UIViewController *)arg1 entitlementSelectionDidChange:(NSArray *)arg2;
+- (_Bool)viewController:(UIViewController *)arg1 requestsReturnToPresentationMarker:(unsigned long long)arg2 reset:(_Bool)arg3;
 - (void)viewController:(UIViewController *)arg1 didFinishWithPasses:(NSArray *)arg2 error:(NSError *)arg3;
 - (void)viewController:(UIViewController *)arg1 canProceedWithInstallment:(_Bool)arg2 featureApplication:(PKFeatureApplication *)arg3 completion:(void (^)(void))arg4;
 - (void)viewController:(UIViewController *)arg1 didExitPasscodeUpgradeWithShouldContinue:(_Bool)arg2 error:(NSError *)arg3;

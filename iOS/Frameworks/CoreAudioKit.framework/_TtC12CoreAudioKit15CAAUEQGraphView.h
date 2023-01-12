@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSArray;
 @protocol _TtP12CoreAudioKit27CAAUViewParameterDataSource_;
 
 __attribute__((visibility("hidden")))
@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *controlList;
     MISSING_TYPE *paramCache;
+    MISSING_TYPE *accessibleElements;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *curve;
+    MISSING_TYPE *gradientLayer;
     MISSING_TYPE *activePointIndex;
     MISSING_TYPE *drawActivePointOnly;
     MISSING_TYPE *plotActiveRangeOnly;
@@ -27,15 +29,26 @@ __attribute__((visibility("hidden")))
 - (float)valueForYWithLocation:(double)arg1;
 - (float)valueForXWithLocation:(double)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)graphView;
 - (struct CGRect)graphFrame;
+- (void)setBypassed:(long long)arg1 bypassed:(_Bool)arg2;
+- (void)setActiveControl:(long long)arg1;
+- (void)disableAllControls;
+- (void)changeControlToHorizontalPointWithIndex:(long long)arg1 width:(unsigned int)arg2;
+- (void)changeControlToPointWithIndex:(long long)arg1 y:(unsigned int)arg2;
+- (void)changeControlToRegionWithIndex:(long long)arg1 y:(unsigned int)arg2 width:(unsigned int)arg3;
+- (void)changeControlToHorizontalPointWithIndex:(long long)arg1;
+- (id)addRegionControlFor:(unsigned int)arg1 y:(unsigned int)arg2 width:(unsigned int)arg3 useTrianglesForWidth:(_Bool)arg4;
 - (id)addRegionControlFor:(unsigned int)arg1 y:(unsigned int)arg2 width:(unsigned int)arg3;
+- (id)addRegionControlFor:(unsigned int)arg1 width:(unsigned int)arg2 useTrianglesForWidth:(_Bool)arg3;
 - (id)addRegionControlFor:(unsigned int)arg1 width:(unsigned int)arg2;
 - (id)addPointControlFor:(unsigned int)arg1 for:(unsigned int)arg2;
 - (void)handleEndGestureWithNotification:(id)arg1;
 - (void)handleBeginGestureWithNotification:(id)arg1;
+@property(nonatomic, copy) NSArray *accessibilityElements;
 - (void)tintColorDidChange;
 - (void)removeFromSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;

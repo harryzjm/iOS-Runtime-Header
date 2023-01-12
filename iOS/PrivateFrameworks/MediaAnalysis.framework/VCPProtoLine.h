@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaAnalysis/NSCopying-Protocol.h>
-
 @class VCPProtoPoint;
 
 __attribute__((visibility("hidden")))
-@interface VCPProtoLine : PBCodable <NSCopying>
+@interface VCPProtoLine : PBCodable
 {
     VCPProtoPoint *_end;
     VCPProtoPoint *_start;

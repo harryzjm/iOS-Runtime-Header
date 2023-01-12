@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSString;
 
-@interface IBICAppearancePlatformSpecification : NSObject <IBBinaryArchiving>
+@interface IBICAppearancePlatformSpecification : NSObject
 {
     NSString *_appearanceName;
     long long _identifier;

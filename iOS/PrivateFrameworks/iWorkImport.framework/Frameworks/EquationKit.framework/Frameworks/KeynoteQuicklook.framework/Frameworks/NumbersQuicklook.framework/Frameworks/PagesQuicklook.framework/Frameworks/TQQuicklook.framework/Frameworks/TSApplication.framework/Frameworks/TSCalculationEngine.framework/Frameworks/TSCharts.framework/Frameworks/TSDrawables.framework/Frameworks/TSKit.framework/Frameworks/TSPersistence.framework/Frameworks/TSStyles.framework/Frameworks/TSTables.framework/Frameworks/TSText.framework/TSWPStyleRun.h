@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSText/NSCopying-Protocol.h>
-
 @class NSDictionary, TSWPCharacterStyle;
 
-@interface TSWPStyleRun : NSObject <NSCopying>
+@interface TSWPStyleRun : NSObject
 {
     unsigned long long _charIndex;
     unsigned long long _runLength;

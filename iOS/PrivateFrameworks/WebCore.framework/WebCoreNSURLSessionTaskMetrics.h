@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 @property(readonly, copy) NSArray *transactionMetrics; // @dynamic transactionMetrics;
-- (id)_initWithMetrics:(const void *)arg1;
+- (void)dealloc;
+- (id)_initWithMetrics:(void *)arg1;
 
 @end
 

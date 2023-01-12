@@ -10,12 +10,14 @@
 
 @interface _TtC9SnippetUI10TableState : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *_columnWidths;
+    MISSING_TYPE *_columnWidthsForRows;
+    MISSING_TYPE *_columnWidthsForHeaders;
+    MISSING_TYPE *idealWidths;
+    MISSING_TYPE *idealWidthForHeaders;
     MISSING_TYPE *_rowWidth;
     MISSING_TYPE *_chevronWidth;
     MISSING_TYPE *columns;
     MISSING_TYPE *separatorLines;
-    MISSING_TYPE *idealWidths;
     MISSING_TYPE *$__lazy_storage_$_spacerIndex;
 }
 

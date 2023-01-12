@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axMainSwitcher;
-- (void)_setTopAffordanceMode:(long long)arg1 withSelectedButtonType:(long long)arg2 animated:(_Bool)arg3;
 - (void)loadView;
 - (void)_axMarkupView;
 - (void)_accessibilityLoadAccessibilityInformation;

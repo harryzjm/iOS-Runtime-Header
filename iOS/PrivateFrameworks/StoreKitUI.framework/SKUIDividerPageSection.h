@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUIDividerPageComponent, SKUIViewElementLayoutContext;
 
 __attribute__((visibility("hidden")))
-@interface SKUIDividerPageSection <SKUIArtworkRequestDelegate>
+@interface SKUIDividerPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_layoutContext;
 }

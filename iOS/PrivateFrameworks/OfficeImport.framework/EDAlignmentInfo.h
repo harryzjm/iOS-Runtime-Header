@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/EDImmutableObject-Protocol.h>
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface EDAlignmentInfo : NSObject <NSCopying, EDImmutableObject>
+@interface EDAlignmentInfo : NSObject
 {
     int mHorizontalAlignment;
     int mVerticalAlignment;

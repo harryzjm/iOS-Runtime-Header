@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AssetCatalogFoundation/IBICAssetWithSlottedChildren-Protocol.h>
-
 @class IBICManifestArchivist, NSDictionary, NSString;
 
-@interface IBICSlottedAssetCollection <IBICAssetWithSlottedChildren>
+@interface IBICSlottedAssetCollection
 {
     IBICManifestArchivist *_manifestArchivist;
     NSDictionary *_childrenIdentifiersToSlots;

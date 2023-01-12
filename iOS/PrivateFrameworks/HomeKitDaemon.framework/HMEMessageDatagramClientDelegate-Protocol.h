@@ -9,11 +9,12 @@
 @class HMEMessageDatagramClient, NSArray, NSUUID;
 
 @protocol HMEMessageDatagramClientDelegate <HMERouterClientDelegate>
+- (void)client:(HMEMessageDatagramClient *)arg1 fetchWithFilters:(NSArray *)arg2 completion:(void (^)(NSUUID *, NSDictionary *, NSError *))arg3;
 - (void)clientDidDisconnect:(HMEMessageDatagramClient *)arg1;
 - (void)clientDidConnect:(HMEMessageDatagramClient *)arg1 serverIdentifier:(NSUUID *)arg2;
-- (void)client:(HMEMessageDatagramClient *)arg1 sendDisconnectWithCompletion:(void (^)(NSError *))arg2;
+- (void)sendDisconnectForClient:(HMEMessageDatagramClient *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)client:(HMEMessageDatagramClient *)arg1 sendChangeRegistrationsWithAddedFilters:(NSArray *)arg2 removedFilters:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)client:(HMEMessageDatagramClient *)arg1 sendConnectWithAddedFilters:(NSArray *)arg2 completion:(void (^)(NSUUID *, NSDictionary *, NSError *))arg3;
-- (void)client:(HMEMessageDatagramClient *)arg1 sendKeepAliveWithCompletion:(void (^)(NSError *))arg2;
+- (void)sendKeepAliveForClient:(HMEMessageDatagramClient *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

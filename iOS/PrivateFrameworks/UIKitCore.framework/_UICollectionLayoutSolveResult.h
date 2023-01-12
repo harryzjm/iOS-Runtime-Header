@@ -6,31 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutSolveResult-Protocol.h>
-
-@class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString;
+@class NSMutableDictionary, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSolveResult : NSObject <_UICollectionLayoutSolveResult>
+@interface _UICollectionLayoutSolveResult : NSObject
 {
     NSMutableIndexSet *_invalidatedIndexes;
     NSMutableDictionary *_invalidatedAuxillaryIndexesDict;
-    struct CGPoint _contentOffsetAdjustment;
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) struct CGPoint contentOffsetAdjustment; // @synthesize contentOffsetAdjustment=_contentOffsetAdjustment;
-- (id)invalidatedAuxillaryOffsets;
-- (id)indexesForInvalidatedAuxillariesOfKind:(id)arg1;
-@property(readonly, nonatomic) NSIndexSet *invalidatedIndexes;
-@property(readonly, nonatomic) NSSet *invalidatedAuxillaryKinds;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

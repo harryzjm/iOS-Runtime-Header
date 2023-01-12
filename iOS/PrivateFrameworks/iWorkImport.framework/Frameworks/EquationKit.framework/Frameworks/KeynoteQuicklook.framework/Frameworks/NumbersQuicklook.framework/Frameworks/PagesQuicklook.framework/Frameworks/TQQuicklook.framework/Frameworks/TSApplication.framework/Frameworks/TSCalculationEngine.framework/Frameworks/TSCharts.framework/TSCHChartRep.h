@@ -6,12 +6,9 @@
 
 #import <TSText/TSWPTextHostRep.h>
 
-#import <TSCharts/CALayerDelegate-Protocol.h>
-#import <TSCharts/TSCHSupportsRendering-Protocol.h>
-
 @class CALayer, NSArray, NSIndexSet, NSMutableArray, NSString, TSCHChartDrawableInfo, TSCHChartDrawableLayout, TSCHChartLayout, TSCHLegendMoveKnob, TSCHLegendRenderer, TSCHSearchSelection, TSCHSelectionPath;
 
-@interface TSCHChartRep : TSWPTextHostRep <TSCHSupportsRendering, CALayerDelegate>
+@interface TSCHChartRep : TSWPTextHostRep
 {
     _Bool _drawingSearchReference;
     _Bool _is2DRepFor3DChartRep;

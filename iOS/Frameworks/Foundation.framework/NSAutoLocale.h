@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)_setDoesNotRequireSpecialCaseHandling;
 - (unsigned char)_doesNotRequireSpecialCaseHandling;
-- (id)_prefs;
+- (id)_prefForKey:(id)arg1;
 - (id)displayNameForKey:(id)arg1 value:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)finalize;

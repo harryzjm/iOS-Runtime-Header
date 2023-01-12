@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOMapLine-Protocol.h>
-
 @class GEOMapAccess, NSString;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapAccessLine : NSObject <GEOMapLine>
+@interface GEOMapAccessLine : NSObject
 {
     GEOMapAccess *_map;
     shared_ptr_035a2da2 _edge;

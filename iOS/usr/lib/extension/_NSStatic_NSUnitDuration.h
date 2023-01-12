@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSUnitDuration.h"
+
 __attribute__((visibility("hidden")))
-@interface _NSStatic_NSUnitDuration
+@interface _NSStatic_NSUnitDuration : NSUnitDuration
 {
 }
 

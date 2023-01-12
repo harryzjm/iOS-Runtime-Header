@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WebKit/PDFHostViewControllerDelegate-Protocol.h>
-#import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
-#import <WebKit/WKShareSheetDelegate-Protocol.h>
-#import <WebKit/WKWebViewContentProvider-Protocol.h>
-#import <WebKit/_WKWebViewPrintProvider-Protocol.h>
-
-@class NSData, NSString, UIView;
+@class NSData, NSString, UITextRange, UIView;
+@protocol NSObject><NSCopying;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKShareSheetDelegate, WKWebViewContentProvider>
+@interface WKPDFView
 {
     struct RetainPtr<WKActionSheetAssistant> _actionSheetAssistant;
     struct RetainPtr<NSData> _data;
@@ -22,23 +17,30 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _findString;
     unsigned long long _findStringCount;
     unsigned long long _findStringMaxCount;
-    RetainPtr_1ac284e4 _fixedOverlayView;
+    struct RetainPtr<UIView> _fixedOverlayView;
     struct optional<unsigned long> _focusedSearchResultIndex;
     long long _focusedSearchResultPendingOffset;
     struct RetainPtr<PDFHostViewController> _hostViewController;
     struct CGSize _overlaidAccessoryViewsInset;
-    RetainPtr_1ac284e4 _pageNumberIndicator;
+    struct RetainPtr<UIView> _pageNumberIndicator;
     struct CString _passwordForPrinting;
-    struct InteractionInformationAtPosition _positionInformation;
+    // Error: parsing type: '{InteractionInformationAtPosition="request"{InteractionInformationRequest="point"{IntPoint="m_x"i"m_y"i}"includeSnapshot"B"includeLinkIndicator"B"includeCaretContext"B"includeHasDoubleClickHandler"B"includeImageData"B"linkIndicatorShouldHaveLegacyMargins"B"disallowUserAgentShadowContent"B}"canBeValid"B"nodeAtPositionHasDoubleClickHandler"{optional<bool>=""(?="__null_state_"c"__val_"B)"__engaged_"B}"selectability"C"isSelected"B"prefersDraggingOverTextSelection"B"isNearMarkedText"B"touchCalloutEnabled"B"isLink"B"isImage"B"isAttachment"B"isAnimatedImage"B"isPausedVideo"B"isElement"B"isContentEditable"B"containerScrollingNodeID"Q"isDataDetectorLink"B"preventTextInteraction"B"elementContainsImageOverlay"B"shouldNotUseIBeamInEditableContent"B"isImageOverlayText"B"isVerticalWritingMode"B"adjustedPointForNodeRespondingToClickEvents"{FloatPoint="m_x"f"m_y"f}"url"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"imageURL"{URL="m_string"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"m_isValid"b1"m_protocolIsInHTTPFamily"b1"m_cannotBeABaseURL"b1"m_portLength"b3"m_schemeEnd"b26"m_userStart"I"m_userEnd"I"m_passwordEnd"I"m_hostEnd"I"m_pathAfterLastSlash"I"m_pathEnd"I"m_queryEnd"I}"imageMIMEType"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"title"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"idAttribute"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"bounds"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"image"{RefPtr<WebKit::ShareableBitmap, WTF::RawPtrTraits<WebKit::ShareableBitmap>, WTF::DefaultRefDerefTraits<WebKit::ShareableBitmap>>="m_ptr"^{ShareableBitmap}}"textBefore"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"textAfter"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"caretLength"f"lineCaretExtent"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"cursor"{optional<WebCore::Cursor>=""(?="__null_state_"c"__val_"{Cursor="m_type"i"m_image"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"m_hotSpot"{IntPoint="m_x"i"m_y"i}"m_platformCursor"^v})"__engaged_"B}"linkIndicator"{TextIndicatorData="selectionRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"textBoundingRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"contentImageWithoutSelectionRectInRootViewCoordinates"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"textRectsInBoundingRectCoordinates"{Vector<WebCore::FloatRect, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>="m_buffer"^{FloatRect}"m_capacity"I"m_size"I}"contentImageScaleFactor"f"contentImageWithHighlight"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"contentImageWithoutSelection"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"contentImage"{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>="m_ptr"^{Image}}"estimatedBackgroundColor"{Color="m_colorAndFlags"Q}"presentationTransition"C"options"{OptionSet<WebCore::TextIndicatorOption>="m_storage"S}}"dataDetectorIdentifier"{String="m_impl"{RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>="m_ptr"^{StringImpl}}}"dataDetectorResults"{RetainPtr<NSArray>="m_ptr"^v}"dataDetectorBounds"{IntRect="m_location"{IntPoint="m_x"i"m_y"i}"m_size"{IntSize="m_width"i"m_height"i}}"elementContext"{optional<WebCore::ElementContext>=""(?="__null_state_"c"__val_"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}})"__engaged_"B}"hostImageOrVideoElementContext"{optional<WebCore::ElementContext>=""(?="__null_state_"c"__val_"{ElementContext="boundingRect"{FloatRect="m_location"{FloatPoint="m_x"f"m_y"f}"m_size"{FloatSize="m_width"f"m_height"f}}"webPageIdentifier"{ObjectIdentifier<WebCore::PageIdentifierType>="m_identifier"Q}"documentIdentifier"{ProcessQualified<WTF::UUID>="m_object"{UUID="m_data"T}"m_processIdentifier"{ObjectIdentifier<WebCore::ProcessIdentifierType>="m_identifier"Q}}"elementIdentifier"{ObjectIdentifier<WebCore::ElementIdentifierType>="m_identifier"Q}})"__engaged_"B}}', name: _positionInformation
     struct RetainPtr<NSString> _suggestedFilename;
     struct WeakObjCPtr<WKWebView> _webView;
     struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
     struct RetainPtr<WKShareSheet> _shareSheet;
+    struct RetainPtr<id<UITextSearchAggregator>> _searchAggregator;
+    struct RetainPtr<NSString> _searchString;
 }
 
 + (_Bool)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)clearAllDecoratedFoundText;
+- (void)decorateFoundTextRange:(id)arg1 inDocument:(id)arg2 usingStyle:(long long)arg3;
+- (void)performTextSearchWithQueryString:(id)arg1 usingOptions:(id)arg2 resultAggregator:(id)arg3;
+- (long long)compareFoundRange:(id)arg1 toRange:(id)arg2 inDocument:(id)arg3;
+@property(readonly) UITextRange *selectedTextRange;
 - (id)dataDetectionContextForActionSheetAssistant:(id)arg1 positionInformation:(const void *)arg2;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (_Bool)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
@@ -46,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
 - (void)actionSheetAssistant:(id)arg1 performAction:(_Bool)arg2;
-- (optional_1cc35013)positionInformationForActionSheetAssistant:(id)arg1;
+-     // Error parsing type: {optional<WebKit::InteractionInformationAtPosition>=(?=c{InteractionInformationAtPosition={InteractionInformationRequest={IntPoint=ii}BBBBBBB}B{optional<bool>=(?=cB)B}CBBBBBBBBBBBQBBBBBB{FloatPoint=ff}{URL={String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}b1b1b1b3b26IIIIIII}{URL={String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}b1b1b1b3b26IIIIIII}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{IntRect={IntPoint=ii}{IntSize=ii}}{RefPtr<WebKit::ShareableBitmap, WTF::RawPtrTraits<WebKit::ShareableBitmap>, WTF::DefaultRefDerefTraits<WebKit::ShareableBitmap>>=^{ShareableBitmap}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}f{FloatRect={FloatPoint=ff}{FloatSize=ff}}{optional<WebCore::Cursor>=(?=c{Cursor=i{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{IntPoint=ii}^v})B}{TextIndicatorData={FloatRect={FloatPoint=ff}{FloatSize=ff}}{FloatRect={FloatPoint=ff}{FloatSize=ff}}{FloatRect={FloatPoint=ff}{FloatSize=ff}}{Vector<WebCore::FloatRect, 0UL, WTF::CrashOnOverflow, 16UL, WTF::FastMalloc>=^{FloatRect}II}f{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{RefPtr<WebCore::Image, WTF::RawPtrTraits<WebCore::Image>, WTF::DefaultRefDerefTraits<WebCore::Image>>=^{Image}}{Color=Q}C{OptionSet<WebCore::TextIndicatorOption>=S}}{String={RefPtr<WTF::StringImpl, WTF::RawPtrTraits<WTF::StringImpl>, WTF::DefaultRefDerefTraits<WTF::StringImpl>>=^{StringImpl}}}{RetainPtr<NSArray>=^v}{IntRect={IntPoint=ii}{IntSize=ii}}{optional<WebCore::ElementContext>=(?=c{ElementContext={FloatRect={FloatPoint=ff}{FloatSize=ff}}{ObjectIdentifier<WebCore::PageIdentifierType>=Q}{ProcessQualified<WTF::UUID>={UUID=T}{ObjectIdentifier<WebCore::ProcessIdentifierType>=Q}}{ObjectIdentifier<WebCore::ElementIdentifierType>=Q}})B}{optional<WebCore::ElementContext>=(?=c{ElementContext={FloatRect={FloatPoint=ff}{FloatSize=ff}}{ObjectIdentifier<WebCore::PageIdentifierType>=Q}{ProcessQualified<WTF::UUID>={UUID=T}{ObjectIdentifier<WebCore::ProcessIdentifierType>=Q}}{ObjectIdentifier<WebCore::ElementIdentifierType>=Q}})B}})B}24@0:8@16, name: positionInformationForActionSheetAssistant:
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
 - (void)pdfHostViewController:(id)arg1 didLongPressPageIndex:(long long)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
 - (void)pdfHostViewController:(id)arg1 didLongPressURL:(id)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
@@ -90,15 +92,18 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)web_handleKeyEvent:(id)arg1;
 - (void)dealloc;
-@property(readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
+- (void)_wk_requestDocumentForPrintFormatter:(id)arg1;
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
+@property(readonly, nonatomic) _Bool _wk_printFormatterRequiresMainThread;
 - (struct CGPDFDocument *)_ensureDocumentForPrinting;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly) id <NSObject><NSCopying> selectedTextSearchDocument;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsTextReplacement;
 
 @end
 

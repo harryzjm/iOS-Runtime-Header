@@ -6,12 +6,10 @@
 
 #import <UIKit/UIPreviewAction.h>
 
-#import <WebKit/WKPreviewActionItem-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKPreviewAction : UIPreviewAction <WKPreviewActionItem>
+@interface WKPreviewAction : UIPreviewAction
 {
     NSString *_identifier;
 }

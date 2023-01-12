@@ -40,6 +40,7 @@
 - (id)fiui_eventsOfType:(long long)arg1;
 - (double)fiui_completionFactor;
 - (id)fiui_activityType;
+- (id)fiui_workoutCustomSplits;
 - (id)fiui_workoutSplitsForUserPreferredDistanceUnit:(id)arg1;
 @end
 

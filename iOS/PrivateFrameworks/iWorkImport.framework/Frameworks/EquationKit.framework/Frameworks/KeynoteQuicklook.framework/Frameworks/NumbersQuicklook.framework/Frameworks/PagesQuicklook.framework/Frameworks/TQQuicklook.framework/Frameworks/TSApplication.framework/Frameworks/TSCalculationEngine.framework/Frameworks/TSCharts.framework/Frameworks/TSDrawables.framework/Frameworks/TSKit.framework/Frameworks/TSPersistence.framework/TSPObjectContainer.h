@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "TSPObject.h"
+
 @class NSArray;
 
-@interface TSPObjectContainer
+@interface TSPObjectContainer : TSPObject
 {
     unsigned char _packageIdentifier;
     NSArray *_childObjects;

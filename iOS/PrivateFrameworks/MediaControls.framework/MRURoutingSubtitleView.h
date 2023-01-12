@@ -6,24 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
-@class MRUEqualizerView, MRUVisualStylingProvider, NSString, UILabel;
+@class MRUEqualizerView, MRUVisualStylingProvider, NSString, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRURoutingSubtitleView : UIView <MRUVisualStylingProviderObserver>
+@interface MRURoutingSubtitleView : UIView
 {
     long long _state;
     NSString *_text;
+    UIImage *_icon;
     MRUVisualStylingProvider *_stylingProvider;
     UILabel *_textLabel;
     MRUEqualizerView *_equalizerView;
+    UIImageView *_iconImageView;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) MRUEqualizerView *equalizerView; // @synthesize equalizerView=_equalizerView;
 @property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(retain, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
+@property(retain, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property(nonatomic) long long state; // @synthesize state=_state;
 - (void)updateVisibility;

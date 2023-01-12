@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
+#import "_TVFocusRedirectView.h"
 
 @class IKViewElement, NSArray, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface _TVProductStackView <TVAppTemplateImpressionable>
+@interface _TVProductStackView : _TVFocusRedirectView
 {
     UIView *_lastFocusedView;
     UIView *_titleView;

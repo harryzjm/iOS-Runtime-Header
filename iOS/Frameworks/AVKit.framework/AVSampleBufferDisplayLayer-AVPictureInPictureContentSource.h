@@ -6,11 +6,10 @@
 
 #import <AVFoundation/AVSampleBufferDisplayLayer.h>
 
-#import <AVKit/AVPictureInPictureContentSource-Protocol.h>
-
 @class NSString, UIWindow;
 
-@interface AVSampleBufferDisplayLayer (AVPictureInPictureContentSource) <AVPictureInPictureContentSource>
+@interface AVSampleBufferDisplayLayer (AVPictureInPictureContentSource)
+- (_Bool)avkit_wantsManagedSecondScreenPlayback;
 - (long long)avkit_contentSourceType;
 - (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
 - (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;

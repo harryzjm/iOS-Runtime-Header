@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FileProvider/NSFileProviderChangeObserver-Protocol.h>
-
 @class NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPXChangesObserver <NSFileProviderChangeObserver>
+@interface FPXChangesObserver
 {
     NSMutableArray *_changedItems;
     NSMutableArray *_deletedItemIDs;

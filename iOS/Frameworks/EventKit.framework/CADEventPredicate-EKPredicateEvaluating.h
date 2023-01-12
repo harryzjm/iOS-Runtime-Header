@@ -6,11 +6,8 @@
 
 #import <CalendarDaemon/CADEventPredicate.h>
 
-#import <EventKit/EKPredicateEvaluating-Protocol.h>
-#import <EventKit/EKPredicateExpanding-Protocol.h>
-
-@interface CADEventPredicate (EKPredicateEvaluating) <EKPredicateEvaluating, EKPredicateExpanding>
-+ (void)_addEventOccurrenceAndProposedTimeOccurrenceFor:(id)arg1 withOccurrenceStartDate:(id)arg2 toResults:(id)arg3;
+@interface CADEventPredicate (EKPredicateEvaluating)
++ (void)_addEventOccurrenceAndProposedTimeOccurrenceFor:(id)arg1 withOccurrenceStartDate:(id)arg2 toResults:(id)arg3 excludeProposed:(_Bool)arg4 excludeDeclinedUnlessProposed:(_Bool)arg5;
 - (_Bool)ekPredicateEvaluateWithObject:(id)arg1;
 - (void)expandWithObjectsPendingCommit:(id)arg1 deletedObjectIDs:(id)arg2 andResultArray:(id)arg3;
 @end

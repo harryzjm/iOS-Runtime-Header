@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <LoggingSupport/NSPredicateVisitor-Protocol.h>
-
 @class NSMutableSet;
 
 __attribute__((visibility("hidden")))
-@interface _OSLogCatalogFilter : NSObject <NSPredicateVisitor>
+@interface _OSLogCatalogFilter : NSObject
 {
     NSMutableSet *_pidAccept;
     NSMutableSet *_processLookupSubstr;

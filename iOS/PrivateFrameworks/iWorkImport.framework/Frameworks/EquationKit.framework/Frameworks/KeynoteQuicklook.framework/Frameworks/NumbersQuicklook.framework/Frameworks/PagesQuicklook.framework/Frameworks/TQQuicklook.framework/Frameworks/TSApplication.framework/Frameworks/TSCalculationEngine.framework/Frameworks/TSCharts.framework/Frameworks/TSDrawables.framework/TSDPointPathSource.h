@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSDrawables/TSDMixing-Protocol.h>
-#import <TSDrawables/TSDSmartPathSource-Protocol.h>
+#import "TSDPathSource.h"
 
-@interface TSDPointPathSource <TSDMixing, TSDSmartPathSource>
+@interface TSDPointPathSource : TSDPathSource
 {
     unsigned long long mType;
     struct CGPoint mPoint;

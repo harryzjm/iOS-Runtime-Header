@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/PLMomentProcessingProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
+#import <PhotoLibraryServices/PLSharedAssetsContainer-Protocol.h>
 
 @class CLLocation, NSArray, NSDate, NSObject, NSSet, NSString;
 @protocol NSCopying, PLMomentAssetData, PLPhotosHighlightData;
 
-@protocol PLMomentData <PLMomentRefreshable, PLMomentProcessingProtocol>
+@protocol PLMomentData <PLMomentRefreshable, PLMomentProcessingProtocol, PLSharedAssetsContainer>
 + (NSArray *)sortByTimeSortDescriptors;
 @property(retain, nonatomic) NSString *uuid;
 @property(nonatomic) int cachedVideosCount;

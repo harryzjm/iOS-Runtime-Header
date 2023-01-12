@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEOTransitRoutingIncidentMessage-Protocol.h>
-#import <GeoServices/NSSecureCoding-Protocol.h>
-
 @class GEOPBTransitRoutingIncidentMessage, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitRoutingIncidentMessage : NSObject <GEOTransitRoutingIncidentMessage, NSSecureCoding>
+@interface _GEOTransitRoutingIncidentMessage : NSObject
 {
     GEOPBTransitRoutingIncidentMessage *_routingIncidentMessage;
     NSArray *_transitIncidents;

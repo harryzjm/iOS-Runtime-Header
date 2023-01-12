@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIContextMenuNode : NSObject
 {
+    _Bool _leftOfParentWhenCascading;
     _UIContextMenuListView *_listView;
     UIMenu *_menu;
     _UIContextMenuNode *_previous;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+@property(nonatomic) _Bool leftOfParentWhenCascading; // @synthesize leftOfParentWhenCascading=_leftOfParentWhenCascading;
 @property(nonatomic) __weak _UIContextMenuNode *next; // @synthesize next=_next;
 @property(nonatomic) __weak _UIContextMenuNode *previous; // @synthesize previous=_previous;
 @property(retain, nonatomic) UIMenu *menu; // @synthesize menu=_menu;

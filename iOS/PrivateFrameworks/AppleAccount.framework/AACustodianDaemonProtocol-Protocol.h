@@ -8,6 +8,8 @@
 @protocol AAOBWelcomeControllerModelProtocol;
 
 @protocol AACustodianDaemonProtocol
+- (void)availableRecoveryFactorsWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
+- (void)performTrustedContactsDataSyncWithCompletion:(void (^)(NSError *))arg1;
 - (void)reSendCustodianInvitationWithCustodianID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)displayCustodianInviteWithUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)displayTrustedContactFlowWithModel:(id <AAOBWelcomeControllerModelProtocol>)arg1 completion:(void (^)(NSError *))arg2;

@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <IconServices/ISIconManagerObserver-Protocol.h>
-
 @protocol ISIconObserverDelegate;
 
-@interface ISIconObserver : NSObject <ISIconManagerObserver>
+__attribute__((visibility("hidden")))
+@interface ISIconObserver : NSObject
 {
     id _delegate;
 }

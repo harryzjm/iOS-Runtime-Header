@@ -6,11 +6,9 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSTables/TSTFormulaToken-Protocol.h>
-
 @class NSArray, NSString, TSTWPTokenAttachment, UIViewController;
 
-@interface TSTExpressionNode : TSPObject <TSTFormulaToken>
+@interface TSTExpressionNode : TSPObject
 {
     NSArray *_children;
     void *_argumentSpec;
@@ -26,7 +24,7 @@
 @property(retain, nonatomic) NSString *whitespaceBefore; // @synthesize whitespaceBefore=_whitespaceBefore;
 @property(nonatomic) unsigned long long lastIndex; // @synthesize lastIndex=_lastIndex;
 @property(nonatomic) unsigned long long firstIndex; // @synthesize firstIndex=_firstIndex;
-@property(nonatomic) TSTWPTokenAttachment *tokenAttachment; // @synthesize tokenAttachment=_tokenAttachment;
+@property(nonatomic) __weak TSTWPTokenAttachment *tokenAttachment; // @synthesize tokenAttachment=_tokenAttachment;
 - (id)description;
 - (void)saveToArchive:(void *)arg1 archiver:(id)arg2;
 - (void)loadFromArchive:(const void *)arg1 unarchiver:(id)arg2;
@@ -57,7 +55,7 @@
 - (void)enumerateExpressionNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)addTSTCanvasReferencesToSet:(id)arg1 inRangeContext:(unsigned char)arg2 withColorHelper:(id)arg3 preferringNodesFromStorage:(id)arg4 allVisitedNodes:(id)arg5;
 - (_Bool)hasMenu;
-@property(readonly, retain, nonatomic) UIViewController *popover;
+@property(readonly, nonatomic) UIViewController *popover;
 - (id)exportString;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(void *)arg3;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2;

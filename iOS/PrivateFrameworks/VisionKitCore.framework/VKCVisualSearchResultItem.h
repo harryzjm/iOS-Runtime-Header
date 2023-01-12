@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <VisionKitCore/VKAnalysisElementDebugMenuProvider-Protocol.h>
-
 @class MADVIVisualSearchGatingDomainInfo, MADVIVisualSearchGatingResultItem, MADVIVisualSearchResultItem, NSString, UIMenu;
 
 __attribute__((visibility("hidden")))
-@interface VKCVisualSearchResultItem : NSObject <VKAnalysisElementDebugMenuProvider>
+@interface VKCVisualSearchResultItem : NSObject
 {
     MADVIVisualSearchGatingResultItem *_resultItem;
     MADVIVisualSearchResultItem *_searchItem;
+    unsigned long long _queryID;
     MADVIVisualSearchGatingDomainInfo *_domainInfo;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) MADVIVisualSearchGatingDomainInfo *domainInfo; // @synthesize domainInfo=_domainInfo;
+@property(nonatomic) unsigned long long queryID; // @synthesize queryID=_queryID;
 @property(retain, nonatomic) MADVIVisualSearchResultItem *searchItem; // @synthesize searchItem=_searchItem;
 @property(retain, nonatomic) MADVIVisualSearchGatingResultItem *resultItem; // @synthesize resultItem=_resultItem;
 @property(readonly, nonatomic) UIMenu *debugMenu;

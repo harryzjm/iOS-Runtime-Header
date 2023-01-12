@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADisplayLink, UIView, _UIPortalView;
+#import "UIView.h"
+
+@class CADisplayLink, _UIPortalView;
 @protocol UICoordinateSpace;
 
 __attribute__((visibility("hidden")))
-@interface UITextModernLoupeView
+@interface UITextModernLoupeView : UIView
 {
     UIView *_sourceView;
     UIView *_maskView;

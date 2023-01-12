@@ -4,17 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/EKCalendarItemInlineEditItem-Protocol.h>
-#import <EventKitUI/EKEditItemViewControllerDelegate-Protocol.h>
-#import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
-#import <EventKitUI/PKScribbleInteractionDelegate-Protocol.h>
-#import <EventKitUI/PKScribbleInteractionElementSource-Protocol.h>
-#import <EventKitUI/UITextFieldDelegate-Protocol.h>
+#import "EKEventEditItem.h"
 
 @class EKCalendarItemEditor, EKLocationEditItemViewController, EKUILocationEditItemModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarItemLocationInlineEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKEventDetailPredictedLocationCellDelegate, PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, EKCalendarItemInlineEditItem>
+@interface EKCalendarItemLocationInlineEditItem : EKEventEditItem
 {
     EKUILocationEditItemModel *_viewModel;
     EKCalendarItemEditor *_editor;
@@ -34,8 +29,8 @@ __attribute__((visibility("hidden")))
 - (void)textFieldDidChange:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
-- (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
-- (void)eventDetailPredictedLocationCellRejectedPrediction:(id)arg1;
+- (void)didTapDismissSuggestedLocationCell:(id)arg1;
+- (void)didTapAddSuggestedLocationCell:(id)arg1 disambiguatedLocation:(id)arg2;
 - (void)editItemPendingVideoConferenceCompleted:(id)arg1;
 - (_Bool)editItemViewControllerSave:(id)arg1;
 - (_Bool)isSubitemAtIndexSaveable:(unsigned long long)arg1;
@@ -45,13 +40,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)saveAndDismissWithForce:(_Bool)arg1;
 - (void)_clearLocationAtIndex:(unsigned long long)arg1;
 - (void)_clearButtonTapped:(id)arg1;
-- (id)_clearButtonView:(unsigned long long)arg1;
 - (unsigned long long)_supportedSearchTypesForSubitemAtIndex:(unsigned long long)arg1;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (_Bool)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (void)_setEditor:(id)arg1 andUpdateScribbleInteractionOnCell:(id)arg2 addScribbleInteraction:(_Bool)arg3;
 - (void)_updateVirtualConferenceCell:(id)arg1 index:(unsigned long long)arg2 virtualConference:(id)arg3;
+- (void)_updateClearButtonAndMakeVisible:(id)arg1 index:(unsigned long long)arg2;
 - (void)_updateMapLocationCell:(id)arg1 index:(unsigned long long)arg2 location:(id)arg3;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1 inEditor:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

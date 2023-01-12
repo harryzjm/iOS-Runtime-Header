@@ -14,19 +14,23 @@
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
     MISSING_TYPE *archivedSessionClient;
+    MISSING_TYPE *bag;
     MISSING_TYPE *healthDataClient;
     MISSING_TYPE *configurationClient;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *marketingItemProvider;
+    MISSING_TYPE *platform;
     MISSING_TYPE *previewIconName;
     MISSING_TYPE *subscriptionCache;
     MISSING_TYPE *storefrontLocalizer;
     MISSING_TYPE *subscriptionToken;
     MISSING_TYPE *multiUserEligibilityObserver;
-    MISSING_TYPE *multiUserEligibilitySubscription;
     MISSING_TYPE *config;
-    MISSING_TYPE *workoutDetail;
+    MISSING_TYPE *isUpsellRowLoading;
+    MISSING_TYPE *marketingOffer;
+    MISSING_TYPE *multiUserEligibilitySubscription;
     MISSING_TYPE *resumableSession;
+    MISSING_TYPE *workoutDetail;
 }
 
 @end

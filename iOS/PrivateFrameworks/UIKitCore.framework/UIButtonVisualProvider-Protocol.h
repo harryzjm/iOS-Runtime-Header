@@ -47,6 +47,7 @@
 - (UIPreviewParameters *)pointerEffectPreviewParameters;
 - (void)pointerWillExit:(id <UIPointerInteractionAnimating>)arg1;
 - (void)pointerWillEnter:(id <UIPointerInteractionAnimating>)arg1;
+- (struct CGRect)visualBoundsWithCornerRadius:(double *)arg1;
 - (UITargetedPreview *)contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForDismissingMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (UITargetedPreview *)contextMenuInteraction:(UIContextMenuInteraction *)arg1 previewForHighlightingMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 updateStyleForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 style:(_UIContextMenuStyle *)arg3;

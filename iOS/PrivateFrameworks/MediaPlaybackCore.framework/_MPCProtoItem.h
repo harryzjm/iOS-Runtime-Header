@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <MediaPlaybackCore/NSCopying-Protocol.h>
-
 @class _MPCProtoItemIdentifierSet;
 
 __attribute__((visibility("hidden")))
-@interface _MPCProtoItem : PBCodable <NSCopying>
+@interface _MPCProtoItem : PBCodable
 {
     _MPCProtoItemIdentifierSet *_identifierSet;
     int _mediaType;

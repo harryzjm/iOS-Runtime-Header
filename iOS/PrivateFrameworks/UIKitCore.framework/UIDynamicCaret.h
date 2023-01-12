@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
-#import <UIKitCore/_UIDynamicCaretDocumentContentDelegate-Protocol.h>
+#import "UIImageView.h"
 
 @class NSString, TIKeyboardCandidateResultSet, _UIDynamicCaretAlternatives, _UIDynamicCaretHelpLabel, _UIDynamicCaretInput, _UIDynamicCaretNoContentView;
 @protocol UIKeyboardCandidateListDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIDynamicCaret <UIKeyboardCandidateList, _UIDynamicCaretDocumentContentDelegate>
+@interface UIDynamicCaret : UIImageView
 {
     id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
     long long _selectedIndex;

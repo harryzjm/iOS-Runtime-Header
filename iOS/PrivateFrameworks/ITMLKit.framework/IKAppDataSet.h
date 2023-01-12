@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/NSCopying-Protocol.h>
-
 @class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface IKAppDataSet : NSObject <NSCopying>
+@interface IKAppDataSet : NSObject
 {
     NSArray *_itemIDs;
     NSArray *_items;

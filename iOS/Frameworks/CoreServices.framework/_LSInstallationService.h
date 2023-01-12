@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreServices/NSXPCListenerDelegate-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface _LSInstallationService : NSObject <NSXPCListenerDelegate>
+@interface _LSInstallationService : NSObject
 {
     NSObject<OS_dispatch_queue> *_databaseQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;

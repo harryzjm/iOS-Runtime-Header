@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <CoreHAP/HAP2AccessoryCharacteristicEncodableBodyValue-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (HAP2AccessoryServerEncoding) <HAP2AccessoryCharacteristicEncodableBodyValue>
+@interface NSNumber (HAP2AccessoryServerEncoding)
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

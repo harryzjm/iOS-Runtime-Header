@@ -6,16 +6,20 @@
 
 #import <MapsUI/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, UIMenu;
 @protocol MUDynamicButtonCellModelChangeDelegate;
 
 @protocol MUDynamicButtonCellModel <NSObject>
+@property(readonly, nonatomic) long long actionStyle;
+@property(readonly, nonatomic, getter=isEnabled) _Bool enabled;
 @property(copy, nonatomic) CDUnknownBlockType actionBlock;
 @property(readonly, nonatomic) NSString *symbolName;
 @property(readonly, nonatomic) NSString *titleString;
 
 @optional
+@property(copy, nonatomic) UIMenu *menu;
 @property(nonatomic) __weak id <MUDynamicButtonCellModelChangeDelegate> changeDelegate;
 - (void)loadSubtitleWithCompletion:(void (^)(NSString *))arg1;
+- (NSString *)accessibilityIdentifierForAction;
 @end
 

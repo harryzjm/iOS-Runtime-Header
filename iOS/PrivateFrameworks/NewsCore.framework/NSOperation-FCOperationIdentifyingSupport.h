@@ -6,11 +6,9 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <NewsCore/FCOperationIdentifying-Protocol.h>
-
 @class NSString;
 
-@interface NSOperation (FCOperationIdentifyingSupport) <FCOperationIdentifying>
+@interface NSOperation (FCOperationIdentifyingSupport)
 @property(readonly, nonatomic) NSString *longOperationDescription;
 @property(readonly, nonatomic) NSString *shortOperationDescription;
 

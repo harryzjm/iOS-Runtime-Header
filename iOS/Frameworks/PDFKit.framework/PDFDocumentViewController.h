@@ -6,16 +6,10 @@
 
 #import <UIKit/UIPageViewController.h>
 
-#import <PDFKit/PDFDocumentPageChangeDelegate-Protocol.h>
-#import <PDFKit/PDFPageBackgroundManagerDelegate-Protocol.h>
-#import <PDFKit/UIPageViewControllerDataSource-Protocol.h>
-#import <PDFKit/UIPageViewControllerDelegate-Protocol.h>
-#import <PDFKit/UIScrollViewDelegate-Protocol.h>
-
 @class NSString, PDFDocumentViewControllerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentViewController : UIPageViewController <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface PDFDocumentViewController : UIPageViewController
 {
     PDFDocumentViewControllerPrivate *_private;
 }
@@ -27,12 +21,12 @@ __attribute__((visibility("hidden")))
 - (id)backgroundImageForPage:(id)arg1 withQuality:(int *)arg2;
 - (void)_updateCurrentPageViewController:(id)arg1;
 - (id)findPageViewControllerForPageIndex:(long long)arg1;
-- (id)_pageViewControllerCreate:(int)arg1;
+- (id)_pageViewControllerCreate:(unsigned long long)arg1;
 - (id)_pageViewController:(id)arg1 nextViewController:(int)arg2 forViewController:(id)arg3;
 - (void)_documentChanged;
 - (void)_documentWasUnlocked;
-- (void)_loadDocument;
-- (void)_setupDocument;
+- (void)_loadDocument:(unsigned long long)arg1;
+- (void)_setupDocument:(unsigned long long)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewWillLayoutSubviews;
@@ -51,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)forceUpdateActivePageIndex:(unsigned long long)arg1 withMaxDuration:(double)arg2;
 - (void)willForceUpdate;
 - (void)updateScrollViews;
+- (id)pageBackgroundManager;
 - (id)scrollView;
 - (void)setScrollViewScrollEnabled:(_Bool)arg1;
 - (void)setDisplaysRTL:(_Bool)arg1;
@@ -67,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)goToPage:(id)arg1 direction:(long long)arg2 animated:(_Bool)arg3;
 - (id)pageViews;
 - (void)dealloc;
-- (id)initWithPDFView:(id)arg1 andNavigationOrientation:(long long)arg2 withRenderingProperties:(id)arg3 andOptions:(id)arg4;
+- (id)initWithPDFView:(id)arg1 pageIndex:(unsigned long long)arg2 navigationOrientation:(long long)arg3 withRenderingProperties:(id)arg4 andOptions:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

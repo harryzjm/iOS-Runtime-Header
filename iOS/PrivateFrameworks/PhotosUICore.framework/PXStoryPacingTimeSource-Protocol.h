@@ -9,6 +9,7 @@
 @protocol PXStoryPacingTimeSourceDelegate;
 
 @protocol PXStoryPacingTimeSource <PXStoryPacingClock>
+@property(readonly, nonatomic) _Bool isRealTime;
 @property(nonatomic, getter=isActive) _Bool active;
 @property(nonatomic) __weak id <PXStoryPacingTimeSourceDelegate> delegate;
 @end

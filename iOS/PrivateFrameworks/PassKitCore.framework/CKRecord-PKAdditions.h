@@ -7,6 +7,8 @@
 #import <CloudKit/CKRecord.h>
 
 @interface CKRecord (PKAdditions)
++ (id)pk_recordWithSystemFieldsData:(id)arg1;
+- (id)pk_systemFieldsData;
 - (_Bool)pk_isRemoteAsset;
 - (_Bool)pk_isPassCatalog;
 - (_Bool)pk_isPass;
@@ -20,6 +22,7 @@
 - (id)pk_participantWithEmailAddress:(id)arg1;
 - (id)pk_participantWithRecipientHandle:(id)arg1;
 - (id)pk_copyRecordForNewRecordZone:(id)arg1;
+- (unsigned long long)pk_hash;
 - (id)description;
 - (id)pk_description;
 - (id)pk_objectForKey:(id)arg1 ofClass:(Class)arg2;

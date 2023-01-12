@@ -7,7 +7,8 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (CARenderValue)
-- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (unsigned long long)CA_copyNumericValue:(double *)arg1;
+- (unsigned long long)CA_numericValueCount;
 - (struct Object *)CA_copyRenderValue;
 - (double)CA_distanceToValue:(id)arg1;
 - (id)CA_roundToIntegerFromValue:(id)arg1;

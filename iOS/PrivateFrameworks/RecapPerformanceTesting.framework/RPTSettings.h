@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface RPTSettings : NSObject
 {
     NSURL *_recapOverrideFileURL;
+    long long _activationIterationCount;
 }
 
 + (id)processEnvironment;
 - (void).cxx_destruct;
+@property(nonatomic) long long activationIterationCount; // @synthesize activationIterationCount=_activationIterationCount;
 @property(retain, nonatomic) NSURL *recapOverrideFileURL; // @synthesize recapOverrideFileURL=_recapOverrideFileURL;
 - (id)initFromDictionary:(id)arg1;
 - (id)init;

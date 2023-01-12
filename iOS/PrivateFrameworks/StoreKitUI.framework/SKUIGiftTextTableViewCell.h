@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <StoreKitUI/UITextViewDelegate-Protocol.h>
-
 @class NSString, UILabel, UITextView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftTextTableViewCell : UITableViewCell <UITextViewDelegate>
+@interface SKUIGiftTextTableViewCell : UITableViewCell
 {
     UIView *_bottomBorderView;
     UILabel *_label;

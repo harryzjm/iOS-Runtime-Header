@@ -6,11 +6,12 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSTextContainer, NSTextStorage, _UITextLayoutController;
+@class NSTextContainer, NSTextStorage, _UITextLayoutControllerBase;
+@protocol _UITextLayoutController;
 
 @protocol _UITextContent <NSObject>
 @property(readonly, nonatomic) NSTextContainer *textContainer;
 @property(readonly, nonatomic) NSTextStorage *textStorage;
-@property(readonly, nonatomic) _UITextLayoutController *textLayoutController;
+@property(readonly, nonatomic) _UITextLayoutControllerBase<_UITextLayoutController> *textLayoutController;
 @end
 

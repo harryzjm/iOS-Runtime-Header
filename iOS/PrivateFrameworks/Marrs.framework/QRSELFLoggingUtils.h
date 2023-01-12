@@ -16,17 +16,20 @@ __attribute__((visibility("hidden")))
 + (int)convertRepetitionType:(int)arg1;
 + (int)convertMarrsErrorCode:(long long)arg1;
 + (_Bool)emitRDFailedEventWithMetadata:(id)arg1 andErrorCode:(long long)arg2;
-+ (_Bool)emitRDStartedEventWithMetadata:(id)arg1;
-+ (_Bool)emitRDEvaluatedEventWithResponse:(struct QRResponse)arg1 andNLXMetadata:(id)arg2;
 + (_Bool)emitCCQRFailedEventWithMetadata:(id)arg1 andErrorCode:(long long)arg2;
-+ (_Bool)emitCCQRStartedEventWithMetadata:(id)arg1;
++ (_Bool)emitQueryRewriteFailedEventWithMetadata:(id)arg1 andErrorCode:(long long)arg2 byPredictorType:(int)arg3;
++ (_Bool)emitRDEvaluatedEventWithResponse:(struct QRResponse)arg1 andNLXMetadata:(id)arg2;
 + (_Bool)emitCCQREvaluatedEventWithResponse:(struct QRResponse)arg1 andNLXMetadata:(id)arg2;
++ (_Bool)emitQueryRewriteEvaluatedEventWithResponse:(struct QRResponse)arg1 andNLXMetadata:(id)arg2 byPredictorType:(int)arg3;
++ (_Bool)emitRDStartedEventWithMetadata:(id)arg1;
++ (_Bool)emitCCQRStartedEventWithMetadata:(id)arg1;
++ (_Bool)emitQueryRewriteStartedEventWithMetadata:(id)arg1 byPredictorType:(int)arg2;
 + (id)createCCQRContextEvaluatedTier1Event:(struct QRResponse)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createRDContextEvaluatedEvent:(struct QRResponse)arg1 withNLXMetadata:(id)arg2;
 + (id)createCCQRContextEvaluatedEvent:(struct QRResponse)arg1 withNLXMetadata:(id)arg2 andLinkId:(id)arg3;
 + (id)createRDContextEventWrapper:(id)arg1 withMetaData:(id)arg2;
 + (id)createCCQRContextEventWrapper:(id)arg1 withMetaData:(id)arg2;
-+ (id)createEventMetadataWithNlId:(id)arg1 andWithResultCandidateId:(id)arg2;
++ (id)createEventMetadataWithNlId:(id)arg1 andWithResultCandidateId:(id)arg2 andWithRequester:(int)arg3;
 + (void)emitEvent:(id)arg1;
 
 @end

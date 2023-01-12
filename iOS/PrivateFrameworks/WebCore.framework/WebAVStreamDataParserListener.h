@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVStreamDataParserOutputHandling-Protocol.h>
-
 @class AVStreamDataParser, NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebAVStreamDataParserListener : NSObject <AVStreamDataParserOutputHandling>
+@interface WebAVStreamDataParserListener : NSObject
 {
     void *_parent;
     AVStreamDataParser *_parser;

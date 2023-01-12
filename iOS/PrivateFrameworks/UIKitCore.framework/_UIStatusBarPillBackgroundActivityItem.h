@@ -9,7 +9,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarPillBackgroundActivityItem
 {
-    long long _previousType;
     _UIStatusBarPillView *_combinedView;
     _UIStatusBarDisplayableContainerView *_iconsView;
     struct CGSize _pillSize;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) _UIStatusBarDisplayableContainerView *iconsView; // @synthesize iconsView=_iconsView;
 @property(retain, nonatomic) _UIStatusBarPillView *combinedView; // @synthesize combinedView=_combinedView;
-@property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
 @property(nonatomic) struct CGSize pillSize; // @synthesize pillSize=_pillSize;
 - (_Bool)shouldUpdateIndicatorForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
@@ -30,12 +28,10 @@ __attribute__((visibility("hidden")))
 - (void)_create_combinedView;
 - (_Bool)_shouldBounceWhenTransitioningFromType:(long long)arg1 toType:(long long)arg2;
 - (id)_backgroundColorForActivityType:(long long)arg1;
-- (void)updatedDisplayItemsWithData:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)_backgroundActivityViewForIdentifier:(id)arg1;
 - (id)_textLabelForActivityType:(long long)arg1;
 - (id)createDisplayItemForIdentifier:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 
 @end
 

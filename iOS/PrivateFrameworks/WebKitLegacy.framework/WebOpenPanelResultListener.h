@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKitLegacy/WebOpenPanelResultListener-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WebOpenPanelResultListener : NSObject <WebOpenPanelResultListener>
+@interface WebOpenPanelResultListener : NSObject
 {
     struct RefPtr<WebCore::FileChooser, WTF::RawPtrTraits<WebCore::FileChooser>, WTF::DefaultRefDerefTraits<WebCore::FileChooser>> _chooser;
 }

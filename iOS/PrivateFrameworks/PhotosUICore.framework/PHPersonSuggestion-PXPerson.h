@@ -6,11 +6,9 @@
 
 #import <Photos/PHPersonSuggestion.h>
 
-#import <PhotosUICore/PXPerson-Protocol.h>
-
 @class NSDate, NSString;
 
-@interface PHPersonSuggestion (PXPerson) <PXPerson>
+@interface PHPersonSuggestion (PXPerson)
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;
 @property(readonly) NSDate *px_keyPhotoDate;
 @property(readonly) _Bool isPersonModel;

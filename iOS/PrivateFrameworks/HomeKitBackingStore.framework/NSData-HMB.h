@@ -6,11 +6,9 @@
 
 #import <Foundation/NSData.h>
 
-#import <HomeKitBackingStore/HMBQueryableModelFieldCoder-Protocol.h>
-
 @class NSString;
 
-@interface NSData (HMB) <HMBQueryableModelFieldCoder>
+@interface NSData (HMB)
 + (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
 + (id)hmbDecodeQueryableParameter:(id)arg1;
 + (id)hmbEncodeQueryableParameter:(id)arg1;

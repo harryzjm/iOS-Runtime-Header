@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLook/QLListCellDataGenerationOperationDelegate-Protocol.h>
-
 @class NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface QLListCellManager : NSObject <QLListCellDataGenerationOperationDelegate>
+@interface QLListCellManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableDictionary *_operations;

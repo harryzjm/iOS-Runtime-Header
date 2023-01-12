@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSNNConcatenation
+#import "MPSCNNKernel.h"
+
+@interface MPSNNConcatenation : MPSCNNKernel
 {
 }
 
@@ -20,7 +22,7 @@
 - (id)resultStateForSourceImages:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (_Bool)isResultStateReusedAcrossBatch;
-- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_d6af7fc0 *)arg4;
+- (id)destinationImageDescriptorForSourceImages:(id)arg1 sourceStates:(id)arg2 paddingMethod:(unsigned long long)arg3 sourceOffset:(CDStruct_2ec95fd7 *)arg4;
 - (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImage:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImages:(id)arg2 destinationImage:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

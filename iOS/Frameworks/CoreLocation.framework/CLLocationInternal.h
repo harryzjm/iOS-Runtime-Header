@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationMatchInfo, NSData, _CLLocationFusionInfo, _CLLocationGroundAltitude;
+@class CLLocationGnssOdometerInfo, CLLocationMatchInfo, NSData, _CLLocationFusionInfo, _CLLocationGroundAltitude;
 
 @interface CLLocationInternal : NSObject
 {
@@ -23,15 +23,16 @@
     int fPositionContextState;
     double fProbabilityPositionContextStateIndoor;
     double fProbabilityPositionContextStateOutdoor;
+    CLLocationGnssOdometerInfo *fGnssOdometerInfo;
 }
 
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12 coarseMetaData:(id)arg13;
-- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12 gnssOdometerInfo:(id)arg13 coarseMetaData:(id)arg14;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4 fusionInfo:(id)arg5 rawHorizontalAccuracy:(double)arg6 rawAltitude:(double)arg7 rawVerticalAccuracy:(double)arg8 rawCourseAccuracy:(double)arg9 positionContextStateType:(int)arg10 probabilityPositionContextStateIndoor:(double)arg11 probabilityPositionContextStateOutdoor:(double)arg12 gnssOdometerInfo:(id)arg13;
 - (id)initWithClientLocation:(CDStruct_2fb123db)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
-- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_d25f1cbc)arg2 coarseMetaData:(id)arg3;
-- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_d25f1cbc)arg2;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_47914287)arg2 coarseMetaData:(id)arg3;
+- (id)initWithClientLocation:(CDStruct_2fb123db)arg1 clientLocationPrivate:(CDStruct_47914287)arg2;
 - (id)initWithClientLocation:(CDStruct_2fb123db)arg1 coarseMetaData:(id)arg2;
 - (id)initWithClientLocation:(CDStruct_2fb123db)arg1;
 

@@ -4,23 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/AVCRateControllerDelegate-Protocol.h>
-#import <AVConference/RTCPReportProvider-Protocol.h>
-#import <AVConference/VCConnectionChangedHandler-Protocol.h>
-#import <AVConference/VCMediaStreamNotification-Protocol.h>
-#import <AVConference/VCMomentTransportDelegate-Protocol.h>
-#import <AVConference/VCNetworkFeedbackControllerDelegate-Protocol.h>
-#import <AVConference/VCRateControlMediaControllerDelegate-Protocol.h>
-#import <AVConference/VCSecurityEventHandler-Protocol.h>
-#import <AVConference/VCSessionParticipantDelegate-Protocol.h>
-#import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
-#import <AVConference/VCSessionStatsControllerDelegate-Protocol.h>
-
-@class AVCRateController, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionBitrateArbiter, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionParticipantRemote, VCSessionPresentationInfo, VCSessionStatsController, VCSwitchManager, VCTransportSession;
-@protocol OS_dispatch_queue, OS_nw_activity, VCConnectionProtocol, VCSessionDelegate;
+@class AVCRateController, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, VCAudioCaptionsCoordinator, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionBitrateArbiter, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionParticipantRemote, VCSessionPresentationInfo, VCSessionStatsController, VCSwitchManager, VCTransportSession;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_nw_activity, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCSession <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCSessionStatsControllerDelegate, VCConnectionChangedHandler, VCMomentTransportDelegate>
+@interface VCSession
 {
     unsigned int _state;
     NSObject<OS_dispatch_queue> *_sessionQueue;
@@ -39,7 +27,7 @@ __attribute__((visibility("hidden")))
     VCSessionStatsController *_sessionStatsController;
     VCNetworkFeedbackController *_feedbackController;
     NSMutableArray *_startingParticipants;
-    NSMutableArray *_stoppingParticipants;
+    NSMutableSet *_stoppingParticipants;
     NSMutableArray *_initializingParticipants;
     VCSecurityKeyManager *_securityKeyManager;
     VCTransportSession *_transportSession;
@@ -47,7 +35,14 @@ __attribute__((visibility("hidden")))
     unsigned int _transportSessionID;
     _Bool _localSourceNeedsReset;
     struct _VCSessionOneToOneSettings _oneToOneSettings;
-    _Bool oneToOneModeEnabled;
+    _Bool _switchFromGFTToOneToOneEnabled;
+    double _remoteMediaStallReconnectTimeout;
+    double _oneToOneSwitchStartTime;
+    _Bool _isOneToOneInitiator;
+    _Bool _oneToOneModeEnabled;
+    _Bool _isReconnectPending;
+    _Bool _isOneToOneRemoteMediaStalling;
+    unsigned short _maxConnectionMTU;
     _Bool _useReducedSizeRTCP;
     AVCRateController *_uplinkRateController;
     AVCRateController *_downlinkRateController;
@@ -65,29 +60,36 @@ __attribute__((visibility("hidden")))
     _Bool _isGKVoiceChat;
     double _remoteMediaStallDisconnectTimeout;
     int _reportingModuleID;
+    VCAudioCaptionsCoordinator *_captionsCoordinator;
     NSObject<OS_nw_activity> *_parentNWActivity;
     NSObject<OS_nw_activity> *_nwActivity;
     NSObject<OS_nw_activity> *_nwActivityActiveSession;
-    _Bool _isReconnectPending;
     VCSessionPresentationInfo *_presentationInfo;
     VCSessionBitrateArbiter *_bitrateArbiter;
-    double _remoteMediaStallReconnectTimeout;
-    _Bool _isOneToOneRemoteMediaStalling;
-    unsigned short _maxConnectionMTU;
     NSString *_conversationID;
     NSDate *_conversationTimeBase;
     NSDate *_conversationTimeBaseTruncated;
     _Bool _forceFixedEncryptionLabel;
-    _Bool _isOneToOneInitiator;
     VCSwitchManager *_switchManager;
     int _currentConnectionType;
-    double _oneToOneSwitchStartTime;
     _Bool _sharingEnabled;
-    _Bool _oneToOneModeEnabled;
+    struct __CFDictionary *_mediaTypeToSpatialMetadataEntryMap;
+    unsigned long long _siriSpatialAudioSourceID;
+    NSObject<OS_dispatch_semaphore> *_stopCompletedSemaphore;
+    _Bool _didServerDie;
+    _Bool _isServerPacketRetransmissionForVideoEnabled;
 }
 
++ (_Bool)isServerPacketRetransmissionEnabledForVideo;
 + (void)cleanupControlChannelParticipantConfig:(CDStruct_c24deb19 *)arg1;
 + (void)addUUIDToMutableData:(id)arg1 fromUUIDString:(id)arg2;
++ (int)deviceRoleForSessionMode:(long long)arg1;
++ (void)terminateProcess:(id)arg1 terminateSource:(id)arg2 agent:(struct opaqueRTCReporting *)arg3;
++ (unsigned int)mediaStateForMediaStateMessageValue:(id)arg1;
++ (id)mediaStateMessageValueForMediaState:(unsigned int)arg1;
++ (unsigned int)mediaTypeForMediaStateMessageKey:(id)arg1;
++ (id)mediaStateMessageKeyForMediaType:(unsigned int)arg1;
++ (id)mediaStateMessageStreamGroupKeysForMediaType:(unsigned int)arg1;
 @property(nonatomic) _Bool isOneToOneRemoteMediaStalling; // @synthesize isOneToOneRemoteMediaStalling=_isOneToOneRemoteMediaStalling;
 @property(nonatomic) _Bool sharingEnabled; // @synthesize sharingEnabled=_sharingEnabled;
 @property(nonatomic) _Bool oneToOneModeEnabled; // @synthesize oneToOneModeEnabled=_oneToOneModeEnabled;
@@ -105,48 +107,36 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(readonly, nonatomic) NSString *idsDestination; // @synthesize idsDestination=_idsDestination;
 @property(readonly, nonatomic) VCSessionParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
-- (void)setupOneToOneAdaptiveLearning;
-- (void)notifyDelegateActiveConnectionDidChange;
 - (void)additionalFlushCountToOneToOneRateController:(unsigned int)arg1;
-- (unsigned int)vcrcServerBagProfileNumber;
-- (void)applyNegotiatedOneToOneFaceTimeSettings;
-- (void)setupOneToOneABTesting;
-- (void)startReportingForOneToOneEnabled:(_Bool)arg1;
-- (void)initWithRelevantStorebagEntries;
-- (void)startOneToOne;
-- (void)reportActiveConnectionOneToOne;
-- (void)cleanupOneToOne;
-- (int)setupOneToOne;
-- (void)cleanupOneToOneMediaQueue;
-- (int)setupOneToOneMediaQueue;
 - (void)didReceiveMomentsRequest:(id)arg1;
 - (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
+- (void)mediaQualityDegraded:(_Bool)arg1;
 - (void)preWarmStateChanged:(_Bool)arg1;
 - (void)reportingIntervalChanged:(double)arg1;
 - (void)recommendedSettingsChanged:(id)arg1;
 - (void)unregisterReportingTask;
 - (void)registerReportingTask;
-- (id)newNetworkBitrateString:(const CDStruct_a4f8a7cd *)arg1;
+- (void)generateReportDictionary:(struct __CFDictionary *)arg1;
+- (id)newNetworkBitrateString:(const CDStruct_b671a7c4 *)arg1;
 - (void)dispatchedParticipant:(id)arg1 didStopWithError:(id)arg2;
 - (void)processDidStop;
-- (void)cleanUpOneToOneVideoStreamDelegate;
-- (void)cleanupOneToOneVideoReceiverDelegate;
 - (void)setupOneToOneVideoStreamDelegate;
 - (void)setupOneToOneVideoReceiverDelegate;
 - (void)dispatchedParticipant:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
 - (void)stopAllParticipants;
 - (void)dispatchedUpdateConfiguration:(id)arg1;
 - (void)tearDown;
+- (void)dispatchedTransportStop;
 - (void)dispatchedStopWithError:(id)arg1 didRemoteCancel:(_Bool)arg2;
 - (void)dispatchedStopWithError:(id)arg1;
 - (void)dispatchedStart;
 - (void)dispatchedRemoveParticipant:(id)arg1;
 - (void)dispatchedAddParticipantConfigurations:(id)arg1;
 - (_Bool)configureRemoteParticipant:(id)arg1 withConfig:(id)arg2;
-- (_Bool)addOneToOneParticipant:(id)arg1 withConfig:(id)arg2;
 - (void)dispatchedAddParticipantWithConfig:(id)arg1;
 - (void)reportingSessionRemoteParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 value:(id)arg3;
 - (void)collectSessionEventKeyFields:(struct __CFDictionary *)arg1 eventType:(unsigned short)arg2 withParticipant:(id)arg3 keyChangeReason:(id)arg4 newMKI:(id)arg5 withStreamID:(unsigned short)arg6;
+- (void)reportingMomentsToGreenTeaWithRequest:(id)arg1;
 - (void)reportingMomentsWithRequest:(id)arg1 recipientID:(id)arg2;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 keyChangeReason:(id)arg3 newMKI:(id)arg4 withStreamID:(unsigned short)arg5;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 keyChangeReason:(id)arg3 newMKI:(id)arg4;
@@ -155,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 withStreamID:(unsigned short)arg2;
 - (struct __CFDictionary *)getClientSpecificUserInfo;
 - (id)computeConversationTimeBaseTruncated;
+- (void)didEncryptionKeyRollTimeout;
 - (void)resetDecryptionTimeout;
 - (_Bool)handleEncryptionInfoChange:(id)arg1;
 - (_Bool)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
@@ -167,10 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)registerMediaStreamNotificationDelegateForParticipant:(id)arg1;
 - (void)setupMultiwayABTesting;
 - (void)cleanupNwActivity;
-- (void)cleaupMediaControlInfoGeneratorsOneToOne;
-- (int)setupOneToOneMediaControlInfoGenerators;
 - (void)cleanupVCRC;
-- (id)newParticipantOneToOneConfigWithIDSParticipantID:(unsigned long long)arg1 isLocal:(_Bool)arg2 config:(id)arg3;
 - (void)sendSymptomsToRemoteParticipants:(id)arg1 symptom:(id)arg2 groupID:(id)arg3;
 - (void)unregisterRemoteParticipantFromSession:(id)arg1;
 - (void)removeDelegatesForRemoteParticipant:(id)arg1;
@@ -189,15 +177,13 @@ __attribute__((visibility("hidden")))
 - (void)updateLocalVideoCaptureFrameRate;
 - (int)maxRemoteParticipants30fps;
 - (void)setMediaQueuePeakBitrateWithTargetBitrate:(unsigned int)arg1;
+- (void)handleMediaQueueSizeExceedThresholdWithQueueSize:(double)arg1 streamID:(unsigned int)arg2 type:(int)arg3;
 - (void)createMediaQueue;
 - (void)setupUplinkBitrateCaps;
-- (void)startRateControllers;
-- (void)stopRateControllerOneToOne;
-- (void)startRateControllerOneToOne;
-- (void)cleanupRateControllerOneToOne;
-- (int)setupRateControllerOneToOne;
+- (void)startRateControllersMultiwayFromOneToOne:(_Bool)arg1;
 - (void)updateMultiwayRateControllerWithActiveConnection:(id)arg1 isScreenEnabled:(_Bool)arg2 isLocal:(_Bool)arg3;
 - (void)cleanupSpatialAudio;
+- (int)reserveAudioChannelForMediaType:(unsigned int)arg1 spatialAudioSourceID:(unsigned long long)arg2;
 - (int)setupSpatialAudio;
 - (void)didRemoveSpatialMetadataEntry;
 - (void)setupRateControllersMultiway;
@@ -210,6 +196,7 @@ __attribute__((visibility("hidden")))
 - (void)distributeBitrateAndOptInToStreamIDsWithSeamlessTransition:(_Bool)arg1;
 - (void)updateParticipantConfigurations:(id)arg1;
 - (void)updateParticipantWindowState;
+- (void)sendRateControlConfigToRemoteParticipant:(id)arg1;
 - (void)applySpatialMetadata;
 - (void)updatePresentationInfo:(id)arg1;
 - (int)flushBasebandWithPayloads:(id)arg1;
@@ -218,6 +205,9 @@ __attribute__((visibility("hidden")))
 - (void)rateController:(id)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
 - (void)updateNetworkFeedbackControllerReport:(CDStruct_4b4d87a1 *)arg1;
 - (void)didReceivedSessionStatsAtTime:(double)arg1;
+- (void)didServerDie;
+- (void)vcSessionParticipant:(id)arg1 remoteMediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3;
+- (void)vcSessionParticipant:(id)arg1 mediaStateDidChange:(unsigned int)arg2 forMediaType:(unsigned int)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
 - (void)vcSessionParticipant:(id)arg1 didDetectError:(id)arg2;
 - (void)vcSessionParticipant:(id)arg1 oneToOneModeDidChange:(_Bool)arg2;
 - (void)vcSessionParticipantDidRemoteMediaStallTimeout:(id)arg1 duration:(double)arg2;
@@ -237,7 +227,7 @@ __attribute__((visibility("hidden")))
 - (void)vcSessionParticipant:(id)arg1 remoteScreenEnabledDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(id)arg1 remoteVideoEnabledDidChange:(_Bool)arg2;
 - (void)vcSessionParticipant:(id)arg1 remoteAudioEnabledDidChange:(_Bool)arg2;
-- (void)vcSessionParticipant:(id)arg1 streamGroupID:(unsigned int)arg2 stateDidChange:(unsigned int)arg3;
+- (void)vcSessionParticipantFetchStreamGroupState:(id)arg1;
 - (void)vcSessionParticipant:(id)arg1 screenEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSessionParticipant:(id)arg1 videoEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSessionParticipant:(id)arg1 audioEnabled:(_Bool)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
@@ -245,11 +235,8 @@ __attribute__((visibility("hidden")))
 - (void)vcSessionParticipant:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
 - (unsigned int)calculateExpectedTotalNetworkBitrateUplink;
 - (unsigned int)calculateExpectedTotalNetworkBitrateDownlink;
-- (_Bool)isOneToOneUsingVideo;
-- (void)configureOneToOneRateController:(id)arg1 isUsingVideo:(_Bool)arg2;
 - (void)handlePreferredInterfaceForDuplicationUpdate:(unsigned char)arg1 notifyPeer:(_Bool)arg2 enableDuplication:(_Bool)arg3 isMediaUnrecoverableSignal:(_Bool)arg4;
 - (void)handleActiveConnectionChangeForMultiway:(id)arg1;
-- (void)handleActiveConnectionChangeForOneToOne:(id)arg1;
 - (void)dispatchedHandleActiveConnectionChange:(id)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)handleCellularMTUChanged:(unsigned short)arg1 connection:(id)arg2;
@@ -259,16 +246,15 @@ __attribute__((visibility("hidden")))
 - (void)applyRemoteLinkConstrains:(id)arg1;
 - (void)applyLinkConstrains:(id)arg1;
 - (void)setTransportSessionEventHandler;
-- (void)updateOneToOneRateControllerForVideoEnabled:(_Bool)arg1;
+- (void)sendStreamGroupStateToParticipant:(id)arg1;
+- (void)dispatchedSetSharingEnabled:(_Bool)arg1;
 - (void)setOneToOneModeEnabledFromRemoteSignal:(_Bool)arg1;
-- (void)dispatchedSetOneToOneModeEnabled:(_Bool)arg1 isLocal:(_Bool)arg2;
-- (void)didSendOneToOneEnabledMessage:(id)arg1 didSucceed:(_Bool)arg2;
-- (void)switchFromOneToOneToMultiway;
 - (void)reportingSetUserInfo;
 @property(readonly, nonatomic) NSArray *remoteParticipants;
 - (void)mediaStateChangedForParticipant:(id)arg1;
 - (id)participantForID:(id)arg1;
 - (void)updateConfiguration:(id)arg1;
+- (void)stopWithError:(id)arg1 didRemoteCancel:(_Bool)arg2;
 - (void)stopWithError:(id)arg1;
 - (void)start;
 @property(readonly, nonatomic) VCSessionParticipantRemote *oneToOneRemoteParticipant;
@@ -280,15 +266,75 @@ __attribute__((visibility("hidden")))
 - (char *)sessionStateToString:(unsigned int)arg1;
 - (void)setState:(unsigned int)arg1;
 - (void)setupTransportSessionWithDestination:(id)arg1;
-- (void)setTransportConnectionSelectionVersion;
+- (int)selectDataPath;
+- (void)setTransportConnectionSelectionVersionWithLocalFrameWorkVersion:(id)arg1 remoteFrameworkVersion:(id)arg2;
 @property(readonly, nonatomic) NSDictionary *transportMetadata;
 @property(readonly, nonatomic) NSDictionary *capabilities;
+- (void)startDeallocTimer;
+- (void)stopTimeoutTimer;
 - (void)dealloc;
 - (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 processId:(int)arg5 isGKVoiceChat:(_Bool)arg6;
-- (void)broadcastStreamGroupStateUpdateMessage;
+- (void)handleActiveConnectionChangeForOneToOne:(id)arg1;
+- (void)notifyDelegateActiveConnectionDidChange;
+- (void)reportActiveConnectionOneToOne;
+- (void)startOneToOne;
+- (void)setupOneToOneABTesting;
+- (void)applyNegotiatedOneToOneFaceTimeSettings;
+- (void)dispatchedSetOneToOneModeEnabled:(_Bool)arg1 isLocal:(_Bool)arg2;
+- (void)completionHandlerOneToOneEnabled:(_Bool)arg1 didSucceed:(_Bool)arg2;
+- (_Bool)completeTransitionToOneToOneEnabled:(_Bool)arg1;
+- (_Bool)addOneToOneParticipant:(id)arg1;
+- (unsigned int)vcrcServerBagProfileNumber;
+- (void)configureOneToOneRateController:(id)arg1 isUsingVideo:(_Bool)arg2;
+- (_Bool)negotiateOneToOneWithRemoteParticipant:(id)arg1;
+- (void)setupOneToOneAdaptiveLearning;
+- (void)renewOneToOneMediaQueue;
+- (void)startReportingForOneToOneEnabled:(_Bool)arg1;
+- (void)cleanUpOneToOneVideoStreamDelegate;
+- (void)cleanupOneToOneVideoReceiverDelegate;
+- (void)cleanupOneToOneDelegates;
+- (void)cleanupOneToOne;
+- (void)cleanupOneToOneMediaQueue;
+- (_Bool)switchFromMultiwayToOneToOne;
+- (_Bool)multiwayToOneToOneSwitchConfigure;
+- (void)multiwayToOneToOneSwitchResume;
+- (void)multiwayToOneToOneSwitchSuspend;
+- (void)messageExistingParticipantsPostUpgrade;
+- (_Bool)switchFromOneToOneToMultiway;
+- (void)oneToOneToMultiwaySwitchConfigure;
+- (void)oneToOneToMultiwaySwitchResume;
+- (void)oneToOneToMultiwaySwitchSuspend;
+- (void)reportSwitchingError:(_Bool)arg1 errorEvent:(unsigned int)arg2;
+- (void)reportCompletedSwitchingToOneToOne:(_Bool)arg1;
+- (void)reportExistingParticipantsAnew;
+- (_Bool)configureRemoteParticipantForOneToOne:(id)arg1;
+- (_Bool)isOneToOneUsingVideo;
+- (void)stopRateControllerOneToOne;
+- (void)startRateControllerOneToOne;
+- (id)newParticipantOneToOneConfigWithIDSParticipantID:(unsigned long long)arg1 isLocal:(_Bool)arg2 mediaControlInfoVersion:(unsigned char)arg3 videoEnabled:(_Bool)arg4 screenEnabled:(_Bool)arg5 remoteParticipant:(id)arg6;
+- (int)setupOneToOneMediaControlInfoGeneratorsWithVersion:(unsigned char)arg1 oneToOneConfig:(id)arg2 videoEnabled:(_Bool)arg3;
+- (_Bool)configureLocalParticipantWithOneToOneRemoteParticipant:(id)arg1 isInitialConfiguration:(_Bool)arg2;
+- (void)cleanupRateControllerOneToOne;
+- (void)initWithRelevantStorebagEntries;
+- (void)updateOneToOneRateControllerForVideoEnabled:(_Bool)arg1;
+- (int)setupRateControllerOneToOne;
+- (_Bool)setOneToOneConfigOnRemoteParticipant:(id)arg1;
+- (id)newNegotiatorForOneToOneWithRemoteParticipant:(id)arg1;
+- (int)setupOneToOneMediaQueue;
+- (int)setupOneToOne;
+- (void)processMediaStateMessage:(id)arg1 remoteParticipantID:(id)arg2;
+- (void)processMediaTypeStatesWithMessage:(id)arg1 mediaTypeStates:(id)arg2;
+- (void)processStreamGroupStateMessageKey:(id)arg1 value:(id)arg2 mediaTypeStates:(id)arg3;
+- (void)setupMediaStateUpdateMessage;
+- (_Bool)validateStreamGroup:(id)arg1 state:(id)arg2;
+- (void)sendMediaStateUpdateMessageToRemoteParticipant:(id)arg1;
+- (void)broadcastMediaStateUpdateMessage;
+- (id)stateMessageDictionary;
 - (void)setupLinkConstrainsChangedMessages;
 - (void)setupCellTechChangeMessages;
 - (void)remoteCellTechStateUpdate:(int)arg1 maxRemoteBitrate:(unsigned int)arg2;
+- (void)setupRateControlConfigMessage;
+- (void)setupMediaQualityDegradedMessage;
 - (void)setupDisconnectMessage;
 - (void)setupPiPStateChangeMessage;
 - (void)setupPreferredInterfaceMessage;
@@ -302,8 +348,7 @@ __attribute__((visibility("hidden")))
 - (void)setupVideoPausedMessages;
 - (void)setupOneToOneEnabledMessages;
 - (void)setupAudioPausedMessages;
-- (void)setupStreamGroupStateUpdateMessage;
-- (_Bool)validateStreamGroup:(id)arg1 state:(id)arg2;
+- (void)setupStreamGroupStateFetchMessage;
 - (void)setupVideoEnabledMessages;
 - (void)setupAudioEnabledMessages;
 - (void)broadcastSingleStateMessage:(id)arg1 withTopic:(id)arg2;

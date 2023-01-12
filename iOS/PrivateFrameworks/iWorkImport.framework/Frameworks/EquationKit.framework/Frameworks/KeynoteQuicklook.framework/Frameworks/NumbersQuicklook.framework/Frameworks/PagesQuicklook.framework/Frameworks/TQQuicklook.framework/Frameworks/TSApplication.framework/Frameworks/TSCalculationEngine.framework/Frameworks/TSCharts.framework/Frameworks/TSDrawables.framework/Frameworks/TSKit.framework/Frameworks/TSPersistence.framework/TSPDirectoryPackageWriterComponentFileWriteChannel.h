@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSString, NSURL, TSUFileIOChannel;
 
-@interface TSPDirectoryPackageWriterComponentFileWriteChannel : NSObject <TSPComponentWriteChannel>
+@interface TSPDirectoryPackageWriterComponentFileWriteChannel : NSObject
 {
     NSURL *_URL;
     CDUnknownBlockType _handler;

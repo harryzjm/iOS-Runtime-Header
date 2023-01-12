@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CALayer, NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface UITextMagnifierCommonRenderer
+@interface UITextMagnifierCommonRenderer : UIView
 {
     _Bool m_loaded;
     NSDictionary *m_images;
@@ -21,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)visualsForMagnifier;
-- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_f46536fb *)arg1 forAncestor:(id)arg2;
 - (void)update;
 - (id)backgroundColourIfNecessary;
 - (id)magnifier;

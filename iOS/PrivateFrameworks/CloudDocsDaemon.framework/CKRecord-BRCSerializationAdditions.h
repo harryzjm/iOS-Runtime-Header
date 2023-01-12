@@ -6,12 +6,9 @@
 
 #import <CloudKit/CKRecord.h>
 
-#import <CloudDocsDaemon/PQLBindable-Protocol.h>
-#import <CloudDocsDaemon/PQLValuable-Protocol.h>
-
 @class NSData, NSString;
 
-@interface CKRecord (BRCSerializationAdditions) <PQLValuable, PQLBindable>
+@interface CKRecord (BRCSerializationAdditions)
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)desiredKeysWithMask:(unsigned short)arg1;
@@ -19,7 +16,7 @@
 + (id)rootDirectoryRecordForZoneID:(id)arg1;
 + (id)brc_containerMetadataRecordWithContainer:(id)arg1;
 + (id)brc_fakeRecordWithErrorMarkerFor20716676;
-- (void)processAppLibraryDataWithMovedZoneNames:(id)arg1 serverZone:(id)arg2;
+- (void)processAppLibraryDataWithMovedZoneNames:(id)arg1 serverZone:(id)arg2 isDeltaSync:(_Bool)arg3;
 - (id)_createAppLibraryIfNecessary:(id)arg1 session:(id)arg2;
 - (void)serializeSideCarInfo:(id)arg1 filenameExtension:(id)arg2 diffs:(unsigned long long)arg3 deadInServerTruth:(_Bool)arg4;
 - (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(_Bool)arg3;
@@ -28,6 +25,7 @@
 - (void)serializeFilename:(id)arg1 forCreation:(_Bool)arg2 setExtension:(_Bool)arg3;
 - (void)serializeFilename:(id)arg1 forCreation:(_Bool)arg2;
 - (void)serializeFinderTags:(id)arg1 forCreation:(_Bool)arg2;
+- (void)serializeSystemFields:(id)arg1 includeCZMEtag:(_Bool)arg2;
 - (void)serializeSystemFields:(id)arg1;
 - (_Bool)locateSideCarServerZone:(id *)arg1 shareRecordName:(id *)arg2 withSession:(id)arg3;
 - (_Bool)_locateSideCarServerZone:(id *)arg1 withShareAliasReference:(id)arg2 withSession:(id)arg3;
@@ -50,6 +48,7 @@
 - (_Bool)brc_safeToGetURL;
 - (id)brc_updateDroppedReason;
 - (id)brc_oplockMergeEtag;
+- (_Bool)brc_isInterestingRecordForSave;
 - (_Bool)brc_isInterestingRecordForSyncDown;
 - (id)brc_containerMetadataIconPaths;
 - (id)brc_containerMetadataIconNames;

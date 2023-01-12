@@ -6,12 +6,9 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AnnotationKit/UITableViewDataSource-Protocol.h>
-#import <AnnotationKit/UITableViewDelegate-Protocol.h>
-
 @class AKController, NSArray, NSString, UITableView;
 
-@interface AKLineStylesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AKLineStylesViewController : UIViewController
 {
     AKController *_controller;
     UITableView *_tableView;

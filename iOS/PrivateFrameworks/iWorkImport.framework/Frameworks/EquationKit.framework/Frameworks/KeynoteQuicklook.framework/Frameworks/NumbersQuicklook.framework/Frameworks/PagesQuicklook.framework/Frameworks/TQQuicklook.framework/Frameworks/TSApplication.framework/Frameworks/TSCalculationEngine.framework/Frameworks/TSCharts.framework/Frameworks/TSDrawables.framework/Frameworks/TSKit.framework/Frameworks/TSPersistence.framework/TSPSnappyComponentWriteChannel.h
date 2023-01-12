@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPComponentWriteChannel-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue, TSPComponentWriteChannel;
 
-@interface TSPSnappyComponentWriteChannel : NSObject <TSPComponentWriteChannel>
+@interface TSPSnappyComponentWriteChannel : NSObject
 {
     NSObject<OS_dispatch_queue> *_writeQueue;
     char _uncompressedBuffer[65536];

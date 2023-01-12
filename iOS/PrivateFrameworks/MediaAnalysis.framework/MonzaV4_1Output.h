@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaAnalysis/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface MonzaV4_1Output : NSObject <MLFeatureProvider>
+@interface MonzaV4_1Output : NSObject
 {
     MLMultiArray *_angle;
 }

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreImage/MLFeatureProvider-Protocol.h>
-
 @class MLModel, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface CIPredictionModel : NSObject <MLFeatureProvider>
+@interface CIPredictionModel : NSObject
 {
     struct __CVBuffer *imageBuffer;
     MLModel *_model;
@@ -24,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) MLModel *model; // @synthesize model=_model;
 - (id)featureValueForName:(id)arg1;
 @property(readonly, nonatomic) NSSet *featureNames;
-- (struct __CVBuffer *)predictUsingInputBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
+- (struct __CVBuffer *)predictUsingInputBuffer:(struct __CVBuffer *)arg1 outputBuffer:(struct __CVBuffer *)arg2 error:(id *)arg3;
 - (_Bool)processOutputFeatureWithName:(id)arg1 featureDescription:(id)arg2;
 - (_Bool)processInputFeatureWithName:(id)arg1 featureDescription:(id)arg2;
 - (_Bool)processInputModel:(id)arg1;

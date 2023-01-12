@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AppSSO/POExtensionRegistrationProtocol-Protocol.h>
 #import <AppSSO/SOExtensionContextProtocol-Protocol.h>
 
 @class NSXPCListenerEndpoint, SOAuthorizationRequestParameters;
 
-@protocol SORemoteExtensionContextProtocol <SOExtensionContextProtocol>
+@protocol SORemoteExtensionContextProtocol <SOExtensionContextProtocol, POExtensionRegistrationProtocol>
 - (void)finishAuthorizationWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)cancelAuthorizationWithCompletion:(void (^)(SOAuthorizationCredential *, NSError *))arg1;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(NSXPCListenerEndpoint *)arg1 completion:(void (^)(_Bool, NSError *))arg2;

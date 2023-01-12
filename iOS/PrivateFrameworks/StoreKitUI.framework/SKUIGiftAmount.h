@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 @class NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGiftAmount : NSObject <NSCopying>
+@interface SKUIGiftAmount : NSObject
 {
     NSString *_displayLabel;
     NSString *_partNumber;

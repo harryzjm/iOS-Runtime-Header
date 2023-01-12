@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RespiratoryHealth/HKRPWatchAppInstallabilityDataSource-Protocol.h>
-
 @class HKRPOxygenSaturationAvailability, HKRPOxygenSaturationOnboardingCache, NRDevice, NSString, NSUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface _HKRPWatchAppInstallabilityDataSource : NSObject <HKRPWatchAppInstallabilityDataSource>
+@interface _HKRPWatchAppInstallabilityDataSource : NSObject
 {
     NSUserDefaults *_userDefaults;
     HKRPOxygenSaturationAvailability *_availability;

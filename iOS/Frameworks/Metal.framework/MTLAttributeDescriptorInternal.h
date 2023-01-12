@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MTLAttributeDescriptor.h"
+
 __attribute__((visibility("hidden")))
-@interface MTLAttributeDescriptorInternal
+@interface MTLAttributeDescriptorInternal : MTLAttributeDescriptor
 {
     unsigned long long _vertexFormat;
     unsigned long long _offset;

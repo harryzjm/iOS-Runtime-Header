@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DataDetectorsUI/EKDayViewControllerDataSource-Protocol.h>
-#import <DataDetectorsUI/EKDayViewControllerDelegate-Protocol.h>
+#import "DDRemoteActionViewControllerProvider.h"
 
 @class EKEvent, EKEventStore, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteTimeLineViewControllerProvider <EKDayViewControllerDataSource, EKDayViewControllerDelegate>
+@interface DDRemoteTimeLineViewControllerProvider : DDRemoteActionViewControllerProvider
 {
     NSArray *_events;
     EKEvent *_event;

@@ -6,13 +6,10 @@
 
 #import <UIKit/UIPercentDrivenInteractiveTransition.h>
 
-#import <VideosUI/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <VideosUI/VideosExtrasOptionallyInteractiveAnimationController-Protocol.h>
-
 @class NSString, VideosExtrasBorderedImageView;
 
 __attribute__((visibility("hidden")))
-@interface VideosExtrasZoomingImageTransitionController : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning, VideosExtrasOptionallyInteractiveAnimationController>
+@interface VideosExtrasZoomingImageTransitionController : UIPercentDrivenInteractiveTransition
 {
     _Bool _interactive;
     _Bool _shouldUseSpringAnimation;

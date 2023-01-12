@@ -6,15 +6,14 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, PXContentFilterState;
+@class NSArray, PXContentFilterState, PXLibraryFilterState;
 @protocol PXFilterController;
 
 @protocol PXFilterControllerDelegate <NSObject>
-- (long long)libraryTypeForFilterController:(id <PXFilterController>)arg1;
-
-@optional
-- (void)filterControllerDidComplete:(id <PXFilterController>)arg1;
+- (void)filterControllerDidClose:(id <PXFilterController>)arg1;
 - (void)filterController:(id <PXFilterController>)arg1 contentFilterStateChanged:(PXContentFilterState *)arg2;
+- (void)filterController:(id <PXFilterController>)arg1 libraryFilterStateChanged:(PXLibraryFilterState *)arg2;
 - (NSArray *)contentFilterHiddenTypesForFilterController:(id <PXFilterController>)arg1;
+- (NSArray *)libraryFilterHiddenTypesForFilterController:(id <PXFilterController>)arg1;
 @end
 

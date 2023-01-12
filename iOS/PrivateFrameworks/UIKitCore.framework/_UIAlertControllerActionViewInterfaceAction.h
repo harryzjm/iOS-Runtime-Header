@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIAlertActionMutablePropertyObservering-Protocol.h>
+#import "UIInterfaceAction.h"
 
 @class NSString, UIAlertAction, _UIAlertControllerActionView;
 
 __attribute__((visibility("hidden")))
-@interface _UIAlertControllerActionViewInterfaceAction <UIAlertActionMutablePropertyObservering>
+@interface _UIAlertControllerActionViewInterfaceAction : UIInterfaceAction
 {
     UIAlertAction *_underlyingAlertAction;
     _Bool _valid;

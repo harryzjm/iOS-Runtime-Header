@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PSSpecifier *totalUsageSpecifier; // @synthesize totalUsageSpecifier=_totalUsageSpecifier;
 @property(retain, nonatomic) PSDataUsageStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
 @property(nonatomic) __weak id <PSBillingPeriodSource> billingPeriodSource; // @synthesize billingPeriodSource=_billingPeriodSource;
+- (id)getLogger;
 - (id)totalRoamingDataUsageForSpecifier:(id)arg1;
 - (id)totalDataUsageForSpecifier:(id)arg1;
 - (id)totalRoamingBytesUsed;

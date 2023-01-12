@@ -10,12 +10,15 @@
 {
     _Bool _haveAddedOwnerToShare;
     _Bool _isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
+    struct _PCSPublicIdentityData *_selfPPPCSOwnerIdentity;
 }
 
 + (id)modifyHandlerForDeleteWithShareID:(id)arg1 operation:(id)arg2;
 + (id)modifyHandlerWithShare:(id)arg1 operation:(id)arg2;
+@property(nonatomic) struct _PCSPublicIdentityData *selfPPPCSOwnerIdentity; // @synthesize selfPPPCSOwnerIdentity=_selfPPPCSOwnerIdentity;
 @property(nonatomic) _Bool isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade; // @synthesize isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade=_isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
 @property(nonatomic) _Bool haveAddedOwnerToShare; // @synthesize haveAddedOwnerToShare=_haveAddedOwnerToShare;
+- (void)dealloc;
 - (void)updateParticipantsForFetchedShare:(id)arg1 error:(id)arg2;
 - (void)savePCSDataToCache;
 - (void)setServerRecord:(id)arg1;

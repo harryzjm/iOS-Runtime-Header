@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIKeyboardSplitControlMenuItem-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardSplitControlMenu_DockAndMerge : NSObject <UIKeyboardSplitControlMenuItem>
+@interface UIKeyboardSplitControlMenu_DockAndMerge : NSObject
 {
 }
 
 - (void)actionForMenu:(id)arg1;
 @property(readonly) _Bool visible;
-@property(readonly, retain) NSString *label;
+@property(readonly) NSString *label;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

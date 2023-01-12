@@ -6,9 +6,11 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBAppLayout, SBAppSwitcherModel;
+@class NSSet, SBAppLayout, SBAppSwitcherModel;
 
 @protocol SBAppSwitcherModelDelegate <NSObject>
+- (SBAppLayout *)appSwitcherModel:(SBAppSwitcherModel *)arg1 willAddAppLayout:(SBAppLayout *)arg2 replacingAppLayouts:(NSSet *)arg3 removingAppLayouts:(NSSet *)arg4;
+- (SBAppLayout *)appSwitcherModel:(SBAppSwitcherModel *)arg1 willReplaceAppLayout:(SBAppLayout *)arg2 proposedReplacementAppLayout:(SBAppLayout *)arg3;
 - (void)appSwitcherModel:(SBAppSwitcherModel *)arg1 didRemoveAppLayoutForFallingOffList:(SBAppLayout *)arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <CoreEmbeddedSpeechRecognition/NSObject-Protocol.h>
 
-@class AFSpeechPackage, AFSpeechRecognition, CESRModelProperties, NSArray, NSDictionary, NSError;
+@class AFSpeechInfoPackage, AFSpeechPackage, AFSpeechRecognition, CESRModelProperties, NSArray, NSDictionary, NSError;
 
 @protocol CESRSpeechServiceDelegate <NSObject>
 - (oneway void)speechServiceDidProduceEndpointFeaturesWithWordCount:(long long)arg1 trailingSilenceDuration:(long long)arg2 eosLikelihood:(double)arg3 pauseCounts:(NSArray *)arg4 silencePosterior:(double)arg5 processedAudioDurationInMilliseconds:(long long)arg6;
@@ -18,6 +18,9 @@
 - (oneway void)speechServiceDidSelectRecognitionModelWithModelProperties:(CESRModelProperties *)arg1;
 
 @optional
+- (oneway void)speechServiceDidRecognizeFinalResultCandidatePackage:(AFSpeechPackage *)arg1;
+- (oneway void)speechServiceDidRecognizePackage:(AFSpeechPackage *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
+- (oneway void)speechServiceDidRecognizeTokens:(NSArray *)arg1 withMetadata:(AFSpeechInfoPackage *)arg2;
 - (oneway void)speechServiceDidProduceLoggablePackage:(AFSpeechPackage *)arg1;
 @end
 

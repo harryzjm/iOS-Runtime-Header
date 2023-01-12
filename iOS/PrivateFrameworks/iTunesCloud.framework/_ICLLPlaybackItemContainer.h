@@ -6,16 +6,15 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <iTunesCloud/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _ICLLPlaybackItemContainer : PBCodable <NSCopying>
+@interface _ICLLPlaybackItemContainer : PBCodable
 {
     NSString *_containerId;
     NSString *_featureName;
     NSString *_mediaId;
+    NSString *_stationHash;
     int _type;
     CDStruct_f953fb60 _has;
 }

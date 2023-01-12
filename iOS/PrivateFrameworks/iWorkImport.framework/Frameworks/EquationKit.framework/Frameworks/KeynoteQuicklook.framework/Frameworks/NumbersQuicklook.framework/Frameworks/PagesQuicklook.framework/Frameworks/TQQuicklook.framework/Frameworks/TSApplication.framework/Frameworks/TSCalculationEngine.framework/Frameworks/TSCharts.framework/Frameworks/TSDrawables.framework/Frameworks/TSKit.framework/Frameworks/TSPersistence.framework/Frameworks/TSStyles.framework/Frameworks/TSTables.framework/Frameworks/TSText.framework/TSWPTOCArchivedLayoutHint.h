@@ -6,12 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSText/TSDArchivedHint-Protocol.h>
-
 @class NSString, TSWPTOCLayoutHint;
 @protocol TSDHint;
 
-@interface TSWPTOCArchivedLayoutHint : TSPObject <TSDArchivedHint>
+@interface TSWPTOCArchivedLayoutHint : TSPObject
 {
     TSWPTOCLayoutHint *_hint;
 }

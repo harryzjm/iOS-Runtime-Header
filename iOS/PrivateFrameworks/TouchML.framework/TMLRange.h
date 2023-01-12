@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <TouchML/NSCopying-Protocol.h>
-#import <TouchML/TMLRangeJSExports-Protocol.h>
-
-@interface TMLRange : NSObject <TMLRangeJSExports, NSCopying>
+@interface TMLRange : NSObject
 {
     struct _NSRange _range;
 }

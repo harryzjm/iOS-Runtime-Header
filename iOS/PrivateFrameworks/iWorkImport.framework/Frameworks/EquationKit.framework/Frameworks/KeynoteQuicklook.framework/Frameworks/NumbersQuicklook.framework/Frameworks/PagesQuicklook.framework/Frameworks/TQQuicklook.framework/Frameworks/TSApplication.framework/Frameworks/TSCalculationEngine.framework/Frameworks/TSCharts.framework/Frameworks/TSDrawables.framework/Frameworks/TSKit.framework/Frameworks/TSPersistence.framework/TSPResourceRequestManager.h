@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSUResourceRequestObservable-Protocol.h>
-#import <TSPersistence/TSUResourceRequestObserver-Protocol.h>
-
 @class NSString, TSUObserverNotifier;
 
-@interface TSPResourceRequestManager : NSObject <TSUResourceRequestObserver, TSUResourceRequestObservable>
+@interface TSPResourceRequestManager : NSObject
 {
     TSUObserverNotifier *_observers;
 }

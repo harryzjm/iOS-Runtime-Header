@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "CATOperation.h"
+
 @class CATIDSMessageOptions, NSArray, NSObject, NSString;
 @protocol CATIDSPrimitives, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface CATSendSerialIDSMessagesOperation
+@interface CATSendSerialIDSMessagesOperation : CATOperation
 {
     id <CATIDSPrimitives> mPrimitives;
     NSObject<OS_dispatch_queue> *mWorkQueue;

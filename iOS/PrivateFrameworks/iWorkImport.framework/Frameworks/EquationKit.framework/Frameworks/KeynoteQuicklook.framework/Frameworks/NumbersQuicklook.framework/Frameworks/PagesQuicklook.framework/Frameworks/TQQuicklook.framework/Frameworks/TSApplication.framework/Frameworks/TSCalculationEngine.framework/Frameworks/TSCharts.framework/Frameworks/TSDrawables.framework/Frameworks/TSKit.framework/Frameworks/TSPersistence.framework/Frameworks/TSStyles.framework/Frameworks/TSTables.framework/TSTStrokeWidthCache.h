@@ -17,7 +17,7 @@
 @property(nonatomic) struct _opaque_pthread_rwlock_t rwlock; // @synthesize rwlock=_rwlock;
 - (void)unlock;
 - (void)lockForWriting;
-- (void)updateCacheForGridIndex:(unsigned int)arg1 withMergedStrokes:(id)arg2;
+- (void)updateCacheForGridIndex:(unsigned int)arg1 withMajorStrokes:(id)arg2 andMinorStrokes:(id)arg3;
 - (void)strokeWidthForGridIndex:(unsigned int)arg1 outWidth:(double *)arg2 outNextWidth:(double *)arg3;
 - (double)strokeWidthForGridIndex:(unsigned int)arg1 inRange:(struct TSTSimpleRange)arg2;
 - (void)setCount:(unsigned int)arg1;

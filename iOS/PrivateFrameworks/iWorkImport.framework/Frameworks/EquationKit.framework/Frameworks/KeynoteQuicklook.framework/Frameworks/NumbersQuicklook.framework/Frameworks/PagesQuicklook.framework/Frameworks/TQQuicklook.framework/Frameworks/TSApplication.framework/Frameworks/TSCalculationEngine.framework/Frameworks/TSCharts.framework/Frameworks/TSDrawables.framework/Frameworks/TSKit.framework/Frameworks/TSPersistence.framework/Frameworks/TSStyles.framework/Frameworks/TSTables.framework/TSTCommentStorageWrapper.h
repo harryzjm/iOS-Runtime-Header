@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/TSSPropertyCommandSerializing-Protocol.h>
-#import <TSTables/TSTCellDiffing-Protocol.h>
-
 @class NSString, TSDCommentStorage;
 
-@interface TSTCommentStorageWrapper : NSObject <TSTCellDiffing, TSSPropertyCommandSerializing>
+@interface TSTCommentStorageWrapper : NSObject
 {
     TSDCommentStorage *_commentStorage;
 }

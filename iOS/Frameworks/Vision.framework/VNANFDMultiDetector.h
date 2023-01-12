@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)_printDebugInfo:(id)arg1 detectedObjectsRaw:(id)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
++ (_Bool)shouldAlignFacesForRequestWithSpecifier:(id)arg1;
 + (unsigned long long)inputImageAspectRatioHandlingForConfigurationOptions:(id)arg1;
 + (unsigned int)networkRequiredInputImagePixelFormatForConfigurationOptions:(id)arg1;
 + (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
@@ -23,17 +24,20 @@ __attribute__((visibility("hidden")))
 + (id)recognizedAnimalObjectClassToAnimalName;
 + (id)detectedObjectRequestKeyToRequestInfo;
 + (id)detectedObjectClassToRequestKey;
-+ (float)faceDetectorChunkAspectRatio;
 + (id)requestInfoForRequest:(id)arg1;
 + (Class)anfdMultiDetectorClassToProcessRequest:(id)arg1;
 + (id)supportedImageSizeSetForOptions:(id)arg1 error:(id *)arg2;
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ShotflowDetector *shotflowDetector; // @synthesize shotflowDetector=_mMultiHeadedANFDDetector;
+- (_Bool)isDetectedObject:(id)arg1 ofAGivenObjectSubClass:(id)arg2;
+- (id)splitDetectedClassResultsIntoSubclasses:(id)arg1;
 - (void)processRecognizedObjectWithIdentifier:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 objectConfidence:(float)arg4 detectedObjectResults:(id)arg5;
-- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 warningRecorder:(id)arg5 detectedObjectResults:(id)arg6 error:(id *)arg7;
-- (id)_alignFace:(id)arg1 imageBuffer:(id)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4 progressHandler:(CDUnknownBlockType)arg5;
+- (_Bool)processDetectedObject:(id)arg1 originatingRequestSpecifier:(id)arg2 objectBoundingBox:(struct CGRect)arg3 imageBuffer:(id)arg4 qosClass:(unsigned int)arg5 warningRecorder:(id)arg6 detectedObjectResults:(id)arg7 error:(id *)arg8;
+- (id)_alignFace:(id)arg1 imageBuffer:(id)arg2 qosClass:(unsigned int)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (id)processRegionOfInterest:(struct CGRect)arg1 croppedPixelBuffer:(const struct __CVBuffer *)arg2 options:(id)arg3 qosClass:(unsigned int)arg4 warningRecorder:(id)arg5 error:(id *)arg6 progressHandler:(CDUnknownBlockType)arg7;
+- (_Bool)createRegionOfInterestCrop:(struct CGRect)arg1 options:(id)arg2 warningRecorder:(id)arg3 pixelBuffer:(struct __CVBuffer **)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)updateRuntimeParametersFromOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 

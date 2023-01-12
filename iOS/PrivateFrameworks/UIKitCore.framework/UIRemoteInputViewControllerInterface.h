@@ -6,19 +6,18 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <UIKitCore/_UIIVCResponseDelegate-Protocol.h>
-
 @class NSString;
 @protocol _UIIVCResponseDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIRemoteInputViewControllerInterface : NSExtensionContext <_UIIVCResponseDelegate>
+@interface UIRemoteInputViewControllerInterface : NSExtensionContext
 {
     id <_UIIVCResponseDelegate> _responseDelegate;
 }
 
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
+- (void).cxx_destruct;
 @property(retain, nonatomic) id <_UIIVCResponseDelegate> responseDelegate; // @synthesize responseDelegate=_responseDelegate;
 - (void)_openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleInputViewControllerState:(id)arg1;

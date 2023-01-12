@@ -17,6 +17,7 @@
 - (void)getClientStateInterface:(void (^)(id <EMClientStateInterface>))arg1;
 - (void)getMailboxRepositoryInterface:(void (^)(id <EMMailboxRepositoryInterface>))arg1;
 - (void)getFetchControllerInterface:(void (^)(id <EMFetchControllerInterface>))arg1;
+- (void)getSenderRepositoryInterface:(void (^)(id <EMSenderRepositoryInterface>))arg1;
 - (void)getAccountRepositoryInterface:(void (^)(id <EMAccountRepositoryInterface>))arg1;
 - (void)getOutgoingMessageRepositoryInterface:(void (^)(id <EMOutgoingMessageRepositoryInterface>))arg1;
 - (void)getMessageRepositoryInterface:(void (^)(id <EMMessageRepositoryInterface>))arg1;

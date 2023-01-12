@@ -10,6 +10,7 @@
 @protocol OS_xpc_object;
 
 @protocol AUAudioUnitXPCProtocol <_AURemoteParameterSynchronization>
+- (void)getCustomMessageChannelFor:(NSString *)arg1 reply:(void (^)(NSError *, NSXPCListenerEndpoint *))arg2;
 - (void)getSpeechVoices:(void (^)(NSError *, NSArray *))arg1;
 - (void)cancelSpeechRequest:(void (^)(NSError *))arg1;
 - (void)synthesizeSpeechRequest:(AVSpeechSynthesisProviderRequest *)arg1 reply:(void (^)(NSError *))arg2;

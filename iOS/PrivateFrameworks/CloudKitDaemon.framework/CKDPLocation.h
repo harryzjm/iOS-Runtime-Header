@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class CKDPLocationBound, CKDPLocationCoordinate;
 
-@interface CKDPLocation : PBCodable <NSCopying>
+@interface CKDPLocation : PBCodable
 {
     CKDPLocationBound *_bounds;
     CKDPLocationCoordinate *_coordinate;

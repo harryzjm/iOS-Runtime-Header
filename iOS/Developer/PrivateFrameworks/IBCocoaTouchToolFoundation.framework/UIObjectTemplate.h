@@ -6,9 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/NSCoding-Protocol.h>
-
-@interface UIObjectTemplate : NSObject <NSCoding>
+@interface UIObjectTemplate : NSObject
 {
 }
 

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "AMSUICommonView.h"
+
 @class UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface AMSUILoadingView
+@interface AMSUILoadingView : AMSUICommonView
 {
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_label;

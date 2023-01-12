@@ -23,10 +23,9 @@ __attribute__((visibility("hidden")))
         unsigned int useFallbackAncestorScroller:1;
     } _flags;
     _Bool _focusMovementFlippedHorizontally;
-    NSArray *_ancestorScrollableContainers;
+    NSArray *_ancestorEnvironmentScrollableContainers;
     long long _inheritedFocusMovementStyle;
     long long _focusSound;
-    double _focusSoundPan;
     long long _focusTouchSensitivityStyle;
     _UIFocusRegion *_focusedRegion;
     id <UIFocusItem> _item;
@@ -42,19 +41,16 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)invalidateFocusedRegion;
 - (struct CGRect)focusedRectInCoordinateSpace:(id)arg1;
-- (id)_focusedRegionInCoordinateSpace:(id)arg1;
+- (id)_createFocusedRegion;
 @property(readonly, nonatomic) _UIFocusRegion *focusedRegion; // @synthesize focusedRegion=_focusedRegion;
-- (id)_defaultCoordinateSpace;
 @property(readonly, nonatomic, getter=isFocusMovementFlippedHorizontally) _Bool focusMovementFlippedHorizontally; // @synthesize focusMovementFlippedHorizontally=_focusMovementFlippedHorizontally;
 @property(readonly, nonatomic) long long focusTouchSensitivityStyle; // @synthesize focusTouchSensitivityStyle=_focusTouchSensitivityStyle;
-@property(readonly, nonatomic) double focusSoundPan; // @synthesize focusSoundPan=_focusSoundPan;
 @property(readonly, nonatomic) long long focusSound; // @synthesize focusSound=_focusSound;
 @property(readonly, nonatomic) long long inheritedFocusMovementStyle; // @synthesize inheritedFocusMovementStyle=_inheritedFocusMovementStyle;
-@property(readonly, copy, nonatomic) NSArray *ancestorScrollableContainers; // @synthesize ancestorScrollableContainers=_ancestorScrollableContainers;
+@property(readonly, copy, nonatomic) NSArray *ancestorEnvironmentScrollableContainers; // @synthesize ancestorEnvironmentScrollableContainers=_ancestorEnvironmentScrollableContainers;
 @property(readonly, nonatomic) _Bool itemIsKindOfView;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_initWithItem:(id)arg1 containingView:(id)arg2 useFallbackAncestorScroller:(_Bool)arg3;
-- (id)init;
 
 @end
 

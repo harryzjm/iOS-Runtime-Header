@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class EDResources;
 
 __attribute__((visibility("hidden")))
-@interface EDColorReference : NSObject <NSCopying>
+@interface EDColorReference : NSObject
 {
     EDResources *mResources;
     int mSystemColorID;

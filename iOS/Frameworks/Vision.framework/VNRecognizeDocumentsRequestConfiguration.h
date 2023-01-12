@@ -8,14 +8,12 @@ __attribute__((visibility("hidden")))
 @interface VNRecognizeDocumentsRequestConfiguration
 {
     _Bool _detectionOnly;
-    _Bool _usesLanguageDetection;
     _Bool _usesAlternateLineGrouping;
     unsigned long long _maximumCandidateCount;
 }
 
 @property(nonatomic) unsigned long long maximumCandidateCount; // @synthesize maximumCandidateCount=_maximumCandidateCount;
 @property(nonatomic) _Bool usesAlternateLineGrouping; // @synthesize usesAlternateLineGrouping=_usesAlternateLineGrouping;
-@property(nonatomic) _Bool usesLanguageDetection; // @synthesize usesLanguageDetection=_usesLanguageDetection;
 @property(nonatomic) _Bool detectionOnly; // @synthesize detectionOnly=_detectionOnly;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRequestClass:(Class)arg1;

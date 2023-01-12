@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI25GuidedWorkoutBrickRowCell : UICollectionViewListCell
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *currentConstraints;
     MISSING_TYPE *itemInfo;
     MISSING_TYPE *showSeparator;
     MISSING_TYPE *artworkView;
@@ -20,12 +21,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *layout;
-    MISSING_TYPE *currentConstraints;
 }
 
 - (void).cxx_destruct;
-- (void)setupLayoutWithNote:(id)arg1;
 - (void)downloadButtonTapped:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (void)prepareForReuse;
 - (id)initWithCoder:(id)arg1;

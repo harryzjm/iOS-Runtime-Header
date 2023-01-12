@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIPointerArbitrating-Protocol.h>
-
 @class NSString;
 @protocol _UIPointerArbitrating;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerArbiter : NSObject <_UIPointerArbitrating>
+@interface _UIPointerArbiter : NSObject
 {
     id <_UIPointerArbitrating> _core;
 }

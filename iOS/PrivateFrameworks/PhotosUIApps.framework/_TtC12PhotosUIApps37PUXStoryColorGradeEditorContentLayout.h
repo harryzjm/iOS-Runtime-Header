@@ -4,35 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXGAbsoluteCompositeLayout.h>
-
-#import <PhotosUIApps/PXGSublayoutProvider-Protocol.h>
+#import <PhotosUICore/PXGDecoratingLayout.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC12PhotosUIApps37PUXStoryColorGradeEditorContentLayout : PXGAbsoluteCompositeLayout <PXGSublayoutProvider>
+@interface _TtC12PhotosUIApps37PUXStoryColorGradeEditorContentLayout : PXGDecoratingLayout
 {
     MISSING_TYPE *viewModel;
-    MISSING_TYPE *previewClip;
-    MISSING_TYPE *previewClipTimeRange;
-    MISSING_TYPE *captionHeightsByRow;
-    MISSING_TYPE *storyModelObservation;
-    MISSING_TYPE *viewModelObservation;
-    MISSING_TYPE *updateFlags;
-    MISSING_TYPE *hasVerticalScrollingContent;
+    MISSING_TYPE *overlayLayout;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithComposition:(id)arg1;
-- (struct CGSize)layout:(id)arg1 estimatedContentSizeForSublayoutAtIndex:(long long)arg2 referenceSize:(struct CGSize)arg3;
-- (id)layout:(id)arg1 createSublayoutAtIndex:(long long)arg2;
-@property(nonatomic, readonly) long long scrollableAxis;
-- (void)visibleRectDidChange;
-- (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(id *)arg3;
-- (void)referenceSizeDidChange;
-- (void)update;
+- (id)initWithDecoratedLayout:(id)arg1;
+- (long long)overallSelectionOrderAtSpriteIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (id)selectedSpriteIndexesInLayout:(id)arg1;
+- (unsigned long long)selectionDecorationAdditionsInLayout:(id)arg1;
+- (long long)selectionDecorationStyleInLayout:(id)arg1;
 
 @end
 

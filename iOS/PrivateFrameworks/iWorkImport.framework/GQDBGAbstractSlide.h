@@ -8,7 +8,6 @@
 
 @class GQDBGBodyPlaceholder, GQDBGObjectPlaceholder, GQDBGSlideNumberPlaceholder, GQDBGTitlePlaceholder, GQDSStyle, GQDSStylesheet;
 
-__attribute__((visibility("hidden")))
 @interface GQDBGAbstractSlide : NSObject
 {
     GQDSStylesheet *mStylesheet;

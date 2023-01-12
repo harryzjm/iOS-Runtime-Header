@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <DocumentManagerExecutables/LSOpenResourceOperationDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtCV26DocumentManagerExecutables11LaunchUtilsP33_785CBA6FF492D1A84D3A93B2D10ABBAB15OpenAppDelegate : NSObject <LSOpenResourceOperationDelegate>
+@interface _TtCV26DocumentManagerExecutables11LaunchUtilsP33_785CBA6FF492D1A84D3A93B2D10ABBAB15OpenAppDelegate : NSObject
 {
     MISSING_TYPE *completionBlock;
 }

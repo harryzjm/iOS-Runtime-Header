@@ -11,6 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isMapsInstalled;
++ (id)getApplicationIdentifier;
++ (void)assertNotMainQueueWithDebug:(_Bool)arg1;
++ (void)assertMainQueueWithDebug:(_Bool)arg1;
++ (void)assertNotQueue:(id)arg1 debug:(_Bool)arg2;
++ (void)assertQueue:(id)arg1 debug:(_Bool)arg2;
 + (id)mapsGroupDirectory;
 + (id)mapsUserDirectory;
 + (id)mapsContainerDataDirectory;

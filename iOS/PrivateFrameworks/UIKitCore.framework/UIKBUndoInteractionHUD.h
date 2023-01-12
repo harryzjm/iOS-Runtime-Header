@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, UIKBUndoControl, UIKBUndoStyling, UILabel, UIView, UIVisualEffectView;
+#import "UIView.h"
+
+@class NSDate, UIKBUndoControl, UIKBUndoStyling, UILabel, UIVisualEffectView;
 @protocol UIInteractiveUndoHUDActionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIKBUndoInteractionHUD
+@interface UIKBUndoInteractionHUD : UIView
 {
     id <UIInteractiveUndoHUDActionDelegate> _actionDelegate;
     long long _mode;

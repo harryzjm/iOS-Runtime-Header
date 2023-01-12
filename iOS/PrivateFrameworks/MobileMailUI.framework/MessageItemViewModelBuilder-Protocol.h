@@ -6,11 +6,16 @@
 
 #import <MobileMailUI/MessageItemFlagsViewModelBuilder-Protocol.h>
 
-@class NSDate;
+@class EMFollowUp, NSDate;
 
 @protocol MessageItemViewModelBuilder <MessageItemFlagsViewModelBuilder>
-@property(copy, nonatomic) NSDate *dateReceived;
+@property(copy, nonatomic) EMFollowUp *followUp;
+@property(copy, nonatomic) NSDate *sendLaterDate;
+@property(copy, nonatomic) NSDate *readLaterDate;
+@property(copy, nonatomic) NSDate *displayDate;
+@property(copy, nonatomic) NSDate *date;
 @property(nonatomic) _Bool hasAttachments;
+@property(nonatomic) long long unsubscribeType;
 @property(nonatomic, getter=isBlockedSender) _Bool blockedSender;
 @end
 

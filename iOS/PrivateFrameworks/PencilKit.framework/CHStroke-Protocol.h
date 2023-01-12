@@ -15,7 +15,7 @@
 @property(readonly, nonatomic) double startTimestamp;
 @property(readonly, nonatomic) unsigned long long strokeAttributes;
 @property(readonly, nonatomic) struct CGRect bounds;
-@property(readonly, retain, nonatomic) id <CHStrokeIdentifier> strokeIdentifier;
+@property(readonly, nonatomic) id <CHStrokeIdentifier> strokeIdentifier;
 - (CHEncodedStrokeIdentifier *)encodedStrokeIdentifier;
 - (void)enumeratePointsWithDistanceStep:(double)arg1 usingBlock:(void (^)(struct CGPoint, double, _Bool *))arg2;
 - (void)enumeratePointsWithTimestep:(double)arg1 usingBlock:(void (^)(struct CGPoint, double, _Bool *))arg2;

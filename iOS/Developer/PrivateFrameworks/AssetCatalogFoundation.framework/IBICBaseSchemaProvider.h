@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <AssetCatalogFoundation/IBICSchemaProvider-Protocol.h>
-
 @class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICScreenWidth, IBICSize, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass, NSArray, NSDictionary, NSSet, NSString;
 
-@interface IBICBaseSchemaProvider : NSObject <IBICSchemaProvider>
+@interface IBICBaseSchemaProvider : NSObject
 {
     IBICPlatform *_universalPlatform;
     IBICIdiom *_universalIdiom;
@@ -22,6 +20,7 @@
     IBICFileType *_jpegFileType;
     IBICFileType *_pdfFileType;
     IBICFileType *_gifFileType;
+    IBICFileType *_exrFileType;
     IBICFileType *_svgFileType;
     IBICFileType *_avicFileType;
     IBICFileType *_heicFileType;

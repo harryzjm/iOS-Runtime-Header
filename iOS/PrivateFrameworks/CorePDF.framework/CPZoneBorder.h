@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CorePDF/CPCopying-Protocol.h>
-#import <CorePDF/NSCopying-Protocol.h>
-
 @class CPPage, NSMutableArray;
 
 __attribute__((visibility("hidden")))
-@interface CPZoneBorder : NSObject <NSCopying, CPCopying>
+@interface CPZoneBorder : NSObject
 {
     struct CGRect bounds;
     CPPage *page;

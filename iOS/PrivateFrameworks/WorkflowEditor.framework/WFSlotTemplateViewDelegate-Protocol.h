@@ -6,27 +6,28 @@
 
 #import <WorkflowEditor/NSObject-Protocol.h>
 
-@class NSAttributedString, NSTextAttachment, UIView, WFSlotIdentifier, WFSlotTemplateView;
+@class NSAttributedString, NSTextAttachment, WFMenu, WFSlotIdentifier, WFSlotTemplateView;
 @protocol WFSlotTemplateTextEntry;
 
 @protocol WFSlotTemplateViewDelegate <NSObject>
 
 @optional
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 disclosureArrowDidChange:(_Bool)arg2;
+- (void)slotTemplateViewTintColorDidChange:(WFSlotTemplateView *)arg1;
 - (void)slotTemplateViewDidInvalidateSize:(WFSlotTemplateView *)arg1;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 deletePressedOnUnpopulatedSlotWithIdentifier:(WFSlotIdentifier *)arg2;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 deletePressedOnSlotWithIdentifier:(WFSlotIdentifier *)arg2 allowResettingValue:(_Bool)arg3;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didEndTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidPasteWithOriginalBlock:(void (^)(void))arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidCopyWithOriginalBlock:(void (^)(void))arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidCutWithOriginalBlock:(void (^)(void))arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didChangeText:(NSAttributedString *)arg2 forSlotWithIdentifier:(WFSlotIdentifier *)arg3;
 - (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldChangeText:(NSAttributedString *)arg2 forSlotWithIdentifier:(WFSlotIdentifier *)arg3;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 willBeginTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2 usingTextEntry:(UIView<WFSlotTemplateTextEntry> *)arg3 allowMultipleLines:(_Bool *)arg4;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 willBeginTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2 usingTextEntry:(id <WFSlotTemplateTextEntry>)arg3 allowMultipleLines:(_Bool *)arg4;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didTapTextAttachment:(NSTextAttachment *)arg2 inSlotWithIdentifier:(WFSlotIdentifier *)arg3;
 - (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldTapTextAttachment:(NSTextAttachment *)arg2 inSlotWithIdentifier:(WFSlotIdentifier *)arg3;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didActivateContextMenuForSlotWithIdentifier:(WFSlotIdentifier *)arg2 sourceRect:(struct CGRect)arg3 textAttachmentToSelect:(NSTextAttachment *)arg4;
-- (_Bool)slotTemplateView:(WFSlotTemplateView *)arg1 shouldActivateContextMenuForSlotWithIdentifier:(WFSlotIdentifier *)arg2;
+- (void)menuDidDismissInSlotTemplateView:(WFSlotTemplateView *)arg1;
+- (WFMenu *)slotTemplateView:(WFSlotTemplateView *)arg1 menuForSlotIdentifier:(WFSlotIdentifier *)arg2 style:(unsigned long long)arg3;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 didDeselectSlotWithIdentifier:(WFSlotIdentifier *)arg2 completionHandler:(void (^)(void))arg3;
-- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didSelectSlotWithIdentifier:(WFSlotIdentifier *)arg2 sourceRect:(struct CGRect)arg3;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 didSelectSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 @end
 

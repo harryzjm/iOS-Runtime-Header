@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <WebCore/AVPlayerViewControllerDelegate-Protocol.h>
-
 @class NSString;
 @protocol AVPlayerViewControllerDelegate_WebKitOnly;
 
 __attribute__((visibility("hidden")))
-@interface WebAVPlayerViewController : NSObject <AVPlayerViewControllerDelegate>
+@interface WebAVPlayerViewController : NSObject
 {
     void *_fullscreenInterface;
-    struct RetainPtr<UIViewController> _presentingViewController;
     struct RetainPtr<AVPlayerViewController> _avPlayerViewController;
     struct RetainPtr<NSTimer> _startPictureInPictureTimer;
     struct RetainPtr<AVObservationController> _avPlayerViewControllerObservationController;
@@ -31,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setAllowsPictureInPicturePlayback:(_Bool)arg1;
 - (void)setShowsPlaybackControls:(_Bool)arg1;
 - (_Bool)showsPlaybackControls;
+- (void)flashPlaybackControlsWithDuration:(double)arg1;
 - (id)view;
 - (_Bool)pictureInPictureWasStartedWhenEnteringBackground;
 - (_Bool)pictureInPictureActive;

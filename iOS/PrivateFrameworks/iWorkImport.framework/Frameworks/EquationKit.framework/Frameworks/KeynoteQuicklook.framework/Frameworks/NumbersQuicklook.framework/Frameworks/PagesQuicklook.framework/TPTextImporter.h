@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <PagesQuicklook/TSKImporter-Protocol.h>
-
 @class NSString, NSURL, TSUProgressContext;
 
-@interface TPTextImporter : NSObject <TSKImporter>
+@interface TPTextImporter : NSObject
 {
     NSURL *mURL;
     TSUProgressContext *mProgressContext;

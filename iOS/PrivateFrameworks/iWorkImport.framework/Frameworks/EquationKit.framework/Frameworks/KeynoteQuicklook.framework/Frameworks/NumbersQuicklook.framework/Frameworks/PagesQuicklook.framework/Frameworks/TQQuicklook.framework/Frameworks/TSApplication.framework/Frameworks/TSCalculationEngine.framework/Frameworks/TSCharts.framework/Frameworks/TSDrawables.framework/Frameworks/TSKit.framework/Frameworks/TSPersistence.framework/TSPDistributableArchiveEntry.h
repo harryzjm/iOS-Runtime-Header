@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSPersistence/TSPIdentifiedDataRepresentation-Protocol.h>
-
 @class NSString, SFUDataRepresentation;
 
-@interface TSPDistributableArchiveEntry : NSObject <TSPIdentifiedDataRepresentation>
+@interface TSPDistributableArchiveEntry : NSObject
 {
     long long _identifier;
     NSString *_fileStateIdentifier;

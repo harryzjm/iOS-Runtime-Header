@@ -6,15 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_DUIClientSessionSource-Protocol.h>
-#import <UIKitCore/_DUIClientSource-Protocol.h>
-#import <UIKitCore/_UIDruidSourceConnection-Protocol.h>
-
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_source, _DUIServerSessionSource;
 
 __attribute__((visibility("hidden")))
-@interface _UIDruidSourceConnection : NSObject <_DUIClientSource, _DUIClientSessionSource, _UIDruidSourceConnection>
+@interface _UIDruidSourceConnection : NSObject
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_connectionWatchdogTimer;

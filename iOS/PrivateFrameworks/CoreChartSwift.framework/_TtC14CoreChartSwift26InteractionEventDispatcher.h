@@ -14,6 +14,7 @@
     MISSING_TYPE *scenegraph;
     MISSING_TYPE *topLevelHandler;
     MISSING_TYPE *origin;
+    MISSING_TYPE *viewWidth;
     MISSING_TYPE *currentHoverState;
     MISSING_TYPE *currentMouseDownHit;
     MISSING_TYPE *layoutDirection;

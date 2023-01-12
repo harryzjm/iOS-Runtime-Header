@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

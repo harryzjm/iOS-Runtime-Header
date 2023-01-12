@@ -7,6 +7,7 @@
 #import <XCTTargetBootstrap/NSObject-Protocol.h>
 
 @protocol XCTMessagingRole_UIProcessRegistration <NSObject>
+- (void)_XCT_checkInternalEntitlementForAuditToken:(CDStruct_6ad76789)arg1 completion:(void (^)(_Bool))arg2;
 - (void)_XCT_registerTarget;
 @end
 

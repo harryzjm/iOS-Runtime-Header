@@ -6,9 +6,11 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOETATrafficUpdateRequest, GEOTransitRouteUpdateResponse, MNActiveRouteInfo, MNLocation, MNSessionUpdateManager, MNSessionUpdateResponseInfo, NSError, NSSet;
+@class GEOETATrafficUpdateRequest, GEORecentLocationHistory, GEOTransitRouteUpdateResponse, MNActiveRouteInfo, MNLocation, MNSessionUpdateManager, MNSessionUpdateResponseInfo, NSError, NSSet;
 
 @protocol MNSessionUpdateManagerDelegate <NSObject>
+@property(readonly, nonatomic) unsigned long long targetLegIndex;
+- (GEORecentLocationHistory *)recentLocationHistoryForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (MNLocation *)userLocationForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (MNActiveRouteInfo *)routeInfoForUpdateManager:(MNSessionUpdateManager *)arg1;
 - (_Bool)wantsETAUpdates;

@@ -6,12 +6,10 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <MapsUI/MKActivityObserving-Protocol.h>
-
 @class MUPunchoutView, MUPunchoutViewModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MUPunchoutCollectionViewCell : UICollectionViewCell <MKActivityObserving>
+@interface MUPunchoutCollectionViewCell : UICollectionViewCell
 {
     MUPunchoutView *_punchoutView;
 }

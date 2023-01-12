@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <LocationSupport/CLSettingsManagerMockProtocol-Protocol.h>
+#import "CLSettingsManagerInternal.h"
 
 @class NSString;
 
-@interface CLSettingsManagerMock <CLSettingsManagerMockProtocol>
+@interface CLSettingsManagerMock : CLSettingsManagerInternal
 {
 }
 

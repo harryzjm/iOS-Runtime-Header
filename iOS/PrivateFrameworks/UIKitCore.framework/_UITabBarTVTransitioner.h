@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UITabBarControllerInterruptibleTransitioning-Protocol.h>
-
 @class NSString, UISpringTimingParameters, UIView;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _UITabBarTVTransitioner : NSObject <_UITabBarControllerInterruptibleTransitioning>
+@interface _UITabBarTVTransitioner : NSObject
 {
     _Bool _fromViewOriginalShouldRasterize;
     double _fromViewLayerOriginalRasterizationScale;

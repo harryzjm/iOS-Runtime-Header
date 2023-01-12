@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSPromise, ASCAppearMetricsPresenter, ASCLockup, ASCLockupRequest, ASCLockupViewGroup, ASCOfferPresenter, ASCPresenterContext, ASCSignpostSpan;
+@class AMSMutablePromise, ASCAppearMetricsPresenter, ASCLockup, ASCLockupRequest, ASCLockupViewGroup, ASCOfferPresenter, ASCPresenterContext, ASCSignpostSpan;
 @protocol ASCLockupPresenterObserver, ASCLockupPresenterView;
 
 __attribute__((visibility("hidden")))
@@ -22,14 +22,14 @@ __attribute__((visibility("hidden")))
     ASCPresenterContext *_context;
     ASCOfferPresenter *_offerPresenter;
     ASCAppearMetricsPresenter *_metricsPresenter;
-    AMSPromise *_pendingRequestedLockup;
+    AMSMutablePromise *_pendingRequestedLockup;
     ASCSignpostSpan *_pendingViewRender;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool showsPlaceholderContent; // @synthesize showsPlaceholderContent=_showsPlaceholderContent;
 @property(retain, nonatomic) ASCSignpostSpan *pendingViewRender; // @synthesize pendingViewRender=_pendingViewRender;
-@property(retain, nonatomic) AMSPromise *pendingRequestedLockup; // @synthesize pendingRequestedLockup=_pendingRequestedLockup;
+@property(retain, nonatomic) AMSMutablePromise *pendingRequestedLockup; // @synthesize pendingRequestedLockup=_pendingRequestedLockup;
 @property(readonly, nonatomic) ASCAppearMetricsPresenter *metricsPresenter; // @synthesize metricsPresenter=_metricsPresenter;
 @property(readonly, nonatomic) ASCOfferPresenter *offerPresenter; // @synthesize offerPresenter=_offerPresenter;
 @property(readonly, nonatomic) ASCPresenterContext *context; // @synthesize context=_context;

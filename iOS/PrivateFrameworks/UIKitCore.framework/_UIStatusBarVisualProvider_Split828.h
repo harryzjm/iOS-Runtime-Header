@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIStatusBarVisualProvider_CustomSplit-Protocol.h>
+#import "_UIStatusBarVisualProvider_FixedSplit.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Split828 <_UIStatusBarVisualProvider_CustomSplit>
+@interface _UIStatusBarVisualProvider_Split828 : _UIStatusBarVisualProvider_FixedSplit
 {
 }
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (double)nativeDisplayWidth;
 + (double)height;
 - (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
+- (_Bool)supportsCondensedBatteryPercentage;
 - (id)stringForCellularType:(long long)arg1 condensed:(_Bool)arg2;
 - (double)expandedIconScale;
 - (double)normalIconScale;

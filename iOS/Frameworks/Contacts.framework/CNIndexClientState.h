@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/NSSecureCoding-Protocol.h>
-
 @class CNChangeHistoryAnchor;
 
 __attribute__((visibility("hidden")))
-@interface CNIndexClientState : NSObject <NSSecureCoding>
+@interface CNIndexClientState : NSObject
 {
     _Bool _isFullSyncDone;
     long long _indexVersion;

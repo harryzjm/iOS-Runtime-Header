@@ -6,9 +6,7 @@
 
 #import <Foundation/NSString.h>
 
-#import <SiriCore/SiriCoreSQLiteValue-Protocol.h>
-
-@interface NSString (SiriCoreSQLiteValue) <SiriCoreSQLiteValue>
+@interface NSString (SiriCoreSQLiteValue)
 - (const char *)siriCoreSQLiteValue_textRepresentation;
 - (long long)siriCoreSQLiteValue_type;
 - (id)siriCoreSQLiteValue_toData;

@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     NSEnumerator *_nameEnum;
 }
 
+- (void).cxx_destruct;
 - (id)nextObject;
-- (void)dealloc;
 - (id)initWithKeyplaneCache:(id)arg1;
 
 @end

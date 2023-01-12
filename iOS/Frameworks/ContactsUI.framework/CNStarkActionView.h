@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <ContactsUI/CNContactQuickActionPresentation-Protocol.h>
-
 @class NSString, UIButton, UIColor, UIImage, UILabel;
 @protocol CNStarkActionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkActionView : UIView <CNContactQuickActionPresentation>
+@interface CNStarkActionView : UIView
 {
     _Bool _enabled;
     _Bool _selected;

@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFCore/AVVideoCompositing-Protocol.h>
-
 @class CIContext, NSDictionary, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AVCoreImageFilterCustomVideoCompositor : NSObject <AVVideoCompositing>
+@interface AVCoreImageFilterCustomVideoCompositor : NSObject
 {
     NSObject<OS_dispatch_group> *_filteringRequestsInFlight;
     _Bool _shouldCancelAllRequests;

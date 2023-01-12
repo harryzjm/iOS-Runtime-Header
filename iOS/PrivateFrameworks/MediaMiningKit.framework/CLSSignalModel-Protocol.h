@@ -12,8 +12,6 @@
 + (unsigned long long)latestVersion;
 + (unsigned long long)currentAnalyzerVersion;
 + (NSString *)name;
-+ (id)modelWithVersion:(unsigned long long)arg1;
-@property(readonly) unsigned long long minimumSupportedVersion;
 @property(readonly) unsigned long long version;
 @end
 

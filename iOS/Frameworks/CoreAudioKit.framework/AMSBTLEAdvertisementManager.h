@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreAudioKit/CBPeripheralManagerDelegate-Protocol.h>
-
 @class CBPeripheralManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSBTLEAdvertisementManager : NSObject <CBPeripheralManagerDelegate>
+@interface AMSBTLEAdvertisementManager : NSObject
 {
     CBPeripheralManager *peripheralManager;
 }

@@ -11,6 +11,7 @@
 @protocol UIDragInteractionDelegate_Internal <UIDragInteractionDelegate_Private>
 
 @optional
+- (double)_dragInteraction:(UIDragInteraction *)arg1 delayForLiftBeginningAtLocation:(struct CGPoint)arg2;
 - (_Bool)_dragInteractionShouldBecomeDraggingSourceDelegate:(UIDragInteraction *)arg1;
 - (_Bool)_dragInteractionDynamicallyUpdatesPrefersFullSizePreviews:(UIDragInteraction *)arg1;
 @end

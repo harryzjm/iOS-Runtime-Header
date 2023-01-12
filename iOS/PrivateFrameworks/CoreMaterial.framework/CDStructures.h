@@ -11,25 +11,25 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CAColorMatrix {
-    float m11;
-    float m12;
-    float m13;
-    float m14;
-    float m15;
-    float m21;
-    float m22;
-    float m23;
-    float m24;
-    float m25;
-    float m31;
-    float m32;
-    float m33;
-    float m34;
-    float m35;
-    float m41;
-    float m42;
-    float m43;
-    float m44;
-    float m45;
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    float _field12;
+    float _field13;
+    float _field14;
+    float _field15;
+    float _field16;
+    float _field17;
+    float _field18;
+    float _field19;
+    float _field20;
 };
 

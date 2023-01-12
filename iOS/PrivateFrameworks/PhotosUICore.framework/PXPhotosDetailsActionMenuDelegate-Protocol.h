@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXActionMenuController, PXActionPerformer, PXAssetCollectionActionPerformer, PXPhotoDetailsActionMenuController, UIViewController;
+@class NSUndoManager, PXActionMenuController, PXActionPerformer, PXAssetCollectionActionPerformer, PXPhotoDetailsActionMenuController, UIViewController;
 @protocol PXDisplayAssetCollection;
 
 @protocol PXPhotosDetailsActionMenuDelegate <NSObject>
+- (NSUndoManager *)undoManagerForActionMenuController:(PXActionMenuController *)arg1;
 - (_Bool)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 dismissViewController:(UIViewController *)arg3 completionHandler:(void (^)(void))arg4;
 - (_Bool)actionMenu:(PXActionMenuController *)arg1 actionPerformer:(PXActionPerformer *)arg2 presentViewController:(UIViewController *)arg3;
 

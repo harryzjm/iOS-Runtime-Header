@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-
 @class IBUIFontDescription, NSString;
 
-@interface IBUIEditableStringArea : NSObject <IBBinaryArchiving>
+@interface IBUIEditableStringArea : NSObject
 {
     _Bool _wraps;
     IBUIFontDescription *_fontDescription;

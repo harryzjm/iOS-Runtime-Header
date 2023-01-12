@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapsUI/MUStackable-Protocol.h>
-
 @class MUDayRowViewModel, NSArray, NSString;
 @protocol MULabelViewProtocol;
 
 __attribute__((visibility("hidden")))
-@interface MUDayRowView : UIView <MUStackable>
+@interface MUDayRowView : UIView
 {
     UIView<MULabelViewProtocol> *_headerLabel;
     UIView<MULabelViewProtocol> *_dayLabel;

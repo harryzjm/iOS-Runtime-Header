@@ -50,7 +50,7 @@
 @property(readonly, nonatomic) ICAppearanceInfo *ic_appearanceInfo;
 @property(copy, nonatomic) UIColor *ic_backgroundColor;
 - (void)ic_crashIfWindowIsSecure;
-- (_Bool)ic_isInSecureWindow;
+@property(readonly, nonatomic) _Bool ic_isInSecureWindow;
 @property(readonly, nonatomic) UITraitCollection *ic_platformAppearanceObject;
 @property(readonly, nonatomic) struct NSDirectionalEdgeInsets ic_directionalSafeAreaInsets;
 @property(readonly, nonatomic) _Bool ic_isRTL;

@@ -7,6 +7,7 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (MessageUI)
++ (id)mf_messageBodyFont;
 + (id)mf_messageHeaderSummaryLabelFontForMailActionHeader;
 + (id)mf_messageHeaderSenderLabelFontForMailActionHeader;
 + (id)mf_messageHeaderTimestampLabelFont;

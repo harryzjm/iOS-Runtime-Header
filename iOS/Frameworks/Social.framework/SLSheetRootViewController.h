@@ -6,14 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Social/SLComposeSheetConfigurationItemObserving-Protocol.h>
-#import <Social/UITableViewDataSource-Protocol.h>
-#import <Social/UITableViewDelegate-Protocol.h>
-
 @class NSArray, NSString, SLComposeServiceViewController, SLSheetTitleView, UIImage, UINavigationItem, UITableView, UITableViewController, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SLSheetRootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SLComposeSheetConfigurationItemObserving>
+@interface SLSheetRootViewController : UIViewController
 {
     NSArray *_configurationItems;
     UITableViewController *_tableViewController;

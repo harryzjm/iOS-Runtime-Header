@@ -14,6 +14,8 @@
     MISSING_TYPE *_medication;
     MISSING_TYPE *_status;
     MISSING_TYPE *_dosages;
+    MISSING_TYPE *_localizedPreferredName;
+    MISSING_TYPE *_rxNormCodeSet;
 }
 
 @end

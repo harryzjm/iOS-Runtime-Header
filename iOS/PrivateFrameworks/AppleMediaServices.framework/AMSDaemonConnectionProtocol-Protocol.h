@@ -11,7 +11,9 @@
 @protocol AMSDaemonConnectionProtocol <NSObject>
 - (void)getSecurityServiceProxyWithDelegate:(id <AMSSecurityClientInterface>)arg1 replyHandler:(void (^)(id <AMSSecurityServiceInterface>, NSError *))arg2;
 - (void)getPushNotificationServiceProxyWithReplyHandler:(void (^)(id <AMSPushNotificationServiceInterface>, NSError *))arg1;
+- (void)getPurchaseServiceProxyWithReplyHandler:(void (^)(id <AMSPurchaseServiceInterface>, NSError *))arg1;
 - (void)getFraudReportServiceProxyWithReplyHandler:(void (^)(id <AMSFraudReportServiceInterface>, NSError *))arg1;
 - (void)getDeviceMessengerServiceProxyWithDelegate:(id <AMSDeviceMessengerClientInterface>)arg1 replyHandler:(void (^)(id <AMSDeviceMessengerServiceInterface>, NSError *))arg2;
+- (void)getCookieServiceProxyWithReplyHandler:(void (^)(id <AMSCookieServiceInterface>, NSError *))arg1;
 @end
 

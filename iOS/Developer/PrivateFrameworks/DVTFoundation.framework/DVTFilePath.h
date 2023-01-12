@@ -6,29 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTFileSystemRepresentationProviding-Protocol.h>
-#import <DVTFoundation/NSCopying-Protocol.h>
-#import <DVTFoundation/NSSecureCoding-Protocol.h>
-
 @class DVTFileDataType, DVTFileSystemVNode, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
-@interface DVTFilePath : NSObject <NSCopying, DVTFileSystemRepresentationProviding, NSSecureCoding>
+@interface DVTFilePath : NSObject
 {
     DVTFilePath *_parentPath;
     struct fastsimplearray *_childfsaPaths;
     DVTFileSystemVNode *_vnode;
     DVTFileDataType *_presumedType;
-    unsigned long long _numAssociates;
-    unsigned long long _numObservers;
+    unsigned int _numAssociates;
+    unsigned int _numObservers;
     id _associates;
     NSString *_pathString;
     NSURL *_fileURL;
+    struct DVTUnfairLock _childPathsLock;
+    struct DVTUnfairLock _associatesLock;
+    unsigned short _fsrepLength;
+    _Atomic unsigned char _validationState;
     _Bool _hasResolvedVnode;
     _Bool _cleanRemoveFromParent;
-    _Atomic unsigned char _validationState;
-    unsigned short _fsrepLength;
-    struct os_unfair_lock_s _childPathsLock;
-    struct os_unfair_lock_s _associatesLock;
     char _fsrep[0];
 }
 
@@ -46,6 +42,7 @@
 + (id)_lookupOrCreateFilePathWithParentPath:(id)arg1 fileSystemRepresentation:(const char *)arg2 length:(unsigned long long)arg3 allowCreation:(_Bool)arg4;
 + (id)rootFilePath;
 + (void)initialize;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_descriptionOfAssociates;
 - (id)description;

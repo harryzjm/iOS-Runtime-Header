@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString, SKUIGiftTableSectionHeaderView, SKUIItem;
+@class NSDate, SKUIGiftTableSectionHeaderView, SKUIItem;
+@protocol SKUIGiftSendDateSectionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SKUIGiftSendDateSection
 {
-    NSString *_dateString;
     SKUIItem *_giftItem;
     struct UIEdgeInsets _headerInsets;
     SKUIGiftTableSectionHeaderView *_headerView;
     NSDate *_sendDate;
     long long _sendDateStyle;
+    id <SKUIGiftSendDateSectionDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) long long sendDateStyle; // @synthesize sendDateStyle=_sendDateStyle;
 @property(copy, nonatomic) NSDate *sendDate; // @synthesize sendDate=_sendDate;
 @property(retain, nonatomic) SKUIItem *giftItem; // @synthesize giftItem=_giftItem;
-- (void)_createFormattedDateString:(_Bool)arg1;
+@property(nonatomic) __weak id <SKUIGiftSendDateSectionDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)giftDateTableViewCell:(id)arg1 didChangeDate:(id)arg2;
 - (id)_headerView;
 - (id)tableViewCellForTableView:(id)arg1 indexPath:(id)arg2;
 - (long long)numberOfRowsInSection;

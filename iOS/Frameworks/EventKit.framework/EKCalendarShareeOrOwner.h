@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <EventKit/EKCalendarShareeOrOwner-Protocol.h>
-
 @class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface EKCalendarShareeOrOwner : NSObject <EKCalendarShareeOrOwner>
+@interface EKCalendarShareeOrOwner : NSObject
 {
     _Bool _isCurrentUserForSharing;
     NSString *_UUID;

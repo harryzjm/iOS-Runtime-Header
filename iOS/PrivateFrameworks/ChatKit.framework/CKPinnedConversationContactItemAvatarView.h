@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/CKPinnedConversationContactItemView-Protocol.h>
-
 @protocol CKPinnedConversationContactItem;
 
 __attribute__((visibility("hidden")))
-@interface CKPinnedConversationContactItemAvatarView <CKPinnedConversationContactItemView>
+@interface CKPinnedConversationContactItemAvatarView
 {
     id <CKPinnedConversationContactItem> _pinnedConversationContactItem;
 }

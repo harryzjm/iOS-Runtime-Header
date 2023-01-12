@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSExpiring-Protocol.h>
-
 @class NSDate, NSString, NSURL;
 @protocol BCSDateHelperProtocol;
 
 __attribute__((visibility("hidden")))
-@interface BCSURLPatternMatchResult : NSObject <BCSExpiring>
+@interface BCSURLPatternMatchResult : NSObject
 {
     NSURL *_originalURL;
     NSURL *_extractedURL;

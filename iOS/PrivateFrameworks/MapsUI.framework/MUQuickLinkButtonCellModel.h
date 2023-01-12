@@ -6,28 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <MapsUI/MUDynamicButtonCellModel-Protocol.h>
-
-@class GEOQuickLink, NSString;
+@class GEOQuickLink, NSString, UIMenu;
 @protocol MUDynamicButtonCellModelChangeDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MUQuickLinkButtonCellModel : NSObject <MUDynamicButtonCellModel>
+@interface MUQuickLinkButtonCellModel : NSObject
 {
     NSString *_cachedSubtitle;
     _Bool _didLoad;
     GEOQuickLink *_quickLink;
     CDUnknownBlockType _actionBlock;
     id <MUDynamicButtonCellModelChangeDelegate> _changeDelegate;
+    UIMenu *_menu;
 }
 
 - (void).cxx_destruct;
+@property(copy, nonatomic) UIMenu *menu; // @synthesize menu=_menu;
 @property(nonatomic) __weak id <MUDynamicButtonCellModelChangeDelegate> changeDelegate; // @synthesize changeDelegate=_changeDelegate;
 @property(copy, nonatomic) CDUnknownBlockType actionBlock; // @synthesize actionBlock=_actionBlock;
 - (int)analyticAction;
 - (void)_loadQuickLinkWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadAppClipWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) long long actionStyle;
+@property(readonly, nonatomic, getter=isEnabled) _Bool enabled;
 - (void)_completeWithSubtitle:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)accessibilityIdentifierForAction;
 - (void)loadSubtitleWithCompletion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSString *symbolName;
 @property(readonly, nonatomic) NSString *titleString;

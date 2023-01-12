@@ -6,12 +6,10 @@
 
 #import <System/OS_object.h>
 
-#import <TCC/OS_tcc_object-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface OS_tcc_object : OS_object <OS_tcc_object>
+@interface OS_tcc_object : OS_object
 {
 }
 

@@ -9,13 +9,14 @@
 @class NSDictionary, UIImage, UIView;
 
 @protocol QLImageAnalysisManagerDelegate <NSObject>
-@property(readonly, nonatomic) UIImage *image;
+@property(readonly, nonatomic) UIImage *imageForAnalysis;
 @property(readonly, nonatomic) UIView *imageAnalysisView;
 
 @optional
 @property(readonly, nonatomic) NSDictionary *clientPreviewOptions;
 - (void)imageAnalysisInteractionDidDismissVisualSearchController;
 - (void)imageAnalysisInteractionWillPresentVisualSearchController;
+- (void)imageAnalyzerWantsUpdateOverlayViews;
 - (void)imageAnalyzerWantsUpdateInfoButtonWithAnimation:(_Bool)arg1;
 @end
 

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *artworkView;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *explicitIconLabel;
     MISSING_TYPE *separator;
 }
 

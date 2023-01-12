@@ -6,7 +6,9 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
+@class NSNumber;
+
 @protocol CXAudioSessionActivationStateObserver <NSObject>
-- (oneway void)handleAudioSessionActivationStateChangedTo:(_Bool)arg1;
+- (oneway void)handleAudioSessionActivationStateChangedTo:(NSNumber *)arg1;
 @end
 

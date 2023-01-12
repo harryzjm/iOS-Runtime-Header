@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthMobilityDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
-
-@class HDBackgroundFeatureDeliveryManager, HDFeatureAvailabilityManager, HDMobilityNotificationManager, HDMobilityWalkingSteadinessAnalyticsDailyEventActivity, HDMobilityWalkingSteadinessFeatureAvailabilityManager, NSString;
+@class HDAnalyticsDailyEventManager, HDBackgroundFeatureDeliveryManager, HDFeatureAvailabilityManager, HDMobilityNotificationManager, HDMobilityWalkingSteadinessFeatureAvailabilityManager, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDMobilityProfileExtension : NSObject <HDFeatureAvailabilityExtensionProvider>
+@interface HDMobilityProfileExtension : NSObject
 {
     HDMobilityNotificationManager *_notificationManager;
     HDFeatureAvailabilityManager *_walkingSteadinessClassificationsAvailabilityManager;
     HDBackgroundFeatureDeliveryManager *_walkingSteadinessClassificationsBackgroundFeatureDeliveryManager;
     HDMobilityWalkingSteadinessFeatureAvailabilityManager *_walkingSteadinessNotificationsAvailabilityManager;
-    HDMobilityWalkingSteadinessAnalyticsDailyEventActivity *_walkingSteadinessAnalyticsDailyEventActivity;
+    HDAnalyticsDailyEventManager *_walkingSteadinessDailyAnalyticsEventManager;
 }
 
 - (void).cxx_destruct;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DeviceManagementTools/CATSharingBroadcastTerminalDelegate-Protocol.h>
-#import <DeviceManagementTools/DMTRemoteSetupBroadcasting-Protocol.h>
-
 @class CATOperationQueue, CATSharingBroadcastTerminal, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DMTSharingBackedRemoteSetupBroadcaster : NSObject <CATSharingBroadcastTerminalDelegate, DMTRemoteSetupBroadcasting>
+@interface DMTSharingBackedRemoteSetupBroadcaster : NSObject
 {
     _Bool _isBroadcasting;
     _Bool _isInvalidated;

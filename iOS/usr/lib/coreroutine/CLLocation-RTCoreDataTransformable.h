@@ -6,19 +6,18 @@
 
 #import <CoreLocation/CLLocation.h>
 
-#import <coreroutine/RTCoreDataReadable-Protocol.h>
-#import <coreroutine/RTCoreDataWritable-Protocol.h>
-
 @class NSString;
 
-@interface CLLocation (RTCoreDataTransformable) <RTCoreDataReadable, RTCoreDataWritable>
+@interface CLLocation (RTCoreDataTransformable)
 + (id)createWithRTCLLocationMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
 - (id)coordinateToString;
 - (id)toString;
+- (id)initWithRTCLLocationMO:(id)arg1;
 - (id)initWithRTPLocation:(id)arg1;
 - (id)initWithRTLocationOfInterest:(id)arg1;
+- (id)initWithRTLocation:(id)arg1 speed:(double)arg2 type:(int)arg3 signalEnvironmentType:(int)arg4;
 - (id)initWithRTLocation:(id)arg1 speed:(double)arg2 type:(int)arg3;
 - (id)initWithRTLocation:(id)arg1 speed:(double)arg2;
 - (id)initWithRTLocation:(id)arg1;

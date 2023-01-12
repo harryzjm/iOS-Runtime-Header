@@ -7,30 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIButtonBarLayoutMetricsData-Protocol.h>
 
-@class NSLayoutDimension, NSLayoutYAxisAnchor, NSString;
+@class NSLayoutDimension, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIButtonBarLayoutMetrics : NSObject <_UIButtonBarLayoutMetricsData, NSCopying>
+@interface _UIButtonBarLayoutMetrics : NSObject <NSCopying>
 {
     _Bool _locked;
-    _Bool _createsPopoverLayoutGuides;
     _Bool _allowsViewWrappers;
     NSLayoutDimension *_verticalSizeGuide;
     NSLayoutDimension *_minimumSpaceGuide;
     NSLayoutDimension *_flexibleSpaceGuide;
-    NSLayoutYAxisAnchor *_popoverGuideTopAnchor;
     NSLayoutDimension *_groupSizeGuide;
-    NSLayoutDimension *_groupSpacingGuide;
 }
 
 - (void).cxx_destruct;
 @property(nonatomic) _Bool allowsViewWrappers; // @synthesize allowsViewWrappers=_allowsViewWrappers;
-@property(nonatomic) _Bool createsPopoverLayoutGuides; // @synthesize createsPopoverLayoutGuides=_createsPopoverLayoutGuides;
-@property(retain, nonatomic) NSLayoutDimension *groupSpacingGuide; // @synthesize groupSpacingGuide=_groupSpacingGuide;
 @property(retain, nonatomic) NSLayoutDimension *groupSizeGuide; // @synthesize groupSizeGuide=_groupSizeGuide;
-@property(retain, nonatomic) NSLayoutYAxisAnchor *popoverGuideTopAnchor; // @synthesize popoverGuideTopAnchor=_popoverGuideTopAnchor;
 @property(retain, nonatomic) NSLayoutDimension *flexibleSpaceGuide; // @synthesize flexibleSpaceGuide=_flexibleSpaceGuide;
 @property(retain, nonatomic) NSLayoutDimension *minimumSpaceGuide; // @synthesize minimumSpaceGuide=_minimumSpaceGuide;
 @property(retain, nonatomic) NSLayoutDimension *verticalSizeGuide; // @synthesize verticalSizeGuide=_verticalSizeGuide;

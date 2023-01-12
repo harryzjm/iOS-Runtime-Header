@@ -6,23 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
-@protocol OS_dispatch_queue;
+@class AMSThreadSafeObject, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface AMSThreadSafeDictionary : NSObject
 {
-    NSMutableDictionary *_backingDictionary;
-    NSObject<OS_dispatch_queue> *_backingDictionaryAccessQueue;
+    AMSThreadSafeObject *_backingDictionary;
 }
 
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *backingDictionaryAccessQueue; // @synthesize backingDictionaryAccessQueue=_backingDictionaryAccessQueue;
-@property(retain, nonatomic) NSMutableDictionary *backingDictionary; // @synthesize backingDictionary=_backingDictionary;
+@property(retain, nonatomic) AMSThreadSafeObject *backingDictionary; // @synthesize backingDictionary=_backingDictionary;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)removeObjectForKey:(id)arg1;
 - (void)removeAllObjects;
+- (void)readWrite:(CDUnknownBlockType)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)objectForKey:(id)arg1;
 @property(readonly, copy) NSArray *allValues;

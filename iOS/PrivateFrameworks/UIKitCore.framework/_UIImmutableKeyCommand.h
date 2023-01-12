@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIKeyCommand.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIImmutableKeyCommand
+@interface _UIImmutableKeyCommand : UIKeyCommand
 {
 }
 
 - (id)_mutableCopyIfNeeded;
 - (id)_immutableCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)_setMatchingPriority:(long long)arg1;
+- (void)_setEnumerationPriority:(long long)arg1;
 - (void)_setEventDeferringEnvironment:(id)arg1;
 - (void)setAllowsAutomaticMirroring:(_Bool)arg1;
 - (void)setAllowsAutomaticLocalization:(_Bool)arg1;

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIView.h"
+
 @class CADisplayLink, NSArray, UIKeyboardSliceSet;
 @protocol UIKeyboardKeyplaneTransitionDelegate, UIKeyboardSplitTransitionDataSource;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardSplitTransitionView
+@interface UIKeyboardSplitTransitionView : UIView
 {
     double _currentProgress;
     double _liftOffProgress;
@@ -27,8 +29,9 @@ __attribute__((visibility("hidden")))
     UIKeyboardSliceSet *_sliceSet;
 }
 
-@property(nonatomic) id <UIKeyboardSplitTransitionDataSource> splitTransitionDataSource; // @synthesize splitTransitionDataSource=_transitionDataSource;
-@property(nonatomic) id <UIKeyboardKeyplaneTransitionDelegate> splitTransitionDelegate; // @synthesize splitTransitionDelegate=_transitionDelegate;
+- (void).cxx_destruct;
+@property(nonatomic) __weak id <UIKeyboardSplitTransitionDataSource> splitTransitionDataSource; // @synthesize splitTransitionDataSource=_transitionDataSource;
+@property(nonatomic) __weak id <UIKeyboardKeyplaneTransitionDelegate> splitTransitionDelegate; // @synthesize splitTransitionDelegate=_transitionDelegate;
 @property(copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 - (_Bool)showDictationKey;
 - (_Bool)showIntlKey;

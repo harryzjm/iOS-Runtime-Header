@@ -7,9 +7,10 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSCoder, NSString, UIBarButtonItem, UIDimmingView, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIPopoverController, UIPresentationController, UIResponder, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITraitCollection, UIView, UIViewController;
-@protocol UIContentContainer, UISplitViewControllerDelegate, UITraitEnvironment, UIViewControllerTransitionCoordinator;
+@protocol UIActivityItemsConfigurationReading, UIContentContainer, UIFocusEnvironment, UISplitViewControllerDelegate, UITraitEnvironment, UIViewControllerTransitionCoordinator;
 
 @protocol UISplitViewControllerImpl <NSObject>
+@property(readonly, nonatomic) _Bool inExpandingToProposedDisplayModeCallback;
 @property(readonly, nonatomic) _Bool inCollapsingToProposedTopColumnCallback;
 @property(readonly, nonatomic) _Bool lockedForDelegateCallback;
 @property(readonly, nonatomic) long long style;
@@ -29,7 +30,10 @@
 @property(nonatomic) _Bool presentsWithGesture;
 @property(nonatomic) __weak id <UISplitViewControllerDelegate> delegate;
 @property(copy, nonatomic) NSArray *viewControllers;
+- (struct CGSize)_preferredContentSize;
+- (_Bool)_shouldShowNSToolbarSidebarToggle;
 - (void)_displayModeBarButtonItemWasUsedForFirstTime:(UISplitViewControllerDisplayModeBarButtonItem *)arg1;
+- (id <UIActivityItemsConfigurationReading>)_effectiveActivityItemsConfiguration;
 - (NSArray *)_additionalViewControllersToCheckForUserActivity;
 - (void)decodeRestorableStateWithCoder:(NSCoder *)arg1;
 - (void)encodeRestorableStateWithCoder:(NSCoder *)arg1;
@@ -68,6 +72,7 @@
 - (long long)preferredTrailingStatusBarStyle;
 - (long long)preferredLeadingStatusBarStyle;
 - (_Bool)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;
+- (id <UIFocusEnvironment>)_overridingPreferredFocusEnvironment;
 - (NSArray *)preferredFocusEnvironments;
 - (UIView *)preferredFocusedView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg2;
@@ -92,6 +97,7 @@
 - (double)_primaryDividerPosition;
 - (_Bool)_isAnimating;
 - (_Bool)_isRotating;
+- (_Bool)_isExpanding;
 - (UIViewController *)detailViewController;
 - (UIViewController *)masterViewController;
 - (_Bool)_isCollapsed;

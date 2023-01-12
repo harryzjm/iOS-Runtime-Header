@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKQuantitySample.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
+@class HKQuantity, HKQuantityType, NSDateInterval, NSString;
 
-@class NSString;
-
-@interface HKQuantitySample (HKDistincableObject) <HDCoding>
+@interface HKQuantitySample (HKDistincableObject)
 + (_Bool)supportsDistinctByKeyPath:(id)arg1;
 + (id)migrateCodableObject:(id)arg1;
 + (id)createWithCodable:(id)arg1;
@@ -18,6 +16,12 @@
 - (id)uniqueIdentifierForDistinctByKeyPath:(id)arg1 error:(id *)arg2;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
+@property(readonly, nonatomic) HKQuantitySample *hdw_sample;
+@property(readonly, nonatomic) double hdw_endTimestamp;
+@property(readonly, nonatomic) double hdw_startTimestamp;
+@property(readonly, nonatomic) NSDateInterval *hdw_dateInterval;
+@property(readonly, nonatomic) HKQuantityType *hdw_type;
+@property(readonly, nonatomic) HKQuantity *hdw_quantity;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

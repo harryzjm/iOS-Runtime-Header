@@ -6,13 +6,10 @@
 
 #import <UIKit/UISlider.h>
 
-#import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
-#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
-
 @class AVLayoutItemAttributes, NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
+@interface AVVolumeSlider : UISlider
 {
     _Bool _included;
     _Bool _collapsed;

@@ -14,6 +14,7 @@
     MISSING_TYPE *environmentEntity;
     MISSING_TYPE *state;
     MISSING_TYPE *identityState;
+    MISSING_TYPE *observer;
 }
 
 @end

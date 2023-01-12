@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class OBBoldTrayButton, STIntroAppLimitsTableViewController, STIntroductionModel;
+@class OBBoldTrayButton, STIntroAppLimitsTableViewController, STIntroductionViewModel;
 
 __attribute__((visibility("hidden")))
 @interface STIntroAppLimitsViewController
 {
-    STIntroductionModel *_model;
+    STIntroductionViewModel *_model;
     CDUnknownBlockType _continueHandler;
     OBBoldTrayButton *_setAppLimitButton;
 }
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain) OBBoldTrayButton *setAppLimitButton; // @synthesize setAppLimitButton=_setAppLimitButton;
 @property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
-@property(readonly) STIntroductionModel *model; // @synthesize model=_model;
+@property(readonly) STIntroductionViewModel *model; // @synthesize model=_model;
 - (void)_updateSetAppLimitButtonWithTime:(id)arg1 selectedCategories:(id)arg2;
 - (void)_allowanceSelectedCategoriesDidChange:(id)arg1;
 - (void)_allowanceTimeDidChange:(id)arg1;

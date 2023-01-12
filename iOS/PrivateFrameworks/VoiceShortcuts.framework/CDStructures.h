@@ -8,9 +8,3 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned int val[8];
-} CDStruct_4c969caf;
-

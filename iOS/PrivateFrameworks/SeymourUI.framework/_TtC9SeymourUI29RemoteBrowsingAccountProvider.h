@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
-@interface _TtC9SeymourUI29RemoteBrowsingAccountProvider : NSObject
+@interface _TtC9SeymourUI29RemoteBrowsingAccountProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *$defaultActor;
     MISSING_TYPE *accountProvider;
     MISSING_TYPE *eventHub;
     MISSING_TYPE *source;
     MISSING_TYPE *selectedUserProfile;
 }
 
-- (void).cxx_destruct;
-- (id)init;
 - (void)handleSelectedUserProfileChanged:(id)arg1;
 
 @end

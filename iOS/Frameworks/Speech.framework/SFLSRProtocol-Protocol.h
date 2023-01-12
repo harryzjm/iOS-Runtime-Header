@@ -7,6 +7,9 @@
 @class NSArray, NSData, NSDictionary, NSLocale, NSSet, NSString, NSURL, SFRequestParameters;
 
 @protocol SFLSRProtocol
+- (oneway void)trainAppLmFromNgramCountsArtifact:(NSURL *)arg1 language:(NSString *)arg2 writeToDirectory:(NSURL *)arg3 sandboxExtensions:(NSArray *)arg4 completion:(void (^)(NSURL *, NSURL *))arg5;
+- (oneway void)createNgramCountsArtifactFromPhraseCountArtifact:(NSURL *)arg1 writeToDirectory:(NSURL *)arg2 sandboxExtensions:(NSArray *)arg3 completion:(void (^)(NSURL *))arg4;
+- (oneway void)createPhraseCountsArtifactWithIdentifier:(NSString *)arg1 rawPhraseCountsPath:(NSURL *)arg2 customPronunciationsPath:(NSURL *)arg3 writeToDirectory:(NSURL *)arg4 sandboxExtensions:(NSArray *)arg5 completion:(void (^)(NSURL *))arg6;
 - (oneway void)trainAppLmFromNgramsSerializedData:(NSData *)arg1 customPronsData:(NSData *)arg2 language:(NSString *)arg3 writeToDirectory:(NSURL *)arg4 sandboxExtension:(NSString *)arg5 completion:(void (^)(NSURL *, NSURL *))arg6;
 - (oneway void)wakeUpWithCompletion:(void (^)(void))arg1;
 - (oneway void)metricsWithCompletion:(void (^)(NSDictionary *))arg1;
@@ -29,6 +32,7 @@
 - (void)logCoreAnalyticsEvent:(NSString *)arg1 withAnalytics:(NSDictionary *)arg2;
 - (void)initializeWithSandboxExtensions:(NSArray *)arg1;
 - (oneway void)installedLanguagesWithCompletion:(void (^)(NSSet *))arg1;
+- (oneway void)preloadRecognizerForLanguage:(NSString *)arg1 task:(NSString *)arg2 recognitionOverrides:(NSDictionary *)arg3 modelOverrideURL:(NSURL *)arg4 completion:(void (^)(NSError *))arg5;
 - (oneway void)addAudioPacket:(NSData *)arg1;
 - (oneway void)cancelSpeech;
 - (oneway void)stopSpeech;

@@ -11,6 +11,7 @@
 @interface _TtC13TeaFoundation13CallbackStore : _TtCs12_SwiftObject
 {
     MISSING_TYPE *store;
+    MISSING_TYPE *erasedStore;
 }
 
 @end

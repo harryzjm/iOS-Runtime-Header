@@ -8,15 +8,15 @@
 
 @interface TSTPasteMap : NSObject
 {
-    struct set<TSTColumnOrRowMap, TSTColumnOrRowMapTgtLess, std::allocator<TSTColumnOrRowMap>> mRowTgtToPbMaps;
-    struct set<TSTColumnOrRowMap, TSTColumnOrRowMapTgtLess, std::allocator<TSTColumnOrRowMap>> mColumnTgtToPbMaps;
+    struct set<TSTColumnOrRowMap, TSTColumnOrRowMapTgtLess, std::allocator<TSTColumnOrRowMap>> _rowTgtToPbMaps;
+    struct set<TSTColumnOrRowMap, TSTColumnOrRowMapTgtLess, std::allocator<TSTColumnOrRowMap>> _columnTgtToPbMaps;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (vector_fad096c6)createTgtMergeMapFromPbMergeMap:(const void *)arg1 andTgtRegion:(id *)arg2 andTgtBodyRange:(struct TSUCellRect)arg3;
 - (void *)p_tgtRangesForPbRange:(struct TSUCellRect)arg1 givenColumnMaps:(const void *)arg2 rowMaps:(const void *)arg3;
-- (id)createTgtRegionByIntersectingPbRegion:(id)arg1 andTgtRegion:(id)arg2;
+- (id)createTgtRegionByIntersectingPbRegion:(id)arg1 tgtTableInfo:(id)arg2 tgtRegion:(id)arg3;
 - (id)createTgtRegionFromPbRegion:(id)arg1;
 - (struct TSUCellCoord)pbCellIDForTgtCellID:(struct TSUCellCoord)arg1;
 - (struct TSUCellRect)pbRangeForTgtRange:(struct TSUCellRect)arg1;

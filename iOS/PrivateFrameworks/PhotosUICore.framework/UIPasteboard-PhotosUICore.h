@@ -7,6 +7,7 @@
 #import <UIKit/UIPasteboard.h>
 
 @interface UIPasteboard (PhotosUICore)
++ (id)px_newPasteboardItemProviderForAsset:(id)arg1 fileURL:(id)arg2 utiType:(id)arg3;
 + (id)px_newPasteboardRepresentationForAsset:(id)arg1 data:(id)arg2 utiType:(id)arg3;
 @property(readonly, nonatomic) _Bool px_containsAssets;
 - (id)px_assets;

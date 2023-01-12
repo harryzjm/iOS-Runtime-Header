@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/NSCoding-Protocol.h>
+#import "UIView.h"
 
-@class UIView;
 @protocol UILayoutContainerViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UILayoutContainerView <NSCoding>
+@interface UILayoutContainerView : UIView
 {
     UIView *_shadowView;
     struct {

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/EARSyncPSRAudioProcessorDelegate-Protocol.h>
-#import <SoundAnalysis/SNAnalyzing-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SNSpeechEmotionEstimator : NSObject <SNAnalyzing, EARSyncPSRAudioProcessorDelegate>
+@interface SNSpeechEmotionEstimator : NSObject
 {
     shared_ptr_f6ac7592 _graph;
 }

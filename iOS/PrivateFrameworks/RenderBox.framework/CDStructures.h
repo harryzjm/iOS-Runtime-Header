@@ -4,167 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSData, NSObject, RBDevice, RBDisplayList, RBImageQueueLayer;
+@class NSData, RBDisplayListInterpolator;
 
-#pragma mark Function Pointers and Blocks
+#pragma mark Function Pointers
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
-struct AffineTransform {
-    MISSING_TYPE *ab__cd__txy;
-};
-
-struct Bounds {
-    MISSING_TYPE *origin__size;
-};
-
-struct CGAffineTransform {
-    double a;
-    double b;
-    double c;
-    double d;
-    double tx;
-    double ty;
-};
-
-struct CGImage;
-
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
+    struct CGPoint _field1;
+    struct CGSize _field2;
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
-
-struct ClipNode;
 
 struct Contents;
 
-struct Device;
-
-struct DisplayList {
-    unsigned int _crop_seed;
-    unsigned int _layer_id;
-    struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> _contents;
-    struct Pool<RB::DisplayList::State, const RB::Malloc> _state_pool;
-    struct Pool<RB::DisplayList::Layer, RB::Heap> _layer_pool;
-    struct Layer *_active_layer;
-    struct State _root_state;
-    struct State *_state;
-};
-
 struct DisplayListPredicate {
-    struct vector<RB::DisplayListPredicate::Term, 1, unsigned int> _terms;
-};
-
-struct DisplayListTransform {
-    struct vector<RB::DisplayListTransform::Term, 1, unsigned int> _terms;
+    struct vector<RB::DisplayListPredicate::Term, 1UL, unsigned int> _terms;
 };
 
 struct Document;
-
-struct Drawable;
-
-struct InlineHeap<256> {
-    unsigned long long _page_size;
-    struct Page *_pages;
-    char *_sbrk;
-    char *_sbrk_end;
-    struct ObjectTable *_objects;
-    unsigned char _buffer[256];
-};
-
-struct InlineHeap<64> {
-    unsigned long long _page_size;
-    struct Page *_pages;
-    char *_sbrk;
-    char *_sbrk_end;
-    struct ObjectTable *_objects;
-    unsigned char _buffer[64];
-};
 
 struct Invertible {
     struct DisplayListPredicate predicate;
     _Bool inverts_result;
 };
 
-struct Item;
-
-struct Layer;
-
-struct ObjectTable;
-
-struct Page;
-
-struct Pool<RB::DisplayList::Layer, RB::Heap> {
-    struct Item *_freelist;
-};
-
-struct Pool<RB::DisplayList::State, const RB::Malloc> {
-    struct Item *_freelist;
-};
-
-struct RBFillData {
-    int type;
-    unsigned char data[104];
-};
-
-struct RBShapeData {
-    int type;
-    unsigned char data[88];
-};
-
-struct Rect {
-    MISSING_TYPE *origin__size;
-};
-
-struct State {
-    struct State *_next;
-    void *_context;
-    struct AffineTransform _ctm;
-    struct ClipNode *_clip;
-    struct Style *_style;
-    struct AffineTransform *_copied_ctm;
-    struct Rect _crop;
-    unsigned int _layer_id;
-    unsigned int _crop_seed;
-    struct optional<RB::ColorSpace> _default_color_space;
-};
-
-struct Style;
-
 struct Term;
-
-struct Texture;
 
 struct _CAImageQueue;
 
-struct atomic<bool> {
-    struct __cxx_atomic_impl<bool, std::__cxx_atomic_base_impl<bool>> {
-        _Atomic _Bool __a_value;
+struct atomic<_opaque_pthread_t *> {
+    struct __cxx_atomic_impl<_opaque_pthread_t *, std::__cxx_atomic_base_impl<_opaque_pthread_t *>> {
+        _Atomic struct _opaque_pthread_t *__a_value;
     } __a_;
-};
-
-struct atomic<unsigned int> {
-    struct __cxx_atomic_impl<unsigned int, std::__cxx_atomic_base_impl<unsigned int>> {
-        _Atomic unsigned int __a_value;
-    } __a_;
-};
-
-struct cf_ptr<CGImage *> {
-    struct CGImage *_p;
 };
 
 struct cf_ptr<_CAImageQueue *> {
@@ -175,64 +58,12 @@ struct objc_ptr<NSData *> {
     NSData *_p;
 };
 
-struct objc_ptr<NSObject<OS_dispatch_queue>*> {
-    NSObject *_p;
-};
-
-struct objc_ptr<RBDevice *> {
-    RBDevice *_p;
-};
-
-struct objc_ptr<RBDisplayList *> {
-    RBDisplayList *_p;
-};
-
-struct objc_ptr<RBImageQueueLayer *> {
-    RBImageQueueLayer *_p;
-};
-
-struct objc_ptr<id<MTLDevice>> {
-    id _p;
-};
-
-struct objc_ptr<id<MTLTexture>> {
-    id _p;
+struct objc_ptr<RBDisplayListInterpolator *> {
+    RBDisplayListInterpolator *_p;
 };
 
 struct objc_ptr<id<RBDisplayListContents>> {
     id _p;
-};
-
-struct objc_ptr<void (^)(id<RBDrawableStatistics>)> {
-    CDUnknownBlockType _p;
-};
-
-struct optional<RB::ColorSpace> {
-    union {
-        char __null_state_;
-        unsigned char __val_;
-    } ;
-    _Bool __engaged_;
-};
-
-struct os_unfair_lock_s {
-    unsigned int _os_unfair_lock_opaque;
-};
-
-struct refcounted_ptr<RB::Device> {
-    struct Device *_p;
-};
-
-struct refcounted_ptr<RB::Drawable> {
-    struct Drawable *_p;
-};
-
-struct refcounted_ptr<RB::Texture> {
-    struct Texture *_p;
-};
-
-struct spin_lock {
-    struct os_unfair_lock_s _lock;
 };
 
 struct unique_ptr<RB::DisplayList::Contents, RB::Destroy<RB::DisplayList::Contents>> {
@@ -247,61 +78,14 @@ struct unique_ptr<RB::XML::Document, std::default_delete<RB::XML::Document>> {
     } __ptr_;
 };
 
-struct vector<RB::DisplayListPredicate::Term, 1, unsigned int> {
+struct vector<RB::DisplayListPredicate::Term, 1UL, unsigned int> {
     unsigned char _p[24];
     struct Term *_p;
     unsigned int _size;
     unsigned int _capacity;
-};
-
-struct vector<RB::DisplayListTransform::Term, 1, unsigned int> {
-    unsigned char _p[24];
-    struct Term *_p;
-    unsigned int _size;
-    unsigned int _capacity;
-};
-
-struct vector<RBStrokeElement, 0, unsigned long> {
-    unsigned char *_p;
-    unsigned long long _size;
-    unsigned long long _capacity;
-};
-
-struct vector<float, 0, unsigned long> {
-    float *_p;
-    unsigned long long _size;
-    unsigned long long _capacity;
-};
-
-struct vector<std::pair<RB::cf_ptr<CGContext *>, RB::ContextDelegate *>, 1, unsigned long> {
-    unsigned char _p[16];
-    void *_p;
-    unsigned long long _size;
-    unsigned long long _capacity;
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    unsigned long long x;
-    unsigned long long y;
-    unsigned long long width;
-    unsigned long long height;
-} CDStruct_5f3a0cd7;
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
-
-typedef struct {
-    float red;
-    float green;
-    float blue;
-    float alpha;
-} CDStruct_0b1c536a;
 
 typedef struct {
     int _field1;

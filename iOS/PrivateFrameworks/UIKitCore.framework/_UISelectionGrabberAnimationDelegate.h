@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UISelectionGrabberAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface _UISelectionGrabberAnimationDelegate : NSObject
 {
     CDUnknownBlockType block;
 }

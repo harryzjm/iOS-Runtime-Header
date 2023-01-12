@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CompanionSync/NSCopying-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface SYLogTransportOption : PBCodable <NSCopying>
+@interface SYLogTransportOption : PBCodable
 {
     NSString *_key;
     NSString *_value;

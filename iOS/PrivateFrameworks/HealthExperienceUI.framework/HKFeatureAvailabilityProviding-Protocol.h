@@ -27,7 +27,6 @@
 - (NSNumber *)canCompleteOnboardingForCountryCode:(NSString *)arg1 error:(id *)arg2;
 - (void)isCurrentOnboardingVersionCompletedWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (NSNumber *)isCurrentOnboardingVersionCompletedWithError:(id *)arg1;
-- (NSNumber *)highestOnboardingVersionCompletedWithError:(id *)arg1;
 - (void)getFeatureOnboardingRecordWithCompletion:(void (^)(HKFeatureOnboardingRecord *, NSError *))arg1;
 - (HKFeatureOnboardingRecord *)featureOnboardingRecordWithError:(id *)arg1;
 @property(nonatomic, readonly) NSString *featureIdentifier;

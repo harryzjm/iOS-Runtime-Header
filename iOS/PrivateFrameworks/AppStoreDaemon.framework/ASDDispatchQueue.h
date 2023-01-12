@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <AppStoreDaemon/ASDTaskScheduler-Protocol.h>
-
 @class NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface ASDDispatchQueue : NSObject <ASDTaskScheduler>
+@interface ASDDispatchQueue : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
 }

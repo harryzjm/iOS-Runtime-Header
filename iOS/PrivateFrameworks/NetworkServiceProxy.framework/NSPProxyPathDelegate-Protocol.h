@@ -6,12 +6,16 @@
 
 #import <NetworkServiceProxy/NSObject-Protocol.h>
 
-@class NSPProxyPath, NWInterface;
+@class NSPPrivacyProxyProxyInfo, NSPProxyPath, NSString, NSUUID, NWInterface;
 
 @protocol NSPProxyPathDelegate <NSObject>
+@property(retain, nonatomic) NSString *geohashOverride;
 @property(nonatomic) _Bool dnsFilteringHintEnabled;
+- (_Bool)proxyInfo:(NSPPrivacyProxyProxyInfo *)arg1 matchesProxyIndex:(unsigned long long)arg2;
 - (void)reportProxyError:(int)arg1 interface:(NWInterface *)arg2 proxyPath:(NSPProxyPath *)arg3;
-- (void)reportProxySuccessOnInterface:(NWInterface *)arg1;
+- (void)reportProxySuccessOnInterface:(NWInterface *)arg1 proxyPath:(NSPProxyPath *)arg2;
+- (void)obliviousHopAgentUnregistered:(NSPProxyPath *)arg1 hostname:(NSString *)arg2;
+- (void)obliviousHopAgentRegistered:(NSPProxyPath *)arg1 hostname:(NSString *)arg2 agentUUID:(NSUUID *)arg3;
 - (void)singleHopAgentUnregistered:(NSPProxyPath *)arg1;
 - (void)singleHopAgentRegistered:(NSPProxyPath *)arg1;
 - (void)multiHopAgentUnregistered:(NSPProxyPath *)arg1;

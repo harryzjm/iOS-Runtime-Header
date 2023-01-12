@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/KNAnimationPlugin-Protocol.h>
-
 @class KNAnimationContext, NSString;
 
-@interface KNAnimationEffect : NSObject <KNAnimationPlugin>
+@interface KNAnimationEffect : NSObject
 {
     KNAnimationContext *mAnimationContext;
 }

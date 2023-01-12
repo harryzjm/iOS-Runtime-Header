@@ -7,11 +7,14 @@
 #import <SafariServices/NSObject-Protocol.h>
 
 @protocol WBSFormAutoFillNode <NSObject>
+- (void)setSpinnerVisibilityOnHTMLInputElement:(_Bool)arg1;
 - (long long)htmlInputElementLastAutoFillButtonType;
 - (long long)htmlInputElementAutoFillButtonType;
 - (void)setHTMLInputElementAutoFilledWithAutomaticStrongPassword:(_Bool)arg1;
 - (_Bool)isHTMLTextAreaElementUserEdited;
 - (_Bool)isHTMLInputElementUserEdited;
+- (void)setHTMLInputElementAutoFilledAndObscured:(_Bool)arg1;
+- (void)setHTMLInputElementAutoFilledAndViewable:(_Bool)arg1;
 - (void)setHTMLInputElementAutofilled:(_Bool)arg1;
 - (struct CGRect)elementBounds;
 - (id)initWithJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;

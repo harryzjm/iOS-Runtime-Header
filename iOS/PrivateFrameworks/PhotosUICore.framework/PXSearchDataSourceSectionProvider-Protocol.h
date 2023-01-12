@@ -10,6 +10,7 @@
 @protocol NSCollectionLayoutEnvironment, PXSearchDataSourceSectionProviderChangeObserver;
 
 @protocol PXSearchDataSourceSectionProvider <NSObject>
+@property(readonly, nonatomic) long long identifier;
 @property(readonly, copy, nonatomic) NSArray *sectionIdentifiers;
 @property(nonatomic) __weak id <PXSearchDataSourceSectionProviderChangeObserver> changeObserver;
 @property(readonly, nonatomic) unsigned long long type;

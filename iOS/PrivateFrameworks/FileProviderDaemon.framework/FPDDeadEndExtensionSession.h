@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProviderDaemon/FPDExtensionSessionProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface FPDDeadEndExtensionSession : NSObject <FPDExtensionSessionProtocol>
+@interface FPDDeadEndExtensionSession : NSObject
 {
     _Bool hasFileProviderPresenceTCCAccess;
     _Bool hasFileProviderAttributionMDMAccess;
@@ -22,16 +20,14 @@ __attribute__((visibility("hidden")))
 - (void)dumpStateTo:(id)arg1;
 - (void)invalidate;
 - (void)cancel;
+- (void)terminateWithReason:(id)arg1;
 - (void)start;
 - (void)asyncUnregisterLifetimeExtensionForObject:(id)arg1;
 - (void)unregisterLifetimeExtensionForObject:(id)arg1;
 - (void)registerLifetimeExtensionForObject:(id)arg1;
-- (void)updatePresenceTCCWithAuditToken:(CDStruct_4c969caf)arg1;
-- (id)newFileProviderProxyWithoutPID;
-- (id)existingFileProviderProxyWithTimeout:(_Bool)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
-- (id)newFileProviderProxyWithoutPIDWithTimeout:(_Bool)arg1;
-- (id)newFileProviderProxyWithTimeout:(_Bool)arg1 pid:(int)arg2;
-- (id)newFileProviderProxyWithPID:(int)arg1;
+- (void)updatePresenceTCCWithAuditToken:(CDStruct_6ad76789)arg1;
+- (id)newFileProviderProxyWithTimeout:(double)arg1 pid:(int)arg2;
+- (id)existingFileProviderProxyWithTimeout:(double)arg1 onlyAlreadyLifetimeExtended:(_Bool)arg2 pid:(int)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

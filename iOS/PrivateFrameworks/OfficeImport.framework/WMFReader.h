@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/MFReader-Protocol.h>
-
 @class NSString, WMFPlayer;
 
 __attribute__((visibility("hidden")))
-@interface WMFReader : NSObject <MFReader>
+@interface WMFReader : NSObject
 {
     int m_recordsRead;
     WMFPlayer *m_player;

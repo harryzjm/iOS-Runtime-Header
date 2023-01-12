@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI9ViewModelCN.h"
+
 @class MISSING_TYPE;
 
-@interface _TtC8VideosUI14VideoViewModel
+@interface _TtC8VideosUI14VideoViewModel : _$s8VideosUI9ViewModelCN
 {
     MISSING_TYPE *defaultVideosPlayable;
     MISSING_TYPE *tvVideosPlayable;
     MISSING_TYPE *phoneVideosPlayable;
     MISSING_TYPE *padVideosPlayable;
     MISSING_TYPE *macVideosPlayable;
+    MISSING_TYPE *lmacVideosPlayable;
 }
 
 @end

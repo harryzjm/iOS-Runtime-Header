@@ -14,12 +14,10 @@ __attribute__((visibility("hidden")))
     shared_ptr_479d1306 _sourceRoofTexture;
     shared_ptr_479d1306 _targetRoofTexture;
     unsigned char _lastResolvedZoom;
-    struct vector<std::shared_ptr<ggl::DaVinci::ElevatedStrokeMesh>, std::allocator<std::shared_ptr<ggl::DaVinci::ElevatedStrokeMesh>>> _elevatedStrokeMeshes;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) void *elevatedStrokeMeshes; // @synthesize elevatedStrokeMeshes=_elevatedStrokeMeshes;
 - (void)updateTextures:(unsigned char)arg1 textureManager:(void *)arg2;
 - (void)addStrokeForSection:(const void *)arg1 paddedCount:(unsigned int)arg2 key:(pair_802f950e)arg3 attributes:(const void *)arg4 styles:(void *)arg5 cullingMask:(unsigned int)arg6 accessor:(struct ResourceAccessor *)arg7;
 - (unsigned char)initialStyleIndexForSection:(const void *)arg1 attributes:(const void *)arg2 styles:(const void *)arg3;
@@ -38,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsTextureUpdate;
 @property(readonly, nonatomic) struct FeatureAttributeSet styleAttributes;
 - (shared_ptr_479d1306)_textureForName:(const void *)arg1 textureManager:(void *)arg2;
-- (void)dealloc;
+- (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const void *)arg3 contentScale:(float)arg4 storage:(shared_ptr_fb8448a7)arg5;
 - (id)initWithStyleQuery:(void *)arg1 tileZoom:(float)arg2 fixedAroundCentroid:(const void *)arg3 contentScale:(float)arg4;
 @property(readonly, nonatomic) void *targetRoofTexture;
 @property(readonly, nonatomic) void *sourceRoofTexture;

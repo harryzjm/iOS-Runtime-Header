@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <TVMLKit/_TVMLKitApplication-Protocol.h>
-
 @class IKAppDataStorage, NSDictionary, NSString, TVApplicationControllerContext, UIViewController, UIWindow;
 @protocol TVAppRootViewController, UITraitEnvironment;
 
 __attribute__((visibility("hidden")))
-@interface _TVMLKitApplication : NSObject <_TVMLKitApplication>
+@interface _TVMLKitApplication : NSObject
 {
     _Bool _headless;
     TVApplicationControllerContext *_launchContext;

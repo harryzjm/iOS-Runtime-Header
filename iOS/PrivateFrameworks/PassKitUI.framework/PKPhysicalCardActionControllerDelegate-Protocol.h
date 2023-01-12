@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSError, PKPhysicalCardActionController;
+@class NSError, NSString, PKPhysicalCardActionController;
 
 @protocol PKPhysicalCardActionControllerDelegate <NSObject>
+- (NSString *)presentationSceneIdentifierForPhysicalCardActionController:(PKPhysicalCardActionController *)arg1;
 - (void)physicalCardActionController:(PKPhysicalCardActionController *)arg1 didChangeToState:(long long)arg2 withError:(NSError *)arg3;
 @end
 

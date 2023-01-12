@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSArrayChange.h"
+
 __attribute__((visibility("hidden")))
-@interface NSConcreteArrayChange
+@interface NSConcreteArrayChange : NSArrayChange
 {
     unsigned long long _changeType;
     unsigned long long _sourceIndex;

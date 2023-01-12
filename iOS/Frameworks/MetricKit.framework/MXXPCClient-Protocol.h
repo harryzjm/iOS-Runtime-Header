@@ -4,7 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @protocol MXXPCClient
 - (void)registrationProcessed;
+
+@optional
+- (void)deliverDiagnosticPayload:(NSArray *)arg1;
+- (void)deliverMetricPayload:(NSArray *)arg1;
 @end
 

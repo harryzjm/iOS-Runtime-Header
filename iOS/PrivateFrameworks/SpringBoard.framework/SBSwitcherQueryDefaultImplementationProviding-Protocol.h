@@ -6,17 +6,30 @@
 
 #import <SpringBoard/SBChainableModifierQuery-Protocol.h>
 
-@class NSArray, NSSet, NSString, SBAppLayout, SBFFluidBehaviorSettings, SBSwitcherDropRegionContext, SBSwitcherResizeGrabberLayoutAttributes, SBSwitcherShelf;
+@class CAMeshTransform, NSArray, NSOrderedSet, NSSet, NSString, SBAppLayout, SBFFluidBehaviorSettings, SBSwitcherDropRegionContext, SBSwitcherResizeGrabberLayoutAttributes, SBSwitcherShelf;
 @protocol SBSwitcherLayoutElementProviding;
 
 @protocol SBSwitcherQueryDefaultImplementationProviding <SBChainableModifierQuery>
 - (_Bool)clipsToBoundsAtIndex:(unsigned long long)arg1;
 - (struct CGRect)clippingFrameForIndex:(unsigned long long)arg1 withBounds:(struct CGRect)arg2;
+- (double)rootContentViewBlurRadius;
+- (struct CGRect)rootContentViewMaskRect;
+- (struct CGPoint)expandedSourcePositionForSystemApertureTransition;
+- (_Bool)systemApertureRequiresHeavyShadowForTransition;
+- (NSSet *)systemApertureTransitioningAppLayouts;
+- (NSOrderedSet *)adjustedContinuousExposeIdentifiersForIdentifiers:(NSOrderedSet *)arg1;
+- (struct SBSwitcherGradientWallpaperAttributes)wallpaperGradientAttributesForIndex:(unsigned long long)arg1;
+- (_Bool)shouldUseWallpaperGradientTreatment;
+- (struct CGPoint)adjustedSpaceAccessoryViewAnchorPoint:(struct CGPoint)arg1 forAppLayout:(SBAppLayout *)arg2;
+- (struct CGRect)adjustedSpaceAccessoryViewFrame:(struct CGRect)arg1 forAppLayout:(SBAppLayout *)arg2;
 - (SBSwitcherResizeGrabberLayoutAttributes *)resizeGrabberLayoutAttributesForAppLayout:(SBAppLayout *)arg1;
 - (SBAppLayout *)preferredAppLayoutToReuseAccessoryForAppLayout:(SBAppLayout *)arg1 fromAppLayouts:(NSArray *)arg2;
 - (struct CGPoint)contentViewOffsetForAccessoriesOfAppLayout:(SBAppLayout *)arg1;
 - (struct CGPoint)contentViewOffsetForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldTetherItemsAndAccessoriesInAppLayout:(SBAppLayout *)arg1;
+- (CAMeshTransform *)identityMeshTransformForIndex:(unsigned long long)arg1;
+- (CAMeshTransform *)meshTransformForIndex:(unsigned long long)arg1;
+- (double)perspectiveAngleForAppLayout:(SBAppLayout *)arg1;
 - (unsigned long long)hiddenContentStatusBarPartsForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (unsigned long long)hiddenContainerStatusBarParts;
 - (id <SBSwitcherLayoutElementProviding>)homeAffordanceLayoutElementToPortalIntoShelf:(SBSwitcherShelf *)arg1;
@@ -34,8 +47,10 @@
 - (NSSet *)ignoredDisplayItemsForShelf:(SBSwitcherShelf *)arg1;
 - (SBAppLayout *)focusedAppLayoutForShelf:(SBSwitcherShelf *)arg1;
 - (struct SBSwitcherShelfPresentationAttributes)presentationAttributesForShelf:(SBSwitcherShelf *)arg1;
+- (_Bool)wantsSpaceAccessoryViewPointerInteractionsForAppLayout:(SBAppLayout *)arg1;
 - (unsigned long long)multipleWindowsIndicatorLayoutRoleMaskForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)shouldUseAnchorPointToPinLayoutRolesToSpace:(unsigned long long)arg1;
+- (_Bool)shouldPinLayoutRolesToSpace:(unsigned long long)arg1;
 - (struct CGPoint)anchorPointForIndex:(unsigned long long)arg1;
 - (_Bool)shouldShowBackdropViewAtIndex:(unsigned long long)arg1;
 - (_Bool)shouldUseNonuniformSnapshotScalingForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
@@ -43,6 +58,7 @@
 - (_Bool)canFocusableAppLayoutBeEffectivelyObscured:(SBAppLayout *)arg1;
 - (_Bool)switcherHitTestsAsOpaque;
 - (NSArray *)topMostLayoutRolesForAppLayout:(SBAppLayout *)arg1;
+- (_Bool)wantsSceneResizesHostedContextForAppLayout:(SBAppLayout *)arg1;
 - (_Bool)isLayoutRoleMatchMovedToScene:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (_Bool)shouldSuppressHighlightEffectForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (double)dimmingAlphaForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
@@ -51,6 +67,7 @@
 - (_Bool)isLayoutRoleBlurred:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (struct CGRect)frameForIconOverlayInAppLayout:(SBAppLayout *)arg1;
 - (struct CGRect)fullyPresentedFrameForIndex:(unsigned long long)arg1 frame:(struct CGRect)arg2;
+- (NSSet *)repositionProgressNotificationsForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (NSSet *)resizeProgressNotificationsForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2;
 - (unsigned long long)maskedCornersForLayoutRole:(long long)arg1 inAppLayout:(SBAppLayout *)arg2 withMaskedCorners:(unsigned long long)arg3;
 - (unsigned long long)maskedCornersForIndex:(unsigned long long)arg1;

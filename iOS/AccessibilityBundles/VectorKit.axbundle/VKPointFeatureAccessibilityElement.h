@@ -20,6 +20,7 @@
 - (_Bool)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (id)_distanceAwayString;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)_poiTypeSuffix;
 - (id)trueLabel;

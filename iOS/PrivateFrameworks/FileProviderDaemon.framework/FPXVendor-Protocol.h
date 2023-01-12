@@ -7,7 +7,7 @@
 #import <FileProviderDaemon/FPXOperationService-Protocol.h>
 #import <FileProviderDaemon/FPXVendorObservation-Protocol.h>
 
-@class FPCTLTermDumper, FPItem, FPItemID, FPProviderDomain, FPSandboxingURLWrapper, NSArray, NSDate, NSDictionary, NSFileHandle, NSFileProviderDomain, NSFileProviderDomainVersion, NSFileProviderItemVersion, NSFileProviderRequest, NSProgress, NSString, NSURL;
+@class FPCTLTermDumper, FPItem, FPItemID, FPProviderDomain, FPSandboxingURLWrapper, NSArray, NSDate, NSDictionary, NSFileHandle, NSFileProviderDomain, NSFileProviderDomainVersion, NSFileProviderItemVersion, NSFileProviderRequest, NSProgress, NSString, NSURL, NSValue;
 @protocol FPDDomainServicing;
 
 @protocol FPXVendor <FPXOperationService, FPXVendorObservation>
@@ -20,9 +20,8 @@
 - (NSProgress *)createItemBasedOnTemplate:(FPItem *)arg1 fields:(unsigned long long)arg2 contents:(FPSandboxingURLWrapper *)arg3 options:(unsigned long long)arg4 request:(NSFileProviderRequest *)arg5 bounce:(_Bool)arg6 completionHandler:(void (^)(FPItem *, unsigned long long, _Bool, FPExtensionResponse *, NSError *))arg7;
 - (NSProgress *)modifyItem:(FPItem *)arg1 baseVersion:(NSFileProviderItemVersion *)arg2 changedFields:(unsigned long long)arg3 contents:(FPSandboxingURLWrapper *)arg4 options:(unsigned long long)arg5 request:(NSFileProviderRequest *)arg6 completionHandler:(void (^)(FPItem *, unsigned long long, _Bool, FPExtensionResponse *, NSError *))arg7;
 - (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 usingExistingContentsAtURL:(FPSandboxingURLWrapper *)arg3 existingVersion:(NSFileProviderItemVersion *)arg4 request:(NSFileProviderRequest *)arg5 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSError *))arg6;
-- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 request:(NSFileProviderRequest *)arg3 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSError *))arg4;
+- (NSProgress *)fetchContentsForItemWithID:(FPItemID *)arg1 version:(NSFileProviderItemVersion *)arg2 request:(NSFileProviderRequest *)arg3 extent:(NSValue *)arg4 alignment:(unsigned long long)arg5 options:(unsigned long long)arg6 shouldForwardVersion:(_Bool)arg7 completionHandler:(void (^)(FPSandboxingURLWrapper *, FPItem *, FPExtensionResponse *, NSValue *, NSError *))arg8;
 - (void)movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
-- (void)acknowledgeUserVisibleRootDidChangeForDomain:(NSString *)arg1 urlWrapper:(FPSandboxingURLWrapper *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)dumpIndexStateForDomain:(NSString *)arg1 toFileHandler:(NSFileHandle *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)dropIndexForDomain:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)indexOneBatchInDomain:(NSString *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
@@ -39,7 +38,7 @@
 - (void)dropDomainWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)fetchOperationServiceEndpoint:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
 - (void)fetchVendorEndpoint:(void (^)(NSXPCListenerEndpoint *, NSError *))arg1;
-- (void)fetchServicesForItemID:(FPItemID *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSArray *, NSError *))arg2;
+- (void)fetchServicesForItemID:(FPItemID *)arg1 allowRestrictedSources:(_Bool)arg2 completionHandler:(void (^)(NSXPCListenerEndpoint *, NSArray *, NSError *))arg3;
 - (void)bulkEvictItemsWithItemIDs:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)trashItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)itemForURL:(NSURL *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
@@ -49,6 +48,6 @@
 - (void)evictItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(FPItemID *, NSError *))arg2;
 - (void)startProvidingItemAtURL:(NSURL *)arg1 readingOptions:(unsigned long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)providePlaceholderAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
-- (void)beginRequestWithDomain:(NSFileProviderDomain *)arg1 alternateContentsDictionary:(NSDictionary *)arg2 domainServicer:(id <FPDDomainServicing>)arg3 providerDomain:(FPProviderDomain *)arg4 domainVersion:(NSFileProviderDomainVersion *)arg5;
+- (void)beginRequestWithDomain:(NSFileProviderDomain *)arg1 alternateContentsDictionary:(NSDictionary *)arg2 domainServicer:(id <FPDDomainServicing>)arg3 providerDomain:(FPProviderDomain *)arg4 domainVersion:(NSFileProviderDomainVersion *)arg5 completionHandler:(void (^)(NSError *))arg6;
 @end
 

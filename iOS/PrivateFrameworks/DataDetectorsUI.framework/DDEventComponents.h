@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DataDetectorsUI/NSSecureCoding-Protocol.h>
-
-@class NSDate, NSString;
+@class NSDate, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface DDEventComponents : NSObject <NSSecureCoding>
+@interface DDEventComponents : NSObject
 {
     NSString *_title;
     NSString *_eventTypeIdentifier;
@@ -20,6 +18,9 @@ __attribute__((visibility("hidden")))
     double _duration;
     struct _NSRange _originRange;
     long long _source;
+    NSString *_notes;
+    NSURL *_URL;
+    NSString *_location;
 }
 
 + (id)_eventsFromIntelligentSuggestions:(id)arg1;
@@ -28,6 +29,9 @@ __attribute__((visibility("hidden")))
 + (id)bestEventComponentsForResult:(struct __DDResult *)arg1 withNaturalLanguageContext:(id)arg2 suggestionsContext:(id)arg3 context:(id)arg4;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *location; // @synthesize location=_location;
+@property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(retain, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property(nonatomic) long long source; // @synthesize source=_source;
 @property(nonatomic) struct _NSRange originRange; // @synthesize originRange=_originRange;
 @property(nonatomic) double duration; // @synthesize duration=_duration;

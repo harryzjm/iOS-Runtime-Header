@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSData;
 
-@interface CKDPZoneRetrieveChangesRequest : PBRequest <NSCopying>
+@interface CKDPZoneRetrieveChangesRequest : PBRequest
 {
     unsigned int _maxChangedZones;
     NSData *_syncContinuationToken;

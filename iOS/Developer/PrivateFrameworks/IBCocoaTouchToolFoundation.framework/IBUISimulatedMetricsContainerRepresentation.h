@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBCocoaTouchToolFoundation/NSCopying-Protocol.h>
-
 @class IBUISimulatedBarMetrics, IBUISimulatedMetricChain, IBUITraitCollection, NSArray, NSNumber, NSString, NSValue;
 
-@interface IBUISimulatedMetricsContainerRepresentation : NSObject <NSCopying, IBBinaryArchiving>
+@interface IBUISimulatedMetricsContainerRepresentation : NSObject
 {
     IBUISimulatedMetricChain *_metricChain;
     NSValue *_simulatedScreenSize;

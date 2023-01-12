@@ -11,7 +11,6 @@
 @interface _TtC9PaymentUI19AddressEditingModel : _TtCs12_SwiftObject
 {
     MISSING_TYPE *_contactInformationEditingModel;
-    MISSING_TYPE *postalAddressEditingModel;
     MISSING_TYPE *_configuration;
     MISSING_TYPE *cancellables;
     MISSING_TYPE *_originalAddress;

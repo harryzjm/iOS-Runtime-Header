@@ -11,7 +11,7 @@
 @protocol PTCinematographyScriptChanges <NSObject>
 
 @optional
-- (void)decisionsDidChangeInScript:(PTCinematographyScript *)arg1 timeRange:(CDStruct_e83c9415)arg2;
-- (void)framesDidChangeInScript:(PTCinematographyScript *)arg1 timeRange:(CDStruct_e83c9415)arg2;
+- (void)decisionsDidChangeInScript:(PTCinematographyScript *)arg1 timeRange:(CDStruct_3c1748cc)arg2;
+- (void)framesDidChangeInScript:(PTCinematographyScript *)arg1 timeRange:(CDStruct_3c1748cc)arg2;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMCameraClip.h>
 
-#import <Home/HFCameraRecordingEvent-Protocol.h>
-
 @class NSArray, NSDate, NSString, NSUUID;
 
-@interface HMCameraClip (HFAdditions) <HFCameraRecordingEvent>
+@interface HMCameraClip (HFAdditions)
 - (unsigned long long)containerType;
 - (void)dealloc;
 - (id)hf_familiarFaceEventAtOffset:(double)arg1;
@@ -29,6 +27,8 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly) long long quality;
+@property(readonly, copy) NSDate *startDate;
 @property(readonly) Class superclass;
 @property(readonly, copy) NSUUID *uniqueIdentifier;
 @end

@@ -6,9 +6,10 @@
 
 #import <NanoPassKit/PDXPCServiceExportedInterface-Protocol.h>
 
-@class CNContact, NPKRemotePassActionEnterValueRequest;
+@class CNContact, NPKRemotePassActionEnterValueRequest, NPKRemotePassActionSelectItemRequest;
 
 @protocol NPKCompanionViewServiceConnectionServerProtocol <PDXPCServiceExportedInterface>
+- (void)presentRemotePassItemSelectionViewControllerForRequest:(NPKRemotePassActionSelectItemRequest *)arg1 contact:(CNContact *)arg2 completion:(void (^)(_Bool))arg3;
 - (void)presentRemotePassValueEntryViewControllerForRequest:(NPKRemotePassActionEnterValueRequest *)arg1 contact:(CNContact *)arg2 completion:(void (^)(_Bool))arg3;
 @end
 

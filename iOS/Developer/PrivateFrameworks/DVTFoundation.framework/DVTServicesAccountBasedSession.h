@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <DVTFoundation/DVTAccountBasedSession-Protocol.h>
-
 @class DVTDeveloperAccount, DVTDeveloperAccountSession, DVTDispatchLock, DVTLogAspect, NSData, NSNumber, NSString;
 @protocol DVTDeveloperPortalDefaultsProtocol;
 
-@interface DVTServicesAccountBasedSession : NSObject <DVTAccountBasedSession>
+@interface DVTServicesAccountBasedSession : NSObject
 {
     id _wrappingLogHandlerToken;
     DVTServicesAccountBasedSession *_parentSession;

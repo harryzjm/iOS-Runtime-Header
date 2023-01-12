@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initForPortalView:(_Bool)arg1;
+- (id)initForLocation:(unsigned long long)arg1;
 
 @end
 

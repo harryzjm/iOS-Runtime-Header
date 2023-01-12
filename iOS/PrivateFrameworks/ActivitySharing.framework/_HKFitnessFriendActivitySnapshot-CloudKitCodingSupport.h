@@ -6,11 +6,9 @@
 
 #import <HealthKit/_HKFitnessFriendActivitySnapshot.h>
 
-#import <ActivitySharing/ASCloudKitCodable-Protocol.h>
-
 @class ASCodableCloudKitActivitySnapshot, HKQuantity, NSString;
 
-@interface _HKFitnessFriendActivitySnapshot (CloudKitCodingSupport) <ASCloudKitCodable>
+@interface _HKFitnessFriendActivitySnapshot (CloudKitCodingSupport)
 + (id)_fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1 friendUUID:(id)arg2 uploadedDate:(id)arg3;
 + (id)fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1 friendUUID:(id)arg2 uploadedDate:(id)arg3;
 + (id)fitnessFriendActivitySnapshotWithCodableSnapshot:(id)arg1 friendUUID:(id)arg2;

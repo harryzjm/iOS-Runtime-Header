@@ -7,7 +7,8 @@
 #import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
 
 @protocol HDSPSleepModeStateMachineEventHandler <HKSPStateMachineEventHandler>
-- (void)sleepFocusModeDidChange;
+- (void)sleepModeTurnedOffForUnknownReason;
+- (void)sleepModeTurnedOnForUnknownReason;
 - (void)automationTurnedOffSleepModeWithReason:(unsigned long long)arg1;
 - (void)automationTurnedOnSleepModeWithReason:(unsigned long long)arg1;
 - (void)userTurnedOffSleepModeWithReason:(unsigned long long)arg1;

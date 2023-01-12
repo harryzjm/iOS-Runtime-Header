@@ -6,10 +6,10 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString, SXViewport, UIContextMenuConfiguration, UITargetedPreview, UIViewController;
+@class SXViewport, UIContextMenuConfiguration, UITargetedPreview, UIToolTipConfiguration, UIViewController;
 
 @protocol SXInteractionContextProviding <NSObject>
-- (NSString *)toolTipAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2 boundingRect:(struct CGRect *)arg3;
+- (UIToolTipConfiguration *)toolTipAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2;
 - (UITargetedPreview *)targetedPreviewAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2;
 - (void)commitPreviewViewController:(UIViewController *)arg1;
 - (UIContextMenuConfiguration *)contextMenuAtLocation:(struct CGPoint)arg1 viewport:(SXViewport *)arg2;

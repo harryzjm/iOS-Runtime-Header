@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "NSOrderedSet.h"
+
 __attribute__((visibility("hidden")))
-@interface __NSFrozenOrderedSetM
+@interface __NSFrozenOrderedSetM : NSOrderedSet
 {
     _Atomic struct __cow_state_t *cow;
     CDStruct_2595eaee storage;

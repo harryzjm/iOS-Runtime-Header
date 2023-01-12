@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
-
 @class NSMutableArray, NSMutableSet, NSString, TVPStateMachine;
 
 __attribute__((visibility("hidden")))
-@interface VUISecureInvalidationManager : NSObject <VUIStoreFPSKeyLoaderDelegate>
+@interface VUISecureInvalidationManager : NSObject
 {
     _Bool _networkErrorOccurredDuringInvalidation;
     TVPStateMachine *_stateMachine;

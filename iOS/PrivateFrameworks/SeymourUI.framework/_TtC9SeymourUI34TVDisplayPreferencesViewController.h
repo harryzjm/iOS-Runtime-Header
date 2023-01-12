@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI34TVDisplayPreferencesViewController : UIViewController
 {
-    MISSING_TYPE *playerViewController;
+    MISSING_TYPE *transportBarControlsCoordinator;
     MISSING_TYPE *presenter;
     MISSING_TYPE *currentSections;
     MISSING_TYPE *currentActions;

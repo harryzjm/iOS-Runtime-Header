@@ -6,31 +6,30 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <MobileSafariUI/LibraryContentObserver-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDelegate-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDragDelegate-Protocol.h>
-#import <MobileSafariUI/UICollectionViewDropDelegate-Protocol.h>
-
 @class LibraryItemController, NSArray, NSString, UICollectionView, UICollectionViewDiffableDataSource, WebBookmarkCollection;
 @protocol LibraryViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface LibraryViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDropDelegate, LibraryContentObserver>
+@interface LibraryViewController : UIViewController
 {
     UICollectionViewDiffableDataSource *_dataSource;
     UICollectionView *_collectionView;
     id <LibraryViewControllerDelegate> _delegate;
     WebBookmarkCollection *_collection;
     NSArray *_sectionControllers;
+    LibraryItemController *_presentedItemController;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) LibraryItemController *presentedItemController; // @synthesize presentedItemController=_presentedItemController;
 @property(copy, nonatomic) NSArray *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
 @property(readonly, nonatomic) WebBookmarkCollection *collection; // @synthesize collection=_collection;
 @property(nonatomic) __weak id <LibraryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)_applySnapshotForSection:(id)arg1 animated:(_Bool)arg2;
 - (void)librarySectionContentDidChange:(id)arg1;
 - (void)collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
+- (id)collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 selectionFollowsFocusForItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
@@ -44,7 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)_enumerateItemControllersWithBlock:(CDUnknownBlockType)arg1;
 - (id)_diffableDataSourceForCollectionView:(id)arg1;
 - (_Bool)_lastSectionShouldFloat;
-- (void)reloadSectionControllers;
+- (void)scrollToTopAnimated:(_Bool)arg1;
+- (void)reloadSectionControllersAnimated:(_Bool)arg1;
 - (void)updateSelectionByIgnoringExistingSelection:(_Bool)arg1;
 - (void)updateSelection;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

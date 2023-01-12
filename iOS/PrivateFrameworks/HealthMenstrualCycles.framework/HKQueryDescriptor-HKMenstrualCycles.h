@@ -7,6 +7,6 @@
 #import <HealthKit/HKQueryDescriptor.h>
 
 @interface HKQueryDescriptor (HKMenstrualCycles)
-+ (id)hkmc_cycleFactorsDescriptionsWithPredicate:(id)arg1;
++ (id)hkmc_descriptorsForTypes:(id)arg1 predicate:(id)arg2;
 @end
 

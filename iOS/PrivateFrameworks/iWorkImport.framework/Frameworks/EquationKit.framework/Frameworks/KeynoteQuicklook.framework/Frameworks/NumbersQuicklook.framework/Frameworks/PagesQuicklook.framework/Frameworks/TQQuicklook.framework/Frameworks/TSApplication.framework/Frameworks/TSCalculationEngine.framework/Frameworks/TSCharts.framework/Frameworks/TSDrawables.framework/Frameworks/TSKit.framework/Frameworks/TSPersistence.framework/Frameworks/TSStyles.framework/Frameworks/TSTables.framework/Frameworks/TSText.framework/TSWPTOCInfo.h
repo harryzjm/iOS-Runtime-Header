@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSText/TSWPTextualEquivalentProvider-Protocol.h>
+#import "TSWPShapeInfo.h"
 
 @class NSArray, NSSet, NSString, TSWPTOCPartitioner, TSWPTOCSettings;
 
-@interface TSWPTOCInfo <TSWPTextualEquivalentProvider>
+@interface TSWPTOCInfo : TSWPShapeInfo
 {
     TSWPTOCPartitioner *_partitioner;
     _Bool _shouldSyncTOCSettingsWithTOCNavigator;

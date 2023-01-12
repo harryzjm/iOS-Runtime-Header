@@ -6,13 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VideoSubscriberAccountUI/VSAutoAuthenticationViewController-Protocol.h>
-
 @class NSString, UIButton, UILabel, UIScrollView, VSAutoAuthenticationViewModel, VSFontCenter, VSIdentityProviderLogoView;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSAutoAuthenticationViewController_iOS : UIViewController <VSAutoAuthenticationViewController>
+@interface VSAutoAuthenticationViewController_iOS : UIViewController
 {
     _Bool _cancellationAllowed;
     id <VSAuthenticationViewControllerDelegate> _delegate;

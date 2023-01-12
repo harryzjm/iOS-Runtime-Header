@@ -7,22 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/_UIDiffableDataSourceState-Protocol.h>
 
 @class NSOrderedSet, NSString, NSUUID;
 @protocol _UIDataSourceSnapshotTranslating;
 
 __attribute__((visibility("hidden")))
-@interface _UIDiffableDataSourceState : NSObject <_UIDiffableDataSourceState, NSCopying>
+@interface _UIDiffableDataSourceState : NSObject <NSCopying>
 {
     NSUUID *_generationID;
+    id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
     NSOrderedSet *_identifiers;
     NSOrderedSet *_sections;
-    id <_UIDataSourceSnapshotTranslating> _dataSourceSnapshot;
-    struct {
-        unsigned int identifiersHaveGuaranteedPerformance:1;
-        unsigned int sectionsHaveGuaranteedPerformance:1;
-    } _stateFlags;
+    NSOrderedSet *_guaranteedPerformanceIdentifiers;
+    NSOrderedSet *_guaranteedPerformanceSections;
+    unsigned long long _identifierLookupCount;
+    unsigned long long _sectionLookupCount;
 }
 
 - (void).cxx_destruct;
@@ -49,6 +48,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSOrderedSet *identifiers;
 @property(readonly, nonatomic) NSUUID *generationID;
 @property(readonly, copy) NSString *description;
+- (void)willBecomeWiredToDataSource;
+@property(readonly, nonatomic) NSOrderedSet *guaranteedPerformanceSections;
+@property(readonly, nonatomic) NSOrderedSet *guaranteedPerformanceIdentifiers;
 - (void)ensureOrderedSetsHaveGuaranteedPerformance;
 - (void)validateIdentifiers;
 - (id)initWithGenerationID:(id)arg1 identifiers:(id)arg2 sections:(id)arg3 dataSourceSnapshot:(id)arg4 identifiersHaveGuaranteedPerformance:(_Bool)arg5 sectionsHaveGuaranteedPerformance:(_Bool)arg6;

@@ -6,12 +6,9 @@
 
 #import <UIKit/UITabBarController.h>
 
-#import <GameCenterUICore/GKContentRefresh-Protocol.h>
-#import <GameCenterUICore/GKURLHandling-Protocol.h>
-
 @class NSString;
 
-@interface UITabBarController (GKAdditions) <GKContentRefresh, GKURLHandling>
+@interface UITabBarController (GKAdditions)
 - (_Bool)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;

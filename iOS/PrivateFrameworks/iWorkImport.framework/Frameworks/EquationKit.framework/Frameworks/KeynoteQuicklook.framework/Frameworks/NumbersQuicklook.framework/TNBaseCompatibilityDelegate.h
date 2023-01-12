@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/TSKCompatibilityDelegate-Protocol.h>
-
 @class NSString;
 
-@interface TNBaseCompatibilityDelegate : NSObject <TSKCompatibilityDelegate>
+@interface TNBaseCompatibilityDelegate : NSObject
 {
 }
 

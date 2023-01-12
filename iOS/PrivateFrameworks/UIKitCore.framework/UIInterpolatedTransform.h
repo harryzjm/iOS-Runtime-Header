@@ -6,25 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIVectorOperatable-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIInterpolatedTransform : NSObject <UIVectorOperatable>
+@interface UIInterpolatedTransform : NSObject
 {
     CDStruct_e79446ac _transform;
-    double _rotationEpsilon;
-    double _scaleEpsilon;
-    double _translationEpsilon;
     long long _rotationDirection;
 }
 
-+ (id)zero;
-+ (id)epsilon;
-+ (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1 rotationEpsilon:(double)arg2 scaleEpsilon:(double)arg3 translationEpsilon:(double)arg4 rotationDirection:(long long)arg5;
++ (id)zeroCompatibleWithVector:(id)arg1;
++ (id)epsilonCompatibleWithVector:(id)arg1;
++ (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1 rotationDirection:(long long)arg2;
 + (id)valueWithDecomposedTransform:(CDStruct_e79446ac)arg1;
-+ (id)valueWithCATransform3D:(struct CATransform3D)arg1 rotationEpsilon:(double)arg2 scaleEpsilon:(double)arg3 translationEpsilon:(double)arg4;
 + (id)valueWithCATransform3D:(struct CATransform3D)arg1;
 - (void)reinitWithVector:(id)arg1;
 - (id)multiplyByVector:(id)arg1;
@@ -34,10 +28,9 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy) NSString *debugDescription;
 - (_Bool)isUndefined;
+- (_Bool)isCompatibleWith:(id)arg1;
 - (_Bool)isApproximatelyEqualTo:(id)arg1 withinEpsilon:(id)arg2;
-- (_Bool)isApproximatelyEqualTo:(id)arg1;
 - (id)interpolateTo:(id)arg1 progress:(double)arg2;
-- (id)getNSValue;
 - (id)getValue;
 
 // Remaining properties

@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "EKEventDetailCell.h"
+
 @class NSString, UILabel, UITextView;
 @protocol EKEventDetailTextCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailTextCell
+@interface EKEventDetailTextCell : EKEventDetailCell
 {
     UILabel *_textTitleView;
     UITextView *_textView;
     CDUnknownBlockType _textFromEventBlock;
     NSString *_title;
+    UITextView *_sizingTextView;
     _Bool _isTruncatingText;
     id <EKEventDetailTextCellDelegate> _textDelegate;
 }
@@ -25,7 +28,9 @@ __attribute__((visibility("hidden")))
 - (double)_layoutForWidth:(double)arg1;
 - (void)layoutSubviews;
 - (void)setIsTruncatingText:(_Bool)arg1;
+- (id)_sizingTextView;
 - (id)_textView;
+- (id)_createNewTextView;
 - (id)_textTitleView;
 - (_Bool)update;
 - (id)initWithEvent:(id)arg1 editable:(_Bool)arg2 title:(id)arg3 textFromEventBlock:(CDUnknownBlockType)arg4;

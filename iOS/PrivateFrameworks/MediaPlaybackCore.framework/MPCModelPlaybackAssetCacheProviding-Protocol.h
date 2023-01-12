@@ -6,11 +6,13 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class MPModelFileAsset, MPModelGenericObject, NSString;
+@class MPModelFileAsset, MPModelGenericObject, NSString, NSURL;
 
 @protocol MPCModelPlaybackAssetCacheProviding <NSObject>
+- (void)didCacheNewAssetToDestinationURL:(NSURL *)arg1;
+- (_Bool)isUnderDailyCacheAssetDownloadLimit;
 - (void)setPlaybackAssetCacheFileAsset:(MPModelFileAsset *)arg1 forGenericObject:(MPModelGenericObject *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
-- (void)getPlaybackAssetCacheDestinationURL:(id *)arg1 purchaseBundleDestinationURL:(id *)arg2 forGenericObject:(MPModelGenericObject *)arg3 assetQualityType:(long long)arg4 pathExtension:(NSString *)arg5;
+- (void)getPlaybackAssetDestinationURL:(id *)arg1 sharedCacheURL:(id *)arg2 purgeable:(_Bool)arg3 purchaseBundleDestinationURL:(id *)arg4 assetQualityType:(long long)arg5 fileName:(NSString *)arg6 pathExtension:(NSString *)arg7;
 - (void)clearPlaybackAssetCacheFileAssetForGenericObject:(MPModelGenericObject *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
 @end
 

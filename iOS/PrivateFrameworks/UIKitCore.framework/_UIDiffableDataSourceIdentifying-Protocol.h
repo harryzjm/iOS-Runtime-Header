@@ -5,6 +5,7 @@
 //
 
 @protocol _UIDiffableDataSourceIdentifying
+- (_Bool)_subclassOverridesMethodWithSelector:(SEL)arg1;
 - (id)_diffableDataSourceImpl;
 - (_Bool)_isDiffableDataSource;
 @end

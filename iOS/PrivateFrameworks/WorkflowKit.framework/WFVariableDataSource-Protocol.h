@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDictionary, NSString, NSURL, WFContentCollection, WFFileLocation, WFFileRepresentation;
+@class NSArray, NSDate, NSDictionary, NSString, WFContentCollection, WFFileRepresentation;
 @protocol WFPropertyListObject;
 
 @protocol WFVariableDataSource
-- (void)requestAccessToFileAtURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
-- (void)requestAccessToFileAtLocation:(WFFileLocation *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)requestAccessToFileAtURLs:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
+- (void)requestAccessToFileAtLocations:(NSArray *)arg1 completionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)captureFileRepresentation:(WFFileRepresentation *)arg1;
 - (id <WFPropertyListObject>)contentForPrivateVariableKey:(NSString *)arg1;
 - (void)setContent:(id <WFPropertyListObject>)arg1 forPrivateVariableKey:(NSString *)arg2;

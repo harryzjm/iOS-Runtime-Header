@@ -4,12 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Function Pointers and Blocks
-
-typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
-
-typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
-
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -17,21 +11,9 @@ struct CGPoint {
     double _field2;
 };
 
-struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
-};
-
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSCopying-Protocol.h>
-
 @class OADBevel, OADColor;
 
 __attribute__((visibility("hidden")))
-@interface OADShape3D : NSObject <NSCopying>
+@interface OADShape3D : NSObject
 {
     OADBevel *mTopBevel;
     OADBevel *mBottomBevel;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <BusinessChatService/BCSDomainItemProtocol-Protocol.h>
-
 @class BCSDomainBundleIdPatterns, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSDomainItem : NSObject <BCSDomainItemProtocol>
+@interface BCSDomainItem : NSObject
 {
     NSDate *_expirationDate;
     NSString *_base64EncodedShardString;

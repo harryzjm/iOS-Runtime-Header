@@ -15,9 +15,9 @@ __attribute__((visibility("hidden")))
     double lastRenderedSampleTime;
     _Bool auRendering;
     _Bool initialized;
+    _Bool _needsRealtimeDrawing;
     struct OpaqueAudioComponentInstance *AU;
     NSArray *topLevelObjects;
-    _Bool _needsRealtimeDrawing;
     double _realtimeDrawingInterval;
     UIColor *_tintColor;
 }

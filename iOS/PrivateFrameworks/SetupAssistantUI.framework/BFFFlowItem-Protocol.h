@@ -17,6 +17,7 @@
 @optional
 + (_Bool)isTrailingWithEnvironment:(id <BYEnvironment>)arg1;
 + (_Bool)controllerNeedsToRun;
++ (_Bool)hiddenFromMultiUser;
 + (_Bool)hiddenFromStoreDemoMode;
 + (void)skippedByCloudConfigWithEnvironment:(id <BYEnvironment>)arg1;
 + (void)skippedByCloudConfig;
@@ -39,6 +40,7 @@
 - (_Bool)controllerAllowsNavigatingBack;
 - (void)controllerWasPopped;
 - (void)startFlowItem:(_Bool)arg1;
+- (void)controllerWillNotRun;
 - (_Bool)shouldPresentModally;
 - (_Bool)shouldSuppressExtendedInitializationActivityIndicator;
 - (void)performExtendedInitializationWithCompletion:(void (^)(_Bool))arg1;

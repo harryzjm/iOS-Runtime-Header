@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCServerDelegate-Protocol.h>
 
-@protocol VCAudioSessionDelegate <NSObject>
+@protocol VCAudioSessionDelegate <VCServerDelegate>
 
 @optional
 - (void)didSessionSampleRateChange;

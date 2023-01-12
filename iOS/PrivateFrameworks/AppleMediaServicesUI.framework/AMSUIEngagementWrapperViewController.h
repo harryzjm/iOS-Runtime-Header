@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppleMediaServicesUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import "AMSUICommonViewController.h"
 
 @class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIEngagementWrapperViewController <UIAdaptivePresentationControllerDelegate>
+@interface AMSUIEngagementWrapperViewController : AMSUICommonViewController
 {
     CDUnknownBlockType _dismissBlock;
     UIViewController *_viewController;
@@ -18,8 +18,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property(copy, nonatomic) CDUnknownBlockType dismissBlock; // @synthesize dismissBlock=_dismissBlock;
+- (void)_setupContentSize;
+- (void)_setup;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)loadView;
 - (void)dealloc;

@@ -26,7 +26,10 @@
 @property(readonly) long long displayType;
 @property(readonly) unsigned int displayId;
 - (_Bool)abortWhitePointRamp:(CDStruct_443af386 *)arg1 error:(id *)arg2;
-- (_Bool)setWhitePoint:(CDStruct_443af386 *)arg1 rampDuration:(double)arg2 error:(id *)arg3;
+- (_Bool)setWhitePoint:(const CDStruct_443af386 *)arg1 rampDuration:(double)arg2 error:(id *)arg3;
+- (void)setSyncNotificationQueue:(NSObject<OS_dispatch_queue> *)arg1;
+- (void)unregisterSyncNotificationBlocks;
+- (void)registerForSyncNotifications:(NSArray *)arg1 withBlock:(void (^)(id, NSDictionary *))arg2;
 - (void)setNotificationQueue:(NSObject<OS_dispatch_queue> *)arg1;
 - (void)unregisterNotificationBlocks;
 - (void)registerForNotifications:(NSArray *)arg1 withBlock:(void (^)(id, NSDictionary *))arg2;

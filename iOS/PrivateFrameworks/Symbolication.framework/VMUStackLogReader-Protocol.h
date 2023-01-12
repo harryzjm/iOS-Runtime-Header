@@ -6,7 +6,8 @@
 
 #import <Symbolication/NSObject-Protocol.h>
 
-@class NSSet, NSString, VMUVMRegion, VMUVMRegionTracker;
+@class NSSet, NSString, VMUClassInfoMap, VMUVMRegion, VMUVMRegionTracker;
+@protocol VMUCommonGraphInterface;
 
 @protocol VMUStackLogReader <NSObject>
 @property(retain, nonatomic) NSSet *excludedFrames;
@@ -33,15 +34,13 @@
 - (long long)getFramesForAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 inLiteZone:(_Bool)arg3 stackFramesBuffer:(unsigned long long *)arg4;
 - (long long)getFramesForNode:(unsigned int)arg1 inLiteZone:(_Bool)arg2 stackFramesBuffer:(unsigned long long *)arg3;
 - (int)enumerateMSLRecordsAndPayloads:(void (^)(unsigned int, unsigned long long, unsigned long long, struct))arg1;
-- (int)enumerateRecords:(void (^)(unsigned int, unsigned long long, unsigned long long, unsigned long long))arg1;
 
 @optional
 @property(readonly) unsigned long long nodesInUniquingTable;
+- (void)identifyNonObjectsUsingStackBacktraces:(id <VMUCommonGraphInterface>)arg1 classInfoMap:(VMUClassInfoMap *)arg2 classInfoSetterBlock:(void (^)(unsigned int, unsigned int))arg3;
 - (void)streamFullStackLogsToBlock:(int (^)(void *, unsigned long long))arg1;
 - (CDStruct_69d7cc99)liteMSLPayloadforVMregionAddress:(unsigned long long)arg1;
 - (CDStruct_69d7cc99)liteMSLPayloadforMallocAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
-- (unsigned long long)liteModeStackIDforVMregionAddress:(unsigned long long)arg1;
-- (unsigned long long)liteModeStackIDforAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)stackIDForNode:(unsigned int)arg1;
 @end
 

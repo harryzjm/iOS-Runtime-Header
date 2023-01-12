@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class AVWeakReference;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVSampleBufferGeneratorInternal : NSObject
@@ -15,8 +14,6 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigSampleGenerator *figSampleGenerator;
     AVWeakReference *weakReferenceToAsset;
     struct OpaqueCMTimebase *timebase;
-    NSObject<OS_dispatch_queue> *batchGenerationQueue;
-    NSObject<OS_dispatch_queue> *batchCallbackQueue;
 }
 
 @end

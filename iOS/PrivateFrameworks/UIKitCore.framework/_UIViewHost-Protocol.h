@@ -9,7 +9,7 @@
 @class UIScreen, UIView;
 
 @protocol _UIViewHost <NSObject>
-@property(readonly, retain) UIScreen *hostingScreen;
+@property(readonly) UIScreen *hostingScreen;
 - (_Bool)hasHostedViews;
 - (void)addHostedView:(UIView *)arg1 withViewRemovalHandler:(void (^)(void))arg2;
 @end

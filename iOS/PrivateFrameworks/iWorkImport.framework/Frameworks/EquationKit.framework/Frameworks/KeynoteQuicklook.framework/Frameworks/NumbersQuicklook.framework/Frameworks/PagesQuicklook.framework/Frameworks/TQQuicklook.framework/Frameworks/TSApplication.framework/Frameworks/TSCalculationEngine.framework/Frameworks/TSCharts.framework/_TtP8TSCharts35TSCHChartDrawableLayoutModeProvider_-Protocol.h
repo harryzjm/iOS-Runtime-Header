@@ -5,6 +5,6 @@
 //
 
 @protocol _TtP8TSCharts35TSCHChartDrawableLayoutModeProvider_
-@property(nonatomic, readonly) long long chartDrawableLayoutMode;
+@property(readonly, nonatomic) long long chartDrawableLayoutMode;
 @end
 

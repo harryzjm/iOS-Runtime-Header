@@ -39,16 +39,23 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *housekeepingQueue; // @synthesize housekeepingQueue=_housekeepingQueue;
 - (void)createNewIdleTimerIfNecessary;
 - (void)didLeaveVisualSearchHints;
+- (void)didShowVisualSearchCachedResultsForQueryID:(unsigned long long)arg1 cachedResultQueryID:(unsigned long long)arg2;
 - (void)didShowVisualSearchHintsForRequest:(id)arg1;
+- (void)submitVisualIntelligenceUserFeedbackForRequest:(id)arg1 reportIdentifier:(id)arg2 payload:(id)arg3;
+- (void)generateTextualVisualSearchResultForAnalysis:(id)arg1 queryInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateVisualSearchResultForRequest:(id)arg1 analysis:(id)arg2 items:(id)arg3 payload:(id)arg4 queryID:(unsigned long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)VNRequestHandlerForRequest:(id)arg1;
 - (void)didFinishRequest:(id)arg1 withAnalysis:(id)arg2 analyticsEvent:(id)arg3 error:(id)arg4;
 - (id)mrcDDElementsFromRequests:(id)arg1 didParse:(_Bool *)arg2 durations:(id)arg3;
 - (id)visualSearchResultFromRequests:(id)arg1 durations:(id)arg2;
+- (id)rectangleObservationsFromRequests:(id)arg1 durations:(id)arg2;
 - (id)documentObservationFromRequests:(id)arg1 durations:(id)arg2;
 - (id)analysisResultFromMadRequests:(id)arg1 imageSize:(struct CGSize)arg2 durations:(id)arg3;
 - (int)_performMADRequest:(id)arg1 forRequest:(id)arg2 pixelBuffer:(struct __CVBuffer *)arg3 cgImage:(struct CGImage *)arg4 useCGForMad:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)performMADRequest:(id)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)_processRequest:(id)arg1;
+- (int)_performMultiStageMADRequest:(id)arg1 forRequest:(id)arg2 pixelBuffer:(struct __CVBuffer *)arg3 cgImage:(struct CGImage *)arg4 useCGForMad:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)handleCompletionForMultiPartRequest:(id)arg1 madRequests:(id)arg2 callbackQueue:(id)arg3 error:(id)arg4;
+- (void)_processRequest:(id)arg1 callbackQueue:(id)arg2;
 - (void)request:(id)arg1 didCompleteWithAnalysis:(id)arg2 analysisEvent:(id)arg3 error:(id)arg4;
 - (id)cancelledError;
 - (void)clearCompletedRequest:(id)arg1;
@@ -64,7 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelRequestID:(int)arg1;
 - (unsigned long long)statusForRequestID:(int)arg1;
 - (void)logCollectionsIfNecessary;
-- (int)processRequest:(id)arg1;
+- (int)processRequest:(id)arg1 callbackQueue:(id)arg2;
 - (id)init;
 
 @end

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageProtection/SignatureFormatter-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NGMMessageSignatureFormatter : NSObject <SignatureFormatter>
+@interface NGMMessageSignatureFormatter : NSObject
 {
     NSData *_formattedSignedData;
 }

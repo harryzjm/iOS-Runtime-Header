@@ -16,6 +16,8 @@
 @property(readonly, nonatomic) _Bool clientIsSandboxed;
 @property(readonly, nonatomic, getter=isClientLimitedLibraryCapable) _Bool clientLimitedLibraryCapable;
 @property(readonly, nonatomic) _Bool limitedLibraryMode;
+@property(readonly, nonatomic) _Bool smartSharingCacheWriteEntitled;
+@property(readonly, nonatomic) _Bool smartSharingCacheReadEntitled;
 @property(readonly, nonatomic) _Bool analyticsCacheWriteEntitled;
 @property(readonly, nonatomic) _Bool analyticsCacheReadEntitled;
 @property(readonly, nonatomic) _Bool cloudInternalEntitled;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/OADClient-Protocol.h>
-#import <OfficeImport/OADImageRecolorInfoClient-Protocol.h>
-
 @class NSString, OADImageRecolorInfo, PDAnimationInfo, PDPlaceholder;
 
 __attribute__((visibility("hidden")))
-@interface PDOfficeArtClient : NSObject <OADClient, OADImageRecolorInfoClient>
+@interface PDOfficeArtClient : NSObject
 {
     OADImageRecolorInfo *mImageRecolorInfo;
     PDPlaceholder *mPlaceholder;

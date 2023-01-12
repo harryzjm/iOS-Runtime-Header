@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <Sleep/HKSPSyncAnchor-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (HKSPSyncAnchor) <HKSPSyncAnchor>
+@interface NSNumber (HKSPSyncAnchor)
 - (id)hksp_increment;
 
 // Remaining properties

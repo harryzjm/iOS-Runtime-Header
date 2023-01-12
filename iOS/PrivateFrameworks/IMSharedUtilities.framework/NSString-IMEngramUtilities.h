@@ -8,12 +8,19 @@
 
 @interface NSString (IMEngramUtilities)
 - (id)__im_engramDataRepresentation;
+- (id)cnLabelForPerson:(id)arg1;
+- (id)associatedPerson;
+- (_Bool)isEqualToBlockListAddress:(id)arg1;
 - (id)im_livePhotoBundlePath;
 - (void)im_markFileAsPurgeable;
 - (id)im_livePhotoVideoPath;
 - (id)im_lastPathComponent;
+- (_Bool)isEqualToPhoneNumber:(id)arg1;
+- (id)formatForDisplayIfPhoneNumber;
+- (id)formattedPhoneNumber;
 - (id)im_stripCategoryLabel;
 - (_Bool)isArchivable_im;
+@property(readonly, nonatomic) _Bool im_isWellFormedChatGUID;
 - (id)__im_apfsCompatibleFilename;
 - (id)__im_stringBySafelyAppendingPathComponent:(id)arg1;
 - (id)__im_filePathWithVariant:(id)arg1;

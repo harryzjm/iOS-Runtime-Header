@@ -13,6 +13,8 @@
 - (UIViewController *)presentingViewControllerForAdLockupView:(ASCAdLockupView *)arg1;
 
 @optional
+- (void)adLockupView:(ASCAdLockupView *)arg1 videoStateDidChange:(long long)arg2;
+- (void)adLockupView:(ASCAdLockupView *)arg1 preprocessOffer:(id <ASCOffer>)arg2 inState:(NSString *)arg3 completionBlock:(void (^)(void))arg4;
 - (void)adLockupViewDidFinishScreenshotsFetchRequest:(ASCAdLockupView *)arg1;
 - (void)adLockupViewDidCancelScreenshotsFetchRequest:(ASCAdLockupView *)arg1;
 - (void)adLockupViewDidBeginScreenshotsFetchRequest:(ASCAdLockupView *)arg1;

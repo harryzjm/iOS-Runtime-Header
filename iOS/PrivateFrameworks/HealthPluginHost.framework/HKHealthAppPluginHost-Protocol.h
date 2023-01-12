@@ -8,6 +8,7 @@
 
 @protocol HKHealthAppPluginHost
 - (void)invalidateStoreCache;
+- (void)runOrRequestBackgroundGenerationWithCompletion:(void (^)(void))arg1;
 - (void)cancelAllGenerationAndRunBackgroundGenerationForGenerationType:(unsigned long long)arg1 commitUrgentTransaction:(_Bool)arg2 completion:(void (^)(_Bool))arg3;
 - (void)requestBackgroundGenerationForAllModelsAfterUnlockWithCompletion:(void (^)(void))arg1;
 - (void)requestBackgroundGenerationForFeedItemsAfterUnlockWithCompletion:(void (^)(void))arg1;

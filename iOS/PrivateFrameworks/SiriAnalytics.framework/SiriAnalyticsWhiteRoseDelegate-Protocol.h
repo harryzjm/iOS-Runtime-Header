@@ -6,11 +6,12 @@
 
 #import <SiriAnalytics/NSObject-Protocol.h>
 
-@class SiriAnalyticsLogicalClock, SiriAnalyticsWhiteRose;
+@class SiriAnalyticsDerivativeClock, SiriAnalyticsRootClock, SiriAnalyticsWhiteRose;
 
 @protocol SiriAnalyticsWhiteRoseDelegate <NSObject>
-- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 derivativeClockCreated:(SiriAnalyticsLogicalClock *)arg2 parentClock:(SiriAnalyticsLogicalClock *)arg3;
-- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 clockDestroyed:(SiriAnalyticsLogicalClock *)arg2;
-- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 clockCreated:(SiriAnalyticsLogicalClock *)arg2 trailingClock:(SiriAnalyticsLogicalClock *)arg3;
+- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 derivativeClockCreated:(SiriAnalyticsDerivativeClock *)arg2 rootClock:(SiriAnalyticsRootClock *)arg3;
+- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 rootClockDestroyed:(SiriAnalyticsRootClock *)arg2 completion:(void (^)(void))arg3;
+- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 rootClockCreated:(SiriAnalyticsRootClock *)arg2 trailingRootClock:(SiriAnalyticsRootClock *)arg3;
+- (void)whiteRose:(SiriAnalyticsWhiteRose *)arg1 willCreateRootClock:(SiriAnalyticsRootClock *)arg2 completion:(void (^)(void))arg3;
 @end
 

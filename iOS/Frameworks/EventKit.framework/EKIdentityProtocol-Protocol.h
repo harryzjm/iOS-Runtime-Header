@@ -17,6 +17,8 @@
 - (NSString *)name;
 
 @optional
+@property(readonly, nonatomic) _Bool isCurrentUserForScheduling;
+@property(readonly, nonatomic) _Bool isCurrentUserForSharing;
 - (CNContact *)newContact;
 - (CNContact *)existingContact;
 - (NSPredicate *)contactPredicate;

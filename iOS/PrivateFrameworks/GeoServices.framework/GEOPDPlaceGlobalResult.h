@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
-@class GEOPDAddressObjectGeocodingResult, GEOPDAirportEntityPlaceLookupResult, GEOPDAllCollectionsViewResult, GEOPDAllGuidesLocationsViewResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchReverseGeocodingResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDChildPlaceLookupByCategoryResult, GEOPDCollectionSuggestionResult, GEOPDExtendedGeoLookupResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDGuidesHomeResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsHomeResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMapsSearchHomeResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPopularNearbySearchResult, GEOPDPublisherViewResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTerritoryLookupResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
+@class GEOPDAddressObjectGeocodingResult, GEOPDAirportEntityPlaceLookupResult, GEOPDAllCollectionsViewResult, GEOPDAllGuidesLocationsViewResult, GEOPDAutocompleteResult, GEOPDBatchCategoryLookupResult, GEOPDBatchMerchantLookupBrandResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchReverseGeocodingResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDChildPlaceLookupByCategoryResult, GEOPDCollectionSuggestionResult, GEOPDExtendedGeoLookupResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDGroundViewLabelResult, GEOPDGuidesHomeResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsHomeResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMapsSearchHomeResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDPlaceCollectionLookupResult, GEOPDPlaceGlobalCommonResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPlacecardEnrichmentResult, GEOPDPoiAtAddressLookupResult, GEOPDPopularNearbySearchResult, GEOPDPublisherViewResult, GEOPDQueryUnderstandingResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDTerritoryLookupResult, GEOPDTransitScheduleLookupResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPDPlaceGlobalResult : PBCodable <NSCopying>
+@interface GEOPDPlaceGlobalResult : PBCodable
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
@@ -48,8 +46,11 @@ __attribute__((visibility("hidden")))
     GEOPDPlaceGlobalCommonResult *_placeGlobalCommonResult;
     GEOPDPlaceLookupResult *_placeLookupResult;
     GEOPDPlaceRefinementResult *_placeRefinementResult;
+    GEOPDPlacecardEnrichmentResult *_placecardEnrichmentResult;
+    GEOPDPoiAtAddressLookupResult *_poiAtAddressLookupResult;
     GEOPDPopularNearbySearchResult *_popularNearbySearchResult;
     GEOPDPublisherViewResult *_publisherViewResult;
+    GEOPDQueryUnderstandingResult *_queryUnderstandingResult;
     GEOPDReverseGeocodingResult *_reverseGeocodingResult;
     GEOPDSearchFieldPlaceholderResult *_searchFieldPlaceholderResult;
     GEOPDSearchResult *_searchResult;
@@ -98,8 +99,11 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeGlobalCommonResult:1;
         unsigned int read_placeLookupResult:1;
         unsigned int read_placeRefinementResult:1;
+        unsigned int read_placecardEnrichmentResult:1;
+        unsigned int read_poiAtAddressLookupResult:1;
         unsigned int read_popularNearbySearchResult:1;
         unsigned int read_publisherViewResult:1;
+        unsigned int read_queryUnderstandingResult:1;
         unsigned int read_reverseGeocodingResult:1;
         unsigned int read_searchFieldPlaceholderResult:1;
         unsigned int read_searchResult:1;

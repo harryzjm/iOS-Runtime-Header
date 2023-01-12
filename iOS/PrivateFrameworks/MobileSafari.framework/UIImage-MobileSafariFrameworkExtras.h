@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (MobileSafariFrameworkExtras)
++ (id)safari_currentDeviceImageNameForOrientation:(long long)arg1;
 + (id)sf_imageNamed:(id)arg1;
 - (_Bool)sf_isLaunchImageSizedForOrientation:(long long)arg1 includesStatusBar:(_Bool *)arg2;
 @property(readonly, nonatomic) long long sf_tabSnapshotEffectsVersion;

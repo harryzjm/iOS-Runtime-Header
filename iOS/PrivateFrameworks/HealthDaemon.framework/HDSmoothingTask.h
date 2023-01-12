@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class HDDaemonTransaction, HKWorkoutRoute, NSArray;
+@class HDDaemonTransaction, HKWorkout, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface HDSmoothingTask : NSObject
 {
-    HKWorkoutRoute *_sample;
+    HKWorkout *_workout;
+    NSArray *_routes;
     NSArray *_unsmoothedLocations;
-    unsigned long long _workoutActivityType;
     CDUnknownBlockType _completionHandler;
     HDDaemonTransaction *_transaction;
     unsigned long long _smoothingAttempts;

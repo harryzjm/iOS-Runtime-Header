@@ -25,22 +25,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) double availableSpace; // @synthesize availableSpace=_availableSpace;
-@property(nonatomic) _Bool fixedItemSize; // @synthesize fixedItemSize=_fixedItemSize;
-@property(nonatomic) _Bool complete; // @synthesize complete=_complete;
-@property(readonly, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-@property(nonatomic) long long index; // @synthesize index=_index;
-@property(nonatomic) struct CGRect rowFrame; // @synthesize rowFrame=_rowFrame;
-@property(nonatomic) struct CGSize rowSize; // @synthesize rowSize=_rowSize;
-@property(nonatomic) __weak _UIFlowLayoutSection *section; // @synthesize section=_section;
-- (long long)indexOfNearestItemAtPoint:(struct CGPoint)arg1;
-- (id)copyFromSection:(id)arg1;
-- (id)snapshot;
-- (void)removeItemAtIndex:(long long)arg1;
-- (void)insertItem:(id)arg1 atIndex:(long long)arg2;
-- (void)addItem:(id)arg1 atEnd:(_Bool)arg2;
-- (void)layoutRow;
-- (void)invalidate;
 - (id)init;
 
 @end

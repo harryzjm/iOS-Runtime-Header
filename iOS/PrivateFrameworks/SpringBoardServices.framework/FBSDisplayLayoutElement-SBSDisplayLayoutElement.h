@@ -6,11 +6,9 @@
 
 #import <FrontBoardServices/FBSDisplayLayoutElement.h>
 
-#import <SpringBoardServices/SBSDisplayLayoutElement-Protocol.h>
-
 @class NSString;
 
-@interface FBSDisplayLayoutElement (SBSDisplayLayoutElement) <SBSDisplayLayoutElement>
+@interface FBSDisplayLayoutElement (SBSDisplayLayoutElement)
 @property(readonly, nonatomic, getter=sb_isStashedPIP) _Bool sb_stashedPIP;
 @property(readonly, nonatomic, getter=sb_isTransitioning) _Bool sb_transitioning;
 @property(readonly, nonatomic) long long layoutRole;

@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MPSGraphCropOp
+#import "MPSGraphOperation.h"
+
+@interface MPSGraphCropOp : MPSGraphOperation
 {
     unsigned long long _amount_before;
     unsigned long long _amount_after;

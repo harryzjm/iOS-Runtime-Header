@@ -27,13 +27,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 withFrame:(void *)arg2 withTimestamp:(CDStruct_1b6d18a9)arg3 andDuration:(CDStruct_1b6d18a9)arg4;
+- (int)analyzePixelBuffer:(struct __CVBuffer *)arg1 withFrame:(void *)arg2 withTimestamp:(CDStruct_1b6d18a9)arg3 andDuration:(CDStruct_1b6d18a9)arg4 cancel:(CDUnknownBlockType)arg5;
 - (int)generateMotionFlow;
 - (int)preProcessing:(struct __CVBuffer *)arg1;
 - (int)convertPixelBuffer:(struct __CVBuffer *)arg1 toPixelBuffer:(struct __CVBuffer **)arg2 withPixelFormat:(int)arg3;
 - (int)createPixelBufferWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(int)arg3 pixelBuffer:(struct __CVBuffer **)arg4;
 - (int)convertFlow:(struct __CVBuffer *)arg1;
-- (int)prepareAnalyzerWithCVPixelBuffer:(struct __CVBuffer *)arg1;
+- (int)prepareAnalyzerWithCVPixelBuffer:(struct __CVBuffer *)arg1 cancel:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 

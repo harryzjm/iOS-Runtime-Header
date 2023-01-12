@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Catalyst/CATDictionaryCodable-Protocol.h>
-
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface CATSharingMessage : NSObject <CATDictionaryCodable>
+@interface CATSharingMessage : NSObject
 {
     long long _messageType;
     NSDictionary *_contentDictionaryValue;

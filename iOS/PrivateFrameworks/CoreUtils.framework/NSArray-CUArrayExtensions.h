@@ -6,9 +6,7 @@
 
 #import <Foundation/NSArray.h>
 
-#import <CoreUtils/CUByteCodable-Protocol.h>
-
-@interface NSArray (CUArrayExtensions) <CUByteCodable>
+@interface NSArray (CUArrayExtensions)
 + (id)createWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (id)cuFilteredArrayUsingBlock:(CDUnknownBlockType)arg1;
 - (id)encodedDataAndReturnError:(id *)arg1;

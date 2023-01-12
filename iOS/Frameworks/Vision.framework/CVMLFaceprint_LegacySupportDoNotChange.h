@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Vision/NSSecureCoding-Protocol.h>
-
 @class NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CVMLFaceprint_LegacySupportDoNotChange : NSObject <NSSecureCoding>
+@interface CVMLFaceprint_LegacySupportDoNotChange : NSObject
 {
     unsigned int _platform;
     unsigned int _profile;

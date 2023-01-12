@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuickLook/UIDocumentPasswordViewDelegate-Protocol.h>
+#import <QuickLookUICore/QLItemViewController.h>
 
 @class QLPreviewContext;
 
 __attribute__((visibility("hidden")))
-@interface QLPasswordItemViewController <UIDocumentPasswordViewDelegate>
+@interface QLPasswordItemViewController : QLItemViewController
 {
     QLPreviewContext *_context;
     CDUnknownBlockType _completionBlock;

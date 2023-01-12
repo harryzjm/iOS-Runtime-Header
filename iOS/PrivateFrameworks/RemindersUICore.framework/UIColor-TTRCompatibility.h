@@ -9,6 +9,7 @@
 @class NSString;
 
 @interface UIColor (TTRCompatibility)
++ (id)ttr_systemWhiteColor;
 + (id)ttr_systemPinkColor;
 + (id)ttr_systemPurpleColor;
 @property(readonly, nonatomic) NSString *ttriAccessibilityColorDescription;

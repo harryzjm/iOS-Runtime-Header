@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPServerObjectDatabaseOperations-Protocol.h>
-
 @class MSVSQLDatabaseTransaction, MSVSQLStatement, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPServerObjectDatabaseImporter : NSObject <MPServerObjectDatabaseOperations>
+@interface _MPServerObjectDatabaseImporter : NSObject
 {
     MSVSQLDatabaseTransaction *_transaction;
     MSVSQLStatement *_selectExistingObjectStatement;
     MSVSQLStatement *_insertObjectStatement;
     MSVSQLStatement *_insertObjectRelationshipStatement;
     MSVSQLStatement *_insertAssetURLStatement;
+    MSVSQLStatement *_insertHLSAssetURLStatement;
     MSVSQLStatement *_removeRelationshipsStatement;
     MSVSQLStatement *_updateMiniSINFStatement;
     MSVSQLStatement *_updateSINFStatement;
@@ -26,13 +25,15 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_existingHLSAssetMatchingIdentifier:(id)arg1 hashedPersonID:(id)arg2;
 - (id)_existingAssetMatchingIdentifier:(id)arg1 hashedPersonID:(id)arg2 flavor:(long long)arg3;
 - (_Bool)_importAssetFullSINF:(id)arg1 forIdentifier:(id)arg2 hashedPersonID:(id)arg3 flavor:(long long)arg4;
 - (_Bool)_importAssetMiniSINF:(id)arg1 forIdentifier:(id)arg2 hashedPersonID:(id)arg3 flavor:(long long)arg4;
 - (_Bool)removeRelationshipsForParentIdentifiers:(id)arg1 childKey:(id)arg2;
-- (_Bool)relateIdentifiers:(id)arg1 toParentIdentifiers:(id)arg2 childKey:(id)arg3 order:(long long)arg4;
-- (_Bool)importPlaybackAuthorizationToken:(id)arg1 identifiers:(id)arg2 source:(long long)arg3 type:(id)arg4 expirationDate:(id)arg5;
+- (_Bool)relateIdentifiers:(id)arg1 toParentIdentifiers:(id)arg2 parentVersionHash:(id)arg3 childKey:(id)arg4 order:(long long)arg5;
+- (_Bool)importPlaybackAuthorizationToken:(id)arg1 identifiers:(id)arg2 source:(long long)arg3 type:(id)arg4 expirationDate:(id)arg5 trustID:(id)arg6;
 - (_Bool)importAssetSinf:(id)arg1 type:(long long)arg2 forIdentifier:(id)arg3 hashedPersonID:(id)arg4 flavor:(long long)arg5 sinfPayload:(id)arg6;
+- (_Bool)importHLSAssetURL:(id)arg1 keyCertificateURL:(id)arg2 keyServerURL:(id)arg3 redeliveryId:(long long)arg4 protocolType:(id)arg5 isiTunesStoreStream:(_Bool)arg6 forIdentifiers:(id)arg7 expirationDate:(id)arg8;
 - (_Bool)importAssetURL:(id)arg1 forIdentifiers:(id)arg2 flavor:(long long)arg3 expirationDate:(id)arg4;
 - (_Bool)importObject:(id)arg1 type:(id)arg2 identifiers:(id)arg3 source:(long long)arg4 expiration:(id)arg5;
 - (void)dealloc;

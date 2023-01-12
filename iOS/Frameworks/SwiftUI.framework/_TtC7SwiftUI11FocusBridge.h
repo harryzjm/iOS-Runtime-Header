@@ -18,6 +18,7 @@
     MISSING_TYPE *parentFocusBridge;
     MISSING_TYPE *requestedFocusItem;
     MISSING_TYPE *defaultFocusNamespace;
+    MISSING_TYPE *isInstalledInWindow;
 }
 
 @end

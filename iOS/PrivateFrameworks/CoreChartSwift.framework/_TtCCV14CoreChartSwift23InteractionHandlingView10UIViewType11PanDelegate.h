@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreChartSwift/UIGestureRecognizerDelegate-Protocol.h>
-
-@interface _TtCCV14CoreChartSwift23InteractionHandlingView10UIViewType11PanDelegate : NSObject <UIGestureRecognizerDelegate>
+@interface _TtCCV14CoreChartSwift23InteractionHandlingView10UIViewType11PanDelegate : NSObject
 {
 }
 
 - (id)init;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 
 @end

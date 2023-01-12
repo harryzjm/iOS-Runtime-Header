@@ -6,11 +6,9 @@
 
 #import <DoNotDisturb/DNDApplicationIdentifier.h>
 
-#import <DoNotDisturbServer/DNDSBackingStoreRecord-Protocol.h>
-
 @class NSString;
 
-@interface DNDApplicationIdentifier (Record) <DNDSBackingStoreRecord>
+@interface DNDApplicationIdentifier (Record)
 + (id)newWithDictionaryRepresentation:(id)arg1 context:(id)arg2;
 - (id)dictionaryRepresentationWithContext:(id)arg1;
 

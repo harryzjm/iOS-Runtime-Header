@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SLSheetImagePreviewView.h"
+
 @class UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface SLSheetBevelledImageView
+@interface SLSheetBevelledImageView : SLSheetImagePreviewView
 {
     UIView *_placeholderPreviewView;
     UIImageView *_placeholderGlyphView;

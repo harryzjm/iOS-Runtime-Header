@@ -30,8 +30,9 @@
     MISSING_TYPE *relatedWorkoutsShelf;
     MISSING_TYPE *summaryShelf;
     MISSING_TYPE *mediaTagStringBuilder;
+    MISSING_TYPE *metadataShelf;
     MISSING_TYPE *lockup;
-    MISSING_TYPE *delegate;
+    MISSING_TYPE *backgroundArtworkDelegate;
     MISSING_TYPE *startActivityType;
     MISSING_TYPE *shouldPublishPageEventWhenAvailable;
 }

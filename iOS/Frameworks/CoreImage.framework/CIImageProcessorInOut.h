@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class CIContext;
 @protocol MTLDevice, MTLTexture;
 
 __attribute__((visibility("hidden")))
@@ -17,10 +18,14 @@ __attribute__((visibility("hidden")))
     void *_context;
     id <MTLTexture> _mtlTexture;
     _Bool _surfaceLocked;
+    CIContext *_metalContext;
+    unsigned long long _digest;
 }
 
 @property(readonly, nonatomic) struct CGRect region; // @synthesize region=_region;
+- (id)debugDescription;
 - (id)description;
+@property(readonly, nonatomic) unsigned long long digest;
 @property(readonly, nonatomic) int format;
 @property(readonly, nonatomic) unsigned long long bytesPerRow;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer;
@@ -28,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool usesSRGBTransferFunction;
 @property(readonly, nonatomic) struct __IOSurface *surface;
 - (void)dealloc;
-- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(_Bool)arg3 bounds:(struct CGRect)arg4 context:(void *)arg5;
+- (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 digest:(unsigned long long)arg3 allowSRGB:(_Bool)arg4 bounds:(struct CGRect)arg5 context:(void *)arg6;
 
 @end
 

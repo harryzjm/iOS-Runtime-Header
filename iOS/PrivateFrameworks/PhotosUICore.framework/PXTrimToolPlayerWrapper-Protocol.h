@@ -10,23 +10,23 @@
 @protocol PXTrimToolPlayerObserver;
 
 @protocol PXTrimToolPlayerWrapper <NSObject>
-@property(readonly, nonatomic) CDStruct_1b6d18a9 currentTime;
+@property(readonly, nonatomic) CDStruct_198678f7 currentTime;
 @property(readonly, nonatomic, getter=isPlaying) _Bool playing;
 @property(readonly, nonatomic, getter=isReadyToPlay) _Bool readyToPlay;
 @property(readonly, nonatomic) UIView *loupePlayerView;
-@property(readonly, nonatomic) CDStruct_e83c9415 trimRange;
+@property(readonly, nonatomic) CDStruct_3c1748cc trimRange;
 @property(nonatomic) __weak id <PXTrimToolPlayerObserver> playerObserver;
 - (void)stopPeriodicTimeObserver;
 - (void)startPeriodicTimeObserver;
-- (void)stepByCount:(long long)arg1 playheadTime:(CDStruct_1b6d18a9)arg2;
+- (void)stepByCount:(long long)arg1 playheadTime:(CDStruct_198678f7)arg2;
 - (void)pause;
 - (void)play;
 - (void)finishSeeking;
 - (void)invalidateComposition;
 - (void)requestPlayerItemWithCompletion:(void (^)(AVPlayerItem *))arg1;
-- (void)applyTrimTimeRange:(CDStruct_e83c9415)arg1;
-- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3 forceSeek:(_Bool)arg4;
-- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;
-- (void)seekToTime:(CDStruct_1b6d18a9)arg1;
+- (void)applyTrimTimeRange:(CDStruct_3c1748cc)arg1;
+- (void)seekToTime:(CDStruct_198678f7)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3 forceSeek:(_Bool)arg4;
+- (void)seekToTime:(CDStruct_198678f7)arg1 untrimmed:(_Bool)arg2 exact:(_Bool)arg3;
+- (void)seekToTime:(CDStruct_198678f7)arg1;
 @end
 

@@ -9,8 +9,9 @@
 @class SPUnknownBeacon;
 
 @protocol SPUnknownDiscoveryXPCProtocol <NSObject>
-- (oneway void)fetchEncryptedPayloadForUnknownBeacon:(SPUnknownBeacon *)arg1 completion:(void (^)(NSURL *))arg2;
-- (oneway void)stopUnknownDiscoveryWithCompletion:(void (^)(NSError *))arg1;
-- (oneway void)startUnknownDiscoveryWithCompletion:(void (^)(NSError *))arg1;
+- (void)fetchEncryptedPayloadForUnknownBeacon:(SPUnknownBeacon *)arg1 completion:(void (^)(NSURL *))arg2;
+- (void)stopUnknownDiscoveryWithCompletion:(void (^)(NSError *))arg1;
+- (void)startDiscoveryWithScanRate:(long long)arg1 timeout:(double)arg2 completion:(void (^)(NSError *))arg3;
+- (void)startUnknownDiscoveryWithCompletion:(void (^)(NSError *))arg1;
 @end
 

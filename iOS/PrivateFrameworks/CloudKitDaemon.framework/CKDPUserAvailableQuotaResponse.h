@@ -6,9 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
-@interface CKDPUserAvailableQuotaResponse : PBCodable <NSCopying>
+@interface CKDPUserAvailableQuotaResponse : PBCodable
 {
     unsigned long long _storageAvailableBytes;
     struct {

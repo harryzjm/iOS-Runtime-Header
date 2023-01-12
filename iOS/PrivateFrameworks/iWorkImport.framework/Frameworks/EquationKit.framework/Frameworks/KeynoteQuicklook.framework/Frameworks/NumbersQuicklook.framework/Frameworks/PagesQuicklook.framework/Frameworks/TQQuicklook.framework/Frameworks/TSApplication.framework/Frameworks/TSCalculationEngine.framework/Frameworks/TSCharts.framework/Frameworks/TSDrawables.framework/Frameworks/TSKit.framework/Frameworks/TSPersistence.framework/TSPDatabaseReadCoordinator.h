@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TSPersistence/TSPDatabaseReaderDelegate-Protocol.h>
-#import <TSPersistence/TSPReadCoordinator-Protocol.h>
-
 @class NSMapTable, NSMutableDictionary, NSObject, NSString, NSURL, NSUUID, TSPDatabase, TSPDocumentLoadValidationPolicy, TSPFinalizeHandlerQueue, TSPObjectContext;
 @protocol OS_dispatch_queue;
 
-@interface TSPDatabaseReadCoordinator <TSPDatabaseReaderDelegate, TSPReadCoordinator>
+@interface TSPDatabaseReadCoordinator
 {
     TSPObjectContext *_context;
     NSUUID *_baseObjectUUID;

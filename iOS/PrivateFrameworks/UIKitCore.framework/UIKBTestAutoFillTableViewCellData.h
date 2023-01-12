@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
-
 @class UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface UIKBTestAutoFillTableViewCellData : NSObject <NSCoding>
+@interface UIKBTestAutoFillTableViewCellData : NSObject
 {
     UITableViewCell *_cell;
     double _height;

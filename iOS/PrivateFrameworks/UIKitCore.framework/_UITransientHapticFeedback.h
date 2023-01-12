@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIFeedbackCoreHapticsPlayerReuse_Internal-Protocol.h>
-#import <UIKitCore/_UIFeedbackDiscretePlayable-Protocol.h>
-#import <UIKitCore/_UIFeedbackTransientHaptic_Internal-Protocol.h>
+#import "_UIFeedback.h"
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITransientHapticFeedback <_UIFeedbackDiscretePlayable, _UIFeedbackTransientHaptic_Internal, _UIFeedbackCoreHapticsPlayerReuse_Internal>
+@interface _UITransientHapticFeedback : _UIFeedback
 {
     _Bool _highPriority;
     float _intensity;

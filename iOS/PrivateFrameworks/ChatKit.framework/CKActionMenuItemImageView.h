@@ -6,12 +6,10 @@
 
 #import <UIKit/UIImageView.h>
 
-#import <ChatKit/CKActionMenuItemView-Protocol.h>
-
 @class NSString, UIColor;
 
 __attribute__((visibility("hidden")))
-@interface CKActionMenuItemImageView : UIImageView <CKActionMenuItemView>
+@interface CKActionMenuItemImageView : UIImageView
 {
     UIColor *_unhighlightedTintColor;
     UIColor *_highlightedTintColor;

@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "HMDelegateCaller.h"
+
 @class NSOperationQueue;
 
 __attribute__((visibility("hidden")))
-@interface __HMOperationQueueDelegateCaller
+@interface __HMOperationQueueDelegateCaller : HMDelegateCaller
 {
     NSOperationQueue *_queue;
 }

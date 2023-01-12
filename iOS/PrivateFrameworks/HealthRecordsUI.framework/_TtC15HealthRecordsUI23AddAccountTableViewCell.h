@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s15HealthRecordsUI21StandardTableViewCellCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC15HealthRecordsUI23AddAccountTableViewCell
+@interface _TtC15HealthRecordsUI23AddAccountTableViewCell : _$s15HealthRecordsUI21StandardTableViewCellCN
 {
     MISSING_TYPE *alignWithAccountTitle;
 }

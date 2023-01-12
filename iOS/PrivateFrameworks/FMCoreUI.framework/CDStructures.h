@@ -11,8 +11,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGPoint {
-    double x;
-    double y;
+    double _field1;
+    double _field2;
 };
 
 struct CGRect {
@@ -21,32 +21,12 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct CLLocationCoordinate2D {
     double _field1;
     double _field2;
 };
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    struct {
-        double x;
-        double y;
-    } origin;
-    struct {
-        double width;
-        double height;
-    } size;
-} CDStruct_02837cd9;
 

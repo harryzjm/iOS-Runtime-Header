@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *resultItems; // @synthesize resultItems=_resultItems;
 @property(retain, nonatomic) MADVIVisualSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 - (id)description;
+@property(readonly, nonatomic) NSData *userFeedbackPayload;
 @property(readonly, nonatomic) NSData *payload;
 - (id)initWithGatingResult:(id)arg1;
 

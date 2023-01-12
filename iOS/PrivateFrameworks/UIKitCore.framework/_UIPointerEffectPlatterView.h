@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UIPointerShape, UITargetedPreview, UIView, _UILumaTrackingBackdropView, _UIPointerEffectTintView, _UIPortalView;
+#import "UIView.h"
+
+@class NSMutableArray, UIPointerShape, UITargetedPreview, _UILumaTrackingBackdropView, _UIPointerEffectTintView, _UIPortalView;
 
 __attribute__((visibility("hidden")))
-@interface _UIPointerEffectPlatterView
+@interface _UIPointerEffectPlatterView : UIView
 {
     _Bool _tintDisabled;
-    _Bool _shouldMaskSpecularHighlight;
     _Bool _useSoftShadow;
     _Bool _geometryFrozen;
     _Bool _pressed;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
     double _shadowAlpha;
     long long _tintMode;
     UIView *_specularHighlight;
+    unsigned long long _specularOptions;
     CDUnknownBlockType _tintColorMatrixProvider;
     UIView *_contentSourceView;
     UIView *_shadowView;
@@ -42,14 +44,14 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isPressed) _Bool pressed; // @synthesize pressed=_pressed;
 @property(nonatomic) _Bool geometryFrozen; // @synthesize geometryFrozen=_geometryFrozen;
 @property(nonatomic) _Bool useSoftShadow; // @synthesize useSoftShadow=_useSoftShadow;
-@property(nonatomic) _Bool shouldMaskSpecularHighlight; // @synthesize shouldMaskSpecularHighlight=_shouldMaskSpecularHighlight;
+@property(nonatomic) unsigned long long specularOptions; // @synthesize specularOptions=_specularOptions;
 @property(retain, nonatomic) UIView *specularHighlight; // @synthesize specularHighlight=_specularHighlight;
 @property(nonatomic) long long tintMode; // @synthesize tintMode=_tintMode;
 @property(nonatomic, getter=isTintDisabled) _Bool tintDisabled; // @synthesize tintDisabled=_tintDisabled;
 @property(nonatomic) double shadowAlpha; // @synthesize shadowAlpha=_shadowAlpha;
 @property(copy, nonatomic) UITargetedPreview *targetedPreview; // @synthesize targetedPreview=_targetedPreview;
 - (_Bool)_isEligibleForFocusOcclusion;
-- (id)_specularOverlayWithHighlightPortal:(id)arg1 shouldMask:(_Bool)arg2;
+- (id)_specularOverlayWithHighlightPortal:(id)arg1 options:(unsigned long long)arg2;
 - (id)_newLumaTrackingViewForTintView:(id)arg1;
 - (void)_layoutTintView;
 - (id)_newTintView;

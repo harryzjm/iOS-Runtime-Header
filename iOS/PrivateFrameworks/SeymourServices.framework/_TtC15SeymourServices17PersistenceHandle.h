@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *context;
     MISSING_TYPE *highestAvailableDataProtection;
+    MISSING_TYPE *monitors;
 }
 
 @end

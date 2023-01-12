@@ -6,12 +6,10 @@
 
 #import <Foundation/NSArray.h>
 
-#import <WebKit/WKObject-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNSArray : NSArray <WKObject>
+@interface WKNSArray : NSArray
 {
     struct ObjectStorage<API::Array> _array;
 }

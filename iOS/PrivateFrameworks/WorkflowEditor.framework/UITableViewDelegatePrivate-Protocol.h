@@ -32,8 +32,6 @@
 - (NSArray *)tableView:(UITableView *)arg1 trailingSwipeActionsForRowAtIndexPath:(NSIndexPath *)arg2;
 - (NSArray *)tableView:(UITableView *)arg1 leadingSwipeActionsForRowAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGRect)tableView:(UITableView *)arg1 calloutTargetRectForCell:(UITableViewCell *)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
-- (void)_tableView:(UITableView *)arg1 willLayoutCell:(UITableViewCell *)arg2 usingTemplateLayoutCell:(UITableViewCell *)arg3 forRowAtIndexPath:(NSIndexPath *)arg4;
-- (UITableViewCell *)_tableView:(UITableView *)arg1 templateLayoutCellForCellsWithReuseIdentifier:(NSString *)arg2;
 - (UIView *)viewForFooterInTableView:(UITableView *)arg1;
 - (UIView *)viewForHeaderInTableView:(UITableView *)arg1;
 - (double)heightForFooterInTableView:(UITableView *)arg1;

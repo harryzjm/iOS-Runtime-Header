@@ -12,12 +12,15 @@
 - (void)getOscarTimeSyncWithReplyBlock:(void (^)(NSError *, unsigned long long, unsigned long long))arg1;
 - (void)setBackgroundIndicatorEnabled:(_Bool)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)gyroCalibrationDatabaseSupportsMiniCalibrationWithReplyBlock:(void (^)(NSError *, int))arg1;
-- (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 andZoneIdentifier:(NSString *)arg3 forBundleID:(NSString *)arg4 orBundlePath:(NSString *)arg5 replyBlock:(void (^)(NSError *))arg6;
+- (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 andZoneIdentifier:(NSString *)arg3 andSubIdentityIdentifier:(NSString *)arg4 forBundleID:(NSString *)arg5 orBundlePath:(NSString *)arg6 replyBlock:(void (^)(NSError *))arg7;
+- (void)setLocationButtonUseMode:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setIncidentalUseMode:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)updateCorrectiveCompensationChoiceForOutstandingPrompt:(int)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)getActivitiesWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)setTemporaryAuthorizationGranted:(_Bool)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 orAuditToken:(CDStruct_6ad76789)arg4 byLocationButton:(_Bool)arg5 voiceInteractionEnabled:(_Bool)arg6 replyBlock:(void (^)(NSError *))arg7;
 - (void)getPipelinedCacheWithReply:(void (^)(NSError *, NSArray *))arg1;
+- (void)getOdometryBatchedLocationsWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
+- (void)getAccessoryPASCDTransmissionStateWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)getAccessoryTypeBitSetWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)setMapMatchingRouteHint:(NSData *)arg1 routingType:(int)arg2 stepType:(int)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)getStatusBarIconState:(void (^)(NSError *, int))arg1;
@@ -26,6 +29,7 @@
 - (void)getArchivedAuthorizationDecisionsWithReplyBlock:(void (^)(NSError *, NSData *))arg1;
 - (void)applyArchivedAuthorizationDecisions:(NSData *)arg1 withConfirmationToken:(NSUUID *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)resetAllClientsWithReplyBlock:(void (^)(NSError *))arg1;
+- (void)resetClientForBundleId:(NSString *)arg1 orBundlePath:(NSString *)arg2 withReplyBlock:(void (^)(NSError *))arg3;
 - (void)getGroundAltitudeForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 location:(CLLocation *)arg3 replyBlock:(void (^)(NSError *, struct))arg4;
 - (void)getLocationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 dynamicAccuracyReductionEnabled:(_Bool)arg3 allowsAlteredAccessoryLocations:(_Bool)arg4 replyBlock:(void (^)(NSError *, struct))arg5;
 - (void)deleteInterestZoneWithId:(NSString *)arg1 registeredForBundleId:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
@@ -39,6 +43,7 @@
 - (void)displayStatisticsWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)getPrecisionPermissionForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, _Bool))arg3;
 - (void)getIncidentalUseModeForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
+- (void)getAuthorizationStatusForAppWithAuditToken:(CDStruct_6ad76789)arg1 replyBlock:(void (^)(NSError *, int))arg2;
 - (void)getAuthorizationStatusForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
 - (void)pingDaemonWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)getGestureServiceEnabledWithReplyBlock:(void (^)(NSError *, _Bool))arg1;
@@ -59,6 +64,7 @@
 - (void)timeZoneForLocation:(CDStruct_7cf4616f)arg1 replyBlock:(void (^)(NSError *, NSString *))arg2;
 - (void)getLocationDefaultForKey:(NSString *)arg1 replyBlock:(void (^)(NSError *, NSData *))arg2;
 - (void)setLocationDefaultForKey:(NSString *)arg1 andValue:(NSData *)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)getActiveClientsUsingLocationWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)getAppsUsingLocationWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)getGnssBandsInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)getZaxisStatsWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;

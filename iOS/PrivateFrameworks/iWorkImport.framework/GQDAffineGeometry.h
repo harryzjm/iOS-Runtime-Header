@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/GQDNameMappable-Protocol.h>
-
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface GQDAffineGeometry : NSObject <GQDNameMappable>
+@interface GQDAffineGeometry : NSObject
 {
     struct CGSize mNaturalSize;
     struct CGSize mSize;

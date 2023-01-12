@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
+#import "SKUIStorePageSection.h"
 
 @class NSString, SKUITracklistColumnData, SKUITracklistPageComponent, SKUIViewElementLayoutContext;
 @protocol SKUIEntityProviding;
 
 __attribute__((visibility("hidden")))
-@interface SKUITracklistPageSection <SKUIArtworkRequestDelegate>
+@interface SKUITracklistPageSection : SKUIStorePageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;
     SKUITracklistColumnData *_columnData;

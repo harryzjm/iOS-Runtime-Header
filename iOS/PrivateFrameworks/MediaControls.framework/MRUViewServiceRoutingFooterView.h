@@ -6,13 +6,10 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
-
 @class MRUVisualStylingProvider, NSString, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceRoutingFooterView : UIView <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
+@interface MRUViewServiceRoutingFooterView : UIView
 {
     UIButton *_button;
     MRUVisualStylingProvider *_stylingProvider;

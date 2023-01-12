@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_$s8VideosUI17VUIViewControllerCN.h"
+
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI31EpisodeCollectionViewController
+@interface _TtC8VideosUI31EpisodeCollectionViewController : _$s8VideosUI17VUIViewControllerCN
 {
     MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *viewModel;

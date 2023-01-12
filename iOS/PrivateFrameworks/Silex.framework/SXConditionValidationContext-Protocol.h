@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol SXConditionValidationContext <NSObject>
+@property(readonly, nonatomic) long long subscriptionActivationEligibility;
+@property(readonly, nonatomic) long long offerUpsellScenario;
 @property(readonly, nonatomic) unsigned long long newsletterSubscriptionStatus;
 @property(readonly, nonatomic) double contentScaleFactor;
 @property(readonly, nonatomic) long long userInterfaceStyle;

@@ -18,10 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_bufferType;
 }
 
-+ (void)trackBuffer:(void *)arg1 trackedSize:(long long)arg2 tag:(id)arg3 bufferType:(id)arg4;
-+ (void)trackBuffer:(void *)arg1 trackedSize:(long long)arg2;
 - (void)dealloc;
-- (id)initWithBuffer:(void *)arg1 trackedSize:(long long)arg2 tag:(id)arg3 bufferType:(id)arg4;
 
 @end
 

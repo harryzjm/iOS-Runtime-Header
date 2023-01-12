@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-
 @class NSString;
 @protocol UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
-@interface _SKStoreProductActivityAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface _SKStoreProductActivityAnimationController : NSObject
 {
     id <UIViewControllerContextTransitioning> _transitionContext;
 }

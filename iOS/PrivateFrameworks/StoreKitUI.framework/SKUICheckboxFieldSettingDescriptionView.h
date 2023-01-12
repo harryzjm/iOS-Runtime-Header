@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/UITextFieldDelegate-Protocol.h>
-
 @class NSString, SKUIFieldSettingDescription, SKUIInputViewElement, UILabel, UISwitch;
 
 __attribute__((visibility("hidden")))
-@interface SKUICheckboxFieldSettingDescriptionView <UITextFieldDelegate>
+@interface SKUICheckboxFieldSettingDescriptionView
 {
     double _aggregateLabelWidth;
     SKUIInputViewElement *_inputViewElement;

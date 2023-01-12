@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
-
-@class NSMapTable, NSString, UIContextMenuInteraction;
+@class NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextMenuLinkInteraction <UIContextMenuInteractionDelegate>
+@interface _UITextMenuLinkInteraction
 {
-    UIContextMenuInteraction *_contextMenuInteraction;
     NSMapTable *_configurationItems;
 }
 
@@ -27,8 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;
-- (id)_contextMenuInteraction;
-- (id)init;
+- (id)contextMenuDelegateProxy;
+- (id)initWithShouldProxyContextMenuDelegate:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

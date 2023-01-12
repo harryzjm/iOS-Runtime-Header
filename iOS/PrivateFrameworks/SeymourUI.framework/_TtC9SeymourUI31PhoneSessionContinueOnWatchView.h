@@ -11,11 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface _TtC9SeymourUI31PhoneSessionContinueOnWatchView : UIView
 {
+    MISSING_TYPE *landscapeConstraints;
+    MISSING_TYPE *portraitConstraints;
+    MISSING_TYPE *previousBounds;
     MISSING_TYPE *titleLabel;
 }
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI23UIKitMainMenuController : UIResponder
 {
     MISSING_TYPE *commandsList;
-    MISSING_TYPE *navigationAuthority;
+    MISSING_TYPE *navigationV3Authority;
     MISSING_TYPE *environment;
     MISSING_TYPE *focusedValues;
     MISSING_TYPE *topLevelItemCoordinators;

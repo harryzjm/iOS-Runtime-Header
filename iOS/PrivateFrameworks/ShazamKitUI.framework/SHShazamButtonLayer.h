@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <QuartzCore/CALayer.h>
-
-#import <ShazamKitUI/CAAnimationDelegate-Protocol.h>
-
-@class CAShapeLayer, NSString;
+@class CALayer, CAShapeLayer, NSString;
 @protocol SHShazamButtonViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SHShazamButtonLayer : CALayer <CAAnimationDelegate>
+@interface SHShazamButtonLayer
 {
     _Bool _initialAnimationPerformed;
     id <SHShazamButtonViewDelegate> _buttonDelegate;
@@ -46,13 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)drawTransparentShape;
 - (void)removeTransparentShape;
 - (void)performFadeInIntroAnimation:(double)arg1 delay:(double)arg2;
-- (void)skipIntroAnimation;
 - (void)performSDrawingAnimationWithDuration:(double)arg1 delay:(double)arg2;
 - (void)performSDrawingIntroAnimation;
+- (void)skipIntroAnimation;
 - (void)layoutSublayers;
-- (void)buildView;
-- (id)initWithCoder:(id)arg1;
-- (id)init;
+- (void)setup;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

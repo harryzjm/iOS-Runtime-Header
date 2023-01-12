@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PXStoryConfiguration;
 @protocol PFStoryRecipe, PXStorySongResourceProducer;
 
 @protocol PXStorySongResourceProducerFactory
-- (id <PXStorySongResourceProducer>)songResourceProducerForPersistableRecipe:(id <PFStoryRecipe>)arg1;
+- (id <PXStorySongResourceProducer>)songResourceProducerForPersistableRecipe:(id <PFStoryRecipe>)arg1 configuration:(PXStoryConfiguration *)arg2;
 @end
 

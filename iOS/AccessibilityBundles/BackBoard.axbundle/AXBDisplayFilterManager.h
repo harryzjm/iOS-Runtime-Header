@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import "AXUIClientDelegate-Protocol.h"
-
 @class AXUIClient, NSString;
 
-@interface AXBDisplayFilterManager : NSObject <AXUIClientDelegate>
+@interface AXBDisplayFilterManager : NSObject
 {
     struct __MADisplayFilter *_displayFilterFromLastUpdate;
     _Bool _softwareFiltersEnabled;

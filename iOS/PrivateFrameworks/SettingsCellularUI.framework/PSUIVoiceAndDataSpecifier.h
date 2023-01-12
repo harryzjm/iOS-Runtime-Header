@@ -6,7 +6,7 @@
 
 #import <Preferences/PSSpecifier.h>
 
-@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, Logger, NSArray, PSConfirmationSpecifier, PSListController, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSArray, PSConfirmationSpecifier, PSListController, PSSimStatusCache, PSUICoreTelephonyCallCache, PSUICoreTelephonyCarrierBundleCache, PSUICoreTelephonyRegistrationCache, PSUIDeviceWiFiState;
 
 __attribute__((visibility("hidden")))
 @interface PSUIVoiceAndDataSpecifier : PSSpecifier
@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
     PSUICoreTelephonyCallCache *_callCache;
     PSUICoreTelephonyRegistrationCache *_regCache;
     PSUICoreTelephonyCarrierBundleCache *_carrierBundleCache;
+    PSSimStatusCache *_simStatusCache;
     PSUIDeviceWiFiState *_deviceWifiState;
     NSArray *_supportedDataRates;
     _Bool _3GOverrideTo4G;
     _Bool _LTEOverrideTo4G;
     PSConfirmationSpecifier *_warningFor5G;
     _Bool _showLegacyRAT;
-    Logger *_logger;
 }
 
 - (void).cxx_destruct;
@@ -60,8 +60,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldOverrideRATModeForCBKey:(id)arg1;
 - (void)setUpInternalState;
 - (void)startObservingNotifications;
-- (id)initWithName:(id)arg1 identifier:(id)arg2 hostController:(id)arg3 subscriptionContext:(id)arg4 groupSpecifierToUpdateFooterFor:(id)arg5;
-- (id)initWithName:(id)arg1 identifier:(id)arg2 hostController:(id)arg3 subscriptionContext:(id)arg4 groupSpecifierToUpdateFooterFor:(id)arg5 serviceDescriptor:(id)arg6 coreTelephonyClient:(id)arg7 callCache:(id)arg8 registrationCache:(id)arg9 carrierBundleCache:(id)arg10 deviceWifiState:(id)arg11;
+- (id)initWithHostController:(id)arg1 subscriptionContext:(id)arg2 groupSpecifierToUpdateFooterFor:(id)arg3;
+- (id)initWithHostController:(id)arg1 subscriptionContext:(id)arg2 groupSpecifierToUpdateFooterFor:(id)arg3 serviceDescriptor:(id)arg4 coreTelephonyClient:(id)arg5 callCache:(id)arg6 registrationCache:(id)arg7 carrierBundleCache:(id)arg8 simStatusCache:(id)arg9 deviceWifiState:(id)arg10;
 
 @end
 

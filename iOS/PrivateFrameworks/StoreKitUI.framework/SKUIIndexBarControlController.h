@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/SKUIIndexBarControlDataSource-Protocol.h>
-#import <StoreKitUI/SKUIIndexBarControlDelegate-Protocol.h>
-
 @class NSMapTable, NSString, SKUIIndexBarControl, SKUIIndexBarEntryDescriptor, SKUIResourceLoader;
 @protocol SKUIIndexBarControlControllerDataSource, SKUIIndexBarControlControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIIndexBarControlController : NSObject <SKUIIndexBarControlDataSource, SKUIIndexBarControlDelegate>
+@interface SKUIIndexBarControlController : NSObject
 {
     SKUIIndexBarEntryDescriptor *_combinedEntryDescriptor;
     NSMapTable *_entryDescriptorToCachedEntry;
     _Bool _hasValidCombinedEntryDescriptor;
     NSMapTable *_indexPathToEntryDescriptor;
     NSMapTable *_requestIDToDescriptors;
-    CDStruct_2ba00048 _dataSourceDelegateFlags;
+    struct {
+        unsigned int dataSourceRespondsToCombinedEntry:1;
+        unsigned int dataSourceRespondsToNumberOfSections:1;
+        unsigned int delegateRespondsToDidSelectEntryAtIndexPath:1;
+        unsigned int delegateRespondsToDidSelectBeyondBottom:1;
+        unsigned int delegateRespondsToDidSelectBeyondTop:1;
+    } _dataSourceDelegateFlags;
     id <SKUIIndexBarControlControllerDataSource> _dataSource;
     id <SKUIIndexBarControlControllerDelegate> _delegate;
     SKUIIndexBarControl *_indexBarControl;

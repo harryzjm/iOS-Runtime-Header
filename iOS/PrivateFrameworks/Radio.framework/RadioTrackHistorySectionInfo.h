@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Radio/NSCopying-Protocol.h>
-#import <Radio/NSFetchedResultsSectionInfo-Protocol.h>
-#import <Radio/NSMutableCopying-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface RadioTrackHistorySectionInfo : NSObject <NSCopying, NSFetchedResultsSectionInfo, NSMutableCopying>
+@interface RadioTrackHistorySectionInfo : NSObject
 {
     NSString *_indexTitle;
     NSString *_name;

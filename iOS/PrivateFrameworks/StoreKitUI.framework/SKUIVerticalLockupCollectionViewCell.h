@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/SKUIPerspectiveView-Protocol.h>
-#import <StoreKitUI/SKUIViewElementView-Protocol.h>
+#import "SKUICollectionViewCell.h"
 
 @class NSString, SKUIImageView, SKUIVerticalLockupView;
 
 __attribute__((visibility("hidden")))
-@interface SKUIVerticalLockupCollectionViewCell <SKUIPerspectiveView, SKUIViewElementView>
+@interface SKUIVerticalLockupCollectionViewCell : SKUICollectionViewCell
 {
     SKUIImageView *_highlightImageView;
     SKUIVerticalLockupView *_lockupView;

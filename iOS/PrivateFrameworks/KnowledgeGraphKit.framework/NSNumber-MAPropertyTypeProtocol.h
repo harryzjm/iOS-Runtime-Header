@@ -6,11 +6,9 @@
 
 #import <Foundation/NSNumber.h>
 
-#import <KnowledgeGraphKit/MAPropertyTypeProtocol-Protocol.h>
-
 @class NSString;
 
-@interface NSNumber (MAPropertyTypeProtocol) <MAPropertyTypeProtocol>
+@interface NSNumber (MAPropertyTypeProtocol)
 @property(readonly) long long matissePropertyType;
 
 // Remaining properties

@@ -10,7 +10,7 @@
 
 @interface _TtC15HealthRecordsUI17AccountActionItem : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *account;
+    MISSING_TYPE *accountID;
     MISSING_TYPE *manager;
     MISSING_TYPE *labelText;
     MISSING_TYPE *labelColor;

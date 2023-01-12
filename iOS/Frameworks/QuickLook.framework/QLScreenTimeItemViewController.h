@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <QuickLookUICore/QLItemViewController.h>
+
 @class NSString, STBlockingViewController;
 
 __attribute__((visibility("hidden")))
-@interface QLScreenTimeItemViewController
+@interface QLScreenTimeItemViewController : QLItemViewController
 {
     long long _policy;
     NSString *_bundleIdentifier;

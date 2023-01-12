@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/MPCPlaybackEngineEventStreamCursor-Protocol.h>
-
 @class MPCPlaybackEngineEvent, MPCPlaybackEngineEventStream, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _MPCPlaybackEngineEventStreamCursor : NSObject <MPCPlaybackEngineEventStreamCursor>
+@interface _MPCPlaybackEngineEventStreamCursor : NSObject
 {
     unsigned long long _startNS;
     unsigned long long _endNS;

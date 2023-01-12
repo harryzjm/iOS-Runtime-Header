@@ -6,8 +6,6 @@
 
 #import <Foundation/NSDictionary.h>
 
-#import <AppStoreDaemon/ASDNotificationType-Protocol.h>
-
-@interface NSDictionary (ASDNotificationType) <ASDNotificationType>
+@interface NSDictionary (ASDNotificationType)
 @end
 

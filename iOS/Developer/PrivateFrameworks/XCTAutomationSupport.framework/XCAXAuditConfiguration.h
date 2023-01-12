@@ -14,12 +14,14 @@
 @interface XCAXAuditConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
     NSArray *_auditTypes;
+    NSArray *_ignoredIdentifiers;
     long long _timeout;
 }
 
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 @property(nonatomic) long long timeout; // @synthesize timeout=_timeout;
+@property(copy, nonatomic) NSArray *ignoredIdentifiers; // @synthesize ignoredIdentifiers=_ignoredIdentifiers;
 @property(copy, nonatomic) NSArray *auditTypes; // @synthesize auditTypes=_auditTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;

@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UILongPressGestureRecognizer.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIPointerInteractionPressGestureRecognizer
+@interface _UIPointerInteractionPressGestureRecognizer : UILongPressGestureRecognizer
 {
 }
 
 - (_Bool)_affectedByGesture:(id)arg1;
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
-- (_Bool)shouldReceiveEvent:(id)arg1;
+- (_Bool)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 
 @end
 

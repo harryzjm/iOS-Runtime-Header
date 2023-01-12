@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)uniqueToken;
+- (void).cxx_destruct;
 @property(copy, nonatomic) NSString *sceneIdentityString; // @synthesize sceneIdentityString;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

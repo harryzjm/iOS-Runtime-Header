@@ -6,13 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/GEOTransitIncidentEntity-Protocol.h>
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOPBTransitIncidentEntityFilter, NSSet, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
-@interface GEOPBTransitIncidentEntity : PBCodable <GEOTransitIncidentEntity, NSCopying>
+@interface GEOPBTransitIncidentEntity : PBCodable
 {
     PBUnknownFields *_unknownFields;
     unsigned long long _affectedMuid;

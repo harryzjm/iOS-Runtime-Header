@@ -25,11 +25,6 @@ struct CGSize {
     double height;
 };
 
-struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;

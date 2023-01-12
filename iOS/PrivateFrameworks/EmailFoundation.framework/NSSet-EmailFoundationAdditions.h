@@ -6,11 +6,9 @@
 
 #import <Foundation/NSSet.h>
 
-#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
+@class NSArray, NSString;
 
-@class NSString;
-
-@interface NSSet (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
+@interface NSSet (EmailFoundationAdditions)
 - (id)ef_setByRemovingObjectsFromSet:(id)arg1;
 - (id)ef_partition:(CDUnknownBlockType)arg1;
 - (unsigned long long)ef_countObjectsPassingTest:(CDUnknownBlockType)arg1;
@@ -20,6 +18,7 @@
 - (id)ef_filter:(CDUnknownBlockType)arg1;
 - (id)ef_flatMap:(CDUnknownBlockType)arg1;
 - (id)ef_compactMap:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSArray *ef_subsets;
 @property(readonly, nonatomic) NSSet *ef_flatten;
 @property(readonly, nonatomic) NSSet *ef_notEmpty;
 - (id)ef_SQLIsolatedExpression;

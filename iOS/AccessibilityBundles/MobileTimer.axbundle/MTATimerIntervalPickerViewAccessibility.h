@@ -15,6 +15,7 @@
 - (id)accessibilityElements;
 - (_Bool)canBecomeFocused;
 - (_Bool)isAccessibilityElement;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

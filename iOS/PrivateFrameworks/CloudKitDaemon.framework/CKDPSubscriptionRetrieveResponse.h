@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSMutableArray;
 
-@interface CKDPSubscriptionRetrieveResponse : PBCodable <NSCopying>
+@interface CKDPSubscriptionRetrieveResponse : PBCodable
 {
     NSMutableArray *_subscriptions;
 }

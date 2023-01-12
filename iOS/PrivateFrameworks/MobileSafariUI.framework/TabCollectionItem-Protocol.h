@@ -9,6 +9,7 @@
 @class NSString, NSUUID;
 
 @protocol TabCollectionItem <NSObject>
+@property(readonly, nonatomic, getter=isPinned) _Bool pinned;
 @property(nonatomic) long long dragState;
 @property(readonly, nonatomic) _Bool isPlaceholder;
 @property(readonly, nonatomic) NSUUID *UUID;

@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <KeynoteQuicklook/KNCanvasDelegate-Protocol.h>
-#import <KeynoteQuicklook/TSDConnectedInfoReplacing-Protocol.h>
-
 @class KNAnimatedSlideModel, KNAnimationDelayedCallbacks, KNPlaybackSession, KNSlide, KNSlideNode, NSArray, NSIndexSet, NSLock, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, TSDCanvas;
 @protocol OS_os_log, TSDCanvasProxyDelegate;
 
-@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing>
+@interface KNAnimatedSlideView : NSObject
 {
     unsigned long long _animationsActive;
     unsigned long long _animationsStarted;
@@ -169,8 +166,6 @@
 - (_Bool)isCanvasDrawingIntoPDF:(id)arg1;
 - (_Bool)shouldShowInstructionalTextForLayout:(id)arg1;
 - (_Bool)shouldSuppressBackgrounds;
-@property(readonly, nonatomic) _Bool isExportingToPDF;
-@property(readonly, nonatomic) _Bool isPrintingCanvas;
 - (id)documentRoot;
 - (void)p_recursivelyRemoveCallbackObserversFromAnimatedBuilds:(id)arg1;
 @property(readonly, copy) NSString *description;
@@ -184,6 +179,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool verticalTextAllowed;
 
 @end
 

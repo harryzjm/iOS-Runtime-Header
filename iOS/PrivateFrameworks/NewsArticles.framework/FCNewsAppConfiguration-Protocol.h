@@ -7,7 +7,7 @@
 #import <NewsArticles/FCCoreConfiguration-Protocol.h>
 #import <NewsArticles/NFCopying-Protocol.h>
 
-@class FCIAdConfiguration, FCPrefetchConfiguration, NSArray, NSString, NTPBDiscoverMoreVideosInfo;
+@class FCIAdConfiguration, FCPrefetchConfiguration, NSArray, NSDictionary, NSString, NTPBDiscoverMoreVideosInfo;
 
 @protocol FCNewsAppConfiguration <FCCoreConfiguration, NFCopying>
 @property(nonatomic, readonly) _Bool hideAlacartePaywalls;
@@ -56,6 +56,28 @@
 @property(nonatomic, readonly) NSArray *onboardingFeedIDs;
 
 @optional
+@property(nonatomic, readonly) NSDictionary *todayFeedGroupClusteringKnobOverrides;
+@property(nonatomic, readonly) long long maxSportRecommendationsPerSport;
+@property(nonatomic, readonly) long long maxSportRecommendationsWithLeagueTypeCollege;
+@property(nonatomic, readonly) double minMembershipThresholdForLocalRecommendation;
+@property(nonatomic, readonly) double minMembershipThreshold;
+@property(nonatomic, readonly) double minScoreThresholdForSportsRecommendations;
+@property(nonatomic, readonly) _Bool considerAutofavoritesInMappingCandidates;
+@property(nonatomic, readonly) double minMembershipForTaxonomyCandidates;
+@property(nonatomic, readonly) _Bool useAltSportsRecommendationMapping;
+@property(nonatomic, readonly) _Bool sportsNativeAdsEnabled;
+@property(nonatomic, readonly) NSString *sportsSyncingConfigurationResourceId;
+@property(nonatomic, readonly) NSString *sportsStandingConfigurationResourceId;
+@property(nonatomic, readonly) NSString *sportsConfigurationResourceId;
+@property(nonatomic, readonly) NSString *sportsFeaturedEventsResourceId;
+@property(nonatomic, readonly) NSString *sportsTaxonomyResourceId;
+@property(nonatomic, readonly) long long sportsManagementMinChildItemsCount;
+@property(nonatomic, readonly) long long sportsManagementRecommendedItemsCount;
+@property(nonatomic, readonly) NSDictionary *superfeedConfigOverrideResourceIDs;
+@property(nonatomic, readonly) NSArray *deprecatedSportsTopicTagIds;
+@property(nonatomic, readonly) NSArray *editorialFallbackSportsTopicTagIds;
+@property(nonatomic, readonly) NSArray *editoralRecommendedSportsTopicTagIds;
+@property(nonatomic, readonly) NSDictionary *editorialTopicEventMapping;
 @property(nonatomic, readonly) NSArray *analyticsDenylistDescriptorsInternal;
 @property(nonatomic, readonly) NSArray *analyticsDenylistDescriptorsSeed;
 @property(nonatomic, readonly) NSArray *analyticsDenylistDescriptorsPublic;
@@ -65,18 +87,33 @@
 @property(nonatomic, readonly) double analyticsJitterUpperBound;
 @property(nonatomic, readonly) double analyticsJitterLowerBound;
 @property(nonatomic, readonly) _Bool isAnalyticsJitterEnabled;
+@property(nonatomic, readonly) _Bool isLocalNewsInTopStoriesEnabled;
+@property(nonatomic, readonly) _Bool clientSideEngagementBoostEnabled;
+@property(nonatomic, readonly) _Bool sportsRecommendationHidesIgnoredTags;
+@property(nonatomic, readonly) _Bool sportsRecordEnabled;
+@property(nonatomic, readonly) _Bool sportsStandingsEnabled;
+@property(nonatomic, readonly) _Bool statelessPersonalizationEnabled;
+@property(nonatomic, readonly) _Bool personalizationEventTrackingEnabled;
+@property(nonatomic, readonly) _Bool audioFeedConfigRequestsEnabled;
+@property(nonatomic, readonly) long long topStoriesLocalNewsExpiration;
 @property(nonatomic, readonly) long long todayFeedLoadToCacheTimeWindow;
 @property(nonatomic, readonly) _Bool todayFeedConfigRequestsEnabled;
-@property(nonatomic, readonly) _Bool isEndOfArticleRedesignEnabled;
 @property(nonatomic, readonly) _Bool isCardFeedRedesignEnabled;
-@property(nonatomic, readonly) _Bool isContinueReadingEnabled;
+@property(nonatomic, readonly) double continueReadingDismissalInterval;
 @property(nonatomic, readonly) _Bool inAppMessagesEnabled;
+@property(nonatomic, readonly) _Bool appReviewRequestEnabled;
 @property(nonatomic, readonly) _Bool smarterMessagingEnabled;
-@property(nonatomic, readonly) _Bool flexiblePaywallsEnabled;
+@property(nonatomic, readonly) _Bool isSIWAOnMacEnabled;
+@property(nonatomic, readonly) _Bool servicesBundleCIPActivationEnabled;
+@property(nonatomic, readonly) _Bool splitTopicGroupsForYouAndPopular;
+@property(nonatomic, readonly) _Bool splitTopicGroups;
 @property(nonatomic, readonly) NSArray *discoverNewsPlusChannelIDs;
 @property(nonatomic, readonly) _Bool searchFeaturedStoriesEnabled;
-@property(nonatomic, readonly) _Bool searchInExplicitViewEnabled;
+@property(nonatomic, readonly) _Bool immersiveSidebar;
+@property(nonatomic, readonly) _Bool useFasterSearch;
 @property(nonatomic, readonly) _Bool useNewsArticleSearch;
+@property(nonatomic, readonly) _Bool isSportsSyncingSupported;
+@property(nonatomic, readonly) NSArray *sportsSearchConfigurationProfiles;
 @property(nonatomic, readonly) NSArray *searchConfigurationProfiles;
 @property(nonatomic, readonly) _Bool userSegmentationInWidgetAllowed;
 @property(nonatomic, readonly) _Bool notificationAssetPrefetchingRequiresWatch;
@@ -93,8 +130,13 @@
 @property(nonatomic, readonly) double feedBannerAdRequestThrottle;
 @property(nonatomic, readonly) _Bool forYouGroupShouldPromoteAccessibleHeadline;
 @property(nonatomic, readonly) long long articleReadCountThreshold;
+@property(nonatomic, readonly) NSString *locationRecommendationMappingsResourceId;
 @property(nonatomic, readonly) NSString *userVectorModelResourceId;
 @property(nonatomic, readonly) NSString *userVectorWhitelistResourceId;
+@property(nonatomic, readonly) NSString *businessAudioTagID;
+@property(nonatomic, readonly) NSString *inConversationsAudioTagID;
+@property(nonatomic, readonly) NSString *audioPlaylistFeedConfigurationResourceId;
+@property(nonatomic, readonly) NSString *audioHistoryFeedConfigurationResourceId;
 @property(nonatomic, readonly) NSString *endOfArticleFeedConfigurationResourceId;
 @property(nonatomic, readonly) NSString *searchMoreFeedConfigurationResourceId;
 @property(nonatomic, readonly) NSString *searchFeedConfigurationResourceId;
@@ -125,7 +167,6 @@
 @property(nonatomic, readonly) NSString *feedNavigationConfigJSON;
 @property(nonatomic, readonly) _Bool disableThumbnailsForArticleRecirculation;
 @property(nonatomic, readonly) long long articleRecirculationPopularFeedQueryTimeRange;
-@property(nonatomic, readonly) _Bool isExpired;
 
 // Remaining properties
 @property(nonatomic, readonly) _Bool articleToolbarCompressionEnabled;

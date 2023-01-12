@@ -6,11 +6,9 @@
 
 #import <HomeKit/HMHomeManager.h>
 
-#import <Home/HFStateDumpBuildable-Protocol.h>
-
 @class NSNumber, NSString;
 
-@interface HMHomeManager (HFDebugging) <HFStateDumpBuildable>
+@interface HMHomeManager (HFDebugging)
 + (id)hf_homeFutureForName:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_accessorySettingsController;

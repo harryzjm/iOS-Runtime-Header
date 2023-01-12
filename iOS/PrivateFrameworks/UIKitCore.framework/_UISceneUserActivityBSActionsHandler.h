@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UISceneBSActionHandler-Protocol.h>
-
 @class NSString, _UICanvasUserActivityManager;
 
 __attribute__((visibility("hidden")))
-@interface _UISceneUserActivityBSActionsHandler : NSObject <_UISceneBSActionHandler>
+@interface _UISceneUserActivityBSActionsHandler : NSObject
 {
     _UICanvasUserActivityManager *_canvasUserActivityManager;
 }

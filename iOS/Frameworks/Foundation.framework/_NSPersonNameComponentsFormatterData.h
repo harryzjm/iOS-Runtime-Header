@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCopying-Protocol.h>
-#import <Foundation/NSSecureCoding-Protocol.h>
-
 @class NPNameParser, NSLocale;
 
 __attribute__((visibility("hidden")))
-@interface _NSPersonNameComponentsFormatterData : NSObject <NSCopying, NSSecureCoding>
+@interface _NSPersonNameComponentsFormatterData : NSObject
 {
     long long _style;
     _Bool _phonetic;

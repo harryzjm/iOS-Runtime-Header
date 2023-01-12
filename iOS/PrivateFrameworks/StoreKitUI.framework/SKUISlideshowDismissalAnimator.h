@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/UIViewControllerAnimatorTransitioning-Protocol.h>
-
 @class NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface SKUISlideshowDismissalAnimator : NSObject <UIViewControllerAnimatorTransitioning>
+@interface SKUISlideshowDismissalAnimator : NSObject
 {
     UIImageView *_imageView;
     struct CGRect _imageRect;

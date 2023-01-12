@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface VCMediaKeyIndex : NSObject <NSCopying>
+@interface VCMediaKeyIndex : NSObject
 {
     unsigned char _MKI[16];
     unsigned int _activeSize;

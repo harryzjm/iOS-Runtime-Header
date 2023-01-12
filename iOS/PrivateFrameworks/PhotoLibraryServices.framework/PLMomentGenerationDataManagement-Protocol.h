@@ -7,10 +7,11 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @class NSArray, NSDate, NSDateInterval, NSDictionary, NSObject, NSPredicate, NSSet, NSString, PLLocationOfInterestVisit, PLXPCTransaction;
-@protocol NSCopying, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLPhotosHighlightData;
+@protocol NSCopying, OS_dispatch_queue, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLPhotosHighlightData;
 
 @protocol PLMomentGenerationDataManagement <NSObject>
 @property(readonly, nonatomic) NSDictionary *generationOptions;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *isolationQueue;
 @property(readonly, nonatomic) _Bool isLightweightMigrationManager;
 @property(nonatomic) _Bool previousValidationSucceeded;
 @property(nonatomic) long long previousValidatedModelVersion;
@@ -36,7 +37,6 @@
 - (NSSet *)updatedObjects;
 - (NSSet *)insertedObjects;
 - (void)refreshAllObjects;
-- (void)refreshObject:(id)arg1 mergeChanges:(_Bool)arg2;
 - (void)resetOnFailure;
 - (_Bool)save:(id *)arg1;
 - (_Bool)hasChanges;

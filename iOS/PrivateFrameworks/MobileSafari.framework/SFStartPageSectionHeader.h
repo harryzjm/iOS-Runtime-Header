@@ -6,35 +6,35 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSArray, NSLayoutConstraint, NSString, SFBannerCell, SFBannerModel, UIButton, UIStackView;
+@class NSArray, NSLayoutConstraint, SFBannerCell, SFBannerModel, SFStartPageSectionHeaderTitleView, UIStackView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface SFStartPageSectionHeader : UICollectionReusableView
 {
     SFBannerCell *_bannerView;
-    UIStackView *_buttonStackView;
-    UIButton *_titleButton;
     NSLayoutConstraint *_bannerViewBottomConstraint;
-    NSLayoutConstraint *_titleButtonBottomConstraint;
-    _Bool _usesLargeTitle;
-    NSString *_title;
+    UIStackView *_buttonStackView;
+    NSLayoutConstraint *_titleBottomConstraint;
+    SFStartPageSectionHeaderTitleView *_titleView;
+    UIVisualEffectView *_separatorView;
+    NSLayoutConstraint *_stackLeadingConstraint;
+    NSLayoutConstraint *_stackCenterXConstraint;
     NSArray *_actions;
     SFBannerModel *_banner;
 }
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-@property(nonatomic) _Bool usesLargeTitle; // @synthesize usesLargeTitle=_usesLargeTitle;
 @property(retain, nonatomic) SFBannerModel *banner; // @synthesize banner=_banner;
-@property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
-@property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property(readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+- (void)_createSeparatorViewIfNeeded;
 @property(nonatomic) double bottomGap;
-- (void)setModel:(id)arg1 resolvingActionsUsingBlock:(CDUnknownBlockType)arg2;
-- (void)buttonShapesEnabledStatusDidChange:(id)arg1;
+- (void)setActions:(id)arg1 expandsModally:(_Bool)arg2 withSize:(long long)arg3;
+- (void)setModel:(id)arg1 visualStyleProvider:(id)arg2 resolvingActionsUsingBlock:(CDUnknownBlockType)arg3;
 - (void)updateViewsDependingOnCustomTraits;
-- (void)buildTitleLabel;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)dealloc;
+- (id)_disclosureButtonForLayout;
+- (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

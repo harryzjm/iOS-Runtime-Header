@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface SNDSPGraphBox : NSObject
 {
@@ -17,20 +15,6 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) void *box; // @synthesize box=_box;
-- (_Bool)setParameter:(float)arg1 forID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4 bufferOffset:(long long)arg5;
-- (_Bool)hasParameter:(unsigned int)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
-- (_Bool)getParameter:(float *)arg1 forID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4;
-- (_Bool)getParameterInfo:(struct AudioUnitParameterInfo *)arg1 forID:(unsigned int)arg2 inScope:(unsigned int)arg3;
-- (_Bool)getParameterList:(unsigned int *)arg1 numParameterIDs:(long long *)arg2 inScope:(unsigned int)arg3;
-@property(readonly, nonatomic) long long numOutputs;
-@property(readonly, nonatomic) long long numInputs;
-@property(readonly, nonatomic) NSString *name;
-- (_Bool)stopInjectingPort:(long long)arg1;
-- (_Bool)startInjectingPort:(long long)arg1 toFile:(id)arg2 shouldLoop:(_Bool)arg3;
-- (_Bool)stopRecordingPort:(long long)arg1;
-- (_Bool)startRecordingPort:(long long)arg1 toFile:(id)arg2;
-- (id)initWithBox:(void *)arg1 fromGraph:(shared_ptr_f6ac7592)arg2;
 - (id)init;
 
 @end

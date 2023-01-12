@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
-#import <MediaControls/MediaControlsEndpointControllerConnectionDelegate-Protocol.h>
-#import <MediaControls/MediaControlsEndpointObserverDelegate-Protocol.h>
-
 @class MPAVRoutingController, MPMRAVEndpointObserverWrapper, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsStandaloneEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
+@interface MediaControlsStandaloneEndpointController
 {
     _Bool _allowsAutomaticResponseLoading;
     _Bool _endpointDiscovered;
@@ -26,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isEndpointDiscovered) _Bool endpointDiscovered; // @synthesize endpointDiscovered=_endpointDiscovered;
 @property(retain, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 - (void)endpointController:(id)arg1 willAttemptToConnectToRoute:(id)arg2;
-- (id)_routeForEndpoint:(void *)arg1;
+- (id)_routeForEndpoint:(struct __MRAVEndpointRef *)arg1;
 - (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)endObserving;

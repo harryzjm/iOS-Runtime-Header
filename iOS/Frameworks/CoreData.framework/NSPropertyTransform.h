@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSSecureCoding-Protocol.h>
-
 @class NSExpression, NSString;
 
 __attribute__((visibility("hidden")))
-@interface NSPropertyTransform : NSObject <NSSecureCoding>
+@interface NSPropertyTransform : NSObject
 {
     NSExpression *_valueExpression;
     NSString *_propertyName;

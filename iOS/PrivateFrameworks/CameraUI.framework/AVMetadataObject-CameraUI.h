@@ -7,6 +7,9 @@
 #import <AVFoundation/AVMetadataObject.h>
 
 @interface AVMetadataObject (CameraUI)
+@property(readonly, nonatomic) _Bool isHuman;
+@property(readonly, nonatomic) _Bool isDog;
+@property(readonly, nonatomic) _Bool isCat;
 @property(readonly, nonatomic) _Bool isSalientObject;
 @property(readonly, nonatomic) _Bool isPetBody;
 @property(readonly, nonatomic) _Bool isPetHead;

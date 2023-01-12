@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PaymentUI/CNContactPickerDelegate-Protocol.h>
-#import <PaymentUI/UINavigationControllerDelegate-Protocol.h>
-
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtCV9PaymentUI23ContactPickerController11Coordinator : NSObject <CNContactPickerDelegate, UINavigationControllerDelegate>
+@interface _TtCV9PaymentUI23ContactPickerController11Coordinator : NSObject
 {
     MISSING_TYPE *parent;
 }

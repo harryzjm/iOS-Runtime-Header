@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCVideoStreamRateControlProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamRTTPLRRateControl : NSObject <VCVideoStreamRateControlProtocol>
+@interface VCVideoStreamRTTPLRRateControl : NSObject
 {
     double _rampUpFrozenDuration;
     unsigned short _currentTierIndex;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     char _padding[2];
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fillObjCType:(BOOL)arg1 count:(unsigned long long)arg2 at:(void *)arg3;

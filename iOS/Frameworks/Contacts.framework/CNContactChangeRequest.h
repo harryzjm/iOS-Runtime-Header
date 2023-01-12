@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/NSSecureCoding-Protocol.h>
-
 @class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNContactChangeRequest : NSObject <NSSecureCoding>
+@interface CNContactChangeRequest : NSObject
 {
     NSArray *_contacts;
     long long _kind;

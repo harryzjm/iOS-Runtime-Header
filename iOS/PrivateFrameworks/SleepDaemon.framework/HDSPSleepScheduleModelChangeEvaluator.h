@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-
 @class HDSPEnvironment, HKSPSleepEventRecord, HKSPSleepSchedule, HKSPSleepSettings, NSString;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepScheduleModelChangeEvaluator : NSObject <HDSPEnvironmentAware>
+@interface HDSPSleepScheduleModelChangeEvaluator : NSObject
 {
     HDSPEnvironment *_environment;
     HKSPSleepSchedule *_lastSchedule;

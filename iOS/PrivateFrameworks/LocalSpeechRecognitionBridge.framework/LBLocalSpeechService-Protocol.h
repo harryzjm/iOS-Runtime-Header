@@ -6,11 +6,16 @@
 
 #import <LocalSpeechRecognitionBridge/NSObject-Protocol.h>
 
-@class LBLocalSpeechRecognitionSettings, NSString;
+@class AFSpeechCorrectionInfo, LBLocalSpeechRecognitionSettings, NSString;
 
 @protocol LBLocalSpeechService <NSObject>
+- (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 interactionIdentifier:(NSString *)arg2;
+- (oneway void)resetCacheAndCompileAllAssets;
+- (oneway void)resumeLocalRecognitionWithRequestId:(NSString *)arg1 prefixText:(NSString *)arg2 postfixText:(NSString *)arg3 selectedText:(NSString *)arg4;
+- (oneway void)pauseLocalSpeechRecognitionForRequestId:(NSString *)arg1;
 - (oneway void)disableLocalSpeechRecognitionForRequestId:(NSString *)arg1;
-- (oneway void)stopDeliverLocalSpeechRecognitionWithReason:(unsigned long long)arg1;
+- (oneway void)stopDeliverLocalSpeechRecognitionWithReason:(unsigned long long)arg1 requestId:(NSString *)arg2;
 - (oneway void)startDeliverLocalSpeechRecognitionResultsWithSettings:(LBLocalSpeechRecognitionSettings *)arg1;
+- (oneway void)preheatLocalSpeechRecognitionWithLanguage:(NSString *)arg1 source:(unsigned long long)arg2;
 @end
 

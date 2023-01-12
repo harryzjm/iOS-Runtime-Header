@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
 {
     NSString *_localization;
     NSString *_unigramsPath;
+    NSString *_name;
     const void *_lexicon;
 }
 
++ (id)lexiconWithName:(id)arg1 words:(id)arg2;
 + (id)lexiconWithLexicon:(const void *)arg1;
 + (id)lexiconWithLocalization:(id)arg1 unigramsPath:(id)arg2;
 - (void)enumerateCorrectionEntriesForWord:(id)arg1 maxCorrections:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -28,8 +30,10 @@ __attribute__((visibility("hidden")))
 - (void)enumerateEntriesForString:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)createCursor;
 - (struct _LXLexicon *)lexicon;
+@property(readonly) NSString *name;
 - (void)dealloc;
 - (id)description;
+- (id)initWithName:(id)arg1 words:(id)arg2;
 - (id)initWithLexicon:(const void *)arg1;
 - (id)initWithLocalization:(id)arg1 unigramsPath:(id)arg2;
 

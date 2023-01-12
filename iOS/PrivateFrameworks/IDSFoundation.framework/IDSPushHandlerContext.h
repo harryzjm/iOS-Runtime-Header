@@ -14,13 +14,18 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSSet *_topics;
     NSSet *_commands;
+    NSSet *_wakingTopics;
+    NSSet *_opportunisticTopics;
+    NSSet *_nonWakingTopics;
 }
 
 - (void).cxx_destruct;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy, nonatomic) NSSet *commands; // @synthesize commands=_commands;
-@property(copy, nonatomic) NSSet *topics; // @synthesize topics=_topics;
-- (id)initWithQueue:(id)arg1 topics:(id)arg2 commands:(id)arg3;
+@property(retain, nonatomic) NSSet *nonWakingTopics; // @synthesize nonWakingTopics=_nonWakingTopics;
+@property(retain, nonatomic) NSSet *opportunisticTopics; // @synthesize opportunisticTopics=_opportunisticTopics;
+@property(retain, nonatomic) NSSet *wakingTopics; // @synthesize wakingTopics=_wakingTopics;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (id)initWithQueue:(id)arg1 wakingTopics:(id)arg2 opportunisticTopics:(id)arg3 nonWakingTopics:(id)arg4 commands:(id)arg5;
 
 @end
 

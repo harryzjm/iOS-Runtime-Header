@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <FileProvider/NSFileProviderItem-Protocol.h>
-
 @class NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSString, UTType;
 
 __attribute__((visibility("hidden")))
-@interface FPNSFileProviderItemHelper : NSObject <NSFileProviderItem>
+@interface FPNSFileProviderItemHelper : NSObject
 {
     NSString *itemIdentifier;
     NSString *parentItemIdentifier;
@@ -37,6 +35,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy, nonatomic) NSNumber *childItemCount;
 @property(readonly, copy, nonatomic) NSDate *contentModificationDate;
+@property(readonly, nonatomic) long long contentPolicy;
 @property(readonly, copy, nonatomic) NSDate *creationDate;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;

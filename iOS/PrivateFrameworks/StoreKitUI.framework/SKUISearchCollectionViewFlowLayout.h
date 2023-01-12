@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "SKUIItemGridCollectionViewLayout.h"
+
 @class UICollectionView;
 
 __attribute__((visibility("hidden")))
-@interface SKUISearchCollectionViewFlowLayout
+@interface SKUISearchCollectionViewFlowLayout : SKUIItemGridCollectionViewLayout
 {
     UICollectionView *_collectionView;
     long long _numberOfRows;

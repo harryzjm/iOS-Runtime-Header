@@ -9,7 +9,7 @@
 @protocol MTLBuffer, MTLComputePipelineState;
 
 @protocol MTLIndirectComputeCommand <NSObject>
-- (void)setStageInRegion:(CDStruct_1e3be3a8)arg1;
+- (void)setStageInRegion:(CDStruct_4c83c94d)arg1;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (void)reset;
 - (void)setImageblockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;

@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface GQDChartModel : NSObject
 {
     struct __CFArray *mChartData;

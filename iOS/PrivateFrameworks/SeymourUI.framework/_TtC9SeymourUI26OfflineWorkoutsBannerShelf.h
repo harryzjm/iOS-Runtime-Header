@@ -13,8 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *identifier;
     MISSING_TYPE *row;
-    MISSING_TYPE *storefrontLocalizer;
-    MISSING_TYPE *platform;
+    MISSING_TYPE *browsingStringBuilder;
 }
 
 @end

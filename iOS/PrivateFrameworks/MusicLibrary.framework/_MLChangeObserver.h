@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/MLMediaLibraryAccountChangeObserver-Protocol.h>
-
 @class MSVTaskAssertion, NSString, NSXPCConnection;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface _MLChangeObserver : NSObject <MLMediaLibraryAccountChangeObserver>
+@interface _MLChangeObserver : NSObject
 {
     _Bool _timedOut;
     NSXPCConnection *_connection;

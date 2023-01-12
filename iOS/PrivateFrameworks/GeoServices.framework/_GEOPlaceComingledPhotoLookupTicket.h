@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOMapServicePhotoLookupTicket-Protocol.h>
+#import "GEOAbstractRequestResponseTicket.h"
 
 @class GEOMapItemIdentifier, GEOMapServiceTraits, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GEOPlaceComingledPhotoLookupTicket <GEOMapServicePhotoLookupTicket>
+@interface _GEOPlaceComingledPhotoLookupTicket : GEOAbstractRequestResponseTicket
 {
     NSString *_categoryIdentifier;
     GEOMapItemIdentifier *_mapItemIdentifier;

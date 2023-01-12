@@ -9,9 +9,7 @@
 @interface ICSDate (SGCalendarAttachmentDissector)
 - (id)systemTimeZoneWithCalendar:(id)arg1 withEvent:(id)arg2 withCorrectnessFlag:(_Bool *)arg3;
 - (id)gmtOffsetTimeZoneWithCalendar:(id)arg1 withEvent:(id)arg2;
-- (id)endDateWithDuration:(id)arg1;
 - (id)validatedCompleteDateTime;
-- (id)gregorianCalendarDateByAddingDuration:(id)arg1;
 - (id)copyDateWithNewComponents:(id)arg1;
 @end
 

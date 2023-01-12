@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCMotionXPCProxyRemoteServerEndpointInterface-Protocol.h>
-#import <GameController/_GCIPCEndpointServer-Protocol.h>
-
 @class NSString;
 @protocol GCMotionXPCProxyRemoteClientEndpointInterface, GCMotionXPCProxyServerEndpointDelegate, NSObject><NSCopying><NSSecureCoding, _GCControllerComponentDescription, _GCIPCEndpointConnection;
 
 __attribute__((visibility("hidden")))
-@interface GCMotionXPCProxyServerEndpoint : NSObject <_GCIPCEndpointServer, GCMotionXPCProxyRemoteServerEndpointInterface>
+@interface GCMotionXPCProxyServerEndpoint : NSObject
 {
     id <GCMotionXPCProxyRemoteClientEndpointInterface> _clientEndpoint;
     id <_GCIPCEndpointConnection> _connection;

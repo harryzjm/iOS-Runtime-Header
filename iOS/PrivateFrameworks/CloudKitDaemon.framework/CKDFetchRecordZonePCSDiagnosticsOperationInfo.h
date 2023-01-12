@@ -6,11 +6,9 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
-
 @class NSArray;
 
-@interface CKDFetchRecordZonePCSDiagnosticsOperationInfo : CKDatabaseOperationInfo <NSSecureCoding>
+@interface CKDFetchRecordZonePCSDiagnosticsOperationInfo : CKDatabaseOperationInfo
 {
     NSArray *_recordZoneIDs;
 }

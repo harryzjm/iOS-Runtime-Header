@@ -6,15 +6,10 @@
 
 #import <TSPersistence/TSPObject.h>
 
-#import <TSDrawables/TSDChangeableInfo-Protocol.h>
-#import <TSDrawables/TSDModelContainer-Protocol.h>
-#import <TSDrawables/TSDMutableContainerInfo-Protocol.h>
-#import <TSDrawables/TSKDocumentObject-Protocol.h>
-
 @class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDInfo, TSDOwningAttachment;
 
-@interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer, TSDChangeableInfo>
+@interface TSDContainerInfo : TSPObject
 {
     TSDInfoGeometry *_geometry;
     NSObject<TSDContainerInfo> *_parentInfo;

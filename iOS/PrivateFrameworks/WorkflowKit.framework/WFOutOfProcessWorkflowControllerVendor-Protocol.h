@@ -6,18 +6,20 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSString, NSURL, VCSleepWorkflow, WFContextualActionContext, WFWorkflowRunRequest, WFWorkflowRunningContext;
+@class NSArray, NSData, NSError, NSString, NSURL, VCSleepWorkflow, WFContextualActionContext, WFWorkflowReference, WFWorkflowRunDescriptor, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol WFOutOfProcessWorkflowControllerVendor <NSObject>
-- (void)stop;
+- (void)getCurrentProgressCompletedWithCompletionHandler:(void (^)(NSNumber *, NSError *))arg1;
+- (void)stopWithError:(NSError *)arg1;
+- (void)computeFinderResizedSizesForImages:(NSArray *)arg1 inSizes:(NSArray *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)filterContextualActions:(NSArray *)arg1 forContext:(WFContextualActionContext *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)getContextualActionsForContext:(WFContextualActionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)populateSleepWorkflowsFromWorkflowReferences:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)createSleepWorkflow:(VCSleepWorkflow *)arg1 completion:(void (^)(VCConfiguredSleepWorkflow *, NSError *))arg2;
 - (void)handleIncomingFileForRemoteExecutionWithURL:(NSURL *)arg1 withIdentifier:(NSString *)arg2;
 - (void)pauseWorkflowAndWriteStateToDisk;
-- (void)resumeRunningFromContext:(WFWorkflowRunningContext *)arg1 withRequest:(WFWorkflowRunRequest *)arg2 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg3;
-- (void)runActionFromRunRequestData:(NSData *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg3;
-- (void)runWorkflowWithRequest:(WFWorkflowRunRequest *)arg1 inEnvironment:(long long)arg2 runningContext:(WFWorkflowRunningContext *)arg3 completion:(void (^)(WFWorkflowRunResult *, WFWorkflowReference *))arg4;
+- (void)resumeRunningFromContext:(WFWorkflowRunningContext *)arg1 withRequest:(WFWorkflowRunRequest *)arg2 completion:(void (^)(WFWorkflowRunResult *))arg3;
+- (void)runActionFromRunRequestData:(NSData *)arg1 runningContext:(WFWorkflowRunningContext *)arg2 completion:(void (^)(WFWorkflowRunResult *))arg3;
+- (void)runWorkflowWithDescriptor:(WFWorkflowRunDescriptor *)arg1 serializedRecord:(NSData *)arg2 workflowReference:(WFWorkflowReference *)arg3 request:(WFWorkflowRunRequest *)arg4 inEnvironment:(long long)arg5 runningContext:(WFWorkflowRunningContext *)arg6 remoteQuarantineStatus:(long long)arg7 isPersonalAutomation:(_Bool)arg8 completion:(void (^)(WFWorkflowRunResult *))arg9;
 @end
 

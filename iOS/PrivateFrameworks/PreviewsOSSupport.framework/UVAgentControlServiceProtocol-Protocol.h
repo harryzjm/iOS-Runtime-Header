@@ -9,9 +9,11 @@
 @class NSData, NSString, UVBSEndpoint;
 
 @protocol UVAgentControlServiceProtocol <NSObject>
-- (oneway void)grantExecutePermissionWithURLWrapperData:(NSData *)arg1 reply:(void (^)(NSNumber *, NSError *))arg2;
+- (oneway void)grantExecutePermissionWithURLWrapperData:(NSData *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)copyURLWithURLWrapperData:(NSData *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
-- (oneway void)connectMessagePipeWithEndpoint:(UVBSEndpoint *)arg1;
-- (oneway void)createPreviewAgentWithEndpoint:(UVBSEndpoint *)arg1 forSceneIdentifier:(NSString *)arg2;
+- (oneway void)connectShellMessagePipeWithEndpoint:(UVBSEndpoint *)arg1;
+- (oneway void)connectHostMessagePipeWithEndpoint:(UVBSEndpoint *)arg1;
+- (oneway void)createPreviewSceneAgentWithEndpoint:(UVBSEndpoint *)arg1 forSceneIdentifier:(NSString *)arg2;
+- (oneway void)createPreviewNonUIAgentWithEndpoint:(UVBSEndpoint *)arg1;
 @end
 

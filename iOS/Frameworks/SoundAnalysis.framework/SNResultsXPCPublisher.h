@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNResultsObserving-Protocol.h>
-
 @class NSString;
 @protocol SNResultsObservingXPCProtocol><NSXPCProxyCreating;
 
 __attribute__((visibility("hidden")))
-@interface SNResultsXPCPublisher : NSObject <SNResultsObserving>
+@interface SNResultsXPCPublisher : NSObject
 {
     id <SNResultsObservingXPCProtocol><NSXPCProxyCreating> _subscriber;
 }
@@ -21,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void)requestDidComplete:(id)arg1;
 - (void)request:(id)arg1 didFailWithError:(id)arg2;
 - (void)request:(id)arg1 didProduceResult:(id)arg2;
-- (id)initWithSubscriber:(id)arg1;
 - (id)init;
 
 // Remaining properties

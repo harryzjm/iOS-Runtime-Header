@@ -6,17 +6,19 @@
 
 #import <CoreRoutine/NSObject-Protocol.h>
 
-@class CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTEnumerationOptions, RTEstimatedLocationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
+@class CLCircularRegion, CLLocation, GEOMapItemStorage, NSData, NSDate, NSNumber, NSSet, NSString, NSUUID, RTDiagnosticOptions, RTEnumerationOptions, RTEstimatedLocationOptions, RTPlaceInferenceOptions, RTPredictedLocationOfInterest, RTStoredLocationEnumerationContext, RTStoredVisitFetchOptions;
 
 @protocol RTDaemonProtocol <NSObject>
 - (void)userInteractionWithPredictedLocationOfInterest:(RTPredictedLocationOfInterest *)arg1 interaction:(unsigned long long)arg2 feedback:(NSString *)arg3 geoMapItem:(GEOMapItemStorage *)arg4 reply:(void (^)(NSError *))arg5;
 - (void)fetchEnumerableObjectsWithOptions:(RTEnumerationOptions *)arg1 offset:(NSNumber *)arg2 reply:(void (^)(NSArray *, NSNumber *, NSError *))arg3;
 - (void)fetchEstimatedLocationAtDate:(NSDate *)arg1 options:(RTEstimatedLocationOptions *)arg2 reply:(void (^)(CLLocation *, NSError *))arg3;
 - (void)fetchStoredLocationsWithContext:(RTStoredLocationEnumerationContext *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchLookbackWindowStarDateWithLocation:(CLLocation *)arg1 reply:(void (^)(NSDate *, NSError *))arg2;
 - (void)fetchFormattedPostalAddressesFromMeCard:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchPlaceInferencesWithOptions:(RTPlaceInferenceOptions *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)removeVisitWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)setHintForRegionState:(long long)arg1 significantRegion:(CLCircularRegion *)arg2 reply:(void (^)(_Bool, NSError *))arg3;
 - (void)removeLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 type:(long long)arg2 customLabel:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 customLabel:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
@@ -24,6 +26,7 @@
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 mapItemStorage:(GEOMapItemStorage *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)updateLocationOfInterestWithIdentifier:(NSUUID *)arg1 type:(long long)arg2 mapItemStorage:(GEOMapItemStorage *)arg3 customLabel:(NSString *)arg4 reply:(void (^)(RTLocationOfInterest *, NSError *))arg5;
 - (void)addLocationOfInterestOfType:(long long)arg1 mapItemStorage:(GEOMapItemStorage *)arg2 customLabel:(NSString *)arg3 reply:(void (^)(RTLocationOfInterest *, NSError *))arg4;
+- (void)fetchLocationOfInterestForRegion:(CLCircularRegion *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationOfInterestAtLocation:(CLLocation *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
 - (void)fetchLocationsOfInterestVisitedBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(RTLocationOfInterest *, NSError *))arg2;
@@ -46,7 +49,7 @@
 - (void)fetchTransitionsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPredictedLocationsOfInterestBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPredictedExitDatesFromLocation:(CLLocation *)arg1 onDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)fetchPathToDiagnosticFilesWithReply:(void (^)(NSString *, NSError *))arg1;
+- (void)fetchPathToDiagnosticFilesWithOptions:(RTDiagnosticOptions *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchStoredVisitsWithOptions:(RTStoredVisitFetchOptions *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)stopLeechingLowConfidenceVisitsWithReply:(void (^)(NSError *))arg1;
 - (void)startLeechingLowConfidenceVisitsWithReply:(void (^)(NSError *))arg1;

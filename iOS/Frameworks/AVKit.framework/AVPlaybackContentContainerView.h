@@ -6,16 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVPlaybackContentContainer-Protocol.h>
-
-@class AVStatusBarBackgroundGradientView, NSString, __AVPlayerLayerView;
+@class AVStatusBarBackgroundGradientView, AVVisualAnalysisView, NSString, __AVPlayerLayerView;
 
 __attribute__((visibility("hidden")))
-@interface AVPlaybackContentContainerView : UIView <AVPlaybackContentContainer>
+@interface AVPlaybackContentContainerView : UIView
 {
     _Bool _playingOnSecondScreen;
     _Bool _canShowStatusBarBackgroundGradientWhenStatusBarVisible;
     _Bool _observingStatusBarHidden;
+    AVVisualAnalysisView *_visualAnalysisView;
     __AVPlayerLayerView *_playerLayerView;
     UIView *_contentOverlayView;
     UIView *_contentOverlayViewSubview;
@@ -32,14 +31,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) __AVPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
 @property(nonatomic) struct CGRect videoContentFrame; // @synthesize videoContentFrame=_videoContentFrame;
 @property(nonatomic, getter=isPlayingOnSecondScreen) _Bool playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
-- (struct CGRect)_resolvedContentFrame;
-- (struct CGRect)_frameForStatusBarBackgroundGradientView;
+@property(retain, nonatomic) AVVisualAnalysisView *visualAnalysisView; // @synthesize visualAnalysisView=_visualAnalysisView;
 - (void)_updateStatusBarBackgroundGradientViewAlpha;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (void)removeAllSublayerTransformAnimations;
-- (void)setVideoGravity:(long long)arg1 removingAllSubayerTransformAnimations:(_Bool)arg2;
+- (void)setVideoGravity:(long long)arg1 removingAllSublayerTransformAnimations:(_Bool)arg2;
 @property(readonly, nonatomic) AVPlaybackContentContainerView *activeContentView;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 playerLayerView:(id)arg2 contentOverlayView:(id)arg3;

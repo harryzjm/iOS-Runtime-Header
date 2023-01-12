@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TextRecognition/CRTextRecognizerModelInput-Protocol.h>
-#import <TextRecognition/MLFeatureProvider-Protocol.h>
-
 @class MLMultiArray, NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CRTextSequenceRecognizerModelCoreMLInput : NSObject <MLFeatureProvider, CRTextRecognizerModelInput>
+@interface CRTextSequenceRecognizerModelCoreMLInput : NSObject
 {
     MLMultiArray *_img_input;
     NSArray *_textFeatureInfo;

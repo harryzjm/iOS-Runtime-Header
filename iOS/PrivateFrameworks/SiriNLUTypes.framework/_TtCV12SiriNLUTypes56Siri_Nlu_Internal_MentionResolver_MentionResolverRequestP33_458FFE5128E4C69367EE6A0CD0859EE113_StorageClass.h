@@ -19,6 +19,10 @@
     MISSING_TYPE *_entityCandidates;
     MISSING_TYPE *_detectedMentions;
     MISSING_TYPE *_maxCandidates;
+    MISSING_TYPE *_matchingSpans;
+    MISSING_TYPE *_turnIndex;
+    MISSING_TYPE *_cdmRequestID;
+    MISSING_TYPE *_contextualSpans;
 }
 
 @end

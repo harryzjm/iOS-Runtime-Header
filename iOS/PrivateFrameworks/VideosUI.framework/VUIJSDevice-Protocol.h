@@ -10,7 +10,7 @@
 
 @protocol VUIJSDevice <JSExport>
 @property(readonly, nonatomic) _Bool supportsSharedWatchPostPlayBinge;
-@property(readonly, nonatomic) _Bool isAlternateLayoutEnabled;
+@property(readonly, nonatomic) _Bool isUI;
 @property(readonly, nonatomic) NSString *osBuildNumber;
 @property(readonly, nonatomic) _Bool runningAnInternalBuild;
 @property(readonly, nonatomic) _Bool isSeedBuild;

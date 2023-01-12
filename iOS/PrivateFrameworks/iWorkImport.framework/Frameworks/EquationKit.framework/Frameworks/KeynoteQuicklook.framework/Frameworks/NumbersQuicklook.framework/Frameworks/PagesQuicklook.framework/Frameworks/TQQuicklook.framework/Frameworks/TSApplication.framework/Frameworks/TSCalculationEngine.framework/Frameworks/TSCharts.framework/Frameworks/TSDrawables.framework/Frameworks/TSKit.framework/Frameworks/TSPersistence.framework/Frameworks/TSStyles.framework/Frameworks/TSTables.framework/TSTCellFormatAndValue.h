@@ -6,13 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <TSTables/NSCopying-Protocol.h>
-#import <TSTables/TSSPropertyCommandSerializing-Protocol.h>
-#import <TSTables/TSTCellDiffing-Protocol.h>
-
 @class NSDate, NSString, TSKFormat, TSWPStorage;
 
-@interface TSTCellFormatAndValue : NSObject <NSCopying, TSTCellDiffing, TSSPropertyCommandSerializing>
+@interface TSTCellFormatAndValue : NSObject
 {
     unsigned int _valueType:8;
     _Bool _useAllSpareFormats;

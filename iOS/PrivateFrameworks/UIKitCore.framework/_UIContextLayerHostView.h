@@ -12,6 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
+- (void)willMoveToWindow:(id)arg1;
+- (void)_prepareForWindowDealloc;
+- (void)setStopsHitTestTransformAccumulation:(_Bool)arg1;
+- (void)setResizesHostedContext:(_Bool)arg1;
+- (void)setInheritsSecurity:(_Bool)arg1;
 @property(copy, nonatomic) UISceneAsynchronousRenderingOptions *asynchronousRenderingOptions;
 @property(nonatomic) unsigned long long renderingMode;
 - (id)layer;

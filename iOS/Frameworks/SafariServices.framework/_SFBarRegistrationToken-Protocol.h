@@ -6,21 +6,24 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSString, UIBarButtonItem, UIImage, UIView;
+@class NSAttributedString, NSString, UIBarButtonItem, UIButton, UIImage, UIMenu, UIView, _SWCollaborationButtonView;
 @protocol UISpringLoadedInteractionSupporting, _SFPopoverSourceInfo;
 
 @protocol _SFBarRegistrationToken <NSObject>
 - (void)updateBarAnimated:(_Bool)arg1;
-- (void)setMenuProvider:(UIMenu * (^)(id, NSArray *))arg1 forBarItem:(long long)arg2;
+- (void)setBarItem:(long long)arg1 menu:(UIMenu *)arg2;
 - (void)setBarItem:(long long)arg1 enabled:(_Bool)arg2;
 - (id <_SFPopoverSourceInfo>)popoverSourceInfoForItem:(long long)arg1;
 - (_Bool)containsBarItem:(long long)arg1;
 
 @optional
+@property(retain, nonatomic) _SWCollaborationButtonView *collaborationButton;
+@property(readonly, nonatomic) UIButton *microphoneButton;
 @property(nonatomic) unsigned long long pageFormatItemState;
 @property(nonatomic) long long state;
 @property(nonatomic) long long contentMode;
-- (void)setBadge:(long long)arg1 forBarItem:(long long)arg2;
+- (void)setAttributedTitle:(NSAttributedString *)arg1 forBarItem:(long long)arg2;
+- (void)setImage:(UIImage *)arg1 forBarItem:(long long)arg2;
 - (void)setTitle:(NSString *)arg1 forBarItem:(long long)arg2;
 - (void)setCustomActivityImage:(UIImage *)arg1 accessibilityLabel:(NSString *)arg2;
 - (void)pulseBarItem:(long long)arg1;

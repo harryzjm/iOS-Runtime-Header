@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBCocoaTouchToolFoundation/UITableViewDelegate-Protocol.h>
-
 @class NSString;
 
-@interface IBUISectionBasedTableViewDelegate : NSObject <UITableViewDelegate>
+@interface IBUISectionBasedTableViewDelegate : NSObject
 {
 }
 

@@ -6,12 +6,10 @@
 
 #import <SafariSharedUI/WBSBookmarkAndHistoryCompletionMatch.h>
 
-#import <MobileSafariUI/CompletionItem-Protocol.h>
-
 @class NSString, SFSearchResult, WBSQuerySuggestion;
 @protocol CompletionItemActionHandler;
 
-@interface WBSBookmarkAndHistoryCompletionMatch (SafariCompletionItem) <CompletionItem>
+@interface WBSBookmarkAndHistoryCompletionMatch (SafariCompletionItem)
 - (_Bool)isEquivalentTo:(id)arg1;
 - (_Bool)shouldPrefetchWithMatchLength:(unsigned long long)arg1;
 

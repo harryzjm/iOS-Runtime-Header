@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <GameController/GCNamedProfile-Protocol.h>
-
 @class GCMotion, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _GCAssertingProfile : NSObject <GCNamedProfile>
+@interface _GCAssertingProfile : NSObject
 {
 }
 

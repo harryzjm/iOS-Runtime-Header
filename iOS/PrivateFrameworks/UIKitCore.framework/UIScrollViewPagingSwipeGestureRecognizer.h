@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class UIDelayedAction, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewPagingSwipeGestureRecognizer
+@interface UIScrollViewPagingSwipeGestureRecognizer : UIGestureRecognizer
 {
     UIScrollView *_scrollView;
     UIDelayedAction *_swipeFailureDelay;

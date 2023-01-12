@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/NSSecureCoding-Protocol.h>
-
 @class HKQuantity, NSDate, NSMutableArray, NSMutableData;
 
 __attribute__((visibility("hidden")))
-@interface _HDDemoDataActivityWorkoutState : NSObject <NSSecureCoding>
+@interface _HDDemoDataActivityWorkoutState : NSObject
 {
     NSMutableData *_associatedObjectUUIDs;
     NSMutableArray *_workoutEvents;

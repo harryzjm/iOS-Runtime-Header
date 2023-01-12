@@ -7,6 +7,7 @@
 #import <Foundation/NSLocale.h>
 
 @interface NSLocale (SafariSharedUIExtras)
++ (id)safari_baseLanguageFromLanguage:(id)arg1;
 + (_Bool)safari_currentLocaleHasSameBaseLanguageAsLocaleIdentifier:(id)arg1;
 + (id)safari_displayNameForLocaleIdentifier:(id)arg1;
 + (id)safari_displayNameForLocaleIdentifier:(id)arg1 inNativeLanguage:(_Bool)arg2;

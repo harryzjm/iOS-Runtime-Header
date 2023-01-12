@@ -7,6 +7,6 @@
 #import <BaseBoard/BSAction.h>
 
 @interface BSAction (UIActionType)
-- (long long)UIActionType;
+@property(readonly, nonatomic) long long UIActionType;
 @end
 

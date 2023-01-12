@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/CNUIContactSaveExecutor-Protocol.h>
-
 @class CNUICoreContactEditingSession, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNUIEditingSessionSaveExecutor : NSObject <CNUIContactSaveExecutor>
+@interface CNUIEditingSessionSaveExecutor : NSObject
 {
     CNUICoreContactEditingSession *_editingSession;
 }

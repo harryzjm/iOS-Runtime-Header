@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UITextInteraction.h"
+
 @class UIResponder;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
-@interface UITextLiveConversionInteraction
+@interface UITextLiveConversionInteraction : UITextInteraction
 {
     UIResponder<UITextInput> *_textInput;
     long long _panOffset;

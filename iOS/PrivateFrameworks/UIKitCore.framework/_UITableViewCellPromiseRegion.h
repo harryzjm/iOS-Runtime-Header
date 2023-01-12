@@ -6,14 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
-#import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
-
-@class NSArray, NSIndexPath, NSString, UITableView, UIView;
-@protocol UIFocusEnvironment, UIFocusItemContainer;
+@class NSArray, NSIndexPath, NSString, UIFocusEffect, UITableView, UIView;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
 __attribute__((visibility("hidden")))
-@interface _UITableViewCellPromiseRegion : NSObject <_UILegacyFocusRegion, _UIFocusRegionContainer>
+@interface _UITableViewCellPromiseRegion : NSObject
 {
     UITableView *_tableView;
     NSIndexPath *_indexPath;
@@ -22,15 +19,20 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property(nonatomic) __weak UITableView *tableView; // @synthesize tableView=_tableView;
-- (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
+- (_Bool)_isLazyFocusItemContainer;
+@property(readonly, nonatomic) id <UICoordinateSpace> coordinateSpace;
+- (id)focusItemsInRect:(struct CGRect)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 - (void)updateFocusIfNeeded;
 - (void)setNeedsFocusUpdate;
-@property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property(readonly, nonatomic, getter=_isEligibleForFocusInteraction) _Bool eligibleForFocusInteraction;
+@property(readonly, nonatomic) struct CGRect frame;
+@property(readonly, nonatomic) _Bool canBecomeFocused;
 @property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 - (id)_focusDebugOverlayParentView;
 - (id)_focusRegionGuides;
@@ -39,8 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)_fulfillPromisedFocusRegion;
 - (_Bool)_isPromiseFocusRegion;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
-@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
-- (_Bool)canBecomeFocused;
 - (_Bool)_legacy_isEligibleForFocusInteraction;
 - (struct CGRect)_focusRegionFrame;
 - (id)_focusRegionFocusSystem;
@@ -50,8 +50,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool areChildrenFocused;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, nonatomic, getter=_isEligibleForFocusOcclusion) _Bool eligibleForFocusOcclusion;
+@property(readonly, copy, nonatomic) UIFocusEffect *focusEffect;
 @property(readonly, copy, nonatomic) NSString *focusGroupIdentifier;
+@property(readonly, nonatomic) long long focusGroupPriority;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTransparentFocusItem;
 @property(readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property(readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;

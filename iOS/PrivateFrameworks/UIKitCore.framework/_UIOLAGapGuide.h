@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "_UILayoutSpacer.h"
+
 __attribute__((visibility("hidden")))
-@interface _UIOLAGapGuide
+@interface _UIOLAGapGuide : _UILayoutSpacer
 {
     unsigned long long _followingItemIndex;
     id _followingItem;

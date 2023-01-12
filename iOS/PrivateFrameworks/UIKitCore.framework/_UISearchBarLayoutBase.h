@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isLayoutRTL) _Bool layoutRTL; // @synthesize layoutRTL=_layoutRTL;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
 @property(nonatomic) long long barMetrics; // @synthesize barMetrics=_barMetrics;
+- (id)description;
 - (void)invalidateLayout;
 @property(readonly, nonatomic, getter=isLayoutValid) _Bool layoutValid;
 - (void)updateLayoutIfNeeded;

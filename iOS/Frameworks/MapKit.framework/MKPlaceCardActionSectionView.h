@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "MKPlaceSectionRowView.h"
+
 @class MKPlaceCardActionItem, NSLayoutConstraint, UIButton, UIView;
 @protocol MKPlaceCardActionSectionViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceCardActionSectionView
+@interface MKPlaceCardActionSectionView : MKPlaceSectionRowView
 {
     _Bool _useMarginLayout;
     _Bool _usingSmallFonts;

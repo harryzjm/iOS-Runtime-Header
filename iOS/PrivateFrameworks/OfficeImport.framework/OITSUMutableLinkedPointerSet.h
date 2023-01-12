@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <OfficeImport/NSFastEnumeration-Protocol.h>
-
 @class OITSULinkedPointerSetEntry;
 
 __attribute__((visibility("hidden")))
-@interface OITSUMutableLinkedPointerSet : NSObject <NSFastEnumeration>
+@interface OITSUMutableLinkedPointerSet : NSObject
 {
     struct __CFDictionary *mDictionary;
     OITSULinkedPointerSetEntry *mHead;

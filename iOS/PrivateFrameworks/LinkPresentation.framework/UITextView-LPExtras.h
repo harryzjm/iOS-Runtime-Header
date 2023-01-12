@@ -7,6 +7,7 @@
 #import <UIKit/UITextView.h>
 
 @interface UITextView (LPExtras)
++ (id)_lp_createInertTextView;
 - (void)_lp_setAttributedString:(id)arg1;
 @end
 

@@ -9,10 +9,10 @@
 @interface _TtC8VideosUI19ChannelBannerLayout
 {
     MISSING_TYPE *$__lazy_storage_$_descriptionTextLayout;
-    MISSING_TYPE *$__lazy_storage_$_textLayout;
     MISSING_TYPE *$__lazy_storage_$_disclaimerTextLayout;
     MISSING_TYPE *$__lazy_storage_$_channelLogoLayout;
     MISSING_TYPE *$__lazy_storage_$_bgImageLayout;
+    MISSING_TYPE *$__lazy_storage_$_textLayout;
     MISSING_TYPE *$__lazy_storage_$_buttonLayout;
 }
 

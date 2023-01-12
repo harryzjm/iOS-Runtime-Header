@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <IBAutolayoutFoundation/IBBinaryArchiving-Protocol.h>
-
 @class NSDictionary, NSSet, NSString;
 
-@interface IBAutolayoutAmbiguityGroup : NSObject <IBBinaryArchiving>
+@interface IBAutolayoutAmbiguityGroup : NSObject
 {
     NSDictionary *_ambiguousViewsToAmbiguityStatus;
     NSSet *_constraintAbstractionsAffectingLayout;

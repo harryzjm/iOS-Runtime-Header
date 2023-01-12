@@ -25,6 +25,7 @@
 + (id)ic_imageNamed:(id)arg1 withTint:(id)arg2;
 + (id)ic_imageWithContentsOfURL:(id)arg1;
 + (id)symbolImageConfigurationWithTextStyle:(id)arg1 scale:(long long)arg2 maxContentSizeCategory:(id)arg3;
++ (id)ic_hierarchicalSystemImageNamed:(id)arg1 colors:(id)arg2 fontTextStyle:(id)arg3 scale:(long long)arg4 maxContentSizeCategory:(id)arg5;
 + (id)ic_largeScaleHierarchicalSystemImageNamed:(id)arg1 colors:(id)arg2 fontTextStyle:(id)arg3 maxContentSizeCategory:(id)arg4;
 + (id)ic_largeScaleHierarchicalSystemImageNamed:(id)arg1 colors:(id)arg2 fontTextStyle:(id)arg3;
 + (id)ic_largeScaleHierarchicalSystemImageNamed:(id)arg1 colors:(id)arg2;
@@ -39,6 +40,7 @@
 + (id)ic_systemImageNamed:(id)arg1 textStyle:(id)arg2;
 + (id)ic_smallSystemImageNamed:(id)arg1;
 + (id)ic_largeSystemImageNamed:(id)arg1;
++ (id)ic_applicationIconImageWithSize:(struct CGSize)arg1;
 - (struct CGContext *)ic_newARGB8BitmapContextFromImage:(struct CGImage *)arg1;
 - (struct CGRect)ic_cropRectZeroAlpha;
 - (id)ic_decodeInBackground;
@@ -49,18 +51,16 @@
 - (id)ic_PNGData;
 - (id)ic_JPEGDataWithOrientation:(long long)arg1;
 - (id)ic_JPEGData;
+- (id)ic_imageCenteredWithBackgroundColor:(id)arg1 size:(struct CGSize)arg2;
 - (id)ic_horizontallyMirroredImage;
 - (long long)ic_imageOrientation;
 - (struct CGImage *)ic_CGImage;
+- (id)ic_imageWithBackgroundColor:(id)arg1;
 - (id)ic_imageFromRect:(struct CGRect)arg1;
 - (id)ic_scaledImageWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)ic_scaledImageMaxDimension:(double)arg1 scale:(double)arg2;
 - (id)ic_scaledImageMinDimension:(double)arg1 scale:(double)arg2;
 - (id)ic_imageWithTint:(id)arg1 size:(struct CGSize)arg2;
-- (id)ic_imageWithBackgroundColor:(id)arg1;
-- (id)ic_imageWithBackgroundColor:(id)arg1 size:(struct CGSize)arg2;
-- (id)ic_imageWithSymbolOverlayWithName:(id)arg1 overlaySymbolConfiguration:(id)arg2 overlayBottomOffset:(double)arg3 size:(struct CGSize)arg4;
-- (id)ic_imageWithSymbolOverlayWithName:(id)arg1 overlayBottomOffset:(double)arg2 size:(struct CGSize)arg3;
 - (id)ic_imageWithTextStyle:(id)arg1 scale:(long long)arg2;
 - (id)ic_imageWithTextStyle:(id)arg1;
 - (id)ic_imageWithFont:(id)arg1 scale:(long long)arg2;

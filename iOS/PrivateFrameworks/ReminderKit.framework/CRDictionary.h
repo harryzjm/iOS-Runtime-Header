@@ -6,14 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ReminderKit/CRCoding-Protocol.h>
-#import <ReminderKit/CRDataType-Protocol.h>
-#import <ReminderKit/NSFastEnumeration-Protocol.h>
-
 @class CRDocument, NSMapTable, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CRDictionary : NSObject <CRDataType, NSFastEnumeration, CRCoding>
+@interface CRDictionary : NSObject
 {
     CRDocument *_document;
     NSMapTable *_contents;

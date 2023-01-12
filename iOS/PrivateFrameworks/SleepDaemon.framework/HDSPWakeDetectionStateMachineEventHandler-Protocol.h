@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SleepDaemon/HKSPStateMachineEventHandler-Protocol.h>
+#import <SleepDaemon/HKSPPersistentStateMachineEventHandler-Protocol.h>
 
 @class NSDate;
 
-@protocol HDSPWakeDetectionStateMachineEventHandler <HKSPStateMachineEventHandler>
+@protocol HDSPWakeDetectionStateMachineEventHandler <HKSPPersistentStateMachineEventHandler>
 - (void)earlyWakeUpWasNotifiedRemotely;
-- (void)wakeupEventDetected:(NSDate *)arg1;
-- (void)wakeDetectionEventDue;
+- (void)wakeupEventDetected:(unsigned long long)arg1 date:(NSDate *)arg2;
 @end
 

@@ -6,11 +6,9 @@
 
 #import <UIKit/UIButton.h>
 
-#import <MapsUI/MKActivityObserving-Protocol.h>
-
 @class NSString;
 
-@interface UIButton (MKActivityObserving) <MKActivityObserving>
+@interface UIButton (MKActivityObserving)
 + (id)_mapsui_sectionHeaderButton;
 + (id)_mapsui_sectionButton;
 - (void)endAnimatingActivityIndicatorWithError:(id)arg1;

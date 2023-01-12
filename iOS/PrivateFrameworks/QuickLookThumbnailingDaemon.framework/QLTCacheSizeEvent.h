@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <QuickLookThumbnailingDaemon/QLTAnalyticsEventProtocol-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLTCacheSizeEvent : NSObject <QLTAnalyticsEventProtocol>
+@interface QLTCacheSizeEvent : NSObject
 {
     unsigned long long _cacheSize;
 }

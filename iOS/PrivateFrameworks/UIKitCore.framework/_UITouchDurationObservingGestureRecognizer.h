@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "UIGestureRecognizer.h"
+
 @class CADisplayLink, UIDelayedAction;
 
 __attribute__((visibility("hidden")))
-@interface _UITouchDurationObservingGestureRecognizer
+@interface _UITouchDurationObservingGestureRecognizer : UIGestureRecognizer
 {
     _Bool _hasExceededAllowableMovement;
     CADisplayLink *_displayLink;

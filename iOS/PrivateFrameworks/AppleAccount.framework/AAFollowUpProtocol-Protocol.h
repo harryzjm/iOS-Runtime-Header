@@ -7,6 +7,8 @@
 @class NSDictionary, NSString;
 
 @protocol AAFollowUpProtocol
+- (_Bool)dismissFollowUpWithIdentifier:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)postFollowUpWithIdentifier:(NSString *)arg1 userInfo:(NSDictionary *)arg2 error:(id *)arg3;
 - (void)dismissFollowUpWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)pendingFollowUpWithIdentifier:(NSString *)arg1 completion:(void (^)(FLFollowUpItem *, NSError *))arg2;
 - (void)postFollowUpWithIdentifier:(NSString *)arg1 userInfo:(NSDictionary *)arg2 completion:(void (^)(_Bool, NSError *))arg3;

@@ -33,79 +33,10 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct addrinfo {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    unsigned int _field5;
-    char *_field6;
-    struct sockaddr *_field7;
-    struct addrinfo *_field8;
-};
-
-struct in_addr {
-    unsigned int s_addr;
-};
-
 struct sockaddr {
     unsigned char _field1;
     unsigned char _field2;
     char _field3[14];
-};
-
-struct sockaddr_in {
-    unsigned char sin_len;
-    unsigned char sin_family;
-    unsigned short sin_port;
-    struct in_addr sin_addr;
-    char sin_zero[8];
-};
-
-struct tagCONNRESULT {
-    unsigned int dwCallID;
-    int iResultCount;
-    int iRole;
-    unsigned int dwRemoteCallID;
-    int proto;
-    int bIfRelay;
-    unsigned short wRelayServType;
-    unsigned short wChannelNumber;
-    struct tagIPPORT mbLocal;
-    struct tagIPPORT mbRemote;
-    struct tagIPPORT mbSrc;
-    struct tagIPPORT mbDst;
-    struct tagIPPORT mbRemoteSrc;
-    struct tagIPPORT mbRelayExt;
-    unsigned int dwRTT;
-    int bIfLocalCellularQoS;
-    int bIfRemoteCellularQoS;
-    int iLocalCellTech;
-    int iRemoteCellTech;
-    unsigned short wCellularMTU;
-    int bIfUpgrade;
-    int bIfPrimary;
-    int bIfReplaceOnly;
-    struct tagCONNRESULT *next;
-    int channelID;
-};
-
-struct tagIPPORT {
-    int iFlags;
-    char szIfName[16];
-    union {
-        unsigned int dwIPv4;
-        unsigned char abIPv6[16];
-    } IP;
-    unsigned short wPort;
-};
-
-struct tagVoiceChatBeacon {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
 };
 
 #pragma mark Typedef'd Structures

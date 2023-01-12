@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreKitUI/NSCopying-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface SKUITracklistColumn : NSObject <NSCopying>
+@interface SKUITracklistColumn : NSObject
 {
     long long _columnIdentifier;
     long long _contentAlignment;

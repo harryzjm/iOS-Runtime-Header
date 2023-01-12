@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBRequest.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKCDPInitializeContainerRequest : PBRequest <NSCopying>
+@interface CKCDPInitializeContainerRequest : PBRequest
 {
     NSString *_containerName;
     NSString *_environment;

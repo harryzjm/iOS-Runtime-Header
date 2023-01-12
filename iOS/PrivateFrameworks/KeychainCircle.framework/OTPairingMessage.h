@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <KeychainCircle/NSCopying-Protocol.h>
-
 @class OTApplicantToSponsorRound2M1, OTSponsorToApplicantRound1M2, OTSponsorToApplicantRound2M2, OTSupportOctagonMessage, OTSupportSOSMessage;
 
 __attribute__((visibility("hidden")))
-@interface OTPairingMessage : PBCodable <NSCopying>
+@interface OTPairingMessage : PBCodable
 {
     OTSponsorToApplicantRound1M2 *_epoch;
     OTApplicantToSponsorRound2M1 *_prepare;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIBackdropViewSettings;
+#import "_UIBackdropViewSettings.h"
 
 __attribute__((visibility("hidden")))
-@interface _UIBackdropViewSettingsCombiner
+@interface _UIBackdropViewSettingsCombiner : _UIBackdropViewSettings
 {
     _UIBackdropViewSettings *_inputSettingsA;
     _UIBackdropViewSettings *_inputSettingsB;

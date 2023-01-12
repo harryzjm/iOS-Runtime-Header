@@ -6,6 +6,8 @@
 
 #import <Foundation/NSUUID.h>
 
+@class NSString;
+
 @interface NSUUID (HomeKitClient)
 + (_Bool)hm_setAssistantIdentifierSalt:(id)arg1;
 + (id)hm_deriveUUIDForAssistantFromBaseUUID:(id)arg1;
@@ -17,5 +19,11 @@
 + (id)hm_deriveUUIDFromBaseUUID:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
 + (id)hm_uuid:(id)arg1 identifierSalt:(id)arg2 withSalts:(id)arg3;
 - (id)hm_convertToData;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

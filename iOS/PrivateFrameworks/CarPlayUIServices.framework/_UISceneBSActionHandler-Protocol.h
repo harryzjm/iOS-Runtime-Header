@@ -4,14 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CarPlayUIServices/NSObject-Protocol.h>
+#import <CarPlayUIServices/_UISceneBSActionResponding-Protocol.h>
+#import <CarPlayUIServices/_UISceneConnectionOptionProviding-Protocol.h>
 
-@class FBSScene, FBSSceneTransitionContext, NSSet, UIScene, UISceneSession, _UISceneConnectionOptionsContext;
-
-@protocol _UISceneBSActionHandler <NSObject>
-- (NSSet *)_respondToActions:(NSSet *)arg1 forFBSScene:(FBSScene *)arg2 inUIScene:(UIScene *)arg3 fromTransitionContext:(FBSSceneTransitionContext *)arg4;
-
-@optional
-- (_UISceneConnectionOptionsContext *)_launchOptionsFromActions:(NSSet *)arg1 forFBSScene:(FBSScene *)arg2 uiSceneSession:(UISceneSession *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
+@protocol _UISceneBSActionHandler <_UISceneBSActionResponding, _UISceneConnectionOptionProviding>
 @end
 

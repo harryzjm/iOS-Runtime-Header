@@ -6,13 +6,11 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <ActivitySharing/IDSBatchIDQueryControllerDelegate-Protocol.h>
-
 @class ASReachabilityStatusCache, IDSBatchIDQueryController, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString;
 @protocol OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface ASReachabilityQueryOperation : NSOperation <IDSBatchIDQueryControllerDelegate>
+@interface ASReachabilityQueryOperation : NSOperation
 {
     _Bool _finished;
     _Bool _executing;

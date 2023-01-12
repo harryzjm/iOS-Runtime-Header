@@ -6,12 +6,10 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeSettingsUI/STGroupSpecifierProviderDelegate-Protocol.h>
-
 @class NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface STListViewController : PSListController <STGroupSpecifierProviderDelegate>
+@interface STListViewController : PSListController
 {
     NSArray *_specifierProviders;
     NSMutableDictionary *_cellHeightBySpecifierIdentifier;

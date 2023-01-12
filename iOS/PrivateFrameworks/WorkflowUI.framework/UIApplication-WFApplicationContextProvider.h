@@ -6,13 +6,10 @@
 
 #import <UIKit/UIApplication.h>
 
-#import <WorkflowUI/WFApplicationContextProvider-Protocol.h>
-
 @class NSString;
 
-@interface UIApplication (WFApplicationContextProvider) <WFApplicationContextProvider>
+@interface UIApplication (WFApplicationContextProvider)
 @property(readonly, nonatomic) long long userInterfaceStyle;
-- (_Bool)shouldReverseLayoutDirection;
 - (long long)currentApplicationStateForWFApplicationContext:(id)arg1;
 @property(nonatomic) _Bool wfIdleTimerDisabled;
 - (id)applicationForWFApplicationContext:(id)arg1;

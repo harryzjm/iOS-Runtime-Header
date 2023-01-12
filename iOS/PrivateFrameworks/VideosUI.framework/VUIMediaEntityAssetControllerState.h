@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
 @class NSDate;
 
 __attribute__((visibility("hidden")))
-@interface VUIMediaEntityAssetControllerState : NSObject <NSCopying>
+@interface VUIMediaEntityAssetControllerState : NSObject
 {
     _Bool _supportsCancellation;
     _Bool _supportsPausing;

@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AACCore/AEPerformancePrimitivesInFlightInterval-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface AEEmptyPerformancePrimitivesInFlightInterval : NSObject <AEPerformancePrimitivesInFlightInterval>
+@interface AEEmptyPerformancePrimitivesInFlightInterval : NSObject
 {
 }
 

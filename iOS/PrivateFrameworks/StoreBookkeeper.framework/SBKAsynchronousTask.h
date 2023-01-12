@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSMutableArray, NSString, SBKTaskAssertion;
+@class MSVTaskAssertion, NSError, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     CDUnknownBlockType _expirationHandler;
     CDUnknownBlockType _finishedHandler;
-    SBKTaskAssertion *_taskAssertion;
+    MSVTaskAssertion *_taskAssertion;
     NSMutableArray *_completions;
 }
 
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
-@property(retain, nonatomic) SBKTaskAssertion *taskAssertion; // @synthesize taskAssertion=_taskAssertion;
+@property(retain, nonatomic) MSVTaskAssertion *taskAssertion; // @synthesize taskAssertion=_taskAssertion;
 - (void)invokeTaskCompletionBlocksWithBlock:(CDUnknownBlockType)arg1;
 - (void)addTaskCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)invalidate;

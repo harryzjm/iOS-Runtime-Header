@@ -16,7 +16,8 @@
     MISSING_TYPE *todayFeedConfigManager;
     MISSING_TYPE *assetManager;
     MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *test;
+    MISSING_TYPE *localNewsChannelService;
+    MISSING_TYPE *testOverrides;
 }
 
 @end

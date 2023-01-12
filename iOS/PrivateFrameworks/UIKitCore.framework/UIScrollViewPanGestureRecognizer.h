@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/_UIScrollEventAsyncDeliverable-Protocol.h>
+#import "UIPanGestureRecognizer.h"
 
 @class NSString, UIScrollView, UIScrollViewDirectionalPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface UIScrollViewPanGestureRecognizer <_UIScrollEventAsyncDeliverable>
+@interface UIScrollViewPanGestureRecognizer : UIPanGestureRecognizer
 {
     UIScrollView *_scrollView;
     SEL _scrollViewAction;

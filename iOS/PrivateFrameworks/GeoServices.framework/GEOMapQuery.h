@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <GeoServices/NSCopying-Protocol.h>
-
 @class GEOLocation, GEOMapRegion, GEOPlaceSearchRequest, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOMapQuery : PBCodable <NSCopying>
+@interface GEOMapQuery : PBCodable
 {
     PBDataReader *_reader;
     struct GEOSessionID _sessionID;

@@ -13,17 +13,23 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *editor;
+    MISSING_TYPE *formatManager;
     MISSING_TYPE *packages;
     MISSING_TYPE *errorViewController;
+    MISSING_TYPE *groupViewController;
     MISSING_TYPE *canvasViewController;
     MISSING_TYPE *scrollView;
     MISSING_TYPE *rulerView;
     MISSING_TYPE *$__lazy_storage_$_overlayView;
     MISSING_TYPE *contentView;
+    MISSING_TYPE *snapshotCanvasView;
+    MISSING_TYPE *backgroundView;
     MISSING_TYPE *statusView;
     MISSING_TYPE *zoomLabel;
     MISSING_TYPE *styler;
     MISSING_TYPE *lastLayoutBounds;
+    MISSING_TYPE *editorPathView;
+    MISSING_TYPE *editorToolbarItems;
 }
 
 - (void).cxx_destruct;

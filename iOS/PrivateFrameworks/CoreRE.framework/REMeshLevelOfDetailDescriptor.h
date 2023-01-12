@@ -6,10 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreRE/NSSecureCoding-Protocol.h>
-
 __attribute__((visibility("hidden")))
-@interface REMeshLevelOfDetailDescriptor : NSObject <NSSecureCoding>
+@interface REMeshLevelOfDetailDescriptor : NSObject
 {
     unsigned int _meshPartEndIndex;
     float _minScreenArea;

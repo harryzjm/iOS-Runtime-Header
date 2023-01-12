@@ -6,12 +6,10 @@
 
 #import <ITMLKit/IKJSObject.h>
 
-#import <StoreKitUI/SKUIJSTabBar-Protocol.h>
-
 @class NSArray, SKUIApplicationController, SKUIJSTabBarItem;
 
 __attribute__((visibility("hidden")))
-@interface SKUIJSTabBar : IKJSObject <SKUIJSTabBar>
+@interface SKUIJSTabBar : IKJSObject
 {
     SKUIApplicationController *_applicationController;
     NSArray *_tabs;

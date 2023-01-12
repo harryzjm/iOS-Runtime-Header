@@ -6,9 +6,9 @@
 
 #import <MediaControls/NSObject-Protocol.h>
 
-@class MRURoutingSubtitleController, NSString;
+@class MRURoutingSubtitleController, NSString, UIImage;
 
 @protocol MRURoutingSubtitleControllerDelegate <NSObject>
-- (void)routingSubtitleStateController:(MRURoutingSubtitleController *)arg1 didUpdateText:(NSString *)arg2 accessory:(long long)arg3;
+- (void)routingSubtitleStateController:(MRURoutingSubtitleController *)arg1 didUpdateText:(NSString *)arg2 icon:(UIImage *)arg3 accessory:(long long)arg4;
 @end
 

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <WebKit/CAAnimationDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKAnimationDelegate : NSObject <CAAnimationDelegate>
+@interface WKAnimationDelegate : NSObject
 {
     unsigned long long _layerID;
     void *_layerTreeHost;

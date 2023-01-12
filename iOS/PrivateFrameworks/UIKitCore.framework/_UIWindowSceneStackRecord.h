@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/BSDebugDescriptionProviding-Protocol.h>
-
 @class NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface _UIWindowSceneStackRecord : NSObject <BSDebugDescriptionProviding>
+@interface _UIWindowSceneStackRecord : NSObject
 {
     UIWindowScene *_windowScene;
     unsigned long long _evaluationStrategy;

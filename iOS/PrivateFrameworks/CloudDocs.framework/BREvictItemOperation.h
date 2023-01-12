@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import "BROperation.h"
+
 @class NSURL;
 
 __attribute__((visibility("hidden")))
-@interface BREvictItemOperation
+@interface BREvictItemOperation : BROperation
 {
     unsigned long long _section;
     NSURL *_url;

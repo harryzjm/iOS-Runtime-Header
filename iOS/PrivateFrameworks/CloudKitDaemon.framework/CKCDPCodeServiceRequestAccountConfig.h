@@ -6,11 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <CloudKitDaemon/NSCopying-Protocol.h>
-
 @class NSString;
 
-@interface CKCDPCodeServiceRequestAccountConfig : PBCodable <NSCopying>
+@interface CKCDPCodeServiceRequestAccountConfig : PBCodable
 {
     unsigned long long _accountFlags;
     long long _lastWebActivityUTCMills;

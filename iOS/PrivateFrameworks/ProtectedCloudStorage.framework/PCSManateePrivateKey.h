@@ -6,12 +6,10 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <ProtectedCloudStorage/NSCopying-Protocol.h>
-
 @class NSData;
 
 __attribute__((visibility("hidden")))
-@interface PCSManateePrivateKey : PBCodable <NSCopying>
+@interface PCSManateePrivateKey : PBCodable
 {
     NSData *_privateKey;
     NSData *_publicKeyInfo;

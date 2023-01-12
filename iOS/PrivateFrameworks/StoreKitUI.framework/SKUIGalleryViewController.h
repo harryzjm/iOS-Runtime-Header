@@ -6,16 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKitUI/SKUIArtworkRequestDelegate-Protocol.h>
-#import <StoreKitUI/UIPageViewControllerDataSource-Protocol.h>
-#import <StoreKitUI/UIPageViewControllerDelegate-Protocol.h>
-#import <StoreKitUI/UIScrollViewDelegate-Protocol.h>
-
 @class NSMapTable, NSObject, NSString, SKUIGalleryPageComponent, SKUIMediaComponent, SKUIResourceLoader, UIPageControl, UIPageViewController, UITapGestureRecognizer;
 @protocol OS_dispatch_source, SKUIEmbeddedMediaViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SKUIGalleryViewController : UIViewController <SKUIArtworkRequestDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface SKUIGalleryViewController : UIViewController
 {
     SKUIResourceLoader *_artworkLoader;
     NSMapTable *_componentArtworkRequests;

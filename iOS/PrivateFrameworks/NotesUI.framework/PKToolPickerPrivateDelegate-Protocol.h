@@ -11,6 +11,8 @@
 @protocol PKToolPickerPrivateDelegate <NSObject>
 
 @optional
+- (void)_toggleLassoToolEditingViewColorPickerForToolPicker:(PKToolPicker *)arg1;
+- (UIColor *)_toolPickerCurrentSelectionColor:(PKToolPicker *)arg1;
 - (_Bool)_toolPicker:(PKToolPicker *)arg1 shouldChangeSelectedToolColor:(UIColor *)arg2;
 - (NSUndoManager *)_toolPickerUndoManager:(PKToolPicker *)arg1;
 - (void)_toolPicker:(PKToolPicker *)arg1 shouldSetVisible:(_Bool)arg2;

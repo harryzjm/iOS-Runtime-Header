@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NumbersQuicklook/TNAdditionalContentProviding-Protocol.h>
-
 @protocol TNAnnotationPrintingHelperDataSource;
 
-@interface TNAnnotationPrintingHelper : NSObject <TNAdditionalContentProviding>
+@interface TNAnnotationPrintingHelper : NSObject
 {
     id <TNAnnotationPrintingHelperDataSource> _dataSource;
 }

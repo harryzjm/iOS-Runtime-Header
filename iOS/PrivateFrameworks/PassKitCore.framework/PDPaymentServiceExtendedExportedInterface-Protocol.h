@@ -6,14 +6,16 @@
 
 #import <PassKitCore/PDPaymentServiceExportedInterface-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSSet, NSString, PKExpressTransactionState, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory, PKValueAddedServiceTransaction, PKVerificationChannel;
+@class NSData, NSDate, NSDictionary, NSSet, NSString, PKApplicationMessageKey, PKExpressTransactionState, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentCommutePlanReminder, PKPaymentPass, PKPaymentTransaction, PKTransitAppletHistory, PKValueAddedServiceTransaction, PKVerificationChannel;
 
 @protocol PDPaymentServiceExtendedExportedInterface <PDPaymentServiceExportedInterface>
 - (void)handleStandaloneTransaction:(long long)arg1 forCredentialIdentifier:(NSString *)arg2 appletIdentifier:(NSString *)arg3 handler:(void (^)(_Bool))arg4;
+- (void)simulateExpressTransactionForPassUniqueIdentifier:(NSString *)arg1 withCompletion:(void (^)(void))arg2;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
-- (void)passbookBannerDidLaunch:(void (^)(void))arg1;
 - (void)passbookUIServiceDidLaunch:(void (^)(void))arg1;
-- (void)scheduleAutomaticPresentationAvailableNotificationForPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(_Bool))arg2;
+- (void)userNotificationActionPerformed:(unsigned long long)arg1 applicationMessageContentIdentifier:(NSString *)arg2 completion:(void (^)(void))arg3;
+- (void)requestNotificationAuthorizationWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)requestNotificationAuthorizationIfNecessaryWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)removeProductsCache;
 - (void)setDeviceUpgradeTasksContextBuildVersion:(NSString *)arg1 upgradeTaskVersion:(long long)arg2 retryCount:(long long)arg3;
 - (void)scheduleDeviceUpgradeTasksIfNecessaryWithRandomizeStartDate:(_Bool)arg1;
@@ -51,6 +53,10 @@
 - (void)messagesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *))arg2;
 - (void)submitVerificationCode:(NSString *)arg1 verificationData:(NSData *)arg2 forDPANIdentifier:(NSString *)arg3 handler:(void (^)(_Bool, NSError *))arg4;
 - (void)usingSynchronousProxy:(_Bool)arg1 tilesForPassWithUniqueIdentifer:(NSString *)arg2 completion:(void (^)(NSArray *))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 updateFinanceKitApplicationMessagesWithCompletion:(void (^)(void))arg2;
+- (void)usingSynchronousProxy:(_Bool)arg1 removeApplicationMessageWithKey:(PKApplicationMessageKey *)arg2 completion:(void (^)(void))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 tappedApplicationMessageWithKey:(PKApplicationMessageKey *)arg2 completion:(void (^)(void))arg3;
+- (void)usingSynchronousProxy:(_Bool)arg1 applicationMessagesWithCompletion:(void (^)(NSArray *))arg2;
 - (void)messagesAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSString *))arg2;
 - (void)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(NSString *))arg2;
 - (void)paymentDeviceFieldPropertiesWithHandler:(void (^)(PKFieldProperties *))arg1;

@@ -6,11 +6,9 @@
 
 #import <HealthKit/HKDiagnosticTestReport.h>
 
-#import <HealthDaemon/HDCoding-Protocol.h>
-
 @class NSString;
 
-@interface HKDiagnosticTestReport (HDCodingSupport) <HDCoding>
+@interface HKDiagnosticTestReport (HDCodingSupport)
 + (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
 - (_Bool)addCodableRepresentationToCollection:(id)arg1;

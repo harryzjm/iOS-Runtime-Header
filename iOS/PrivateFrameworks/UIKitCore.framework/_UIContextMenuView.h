@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import "UIView.h"
 
 @class NSArray, NSDate, NSIndexPath, NSString, NSTimer, UICollectionViewDiffableDataSource, UIHoverGestureRecognizer, UISelectionFeedbackGenerator, _UIContextMenuLinkedList, _UIContextMenuListView, _UIContextMenuNode, _UIContextMenuSelectionDelayGestureRecognizer, _UIContextMenuSelectionGestureRecognizer;
-@protocol _UIContextMenuViewDelegate;
+@protocol _UIContextMenuHierarchyLayout, _UIContextMenuViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIContextMenuView <UIGestureRecognizerDelegate>
+@interface _UIContextMenuView : UIView
 {
     _Bool _showsShadow;
     _Bool _reversesActionOrder;
     _Bool _scrubbingEnabled;
     _Bool _isComputingPreferredSize;
     _Bool _retainHighlightOnMenuNavigation;
+    _Bool _shouldAvoidInputViews;
     _Bool _hasTrackingTouch;
     id <_UIContextMenuViewDelegate> _delegate;
     unsigned long long _hierarchyStyle;
@@ -30,14 +31,23 @@ __attribute__((visibility("hidden")))
     UISelectionFeedbackGenerator *_feedbackGenerator;
     _UIContextMenuLinkedList *_submenus;
     NSTimer *_autoNavigationTimer;
+    NSTimer *_autoUnhighlightTimer;
     NSIndexPath *_unselectableIndexPath;
+    _UIContextMenuListView *_hoveredListView;
+    id <_UIContextMenuHierarchyLayout> _layout;
     struct CGSize _visibleContentSize;
+    struct CGSize _maxContainerSize;
 }
 
 - (void).cxx_destruct;
+@property(retain, nonatomic) id <_UIContextMenuHierarchyLayout> layout; // @synthesize layout=_layout;
+@property(retain, nonatomic) _UIContextMenuListView *hoveredListView; // @synthesize hoveredListView=_hoveredListView;
+@property(nonatomic) struct CGSize maxContainerSize; // @synthesize maxContainerSize=_maxContainerSize;
 @property(nonatomic) _Bool hasTrackingTouch; // @synthesize hasTrackingTouch=_hasTrackingTouch;
 @property(copy, nonatomic) NSIndexPath *unselectableIndexPath; // @synthesize unselectableIndexPath=_unselectableIndexPath;
+@property(retain, nonatomic) NSTimer *autoUnhighlightTimer; // @synthesize autoUnhighlightTimer=_autoUnhighlightTimer;
 @property(retain, nonatomic) NSTimer *autoNavigationTimer; // @synthesize autoNavigationTimer=_autoNavigationTimer;
+@property(nonatomic) _Bool shouldAvoidInputViews; // @synthesize shouldAvoidInputViews=_shouldAvoidInputViews;
 @property(nonatomic) _Bool retainHighlightOnMenuNavigation; // @synthesize retainHighlightOnMenuNavigation=_retainHighlightOnMenuNavigation;
 @property(nonatomic) _Bool isComputingPreferredSize; // @synthesize isComputingPreferredSize=_isComputingPreferredSize;
 @property(retain, nonatomic) _UIContextMenuLinkedList *submenus; // @synthesize submenus=_submenus;
@@ -62,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleMenuPressGesture:(id)arg1;
 - (void)_handleRightArrowKey:(id)arg1;
 - (void)_handleLeftArrowKey:(id)arg1;
+- (void)_selectPreviousMenuIfPossible;
 - (void)_handleEscapeKey:(id)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)keyCommands;
@@ -70,12 +81,14 @@ __attribute__((visibility("hidden")))
 - (id)preferredFocusEnvironments;
 - (void)_clearAutoNavigationTimer;
 - (void)_setAutoNavigationTimerIfNecessaryForElement:(id)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_setHighlightedIndexPath:(id)arg1 playFeedback:(_Bool)arg2;
 - (void)_handleHoverGestureRecognizer:(id)arg1;
 - (void)_handleSelectionGesture:(id)arg1;
-- (void)_handleSelectionForElement:(id)arg1 shouldUnhighlightPreviousElement:(_Bool)arg2;
+- (void)_handleSelectionForElement:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_updateSelectionGestureAllowableMovement;
 - (id)_newListViewWithMenu:(id)arg1 position:(unsigned long long)arg2;
 - (void)_displayMenu:(id)arg1 inPlaceOfMenu:(id)arg2 updateType:(unsigned long long)arg3 alongsideAnimations:(CDUnknownBlockType)arg4;
@@ -84,7 +97,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *visibleMenus;
 @property(readonly, nonatomic) _UIContextMenuListView *currentListView;
 - (void)layoutSubviews;
-- (struct CGSize)preferredContentSizeWithWidth:(double)arg1;
+- (struct CGSize)preferredContentSizeWithinContainerSize:(struct CGSize)arg1;
 - (struct CGRect)activeSubmenuFrameInCoordinateSpace:(id)arg1;
 - (void)flashScrollIndicators;
 - (void)scrollToFirstSignificantAction;

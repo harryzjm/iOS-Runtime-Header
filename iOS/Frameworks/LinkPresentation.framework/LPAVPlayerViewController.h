@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)initWithPlayerLayerView:(id)arg1;
 
 @end
 

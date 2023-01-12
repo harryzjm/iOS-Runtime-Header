@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
-
 @class ACAccount, AMSURLTaskInfo, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceActionResponse : NSObject <AMSFinancePerformable>
+@interface AMSFinanceActionResponse : NSObject
 {
     _Bool _shouldRetry;
     _Bool _tidContinue;
@@ -23,6 +21,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_URLForCommerceUIFromURL:(id)arg1 taskInfo:(id)arg2 tidContinue:(_Bool)arg3;
++ (_Bool)_isModernURL:(id)arg1 taskInfo:(id)arg2;
++ (id)_deepLinkForURL:(id)arg1 taskInfo:(id)arg2 gotoType:(long long)arg3 isAccountURL:(_Bool)arg4 tidContinue:(_Bool)arg5;
 + (id)_presentEngagementForURL:(id)arg1 taskInfo:(id)arg2;
 + (id)_bodyObjectFromRequest:(id)arg1;
 + (id)handleGotoURL:(id)arg1 taskInfo:(id)arg2 gotoType:(long long)arg3 accountURL:(_Bool)arg4 tidContinue:(_Bool)arg5 retryOnSuccess:(_Bool)arg6;

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDaemon/CADAccessInterface-Protocol.h>
+#import "CADOperationGroup.h"
 
 __attribute__((visibility("hidden")))
-@interface CADAccessOperationGroup <CADAccessInterface>
+@interface CADAccessOperationGroup : CADOperationGroup
 {
 }
 
-+ (_Bool)requiresEventOrReminderAccess;
-+ (_Bool)requiresReminderAccess;
 + (_Bool)requiresEventAccess;
 - (void)CADDatabaseResetWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetAccess:(CDUnknownBlockType)arg1;

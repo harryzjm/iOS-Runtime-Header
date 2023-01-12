@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface AVContentKeyRequestInternal : NSObject
 {
-    AVContentKeySession *session;
+    AVContentKeySession *weakSession;
     AVContentKeyReportGroup *reportGroup;
     id identifier;
     NSData *keyIDFromInitializationData;
     NSData *initializationData;
     long long status;
-    int responseInfoSent;
+    int responseParamsSent;
     _Bool providesPersistableKey;
     NSDictionary *preloadingRequestOptions;
     struct OpaqueFigCPECryptor *figCryptor;
@@ -34,7 +34,12 @@ __attribute__((visibility("hidden")))
     AVContentKeySpecifier *contentKeySpecifier;
     AVContentKey *contentKey;
     NSData *contentIdentifier;
+    struct OpaqueFigCFWeakReferenceHolder *weakContentKeyBoss;
+    long long requestID;
+    struct FigContentKeySpecifier *keySpecifier;
 }
+
+- (void).cxx_destruct;
 
 @end
 

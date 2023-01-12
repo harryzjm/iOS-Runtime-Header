@@ -6,15 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-#import <SafariServices/SFSettingsAlertItemView-Protocol.h>
-
 @class NSString, _SFSettingsAlertItem, _SFSettingsAlertItemBackgroundView;
 @protocol SFSettingsAlertItemViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertCustomViewContainer : UIView <SFSettingsAlertItemView>
+@interface _SFSettingsAlertCustomViewContainer : UIView
 {
     _SFSettingsAlertItemBackgroundView *_backgroundView;
+    _Bool _enabled;
     _Bool _hidesSeparator;
     id <SFSettingsAlertItemViewDelegate> _delegate;
     UIView *_contentView;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak _SFSettingsAlertItem *item; // @synthesize item=_item;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak id <SFSettingsAlertItemViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(readonly, nonatomic) long long backgroundMode;
 - (id)initWithContentView:(id)arg1;
 

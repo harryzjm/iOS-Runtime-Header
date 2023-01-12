@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_isFaceprintJunk:(shared_ptr_0a6daad2)arg1;
 - (_Bool)_saveFaceprint:(shared_ptr_0a6daad2)arg1 toFaceObservation:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)_addFaceAnalysisResultsFromMap:(void *)arg1 toFaceAttributeObject:(id)arg2 forOriginatingRequestSpecifier:(id)arg3;
+- (id)internalProcessUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5 progressHandler:(CDUnknownBlockType)arg6;
 - (_Bool)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 
 @end

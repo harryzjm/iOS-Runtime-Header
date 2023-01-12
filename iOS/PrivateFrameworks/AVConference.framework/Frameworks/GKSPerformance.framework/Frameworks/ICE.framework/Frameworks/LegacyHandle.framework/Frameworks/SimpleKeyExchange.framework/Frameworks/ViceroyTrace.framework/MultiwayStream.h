@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, VCHistogram;
 
 __attribute__((visibility("hidden")))
 @interface MultiwayStream : NSObject
@@ -41,29 +41,56 @@ __attribute__((visibility("hidden")))
     unsigned int _videoFrameIncompleteNextTSCounter;
     unsigned int _videoFrameTotalIncompleteCounter;
     unsigned int _decodedVideoFrameEnqueueCounter;
-    unsigned int _evictedFramesLikelyRecoverableCount;
     unsigned int _evictedFramesTrackedCount;
     unsigned int _evictedFramesAnalysisValidIntervals;
+    unsigned int _evictedFramesRecoveredCount;
     unsigned int _lateFramesScheduledCount;
     double _evictedFramesAverageLatePacketDelay;
+    double _evictedFramesMaxLatePacketDelay;
+    VCHistogram *_evictedFramesLatePacketDelayHist;
     unsigned int _decodeNoShowFrameCount;
     int _maxAVSyncOffset;
     int _minAVSyncOffset;
     int _averageAVSyncOffsetSum;
     unsigned int _averageAVSyncOffsetCounter;
+    _Bool _isRTXTelemetryAvailable;
+    unsigned long long _nacksSent;
+    unsigned long long _nacksFulfilled;
+    unsigned long long _nacksFulfilledOnTime;
+    unsigned long long _uniqueNacksSent;
+    unsigned long long _lateFramesScheduledWithRTXCount;
+    unsigned long long _assembledFramesWithRTXPacketsCount;
+    unsigned long long _failedToAssembleFramesWithRTXPacketsCount;
+    VCHistogram *_nacksRTXResponseTime;
+    VCHistogram *_nacksRTXLateTime;
+    VCHistogram *_nacksRTXMediaBitRate;
+    VCHistogram *_nacksRTXRetransmittedMediaBitRate;
+    VCHistogram *_nacksPLRWithRTX;
+    VCHistogram *_nacksPLRWithoutRTX;
 }
 
 @property(readonly) double totalAudioErasureTime; // @synthesize totalAudioErasureTime=_totalAudioErasureTime;
 @property(readonly) double currentStallTime; // @synthesize currentStallTime=_currentStallTime;
+- (id)nacksPLRWithoutRTX;
+- (id)nacksPLRWithRTX;
+- (unsigned long long)failedToAssembleFramesWithRTXPacketsCount;
+- (unsigned long long)assembledFramesWithRTXPacketsCount;
+- (unsigned long long)lateFramesScheduledWithRTXCount;
+- (unsigned long long)nacksFulfilledOnTime;
+- (unsigned long long)nacksFulfilled;
+- (unsigned long long)nacksSent;
+- (_Bool)isRTXTelemetryAvailable;
 - (unsigned int)decodeNoShowFrameCount;
 - (unsigned int)averageAVSyncOffsetCounter;
 - (int)averageAVSyncOffsetSum;
 - (int)minAVSyncOffset;
 - (int)maxAVSyncOffset;
 - (unsigned int)lateFramesScheduledCount;
+- (unsigned int)evictedFramesRecoveredCount;
 - (unsigned int)evictedFramesTrackedCount;
-- (unsigned int)evictedFramesLikelyRecoverableCount;
 - (double)evictedFramesAnalysisValidIntervals;
+- (id)evictedFramesLatePacketDelayHist;
+- (double)evictedFramesMaxLatePacketDelay;
 - (double)evictedFramesAverageLatePacketDelay;
 - (unsigned int)decodedVideoFrameEnqueueCounter;
 - (unsigned int)videoFrameTotalIncompleteCounter;
@@ -88,7 +115,8 @@ __attribute__((visibility("hidden")))
 - (double)videoStallTotalTime;
 - (unsigned short)significantVideoStallCount;
 - (unsigned int)RTPeriod;
-- (void)processData:(id)arg1 algosScorer:(id)arg2;
+- (void)processRTXData:(id)arg1;
+- (void)processData:(id)arg1 algosScorer:(id)arg2 timestamp:(double)arg3;
 - (void)updateMinimumAndMaximumAVSyncOffset:(id)arg1;
 - (void)dealloc;
 - (id)initStreamWithID:(id)arg1;

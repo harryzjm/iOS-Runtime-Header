@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CellularPlanManager/CTCellularPlanClientDelegate-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface CTCellularPlanManagerDelegate : NSObject <CTCellularPlanClientDelegate>
+@interface CTCellularPlanManagerDelegate : NSObject
 {
 }
 

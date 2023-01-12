@@ -6,11 +6,11 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, _UIDebugLogReport;
+@class NSArray, _UIDebugLogStack;
 @protocol UIFocusEnvironment;
 
 @protocol _UIFocusEnvironmentPreferenceEnumerationContext <NSObject>
-@property(readonly, nonatomic) _UIDebugLogReport *debugReport;
+@property(readonly, nonatomic) _UIDebugLogStack *debugStack;
 @property(readonly, nonatomic) NSArray *preferredEnvironments;
 @property(readonly, nonatomic) id <UIFocusEnvironment> preferringEnvironment;
 @property(readonly, nonatomic) _Bool prefersNothingFocused;

@@ -13,6 +13,7 @@
 
 @optional
 - (void)remoteService:(DNDRemoteServiceConnection *)arg1 didReceiveUpdatedMeDeviceState:(DNDMeDeviceState *)arg2;
+- (void)remoteService:(DNDRemoteServiceConnection *)arg1 didReceiveAppConfigurationContextUpdateForModeIdentifier:(NSString *)arg2;
 - (void)remoteService:(DNDRemoteServiceConnection *)arg1 didReceiveUpdatedModeIdentifiers:(NSArray *)arg2;
 - (void)remoteService:(DNDRemoteServiceConnection *)arg1 didReceiveUpdatedModes:(NSArray *)arg2;
 - (void)remoteService:(DNDRemoteServiceConnection *)arg1 didReceiveUpdatedAvailableModeIdentifiers:(NSArray *)arg2;

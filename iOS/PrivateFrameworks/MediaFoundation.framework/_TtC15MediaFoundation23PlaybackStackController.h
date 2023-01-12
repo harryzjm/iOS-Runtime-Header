@@ -10,7 +10,6 @@
 
 @interface _TtC15MediaFoundation23PlaybackStackController : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *playerID;
     MISSING_TYPE *queueController;
     MISSING_TYPE *queueAssetLoader;
     MISSING_TYPE *playerController;

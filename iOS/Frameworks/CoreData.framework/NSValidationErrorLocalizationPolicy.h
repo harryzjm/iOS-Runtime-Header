@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreData/NSCopying-Protocol.h>
-
 @class NSBundle, NSDictionary, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface NSValidationErrorLocalizationPolicy : NSObject <NSCopying>
+@interface NSValidationErrorLocalizationPolicy : NSObject
 {
     NSURL *_url;
     NSBundle *_localizationBundle;
